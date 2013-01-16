@@ -1,0 +1,39 @@
+set nocompatible
+set t_Co=256
+set mouse-=a
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set expandtab
+set relativenumber
+syntax enable
+color molokai
+set wrap
+set textwidth=75
+set colorcolumn=76
+set encoding=utf-8
+set hidden
+set backspace=indent,eol,start
+set list
+set listchars=trail:·
+set cursorline
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+au Syntax * RainbowParenthesesLoadChevrons
+let mapleader = ","
+noremap <leader>r :RainbowParenthesesToggle<CR>
+noremap <leader>\ :NERDTreeToggle<CR>
+noremap <leader>s :set spell!<CR>
+noremap <Up> ""
+noremap! <Up> <Esc>
+noremap <Down> ""
+noremap! <Down> <Esc>
+noremap <Left> ""
+noremap! <Left> <Esc>
+noremap <Right> ""
+noremap! <Right> <Esc>
+set directory=~/.vim/temp/
+set backupdir=~/.vim/backup/

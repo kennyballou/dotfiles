@@ -1,0 +1,45 @@
+source "~/.mutt/crypto"
+macro index <f2> '<sync-mailbox><enter-command>source \
+~/.mutt/kennethmgballou.mutt<enter><change-folder>!<enter>'
+
+macro index <f3> '<sync-mailbox><enter-command>source \
+~/.mutt/kballoubsu.mutt<enter><change-folder>!<enter>'
+
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+bind editor <space> noop
+macro compose a "<pgp-menu>s<attach-file>"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to sent mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter><refresh>" \
+"Trash Message"
+
+set move = no
+set imap_keepalive = 900
+
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+
+ignore *
+unignore from: date subject to cc
+unignore x-mailing-list: posted-to:
+unignore x-mailer:
+
+set markers = no
+set pager_index_lines=5
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+
+fcc-hook .* /dev/null
+
+folder-hook 'kennethmgballou' 'source ~/.mutt/kennethmgballou.mutt'
+folder-hook 'kballoubsu' 'source ~/.mutt/kballoubsu.mutt'
+source ~/.mutt/kennethmgballou.mutt
+
+set editor = 'vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'

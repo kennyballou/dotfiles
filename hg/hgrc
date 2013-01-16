@@ -1,0 +1,17 @@
+[ui]
+username=kballou <kballou@onyx.boisestate.edu>
+merge = gvimdiff
+editor = gvim +"set colorcolumn=50,75" +"set textwidth=75" -f
+[merge-tools]
+gvimdiff.args = -d $base $local $output +close +close
+[extensions]
+mq=
+color=
+graphlog=
+pager=
+[diff]
+git=1
+[alias]
+addremove=addremove --similarity 100
+[pager]
+pager=LESS='FRX' less
