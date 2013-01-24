@@ -1,0 +1,14 @@
+[user]
+	name = kennyballou
+	email = kballou@onyx.boisestate.edu
+[core]
+	editor = gvim -f
+[merge]
+	tool = gvimdiff
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+[push]
+	default = simple
