@@ -76,3 +76,8 @@ ${swapperc}% ${offset 8}${swapbar 10,100} ${swap} / ${swapmax}
 eth0 ${downspeedf eth0} / ${upspeedf eth0} (${addr eth0})
 ${downspeedgraph eth0 20,290 222222 00ff00}
 ${upspeedgraph eth0 20,290 222222 ff0000}
+${if_up eth1}
+eth1 ${downspeedf eth1} / ${upspeedf eth0} (${addr eth1})
+${downspeedgraph eth1 20,290 222222 00ff00}
+${upspeedgraph eth1 20,290 222222 ff0000}
+${endif}
