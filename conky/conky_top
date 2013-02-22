@@ -23,9 +23,9 @@ draw_borders no
 draw_graph_borders yes
 use_spacer none
 minimum_size 500 10
-maximum_width 500
+maximum_width 655
 alignment top_right
-gap_x 1419
+gap_x 1264
 gap_y 0
 uppercase no
 use_xft yes
@@ -48,4 +48,4 @@ color9 FF0000 #Red
 #|ETH0@${upspeed eth0}/${downspeed eth0}:ETH1@${upspeed eth1}/${downspeed eth1}
 
 TEXT
-$loadavg|CPU0@${color5}${cpu 0}%${color #FFFFFF}:CPU1@${color5}${cpu 1}%${color #FFFFFF}|$mem:$memfree
+$loadavg|CPU@$freq_g(${cpu 0}%)|$mem:$memfree(${memperc}%)|IO:${diskio_read}:${diskio_write}|NET:${downspeed eth0}:${upspeed eth0}
