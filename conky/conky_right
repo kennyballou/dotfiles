@@ -74,9 +74,11 @@ ${diskiograph /dev/sdb 20,290 0087FF D70000 -t}
 ${memperc}% ${membar 10, 100} ${mem} / ${memmax}
 ${swapperc}% ${offset 8}${swapbar 10,100} ${swap} / ${swapmax}
 
+${if_up eth0}
 eth0 ${downspeedf eth0} / ${upspeedf eth0} (${addr eth0})
 ${downspeedgraph eth0 20,290 000000 5F8700}
 ${upspeedgraph eth0 20,290 000000 AF005F}
+${endif}
 ${if_up eth1}
 eth1 ${downspeedf eth1} / ${upspeedf eth0} (${addr eth1})
 ${downspeedgraph eth1 20,290 000000 5F8700}
