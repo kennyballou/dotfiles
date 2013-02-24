@@ -71,8 +71,8 @@ ${color}
 /home ${fs_bar 10, 100 /home} ${fs_free /home} / ${fs_size /home}
 ${diskiograph /dev/sda 20,290 0087FF D70000 -t}
 ${diskiograph /dev/sdb 20,290 0087FF D70000 -t}
-${memperc}% ${membar 10, 100} ${mem} / ${memmax}
-${swapperc}% ${offset 8}${swapbar 10,100} ${swap} / ${swapmax}
+${memperc}%${goto 30}${membar 10, 100} ${mem} / ${memmax}
+${swapperc}%${goto 30}${swapbar 10,100} ${swap} / ${swapmax}
 
 ${if_up eth0}
 eth0 ${downspeed eth0} / ${upspeed eth0} (${addr eth0})
