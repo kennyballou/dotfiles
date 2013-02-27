@@ -48,4 +48,4 @@ color8 1C1C1C
 color9 8A8A8A
 
 TEXT
-${execi 60 journalctl --since=today --no-page --lines=100}
+${exec journalctl --since=today --no-page | tail -n 64}
