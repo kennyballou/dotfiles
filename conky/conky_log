@@ -1,0 +1,51 @@
+# vim: syntax=conkyrc:
+background no
+update_interval 1
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent no
+own_window_colour 1B1D1E
+own_window_class Conky
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
+border_inner_margin 0
+border_outer_margin 0
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+imlib_cache_size 0
+cpu_avg_samples 2
+net_avg_samples 2
+override_utf8_locale yes
+draw_shades no
+default_shade_color FFFFFF
+draw_outline no
+draw_borders no
+draw_graph_borders no
+use_spacer none
+minimum_size 1280 1024
+maximum_width 1024
+alignment bottom_left
+gap_x 0
+gap_y 0
+uppercase no
+use_xft yes
+xftfont Liberation Mono:size=11
+xftalpha 0.8
+default_color EEE8D5
+default_shade_color 000000
+default_outline_color 000000
+pad_percents 1
+color0 A38700
+color1 D75F00
+color2 D70000
+color3 AF005F
+color4 5F5FAF
+color5 0087FF
+color6 00AFAF
+color7 5F8700
+color8 1C1C1C
+color9 8A8A8A
+
+TEXT
+${execi 60 journalctl --since=today --no-page --lines=100}
