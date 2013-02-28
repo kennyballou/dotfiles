@@ -6,10 +6,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=always'
 alias sudo='sudo -E'
 
-PROMPT="[%n@%m %1~]$ "
-RPROMPT="[%{$fg[green]%}%?%{$reset_color%}]"
-
 export EDITOR='vim'
 export PATH=$PATH:~/.local/bin
+
+. /usr/share/zsh/site-contrib/powerline.zsh
 
 cd ~/
