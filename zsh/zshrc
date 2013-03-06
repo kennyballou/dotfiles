@@ -10,6 +10,11 @@ alias tmux='tmux -2'
 export EDITOR='vim'
 export PATH=$PATH:~/.local/bin
 
-. /usr/share/zsh/site-contrib/powerline.zsh
+if [ -e /usr/share/zsh/site-contrib/powerline.zsh ]; then
+    . /usr/share/zsh/site-contrib/powerline.zsh
+else
+    PROMPT="[%n@%m %1~]$ "
+    RPROMPT="[%{$fg[green]%}%?%{$reset_color%}]"
+fi
 
 cd ~/
