@@ -1,4 +1,12 @@
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/rainbow_parentheses.vim'
+filetype plugin on
 set t_Co=256
 set mouse-=a
 set tabstop=4
