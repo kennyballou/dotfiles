@@ -6,6 +6,7 @@ Bundle 'gmarik/vundle'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'Lokaltog/powerline'
 filetype plugin on
 set t_Co=256
 set tabstop=4
@@ -25,6 +26,7 @@ set backspace=indent,eol,start
 set list
 set listchars=trail:·
 set cursorline
+set laststatus=2
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
