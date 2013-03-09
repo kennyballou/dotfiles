@@ -41,6 +41,7 @@ noremap <leader>s :set spell!<CR>
 noremap <leader>h :%!xxd<CR>
 noremap <leader>d :%!xxd -r<CR>
 noremap <leader>g :GitGutterToggle<CR>
+noremap <leader>c :SyntasticToggleMode<CR>
 noremap <Up> ""
 noremap! <Up> <Esc>
 noremap <Down> ""
