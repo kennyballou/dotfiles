@@ -8,6 +8,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'Lokaltog/powerline'
 Bundle 'scrooloose/syntastic'
+Bundle 'greyblake/vim-preview'
 filetype plugin on
 set t_Co=256
 set tabstop=4
