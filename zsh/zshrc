@@ -8,7 +8,7 @@ alias sudo='sudo -E'
 alias tmux='tmux -2'
 
 export EDITOR='vim'
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/.gem/ruby/1.9.1/bin
 
 if [ -e /usr/share/zsh/site-contrib/powerline.zsh ]; then
     . /usr/share/zsh/site-contrib/powerline.zsh
