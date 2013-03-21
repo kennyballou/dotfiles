@@ -90,3 +90,8 @@ ${upspeedgraph eth0 20,290 000000 AF005F}${endif}
 ${if_up eth1}eth1 ${downspeed eth1} / ${upspeed eth0} (${addr eth1})
 ${downspeedgraph eth1 20,290 000000 5F8700}
 ${upspeedgraph eth1 20,290 000000 AF005F}${endif}
+Connections: ${tcp_portmon 1 65535 count} ${hr}
+${tcp_portmon 1 65535 rservice 0} ${tcp_portmon 1 65535 lport 0} ${tcp_portmon 1 65535 rhost 0}
+${tcp_portmon 1 65535 rservice 1} ${tcp_portmon 1 65535 lport 1} ${tcp_portmon 1 65535 rhost 1}
+${tcp_portmon 1 65535 rservice 2} ${tcp_portmon 1 65535 lport 2} ${tcp_portmon 1 65535 rhost 2}
+${tcp_portmon 1 65535 rservice 3} ${tcp_portmon 1 65535 lport 3} ${tcp_portmon 1 65535 rhost 3}
