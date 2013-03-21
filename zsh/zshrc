@@ -15,7 +15,14 @@ then
     . /usr/share/zsh/site-contrib/powerline.zsh
 else
     PROMPT="[%n@%m %1~]$ "
-    RPROMPT="[%{$fg[green]%}%?%{$reset_color%}]"
+    prompt_precmd() {
+        if [ $? -ne 0 ]; then
+            RPROMPT="[%{$fg[green]%}%?%{$reset_color%}]"
+        else
+            RPROMPT=""
+        fi
+    }
+    precmd_functions+=(prompt_precmd)
 fi
 
 cd ~/
