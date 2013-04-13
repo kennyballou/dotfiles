@@ -1,0 +1,11 @@
+# vim: syntax=muttrc:
+set realname="Kenny Ballou"
+set from="kballou@boi22000lx.localdomain"
+set mbox_type="Maildir"
+set folder="$HOME/Mail"
+set record="+sent"
+set mbox="+mbox"
+set postponed="+postponed"
+set imap_user=""
+set imap_pass=""
+set spoolfile="+/"

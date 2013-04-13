@@ -1,0 +1,14 @@
+# vim: syntax=muttrc:
+source ~/.mutt/gmail.mutt
+set realname = "Kenny Ballou"
+set from = "kennethmgballou@gmail.com"
+set imap_user = "kennethmgballou@gmail.com"
+set imap_pass=`awk '/kennethmgballou:/ {print $2}' ~/.mutt/.secret`
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set smtp_url = "smtp://$imap_user:$imap_pass@smtp.gmail.com:587/"
+set ssl_force_tls = yes
+set pgp_sign_as="0x5F4F74A2"
+set signature="~/.mutt/kennethmgballou.signature"
+my_hdr X-PGP-Key: https://github.com/kennyballou/Config/kennethmgballou.asc
