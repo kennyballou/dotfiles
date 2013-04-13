@@ -1,8 +1,0 @@
-# vim: syntax=muttrc:
-set realname = "Kenny Ballou"
-set from = "kenny.ballou@powereng.com"
-set imap_user = "kballou"
-set folder = ""
-set spoolfile = "+INBOX"
-set postponed = "Drafts"
-set ssl_force_tls = yes
