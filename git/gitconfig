@@ -12,3 +12,9 @@
 	diff = auto
 [push]
 	default = simple
+[alias]
+	serve = !git daemon --reuseaddr \
+                      --port=8000 \
+                      --verbose \
+                      --base-path=. \
+                      --export-all ./.git
