@@ -8,7 +8,7 @@ alias sudo='sudo -E'
 alias tmux='tmux -2'
 
 export EDITOR='vim'
-export PATH=$PATH:~/.local/bin:~/.gem/ruby/1.9.1/bin
+export PATH=$PATH:~/.local/bin:~/.gem/ruby/latest/bin
 
 if [ -e /usr/share/zsh/site-contrib/powerline.zsh ] &&
    [ "$TERM" = "xterm" ] &&
