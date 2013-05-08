@@ -1,6 +1,12 @@
 autoload -U compinit promptinit -U colors && colors
 compinit
 promptinit
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+setopt inc_append_history
+setopt share_history
+setopt extended_history
 
 alias ls='ls --color=auto'
 alias grep='grep --color=always'
