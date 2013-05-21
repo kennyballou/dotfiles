@@ -363,7 +363,8 @@
     </context>
   </mouse>
   <menu>
-    <file>menu.xml</file><hideDelay>200</hideDelay>
+    <file>menu.xml</file>
+    <hideDelay>200</hideDelay>
     <middle>no</middle>
     <submenuShowDelay>100</submenuShowDelay>
     <applicationIcons>yes</applicationIcons>
