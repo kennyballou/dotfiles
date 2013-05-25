@@ -60,6 +60,9 @@
             <item label="Okular"> <action name="Execute">
                 <execute>okular</execute>
             </action> </item>
+            <item label="Libreoffice"><action name="Execute">
+                <execute>libreoffice</execute>
+            </action></item>
         </menu>
         <menu id="19" label="Shells">
             <item label="Terminator"> <action name="Execute">
