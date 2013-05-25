@@ -3,4 +3,5 @@ conky -c ~/.config/conky/conky_top &
 conky -c ~/.config/conky/conky_log &
 conky -c ~/.config/conky/conky_right &
 dropboxd &
+hsetroot -fill ~/Pictures/city_night.jpg &
 xscreensaver -no-splash &
