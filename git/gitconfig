@@ -2,7 +2,7 @@
 	name = kennyballou
 	email = kballou@onyx.boisestate.edu
 [core]
-	editor = gvim -f
+	editor = vim
 [merge]
 	tool = gvimdiff
 [color]
