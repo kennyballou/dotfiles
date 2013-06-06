@@ -92,14 +92,14 @@
                 <item label="dconf Editor"> <action name="Execute">
                     <execute>dconf-editor</execute>
                 </action> </item>
+                <item label="ScreenSaver Preferences"> <action name="Execute">
+                    <execute>xscreensaver-command -prefs</execute>
+                </action> </item>
             </menu>
         </menu>
         <menu id="38" label="Utilities">
             <item label="7-Zip FM"> <action name="Execute">
                 <execute>7zFM</execute>
-            </action> </item>
-            <item label="ScreenSaver Preferences"> <action name="Execute">
-                <execute>xscreensaver-command -prefs</execute>
             </action> </item>
         </menu>
         <separator/>
