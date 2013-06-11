@@ -32,5 +32,3 @@ else
     }
     precmd_functions+=(prompt_precmd)
 fi
-
-cd ~/
