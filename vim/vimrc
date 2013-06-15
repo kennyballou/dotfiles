@@ -6,7 +6,6 @@ Bundle 'gmarik/vundle'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'Lokaltog/powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'greyblake/vim-preview'
 filetype plugin on
@@ -53,3 +52,25 @@ noremap <Right> ""
 noremap! <Right> <Esc>
 set directory=~/.vim/temp/
 set backupdir=~/.vim/backup/
+function! FileSize()
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+    endif
+    if bytes < 1024
+        return "[" . bytes . "]"
+    else
+        return "[" . (bytes / 1024) . "k" . "]"
+    endif
+endfunction
+set statusline=
+set statusline+=[%02n]
+set statusline+=%t
+set statusline+=%m
+set statusline+=%r
+set statusline+=%{FileSize()}
+set statusline+=%=
+set statusline+=[%{&fenc}]
+set statusline+=%y
+set statusline+=%3.3p%%
+set statusline+=%04.4l:%03c
