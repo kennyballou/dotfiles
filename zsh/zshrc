@@ -7,6 +7,7 @@ HISTFILE=~/.zsh_history
 setopt inc_append_history
 setopt share_history
 setopt extended_history
+setopt prompt_subst
 
 alias ls='ls --color=auto'
 alias grep='grep --color=always'
@@ -16,19 +17,25 @@ alias tmux='tmux -2'
 export EDITOR='vim'
 export PATH=$PATH:~/.local/bin:~/.gem/ruby/latest/bin
 
-if [ -e /usr/share/zsh/site-contrib/powerline.zsh ] &&
-   [ "$TERM" = "xterm" ] &&
-   [ -z "$SSH_CONNECTION" ]
-then
-    . /usr/share/zsh/site-contrib/powerline.zsh
-else
-    PROMPT="[%n@%m %1~]$ "
-    prompt_precmd() {
-        if [ $? -ne 0 ]; then
-            RPROMPT="[%{$fg[green]%}%?%{$reset_color%}]"
-        else
-            RPROMPT=""
+prompt_char() {
+    branch=`git branch 2> /dev/null | grep \* | awk '{print $2}'`
+    if [ ${branch} ]; then
+        gp="[%{$fg[magenta]%}${branch}"
+        if [ `git status --porcelain 2> /dev/null | wc -l` -ne 0 ]; then
+            gp="${gp}%{$reset_color%}(%{$fg[green]%}ϟ%{$reset_color%})"
         fi
-    }
-    precmd_functions+=(prompt_precmd)
-fi
+        gp="${gp}%{$reset_color%}]±"
+        echo ${gp}
+        return
+    fi
+    echo "%%"
+}
+PROMPT='(@%m)(%1~)$(prompt_char) '
+rprompt_precmd() {
+    if [ $? -ne 0 ]; then
+        RPROMPT="(%{$fg[red]%}%?%{$reset_color%})"
+    else
+        RPROMPT=""
+    fi
+}
+precmd_functions+=(rprompt_precmd)
