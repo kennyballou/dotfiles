@@ -42,7 +42,7 @@ View=2
 
 [General]
 Editor=/usr/bin/gvim
-Move To Trash=true
+Move To Trash=false
 Terminal=terminator --working-directory=%d
 
 [Konfigurator]
