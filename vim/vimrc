@@ -59,8 +59,10 @@ function! FileSize()
     endif
     if bytes < 1024
         return "[" . bytes . "]"
+    elseif bytes < 1024 * 1024
+        return "[" . (bytes / 1024) . "k]"
     else
-        return "[" . (bytes / 1024) . "k" . "]"
+        return "[" . (bytes / (1024 * 1024)) . "M]"
     endif
 endfunction
 set statusline=
