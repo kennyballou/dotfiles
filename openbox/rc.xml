@@ -16,7 +16,7 @@
     <policy>Smart</policy>
     <center>yes</center>
     <monitor>Primary</monitor>
-    <primaryMonitor>1</primaryMonitor>
+    <primaryMonitor>Active</primaryMonitor>
   </placement>
   <theme>
     <name>Turquoise Nights Ob</name>
