@@ -45,7 +45,7 @@ color7 778899 #LightSlateGrey
 color8 FFDEAD #NavajoWhite
 color9 FF0000 #Red
 #|${diskio /dev/sda}:${diskio /dev/sdb}
-#|ETH0@${upspeed eth0}/${downspeed eth0}:ETH1@${upspeed eth1}/${downspeed eth1}
+#|ETH0@${upspeed eno1}/${downspeed eno1}:ETH1@${upspeed eth1}/${downspeed eth1}
 
 TEXT
-$loadavg|CPU@$freq_g(${cpu 0}%)|$mem:$memfree(${memperc}%)|IO:${diskio_read /dev/sda}:${diskio_write /dev/sda}|NET:${downspeed eth0}:${upspeed eth0}
+$loadavg|CPU@$freq_g(${cpu 0}%)|$mem:$memfree(${memperc}%)|IO:${diskio_read}:${diskio_write}|NET:${downspeed eno1}:${upspeed eno1}
