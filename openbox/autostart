@@ -4,4 +4,4 @@ conky -c ~/.config/conky/conky_log &
 conky -c ~/.config/conky/conky_right &
 dropboxd &
 hsetroot -fill ~/Pictures/default-background.jpg &
-xscreensaver -no-splash &
+xautolock -time 10 -locker slock&
