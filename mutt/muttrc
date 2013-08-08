@@ -1,10 +1,10 @@
 source "~/.mutt/crypto"
 macro index <f2> '<sync-mailbox><enter-command>source \
-~/.mutt/local.mutt<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><enter-command>source \
 ~/.mutt/kennethmgballou.mutt<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source \
+~/.mutt/kballou_uboisestate.mutt<enter><change-folder>!<enter>'
 macro index <f4> '<sync-mailbox><enter-command>source \
-~/.mutt/kballoubsu.mutt<enter><change-folder>!<enter>'
+~/.mutt/kballou_boisestate.mutt<enter><change-folder>!<enter>'
 
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
@@ -29,9 +29,9 @@ set sort_aux = 'last-date-received'
 
 fcc-hook .* /dev/null
 
-folder-hook 'local' 'source ~/.mutt/local.mutt'
 folder-hook 'kennethmgballou' 'source ~/.mutt/kennethmgballou.mutt'
-folder-hook 'kballoubsu' 'source ~/.mutt/kballoubsu.mutt'
+folder-hook 'kballou_uboisestate' 'source ~/.mutt/kballou_uboisestate.mutt'
+folder-hook 'kballou_boisestate' 'source ~/.mutt/kballou_boisestate.mutt'
 source ~/.mutt/kennethmgballou.mutt
 
 set editor = 'vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'

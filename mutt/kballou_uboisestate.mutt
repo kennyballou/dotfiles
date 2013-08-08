@@ -3,12 +3,11 @@ source ~/.mutt/gmail.mutt
 set realname = "Kenny Ballou"
 set from = "kennyballou@u.boisestate.edu"
 set imap_user = "kennyballou@u.boisestate.edu"
-set imap_pass =`awk '/kballoubsu:/ {print $2}' ~/.mutt/.secret`
+set imap_pass =`awk '/kballou_uboisestate:/ {print $2}' ~/.mutt/.secret`
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set smtp_url = "smtp://$imap_user:$imap_pass@smtp.gmail.com:587/"
 set ssl_force_tls = yes
-set pgp_sign_as="17FCB2E9"
-set signature="~/.mutt/kballoubsu.signature"
-my_hdr X-PGP-Key: https://github.com/kennyballou/kennyballou.asc
+set pgp_sign_as="0x4B2AE59A"
+set signature="~/.mutt/kballou_uboisestate.signature"
