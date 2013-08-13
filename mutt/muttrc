@@ -1,4 +1,5 @@
 source "~/.mutt/crypto"
+source "~/.mutt/keybindings"
 macro index <f2> '<sync-mailbox><enter-command>source \
 ~/.mutt/kennethmgballou.mutt<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source \
