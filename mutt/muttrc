@@ -24,10 +24,16 @@ unignore from: date subject to cc
 unignore x-mailing-list: posted-to:
 unignore x-mailer:
 
+set date_format = '%m/%d/%Y'
+set index_format = '[%Z] %D %-20.20F  %s'
+set status_format = \
+'[ %f ] -- [%r%m messages %?n?(%n)?%?d?(%d)?%?t?(%t)?] -%>-(%p)'
 set markers = no
 set pager_index_lines=5
 set sort = 'threads'
 set sort_aux = 'last-date-received'
+set sort_re
+set reply_regexp = '^(([Re][Ee]?(\[[0-9]+\])?: *?(\[[^]]+\] *)?)*'
 
 fcc-hook .* /dev/null
 
