@@ -30,8 +30,10 @@ set status_format = \
 '[ %f ] -- [%r%m messages %?n?(%n)?%?d?(%d)?%?t?(%t)?] -%>-(%p)'
 set markers = no
 set pager_index_lines=5
+set pager_stop
 set sort = 'threads'
 set sort_aux = 'last-date-received'
+set uncollapse_jump
 set sort_re
 set reply_regexp = '^(([Re][Ee]?(\[[0-9]+\])?: *?(\[[^]]+\] *)?)*'
 
