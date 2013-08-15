@@ -47,3 +47,8 @@ folder-hook 'kballou_boisestate' 'source ~/.mutt/kballou_boisestate.mutt'
 source ~/.mutt/kennethmgballou.mutt
 
 set editor = 'vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+
+# abook
+set query_command = "abook --mutt-query '%s'"
+macro index,pager A "<pipe-message>abook --add-email-quiet<return>" \
+"add the sender address to abook"
