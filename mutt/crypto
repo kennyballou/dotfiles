@@ -25,7 +25,7 @@ set pgp_list_secring_command="gpg --no-verbose --batch --with-colons \
 --list-secret-keys %r"
 
 set pgp_timeout=60
-set pgp_good_sign="^gpg: Good sidnature from"
+set pgp_good_sign="^gpg: Good signature from"
 
 set crypt_autosign
 set crypt_replysign
