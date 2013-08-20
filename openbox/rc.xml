@@ -61,10 +61,9 @@
     </font>
   </theme>
   <desktops>
-    <number>1</number>
+    <number>4</number>
     <firstdesk>1</firstdesk>
-    <names>
-    </names>
+    <names/>
     <popupTime>875</popupTime>
   </desktops>
   <resize>
@@ -96,6 +95,18 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
+    <keybind key="C-A-Left">
+      <action name="GoToDesktop"><to>left</to><wrap>no</wrap></action>
+    </keybind>
+    <keybind key="C-A-Right">
+      <action name="GoToDesktop"><to>right</to><wrap>no</wrap></action>
+    </keybind>
+    <keybind key="S-A-Left">
+      <action name="SendToDesktop"><to>left</to><wrap>no</wrap></action>
+    </keybind>
+    <keybind key="S-A-Right">
+      <action name="SendToDesktop"><to>right</to><wrap>no</wrap></action>
+    </keybind>
     <keybind key="A-space">
       <action name="Execute">
         <command>dmenu_run</command>
