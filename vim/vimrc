@@ -9,7 +9,9 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'greyblake/vim-preview'
 filetype plugin on
+if &term=~'xterm'
 set t_Co=256
+endif
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
