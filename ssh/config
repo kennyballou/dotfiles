@@ -1,0 +1,41 @@
+# vim: filetype=sshconfig:
+Host onyx
+    HostName onyx.boisestate.edu
+    User kballou
+    ForwardX11 yes
+    ForwardX11Trusted yes
+
+Host hg.bitbucket.org
+    User hg
+    Hostname bitbucket.org
+    IdentityFile ~/.ssh/id_rsa_kballou_bitbucket
+
+Host git.bitbucket.org
+    User git
+    HostName bitbucket.org
+    IdentityFile ~/.ssh/id_rsa_kballou_bitbucket
+
+Host github.com
+    User git
+    HostName github.com
+    IdentityFile ~/.ssh/id_rsa_kennyballou_github
+
+Host viz
+    User kballou
+    HostName viz.boisestate.edu
+    Port 22
+    ProxyCommand ssh -qY onyx nc %h %p
+    ForwardX11 yes
+    ForwardX11Trusted yes
+
+Host eng400976
+    User kballou
+    Hostname eng400976.boisestate.edu
+    Port 22
+    ProxyCommand ssh -qY onyx nc %h %p
+    ForwardX11 yes
+    ForwardX11Trusted yes
+
+Host *
+    PreferredAuthentications publickey
+    Compression yes
