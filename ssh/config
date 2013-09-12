@@ -8,17 +8,17 @@ Host onyx
 Host hg.bitbucket.org
     User hg
     Hostname bitbucket.org
-    IdentityFile ~/.ssh/id_rsa_kballou_bitbucket
+    IdentityFile ~/.ssh/git_rsa
 
-Host git.bitbucket.org
+Host bitbucket.org
     User git
     HostName bitbucket.org
-    IdentityFile ~/.ssh/id_rsa_kballou_bitbucket
+    IdentityFile ~/.ssh/git_rsa
 
 Host github.com
     User git
     HostName github.com
-    IdentityFile ~/.ssh/id_rsa_kennyballou_github
+    IdentityFile ~/.ssh/git_rsa
 
 Host viz
     User kballou
