@@ -15,7 +15,7 @@
   <placement>
     <policy>Smart</policy>
     <center>yes</center>
-    <monitor>Primary</monitor>
+    <monitor>Mouse</monitor>
     <primaryMonitor>Active</primaryMonitor>
   </placement>
   <theme>
