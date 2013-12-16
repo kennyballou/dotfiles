@@ -36,7 +36,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-au Syntax * RainbowParenthesesLoadChevrons
+au Syntax html,xml RainbowParenthesesLoadChevrons
 let mapleader = ","
 let g:gitgutter_enabled = 0
 noremap <leader>r :RainbowParenthesesToggle<CR>
