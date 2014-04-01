@@ -18,6 +18,7 @@
                       --verbose \
                       --base-path=. \
                       --export-all ./.git
+	up = !git remote update -p; git merge --ff-only @{u}
 [grep]
 	extendRegexp = true
 	lineNumber = true
