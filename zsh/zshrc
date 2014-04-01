@@ -10,7 +10,7 @@ setopt extended_history
 setopt prompt_subst
 
 alias ls='ls --color=auto'
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
 alias sudo='sudo -E'
 alias tmux='tmux -2'
 
