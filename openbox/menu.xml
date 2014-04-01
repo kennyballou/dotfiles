@@ -109,7 +109,7 @@
             <separator/>
             <item label="Lock Screen">
                 <action name="Execute">
-                    <execute>slock</execute>
+                    <execute>dm-tool lock</execute>
                 </action>
             </item>
             <menu id="41" label="Exit">
