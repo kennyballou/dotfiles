@@ -6,8 +6,6 @@ macro index <f3> '<sync-mailbox><enter-command>source \
 ~/.mutt/l0x3py.mutt<enter><change-folder>!<enter>'
 macro index <f4> '<sync-mailbox><enter-command>source \
 ~/.mutt/kballou_uboisestate.mutt<enter><change-folder>!<enter>'
-macro index <f5> '<sync-mailbox><enter-command>source \
-~/.mutt/kballou_boisestate.mutt<enter><change-folder>!<enter>'
 
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
@@ -43,7 +41,6 @@ fcc-hook .* /dev/null
 folder-hook 'kennethmgballou' 'source ~/.mutt/kennethmgballou.mutt'
 folder-hook 'l0x3py' 'source ~/.mutt/l0x3py.mutt'
 folder-hook 'kballou_uboisestate' 'source ~/.mutt/kballou_uboisestate.mutt'
-folder-hook 'kballou_boisestate' 'source ~/.mutt/kballou_boisestate.mutt'
 source ~/.mutt/kennethmgballou.mutt
 
 set editor = 'vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
