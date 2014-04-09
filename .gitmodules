@@ -1,0 +1,3 @@
+[submodule "awesome/blingbling"]
+	path = awesome/blingbling
+	url = ssh://github.com/kennyballou/blingbling.git
