@@ -14,9 +14,6 @@ alias grep='grep --color=auto'
 alias sudo='sudo -E'
 alias tmux='tmux -2'
 
-export EDITOR='vim'
-export PATH=$PATH:~/.local/bin:~/.gem/ruby/o-ri
-
 prompt_char() {
     branch=`git branch 2> /dev/null | grep \* | awk '{print $2}'`
     if [ ${branch} ]; then
