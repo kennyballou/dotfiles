@@ -29,4 +29,5 @@ Host viz
 
 Host *
     PreferredAuthentications publickey
+    VisualHostKey yes
     Compression yes
