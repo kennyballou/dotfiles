@@ -27,6 +27,7 @@ root_fs_widget:set_rounded_size(0.3)
 root_fs_widget:set_show_text(true)
 root_fs_widget:set_horizontal(true)
 root_fs_widget:set_label("/ $percent %")
+root_fs_widget:set_text_color(beautiful.fg_normal)
 root_fs_widget:set_background_color(beautiful.transparent)
 root_fs_widget:set_graph_background_color(beautiful.widget_background)
 root_fs_widget:set_graph_color(beautiful.transparent)
@@ -43,6 +44,7 @@ local cpu_total_graph = blingbling.line_graph.new(
       show_text = true,
       label     = "CPU: $percent %",
       rounded_size = 0.3,
+      text_color = beautiful.fg_normal,
       background_color = beautiful.transparent,
       graph_background_color = beautiful.widget_background,
       graph_line_color = beautiful.magenta,
@@ -56,6 +58,7 @@ local memgraph = blingbling.line_graph.new(
       show_text = true,
       label     = "MEM: $percent %",
       rounded_size = 0.3,
+      text_color = beautiful.fg_normal,
       background_color = beautiful.transparent,
       graph_background_color = beautiful.widget_background,
       graph_line_color = beautiful.magenta,
