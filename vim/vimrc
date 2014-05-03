@@ -4,7 +4,6 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/nerdtree'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'greyblake/vim-preview'
@@ -40,7 +39,6 @@ au Syntax html,xml RainbowParenthesesLoadChevrons
 let mapleader = ","
 let g:gitgutter_enabled = 0
 noremap <leader>r :RainbowParenthesesToggle<CR>
-noremap <leader>\ :NERDTreeToggle<CR>
 noremap <leader>s :set spell!<CR>
 noremap <leader>h :%!xxd<CR>
 noremap <leader>d :%!xxd -r<CR>
