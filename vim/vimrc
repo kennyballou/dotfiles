@@ -29,7 +29,7 @@ set encoding=utf-8
 set hidden
 set backspace=indent,eol,start
 set list
-set listchars=trail:·
+set listchars=tab:→·,trail:·
 set cursorline
 set laststatus=2
 au VimEnter * RainbowParenthesesToggle
