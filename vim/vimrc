@@ -8,6 +8,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'greyblake/vim-preview'
 Bundle 'vim-scripts/VimClojure'
+Bundle 'tpope/vim-fugitive'
 filetype plugin on
 if &term=~'xterm'
 set t_Co=256
