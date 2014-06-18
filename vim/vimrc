@@ -9,6 +9,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'greyblake/vim-preview'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'saltstack/salt-vim'
+Bundle 'fatih/vim-go'
 Bundle 'tpope/vim-fugitive'
 filetype plugin on
 if &term=~'xterm'
