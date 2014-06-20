@@ -1,5 +1,5 @@
 [ui]
-username=kballou <kballou@onyx.boisestate.edu>
+username=kballou <kballou@devnulllabs.io>
 merge = gvimdiff
 editor = gvim +"set colorcolumn=50,75" +"set textwidth=75" -f
 [merge-tools]
