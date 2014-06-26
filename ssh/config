@@ -31,3 +31,4 @@ Host *
     PreferredAuthentications publickey
     VisualHostKey yes
     Compression yes
+    IdentitiesOnly yes
