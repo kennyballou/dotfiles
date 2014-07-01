@@ -80,7 +80,9 @@ globalkeys = awful.util.table.join(
                                  " -sf '" .. beautiful.fg_focus .. "'")
                end),
     awful.key({ALT, "Control",}, "l",
-        function() awful.util.spawn("dm-tool lock") end)
+        function() awful.util.spawn("dm-tool lock") end),
+    awful.key({ALT, }, "/",
+        function() awful.util.spawn("terminator -e ranger") end)
 )
 
 clientkeys = awful.util.table.join(
