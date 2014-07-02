@@ -35,6 +35,7 @@ set sort_aux = 'last-date-received'
 set uncollapse_jump
 set sort_re
 set reply_regexp = '^(([Re][Ee]?(\[[0-9]+\])?: *?(\[[^]]+\] *)?)*'
+set send_charset="utf-8"
 
 fcc-hook .* /dev/null
 
