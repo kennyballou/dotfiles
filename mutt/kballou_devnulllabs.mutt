@@ -1,0 +1,15 @@
+# vim: syntax=muttrc:
+set realname = "Kenny Ballou"
+set from = "kballou@devnulllabs.io"
+set imap_user = "kballou%devnulllabs.io"
+set imap_pass=`awk '/kballou_devnulllabs:/ {print $2}' ~/.mutt/.secret`
+set folder = "imaps://secure.runbox.com:993"
+set spoolfile = "+INBOX"
+set postponed = "imaps://secure.runbox.com:993/Drafts"
+set smtp_authenticators="plain"
+set smtp_pass="$imap_pass"
+set smtp_url = "smtps://kballou%25devnulllabs.io@secure.runbox.com:465/"
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set pgp_sign_as="0x1066BA71A5F56C58"
+set signature="~/.mutt/kballou_devnulllabs.signature"
