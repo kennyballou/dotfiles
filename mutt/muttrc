@@ -7,9 +7,9 @@ macro index <f3> '<sync-mailbox><enter-command>source \
 macro index <f4> '<sync-mailbox><enter-command>source \
 ~/.mutt/kballou_uboisestate.mutt<enter><change-folder>!<enter>'
 
-set header_cache = ~/.mutt/cache/headers
-set message_cachedir = ~/.mutt/cache/bodies
-set certificate_file = ~/.mutt/certificates
+set header_cache = ~/.cache/mutt/headers
+set message_cachedir = ~/.cache/mutt/bodies
+set certificate_file = ~/.cache/mutt/certificates
 
 bind editor <space> noop
 
