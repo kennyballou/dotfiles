@@ -75,5 +75,5 @@ require("signals")
 -- }}}
 
 -- {{{ Autostart
-require("autostart_" .. hostname)
+require("autostart")
 -- }}}
