@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ranger
+GenericName=File Browser
+Comment=Vim inspired CLI based directory browser
+Exec=terminator -x ranger
+Terminal=true
+Type=Application
+Categories=System;
