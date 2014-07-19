@@ -1,0 +1,18 @@
+[Default Applications]
+application/pdf=okular.desktop
+all/text=gvim.desktop
+image/jpeg=gwenview.desktop
+image/png=gwenview.desktop
+image/gif=gwenview.desktop
+text/plain=gvim.desktop
+application/jpg=gwenview.desktop
+applicaiton/vnd.openxmlformats--officedocument.wordprocessingxml.documentappliation/zip=libreoffice-writer.desktop
+text/x-markdown=gvim.desktop
+text/x-tex=gvim.desktop
+inode/directory=ranger.desktop
+
+[Added Associations]
+application/pdf=kde4-okularApplication_pdf.desktop;
+text/x-markdown=gvim.desktop;
+text/x-tex=gvim.desktop;
+text/x-python=gvim.desktop;
