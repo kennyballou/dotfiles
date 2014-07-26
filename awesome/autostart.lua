@@ -1,14 +1,8 @@
 local awful = require("awful")
 require("awful_local_utils")
 
-local autostart =
-{
-    "light-locker",
-    "qjackctl",
-    "dropboxd",
-    "nm-applet",
-    "keepassx",
-}
-for _, i in pairs(autostart) do
+autostart = io.open(os.getenv('HOME') .. '/.config/autostart/awesome.autostart')
+for i in autostart:lines() do
     run_once(i)
 end
+autostart:close()
