@@ -1,0 +1,18 @@
+[ui]
+theme=original
+mouse=false
+flash=true
+beep=true
+
+[connection]
+autoping=240
+
+[presence]
+autoaway.time=15
+autoaway.message=:() { :|:& };:
+
+[notifications]
+message=true
+remind=30
+invite=true
+sub=true
