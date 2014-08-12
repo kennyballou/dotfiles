@@ -1,0 +1,2 @@
+# vim: syntax=muttrc:
+subscribe user@spark.apache.org dev@spark.apache.org
