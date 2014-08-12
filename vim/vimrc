@@ -37,6 +37,9 @@ set list
 set listchars=tab:→·,trail:·
 set cursorline
 set laststatus=2
+set noerrorbells
+set novisualbell
+set vb t_vb=
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
