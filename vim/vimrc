@@ -16,6 +16,8 @@ if &term=~'xterm'
 set t_Co=256
 endif
 set autoread
+set wildmenu
+set wildignore=*.o,*~,*.pyc,*.pdf,*.class
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
