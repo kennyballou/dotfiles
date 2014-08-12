@@ -15,6 +15,7 @@ filetype plugin on
 if &term=~'xterm'
 set t_Co=256
 endif
+set autoread
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
