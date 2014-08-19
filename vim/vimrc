@@ -11,6 +11,7 @@ Bundle 'vim-scripts/VimClojure'
 Bundle 'saltstack/salt-vim'
 Bundle 'fatih/vim-go'
 Bundle 'tpope/vim-fugitive'
+Bundle 'derekwyatt/vim-scala'
 filetype plugin on
 if &term=~'xterm'
 set t_Co=256
