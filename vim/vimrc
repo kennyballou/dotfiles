@@ -12,6 +12,8 @@ Bundle 'saltstack/salt-vim'
 Bundle 'fatih/vim-go'
 Bundle 'tpope/vim-fugitive'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'jimenezrick/vimerl'
+Bundle 'elixir-lang/vim-elixir'
 filetype plugin on
 if &term=~'xterm'
 set t_Co=256
