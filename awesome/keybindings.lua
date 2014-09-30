@@ -23,7 +23,6 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ALT,}, "w", function() mymainmenu:show() end),
 
     -- Layout manipulation
     awful.key({ALT, "Shift",}, "j",
