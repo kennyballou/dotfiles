@@ -13,7 +13,7 @@ globalkeys = awful.util.table.join(
     awful.key({ALT, "Control",}, "Right", awful.tag.viewnext),
     awful.key({ALT,}, "Escape", awful.tag.history.restore),
 
-    awful.key({ALT,}, "Tab",
+    awful.key({ALT,}, "j",
         function()
             awful.client.focus.byidx(1)
             if client.focus then client.focus:raise() end
