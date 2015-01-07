@@ -1,8 +1,8 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Plugin 'gmarik/vundle'
+set rtp+=~/.vim/bundle/vundle.vim
+call vundle#begin()
+Plugin 'gmarik/vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'scrooloose/syntastic'
@@ -14,6 +14,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'jimenezrick/vimerl'
 Plugin 'elixir-lang/vim-elixir'
+call vundle#end()
 filetype plugin on
 if &term=~'xterm'
 set t_Co=256
