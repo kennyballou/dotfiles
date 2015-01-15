@@ -77,7 +77,7 @@ local wifi_text = wibox.widget.textbox()
 vicious.register(
     wifi_text,
     vicious.widgets.wifi,
-    "${ssid} (-${link} dBm)",
+    "${ssid} (${sign} dBm)",
     3,
     "wlan0")
 
