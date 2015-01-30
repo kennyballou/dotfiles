@@ -9,5 +9,5 @@ set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set smtp_url = "smtp://$imap_user:$imap_pass@smtp.gmail.com:587/"
 set ssl_force_tls = yes
-set pgp_sign_as="0xBAB8A159688A0CBF"
+set pgp_sign_as="0x1CFA8A9CD949D956"
 set signature="~/.mutt/kennethmgballou.signature"
