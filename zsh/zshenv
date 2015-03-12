@@ -1,3 +1,11 @@
 export EDITOR='vim'
-export GOPATH="$HOME/Dev/Go"
-export PATH=$PATH:~/.local/bin:~/.gem/ruby/o-ri:$GOPATH/bin
+
+for i in $HOME/.profile.d/*.sh ; do
+    if [ -r "$i" ]; then
+         if [ "${-#*i}" != "$-" ]; then
+            source "$i"
+        else
+            source "$i" >/dev/null 2>&1
+        fi
+    fi
+done
