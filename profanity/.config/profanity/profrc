@@ -1,8 +1,10 @@
 [ui]
 theme=original
-mouse=false
+mouse=true
 flash=true
 beep=true
+
+history=true
 
 [connection]
 autoping=240
@@ -16,3 +18,7 @@ message=true
 remind=30
 invite=true
 sub=true
+
+[logging]
+chlog=true
+grlog=true
