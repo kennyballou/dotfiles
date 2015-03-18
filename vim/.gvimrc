@@ -7,6 +7,6 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%80v.\+/
 highlight TrailS ctermbg=red ctermfg=white guibg=#592929
 match TrailS /\s\+$/
-set columns=90
+set columns=86
 set lines=40
 set vb t_vb=
