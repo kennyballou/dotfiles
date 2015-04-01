@@ -16,7 +16,7 @@ mount_crypt () {
 umount_crypt () {
     MOUNT=$1
     NAME=$2
-    killall -u $USER -q gpg-agent
+    killall -u $USER -q gpg-agent dirmngr
     sync
     sudo umount "$MOUNT"
     if [ $? -ne 0 ]; then
