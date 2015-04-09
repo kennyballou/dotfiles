@@ -1,0 +1,62 @@
+set mainfont {Consolas 12}
+set textfont {Consolas 12}
+set uifont {Consolas 12}
+set tabstop 4
+set findmergefiles 0
+set maxgraphpct 50
+set maxwidth 16
+set cmitmode patch
+set wrapcomment none
+set autoselect 1
+set autosellen 40
+set showneartags 1
+set maxrefs 20
+set visiblerefs {"master"}
+set hideremotes 0
+set showlocalchanges 1
+set datetimeformat {%Y-%m-%d %H:%M:%S}
+set limitdiffs 1
+set uicolor #121212
+set want_ttk 1
+set bgcolor #232323
+set fgcolor #f0f0f0
+set uifgcolor #f0f0f0
+set uifgdisabledcolor #999
+set colors {green red blue magenta darkgrey brown orange}
+set diffcolors {#B9214F #77DFD8 #3399FF}
+set mergecolors {red blue green purple brown "#009090" magenta "#808000" "#009000" "#ff0080" cyan "#b07070" "#70b0f0" "#70f0b0" "#f0b070" "#ff70b0"}
+set markbgcolor #e0e0ff
+set diffcontext 3
+set selectbgcolor #FF5C8D
+set foundbgcolor yellow
+set currentsearchhitbgcolor orange
+set extdifftool opendiff
+set perfile_attrs 0
+set headbgcolor #A6E22E
+set headfgcolor black
+set headoutlinecolor black
+set remotebgcolor #ffddaa
+set tagbgcolor yellow
+set tagfgcolor black
+set tagoutlinecolor black
+set reflinecolor black
+set filesepbgcolor #aaaaaa
+set filesepfgcolor black
+set linehoverbgcolor #ffff80
+set linehoverfgcolor black
+set linehoveroutlinecolor black
+set mainheadcirclecolor #FF9800
+set workingfilescirclecolor #FF5C8D
+set indexcirclecolor #A6E22E
+set circlecolors {white #3399FF #444444 #3399FF #3399FF}
+set linkfgcolor #06A2DC
+set circleoutlinecolor #232323
+set geometry(main) 1333x855+553+132
+set geometry(state) normal
+set geometry(topwidth) 1333
+set geometry(topheight) 357
+set geometry(pwsash0) "968 1"
+set geometry(pwsash1) "1195 1"
+set geometry(botwidth) 738
+set geometry(botheight) 493
+set permviews {}
