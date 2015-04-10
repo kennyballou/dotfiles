@@ -6,6 +6,8 @@ beep=true
 
 history=true
 
+roster=false
+
 [connection]
 autoping=240
 
