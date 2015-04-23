@@ -26,7 +26,7 @@ class Molokai(ColorScheme):
             if context.image:
                 fg = 208
             if context.video:
-                fg = 144
+                fg = 81
             if context.audio:
                 fg = 135
             if context.document:
@@ -43,10 +43,10 @@ class Molokai(ColorScheme):
                 attr |= bold
                 fg = 43
             if context.socket:
-                fg = 180
+                fg = 155
                 attr |= bold
             if context.fifo or context.device:
-                fg = 144
+                fg = 160
                 if context.device:
                     attr |= bold
             if context.link:
@@ -68,7 +68,7 @@ class Molokai(ColorScheme):
                     attr |= bold
                 if context.marked:
                     attr |= bold
-                    fg = 223
+                    fg = 201
             if context.badinfo:
                 if attr & reverse:
                     bg = 95
