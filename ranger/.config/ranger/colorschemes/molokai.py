@@ -85,7 +85,8 @@ class Molokai(ColorScheme):
                 fg = 33
             elif context.tab:
                 if context.good:
-                    bg = 180
+                    fg = 47
+                    bg = 237
             elif context.link:
                 fg = 116
 
