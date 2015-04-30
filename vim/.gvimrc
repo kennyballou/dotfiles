@@ -1,6 +1,8 @@
 set mouse-=a
 set guioptions-=T
 set guioptions-=m
+set guioptions-=r
+set guioptions-=L
 set textwidth=79
 set colorcolumn=80
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
