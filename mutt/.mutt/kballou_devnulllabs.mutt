@@ -16,3 +16,8 @@ set signature="~/.mutt/kballou_devnulllabs.signature"
 
 macro index A "<save-message>=INBOX/Archive<enter><enter><refresh>" \
 "Archive Message"
+
+macro index,pager gs "<change-folder>=INBOX.Sent<enter>" "Go to sent mail"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager gd "<change-folder>=INBOX.Drafts<enter>" "Go to drafts"
+macro index,pager ga "<change-folder>=INBOX.Archive<enter>" "Go to all mail"
