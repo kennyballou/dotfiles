@@ -1,4 +1,6 @@
 # vim: syntax=muttrc:
+fcc-hook .* /dev/null
+
 macro compose a "<pgp-menu>s<attach-file>"
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"

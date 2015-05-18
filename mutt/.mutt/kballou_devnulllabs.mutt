@@ -6,6 +6,8 @@ set imap_pass=`awk '/kballou_devnulllabs:/ {print $2}' ~/.mutt/.secret`
 set folder = "imaps://secure.runbox.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+INBOX.Drafts"
+set copy=yes
+set record = "=INBOX.Sent"
 set smtp_authenticators="plain"
 set smtp_pass="$imap_pass"
 set smtp_url = "smtps://kballou%25devnulllabs.io@secure.runbox.com:465/"

@@ -42,8 +42,6 @@ set mailcap_path="~/.mutt/mailcap"
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-fcc-hook .* /dev/null
-
 folder-hook 'kennethmgballou' 'source ~/.mutt/kennethmgballou.mutt'
 folder-hook 'l0x3py' 'source ~/.mutt/l0x3py.mutt'
 folder-hook 'kballou_devnulllabs' 'source ~/.mutt/kballou_devnulllabs.mutt'
