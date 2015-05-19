@@ -14,6 +14,8 @@ set ssl_force_tls = yes
 set pgp_sign_as="0x1066BA71A5F56C58"
 set signature="~/.mutt/kballou_devnulllabs.signature"
 
+macro index,pager d "<save-message>=INBOX.Trash<enter><enter><refresh>" \
+"Delete Message"
 macro index,pager D "<save-message>=INBOX.Archive<enter><enter><refresh>" \
 "Archive Message"
 
