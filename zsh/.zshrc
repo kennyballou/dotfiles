@@ -36,6 +36,3 @@ rprompt_precmd() {
     fi
 }
 precmd_functions+=(rprompt_precmd)
-
-envoy -t ssh-agent
-source <(envoy -p)
