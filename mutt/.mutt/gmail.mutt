@@ -1,5 +1,5 @@
 # vim: syntax=muttrc:
-fcc-hook .* /dev/null
+fcc-hook '~f gmail.com' /dev/null
 
 macro compose a "<pgp-menu>s<attach-file>"
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
