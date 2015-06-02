@@ -6,10 +6,10 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to sent mail"
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
-macro index,pager d "<enter-command>unset trash\n <delete-message>" \
-"Archive Message"
-macro index,pager D "<save-message>=[Gmail]/Trash<enter><enter><refresh>" \
+macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter><refresh>" \
 "Trash Message"
+macro index,pager D "<enter-command>unset trash\n <delete-message>" \
+"Archive Message"
 
 set move = no
 set imap_keepalive = 900
