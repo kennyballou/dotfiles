@@ -2,7 +2,7 @@
 Name=Ranger
 GenericName=File Browser
 Comment=Vim inspired CLI based directory browser
-Exec=terminator -x ranger
+Exec=urxvt -e ranger
 Terminal=true
 Type=Application
 Categories=System;
