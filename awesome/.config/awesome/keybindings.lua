@@ -81,7 +81,7 @@ globalkeys = awful.util.table.join(
     awful.key({ALT, "Control",}, "l",
         function() awful.util.spawn("dm-tool switch-to-greeter") end),
     awful.key({ALT, }, "/",
-        function() awful.util.spawn("terminology -e ranger") end)
+        function() awful.util.spawn("terminator -e ranger") end)
 )
 
 clientkeys = awful.util.table.join(
