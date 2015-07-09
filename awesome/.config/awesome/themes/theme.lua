@@ -1,67 +1,57 @@
 -- vim: filetype=lua:
 local awful = require("awful")
-local theme_dir = awful.util.getdir("config") .. "/themes"
+local config_dir = awful.util.getdir("config")
+local theme_dir = config_dir .. "/themes"
 
+local bg_default = "#3F3F3F"
+local fg_default = "#EFEFEF"
+local fg_focus = "#F0DFAF"
 local dark_grey = "#121212"
 local grey = "#444444FF"
 local light_grey = "#555555"
 local white = "#FFFFFF"
 local light_white = "#999999"
 local light_black = "#232323"
-local red = "#B9214F"
-local bright_red = "#FF5C8D"
-local yellow = "#FF9800"
-local bright_yellow = "#FFFF00"
+local red = "#DCA3A3"
+local yellow = "#EFEF8F"
 local black = "#000000"
-local bright_black = "#5D5D5D"
-local green = "#A6E22E"
-local bright_green = "#CDEE69"
-local blue = "#3399FF"
-local bright_blue = "#9CD9F0"
-local magenta = "#8E33FF"
-local bright_magenta = "#FBB1F9"
-local cyan = "#06A2DC"
-local bright_cyan = "77DFD8"
-local widget_background = "#303030"
-local bright_white = "#F7F7F7"
+local green = "#7F9F7F"
+local blue = "#8CD0D3"
 local transparent = "#00000000"
 
 theme = {}
-theme.grey = grey
-theme.light_grey = light_grey
-theme.white = white
-theme.black = black
-theme.light_black = light_black
-theme.red = red
-theme.bright_red = bright_red
-theme.yellow = yellow
-theme.bright_yellow = bright_yellow
-theme.green = green
-theme.bright_green = bright_green
-theme.blue = blue
-theme.bright_blue = bright_blue
-theme.magenta = magenta
-theme.bright_magenta = bright_magenta
-theme.cyan = theme.cyan
-theme.bright_cyan = bright_cyan
-theme.widget_background = widget_background
-theme.transparent = transparent
-theme.font          = "sans 8"
+theme.confdir = config_dir
 
-theme.bg_normal     = light_black
-theme.bg_focus      = red
-theme.bg_urgent     = bright_red
+theme.font          = "sans 8"
+theme.fg_normal = "#DCDCCC"
+theme.fg_default = fg_default
+theme.fg_focus = "#F0DFAF"
+
+theme.bg_normal     = bg_default
+theme.bg_focus      = light_black
+theme.bg_urgent     = green
 theme.bg_minimize   = light_black
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = light_white
-theme.fg_focus      = white
-theme.fg_urgent     = white
-theme.fg_minimize   = black
+--theme.fg_normal     = fg_default
+theme.fg_focus      = fg_focus
+theme.fg_urgent     = "#CC9393"
+theme.fg_minimize   = "#C3BF9F"
+
+-- {{{ Widgets
+theme.fg_widget        = "#AECF96"
+theme.fg_center_widget = "#88A175"
+theme.fg_end_widget    = "#FF5656"
+theme.fg_off_widget    = "#494B4F"
+theme.fg_netup_widget  = "#7F9F7F"
+theme.fg_netdn_widget  = theme.fg_urgent
+theme.bg_widget        = theme.bg_normal
+theme.border_widget    = theme.bg_normal
+-- }}}
 
 theme.border_width  = 1
 theme.border_normal = light_black
-theme.border_focus  = "#999999"
+theme.border_focus  = light_white
 theme.border_marked = theme.bg_normal
 
 theme.tasklist_bg_focus  = light_black
@@ -80,6 +70,8 @@ theme.menu_width  = 100
 
 theme.titlebar_close_button_normal = theme_dir.."/titlebar/close.png"
 theme.titlebar_close_button_focus  = theme_dir.."/titlebar/close.png"
+
+theme.mouse_finder_color = theme.fg_urgent
 
 theme.titlebar_ontop_button_normal_inactive = theme_dir.."/titlebar/ontop_normal_inactive.png"
 theme.titlebar_ontop_button_focus_inactive  = theme_dir.."/titlebar/ontop_focus_inactive.png"
@@ -118,12 +110,23 @@ theme.layout_dwindle    = theme_dir.."/layouts/dwindle.png"
 
 theme.awesome_icon = theme_dir.."/awesome.png"
 
-theme.icon_theme = nil
+theme.widget_cpu    = theme.confdir .. "/themes/icons/cpu.png"
+theme.widget_bat    = theme.confdir .. "/themes/icons/bat.png"
+theme.widget_mem    = theme.confdir .. "/themes/icons/mem.png"
+theme.widget_fs     = theme.confdir .. "/themes/icons/disk.png"
+theme.widget_net    = theme.confdir .. "/themes/icons/down.png"
+theme.widget_netup  = theme.confdir .. "/themes/icons/up.png"
+theme.widget_wifi   = theme.confdir .. "/themes/icons/wifi.png"
+theme.widget_mail   = theme.confdir .. "/themes/icons/mail.png"
+theme.widget_vol    = theme.confdir .. "/themes/icons/vol.png"
+theme.widget_org    = theme.confdir .. "/themes/icons/cal.png"
+theme.widget_date   = theme.confdir .. "/themes/icons/time.png"
+theme.widget_crypto = theme.confdir .. "/themes/icons/crypto.png"
+theme.widget_sep    = theme.confdir .. "/themes/icons/separator.png"
+
 theme.blingbling = {
     background_color = transparent,
     graph_background_color = widget_background,
-    graph_color = bright_magenta,
-    graph_line_color = magenta,
     rounded_size = 0.3,
     text_color = light_white,
     font = "Droid Sans Mono",

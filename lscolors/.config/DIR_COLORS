@@ -1,11 +1,7 @@
-# Configuration file for dircolors, a utility to help you set the
-# LS_COLORS environment variable used by GNU ls with the --color option.
-# Copyright (C) 1996-2014 Free Software Foundation, Inc.
-# Copying and distribution of this file, with or without modification,
-# are permitted provided the copyright notice and this notice are preserved.
-# The keywords COLOR, OPTIONS, and EIGHTBIT (honored by the
-# slackware version of dircolors) are recognized but ignored.
-# Below, there should be one TERM entry for each termtype that is colorizable
+# Zenburn color theme for the color GNU ls utility.
+# Ivaylo Kuzev <ivkuzev@gmail.com>, 2014
+
+# Term Section
 TERM Eterm
 TERM ansi
 TERM color-xterm
@@ -26,35 +22,27 @@ TERM dtterm
 TERM eterm-color
 TERM gnome
 TERM gnome-256color
-TERM hurd
 TERM jfbterm
 TERM konsole
 TERM kterm
 TERM linux
 TERM linux-c
 TERM mach-color
-TERM mach-gnu-color
 TERM mlterm
 TERM putty
-TERM putty-256color
 TERM rxvt
 TERM rxvt-256color
 TERM rxvt-cygwin
 TERM rxvt-cygwin-native
 TERM rxvt-unicode
-TERM rxvt-unicode-256color
 TERM rxvt-unicode256
+TERM rxvt-unicode-256color
 TERM screen
 TERM screen-256color
 TERM screen-256color-bce
 TERM screen-bce
 TERM screen-w
-TERM screen.Eterm
-TERM screen.rxvt
 TERM screen.linux
-TERM st
-TERM st-256color
-TERM terminator
 TERM vt100
 TERM xterm
 TERM xterm-16color
@@ -62,153 +50,204 @@ TERM xterm-256color
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
-NORMAL 00 # no color code at all
-FILE 00 # regular file: use no color at all
-RESET 0 # reset to "normal" color
-DIR 01;38;5;33 # directory
-LINK 38;5;24 # symbolic link
-MULTIHARDLINK 00 # regular file with more than one link
-FIFO 38;5;160 # pipe
-SOCK 01;38;5;155 # socket
-DOOR 01;35 # door
-BLK 01;38;5;160 # block device driver
-CHR 01;38;5;160 # character device driver
-ORPHAN 38;5;117;48;5;199 # symlink to nonexistent file, or non-stat'able file
-SETUID 37;41 # file that is setuid (u+s)
-SETGID 30;43 # file that is setgid (g+s)
-CAPABILITY 30;41 # file with capability
-STICKY_OTHER_WRITABLE 38;5;0;48;5;199 # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 34;42 # dir that is other-writable (o+w) and not sticky
-STICKY 48;5;202 # dir with the sticky bit set (+t) and not other-writable
+TERM xterm-termite
+
+## Documentation
+#
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+#
+# Text 256 color coding:
+# 38;5;COLOR_NUMBER
+# Background 256 color coding:
+# 48;5;COLOR_NUMBER
+
+# block device driver:
+BLK 48;5;108;38;5;223;01
+# file with capability:
+CAPABILITY 01;38;5;95
+# character device driver:
+CHR 48;5;108;38;5;223;01
+# directory:
+DIR 01;38;5;223
+# door:
+DOOR 48;5;234;38;5;180;01
 # This is for files with execute permission:
-EXEC 01;38;5;43
-# Documents?
-.txt 38;5;161
-.py 38;5;161
-.sh 38;5;161
-.rtf 38;5;161
-.markdown 38;5;161
-.md 38;5;161
-.rst 38;5;161
-.pdf 38;5;161
-.tex 38;5;161
-.xml 38;5;161
-.html 38;5;161
-.csv 38;5;161
-.doc 38;5;161
-.docx 38;5;161
-.odt 38;5;161
-# archives or compressed (bright red)
-.tar 01;38;5;135
-.tgz 01;38;5;135
-.arc 01;38;5;135
-.arj 01;38;5;135
-.taz 01;38;5;135
-.lha 01;38;5;135
-.lz4 01;38;5;135
-.lzh 01;38;5;135
-.lzma 01;38;5;135
-.tlz 01;38;5;135
-.txz 01;38;5;135
-.tzo 01;38;5;135
-.t7z 01;38;5;135
-.zip 01;38;5;135
-.z 01;38;5;135
-.Z 01;38;5;135
-.dz 01;38;5;135
-.gz 01;38;5;135
-.lrz 01;38;5;135
-.lz 01;38;5;135
-.lzo 01;38;5;135
-.xz 01;38;5;135
-.bz2 01;38;5;135
-.bz 01;38;5;135
-.tbz 01;38;5;135
-.tbz2 01;38;5;135
-.tz 01;38;5;135
-.deb 01;38;5;135
-.rpm 01;38;5;135
-.jar 01;38;5;135
-.war 01;38;5;135
-.ear 01;38;5;135
-.sar 01;38;5;135
-.rar 01;38;5;135
-.alz 01;38;5;135
-.ace 01;38;5;135
-.zoo 01;38;5;135
-.cpio 01;38;5;135
-.7z 01;38;5;135
-.rz 01;38;5;135
-.cab 01;38;5;135
-.iso 01;38;5;135
-# image formats
-.jpg 01;38;5;208
-.jpeg 01;38;5;208
-.gif 01;38;5;208
-.bmp 01;38;5;208
-.pbm 01;38;5;208
-.pgm 01;38;5;208
-.ppm 01;38;5;208
-.tga 01;38;5;208
-.xbm 01;38;5;208
-.xpm 01;38;5;208
-.tif 01;38;5;208
-.tiff 01;38;5;208
-.png 01;38;5;208
-.svg 01;38;5;208
-.svgz 01;38;5;208
-.mng 01;38;5;208
-.pcx 01;38;5;208
-.ico 01;38;5;208
-# video formats
-.mov 01;38;5;81
-.mpg 01;38;5;81
-.mpeg 01;38;5;81
-.m2v 01;38;5;81
-.mkv 01;38;5;81
-.webm 01;38;5;81
-.ogm 01;38;5;81
-.mp4 01;38;5;81
-.m4v 01;38;5;81
-.mp4v 01;38;5;81
-.vob 01;38;5;81
-.qt 01;38;5;81
-.nuv 01;38;5;81
-.wmv 01;38;5;81
-.asf 01;38;5;81
-.rm 01;38;5;81
-.rmvb 01;38;5;81
-.flc 01;38;5;81
-.avi 01;38;5;81
-.fli 01;38;5;81
-.flv 01;38;5;81
-.gl 01;38;5;81
-.dl 01;38;5;81
-.xcf 01;38;5;81
-.xwd 01;38;5;81
-.yuv 01;38;5;81
-.cgm 01;38;5;81
-.emf 01;38;5;81
-# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
-.axv 01;35
-.anx 01;35
-.ogv 01;35
-.ogx 01;35
+EXEC 01;38;5;108
+# pipe:
+FIFO 48;5;234;38;5;180;01
+# regular file:
+#FILE 00
+# symbolic link:
+LINK 48;5;234;38;5;223
+# normal (nonfilename) text:
+#NORMAL 00
+# orphaned symbolic link:
+ORPHAN 48;5;234;38;5;187
+# directory that is other-writable (o+w) and not sticky:
+OTHER_WRITABLE 48;5;234;38;5;180
+# file that is setuid (u+s):
+SETUID 48;5;234;38;5;66
+# file that is setgid (g+s):
+SETGID 48;5;234;38;5;66
+# socket:
+SOCK 48;5;234;38;5;180;01
+# directory with the sticky bit set (+t) and not other-writable:
+STICKY 48;5;180;38;5;234
+# dir that is sticky and other-writable (+t,o+w):
+STICKY_OTHER_WRITABLE 48;5;180;38;5;234
+
+# archives
+.7z 01;38;5;174
+.arj 01;38;5;174
+.bz2 01;38;5;174
+.bz 01;38;5;174
+.gz 01;38;5;174
+.rar 01;38;5;174
+.tar 01;38;5;174
+.tgz 01;38;5;174
+.tbz 01;38;5;174
+.tbz2 01;38;5;174
+.xz 01;38;5;174
+.zip 01;38;5;174
+
+# packaged apps
+.apk 01;38;5;95
+.deb 01;38;5;174
+.jad 01;38;5;95
+.jar 01;38;5;95
+.rpm 01;38;5;174
+
+# images|graphics
+.bmp 00;38;5;109
+.gif 00;38;5;109
+.ico 00;38;5;109
+.jpg 00;38;5;109
+.JPG 00;38;5;109
+.jpeg 00;38;5;109
+.png 00;38;5;109
+.svg 00;38;5;109
+.xbm 00;38;5;109
+.xpm 00;38;5;109
+
 # audio formats
-.aac 00;38;5;135
-.au 00;38;5;135
-.flac 00;38;5;135
-.m4a 00;38;5;135
-.mid 00;38;5;135
-.midi 00;38;5;135
-.mka 00;38;5;135
-.mp3 00;38;5;135
-.mpc 00;38;5;135
-.ogg 00;38;5;135
-.ra 00;38;5;135
-.wav 00;38;5;135
-# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
-.axa 00;38;5;135
-.oga 00;38;5;135
-.spx 00;38;5;135
-.xspf 00;38;5;135
+.aac 00;38;5;116
+.au 00;38;5;116
+.flac 00;38;5;116
+.mid 00;38;5;116
+.midi 00;38;5;116
+.mka 00;38;5;116
+.mp3 00;38;5;116
+.mpc 00;38;5;116
+.ogg 00;38;5;116
+.ra 00;38;5;116
+.wav 00;38;5;116
+
+# video formats
+.mov 00;38;5;66
+.mpg 00;38;5;66
+.mpeg 00;38;5;66
+.m2v 00;38;5;66
+.mkv 00;38;5;66
+.ogm 00;38;5;66
+.mp4 00;38;5;66
+.m4v 00;38;5;66
+.mp4v 00;38;5;66
+.vob 00;38;5;66
+.qt 00;38;5;66
+.nuv 00;38;5;66
+.wmv 00;38;5;66
+.asf 00;38;5;66
+.rm 00;38;5;66
+.rmvb 01;38;5;66
+.flc 00;38;5;66
+.avi 00;38;5;66
+.fli 00;38;5;66
+.flv 00;38;5;66
+.gl 00;38;5;66
+.m2ts 00;38;5;66
+.divx 00;38;5;66
+.webm 00;38;5;66
+
+# shell
+.awk 00;38;5;151
+.bash 00;38;5;151
+.bat 00;38;5;151
+.BAT 00;38;5;151
+.sed 00;38;5;151
+.sh 00;38;5;151
+.zsh 00;38;5;151
+
+# build
+*CMakeLists.txt 00;38;5;187
+.cabal 00;38;5;187
+*Makefile 00;38;5;187
+.mk 00;38;5;187
+.make 00;38;5;187
+
+# source files
+.c 01;38;5;187
+.h 01;38;5;187
+.s 01;38;5;187
+.cs 01;38;5;187
+.java 01;38;5;187
+.scala 01;38;5;187
+.hs 01;38;5;187
+.py 01;38;5;187
+.rb 01;38;5;187
+.php 01;38;5;187
+.pl 01;38;5;187
+.vim 01;38;5;187
+.js 01;38;5;187
+.coffee 01;38;5;187
+.go 01;38;5;187
+.lisp 01;38;5;187
+.scm 01;38;5;187
+
+# documents
+.txt 04;38;5;188
+.tex 04;38;5;188
+.html 04;38;5;188
+.xhtml 04;38;5;188
+.xml 04;38;5;188
+.md 04;38;5;188
+.mkd 04;38;5;188
+.markdown 04;38;5;188
+.org 04;38;5;188
+.pandoc 04;38;5;188
+.pdc 04;38;5;188
+.pdf 04;38;5;188
+
+# meta
+*README 04;38;5;187
+*LICENSE 04;38;5;187
+*AUTHORS 04;38;5;187
+
+# version control
+.gitignore 00;38;5;248
+.gitmodules 00;38;5;248
+
+# logs and backups
+.log 00;38;5;234
+.bak 00;38;5;234
+.aux 00;38;5;234
+.toc 00;38;5;234
+*~ 00;38;5;234
+*# 00;38;5;234
+.swp 00;38;5;234
+.tmp 00;38;5;234
+.temp 00;38;5;234
+.o 00;38;5;234
+.pyc 00;38;5;234
+.class 00;38;5;234
+.cache 00;38;5;234
+
+# pacman files
+.pacnew 48;5;95;38;5;108
+.pacsave 48;5;95;38;5;108
+.pacorig 48;5;95;38;5;108
+*PKGBUILD 00;38;5;110

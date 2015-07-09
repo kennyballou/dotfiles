@@ -30,7 +30,7 @@ set expandtab
 set number
 set relativenumber
 syntax enable
-color molokai
+color zenburn
 set wrap
 set textwidth=75
 set colorcolumn=76
