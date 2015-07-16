@@ -12,6 +12,7 @@ urxvt*secondaryscroll: true
 urxvt*print-pipe: "cat > /dev/null"
 urxvt*saveLines: 65535
 
+urxvt*iso14755: False
 urxvt*perl-ext-common: default,matcher,clipboard
 urxvt*keysym.M-u: perl:url-select:select_next
 urxvt*matcher.button: 1
