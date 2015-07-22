@@ -78,6 +78,7 @@ set statusline+=%t
 set statusline+=%m
 set statusline+=%r
 set statusline+=%{FileSize()}
+set statusline+=%{fugitive#statusline()}
 set statusline+=%=
 set statusline+=[%{&fenc}]
 set statusline+=%y
