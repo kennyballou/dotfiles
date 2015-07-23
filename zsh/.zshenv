@@ -10,3 +10,4 @@ for i in $HOME/.profile.d/*.sh ; do
         fi
     fi
 done
+unset i
