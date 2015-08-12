@@ -9,8 +9,6 @@ application/jpg=sxiv.desktop
 text/x-markdown=gvim.desktop
 text/x-tex=gvim.desktop
 inode/directory=ranger.desktop
-
-[Added Associations]
 application/pdf=zathura.desktop;
 text/x-markdown=gvim.desktop;
 text/x-tex=gvim.desktop;
