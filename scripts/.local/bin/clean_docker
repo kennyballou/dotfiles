@@ -1,5 +1,5 @@
 #!/bin/sh
 
-docker ps -a | awk '{print $1}' | sed 1d | xargs docker rm
+docker ps -q --filter 'status=exited' | xargs docker rm
 
-docker images | grep "<none>" | awk '{print $3}' | xargs docker rmi
+docker images -q --filter 'dangling=true' | xargs docker rmi
