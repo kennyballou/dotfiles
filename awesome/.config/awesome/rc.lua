@@ -44,7 +44,7 @@ end
 -- {{{ Variable definitions
 -- This is used later as the default terminal and editor to run.
 local hostname = get_hostname()
-terminal = "urxvt"
+terminal = "terminator"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -577,7 +577,7 @@ globalkeys = awful.util.table.join(
     awful.key({ALT, "Control",}, "l",
         function() awful.util.spawn("dm-tool switch-to-greeter") end),
     awful.key({ALT, }, "/",
-        function() awful.util.spawn("urxvt -e ranger") end)
+        function() awful.util.spawn(terminal .. " -e ranger") end)
 )
 
 clientkeys = awful.util.table.join(
