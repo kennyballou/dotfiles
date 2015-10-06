@@ -102,7 +102,7 @@ end
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "term", terminal },
-   { "ranger", terminal.." -e ranger" },
+   { "ranger", "urxvt -e ranger" },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
@@ -577,7 +577,7 @@ globalkeys = awful.util.table.join(
     awful.key({ALT, "Control",}, "l",
         function() awful.util.spawn("dm-tool switch-to-greeter") end),
     awful.key({ALT, }, "/",
-        function() awful.util.spawn(terminal .. " -e ranger") end)
+        function() awful.util.spawn("urxvt -e ranger") end)
 )
 
 clientkeys = awful.util.table.join(
