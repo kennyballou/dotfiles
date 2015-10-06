@@ -44,6 +44,7 @@ set laststatus=2
 set noerrorbells
 set novisualbell
 set vb t_vb=
+set diffopt=filler,context:3,vertical
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
