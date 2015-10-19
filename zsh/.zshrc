@@ -1,8 +1,8 @@
 autoload -U compinit promptinit -U colors && colors
 compinit
 promptinit
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt inc_append_history
 setopt share_history
