@@ -1,0 +1,10 @@
+span[_moz_quote=true] {
+    color: pink !important;
+}
+a:link, a:link:active {
+    color: #70A7A9 !important;
+}
+
+a:link:visited, a:link:visited:active {
+    color:  #A770A9 !important;
+}
