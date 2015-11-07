@@ -24,7 +24,7 @@ unignore from: date subject to cc
 unignore x-mailing-list: posted-to:
 unignore x-mailer:
 
-set date_format = '%Y-%m-%d %T'
+set date_format = '%Y年%m月%d日 %T'
 set index_format = '[%Z] %D %-20.20F  %s'
 set status_format = \
 '[ %f ] -- [%r%m messages %?n?(%n)?%?d?(%d)?%?t?(%t)?] -%>-(%p)'
