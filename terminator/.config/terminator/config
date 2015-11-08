@@ -5,6 +5,7 @@
   enabled_plugins = ,
   borderless = True
 [keybindings]
+  help             = None
   switch_to_tab_10 = None
   switch_to_tab_6 = None
   switch_to_tab_7 = None
