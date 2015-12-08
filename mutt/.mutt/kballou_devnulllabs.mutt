@@ -13,6 +13,7 @@ set smtp_url = "smtp://kballou%25devnulllabs.io@mail.runbox.com:587/"
 set ssl_starttls = yes
 set ssl_force_tls = yes
 set pgp_sign_as="0x1066BA71A5F56C58"
+my_hdr X-PGP-Key: https://kennyballou.com/kballou.pub.asc
 set signature="~/.mutt/kballou_devnulllabs.signature"
 
 macro index,pager d "<save-message>=Trash<enter><enter><refresh>" \
