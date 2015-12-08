@@ -1,27 +1,16 @@
 # vim: syntax=muttrc:
 set realname = "Kenny Ballou"
 set from = "kballou@devnulllabs.io"
-set imap_user = "kballou%devnulllabs.io"
-set imap_pass=`awk '/kballou_devnulllabs:/ {print $2}' ~/.mutt/.secret`
-set folder = "imaps://mail.runbox.com:993"
+alternates kennethmgballou@gmail.com
+set mbox_type = Maildir
+set folder = "~/.mail/kballou-devnulllabs.io"
 set spoolfile = "=INBOX"
 set postponed = "=Drafts"
+set sendmail = "/usr/bin/msmtp -a kballou"
+set sendmail_wait = 0
 set copy=yes
 set record = "=Sent"
-set smtp_pass="$imap_pass"
-set smtp_url = "smtp://kballou%25devnulllabs.io@mail.runbox.com:587/"
-set ssl_starttls = yes
-set ssl_force_tls = yes
+
 set pgp_sign_as="0x1066BA71A5F56C58"
 my_hdr X-PGP-Key: https://kennyballou.com/kballou.pub.asc
 set signature="~/.mutt/kballou_devnulllabs.signature"
-
-macro index,pager d "<save-message>=Trash<enter><enter><refresh>" \
-"Delete Message"
-macro index,pager D "<save-message>=Archive<enter><enter><refresh>" \
-"Archive Message"
-
-macro index,pager gs "<change-folder>=Sent<enter>" "Go to sent mail"
-macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index,pager gd "<change-folder>=Drafts<enter>" "Go to drafts"
-macro index,pager ga "<change-folder>=Archive<enter>" "Go to all mail"

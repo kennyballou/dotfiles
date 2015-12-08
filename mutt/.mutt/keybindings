@@ -10,3 +10,17 @@ bind pager j        next-line
 bind pager gg       top
 bind pager G        bottom
 bind pager R        group-reply
+
+bind compose p postpone-message
+bind index p recall-message
+
+macro index O "<shell-escape>offlineimap<return>" "full sync offlineimap"
+macro index o "<shell-escape>offlineimap -qf INBOX<return>" "INBOX sync"
+
+macro index,pager d "<save-message>=Trash<enter><enter><refresh>" "Delete Message"
+macro index,pager D "<save-message>=Archives<enter><enter><refresh>" "Archive Message"
+macro index,pager M "<save-message>?<toggle-mailboxes>" "move message to mailbox"
+macro index,pager gs "<change-folder>=Sent<enter>" "Go to sent mail"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager gd "<change-folder>=Drafts<enter>" "Go to drafts"
+macro index,pager ga "<change-folder>=Archives<enter>" "Go to all mail"

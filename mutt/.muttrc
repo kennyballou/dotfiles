@@ -1,12 +1,9 @@
 source "~/.mutt/crypto"
 source "~/.mutt/keybindings"
 source "~/.mutt/mailing_lists.muttrc"
-macro index <f2> '<sync-mailbox><enter-command>source \
-~/.mutt/kennethmgballou.mutt<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><enter-command>source \
-~/.mutt/l0x3py.mutt<enter><change-folder>!<enter>'
-macro index <f4> '<sync-mailbox><enter-command>source \
-~/.mutt/kballou_devnulllabs.mutt<enter><change-folder>!<enter>'
+
+set timeout = 3
+set mail_check = 0
 
 set header_cache = ~/.cache/mutt/headers
 set message_cachedir = ~/.cache/mutt/bodies
@@ -29,7 +26,8 @@ set index_format = '[%Z] %D %-20.20F  %s'
 set status_format = \
 '[ %f ] -- [%r%m messages %?n?(%n)?%?d?(%d)?%?t?(%t)?] -%>-(%p)'
 set markers = no
-set pager_index_lines=5
+set pager_index_lines=7
+set pager_context = 3
 set pager_stop
 set sort = 'threads'
 set sort_aux = 'last-date-received'
@@ -42,9 +40,6 @@ set mailcap_path="~/.mutt/mailcap"
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-folder-hook 'kennethmgballou' 'source ~/.mutt/kennethmgballou.mutt'
-folder-hook 'l0x3py' 'source ~/.mutt/l0x3py.mutt'
-folder-hook 'kballou_devnulllabs' 'source ~/.mutt/kballou_devnulllabs.mutt'
 source ~/.mutt/kballou_devnulllabs.mutt
 
 set editor = 'vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
@@ -53,3 +48,9 @@ set editor = 'vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
 set query_command = "abook --mutt-query '%s'"
 macro index,pager A "<pipe-message>abook --add-email-quiet<return>" \
 "add the sender address to abook"
+
+# compose options
+set edit_headers
+set fast_reply
+set fcc_attach
+set reverse_name

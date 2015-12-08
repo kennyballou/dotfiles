@@ -1,0 +1,23 @@
+[general]
+ui = quiet
+accounts = devnulllabs
+fsync = False
+
+[Account devnulllabs]
+localrepository = devnull-local
+remoterepository = devnull-remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository devnull-local]
+type = Maildir
+localfolders = ~/.mail/kballou-devnulllabs.io
+
+[Repository devnull-remote]
+maxconnections = 1
+type = IMAP
+ssl = yes
+remotehost = mail.runbox.com
+remoteport = 993
+remoteuser = kballou%%devnulllabs.io
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
