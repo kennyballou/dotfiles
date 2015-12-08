@@ -1,1 +1,13 @@
+application/msword; xdg-open %s
+
+image/jpg; xdg-open %s
+image/jpeg; xdg-open %s
+image/pjpeg; xdg-open %s
+image/png; xdg-open %s
+image/gif; xdg-open %s
+
+application/pdf; xdg-open %s
+
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
+
+application/octet-steam; xdg-open %s
