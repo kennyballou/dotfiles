@@ -22,6 +22,21 @@ local transparent = "#00000000"
 theme = {}
 theme.confdir = config_dir
 
+--{{Colors!
+theme.dark_grey = dark_grey
+theme.grey = grey
+theme.light_grey = light_grey
+theme.white = white
+theme.light_white = light_white
+theme.light_black = light_black
+theme.red = red
+theme.yellow = yellow
+theme.black = black
+theme.green = green
+theme.blue = blue
+theme.transparent = transparent
+--}}
+
 theme.font          = "sans 8"
 theme.fg_normal = "#DCDCCC"
 theme.fg_default = fg_default
