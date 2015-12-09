@@ -138,7 +138,7 @@ cpugraph:set_width(160):set_height(18)
 cpugraph:set_background_color(beautiful.fg_off_widget)
 cpugraph:set_color({
     type = "linear",
-    from = {0, 0}, to = {0, 20},
+    from = {0, 0}, to = {0, 18},
     stops = {
         {0, beautiful.fg_end_widget},
         {0.5, beautiful.fg_center_widget},
@@ -156,7 +156,7 @@ membar:set_height(18):set_width(10):set_ticks_size(2)
 membar:set_background_color(beautiful.fg_off_widget)
 membar:set_color({
     type = "linear",
-    from = {0, 0}, to = {0, 20},
+    from = {0, 0}, to = {0, 18},
     stops = {
         {0, beautiful.fg_end_widget},
         {0.5, beautiful.fg_center_widget},
@@ -201,7 +201,7 @@ if hostname == "Eligos" then
         w:set_background_color(beautiful.fg_off_widget)
         w:set_color({
             type = "linear",
-            from = {0, 0}, to = {0, 20},
+            from = {0, 0}, to = {0, 18},
             stops = {
                 {0, beautiful.fg_end_widget},
                 {0.5, beautiful.fg_center_widget},
@@ -290,7 +290,7 @@ elseif hostname == "Phenex" then
         w:set_background_color(beautiful.fg_off_widget)
         w:set_color({
             type = "linear",
-            from = {0, 0}, to = {0, 20},
+            from = {0, 0}, to = {0, 18},
             stops = {
                 {0, beautiful.fg_end_widget},
                 {0.5, beautiful.fg_center_widget},
