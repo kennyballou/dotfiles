@@ -4,6 +4,13 @@ source "~/.mutt/mailing_lists.muttrc"
 
 set timeout = 3
 set mail_check = 0
+set wait_key = no
+set delete
+unset confirmappend
+set quit
+set beep_new
+set pipe_decode
+set thorough_search
 
 set header_cache = ~/.cache/mutt/headers
 set message_cachedir = ~/.cache/mutt/bodies
