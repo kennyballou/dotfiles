@@ -141,6 +141,8 @@ cpugraph:set_color({
     from = {0, 0}, to = {0, 18},
     stops = {
         {0, beautiful.fg_end_widget},
+        {0.2, beautiful.red},
+        {0.4, beautiful.yellow},
         {0.5, beautiful.fg_center_widget},
         {1.0, beautiful.fg_widget}
     }
@@ -159,6 +161,8 @@ membar:set_color({
     from = {0, 0}, to = {0, 18},
     stops = {
         {0, beautiful.fg_end_widget},
+        {0.2, beautiful.red},
+        {0.4, beautiful.yellow},
         {0.5, beautiful.fg_center_widget},
         {1.0, beautiful.fg_widget}
     }
@@ -204,6 +208,8 @@ if hostname == "Eligos" then
             from = {0, 0}, to = {0, 18},
             stops = {
                 {0, beautiful.fg_end_widget},
+                {0.2, beautiful.red},
+                {0.4, beautiful.yellow},
                 {0.5, beautiful.fg_center_widget},
                 {1.0, beautiful.fg_widget}
             }
@@ -293,6 +299,8 @@ elseif hostname == "Phenex" then
             from = {0, 0}, to = {0, 18},
             stops = {
                 {0, beautiful.fg_end_widget},
+                {0.2, beautiful.red},
+                {0.4, beautiful.yellow},
                 {0.5, beautiful.fg_center_widget},
                 {1.0, beautiful.fg_widget}
             }
@@ -329,6 +337,8 @@ elseif hostname == "Phenex" then
         from = {0, 0}, to = {20, 0},
         stops = {
             {0, beautiful.fg_end_widget},
+            {0.2, beautiful.red},
+            {0.4, beautiful.yellow},
             {0.5, beautiful.fg_center_widget},
             {1.0, beautiful.fg_widget}
         }
