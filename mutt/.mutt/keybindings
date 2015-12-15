@@ -17,8 +17,8 @@ bind index p recall-message
 macro index O "<shell-escape>offlineimap<return>" "full sync offlineimap"
 macro index o "<shell-escape>offlineimap -qf INBOX<return>" "INBOX sync"
 
-macro index,pager d "<save-message>=Trash<enter><enter><refresh>" "Delete Message"
-macro index,pager D "<save-message>=Archives<enter><enter><refresh>" "Archive Message"
+macro index,pager d "<save-message>=Trash<enter><refresh>" "Delete Message"
+macro index,pager D "<save-message>=Archives<enter><refresh>" "Archive Message"
 macro index,pager M "<save-message>?<toggle-mailboxes>" "move message to mailbox"
 macro index,pager gs "<change-folder>=Sent<enter>" "Go to sent mail"
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
