@@ -1,11 +1,17 @@
 [general]
 ui = quiet
-accounts = devnulllabs
+accounts = devnulllabs,zdata
 fsync = False
 
 [Account devnulllabs]
 localrepository = devnull-local
 remoterepository = devnull-remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Account zdata]
+localrepository = zdata-local
+remoterepository = zdata-remote
 status_backend = sqlite
 postsynchook = notmuch new
 
@@ -21,3 +27,31 @@ remotehost = mail.runbox.com
 remoteport = 993
 remoteuser = kballou%%devnulllabs.io
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Repository zdata-local]
+type = Maildir
+localfolders = ~/.mail/kballou-zdatainc.com
+nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'sent':    '[Gmail]/Sent Mail',
+                            'flagged': '[Gmail]/Starred',
+                            'trash':   '[Gmail]/Trash',
+                            'archive': '[Gmail]/All Mail',
+                           }.get(folder, folder)
+
+[Repository zdata-remote]
+maxconnections = 1
+type = Gmail
+remoteuser = kballou@zdatainc.com
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts':     'drafts',
+                            '[Gmail]/Sent Mail':  'sent',
+                            '[Gmail]/Starred':    'flagged',
+                            '[Gmail]/Trash':      'trash',
+                            '[Gmail]/All Mail':   'archive',
+                           }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Spam',
+                                             '[Gmail]/Important',
+                                            ]
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN
