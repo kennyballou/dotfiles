@@ -133,27 +133,6 @@ vicious.register(
     "${ssid} (${sign} dBm)",
     3,
     "wlan0")
-local baticon = wibox.widget.imagebox()
-baticon:set_image(beautiful.widget_bat)
-local batstats_text = wibox.widget.textbox()
-local batwidget = awful.widget.progressbar()
-batwidget:set_ticks(false)
-batwidget:set_height(8):set_width(30)
-batwidget:set_background_color(beautiful.fg_off_widget)
-batwidget:set_color({
-    type = "linear",
-    from = {0, 0}, to = {30, 0},
-    stops = {
-        {0, beautiful.fg_end_widget},
-        {0.2, beautiful.red},
-        {0.4, beautiful.yellow},
-        {0.5, beautiful.fg_center_widget},
-        {1.0, beautiful.fg_widget}
-    }
-})
-vicious.register(batstats_text, vicious.widgets.bat, "$1", 61, "BAT0")
-vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
-
 
 generate_layout = function(s, taglist, tasklist, promptbox)
     -- Widgets that are aligned to the left
@@ -186,10 +165,6 @@ generate_layout = function(s, taglist, tasklist, promptbox)
     -- Widgets that are aligned to the right
     local top_right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then top_right_layout:add(wibox.widget.systray()) end
-    top_right_layout:add(separatoricon)
-    top_right_layout:add(baticon)
-    top_right_layout:add(batwidget)
-    top_right_layout:add(batstats_text)
     top_right_layout:add(separatoricon)
     top_right_layout:add(clockicon)
     top_right_layout:add(mytextclock)
