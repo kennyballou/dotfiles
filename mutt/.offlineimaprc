@@ -18,6 +18,13 @@ postsynchook = notmuch new
 [Repository devnull-local]
 type = Maildir
 localfolders = ~/.mail/kballou-devnulllabs.io
+nametrans = lambda folder: {'drafts':  'Drafts',
+                            'sent':    'Sent',
+                            'spam':    'Spam',
+                            'trash':   'Trash',
+                            'archive': 'Archives',
+                           }.get(folder, folder)
+
 
 [Repository devnull-remote]
 maxconnections = 1
@@ -27,6 +34,15 @@ remotehost = mail.runbox.com
 remoteport = 993
 remoteuser = kballou%%devnulllabs.io
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda folder: {'Drafts':     'drafts',
+                            'Sent':       'sent',
+                            'Spam':       'spam',
+                            'Trash':      'trash',
+                            'Archives':   'archive',
+                           }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['trash',
+                                             'spam',
+                                            ]
 
 [Repository zdata-local]
 type = Maildir
@@ -49,7 +65,7 @@ nametrans = lambda folder: {'[Gmail]/Drafts':     'drafts',
                             '[Gmail]/Trash':      'trash',
                             '[Gmail]/All Mail':   'archive',
                            }.get(folder, folder)
-folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+folderfilter = lambda folder: folder not in ['[Gmaill]/Trash',
                                              '[Gmail]/Spam',
                                              '[Gmail]/Important',
                                             ]

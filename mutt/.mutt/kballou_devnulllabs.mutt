@@ -5,11 +5,11 @@ alternates kennethmgballou@gmail.com
 set mbox_type = Maildir
 set folder = "~/.mail/kballou-devnulllabs.io"
 set spoolfile = "=INBOX"
-set postponed = "=Drafts"
+set postponed = "=drafts"
 set sendmail = "/usr/bin/msmtp -a kballou"
 set sendmail_wait = 0
 set copy=yes
-set record = "=Sent"
+set record = "=sent"
 
 set pgp_sign_as="0x1066BA71A5F56C58"
 my_hdr X-PGP-Key: https://kennyballou.com/kballou.pub.asc

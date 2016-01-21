@@ -5,7 +5,7 @@ alternates "kb@zdatainc.com"
 set mbox_type = Maildir
 set folder = "~/.mail/kballou-zdatainc.com"
 set spoolfile = "=INBOX"
-set postponed = "=Drafts"
+set postponed = "=drafts"
 set sendmail = "/usr/bin/msmtp -a kballou_zdata"
 set sendmail_wait = 0
 set copy=yes
