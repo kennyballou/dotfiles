@@ -14,3 +14,6 @@ set record = "=sent"
 set pgp_sign_as = "0x11CE11E31A1B2535"
 my_hdr X-PGP-Key: http://pgp.mit.edu/pks/lookup?op=vindex&search=0x11CE11E31A1B2535
 set signature = "~/.mutt/kballou_zdata.signature"
+
+macro index O "<shell-escape>offlineimap -a zdata<return>" "full sync offlineimap"
+macro index o "<shell-escape>offlineimap -a zdata -qf INBOX<return>" "INBOX sync"

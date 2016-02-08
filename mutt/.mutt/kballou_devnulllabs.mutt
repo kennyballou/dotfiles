@@ -14,3 +14,6 @@ set record = "=sent"
 set pgp_sign_as="0x1066BA71A5F56C58"
 my_hdr X-PGP-Key: https://kennyballou.com/kballou.pub.asc
 set signature="~/.mutt/kballou_devnulllabs.signature"
+
+macro index O "<shell-escape>offlineimap -a devnulllabs<return>" "full sync offlineimap"
+macro index o "<shell-escape>offlineimap -a devnulllabs -qf INBOX<return>" "INBOX sync"
