@@ -11,6 +11,8 @@ roster=false
 [connection]
 autoping=240
 
+reconnect=30
+
 [presence]
 autoaway.time=15
 autoaway.message=:() { :|:& };:
