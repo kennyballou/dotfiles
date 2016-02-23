@@ -16,6 +16,7 @@ bind index,pager N search-opposite
 bind compose P postpone-message
 bind index p recall-message
 
+macro index a "<limit>all\n" "(un)limit messages"
 macro index d "<save-message>=trash<enter><refresh>" "Delete Message"
 macro pager d "<exit><save-message>=trash<enter><refresh>" "Delete Message"
 macro index,pager D "<save-message>=archive<enter><refresh>" "Archive Message"
