@@ -25,3 +25,5 @@ macro index,pager gs "<change-folder>=sent<enter>" "Go to sent mail"
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager gd "<change-folder>=drafts<enter>" "Go to drafts"
 macro index,pager ga "<change-folder>=archive<enter>" "Go to all mail"
+
+macro index S "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -p -o /tmp/notmuch_search search<enter><change-folder-readonly>/tmp/notmuch_search<enter>" "Search mail (using notmuch"
