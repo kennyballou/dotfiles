@@ -11,6 +11,8 @@ bind pager gg       top
 bind pager G        bottom
 bind pager R        group-reply
 
+bind index,pager N search-opposite
+
 bind compose P postpone-message
 bind index p recall-message
 
