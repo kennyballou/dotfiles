@@ -20,6 +20,11 @@
                       --base-path=. \
                       --export-all ./.git
 	up = !git remote update -p
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	remotes = remote -v
+	graph = log --graph --branches --remotes --tags --date-order
 [grep]
 	extendRegexp = true
 	lineNumber = true
