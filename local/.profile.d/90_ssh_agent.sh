@@ -1,2 +1,1 @@
-envoy -t ssh-agent
-source <(envoy -p)
+eval $(keychain --quiet --eval)
