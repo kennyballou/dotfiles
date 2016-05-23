@@ -1,1 +1,1 @@
-eval $(keychain --quiet --eval)
+eval $(keychain --agents ssh,gpg --quiet --eval)
