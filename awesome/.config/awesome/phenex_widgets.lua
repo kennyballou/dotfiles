@@ -19,7 +19,7 @@ separatoricon:set_image(beautiful.widget_sep)
 local cpuicon = wibox.widget.imagebox()
 cpuicon:set_image(beautiful.widget_cpu)
 cpugraph = awful.widget.graph()
-cpugraph:set_width(160):set_height(36)
+cpugraph:set_width(100):set_height(36)
 cpugraph:set_background_color(beautiful.fg_off_widget)
 cpugraph:set_color({
     type = "linear",
@@ -66,13 +66,13 @@ netdnicon:set_image(beautiful.widget_net)
 -- Create a textclock widget
 local clockicon = wibox.widget.imagebox()
 clockicon:set_image(beautiful.widget_date)
-local cur_day_month = " <span size=\"large\" "
+local cur_day_month = " <span size=\"medium\" "
                    .. "color=\""..beautiful.blue .."\">%d、</span>"
-local cur_month = " <span size=\"large\" "
+local cur_month = " <span size=\"medium\" "
                .. "color=\""..beautiful.yellow.."\">%m、</span>"
-local cur_day_week = " <span size=\"large\" "
+local cur_day_week = " <span size=\"medium\" "
                   .. "color=\""..beautiful.green.."\">%w、</span>"
-local cur_hour = " <span size=\"large\" "
+local cur_hour = " <span size=\"medium\" "
               .. "font_weight=\"bold\">%H<span color=\""
               .. beautiful.red.."\" font_weight=\"normal\">時</span>%M"
               .. "<span color=\""
