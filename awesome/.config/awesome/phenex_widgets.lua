@@ -19,7 +19,7 @@ separatoricon:set_image(beautiful.widget_sep)
 local cpuicon = wibox.widget.imagebox()
 cpuicon:set_image(beautiful.widget_cpu)
 cpugraph = awful.widget.graph()
-cpugraph:set_width(100):set_height(36)
+cpugraph:set_width(160):set_height(36)
 cpugraph:set_background_color(beautiful.fg_off_widget)
 cpugraph:set_color({
     type = "linear",
