@@ -66,13 +66,17 @@ netdnicon:set_image(beautiful.widget_net)
 -- Create a textclock widget
 local clockicon = wibox.widget.imagebox()
 clockicon:set_image(beautiful.widget_date)
-local cur_day_month = " <span size=\"medium\" "
+local cur_day_month = " <span size=\"large\" "
+                   .. "rise=\"-2500\" "
                    .. "color=\""..beautiful.blue .."\">%d、</span>"
-local cur_month = " <span size=\"medium\" "
+local cur_month = " <span size=\"large\" "
+               .. "rise=\"-2500\" "
                .. "color=\""..beautiful.yellow.."\">%m、</span>"
-local cur_day_week = " <span size=\"medium\" "
+local cur_day_week = " <span size=\"large\" "
+                  .. "rise=\"-2500\" "
                   .. "color=\""..beautiful.green.."\">%w、</span>"
-local cur_hour = " <span size=\"medium\" "
+local cur_hour = " <span size=\"large\" "
+              .. "rise=\"-2500\" "
               .. "font_weight=\"bold\">%H<span color=\""
               .. beautiful.red.."\" font_weight=\"normal\">時</span>%M"
               .. "<span color=\""
