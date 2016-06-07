@@ -479,7 +479,10 @@ client.connect_signal("unfocus",
 -- {{{ Autostart
 autostart = io.open(os.getenv('HOME') .. '/.config/autostart/awesome.autostart')
 for i in autostart:lines() do
-    run_once(i)
+    pair = string.gmatch(i, "([^;]+)")
+    cmd_name = pair()
+    cmd_args = pair()
+    run_once(cmd_name, cmd_args)
 end
 autostart:close()
 -- }}}

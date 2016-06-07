@@ -10,7 +10,9 @@ get_hostname = function ()
     return hostname
 end
 
-function run_once(cmd)
-    awful.util.spawn_with_shell("pgrep -u $USER -x " ..  cmd ..
-                                " || (" ..  cmd ..  ")")
+function run_once(cmd_name, cmd_args)
+    awful.util.spawn_with_shell(
+        "pgrep -u $USER -x " .. cmd_name ..
+        " || (" .. cmd_name .. (cmd_args or "") .. ")"
+    )
 end
