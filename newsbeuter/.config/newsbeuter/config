@@ -1,0 +1,11 @@
+auto-reload yes
+reload-time 30
+notify-beep yes
+
+max-items 100
+max-download-speed 100
+
+browser "w3m %u"
+html-renderer "w3m -dump -T text/html"
+
+include "~/.config/newsbeuter/killfile"
