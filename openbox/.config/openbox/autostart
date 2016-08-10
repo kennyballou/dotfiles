@@ -1,8 +1,0 @@
-tint2 &
-conky -c ~/.config/conky/conky_log &
-conky -c ~/.config/conky/conky_right &
-dropboxd &
-hsetroot -fill ~/Pictures/default-background.jpg &
-xautolock -time 10 -locker slock&
-light-locker &
-nm-applet &
