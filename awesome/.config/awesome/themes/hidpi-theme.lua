@@ -108,7 +108,7 @@ theme.titlebar_maximized_button_focus_inactive  = theme_dir.."/titlebar/maximize
 theme.titlebar_maximized_button_normal_active = theme_dir.."/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = theme_dir.."/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = os.getenv("HOME") .. "/Pictures/default-background.jpg"
+theme.wallpaper = os.getenv("HOME") .. "/pictures/default-background.jpg"
 
 theme.layout_fairh      = theme_dir.."/layouts/fairh.png"
 theme.layout_fairv      = theme_dir.."/layouts/fairv.png"
