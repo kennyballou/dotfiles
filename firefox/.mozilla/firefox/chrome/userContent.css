@@ -1,3 +1,7 @@
+html, body {
+    background-color: #FFFFFF;
+    color: #000000;
+}
 input:not(.urlbar-input):not(.textbox-input) {
     -moz-appearance: none !important;
     background-color: white;
@@ -18,4 +22,20 @@ select {
     -moz-appearance: none !important;
     background-color: white;
     color: black;
+}
+a:link, a:link:active {
+    color: #70A7A9;
+}
+a:link:visited, a:link:visited:active {
+    color: #A770A9;
+}
+::-moz-selection {
+    background: #FF5E99;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+::selection {
+    background: #FF5E99;
+    color: #FFFFFF;
+    text-shadow: none;
 }
