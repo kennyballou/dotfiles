@@ -51,6 +51,11 @@ set mailcap_path="~/.mutt/mailcap"
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
+set sidebar_delim = ' |'
+set sidebar_visible = yes
+set sidebar_width = 24
+color sidebar_new color221 color233
+
 source ~/.mutt/kballou_devnulllabs.mutt
 
 set editor = 'vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'

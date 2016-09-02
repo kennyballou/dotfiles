@@ -11,6 +11,12 @@ set sendmail_wait = 0
 set copy=yes
 set record = "=sent"
 
+unmailboxes *
+mailboxes +INBOX \
+          +drafts \
+          +sent \
+          +archive
+
 set pgp_sign_as="0x1066BA71A5F56C58"
 my_hdr X-PGP-Key: https://kennyballou.com/kballou.pub.asc
 set signature="~/.mutt/kballou_devnulllabs.signature"

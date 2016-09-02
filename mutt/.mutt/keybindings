@@ -11,6 +11,10 @@ bind pager gg       top
 bind pager G        bottom
 bind pager R        group-reply
 
+bind index,pager <down> sidebar-next
+bind index,pager <up> sidebar-prev
+bind index,pager <right> sidebar-open
+
 bind index,pager N search-opposite
 
 bind compose P postpone-message
