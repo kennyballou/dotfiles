@@ -2,6 +2,7 @@
 local awful = require("awful")
 local config_dir = awful.util.getdir("config")
 local theme_dir = config_dir .. "/themes"
+local lain_icons = config_dir .. "/lain/icons"
 
 local bg_default = "#3F3F3F"
 local fg_default = "#EFEFEF"
@@ -122,6 +123,13 @@ theme.layout_tile       = theme_dir.."/layouts/tile.png"
 theme.layout_tiletop    = theme_dir.."/layouts/tiletop.png"
 theme.layout_spiral     = theme_dir.."/layouts/spiral.png"
 theme.layout_dwindle    = theme_dir.."/layouts/dwindle.png"
+theme.layout_uselesstile     = theme_dir.."/layouts/tile.png"
+theme.layout_uselesstileleft = theme_dir.."/layouts/tileleft.png"
+theme.layout_uselesspiral    = theme_dir.."/layouts/spiral.png"
+theme.layout_uselessfair     = theme_dir.."/layouts/fairv.png"
+theme.layout_termfair        = lain_icons.."/layout/zenburn/termfair.png"
+theme.layout_centerwork      = lain_icons.."/layout/zenburn/centerwork.png"
+theme.layout_centerfair      = lain_icons.."/layout/zenburn/centerfair.png"
 
 theme.awesome_icon = theme_dir.."/awesome.png"
 
@@ -168,5 +176,7 @@ theme.blingbling.tagslist.focus = {
 }
 theme.blingbling.tagslist.urgent = theme.blingbling.tagslist.focus
 theme.blingbling.tagslist.occupied = theme.blingbling.tagslist.normal
+
+theme.useless_gap_width = 5
 
 return theme

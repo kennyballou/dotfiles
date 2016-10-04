@@ -5,6 +5,8 @@ awful.rules = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
+-- Lain Layout, Widget, and Utility Library
+local lain = require("lain")
 -- Theme handling library
 beautiful = require("beautiful")
 -- Notification library
@@ -62,16 +64,14 @@ ALTGr = "Mod5"
 layouts =
 {
     awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    lain.layout.uselesstile,
+    lain.layout.uselesstile.left,
+    lain.layout.uselessfair,
+    lain.layout.uselesspiral,
+    lain.layout.termfair,
+    lain.layout.centerwork,
+    lain.layout.centerfair,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
 -- }}}
