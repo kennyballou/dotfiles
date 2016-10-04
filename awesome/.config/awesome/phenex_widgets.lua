@@ -89,11 +89,11 @@ local mytextclock = blingbling.clock.japanese(
      text_background_color = beautiful.widget_background,
      rounded_size = 0.3})
 
--- Load and OS text
+-- System Load
 local loadavg_text = wibox.widget.textbox()
-vicious.register(loadavg_text, vicious.widgets.uptime, "$4 $5 $6", 60)
-local os_text = wibox.widget.textbox()
-vicious.register(os_text, vicious.widgets.os, "$1 $2", 500)
+vicious.register(loadavg_text, vicious.widgets.uptime, "$4", 60)
+
+-- Filesystem Widgets
 local fs = {
     boot = awful.widget.progressbar(),
     root = awful.widget.progressbar()
@@ -157,7 +157,6 @@ generate_layout = function(s, taglist, tasklist, promptbox)
     top_left_layout:add(separator)
     top_left_layout:add(wifi_text)
     top_left_layout:add(separatoricon)
-    top_left_layout:add(os_text)
     top_left_layout:add(separator)
     top_left_layout:add(loadavg_text)
     top_left_layout:add(separator)

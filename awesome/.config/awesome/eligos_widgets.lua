@@ -83,11 +83,9 @@ local mytextclock = blingbling.clock.japanese(
      text_background_color = beautiful.widget_background,
      rounded_size = 0.3})
 
--- Load and OS text
+-- System load
 local loadavg_text = wibox.widget.textbox()
 vicious.register(loadavg_text, vicious.widgets.uptime, "$4 $5 $6", 60)
-local os_text = wibox.widget.textbox()
-vicious.register(os_text, vicious.widgets.os, "$1 $2", 500)
 
 -- {{{ Filesystems
 local fs = {
@@ -154,7 +152,6 @@ generate_layout = function(s, taglist, tasklist, promptbox)
     top_left_layout:add(net_text)
     top_left_layout:add(netdnicon)
     top_left_layout:add(separatoricon)
-    top_left_layout:add(os_text)
     top_left_layout:add(separator)
     top_left_layout:add(loadavg_text)
     top_left_layout:add(separator)
