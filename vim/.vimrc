@@ -16,6 +16,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'jimenezrick/vimerl'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'ledger/vim-ledger'
 call vundle#end()
 filetype plugin on
 if &term=~'xterm'
