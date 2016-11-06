@@ -5,7 +5,6 @@ call vundle#begin()
 Plugin 'gmarik/vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'greyblake/vim-preview'
 Plugin 'vim-scripts/VimClojure'
 Plugin 'saltstack/salt-vim'
@@ -17,6 +16,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'jimenezrick/vimerl'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'ledger/vim-ledger'
+Plugin 'scrooloose/syntastic'
 call vundle#end()
 filetype plugin on
 if &term=~'xterm'
