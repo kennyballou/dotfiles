@@ -55,6 +55,10 @@ au Syntax * RainbowParenthesesLoadBraces
 au Syntax html,xml RainbowParenthesesLoadChevrons
 let mapleader = ","
 let g:gitgutter_enabled = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 noremap <leader>r :RainbowParenthesesToggle<CR>
 noremap <leader>s :set spell!<CR>
 noremap <leader>h :%!xxd<CR>
@@ -83,6 +87,7 @@ set statusline+=%m
 set statusline+=%r
 set statusline+=%{FileSize()}
 set statusline+=%{fugitive#statusline()}
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%=
 set statusline+=[%{&fenc}]
 set statusline+=%y
