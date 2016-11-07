@@ -16,6 +16,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'jimenezrick/vimerl'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'ledger/vim-ledger'
+Plugin 'jbgutierrez/vim-babel'
 Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 filetype plugin on
