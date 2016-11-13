@@ -86,7 +86,7 @@ local mytextclock = blingbling.clock.japanese(
 -- Task Warrior Active Task Widget
 local taskwactive = lain.widgets.base({
     timeout = 29,
-    cmd = "active_task.sh",
+    cmd = os.getenv("HOME") .. "/.local/bin/active_task.sh",
     settings = function()
         widget:set_text(" " .. output)
     end
