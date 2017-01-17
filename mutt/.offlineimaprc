@@ -1,11 +1,17 @@
 [general]
 ui = quiet
-accounts = devnulllabs
+accounts = devnulllabs,rezolve
 fsync = False
 
 [Account devnulllabs]
 localrepository = devnull-local
 remoterepository = devnull-remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Account rezolve]
+localrepository = rezolve-local
+remoterepository = rezolve-remote
 status_backend = sqlite
 postsynchook = notmuch new
 
@@ -37,3 +43,33 @@ nametrans = lambda folder: {'Drafts':     'drafts',
 folderfilter = lambda folder: folder not in ['trash',
                                              'spam',
                                             ]
+
+[Repository rezolve-local]
+type = Maildir
+localfolders = ~/.mail/kennyballou-rezolve.com
+nametrans = lambda folder: {'drafts': 'Drafts',
+                            'sent': 'Sent Items',
+                            'spam': 'Junk Email',
+                            'trash': 'Deleted Items',
+                            'archive': 'Archive',
+                           }.get(folder, folder)
+
+
+[Repository rezolve-remote]
+maxconnections = 1
+type = IMAP
+ssl = YES
+remotehost = outlook.office365.com
+remoteport = 993
+remoteuser = kennyballou@rezolve.com
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda folder: {'Drafts': 'drafts',
+                            'Sent Items': 'sent',
+                            'Junk Email': 'spam',
+                            'Deleted Items': 'trash',
+                            'Archive': 'archive',
+                           }.get(folder, folder)
+folderfilter = lambda folder: folder in ['drafts',
+                                         'sent',
+                                         'archive',
+                                         'INBOX']
