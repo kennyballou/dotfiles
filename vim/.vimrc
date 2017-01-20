@@ -18,6 +18,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'ledger/vim-ledger'
 Plugin 'jbgutierrez/vim-babel'
 Plugin 'mxw/vim-jsx'
+Plugin 'mfukar/robotframework-vim'
 Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 filetype plugin on
