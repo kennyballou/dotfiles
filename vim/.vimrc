@@ -18,7 +18,6 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'ledger/vim-ledger'
 Plugin 'jbgutierrez/vim-babel'
 Plugin 'mxw/vim-jsx'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'mfukar/robotframework-vim'
 Plugin 'vim-syntastic/syntastic'
 call vundle#end()
