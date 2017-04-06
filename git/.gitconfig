@@ -4,6 +4,7 @@
 [core]
 	editor = vim
 [merge]
+	ff = only
 	tool = gvimdiff
 	conflictstyle = diff3
 [color]
