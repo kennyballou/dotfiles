@@ -12,6 +12,8 @@
 	branch = auto
 	interactive = auto
 	diff = auto
+[status]
+	showUntrackedFiles = all
 [push]
 	default = simple
 [alias]
