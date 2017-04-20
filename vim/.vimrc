@@ -20,6 +20,7 @@ Plugin 'jbgutierrez/vim-babel'
 Plugin 'mxw/vim-jsx'
 Plugin 'flowtype/vim-flow'
 Plugin 'mfukar/robotframework-vim'
+Plugin 'stephpy/vim-yaml'
 Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 filetype plugin on
