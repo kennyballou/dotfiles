@@ -34,3 +34,5 @@
 	lineNumber = true
 [pull]
 	ff = only
+[transfer]
+	fsckObjects = true
