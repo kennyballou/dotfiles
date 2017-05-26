@@ -7,4 +7,6 @@ max-download-speed 100
 browser "w3m %u"
 html-renderer "w3m -dump -T text/html"
 
+ignore-mode "display"
+
 include "~/.config/newsbeuter/killfile"
