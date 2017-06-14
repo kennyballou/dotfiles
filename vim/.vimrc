@@ -21,6 +21,7 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'mxw/vim-jsx'
 Plugin 'flowtype/vim-flow'
 Plugin 'mfukar/robotframework-vim'
+Plugin 'elzr/vim-json'
 Plugin 'stephpy/vim-yaml'
 Plugin 'vim-syntastic/syntastic'
 call vundle#end()
@@ -65,6 +66,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+"disable concealing
+let g:vim_json_syntax_conceal = 0
 noremap <leader>r :RainbowParenthesesToggle<CR>
 noremap <leader>s :set spell!<CR>
 noremap <leader>h :%!xxd<CR>
