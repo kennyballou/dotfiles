@@ -51,10 +51,13 @@ set mailcap_path="~/.mutt/mailcap"
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-set sidebar_delim = ' |'
 set sidebar_visible = yes
+set sidebar_divider_char = ' |'
 set sidebar_width = 24
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
 color sidebar_new color221 color233
+
+set mail_check_stats = yes
 
 source ~/.mutt/kballou_devnulllabs.mutt
 
