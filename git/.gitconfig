@@ -1,7 +1,7 @@
 [user]
 	name = kballou
 	email = kballou@devnulllabs.io
-	signingKey = 1066BA71A5F56C58
+	signingKey = B0CAA28A02958308
 [core]
 	editor = vim
 [merge]

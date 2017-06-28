@@ -17,8 +17,8 @@ mailboxes +INBOX \
           +sent \
           +archive
 
-set pgp_sign_as="0x1066BA71A5F56C58"
-my_hdr X-PGP-Key: https://kennyballou.com/kballou.pub.asc
+set pgp_sign_as="0xB0CAA28A02958308"
+my_hdr X-PGP-Key: https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt
 set signature="~/.mutt/kballou_devnulllabs.signature"
 
 macro index O "<shell-escape>offlineimap -a devnulllabs<return>" "full sync offlineimap"
