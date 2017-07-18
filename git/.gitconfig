@@ -36,3 +36,5 @@
 	ff = only
 [transfer]
 	fsckObjects = true
+[rerere]
+	enabled = true
