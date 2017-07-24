@@ -57,12 +57,6 @@
  whitespace-empty 'whitespace-empty
  whitespace-lines-tail 'whitespace-lines-tail)
 
-;;iy-go-to-char
-(require 'iy-go-to-char)
-
-(global-set-key (kbd "C-c f") 'iy-go-to-char)
-(global-set-key (kbd "C-c F") 'iy-go-to-char-backward)
-
 ;;disable mouse
 (require 'disable-mouse)
 (global-disable-mouse-mode)
