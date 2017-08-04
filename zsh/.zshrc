@@ -1,4 +1,5 @@
 autoload -U compinit promptinit -U colors && colors
+bindkey -e
 compinit
 promptinit
 HISTSIZE=10000
