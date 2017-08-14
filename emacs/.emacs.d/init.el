@@ -3,6 +3,11 @@
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (package-initialize)
+(setq custom-file "~/.emacs.d/lisp/custom.el")
+(load custom-file)
+(load "~/.emacs.d/lisp/backup-files.el")
+
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (load-theme 'zenburn t)
 
@@ -33,7 +38,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;;newlines
-(setq require-final-newline nil)
+(setq require-final-newline t)
 
 ;;line numbers
 (global-linum-mode t)
@@ -43,11 +48,15 @@
 
 (require 'whitespace)
 
+(global-whitespace-mode t)
+
+(setq show-trailing-whitespace t)
+
 (setq whitespace-display-mapping
       '(
         (newline-mark 10 [60 10])
         (tab-mark 9 [187 9] [92 9])
-))
+        ))
 
 (setq
  whitespace-space 'whitespace-space
@@ -67,3 +76,5 @@
 
 ;;hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;;do not display passwords, ever...
+(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
