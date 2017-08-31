@@ -23,7 +23,6 @@
                       --verbose \
                       --base-path=. \
                       --export-all ./.git
-	up = !git remote update -p
 	branches = branch -a
 	tags = tag
 	stashes = stash list
