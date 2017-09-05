@@ -1,13 +1,42 @@
+;; -*- lexical-binding: t -*-
+
+;;; This file is bootstraps emacs configuration which is
+;;; divided into a number of separate files
+;;; based on: https://github.com/purcell/emacs.d/blob/master/init.el
+
+(let ((minver "24.1")
+      (when (version< emacs-version minver)
+        (error "Emacs is too old, this config requires v%s or higher" minver))))
+
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(package-initialize)
-(setq custom-file "~/.emacs.d/lisp/custom.el")
-(load custom-file)
-(load "~/.emacs.d/lisp/backup-files.el")
+;; (package-initialize)
+;; (setq custom-file "~/.emacs.d/lisp/custom.el")
+;; (load custom-file)
+;; (load "~/.emacs.d/lisp/backup-files.el")
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;; "~/.emacs.d/lisp/")
+(require 'init-benchmarking) ;; measure startup time
+
+(defconst *spell-check-support-enabled* t)
+
+
+;; Adjust Garbage Collection Settings
+(let ((normal-gc-cons-threshold (* 20 1024 1024))
+      (init-gc-cons-threshold (* 128 1024 1024)))
+  (setq gc-cons-threshold init-gc-cons-threshold)
+  (add-hook 'after-init-hook
+            (lambda () (setq gc-cons-threshold normal-gc-threshold))))
+
+;; Begin Bootstrapping
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(require 'init-utils)
+(require 'init-site-lisp)
+(require 'init-elpa)
+(require 'init-exec-path)
 
 (load-theme 'zenburn t)
 
