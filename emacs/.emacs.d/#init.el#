@@ -44,11 +44,10 @@
 (require-package 'wgrep)
 (require-package 'diminish)
 
-;; Load configs for specific features and modes
-(require 'init-frame-hooks)
-(require 'init-xterm)
-(require 'init-themes)
-(require 'init-gui-frames)
+
+(require 'init-frame-hooks
+
+(load-theme 'zenburn t)
 
 ;;rainbow mode
 (require 'rainbow-mode)
