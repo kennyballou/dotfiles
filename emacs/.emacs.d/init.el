@@ -45,10 +45,13 @@
 (require-package 'diminish)
 
 ;; Load configs for specific features and modes
-(require 'init-frame-hooks)
-(require 'init-xterm)
 (require 'init-themes)
 (require 'init-gui-frames)
+(require 'init-dired)
+(require 'init-isearch)
+(require 'init-grep)
+(require 'init-uniquify)
+(require 'init-ibuffer)
 
 ;;rainbow mode
 (require 'rainbow-mode)
@@ -59,15 +62,6 @@
 ;;scroll margin
 (require 'smooth-scrolling)
 (setq smooth-scrolling-margin 10)
-
-;; no...
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-(menu-bar-mode 0)
-(blink-cursor-mode 0)
-
-;;inhibit splash
-(setq inhibit-splash-screen t)
 
 (global-hl-line-mode 1)
 
