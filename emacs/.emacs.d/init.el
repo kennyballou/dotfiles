@@ -85,36 +85,11 @@
 ;;line numbers
 (global-linum-mode t)
 
-;;whitespace
-(setq-default indicate-empty-lines t)
-
-(require 'whitespace)
-
-(global-whitespace-mode t)
-
-(setq show-trailing-whitespace t)
-
-(setq whitespace-display-mapping
-      '(
-        (newline-mark 10 [60 10])
-        (tab-mark 9 [187 9] [92 9])
-        ))
-
-(setq
- whitespace-space 'whitespace-space
- whitespace-tab 'whitespace-tab
- whitespace-trailing 'whitespace-trailing
- whitespace-newline 'whitespace-newline
- whitespace-empty 'whitespace-empty
- whitespace-lines-tail 'whitespace-lines-tail)
 
 ;;disable mouse
 (require 'disable-mouse)
 (global-disable-mouse-mode)
 
-;;delighted mode
-(require 'delight)
-(delight 'disable-mouse)
 
 ;;hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
