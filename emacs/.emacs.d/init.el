@@ -62,22 +62,11 @@
 
 (require 'init-editing-utils)
 
-;;rainbow mode
-(require 'rainbow-mode)
-
-;;rainbow delimiters
-(require 'rainbow-delimiters)
-
 ;;scroll margin
 (require 'smooth-scrolling)
 (setq smooth-scrolling-margin 10)
 
 (global-hl-line-mode 1)
-
-;;indent
-(setq standard-indent 4)
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
 
 ;;newlines
 (setq require-final-newline t)
@@ -85,13 +74,29 @@
 ;;line numbers
 (global-linum-mode t)
 
+(maybe-require-package 'regex-tool)
 
-;;disable mouse
-(require 'disable-mouse)
-(global-disable-mouse-mode)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+;; customize interface configuration
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+;; Allow optional "init-local"
+(require 'init-local nil t)
+
+;; Locales (setting them earlier in this file doesn't work in X)
+(require 'init-locales)
+
+(when (maybe-require-package 'uptimes)
+  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 
-;;hooks
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-;;do not display passwords, ever...
-(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
+(provide 'init)
+
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: t
+;; End:

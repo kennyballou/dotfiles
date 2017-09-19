@@ -18,11 +18,6 @@
      (string= "#!" (buffer-substring (point-min) (+ 2 (point-min)))))
    (normal-mode)))
 
-(setq-default regex-tool-backend 'perl)
-(after-load 're-builder
-            ;;support a slightly more idomatic quit binding in re-builder
-            (define-key reb-mode-map (kbd "C-c C-k") 'reb-quit))
-
 (add-auto-mode 'conf-mode "Procfile")
 
 (provide 'init-misc)

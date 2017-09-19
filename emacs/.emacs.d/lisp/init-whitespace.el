@@ -1,4 +1,5 @@
 (require-package 'whitespace)
+(require-package 'whitespace-cleanup-mode)
 
 (setq-default show-trailing-whitespace t)
 
@@ -19,7 +20,6 @@
                 minibuffer-setup-hook))
   (add-hook hook #'sanityinc/no-trailing-whitespace))
 
-(require-package 'whitespace-cleanup-mode)
 (global-whitespace-cleanup-mode t)
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
@@ -39,5 +39,11 @@
  whitespace-newline 'whitespace-newline
  whitespace-empty 'whitespace-empty
  whitespace-lines-tail 'whitespace-lines-tail)
+
+;; Indent
+(setq standard-indent 4)
+(setq-default tab-width 4
+              indent-tabs-mode nil)
+
 
 (provide 'init-whitespace)
