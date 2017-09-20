@@ -10,7 +10,7 @@
               (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
               ;; nrepl isn't based on comint
-              (add-hook 'cider-repl-mode-hook 'kennyballou/no-trailing-whitespace))
+              (add-hook 'cider-repl-mode-hook 'sanityinc/no-trailing-whitespace))
 
   (require-package 'flycheck-clojure)
   (after-load 'clojure-mode

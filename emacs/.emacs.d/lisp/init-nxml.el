@@ -42,6 +42,13 @@ indentation rules."
   (unless (use-region-p)
     (setq beg (point-min)
           end (point-max)))
-  (shell-command-on-region beg end "tidy -xml -q -i" (current-buffer) t "*tidy-errors*" t))
+  (shell-command-on-region
+   beg
+   end
+   "tidy -xml -q -i"
+   (current-buffer)
+   t
+   "*tidy-errors*"
+   t))
 
 (provide 'init-nxml)

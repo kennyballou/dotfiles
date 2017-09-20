@@ -19,7 +19,7 @@
 
               (when (maybe-require-package 'diminish)
                 (diminish 'ivy-mode)))
-  (defun kennyballou/enable-ivy-flx-matching ()
+  (defun sanityinc/enable-ivy-flx-matching ()
     "Make `ivy' matching work more like IDO."
     (interactive)
     (require-package 'flx)
@@ -44,7 +44,7 @@
               ((executable-find "pt") 'counsel-pt)
               ((executable-find "ack") 'counsel-ack))))
         (when search-function
-          (defun kennyballou/counsel-search-project (initial-input &optional use-current-dir)
+          (defun sanityinc/counsel-search-project (initial-input &optional use-current-dir)
             "Search using `counsel-{rg,ag,pt,ack}' from the project root for INITIAL-INPUT.
 If there is no project root, or if the prefix argument
 USE-CURRENT-DIR is set, then search from the current directory instead."
@@ -57,15 +57,15 @@ USE-CURRENT-DIR is set, then search from the current directory instead."
                              (projectile-project-root)
                            (error default-directory)))))
               (funcall search-function initial-dir)))))
-      (global-set-key (kbd "M-?" 'kennyballou/consel-search-project))))
+      (global-set-key (kbd "M-?" 'sanityinc/consel-search-project))))
 
   (when (maybe-require-package 'swiper)
     (after-load 'ivy
-                (defun kennyballou/swiper-at-point (sym)
+                (defun sanityinc/swiper-at-point (sym)
                   "Use `swiper' to search for the symbol at point."
                   (interactive (list thing-at-point 'symbol)))
                   (swiper sym))
 
-    (define-key ivy-mode-map (kbd "M-s /") 'kennyballou/swiper-at-point)))
+    (define-key ivy-mode-map (kbd "M-s /") 'sanityinc/swiper-at-point)))
 
 (provide 'init-ivy)

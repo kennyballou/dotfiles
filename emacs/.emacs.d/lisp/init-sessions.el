@@ -8,7 +8,7 @@
         (prog1
             ad-do-it
           (message "Desktop restored in %.2fms"
-                   (kennyballou/time-subtract-millis (current-time)
+                   (sanityinc/time-subtract-millis (current-time)
                                                      start-time))))))
 
 (defadvice desktop-create-buffer (around time-create activate)
@@ -16,7 +16,7 @@
         (prog1
             ad-do-it
           (message "Desktop: %.2fms to restore %s"
-                   (kennyballou/time-subtract-millis (current-time)
+                   (sanityinc/time-subtract-millis (current-time)
                                                      start-time)
                    (when filename
                      (abbreviate-file-name filename)))))))

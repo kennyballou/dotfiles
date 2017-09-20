@@ -1,15 +1,8 @@
 (require-package 'unfill)
 
-(when (fboundp 'electric-pair-mode)
-  (electric-pair-mode))
-(when (eval-when-compile (version< "24.4" emacs-version))
-  (electric-indent-mode 1))
-
 (maybe-require-package 'list-unicode-display)
 
-;;----------------------------------------------------------------------------
 ;; Some basic preferences
-;;----------------------------------------------------------------------------
 (setq-default
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
@@ -44,7 +37,7 @@
  ring-bell-function 'sanityinc/flash-mode-line)
 
 
-;;; Newline behaviour
+;;; Newline behasviour
 (global-set-key (kbd "RET") 'newline-and-indent)
 (defun sanityinc/newline-at-end-of-line ()
   "Move to end of line, enter a newline, and reindent."
@@ -159,27 +152,6 @@
 
 
 ;;----------------------------------------------------------------------------
-;; Page break lines
-;;----------------------------------------------------------------------------
-(require-package 'page-break-lines)
-(global-page-break-lines-mode)
-(diminish 'page-break-lines-mode)
-
-;;----------------------------------------------------------------------------
-;; Shift lines up and down with M-up and M-down. When paredit is enabled,
-;; it will use those keybindings. For this reason, you might prefer to
-;; use M-S-up and M-S-down, which will work even in lisp modes.
-;;----------------------------------------------------------------------------
-(require-package 'move-dup)
-(global-set-key [M-up] 'md/move-lines-up)
-(global-set-key [M-down] 'md/move-lines-down)
-(global-set-key [M-S-up] 'md/move-lines-up)
-(global-set-key [M-S-down] 'md/move-lines-down)
-
-(global-set-key (kbd "C-c d") 'md/duplicate-down)
-(global-set-key (kbd "C-c D") 'md/duplicate-up)
-
-;;----------------------------------------------------------------------------
 ;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
 ;;----------------------------------------------------------------------------
 (defun backward-up-sexp (arg)
@@ -267,9 +239,21 @@ With arg N, insert N newlines."
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-
+
 (require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r" "M-s" "C-h" "C-c C-a"))
+(setq guide-key/guide-key-sequence '("C-x"
+                                     "C-c"
+                                     "C-x 4"
+                                     "C-x 5"
+                                     "C-c ;"
+                                     "C-c ; f"
+                                     "C-c ' f"
+                                     "C-x n"
+                                     "C-x C-r"
+                                     "C-x r"
+                                     "M-s"
+                                     "C-h"
+                                     "C-c C-a"))
 (add-hook 'after-init-hook
           (lambda ()
             (guide-key-mode 1)
