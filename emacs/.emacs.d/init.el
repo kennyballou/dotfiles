@@ -8,21 +8,12 @@
       (when (version< emacs-version minver)
         (error "Emacs is too old, this config requires v%s or higher" minver))))
 
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
-;; (package-initialize)
-;; (setq custom-file "~/.emacs.d/lisp/custom.el")
-;; (load custom-file)
-;; (load "~/.emacs.d/lisp/backup-files.el")
-
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-;; "~/.emacs.d/lisp/")
+
 (require 'init-benchmarking) ;; measure startup time
 
 (defconst *spell-check-support-enabled* t)
-
 
 ;; Adjust Garbage Collection Settings
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
@@ -32,7 +23,6 @@
             (lambda () (setq gc-cons-threshold normal-gc-threshold))))
 
 ;; Begin Bootstrapping
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-utils)
 (require 'init-site-lisp)
 (require 'init-elpa)
@@ -53,26 +43,53 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flycheck)
-
 (require 'init-recentf)
 (require 'init-smex)
 (require 'init-ivy)
 (require 'init-sessions)
 (require 'init-mmm)
-
 (require 'init-editing-utils)
+(require 'init-whitespace)
+(require 'init-vc)
+(require 'init-git)
+(require 'init-projectile)
+(require 'init-compile)
+(require 'init-textile)
+(require 'init-markdown)
+(require 'init-csv)
+(require 'init-erlang)
+(require 'init-javascript)
+(require 'init-php)
+(require 'init-org)
+(require 'init-nxml)
+(require 'init-html)
+(require 'init-css)
+(require 'init-haml)
+(require 'init-python)
+(unless (version<= emacs-version "24.3")
+  (require 'init-haskell))
+(require 'init-elm)
+(require 'init-ruby-mode)
+(require 'init-sql)
+(require 'init-rust)
+(require 'init-toml)
+(require 'init-yaml)
+(require 'init-docker)
+(require 'init-paredit)
+(require 'init-lisp)
+(require 'init-slime)
+(unless (version<= emacs-version "24.2")
+  (require 'init-clojure)
+  (require 'inti-clojure-cider))
+(require 'init-common-lisp)
+(require 'init-spelling)
+(require 'init-misc)
+(require 'init-folding)
+(require 'init-ledger)
 
-;;scroll margin
-(require 'smooth-scrolling)
-(setq smooth-scrolling-margin 10)
+
 
 (global-hl-line-mode 1)
-
-;;newlines
-(setq require-final-newline t)
-
-;;line numbers
-(global-linum-mode t)
 
 (maybe-require-package 'regex-tool)
 

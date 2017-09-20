@@ -45,5 +45,7 @@
 (setq-default tab-width 4
               indent-tabs-mode nil)
 
+;;newlines
+(setq require-final-newline t)
 
 (provide 'init-whitespace)

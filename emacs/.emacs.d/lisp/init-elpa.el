@@ -1,5 +1,8 @@
 (require 'package)
 
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
 (let ((local-package-el (locate-library "package")))
   (when (string-match-p (concat "^" (regexp-quote user-emacs-directory))
                         local-package-el)
