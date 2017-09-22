@@ -1,15 +1,18 @@
-;; -*- lexical-binding: t -*-
-
-;;; This file is bootstraps emacs configuration which is
+;;; init: --- Emacs initialization file
+;;; -*- lexical-binding: t -*-
+;;; Commentary:
+;;; This file is bootstraps Emacs configuration which is
 ;;; divided into a number of separate files
 ;;; based on: https://github.com/purcell/emacs.d/blob/master/init.el
 
+;;; Code:
 
-;;(package-initialize)
+
+;; (package-initialize)
 
 (let ((minver "24.1"))
-      (when (version< emacs-version minver)
-        (error "Emacs is too old, this config requires v%s or higher" minver)))
+  (when (version< emacs-version minver)
+    (error "Emacs is too old, this config requires v%s or higher" minver)))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
@@ -23,32 +26,32 @@
       (init-gc-cons-threshold (* 128 1024 1024)))
   (setq gc-cons-threshold init-gc-cons-threshold)
   (add-hook 'after-init-hook
-            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+    (lambda () (setq gc-cons-threshold (* 20 1024 1024)))))
 
 ;; Begin Bootstrapping
 (require 'init-utils)
 (require 'init-site-lisp)
 (require 'init-elpa)
-;; (require 'init-exec-path)
+(require 'init-exec-path)
 
-;; ;; Allow users to provide an optional "init-preload-local.el"
-;; (require 'init-preload-local nil t)
+;; Allow users to provide an optional "init-preload-local.el"
+(require 'init-preload-local nil t)
 
-;; (require-package 'wgrep)
-;; (require-package 'diminish)
+(require-package 'wgrep)
+(require-package 'diminish)
 
-;; ;; Load configs for specific features and modes
-;; (require 'init-themes)
-;; (require 'init-gui-frames)
-;; (require 'init-dired)
-;; (require 'init-isearch)
-;; (require 'init-grep)
-;; (require 'init-uniquify)
-;; (require 'init-ibuffer)
-;; (require 'init-flycheck)
-;; (require 'init-recentf)
-;; (require 'init-smex)
-;; (require 'init-ivy)
+;; Load configs for specific features and modes
+(require 'init-themes)
+(require 'init-gui-frames)
+(require 'init-dired)
+(require 'init-isearch)
+(require 'init-grep)
+(require 'init-uniquify)
+(require 'init-ibuffer)
+(require 'init-flycheck)
+(require 'init-recentf)
+(require 'init-smex)
+(require 'init-ivy)
 ;; (require 'init-sessions)
 ;; (require 'init-mmm)
 ;; (require 'init-editing-utils)
@@ -115,8 +118,9 @@
 
 
 (provide 'init)
+;;; init.el ends here
 
-;; Local Variables:
-;; coding: utf-8
-;; no-byte-compile: t
-;; End:
+;;; Local Variables:
+;;; coding: utf-8
+;;; no-byte-compile: t
+

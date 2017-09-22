@@ -11,7 +11,7 @@
 
 ;; DEL during isearch should edit the search string
 ;; not jump back to the previous result
-(defin-key isearch-mode-map [remap isearch-delete-char] 'isearch-del-char)
+(define-key isearch-mode-map [remap isearch-delete-char] 'isearch-del-char)
 
 ;; Search back/forth for the symbol at point
 ;; see http://www.emacswiki.org/emacs/SearchAtPoint
@@ -22,13 +22,18 @@
     (if sym
         (progn
           (setq isearch-regexp t
-                isearch-string (concat "\\_<" (regexp-quote (symbol-name sym)) "\\_>")
-                isearch-message (mapconcat 'isearch-text-char-description isearch-string "")
+                isearch-string (concat
+                                "\\_<"
+                                (regexp-quote (symbol-name sym))
+                                "\\_>")
+                isearch-message (mapconcat
+                                 'isearch-text-char-description
+                                 isearch-string "")
                 isearch-yank-flag t))
       (ding)))
   (isearch-search-and-update))
 
-(define-key isearch-mode-map "\C-\M-w" 'isearch-yank-symbol)
+(define-key isearch-mode-map (kbd "C-M-w") 'isearch-yank-symbol)
 
 ;; http://www.emacswiki.org/emacs/ZapToIsearch
 (defun sanityinc/isearch-exit-other-end (rbeg rend)
@@ -38,6 +43,6 @@ This is useful when followed by an immediate kill."
   (isearch-exit)
   (goto-char isearch-other-end))
 
-(define-key isearch-mode-map [(control return)] 'sanityinc/isearch-exit-other-end)
+(define-key isearch-mode-map (kbd "C-RET") 'sanityinc/isearch-exit-other-end)
 
 (provide 'init-isearch)

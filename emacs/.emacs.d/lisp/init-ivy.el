@@ -1,14 +1,18 @@
+;;; init-ivy --- Maybe use ivy
 ;;; -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
+
 (when (maybe-require-package 'ivy)
   (add-hook 'after-init-hook 'ivy-mode)
-  (after-load 'ivy
-              (setq-default ivy-use-virtual-buffers t
-                            ivy-virtual-abbreviate 'fullpath
-                            ivy-count-format ""
-                            projectile-completion-system 'ivy
-                            ivy-initial-inputs-alist
-                            '((man . "^")
-                              (woman . "^")))
+  (with-eval-after-load 'ivy
+    (setq-default ivy-use-virtual-buffers t
+		  ivy-virtual-abbreviate 'fullpath
+		  ivy-count-format ""
+		  projectile-completion-system 'ivy
+		  ivy-initial-inputs-alist
+		  '((man . "^")
+		    (woman . "^")))
 
               ;; IDO-style directory navigation
               (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
@@ -32,7 +36,7 @@
   (when (maybe-require-package 'counsel)
     (setq-default counsel-mode-override-describe-bindings t)
     (when (maybe-require-package 'diminish)
-      (after-load 'counsel
+      (with-eval-after-load 'counsel
                   (dminish 'counsel-mode)))
     (add-hook 'after-init-hook 'counsel-mode)
 
@@ -60,7 +64,7 @@ USE-CURRENT-DIR is set, then search from the current directory instead."
       (global-set-key (kbd "M-?" 'sanityinc/consel-search-project))))
 
   (when (maybe-require-package 'swiper)
-    (after-load 'ivy
+    (with-eval-after-load 'ivy
                 (defun sanityinc/swiper-at-point (sym)
                   "Use `swiper' to search for the symbol at point."
                   (interactive (list thing-at-point 'symbol)))

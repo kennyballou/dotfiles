@@ -40,7 +40,7 @@
 (require-package 'disable-mouse)
 
 (when (maybe-require-package 'diminish)
-  (after-load 'disable-mouse-mode
+  (with-eval-after-load 'disable-mouse-mode
               (diminish 'disable-mouse-mode)))
 
 ;;scroll margin
