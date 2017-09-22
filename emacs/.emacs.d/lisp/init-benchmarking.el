@@ -7,7 +7,7 @@
   "A list of (FEATURE LOAD-START-TIME LOAD-DURATION).
 LOAD-DURATION is the time taken in milliseconds to load FEATURE.")
 
-(defadvice require (around sanityincc/build-require-times
+(defadvice require (around sanityinc/build-require-times
                            (feature &optional filename noerror) activate)
   "Note in `sanityinc/require-times' the time taken to require each feature."
   (let* ((already-loaded (memq feature features))
@@ -61,6 +61,6 @@ tabulated-list-mode "Require Time"
   (message "init completed in %.2fms"
            (sanityinc/time-subtract-millis after-init-time before-init-time)))
 
-(add-hook 'after-init-hook 'sanityinc/show-init-time)
+(add-hook 'after-init-hook 'sanityinc/show-init-times)
 
 (provide 'init-benchmarking)
