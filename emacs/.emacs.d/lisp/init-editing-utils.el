@@ -1,3 +1,7 @@
+;;; init-editing-utils --- misc editing configurations
+;;; Commentary:
+;;; Code:
+
 (require-package 'unfill)
 
 (maybe-require-package 'list-unicode-display)
@@ -23,6 +27,12 @@
  truncate-partial-width-windows nil)
 
 (global-auto-revert-mode)
+(when (maybe-require-package 'diminish)
+  (with-eval-after-load 'after-init-hook
+    (diminish global-auto-revert-mode)))
+
+(defvar global-auto-revert-non-file-buffers)
+(defvar auto-revert-verbose)
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 
@@ -30,6 +40,7 @@
 
 ;;; A simple visible bell which works in all terminal types
 (defun sanityinc/flash-mode-line ()
+  "Flash mode line on bell."
   (invert-face 'mode-line)
   (run-with-timer 0.05 nil 'invert-face 'mode-line))
 
@@ -37,7 +48,7 @@
  ring-bell-function 'sanityinc/flash-mode-line)
 
 
-;;; Newline behasviour
+;;; Newline behaviour
 (global-set-key (kbd "RET") 'newline-and-indent)
 (defun sanityinc/newline-at-end-of-line ()
   "Move to end of line, enter a newline, and reindent."
@@ -47,10 +58,9 @@
 
 (global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
 
-
 (when (eval-when-compile (string< "24.3.1" emacs-version))
   ;; https://github.com/purcell/emacs.d/issues/138
-  (after-load 'subword
+  (with-eval-after-load 'subword
     (diminish 'subword-mode)))
 
 (unless (fboundp 'display-line-numbers-mode)
@@ -65,15 +75,8 @@
 
 (require-package 'undo-tree)
 (global-undo-tree-mode)
-(diminish 'undo-tree-mode)
-
-(when (maybe-require-package 'symbol-overlay)
-  (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
-    (add-hook hook 'symbol-overlay-mode))
-  (after-load 'symbol-overlay
-    (diminish 'symbol-overlay-mode)
-    (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
-    (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev)))
+(when (maybe-require-package 'diminish)
+  (diminish 'undo-tree-mode))
 
 ;; Zap *up* to char is a handy pair for zap-to-char
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
@@ -81,14 +84,12 @@
 
 
 (require-package 'browse-kill-ring)
+(defvar browse-kill-ring-separator)
+(defvar browse-kill-ring-mode-map)
 (setq browse-kill-ring-separator "\f")
 (global-set-key (kbd "M-Y") 'browse-kill-ring)
-(after-load 'browse-kill-ring
-  (define-key browse-kill-ring-mode-map (kbd "C-g") 'browse-kill-ring-quit)
-  (define-key browse-kill-ring-mode-map (kbd "M-n") 'browse-kill-ring-forward)
-  (define-key browse-kill-ring-mode-map (kbd "M-p") 'browse-kill-ring-previous))
-(after-load 'page-break-lines
-  (push 'browse-kill-ring-mode page-break-lines-modes))
+(with-eval-after-load 'browse-kill-ring
+  (define-key browse-kill-ring-mode-map (kbd "C-g") 'browse-kill-ring-quit))
 
 
 ;; Don't disable narrowing commands
@@ -109,13 +110,7 @@
 (put 'downcase-region 'disabled nil)
 
 
-;; Rectangle selections, and overwrite text when the selection is active
-(cua-selection-mode t)                  ; for rectangles, CUA is nice
-
-
-;;----------------------------------------------------------------------------
 ;; Handy key bindings
-;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
@@ -134,7 +129,6 @@
 (global-set-key (kbd "C-c m e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c m a") 'mc/edit-beginnings-of-lines)
 
-
 ;; Train myself to use M-f and M-b instead
 (global-unset-key [M-left])
 (global-unset-key [M-right])
@@ -151,9 +145,7 @@
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
 
 
-;;----------------------------------------------------------------------------
 ;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
-;;----------------------------------------------------------------------------
 (defun backward-up-sexp (arg)
   "Jump up to the start of the ARG'th enclosing sexp."
   (interactive "p")
@@ -174,73 +166,12 @@
 (diminish 'whole-line-or-region-mode)
 (make-variable-buffer-local 'whole-line-or-region-mode)
 
-(defun suspend-mode-during-cua-rect-selection (mode-name)
-  "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
-  (let ((flagvar (intern (format "%s-was-active-before-cua-rectangle" mode-name)))
-        (advice-name (intern (format "suspend-%s" mode-name))))
-    (eval-after-load 'cua-rect
-      `(progn
-         (defvar ,flagvar nil)
-         (make-variable-buffer-local ',flagvar)
-         (defadvice cua--activate-rectangle (after ,advice-name activate)
-           (setq ,flagvar (and (boundp ',mode-name) ,mode-name))
-           (when ,flagvar
-             (,mode-name 0)))
-         (defadvice cua--deactivate-rectangle (after ,advice-name activate)
-           (when ,flagvar
-             (,mode-name 1)))))))
-
-(suspend-mode-during-cua-rect-selection 'whole-line-or-region-mode)
-
-
-(defun sanityinc/open-line-with-reindent (n)
-  "A version of `open-line' which reindents the start and end positions.
-If there is a fill prefix and/or a `left-margin', insert them
-on the new line if the line would have been blank.
-With arg N, insert N newlines."
-  (interactive "*p")
-  (let* ((do-fill-prefix (and fill-prefix (bolp)))
-         (do-left-margin (and (bolp) (> (current-left-margin) 0)))
-         (loc (point-marker))
-         ;; Don't expand an abbrev before point.
-         (abbrev-mode nil))
-    (delete-horizontal-space t)
-    (newline n)
-    (indent-according-to-mode)
-    (when (eolp)
-      (delete-horizontal-space t))
-    (goto-char loc)
-    (while (> n 0)
-      (cond ((bolp)
-             (if do-left-margin (indent-to (current-left-margin)))
-             (if do-fill-prefix (insert-and-inherit fill-prefix))))
-      (forward-line 1)
-      (setq n (1- n)))
-    (goto-char loc)
-    (end-of-line)
-    (indent-according-to-mode)))
-
-(global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
-
-;; Random line sorting
-(defun sort-lines-random (beg end)
-  "Sort lines in region randomly."
-  (interactive "r")
-  (save-excursion
-    (save-restriction
-      (narrow-to-region beg end)
-      (goto-char (point-min))
-      (let ;; To make `end-of-line' and etc. to ignore fields.
-          ((inhibit-field-text-motion t))
-        (sort-subr nil 'forward-line 'end-of-line nil nil
-                   (lambda (s1 s2) (eq (random 2) 0)))))))
-
-
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
 
 (require-package 'guide-key)
+(defvar guide-key/guide-key-sequence)
 (setq guide-key/guide-key-sequence '("C-x"
                                      "C-c"
                                      "C-x 4"
@@ -261,3 +192,4 @@ With arg N, insert N newlines."
 
 
 (provide 'init-editing-utils)
+;;; init-editing-utils.el ends here

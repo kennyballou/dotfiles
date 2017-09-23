@@ -1,3 +1,7 @@
+;;; init-whitespace --- whitespace configurations
+;;; Commentary:
+;;; Code:
+
 (require-package 'whitespace)
 (require-package 'whitespace-cleanup-mode)
 
@@ -21,24 +25,30 @@
   (add-hook hook #'sanityinc/no-trailing-whitespace))
 
 (global-whitespace-cleanup-mode t)
+(global-whitespace-mode t)
+(when (maybe-require-package 'diminish)
+  (diminish 'global-whitespace-cleanup-mode)
+  (diminish 'global-whitespace-mode))
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
 
 (setq-default indicate-empty-lines t)
 
-(setq whitespace-display-mapping
+(defvar whitespace-display-mappings)
+(setq whitespace-display-mappings
       '(
-        (newline-mark 10 [60 10])
+        (newline-mark 8617 [60 10])
         (tab-mark 9 [187 9] [92 9])
         ))
 
-(setq
- whitespace-space 'whitespace-space
- whitespace-tab 'whitespace-tab
- whitespace-trailing 'whitespace-trailing
- whitespace-newline 'whitespace-newline
- whitespace-empty 'whitespace-empty
- whitespace-lines-tail 'whitespace-lines-tail)
+
+;; (setq
+;;  whitespace-space 'whitespace-space
+;;  whitespace-tab 'whitespace-tab
+;;  whitespace-trailing 'whitespace-trailing
+;;  whitespace-newline 'whitespace-newline
+;;  whitespace-empty 'whitespace-empty
+;;  whitespace-lines-tail 'whitespace-lines-tail)
 
 ;; Indent
 (setq standard-indent 4)
@@ -49,3 +59,4 @@
 (setq require-final-newline t)
 
 (provide 'init-whitespace)
+;;; init-whitespace.el ends here
