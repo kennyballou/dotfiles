@@ -37,18 +37,10 @@
 (defvar whitespace-display-mappings)
 (setq whitespace-display-mappings
       '(
-        (newline-mark 8617 [60 10])
-        (tab-mark 9 [187 9] [92 9])
+        (newline-mark 10  [8617 10])
+        (tab-mark 9 [9654 9] [92 9])
         ))
 
-
-;; (setq
-;;  whitespace-space 'whitespace-space
-;;  whitespace-tab 'whitespace-tab
-;;  whitespace-trailing 'whitespace-trailing
-;;  whitespace-newline 'whitespace-newline
-;;  whitespace-empty 'whitespace-empty
-;;  whitespace-lines-tail 'whitespace-lines-tail)
 
 ;; Indent
 (setq standard-indent 4)
