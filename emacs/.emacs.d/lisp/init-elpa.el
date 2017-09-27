@@ -1,7 +1,8 @@
 (require 'package)
 
 (dolist (pkg '(("melpa-stable" . "https://stable.melpa.org/packages/")
-               ("org" . "http://orgmode.org/elpa/")))
+               ("org" . "http://orgmode.org/elpa/")
+               ("melpa-unstable" . "https://melpa.org/packages/")))
         (add-to-list 'package-archives pkg))
 
 (let ((local-package-el (locate-library "package")))
@@ -11,7 +12,9 @@
           (local-package-el))))
 
 (let ((versioned-package-dir
-       (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+       (expand-file-name (format "elpa-%s.%s"
+                                 emacs-major-version
+                                 emacs-minor-version)
                          user-emacs-directory)))
   (when (file-directory-p package-user-dir)
     (message "Default package locations have changed in this config: renaming old dir %s to %s"

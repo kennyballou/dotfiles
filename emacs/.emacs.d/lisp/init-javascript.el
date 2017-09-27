@@ -2,7 +2,6 @@
 (maybe-require-package 'js2-mode)
 (maybe-require-package 'coffee-mode)
 (maybe-require-package 'typescript-mode)
-(maybe-require-package 'prettier-js)
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -25,22 +24,22 @@
 ;; change some defaults
 (setq-default js2-basic-offset 2
               js2-bounce-indent-p nil)
-(after-load 'js2-mode
-            ;; Disable js2-mode's syntax error highlighting by default ...
-            (setq-default js2-mode-show-parse-errors nil
-                          js2-mode-show-strict-warnings nil)
-            ;; ... but enable it if flycheck can't handle javascript
-            (autoload 'flycheck-get-checker-for-buffer "flycheck")
-            (defun sanityinc/disable-js2-checks-if-flycheck-active ()
-              (unless (flycheck-get-checker-for-buffer)
-                (set (make-local-variable 'js2-mode-show-parse-errors) t)
-                (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
-            (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
+(with-eval-after-load 'js2-mode
+  ;; Disable js2-mode's syntax error highlighting by default ...
+  (setq-default js2-mode-show-parse-errors nil
+                js2-mode-show-strict-warnings nil)
+  ;; ... but enable it if flycheck can't handle javascript
+  (autoload 'flycheck-get-checker-for-buffer "flycheck")
+  (defun sanityinc/disable-js2-checks-if-flycheck-active ()
+    (unless (flycheck-get-checker-for-buffer)
+      (set (make-local-variable 'js2-mode-show-parse-errors) t)
+      (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
+  (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
 
-            (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
+  (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 
-            (after-load 'js2-mode
-                        (js2-imenu-extras-setup)))
+  (with-eval-after-load 'js2-mode
+    (js2-imenu-extras-setup)))
 
 ;; js-mode
 (setq-default js-indent-level preferred-javascript-indent-level)
@@ -49,16 +48,16 @@
 
 (when (and (executable-find "ag")
            (maybe-require-package 'xref-js2))
-  (after-load 'js2-mode
-              (define-key js2-mode-map (kbd "M-.") nil)
-              (add-hook 'js2-mode-hook
-                        (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
+  (with-eval-after-load 'js2-mode
+    (define-key js2-mode-map (kbd "M-.") nil)
+    (add-hook 'js2-mode-hook
+              (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
 
 ;;; Coffeescript
 
-(after-load 'coffee-mode
-            (setq coffee-js-mode preferred-javascript-mode
-                  coffee-tab-width-preferred-javascript-indent-level))
+(with-eval-after-load 'coffee-mode
+  (setq coffee-js-mode preferred-javascript-mode
+        coffee-tab-width-preferred-javascript-indent-level))
 
 (when (fboundp 'coffee-mode)
   (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode)))
@@ -77,21 +76,21 @@
 
   (define-minor-mode inferior-js-keys-mode
     "Bindings for communicating with inferior js interpreter."
-    nil "InfJS" inferior-js-minior-mode-map)
+    nil "InfJS" inferior-js-minor-mode-map)
 
   (dolist (hook '(js2-mode-hook js-mode-hook))
     (add-hook hook 'inferior-js-keys-mode)))
 
 ;;; Alternatively, use skewer mode
 (when (maybe-require-package 'skewer-mode)
-  (after-load 'skewer-mode
-              (add-hook 'skewer-mode-hook
-                        (lambda () (inferior-js-keys-mode -1)))))
+  (with-eval-after-load 'skewer-mode
+    (add-hook 'skewer-mode-hook
+              (lambda () (inferior-js-keys-mode -1)))))
 
 (when (maybe-require-package 'add-node-modules-path)
-  (after-load 'typescript-mode
-              (add-hook 'typescript-mode-hook 'add-node-modules-path))
-  (after-load 'js2-mode
-              (add-hook 'js2-mode-hook 'add-node-modules-path)))
+  (with-eval-after-load 'typescript-mode
+    (add-hook 'typescript-mode-hook 'add-node-modules-path))
+  (with-eval-after-load 'js2-mode
+    (add-hook 'js2-mode-hook 'add-node-modules-path)))
 
 (provide 'init-javascript)

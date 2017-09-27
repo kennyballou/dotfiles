@@ -1,10 +1,9 @@
-(add-auto-mode
- 'nxml-mode
- (concat "\\."
-         (regexp-opt
-          '("xml" "xsd" "sch" "rng" "xlst" "svg" "rss"
-            "gpx" "tcx" "plist"))
-         "\\'"))
+(add-to-list 'auto-mode-alist
+             '((concat "\\."
+                       (regexp-opt
+                        '("xml" "xsd" "sch" "rng" "xlst" "svg" "rss"
+                          "gpx" "tcx" "plist"))
+                       "\\'") .  'nxml-mode))
 
 (setq magic-mode-alist (cons '("<\\?xml " . nxml-mode) magic-mode-alist))
 (fset 'xml-mode 'nxml-mode)

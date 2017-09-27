@@ -32,21 +32,24 @@
       (quote (("NEXT" :inherit warning)
               ("PROJECT" :inherit font-lock-string-face))))
 
-(after-load 'org
-            (org-bable-do-load-languages
-             'org-babel-load-languages
-             `((R . t)
-               (emacs-lisp . t)
-               (gnuplot . t)
-               (haskell . t)
-               (latex . t)
-               (ledger . t)
-               (octave . t)
-               (python . t)
-               (ruby . t)
-               (screen . nil)
-               (,(if (locate-library "ob-sh") 'sh 'shell) . t)
-               (sql . t)
-               (sqlite . t))))
+(with-eval-after-load 'org
+  (org-bable-do-load-languages
+   'org-babel-load-languages
+   `((R . t)
+     (elixir . t)
+     (emacs-lisp . t)
+     (erlang . t)
+     (go . t)
+     (gnuplot . t)
+     (haskell . t)
+     (latex . t)
+     (ledger . t)
+     (octave . t)
+     (python . t)
+     (ruby . t)
+     (screen . nil)
+     (,(if (locate-library "ob-sh") 'sh 'shell) . t)
+     (sql . t)
+     (sqlite . t))))
 
 (provide 'init-org)

@@ -1,7 +1,6 @@
 (require-package 'csv-mode)
-(require-package 'csv-nav)
 
-(add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
+(add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . 'csv-mode))
 
 (setq csv-separators '("," ";" "|" " "))
 

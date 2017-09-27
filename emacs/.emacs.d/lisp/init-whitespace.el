@@ -41,6 +41,10 @@
         (tab-mark 9 [9654 9] [92 9])
         ))
 
+(setq whitespace-style
+      (quote (face trailing tab-mark lines-tail)))
+(add-hook 'find-file-hook 'whitespace-mode)
+
 
 ;; Indent
 (setq standard-indent 4)

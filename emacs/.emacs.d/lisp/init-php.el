@@ -1,4 +1,3 @@
-(when (maybe-require-package 'php-mode)
-  (maybe-require-package 'smarty-mode))
+(maybe-require-package 'php-mode)
 
 (provide 'init-php)
