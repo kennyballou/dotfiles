@@ -1,10 +1,10 @@
 (require-package 'sql-indent)
-(after-load 'sql
-            (require 'sql-indent))
+(with-eval-after-load 'sql
+  (require 'sql-indent))
 
-(after-load 'sql
-            ;; sql-mode basically requires an uncustomized environment
-            (push "--no-psqlrc" sql-postgres-options))
+(with-eval-after-load 'sql
+  ;; sql-mode basically requires an uncustomized environment
+  (push "--no-psqlrc" sql-postgres-options))
 
 (defun sanityinc/fix-postgres-prompt-regexp ()
   "Work around https://debbugs.gnu.org/cgi/bugreport.cgi?bug=22596.
@@ -26,17 +26,17 @@ Fix for the above hasn't been released as of Emacs 25.2."
     (when sql-buffer
       (sanityinc/pop-to-sqli-buffer))))
 
-(after-load 'sql
-            (define-key sql-mode-map (kbd "C-c C-z") 'sanityinc/pop-to-sqli-buffer)
-            (when (package-installed-p 'dash-at-point)
-              (defun sanityinc/maybe-set-dash-db-docset ()
-                (when (eq sql-product 'postgres)
-                  (set (make-local-variable 'dash-at-point-docset) "psql")))
+(with-eval-after-load 'sql
+  (define-key sql-mode-map (kbd "C-c C-z") 'sanityinc/pop-to-sqli-buffer)
+  (when (package-installed-p 'dash-at-point)
+    (defun sanityinc/maybe-set-dash-db-docset ()
+      (when (eq sql-product 'postgres)
+        (set (make-local-variable 'dash-at-point-docset) "psql")))
 
-              (add-hook 'sql-mode'hook 'sanityinc/maybe-set-dash-db-docset)
-              (add-hook 'sql-interactive-mode-hook 'sanityinc/maybe-set-dash-db-docset)
-              (defadvice sql-set-product (after set-dash-docset activate)
-                (sanityinc/maybe-set-dash-db-docset))))
+    (add-hook 'sql-mode'hook 'sanityinc/maybe-set-dash-db-docset)
+    (add-hook 'sql-interactive-mode-hook 'sanityinc/maybe-set-dash-db-docset)
+    (defadvice sql-set-product (after set-dash-docset activate)
+      (sanityinc/maybe-set-dash-db-docset))))
 
 (setq-default sql-input-ring-file-name
               (expand-file-name ".sqli_history" user-emacs-directory))
@@ -101,7 +101,7 @@ SQLi session first, or otherwise set `sql-database' etc."
                 (view-buffer (current-buffer))
                 (user-error "EXPLAIN failed")))))))))
 
-(after-load 'page-break-lines
-            (push 'sql-mode page-break-lines-mode))
+(with-eval-after-load 'page-break-lines
+  (push 'sql-mode page-break-lines-mode))
 
 (provide 'init-sql)

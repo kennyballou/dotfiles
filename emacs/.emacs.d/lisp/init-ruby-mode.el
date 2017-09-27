@@ -2,24 +2,31 @@
 (require-package 'ruby-mode)
 (require-package 'ruby-hash-syntax)
 
-(add-auto-mode 'ruby-mode
-               "Rakefile\\'" "\\.rake\\'" "\\.rxml\\'"
-               "\\.rjs\\'" "\\.librc\\'" "\\.pryrc\\'"
-               "\\.builder\\'" "\\.ru\\'" "\\.gemspec\\'"
-               "Gemfile\\'" "Kirkfile\\'")
-(add-auto-mode 'conf-mode "Gemfile\\.lock\\'")
+(dolist (regxmode (list '("Rakefile\\'" . 'ruby-mode)
+                        '("\\.rake\\'" . 'ruby-mode)
+                        '("\\.rxml\\'" . 'ruby-mode)
+                        '("\\.rjs\\'" . 'ruby-mode)
+                        '("\\.librc\\'" . 'ruby-mode)
+                        '("\\.pryrc\\'" . 'ruby-mode)
+                        '("\\.builder\\'" . 'ruby-mode)
+                        '("\\.ru\\'" . 'ruby-mode)
+                        '("\\.gemspec\\'" . 'ruby-mode)
+                        '("Gemfile\\'" . 'ruby-mode)
+                        '("Kirkfile\\'" . 'ruby-mode)
+                        '("Gemfile\\.lock\\'" . 'conf-mode)))
+  (add-to-list 'auto-mode-alist regxmode))
 
 (setq-default
  ruby-use-encoding-map nil
  ruby-insert-encoding-magic-comment nil)
 
-(after-load 'ruby-mode
-            ;; Stupidly the non bundled ruby-mode isn't a drived mode of
-            ;; prog-mode: we run the latter's hooks anyway in that case.
-            (add-hook 'ruby-mode-hook
-                      (lambda ()
-                        (unless (derived-mode-p 'prog-mode)
-                          (run-hook 'prog-mode-hook)))))
+(with-eval-after-load 'ruby-mode
+  ;; Stupidly the non bundled ruby-mode isn't a drived mode of
+  ;; prog-mode: we run the latter's hooks anyway in that case.
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (unless (derived-mode-p 'prog-mode)
+                (run-hook 'prog-mode-hook)))))
 
 (add-hook 'ruby-mode-hook 'subword-mode)
 
@@ -31,26 +38,26 @@
 ;;; Ruby compilation
 (require-package 'ruby-compilation)
 
-(after-load 'ruby-mode
-            (let ((m ruby-mode-map))
-              (define-key m [S-f7] 'ruby-compilation-this-buffer)
-              (define-key m [f7] 'ruby-compilation-this-test)))
+(with-eval-after-load 'ruby-mode
+  (let ((m ruby-mode-map))
+    (define-key m [S-f7] 'ruby-compilation-this-buffer)
+    (define-key m [f7] 'ruby-compilation-this-test)))
 
-(after-load 'ruby-compilation
-            (defalias 'rake 'ruby-compilation-rake))
+(with-eval-after-load 'ruby-compilation
+  (defalias 'rake 'ruby-compilation-rake))
 
 ;;; Robe
 (when (maybe-require-package 'robe)
-  (after-load 'ruby-mode
-              (add-hook 'ruby-mode-hook 'robe-mode))
-  (after-load 'company
-              (dolist (hook '(ruby-mode-hook
-                              inf-ruby-mode-hook
-                              html-erb-mode-hook
-                              haml-mode))
-                (add-hook hook
-                          (lambda () (sanityinc/local-push-company-backend
-                                      'company-robe))))))
+  (with-eval-after-load 'ruby-mode
+    (add-hook 'ruby-mode-hook 'robe-mode))
+  (with-eval-after-load 'company
+    (dolist (hook '(ruby-mode-hook
+                    inf-ruby-mode-hook
+                    html-erb-mode-hook
+                    haml-mode))
+      (add-hook hook
+                (lambda () (sanityinc/local-push-company-backend
+                            'company-robe))))))
 
 ;; ri support
 (require-package 'yari)
@@ -61,7 +68,7 @@
 (require-package 'bundler)
 
 ;;; ERB
-(require-pckage 'mmm-mode)
+(require-package 'mmm-mode)
 (defun sanityinc/ensure-mmm-erb-loaded ()
   (require 'mmm-erb))
 
@@ -77,13 +84,15 @@
     (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-js)
     (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
 
-(mapc 'sanityinc/set-up-mode-erb
+(mapc 'sanityinc/set-up-mode-for-erb
       '(coffee-mode js-mode js2-mode js3-mode markdown-mode textile-mode))
 
 (mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
 
-(add-auto-mode 'html-erb-mode "\\.rhtml\\'" "\\.html\\.erb\\'")
-(add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'" . html-erb-mode))
+(dolist (regxmode (list '("\\.rhtml\\'" . 'html-erb-mode)
+                        '("\\.html\\.erb\\'". 'html-erb-mode)
+                        '("\\.jst\\.ejs\\'" . html-erb-mode)))
+  (add-to-list 'auto-mode-alist regxmode))
 
 (mmm-add-mode-ext-class 'yaml-mode "\\.yaml\\(\\.erb\\)?\\'" 'erb)
 (sanityinc/set-up-mode-for-erb 'yaml-mode)

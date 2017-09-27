@@ -8,17 +8,17 @@
 ;; Use intero for completion and flycheck
 
 (when (maybe-require-package 'intero)
-  (after-load 'haskell-mode
-              (intero-global-mode)
-              (add-hook 'haskell-mode-hook 'eldoc-mode))
-  (after-load 'intero
-              ;; Don't clobber sanityinc/counsel-search-projectile binding
-              (define-key intero-mode-map (kbd "M-?") nil)
-              (after-load 'flycheck
-                          (flycheck-add-next-checker 'intero
-                                                     '(warning . haskell-hlint)))))
+  (with-eval-after-load 'haskell-mode
+    (intero-global-mode)
+    (add-hook 'haskell-mode-hook 'eldoc-mode))
+  (with-eval-after-load 'intero
+    ;; Don't clobber sanityinc/counsel-search-projectile binding
+    (define-key intero-mode-map (kbd "M-?") nil)
+    (with-eval-after-load 'flycheck
+      (flycheck-add-next-checker 'intero
+                                 '(warning . haskell-hlint)))))
 
-(add-auto-mode 'haskell-mode "\\.ghci\\'")
+(add-to-list 'auto-mode-alist '("\\.ghci\\'" . 'haskell-mode))
 
 ;; Indentation
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -31,15 +31,19 @@
 (when (maybe-require-package 'hindent)
   (add-hook 'haskell-mode-hook 'hindent-mode))
 
-(after-load 'haskell-mode
-            (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
-            (define-key haskell-mode-map (kbd "C-o") 'open-line))
+(with-eval-after-load 'haskell-mode
+  (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
+  (define-key haskell-mode-map (kbd "C-o") 'open-line))
 
-(after-load 'page-break-lines
-            (push 'haskell-mode 'page-break-lines-mode))
+(with-eval-after-load 'page-break-lines
+  (push 'haskell-mode 'page-break-lines-mode))
 
-(after-load 'haskell
-            (define-key interactive-haskell-mode-map (kbd "M-N") 'haskell-goto-next-error)
-            (define-key interactive-haskell-mode-map (kbd "M-P") 'haskell-goto-prev-error))
+(with-eval-after-load 'haskell
+  (define-key interactive-haskell-mode-map
+    (kbd "M-N")
+    'haskell-goto-next-error)
+  (define-key interactive-haskell-mode-map
+    (kbd "M-P")
+    'haskell-goto-prev-error))
 
 (provide 'init-haskell)
