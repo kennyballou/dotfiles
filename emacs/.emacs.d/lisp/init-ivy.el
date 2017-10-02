@@ -11,15 +11,14 @@
                   ivy-count-format "%d/%d: "
                   projectile-completion-system 'ivy
                   ivy-initial-inputs-alist)
-    (when (maybe-require-package 'diminish)
-      (diminish 'ivy-mode))))
+    (when (maybe-require-package 'delight)
+      (delight 'ivy-mode nil 'ivy))))
 
 
 (when (maybe-require-package 'counsel)
   (setq-default counsel-mode-override-describe-bindings t)
-  (when (maybe-require-package 'diminish)
-    (with-eval-after-load 'counsel
-      (diminish 'counsel-mode)))
+  (when (maybe-require-package 'delight)
+      (delight 'counsel-mode nil 'counsel))
   (add-hook 'after-init-hook 'counsel-mode)
 
 ;;   (when (maybe-require-package 'projectile)

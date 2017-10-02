@@ -27,9 +27,9 @@
  truncate-partial-width-windows nil)
 
 (global-auto-revert-mode)
-(when (maybe-require-package 'diminish)
+(when (maybe-require-package 'delight)
   (with-eval-after-load 'after-init-hook
-    (diminish global-auto-revert-mode)))
+    (delight 'global-auto-revert-mode nil 'autorevert)))
 
 (defvar global-auto-revert-non-file-buffers)
 (defvar auto-revert-verbose)
@@ -61,7 +61,7 @@
 (when (eval-when-compile (string< "24.3.1" emacs-version))
   ;; https://github.com/purcell/emacs.d/issues/138
   (with-eval-after-load 'subword
-    (diminish 'subword-mode)))
+    (delight 'subword-mode nil 'subword)))
 
 (unless (fboundp 'display-line-numbers-mode)
   (require-package 'nlinum))
@@ -75,8 +75,8 @@
 
 (require-package 'undo-tree)
 (global-undo-tree-mode)
-(when (maybe-require-package 'diminish)
-  (diminish 'undo-tree-mode))
+(when (maybe-require-package 'delight)
+  (delight 'undo-tree-mode nil 'undo-tree))
 
 ;; Zap *up* to char is a handy pair for zap-to-char
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
@@ -163,7 +163,8 @@
 ;;----------------------------------------------------------------------------
 (require-package 'whole-line-or-region)
 (whole-line-or-region-mode t)
-(diminish 'whole-line-or-region-mode)
+(when (maybe-require-package 'delight)
+  (delight 'whole-line-or-region-mode nil 'whole-line-or-region))
 (make-variable-buffer-local 'whole-line-or-region-mode)
 
 (require-package 'highlight-escape-sequences)
@@ -188,7 +189,9 @@
 (add-hook 'after-init-hook
           (lambda ()
             (guide-key-mode 1)
-            (diminish 'guide-key-mode)))
+            (delight 'guide-key-mode nil 'guide-key)))
+
+(global-hl-line-mode 1)
 
 
 (provide 'init-editing-utils)

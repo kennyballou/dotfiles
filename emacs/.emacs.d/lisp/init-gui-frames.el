@@ -39,9 +39,8 @@
 
 (require-package 'disable-mouse)
 
-(when (maybe-require-package 'diminish)
-  (with-eval-after-load 'disable-mouse-mode
-              (diminish 'disable-mouse-mode)))
+(when (maybe-require-package 'delight)
+  (delight 'disable-mouse-mode nil 'disable-mouse))
 
 ;;scroll margin
 (require 'smooth-scrolling)

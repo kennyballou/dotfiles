@@ -26,9 +26,9 @@
 
 (global-whitespace-cleanup-mode t)
 (global-whitespace-mode t)
-(when (maybe-require-package 'diminish)
-  (diminish 'global-whitespace-cleanup-mode)
-  (diminish 'global-whitespace-mode))
+(when (maybe-require-package 'delight)
+  (delight '((whitespace-cleanup-mode nil whitespace-cleanup-mode)
+             (global-whitespace-mode nil whitespace))))
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
 
@@ -37,12 +37,15 @@
 (defvar whitespace-display-mappings)
 (setq whitespace-display-mappings
       '(
-        (newline-mark 10  [8617 10])
-        (tab-mark 9 [9654 9] [92 9])
+        (newline-mark ?\n  [8617 ?\n] [?$ ?\n])
+        (tab-mark ?\t [8677 ?\t] [92 ?\t])
         ))
 
 (setq whitespace-style
-      (quote (face trailing tab-mark lines-tail)))
+      (quote (face
+              trailing
+              tab-mark
+              lines-tail)))
 (add-hook 'find-file-hook 'whitespace-mode)
 
 

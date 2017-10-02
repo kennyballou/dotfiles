@@ -18,6 +18,6 @@
      (string= "#!" (buffer-substring (point-min) (+ 2 (point-min)))))
    (normal-mode)))
 
-(add-auto-mode 'conf-mode "Procfile")
+(add-to-list 'auto-mode-alist '("Procfile" . 'conf-mode))
 
 (provide 'init-misc)

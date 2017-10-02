@@ -1,4 +1,4 @@
-;;; init: --- Emacs initialization file
+;;; init --- Emacs initialization file
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; This file is bootstraps Emacs configuration which is
@@ -38,7 +38,7 @@
 (require 'init-preload-local nil t)
 
 (require-package 'wgrep)
-(require-package 'diminish)
+(require-package 'delight)
 
 ;; Load configs for specific features and modes
 (require 'init-themes)
@@ -86,32 +86,28 @@
   (require 'init-clojure-cider))
 (require 'init-common-lisp)
 (require 'init-spelling)
-;; (require 'init-misc)
-;; (require 'init-folding)
-;; (require 'init-ledger)
+(require 'init-misc)
+(require 'init-folding)
+(require 'init-ledger)
 
+(maybe-require-package 'regex-tool)
 
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
-;; (global-hl-line-mode 1)
+;; customize interface configuration
+(when (file-exists-p custom-file)
+  (load custom-file))
 
-;; (maybe-require-package 'regex-tool)
+;; Allow optional "init-local"
+(require 'init-local nil t)
 
-;; (require 'server)
-;; (unless (server-running-p)
-;;   (server-start))
+;; Locales (setting them earlier in this file doesn't work in X)
+(require 'init-locales)
 
-;; ;; customize interface configuration
-;; (when (file-exists-p custom-file)
-;;   (load custom-file))
-
-;; ;; Allow optional "init-local"
-;; (require 'init-local nil t)
-
-;; ;; Locales (setting them earlier in this file doesn't work in X)
-;; (require 'init-locales)
-
-;; (when (maybe-require-package 'uptimes)
-;;   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
+(when (maybe-require-package 'uptimes)
+  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 
 (provide 'init)
