@@ -1,9 +1,17 @@
+;;; init-git --- Git and Magit Customization
+;;; Commentary:
+;;; Code:
+
 (require-package 'gitignore-mode)
 (require-package 'gitconfig-mode)
 (maybe-require-package 'git-timemachine)
 
 (when (maybe-require-package 'magit)
   (setq-default magit-diff-refine-hunk t)
+
+  (customize-set-value 'git-commit-summary-max-length 50)
+
+  (add-hook 'git-commit-setup-hook (lambda () (setq fill-column 72)))
 
   ;; Hint: customize `magit-repo-dirs' so that can use C-u M-F12 to
   ;; quickly open magit on any of you projects.
@@ -28,3 +36,4 @@
 (autoload 'vc-git-root "vc-git")
 
 (provide 'init-git)
+;;; init-git.el ends here
