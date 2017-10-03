@@ -7,8 +7,4 @@
   (setq-default ag-highlight-search t)
   (global-set-key (kbd "M-?") 'ag-project))
 
-(when (and (executable-find "rg")
-           (maybe-require-package 'rg))
-  (global-set-key (kbd "M-?") 'rg-project))
-
 (provide 'init-grep)

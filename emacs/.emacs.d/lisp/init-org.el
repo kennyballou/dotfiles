@@ -1,4 +1,8 @@
 (maybe-require-package 'org-cliplink)
+(require-package 'ob-elixir)
+(require-package 'ob-go)
+(require-package 'ob-ipython)
+(require-package 'ob-mongo)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -33,20 +37,27 @@
               ("PROJECT" :inherit font-lock-string-face))))
 
 (with-eval-after-load 'org
-  (org-bable-do-load-languages
+  (org-babel-do-load-languages
    'org-babel-load-languages
-   `((R . t)
+   `((awk . t)
+     (clojure . t)
      (elixir . t)
      (emacs-lisp . t)
-     (erlang . t)
      (go . t)
      (gnuplot . t)
      (haskell . t)
+     (ipython . t)
+     (java . t)
+     (js . t)
      (latex . t)
      (ledger . t)
+     (mongo . t)
      (octave . t)
+     (perl . t)
      (python . t)
+     (R . t)
      (ruby . t)
+     (scala . t)
      (screen . nil)
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (sql . t)

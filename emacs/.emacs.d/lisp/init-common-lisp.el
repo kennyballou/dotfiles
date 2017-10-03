@@ -1,3 +1,7 @@
+;;; init-common-lisp --- Common Lisp Configuration
+;;; Commentary:
+;;; Code:
+
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . 'lisp-mode))
 (add-hook 'lisp-mode-hook (lambda ()
                             (unless (featurep 'slime)
@@ -42,3 +46,4 @@
 (define-key lisp-mode-map (kbd "C-c l") 'lispdoc)
 
 (provide 'init-common-lisp)
+;;; init-common-lisp.el ends here

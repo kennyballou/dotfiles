@@ -1,11 +1,21 @@
-(add-to-list 'auto-mode-alist
-             '((concat "\\."
-                       (regexp-opt
-                        '("xml" "xsd" "sch" "rng" "xlst" "svg" "rss"
-                          "gpx" "tcx" "plist"))
-                       "\\'") .  'nxml-mode))
+;;; init-nxml --- nxml mode setup and configuration
+;;; Commentary:
+;;; Code:
 
-(setq magic-mode-alist (cons '("<\\?xml " . nxml-mode) magic-mode-alist))
+(dolist (regexmode (list '("\\.xml\\'" . 'nxml-mode)
+                         '("\\.xsd\\'" . 'nxml-mode)
+                         '("\\.sch\\'" . 'nxml-mode)
+                         '("\\.rng\\'" . 'nxml-mode)
+                         '("\\.xlst\\'" . 'nxml-mode)
+                         '("\\.svg\\'" . 'nxml-mode)
+                         '("\\.rss\\'" . 'nxml-mode)
+                         '("\\.gpx\\'" . 'nxml-mode)
+                         '("\\.tcx\\'" . 'nxml-mode)
+                         '("\\.plist\\'" . 'nxml-mode)))
+  (add-to-list 'auto-mode-alist regexmode))
+
+;; (setq magic-mode-alist (cons '("<\\?xml " . nxml-mode) magic-mode-alist))
+(add-to-list 'magic-mode-alist '("<\\?xml " . 'nxml-mode))
 (fset 'xml-mode 'nxml-mode)
 (add-hook 'nxml-mode-hook (lambda ()
                             (set (make-local-variable 'ido-use-filename-at-point) nil)))
