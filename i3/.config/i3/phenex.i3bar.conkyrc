@@ -1,0 +1,199 @@
+conky.config = {
+   out_to_x = false,
+   own_window = false,
+   out_to_console = true,
+   background = false,
+   update_interval = 2.0,
+   short_units = true,
+   if_up_strictness = "address",
+   cpu_avg_samples = 2,
+   temperature_unit = "celsius",
+};
+
+conky.text = [[
+[
+${if_match ${new_mails ${HOME}/.mail/kballou-devnulllabs.io/INBOX}>=1}
+{"full_text": "",
+ "background": "\#222222",
+ "color": "\#343434",
+ "separator": false,
+ "separator_block_width": 0},
+{"full_text": "  ",
+ "background": "\#343434",
+ "color": "\#C0C0A2",
+ "separator": false,
+ "separator_block_width": 0},
+{"full_text": "",
+ "background": "\#343434",
+ "color": "\#CB755B",
+ "separator": false,
+ "separator_block_width": 0},
+${else}
+{"full_text": "",
+ "background": "\#222222",
+ "color": "\#CB755B",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+{"full_text": "  ${fs_used /home}",
+ "background": "\#CB755B",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${if_up wlan0}
+{"full_text": "",
+ "background": "\#CB755B",
+ "color": "\#C0C0A2",
+ "separator": false,
+ "separator_block_width": 0},
+{"full_text": "  ${wireless_essid wlan0} (-${wireless_link_qual wlan0}db)",
+ "short_text": "  (-${wireless_link_qual wlan0} db)",
+ "background": "\#C0C0A2",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+${if_up eth0}
+${if_up wlan0}
+${else}
+{"full_text": "",
+ "background": "\#CB755B",
+ "color": "\#C0C0A2",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+{"full_text": "  ",
+ "background": "\#C0C0A2",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+${if_up wlan0}
+{"full_text": "",
+ "background": "\#C0C0A2",
+ "color": "\#4B696D",
+ "separator": false,
+ "separator_block_width": 0},
+${else}${if_up eth0}
+{"full_text": "",
+ "background": "\#C0C0A2",
+ "color": "\#4B696D",
+ "separator": false,
+ "separator_block_width": 0},
+${else}
+{"full_text": "",
+ "background": "\#CB755B",
+ "color": "\#4B696D",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+${endif}
+{"full_text": "  ${loadavg 1}",
+ "min_width": "·······",
+ "background": "\#4B696D",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${if_match "${acpiacadapter}" == "on-line"}
+{"full_text": "",
+ "background": "\#4B696D",
+ "color": "\#8DAA9A",
+ "separator": false,
+ "separator_block_width": 0},
+{"full_text": "  ",
+ "background": "\#8DAA9A",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+${if_match ${battery_percent} >= 90 }
+${if_match "${acpiacadapter}" == "off-line"}
+{"full_text": "",
+ "background": "\#4B696D",
+ "color": "\#8DAA9A",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+{"full_text": " ${battery_percent}%",
+ "background": "\#8DAA9A",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${else}
+${if_match ${battery_percent} >= 75 }
+${if_match "${acpiacadapter}" == "off-line"}
+{"full_text": "",
+ "background": "\#4B696D",
+ "color": "\#8DAA9A",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+{"full_text": " ${battery_percent}%",
+ "background": "\#8DAA9A",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${else}
+${if_match ${battery_percent} >= 50 }
+${if_match "${acpiacadapter}" == "off-line"}
+{"full_text": "",
+ "background": "\#4B696D",
+ "color": "\#8DAA9A",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+{"full_text": " ${battery_percent}%",
+ "background": "\#8DAA9A",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+${else}
+${if_match ${battery_percent} >= 15 }
+${if_match "${acpiacadapter}" == "off-line"}
+{"full_text": "",
+ "background": "\#4B696D",
+ "color": "\#8DAA9A",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+{"full_text": " ${battery_percent}%",
+ "background": "\#8DAA9A",
+ "color": "\#CB755B",
+ "separator": false,
+ "separator_block_width": 0},
+${else}
+${if_match ${battery_percent} >= 5 }
+${if_match "${acpiacadapter}" == "off-line"}
+{"full_text": "",
+ "background": "\#4B696D",
+ "color": "\#8DAA9A",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+{"full_text": " ${battery_percent}%",
+ "background": "\#8DAA9A",
+ "color": "\#CB5B69",
+ "separator": false,
+ "separator_block_width": 0},
+${endif}
+${endif}
+${endif}
+${endif}
+${endif}
+{"full_text": "",
+ "background": "\#8DAA9A",
+ "color": "\#777E76",
+ "separator": false,
+ "separator_block_width": 0},
+{"full_text": "  ${time %H:%M}",
+ "background": "\#777E76",
+ "color": "\#FEFEFE",
+ "separator": false,
+ "separator_block_width": 0},
+{"full_text": "",
+ "background": "\#777E76",
+ "color": "\#222222",
+ "separator": false,
+ "separator_block_width": 0}
+],
+]];

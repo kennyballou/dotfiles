@@ -1,0 +1,190 @@
+# i3 config file (v4)
+
+set $SUP Mod4
+set $ALT Mod1
+
+font xft:DejaVu Sans Mono 10
+
+floating_modifier $ALT
+
+# start a terminal
+bindsym $ALT+Return exec i3-sensible-terminal
+# start ranger
+bindsym $ALT+slash exec urxvt -e ranger
+
+# kill focused window
+bindsym $SUP+q kill
+
+# start dmenu (a program launcher)
+bindsym $ALT+space exec dmenu_run
+
+# change focus
+bindsym $SUP+h focus left
+bindsym $SUP+j focus down
+bindsym $SUP+k focus up
+bindsym $SUP+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $SUP+Left focus left
+bindsym $SUP+Down focus down
+bindsym $SUP+Up focus up
+bindsym $SUP+Right focus right
+
+# move focused window
+bindsym $SUP+Shift+h move left
+bindsym $SUP+Shift+j move down
+bindsym $SUP+Shift+k move up
+bindsym $SUP+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $SUP+Shift+Left move left
+bindsym $SUP+Shift+Down move down
+bindsym $SUP+Shift+Up move up
+bindsym $SUP+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $SUP+bar split h
+
+# split in vertical orientation
+bindsym $SUP+underscore split v
+
+# enter fullscreen mode for the focused container
+bindsym $SUP+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $SUP+s layout stacking
+bindsym $SUP+w layout tabbed
+bindsym $SUP+e layout toggle split
+
+# toggle tiling / floating
+bindsym $SUP+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $SUP+space focus mode_toggle
+
+# focus the parent container
+bindsym $SUP+a focus parent
+
+# focus the child container
+bindsym $SUP+d focus child
+
+# switch to workspace
+set $WS1   1:
+set $WS2   2:
+set $WS3   3:
+set $WS4   4:
+set $WS5   5:
+set $WS6   6:
+set $WS7   7:
+set $WS8   8:
+set $WS9   9:
+set $WS10  10:
+bindsym $SUP+1 workspace $WS1
+bindsym $SUP+2 workspace $WS2
+bindsym $SUP+3 workspace $WS3
+bindsym $SUP+4 workspace $WS4
+bindsym $SUP+5 workspace $WS5
+bindsym $SUP+6 workspace $WS6
+bindsym $SUP+7 workspace $WS7
+bindsym $SUP+8 workspace $WS8
+bindsym $SUP+9 workspace $WS9
+bindsym $SUP+0 workspace $WS10
+
+# move focused container to workspace
+bindsym $SUP+Shift+1 move container to workspace $WS1
+bindsym $SUP+Shift+2 move container to workspace $WS2
+bindsym $SUP+Shift+3 move container to workspace $WS3
+bindsym $SUP+Shift+4 move container to workspace $WS4
+bindsym $SUP+Shift+5 move container to workspace $WS5
+bindsym $SUP+Shift+6 move container to workspace $WS6
+bindsym $SUP+Shift+7 move container to workspace $WS7
+bindsym $SUP+Shift+8 move container to workspace $WS8
+bindsym $SUP+Shift+9 move container to workspace $WS9
+bindsym $SUP+Shift+0 move container to workspace $WS10
+
+# assign classes to workspaces
+assign [class="(?i)firefox"]            $WS2
+assign [class="(?i)chromium"]           $WS2
+assign [class="(?i)vlc"]                $WS10
+assign [class="(?i)clementine"]         $WS10
+assign [class="(?i)pavucontrol"]        $WS10
+
+# Always float certain windows
+for_window [class="(?i)firefox" window_role="Organizer"] floating enable
+for_window [class="(?i)pavucontrol"] floating enable
+for_window [class="(?i)clementine"] floating enable border pixel 5
+for_window [class="soundconverter"] floating enable
+for_window [class="(?i)vlc"] floating enable border
+for_window [class="(?i)lxappearance"] floating enable
+for_window [class="(?i)pinentry"] floating enable border pixel 1
+for_window [class="(?i)xarchiver"] floating enable
+for_window [class="(?i)gimp"] floating enable
+for_window [class="(?i)boincmgr"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="(?i)urxvt" title="ranger"] floating enable
+
+# Other window settings
+new_window pixel 5
+
+# reload the configuration file
+bindsym $SUP+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $SUP+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $SUP+Shift+q exec "i3-nagbar -t warning -m 'Log Off?' -b 'Yes' 'i3-msg exit'"
+
+bindsym $ALT+Ctrl+l exec "dm-tool lock"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $SUP+r mode "resize"
+
+bar {
+    status_command $HOME/.config/i3/conky.sh
+    strip_workspace_numbers yes
+    position top
+    font xft:DejaVu Sans Mono, Liberation Mono, FontAwesome 10
+    tray_output primary
+
+    colors {
+           background #222222 #222222 #222222
+           statusline #000000
+           separator #FF9955
+
+           focused_workspace #4B3B51 #4B3B551 #FEFEFE
+           inactive_workspace #60665F #60665F #F2DBAE
+           urgent_workspace #9F5CA4 #9F5CA4 #F2DBAE
+    }
+}
+
+client.focused          #4B3B51 #4B3B51 #DFDFDF #C0C0A2 #4B3B51
+client.focused_inactive #60665F #60665F #9A9A9A #111111 #60665F
+client.unfocused        #4A4B4C #4A4B4C #A1A1A1 #BFBFBF #4A4B4C
+client.urgent           #CB755B #CB755B #FDFDFD #FBFBFB #CB755B
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
+
+exec --no-startup-id compton -cCGb
+exec --no-startup-id light-locker
+exec --no-startup-id xbindkeys
+exec --no-startup-id dunst
+exec --no-startup-id ibus-daemon
+exec --no-startup-id remind -z5 -k"notify-send -t 0 'Reminder': %s &" ~/.reminders
