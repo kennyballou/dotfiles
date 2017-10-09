@@ -1,3 +1,7 @@
+;;; init-projectile --- setup and configuration for projectile
+;;; Commentary:
+;;; Code:
+
 (when (maybe-require-package 'projectile)
   (add-hook 'after-init-hook 'projectile-mode)
 
@@ -15,3 +19,4 @@
          (format " Proj[%s]" (projectile-project-name)))))))
 
 (provide 'init-projectile)
+;;; init-projectile.el ends here
