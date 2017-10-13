@@ -17,10 +17,13 @@
        'python-mode-hook
        (lambda () (sanityinc/local-push-company-backend 'company-anaconda))))))
 
+(defvar flycheck-disabled-checkers)
+
 (when (maybe-require-package 'flycheck)
-  (add-to-list 'flycheck-disabled-checkers 'python-pylint)
-  (add-hook 'python-mode-hook
-            (lambda () (flycheck-select-checker 'python-flake8))))
+  (with-eval-after-load 'flycheck
+    (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+    (add-hook 'python-mode-hook
+              (lambda () (flycheck-select-checker 'python-flake8)))))
 
 (provide 'init-python)
 ;;; init-python.el ends here
