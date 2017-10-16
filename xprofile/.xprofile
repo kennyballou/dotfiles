@@ -10,4 +10,4 @@ export QT_IM_MODULES=ibus
 
 ${HOME}/.local/bin/fehbg &
 
-exec awesome
+exec i3
