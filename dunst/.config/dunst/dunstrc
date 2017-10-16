@@ -1,0 +1,63 @@
+# -*- mode: toml -*-
+[global]
+font = DejaVu Sans Mono 10
+allow_markup = yes
+plain_text = no
+format = "<b>%s</b>\n%b"
+sort = no
+indicate_hidden = yes
+alignment = center
+bounce_freq = 0
+show_age_threshold = 300
+word_wrap = yes
+ignore_newline = no
+stack_duplicates = yes
+hide_duplicates_count = yes
+geometry = "300x50-15+49"
+shrink = no
+transparancy = 5
+idle_threshold = 0
+monitor = 0
+follow = none
+sticky_history = yes
+history_length = 15
+show_indicators = no
+line_height = 3
+separator_hiehgt = 2
+padding = 6
+horizontal_padding = 6
+separator_color = frame
+startup_notification = false
+dmenu = /usr/bin/dmenu -p dunst:
+browser = /usr/bin/firefox -new-tab
+icon_position = left
+max_icon_size = 80
+icon_folders = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
+
+[frame]
+width = 3
+color = "#C0C0A2"
+
+[shortcuts]
+# close = mod4+space
+# close_all = mod4+shift+space
+history = mod4+grave
+context = mod4+shift+period
+
+[urgency_low]
+frame_color = "#3B7C87"
+foreground = "#EEEEEE"
+background = "#555555"
+timeout = 4
+
+[urgency_normal]
+frame_color = "#425C60"
+foreground = "#EEEEEE"
+background = "#555555"
+timeout = 6
+
+[urgency_critical]
+frame_color = "#B7472A"
+foreground = "#B7472A"
+background = "#555555"
+timeout = 8
