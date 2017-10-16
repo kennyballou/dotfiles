@@ -1,3 +1,7 @@
+;;; init-gui-frames --- initialize GUI Frames
+;;; Commentary:
+;;; Code:
+
 ;; suppress gui features
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
@@ -47,3 +51,4 @@
 (setq smooth-scrolling-margin 10)
 
 (provide 'init-gui-frames)
+;;; init-gui-frames.el ends here

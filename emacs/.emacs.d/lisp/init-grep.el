@@ -1,3 +1,7 @@
+;;; init-grep --- grep/search configuration
+;;; Commentary:
+;;; Code:
+
 (setq-default grep-highlight-matches t
               grep-scroll-output t)
 
@@ -8,3 +12,4 @@
   (global-set-key (kbd "M-?") 'ag-project))
 
 (provide 'init-grep)
+;;; init-grep.el ends here
