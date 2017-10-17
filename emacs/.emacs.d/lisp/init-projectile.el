@@ -5,6 +5,7 @@
 (when (maybe-require-package 'projectile)
   (add-hook 'after-init-hook 'projectile-mode)
 
+  (defvar guide-key/guide-key-sequence)
   ;; The following code means you get a menu if you hit "C-c p" and wait
   (with-eval-after-load 'guide-key
     (add-to-list 'guide-key/guide-key-sequence "C-c p"))

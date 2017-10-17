@@ -11,13 +11,21 @@
 
   (customize-set-value 'git-commit-summary-max-length 50)
 
-  (add-hook 'git-commit-setup-hook (lambda () (setq fill-column 72)))
+  (add-hook 'git-commit-setup-hook
+            (lambda ()
+              (setq fill-column 72)
+              (global-whitespace-mode nil)
+              ))
 
   ;; Hint: customize `magit-repo-dirs' so that can use C-u M-F12 to
   ;; quickly open magit on any of you projects.
   (global-set-key [(meta f12)] 'magit-status)
   (global-set-key (kbd "C-x g") 'magit-status)
   (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup))
+
+(defvar magit-status-mode-map)
+(defvar magit-status)
+(defvar magit-mode-quit-window)
 
 (with-eval-after-load 'magit
   (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up)

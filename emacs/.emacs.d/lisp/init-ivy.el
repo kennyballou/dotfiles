@@ -21,28 +21,6 @@
       (delight 'counsel-mode nil 'counsel))
   (add-hook 'after-init-hook 'counsel-mode)
 
-;;   (when (maybe-require-package 'projectile)
-;;     (let ((search-function
-;;            (cond
-;;             ((executable-find "rg") 'counsel-rg)
-;;             ((executable-find "ag") 'counsel-ag)
-;;             ((executable-find "ack") 'counsel-ack))))
-;;       (when search-function
-;;         (defun sanityinc/counsel-search-project (initial-input &optional use-current-dir)
-;;           "Search using `counsel-{rg,ag,pt,ack}' from the project root for INITIAL-INPUT.
-;; If there is no project root, or if the prefix argument
-;; USE-CURRENT-DIR is set, then search from the current directory instead."
-;;           (interactive (list (thing-at-point 'symbol)
-;;                              current-prefix-arg))
-;;           (let ((current-prefix-arg)
-;;                 (dir (if use-current-dir
-;;                          default-directory
-;;                        (condition-case err
-;;                            (projectile-project-root)
-;;                          (error default-directory)))))
-;;             (funcall search-function dir)))))
-;;     (global-set-key (kbd "M-?") 'sanityinc/consel-search-project))
-
   (when (maybe-require-package 'swiper)
     (with-eval-after-load 'ivy
       (defun sanityinc/swiper-at-point (sym)

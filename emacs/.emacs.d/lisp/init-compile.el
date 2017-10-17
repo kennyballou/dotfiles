@@ -1,11 +1,18 @@
+;;; init-compile --- compile configuration
+;;; Commentary:
+;;; Code:
+
 (setq-default compilation-scroll-output t)
 
 (require-package 'alert)
 
 ;; Customize `alert-default-style' to get messages after compilation
 
+(defvar window-buffer)
+(defvar compilation-filter-start)
+
 (defun sanityinc/alert-after-compliation-finish (buf result)
-  "Use `alert' to report compilation RESULT if BUF is hidden."
+  "If BUF is hidden, use `alert' to report compilation RESULT."
   (when (buffer-live-p buf)
     (unless (catch 'is-visible
               (walk-windows (lambda (w)
@@ -57,3 +64,4 @@
   (add-hook 'compilation-filter-hook 'sanityinc/colourise-comilation-buffer))
 
 (provide 'init-compile)
+;;; init-compile.el ends here

@@ -1,3 +1,9 @@
+;;; init-flycheck --- flycheck configuration
+;;; Commentary:
+;;; Code:
+
+(defvar flycheck-display-errors-function)
+
 (when (maybe-require-package 'flycheck)
   (add-hook 'after-init-hook 'global-flycheck-mode)
   (setq flycheck-display-errors-function
@@ -7,3 +13,4 @@
     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
 
 (provide 'init-flycheck)
+;;; init-flycheck.el ends here

@@ -44,6 +44,7 @@
         (tab-mark ?\t [8677 ?\t] [92 ?\t])
         ))
 
+(defvar whitespace-style)
 (setq whitespace-style
       (quote (face
               trailing
@@ -65,17 +66,18 @@
 
 ;; fci mode
 ;; https://www.emacswiki.org/emacs/FillColumnIndicator
+(defvar fci-mode)
 (customize-set-value 'fci-rule-column 79)
 (customize-set-value 'fci-rule-width 5)
 (define-globalized-minor-mode global-fci-mode fci-mode
   (lambda ()
     (if (and
-	 (not (string-match "^\*.*\*$" (buffer-name)))
-	 (not (eq major-mode 'dired-mode))
-	 (not (eq major-mode 'term-mode))
-	 (not (eq major-mode 'multi-term-mode))
-	 )
-	(fci-mode 1))))
+         (not (string-match "^\*.*\*$" (buffer-name)))
+         (not (eq major-mode 'dired-mode))
+         (not (eq major-mode 'term-mode))
+         (not (eq major-mode 'multi-term-mode))
+         )
+        (fci-mode 1))))
 (global-fci-mode 1)
 
 (add-hook 'after-change-major-mode-hook 'global-fci-mode)
