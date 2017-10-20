@@ -4,6 +4,7 @@
 ;;; This file is bootstraps Emacs configuration which is
 ;;; divided into a number of separate files
 ;;; based on: https://github.com/purcell/emacs.d/blob/master/init.el
+;;; Takes inspiration from https://github.com/jaypei/emacs.d
 
 ;;; Code:
 
@@ -33,6 +34,7 @@
 (require 'init-site-lisp)
 (require 'init-elpa)
 (require 'init-exec-path)
+(require 'init-backupfiles)
 
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)

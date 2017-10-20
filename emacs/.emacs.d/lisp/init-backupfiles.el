@@ -1,3 +1,7 @@
+;;; init-backupfiles --- backup and temp file configuration
+;;; Commentary:
+;;; Code:
+
 ;; Snippet taken from https://stackoverflow.com/a/18330742/7492588
 (defvar --backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p --backup-directory))
@@ -14,3 +18,6 @@
       auto-save-timeout 20
       auto-save-interval 200
       )
+
+(provide 'init-backupfiles)
+;;; init-backupfiles.el ends here

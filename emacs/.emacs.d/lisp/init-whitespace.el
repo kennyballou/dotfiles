@@ -20,6 +20,7 @@
                 Info-mode-hook
                 eww-mode-hook
                 term-mode-hook
+                multi-term-mode-hook
                 comint-mode-hook
                 compilation-mode-hook
                 twittering-mode-hook
