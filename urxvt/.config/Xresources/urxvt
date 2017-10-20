@@ -1,29 +1,25 @@
 !-*-{ URxvt
 urxvt*font: xft:DejaVu Sans Mono:size=10
+urxvt*xftAntialias: True
 urxvt*urgentOnBell: True
 urxvt*scrollBar: False
-urxvt*secondaryscroll: true
+urxvt*secondaryscroll: True
 urxvt*print-pipe: "cat > /dev/null"
-urxvt*saveLines: 65535
+urxvt*saveLines: 16777216
 
 urxvt*iso14755: False
-urxvt*perl-ext-common: default,matcher,clipboard
+urxvt*perl-ext-common: default,matcher,selection-to-clipboard,clipboard
 urxvt*keysym.M-u: perl:url-select:select_next
 urxvt*matcher.button: 1
-urxvt*url-launcher: /usr/bin/chromium
+urxvt*url-launcher: /usr/bin/xdg-open
 urxvt*keysym.M-Escape: perl:keyboard-select:activate
-urxvt*keysym.M-c: perl:clipboard:copy
-urxvt*keysym.M-v: perl:clipboard:paste
-urxvt*keysym.M-C-v: perl:clipboard_escaped
-urxvt*copyCommand: xsel -ib
-urxvt*pasteCommand: xsel -ob
 
-urxvt*iconFile: /usr/share/icons/Faience/apps/scalable/utilities-terminal.svg
+urxvt*iconFile: /usr/share/icons/Paper/16x16/apps/utilities-terminal.png
 !Zenburn
 urxvt*background: #3f3f3f
 urxvt*foreground: #dcdccc
 urxvt*cursorColor: #aaaaaa
-urxvt*colorUL: #366060
+urxvt*colorUL: #669090
 urxvt*underlineColor: #dfaf8f
 urxvt*color0: #3f3f3f
 urxvt*color1: #cc9393
