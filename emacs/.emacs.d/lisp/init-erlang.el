@@ -2,12 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
-(ignore-errors
-  (require-package 'erlang)
-  (require-package 'edts))
-
-(when (package-installed-p 'erlang)
+(defun kb/erlang-config ()
+  "Configure Erlang and EDTS modes."
   (require 'erlang-start))
+
+(defvar erlang)
+(defvar edts)
+(use-package erlang
+  :config (kb/erlang-config))
+(use-package edts)
 
 (provide 'init-erlang)
 ;;; init-erlang.el ends here

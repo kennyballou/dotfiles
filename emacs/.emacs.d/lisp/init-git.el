@@ -19,7 +19,6 @@
 
   ;; Hint: customize `magit-repo-dirs' so that can use C-u M-F12 to
   ;; quickly open magit on any of you projects.
-  (global-set-key [(meta f12)] 'magit-status)
   (global-set-key (kbd "C-x g") 'magit-status)
   (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup))
 

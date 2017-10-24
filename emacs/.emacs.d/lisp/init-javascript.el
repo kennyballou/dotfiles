@@ -1,3 +1,7 @@
+;;; init-javascript --- Javascript and related modes configuration
+;;; Commentary:
+;;; Code:
+
 (maybe-require-package 'json-mode)
 (maybe-require-package 'js2-mode)
 (maybe-require-package 'coffee-mode)
@@ -94,3 +98,4 @@
     (add-hook 'js2-mode-hook 'add-node-modules-path)))
 
 (provide 'init-javascript)
+;;; init-javascript.el ends here

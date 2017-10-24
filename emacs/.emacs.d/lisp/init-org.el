@@ -1,3 +1,7 @@
+;;; init-org --- Org mode configurations
+;;; Commentary:
+;;; Code:
+
 (maybe-require-package 'org-cliplink)
 (require-package 'ob-elixir)
 (require-package 'ob-go)
@@ -10,6 +14,7 @@
 
 ;; Various preferences
 (setq org-log-done t
+      org-directory "~/.org/"
       org-edit-timestamp-down-means-later t
       org-archive-mark-done nil
       org-hide-emphasis-markers t
@@ -64,3 +69,4 @@
      (sqlite . t))))
 
 (provide 'init-org)
+;;; init-org.el ends here

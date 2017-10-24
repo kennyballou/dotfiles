@@ -1,7 +1,12 @@
-(require-package 'csv-mode)
+;;; init-csv --- csv mode configurations
+;;; Commentary:
+;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . 'csv-mode))
-
-(setq csv-separators '("," ";" "|" " "))
+(defvar csv-mode)
+(defvar csv-separators)
+(use-package csv-mode
+  :mode "\\.[Cc][Ss][Vv]\\'"
+  :config (setq csv-separators '("," ";" "|" " ")))
 
 (provide 'init-csv)
+;;; init-csv.el ends here
