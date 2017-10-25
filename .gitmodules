@@ -1,6 +1,0 @@
-[submodule "awesome/.config/awesome/blingbling"]
-	path = awesome/.config/awesome/blingbling
-	url = ssh://github.com/kennyballou/blingbling.git
-[submodule "awesome/.config/awesome/lain"]
-	path = awesome/.config/awesome/lain
-	url = git://github.com/copycat-killer/lain.git
