@@ -1,5 +1,5 @@
 !-*-{ URxvt
-urxvt*font: xft:DejaVu Sans Mono:size=10
+urxvt*font: xft:DejaVu Sans Mono:style=Book:size=10
 urxvt*xftAntialias: True
 urxvt*urgentOnBell: True
 urxvt*scrollBar: False
