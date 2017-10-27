@@ -9,5 +9,11 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULES=ibus
 
 ${HOME}/.local/bin/fehbg &
+compton -cCGb &
+light-locker &
+xbindkeys &
+dunst &
+ibus-daemon &
+remind -z5 -k"notify-send -t 0 'Reminder': %s &" ${HOME}/.reminders &
 
 exec i3

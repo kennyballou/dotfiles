@@ -181,10 +181,3 @@ client.focused_inactive #60665F #60665F #9A9A9A #111111 #60665F
 client.unfocused        #4A4B4C #4A4B4C #A1A1A1 #BFBFBF #4A4B4C
 client.urgent           #CB755B #CB755B #FDFDFD #FBFBFB #CB755B
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
-
-exec --no-startup-id compton -cCGb
-exec --no-startup-id light-locker
-exec --no-startup-id xbindkeys
-exec --no-startup-id dunst
-exec --no-startup-id ibus-daemon
-exec --no-startup-id remind -z5 -k"notify-send -t 0 'Reminder': %s &" ~/.reminders
