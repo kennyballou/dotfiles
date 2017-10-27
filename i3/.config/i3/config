@@ -134,7 +134,7 @@ bindsym $SUP+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $SUP+Shift+q exec "i3-nagbar -t warning -m 'Log Off?' -b 'Yes' 'i3-msg exit'"
 
-bindsym $ALT+Ctrl+l exec "dm-tool lock"
+bindsym $ALT+Ctrl+l exec "${HOME}/.local/bin/lock.sh"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
