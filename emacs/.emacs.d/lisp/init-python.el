@@ -1,11 +1,23 @@
 ;;; init-python --- configuration and setup for python
 ;;; Commentary:
 ;;; Code:
+
+(defvar virtualenvwrapper)
+(defvar venv-dirlookup-names)
+
 (add-to-list 'auto-mode-alist '("SConstruct\\'" . 'python-mode))
 (add-to-list 'auto-mode-alist '("SConscript\\'" . 'python-mode))
 
 (require-package 'pip-requirements)
-(require-package 'virtualenvwrapper)
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+
+  (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
+
+  (venv-initialize-interactive-shell)
+
+  )
 
 (when (maybe-require-package 'anaconda-mode)
   (with-eval-after-load 'python
