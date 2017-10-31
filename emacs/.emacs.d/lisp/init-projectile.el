@@ -26,6 +26,12 @@
   (with-eval-after-load 'guide-key
     (add-to-list 'guide-key/guide-key-sequence "C-c p"))
 
+  (require 'server)
+  (add-hook 'projectile-after-switch-project-hook
+            (lambda () (setq server-name (projectile-project-name))
+              (server-start)
+              ))
+
   ;; Shorter modeline
   (setq-default
    projectile-mode-line

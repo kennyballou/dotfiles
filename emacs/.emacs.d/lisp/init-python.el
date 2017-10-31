@@ -15,7 +15,7 @@
 
   (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
 
-  (venv-initialize-interactive-shell)
+  ;;(venv-initialize-interactive-shell)
 
   )
 
