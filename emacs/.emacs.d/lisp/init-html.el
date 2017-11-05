@@ -1,3 +1,7 @@
+;;; init-html --- html configurations
+;;; Commentary:
+;;; Code:
+
 (require-package 'tidy)
 (add-hook 'html-mode-hook (lambda () (tidy-build-menu html-mode-map)))
 
@@ -10,3 +14,4 @@
 ;; Note: ERB is configured in init-ruby-mode
 
 (provide 'init-html)
+;;; init-html.el ends here
