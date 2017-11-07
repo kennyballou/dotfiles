@@ -4,6 +4,7 @@
 
 (defvar virtualenvwrapper)
 (defvar venv-dirlookup-names)
+(defvar python-shell-interpreter)
 
 (add-to-list 'auto-mode-alist '("SConstruct\\'" . 'python-mode))
 (add-to-list 'auto-mode-alist '("SConscript\\'" . 'python-mode))
@@ -36,6 +37,9 @@
     (add-to-list 'flycheck-disabled-checkers 'python-pylint)
     (add-hook 'python-mode-hook
               (lambda () (flycheck-select-checker 'python-flake8)))))
+
+(when (executable-find "ipython")
+  (setq python-shell-interpreter "ipython"))
 
 (provide 'init-python)
 ;;; init-python.el ends here
