@@ -110,7 +110,7 @@ Inspired by gf/org-current-month-notes-file"
   (concat org-directory "notes/"
           (format-time-string "%Y-%m.org")))
 
-(defun kb/org-switch-current-notes-file ()
+(defun kb/org-switch-to-current-notes-file ()
   "Open current notes file."
   (interactive)
   (find-file (kb/org-current-notes-file)))
@@ -178,7 +178,7 @@ Open either current project notes, or default notes file"
   (interactive)
   (if (projectile-project-name)
       (fullframe gf/org-switch-to-project-org-file quit-window)
-    (fullframe kb/org-switch-current-notes-file quit-window)))
+    (fullframe kb/org-switch-to-current-notes-file quit-window)))
 
 (global-set-key (kbd "C-c n") #'kb/org-switch-to-notes)
 
