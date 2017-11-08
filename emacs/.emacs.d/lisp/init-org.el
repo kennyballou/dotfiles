@@ -9,11 +9,14 @@
 ;;; Code:
 
 (require 'org)
-(maybe-require-package 'org-cliplink)
-(require-package 'ob-elixir)
-(require-package 'ob-go)
-(require-package 'ob-ipython)
-(require-package 'ob-mongo)
+(require 'ox-md)
+(use-package org-cliplink)
+(use-package org-fstree)
+(use-package ob-elixir)
+(use-package ob-go)
+(use-package ob-ipython)
+(use-package ob-mongo)
+(use-package ox-gfm)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -36,7 +39,17 @@
       org-use-fast-todo-selection t
       org-confirm-babel-evaluate nil
       org-src-fontify-natively t
-      org-src-tab-acts-natively t)
+      org-src-tab-acts-natively t
+      org-files (append
+                 (file-expand-wildcards (concat org-directory "*/*.org"))
+                 (file-expand-wildcards (concat org-directory "*/*/*.org")))
+      org-clock-persistence-insinuate t
+      org-clock-persist t
+      org-clock-in-resume t
+      org-clock-in-switch-to-state "STARTED"
+      org-clock-into-drawer t
+      org-time-clocksum-format
+      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
 
 (defvar org-projects-dir (expand-file-name
@@ -53,6 +66,13 @@
         ("z" "Project note" entry (file+headline
                                    gf/org-resolve-project-org-file "Notes")
          "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+        ("r" "respond" entry (file+headline kb/org-current-notes-file "Tasks")
+         "* NEXT Respond to %:from on %:subject\nSCHEDULED: \t\n%U\n%a\n"
+         :clock-in t :clock-resume t :immediate-finish t)
+        ("w" "org-protocol" (file+headline kb/org-current-notes-file "Tasks")
+         "* TODO Review %c\n%U\n" :immediate-finish t)
+        ("m" "Meeting" (file+headline kb/org-current-notes-file "Meetings")
+         "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
         ))
 
 (setq org-todo-keywords
@@ -90,6 +110,11 @@ Inspired by gf/org-current-month-notes-file"
   (concat org-directory "notes/"
           (format-time-string "%Y-%m.org")))
 
+(defun kb/org-switch-current-notes-file ()
+  "Open current notes file."
+  (interactive)
+  (find-file (kb/org-current-notes-file)))
+
 (defun gf/org-refile-files-first ()
   "Choose an org file to file in, then pick the node.
 This prevents Emacs opening all of the refile targets at once."
@@ -120,7 +145,6 @@ This prevents Emacs opening all of the refile targets at once."
   (interactive)
   (find-file (gf/org-resolve-project-org-file)))
 
-
 (with-eval-after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -147,6 +171,16 @@ This prevents Emacs opening all of the refile targets at once."
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (sql . t)
      (sqlite . t))))
+
+(defun kb/org-switch-to-notes ()
+  "Switch to notes.
+Open either current project notes, or default notes file"
+  (interactive)
+  (if (projectile-project-name)
+      (fullframe gf/org-switch-to-project-org-file quit-window)
+    (fullframe kb/org-switch-current-notes-file quit-window)))
+
+(global-set-key (kbd "C-c n") #'kb/org-switch-to-notes)
 
 (provide 'init-org)
 ;;; init-org.el ends here
