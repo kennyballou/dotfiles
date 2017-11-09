@@ -11,8 +11,8 @@
 (defvar projectile-globally-ignored-files)
 
 (use-package projectile
-  :init (add-hook 'after-init-hook 'projectile-global-mode)
   :ensure t
+  :init (add-hook 'after-init-hook 'projectile-global-mode)
   :config
 
   (setq projectile-switch-project-action 'projectile-dired
@@ -28,9 +28,9 @@
 
   (require 'server)
   (add-hook 'projectile-after-switch-project-hook
-            (lambda () (setq server-name (projectile-project-name))
-              (server-start)
-              ))
+            (lambda ()
+              (setq server-name (projectile-project-name))
+              (server-start)))
 
   ;; Shorter modeline
   (setq-default

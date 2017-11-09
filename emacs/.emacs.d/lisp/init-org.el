@@ -176,7 +176,7 @@ This prevents Emacs opening all of the refile targets at once."
   "Switch to notes.
 Open either current project notes, or default notes file"
   (interactive)
-  (if (projectile-project-name)
+  (if (projectile-project-p)
       (fullframe gf/org-switch-to-project-org-file quit-window)
     (fullframe kb/org-switch-to-current-notes-file quit-window)))
 
