@@ -56,7 +56,7 @@
                           (concat org-directory "projects")))
 
 (setq org-capture-templates
-      `(("t" "Todo" entry (file+headline kb/org-current-notes-file "Tasks")
+      `(("t" "todo" entry (file+headline kb/org-current-notes-file "Tasks")
          "* TODO %?\n%U\n" :clock-in t :clock-resume t)
         ("n" "note" entry (file+headline kb/org-current-notes-file "Notes")
          "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
@@ -177,8 +177,8 @@ This prevents Emacs opening all of the refile targets at once."
 Open either current project notes, or default notes file"
   (interactive)
   (if (projectile-project-p)
-      (fullframe gf/org-switch-to-project-org-file quit-window)
-    (fullframe kb/org-switch-to-current-notes-file quit-window)))
+      (gf/org-switch-to-project-org-file)
+    (kb/org-switch-to-current-notes-file)))
 
 (global-set-key (kbd "C-c n") #'kb/org-switch-to-notes)
 
