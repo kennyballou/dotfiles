@@ -11,6 +11,7 @@
 (require 'org)
 (require 'ox-md)
 (use-package org-cliplink)
+(use-package org-clojure)
 (use-package org-fstree)
 (use-package ob-elixir)
 (use-package ob-go)
@@ -49,7 +50,8 @@
       org-clock-in-switch-to-state "STARTED"
       org-clock-into-drawer t
       org-time-clocksum-format
-      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
+      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
+      org-babel-clojure-backend 'cider)
 
 
 (defvar org-projects-dir (expand-file-name
