@@ -67,19 +67,15 @@
          "* TODO %?\n%U\n" :clock-in t :clock-resume t)
         ("n" "note" entry (file+headline kb/org-current-notes-file "Notes")
          "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-        ("x" "Project todo" entry (file+headline
+        ("x" "project todo" entry (file+headline
                                    gf/org-resolve-project-org-file "Tasks")
          "* TODO %?\n%U\n" :clock-in t :clock-resume t)
-        ("z" "Project note" entry (file+headline
+        ("z" "project note" entry (file+headline
                                    gf/org-resolve-project-org-file "Notes")
          "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
         ("r" "respond" entry (file+headline kb/org-current-notes-file "Tasks")
          "* NEXT Respond to %:from on %:subject\nSCHEDULED: \t\n%U\n%a\n"
          :clock-in t :clock-resume t :immediate-finish t)
-        ("w" "org-protocol" (file+headline kb/org-current-notes-file "Tasks")
-         "* TODO Review %c\n%U\n" :immediate-finish t)
-        ("m" "Meeting" (file+headline kb/org-current-notes-file "Meetings")
-         "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
         ))
 
 (setq org-todo-keywords
