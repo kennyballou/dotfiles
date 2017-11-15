@@ -3,10 +3,17 @@
 ;;; Code:
 
 ;; Snippet taken from https://stackoverflow.com/a/18330742/7492588
-(defvar --backup-directory (concat user-emacs-directory "backups"))
-(if (not (file-exists-p --backup-directory))
-    (make-directory --backup-directory t))
+(defconst --backup-directory (concat user-emacs-directory "backups/"))
+(defconst --lockfile-directory (concat user-emacs-directory "lockfiles/")
+  "Lockfiles and Autosave files directory.")
+(unless (file-exists-p --backup-directory)
+  (make-directory --backup-directory t)
+  (set-file-modes --backup-directory #o700))
+(unless (file-exists-p --lockfile-directory)
+  (make-directory --lockfile-directory)
+  (set-file-modes --lockfile-directory #o700))
 (setq backup-directory-alist `(("." . ,--backup-directory)))
+(setq auto-save-file-name-transforms `((".*" ,--lockfile-directory t)))
 (setq make-backup-files t
       backup-by-copying t
       version-control t

@@ -24,7 +24,8 @@
                 comint-mode-hook
                 compilation-mode-hook
                 twittering-mode-hook
-                minibuffer-setup-hook))
+                minibuffer-setup-hook
+                calendar-mode-hook))
   (add-hook hook #'sanityinc/no-trailing-whitespace))
 
 (global-whitespace-cleanup-mode t)
