@@ -1,4 +1,7 @@
-;;; Basic ruby setup
+;;; init-ruby --- Basic ruby setup
+;;; Commentary:
+;;; Code:
+
 (require-package 'ruby-mode)
 (require-package 'ruby-hash-syntax)
 
@@ -101,3 +104,4 @@
   (mmm-add-mode-ext-class mode "\\.js\\.erb\\'" 'erb))
 
 (provide 'init-ruby-mode)
+;;; init-ruby-mode.el ends here

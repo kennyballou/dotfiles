@@ -1,4 +1,7 @@
-;; Misc config - yet to be placed in separate files
+;;; init-misc --- Miscellaneous Configuration
+;;; Commentary:
+;;; Misc config - yet to be placed in separate files
+;;; Code:
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -21,3 +24,4 @@
 (add-to-list 'auto-mode-alist '("Procfile" . 'conf-mode))
 
 (provide 'init-misc)
+;;; init-misc.el ends here

@@ -1,3 +1,7 @@
+;;; init-sql --- SQL mode configuration
+;;; Commentary:
+;;; Code:
+
 (require-package 'sql-indent)
 (with-eval-after-load 'sql
   (require 'sql-indent))
@@ -105,3 +109,4 @@ SQLi session first, or otherwise set `sql-database' etc."
   (push 'sql-mode page-break-lines-mode))
 
 (provide 'init-sql)
+;;; init-sql.el ends here

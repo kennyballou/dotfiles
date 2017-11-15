@@ -1,3 +1,7 @@
+;;; init-slime --- Slime mode and lispy configuration
+;;; Commentary:
+;;; Code:
+
 (require-package 'slime)
 
 (require-package 'hippie-expand-slime)
@@ -37,3 +41,4 @@
 
 
 (provide 'init-slime)
+;;; init-slime.el ends here

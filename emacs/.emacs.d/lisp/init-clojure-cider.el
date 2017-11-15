@@ -1,3 +1,7 @@
+;;; init-clojure-cider --- Clojure Cider Configuration
+;;; Commentary:
+;;; Code:
+
 (require 'init-whitespace)
 (require 'init-clojure)
 
@@ -18,3 +22,4 @@
       (flycheck-clojure-setup))))
 
 (provide 'init-clojure-cider)
+;;; init-clojure-cider.el ends here

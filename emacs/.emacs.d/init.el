@@ -91,8 +91,8 @@
 (require 'init-common-lisp)
 (require 'init-spelling)
 (require 'init-misc)
-(require 'init-folding)
 (require 'init-ledger)
+(require 'init-eshell)
 (require 'init-term)
 
 (maybe-require-package 'regex-tool)

@@ -1,8 +1,12 @@
+;;; init-haskell --- Haskell Mode Configurations
+;;; Commentary:
 ;; TODO: https://wunki.org/posts/2014-05-17-haskell-packages-development.html
 ;; https://github.com/chrisdone/chrisdone-emacs/blob/master/config/haskell.el
 ;; TODO: ghci-ng
 ;; TODO: don't pop up *Warnings* if haskell-stylish-on-save fails
 ;; TODO: purescript-mode
+;;; Code:
+
 (require-package 'haskell-mode)
 
 ;; Use intero for completion and flycheck
@@ -47,3 +51,4 @@
     'haskell-goto-prev-error))
 
 (provide 'init-haskell)
+;;; init-haskell.el ends here

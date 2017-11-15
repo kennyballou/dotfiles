@@ -1,3 +1,7 @@
+;;; init-elm --- Elm Mode Configuration
+;;; Commentary:
+;;; Code:
+
 (when (maybe-require-package 'elm-mode)
   (setq-default elm-format-on-save t)
   (with-eval-after-load 'elm-mode
@@ -11,3 +15,4 @@
       (flycheck-elm-setup))))
 
 (provide 'init-elm)
+;;; init-elm.el ends here
