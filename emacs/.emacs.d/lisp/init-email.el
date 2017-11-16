@@ -18,9 +18,11 @@
 
 (require 'mu4e)
 
+(setq mu4e-compose-format-flowed t)
+
 (setq mu4e-use-fancy-chars t)
 
-(setq mu4e-maildir "~/.mail")
+(setq mu4e-maildir "~/.mail/")
 
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
 
@@ -50,6 +52,12 @@
       message-sendmail-f-is-evil nil
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header)
+
+(setq mu4e-sent-messages-behavior
+      (lambda ()
+        (if (string= (message-sendmail-envelope-from) "kenny@homecu.com")
+            'delete
+          'sent)))
 
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
@@ -83,7 +91,6 @@
           :vars '((user-mail-address . "kenny@homecu.com")
                   (user-full-name . "Kenny Ballou")
                   (mu4e-maildir . "~/.mail/kenny-homecu.com/")
-                  (mu4e-sent-messages-behavior "delete")
                   (mu4e-compose-signature . (concat
                                              "Kenny Ballou\n"
                                              "SRE @ HomeCU\n"
