@@ -44,6 +44,13 @@
 (setq mu4e-headers-sort-field :date
       mu4e-headers-sort-direction 'ascending)
 
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq sendmail-program "/usr/bin/msmtp"
+      mail-specifiy-envelope-from t
+      message-sendmail-f-is-evil nil
+      mail-envelope-from 'header
+      message-sendmail-envelope-from 'header)
+
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
 ;; so set to epg and all was good!
@@ -76,6 +83,7 @@
           :vars '((user-mail-address . "kenny@homecu.com")
                   (user-full-name . "Kenny Ballou")
                   (mu4e-maildir . "~/.mail/kenny-homecu.com/")
+                  (mu4e-sent-messages-behavior "delete")
                   (mu4e-compose-signature . (concat
                                              "Kenny Ballou\n"
                                              "SRE @ HomeCU\n"
