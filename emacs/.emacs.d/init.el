@@ -95,6 +95,9 @@
 (require 'init-eshell)
 (require 'init-term)
 
+;; email and such
+(require 'init-email)
+
 (maybe-require-package 'regex-tool)
 
 (require 'server)
