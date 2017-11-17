@@ -92,6 +92,7 @@
 (require 'init-spelling)
 (require 'init-misc)
 (require 'init-ledger)
+(require 'init-tex)
 (require 'init-eshell)
 (require 'init-term)
 
