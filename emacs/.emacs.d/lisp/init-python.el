@@ -4,6 +4,7 @@
 
 (defvar virtualenvwrapper)
 (defvar venv-dirlookup-names)
+(defvar venv-location)
 (defvar python-shell-interpreter)
 
 (add-to-list 'auto-mode-alist '("SConstruct\\'" . 'python-mode))
@@ -12,9 +13,10 @@
 (require-package 'pip-requirements)
 (use-package virtualenvwrapper
   :ensure t
-  :config
-
+  :init
   (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
+  (setq venv-location (expand-file-name "~/.venvs"))
+  :config
 
   (venv-initialize-interactive-shells)
 

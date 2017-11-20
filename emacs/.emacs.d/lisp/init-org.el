@@ -56,6 +56,7 @@
          (file-expand-wildcards (concat org-directory "notes/*.org"))
          (file-expand-wildcards (concat org-directory "topics/*.org"))
          (file-expand-wildcards (concat org-directory "projects/*.org"))
+         (file-expand-wildcards (concat org-directory "projects/*/*.org"))
          (file-expand-wildcards (concat org-directory "topics/*/*.org"))))
 
 
@@ -104,7 +105,10 @@ Useful for long running Emacs instance."
         (append
          (file-expand-wildcards (concat org-directory "notes/*.org"))
          (file-expand-wildcards (concat org-directory "topics/*.org"))
-         (file-expand-wildcards (concat org-directory "topics/*/*.org"))))
+         (file-expand-wildcards (concat org-directory "topics/*/*.org"))
+         (file-expand-wildcards (concat org-directory "projects/*.org"))
+         (file-expand-wildcards (concat org-directory "projects/*/*.org"))
+         ))
   (setq org-default-notes-file (kb/org-current-notes-file)))
 
 (defun kb/org-current-notes-file ()
