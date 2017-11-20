@@ -7,13 +7,13 @@ fsync = False
 localrepository = devnull-local
 remoterepository = devnull-remote
 status_backend = sqlite
-postsynchook = notmuch new
+postsynchook = mu index ~/.mail/kballou-devnulllabs.io
 
 [Account homecu]
 localrepository = homecu-local
 remoterepository = homecu-remote
 status_backend = sqlite
-postsynchook = notmuch new
+postsynchook = mu index ~/.mail/kenny-homecu.com
 
 [Repository devnull-local]
 type = Maildir
