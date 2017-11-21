@@ -151,12 +151,21 @@ A new version of `gf/create-org-path'."
      (replace-regexp-in-string
       "\\." "-" (if (equal (substring name 0 1) ".")
                     (substring name 1) name))))
-  (let* ((path-components (split-string path (f-path-separator)))
-         (project-name (last path-components))
-         (org-name (car (last path-components 2))))
+  (let* ((path-components (kb/get-qualified-project-pair path))
+         (org-name (car path-components))
+         (project-name (car (cdr path-components))))
     (concat org-projects-dir "/"
             (suitable-name org-name) "/"
             (suitable-name project-name) ".org")))
+
+(defun kb/get-qualified-project-pair (project-folder)
+  "Return tuple of parent and project directory for PROJECT-FOLDER."
+  (let* ((path-components (split-string
+                           (directory-file-name project-folder)
+                           (f-path-separator)))
+         (org-name (car (last path-components 2)))
+         (project-name (car (last path-components))))
+    (list org-name project-name)))
 
 
 (defvar gf/org-project-file-override-alist '()
@@ -173,20 +182,20 @@ Example:
 (defun kb/get-qualified-project (project-folder)
   "Return a qualified project name for PROJECT-FOLDER.
 Given a path to a project, say `~/workspace/org/project' return `org/project'."
-  (let ((path-components (split-string (directory-file-name project-folder) (f-path-separator))))
-    (string-join (last path-components 2)) (f-path-separator))
-   )
+  (let ((qualified-project (kb/get-qualified-project-pair project-folder)))
+    (string-join (car qualified-project)
+                 (f-path-separator)
+                 (cdr qualified-project))))
 
 (defun gf/org-resolve-project-org-file ()
   "Get the path of the org file for the current project.
-This is highly influenced by and based on
-\(https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el\)
-Glynn Forrest's version of this function."
+This version uses Glynn Forrest's assoc list, but uses a different version of
+`create-org-path'.
+\(https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el\)"
   (if (assoc (projectile-project-root) gf/org-project-file-override-alist)
       (concat org-directory (cadr (assoc (projectile-project-root)
                                          gf/org-project-file-override-alist)))
-    ;;    (kb/create-org-path (kb/get-qualified-project (projectile-project-root)))))
-    (gf/create-org-path (projectile-project-root))))
+    (kb/create-org-path (projectile-project-root))))
 
 
 (defun gf/org-switch-to-project-org-file ()
