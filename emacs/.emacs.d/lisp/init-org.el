@@ -142,6 +142,22 @@ This prevents Emacs opening all of the refile targets at once."
                             (substring last 1) last)))
             ".org")))
 
+(defun kb/create-org-path (path)
+  "Transform path name into suitable org file name from last part(s) of PATH.
+A new version of `gf/create-org-path'."
+  (defun suitable-name (name)
+    "Transform NAME into suitable name."
+    (downcase
+     (replace-regexp-in-string
+      "\\." "-" (if (equal (substring name 0 1) ".")
+                    (substring name 1) name))))
+  (let* ((path-components (split-string path (f-path-separator)))
+         (project-name (last path-components))
+         (org-name (car (last path-components 2))))
+    (concat org-projects-dir "/"
+            (suitable-name org-name) "/"
+            (suitable-name project-name) ".org")))
+
 
 (defvar gf/org-project-file-override-alist '()
   "An association list of projectile directories and the project org file.
@@ -157,7 +173,7 @@ Example:
 (defun kb/get-qualified-project (project-folder)
   "Return a qualified project name for PROJECT-FOLDER.
 Given a path to a project, say `~/workspace/org/project' return `org/project'."
-  (let (path-components (split-string project-folder (f-path-separator)))
+  (let ((path-components (split-string (directory-file-name project-folder) (f-path-separator))))
     (string-join (last path-components 2)) (f-path-separator))
    )
 
@@ -165,10 +181,11 @@ Given a path to a project, say `~/workspace/org/project' return `org/project'."
   "Get the path of the org file for the current project.
 This is highly influenced by and based on
 \(https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el\)
-Glen Forrest's version of this function."
+Glynn Forrest's version of this function."
   (if (assoc (projectile-project-root) gf/org-project-file-override-alist)
       (concat org-directory (cadr (assoc (projectile-project-root)
                                          gf/org-project-file-override-alist)))
+    ;;    (kb/create-org-path (kb/get-qualified-project (projectile-project-root)))))
     (gf/create-org-path (projectile-project-root))))
 
 
