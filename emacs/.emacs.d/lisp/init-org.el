@@ -179,14 +179,6 @@ Example:
 \"projects/some-company.org\")
 (\"/home/emacs/some-company/different-project\" \"projects/some-company.org\"))")
 
-(defun kb/get-qualified-project (project-folder)
-  "Return a qualified project name for PROJECT-FOLDER.
-Given a path to a project, say `~/workspace/org/project' return `org/project'."
-  (let ((qualified-project (kb/get-qualified-project-pair project-folder)))
-    (string-join (car qualified-project)
-                 (f-path-separator)
-                 (cdr qualified-project))))
-
 (defun gf/org-resolve-project-org-file ()
   "Get the path of the org file for the current project.
 This version uses Glynn Forrest's assoc list, but uses a different version of
