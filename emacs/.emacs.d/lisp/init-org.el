@@ -143,9 +143,34 @@ This prevents Emacs opening all of the refile targets at once."
             ".org")))
 
 
+(defvar gf/org-project-file-override-alist '()
+  "An association list of projectile directories and the project org file.
+This enables overriding the default behaviour of
+`gf/org-resolve-project-org-file'.  CAR must be an absolute path
+to a project, including a trailing slash.  CDR must be a path to
+an org file, relative to `org-directory'.
+Example:
+\'((\"/home/emacs/some-company/some-project\"
+\"projects/some-company.org\")
+(\"/home/emacs/some-company/different-project\" \"projects/some-company.org\"))")
+
+(defun kb/get-qualified-project (project-folder)
+  "Return a qualified project name for PROJECT-FOLDER.
+Given a path to a project, say `~/workspace/org/project' return `org/project'."
+  (let (path-components (split-string project-folder (f-path-separator)))
+    (string-join (last path-components 2)) (f-path-separator))
+   )
+
 (defun gf/org-resolve-project-org-file ()
-  "Get the path of the org file for the current project."
-  (gf/create-org-path (projectile-project-root)))
+  "Get the path of the org file for the current project.
+This is highly influenced by and based on
+\(https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el\)
+Glen Forrest's version of this function."
+  (if (assoc (projectile-project-root) gf/org-project-file-override-alist)
+      (concat org-directory (cadr (assoc (projectile-project-root)
+                                         gf/org-project-file-override-alist)))
+    (gf/create-org-path (projectile-project-root))))
+
 
 (defun gf/org-switch-to-project-org-file ()
   "Switch to the org file for the current project."
