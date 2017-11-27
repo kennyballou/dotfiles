@@ -34,7 +34,7 @@
    "(@"
    (system-name)
    ")("
-   (with-face (eshell/pwd) :background "#333")
+   (eshell/pwd)
    ")"
    (if (ignore-errors (vc-responsible-backend default-directory))
        (concat "["
