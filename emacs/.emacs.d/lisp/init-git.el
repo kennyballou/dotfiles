@@ -11,12 +11,6 @@
 
   (customize-set-value 'git-commit-summary-max-length 50)
 
-  (add-hook 'git-commit-setup-hook
-            (lambda ()
-              (setq fill-column 72)
-              (global-whitespace-mode nil)
-              ))
-
   ;; Hint: customize `magit-repo-dirs' so that can use C-u M-F12 to
   ;; quickly open magit on any of you projects.
   (global-set-key (kbd "C-x g") 'magit-status)
@@ -35,7 +29,12 @@
   (fullframe magit-status magit-mode-quit-window))
 
 (when (maybe-require-package 'git-commit)
-  (add-hook 'git-commit-mode-hook 'goto-address-mode))
+  (add-hook 'git-commit-mode-hook
+            (lambda ()
+              'goto-address-mode
+              (set-fill-column 72)
+              (global-whitespace-mode nil))
+              ))
 
 (with-eval-after-load 'vc
   (define-key vc-prefix-map (kbd "f") 'vc-git-grep))
