@@ -6,6 +6,8 @@
 
 (defvar eshell-prompt-function)
 (defvar eshell-highlight-prompt)
+(defvar eshell-history-size)
+(defvar eshell-prompt-regexp)
 
 ;;; https://www.emacswiki.org/emacs/EshellFunctions#toc2
 (defun eshell/emacs (&rest args)
@@ -27,24 +29,53 @@
   "Add face properties to STR using PROPERTIES list."
   `(propertize ,str 'face (list ,@properties)))
 
+(defun shortened-path (path max-len)
+  "Return a modified version of PATH up to MAX-LEN.
+Replace some components with single characters starting from the
+left to try and get the PATH down to, at most, MAX-LEN."
+  (let* ((components (split-string (abbreviate-file-name path)
+                                   (f-path-separator)))
+         (len (+ (1- (length components))
+                 (reduce '+ components :key 'length)))
+         (str ""))
+    (while (and (> len max-len)
+                (cdr components))
+      (setq str (concat str (if (= 0 (length (car components)))
+                                (f-path-separator)
+                              (string (elt (car components) 0) ?/)))
+            len (- len (1- (length (car components))))
+            components (cdr components)))
+    (concat str (reduce
+                 (lambda (a b) (concat a (f-path-separator) b)) components))))
 
 (defun kb-eshell-prompt ()
   "Modified version of `shk-eshell-prompt-function' from Emacs wiki."
+  (defun git-changes-symbol ()
+    "Return git change symbol if changes."
+    (let ((status (string-to-number
+                   (shell-command-to-string
+                    "git status --porcelain 2> /dev/null | wc -l"))))
+      (if (> status 0)
+          (concat "(" (with-face "ϟ" :foreground "#7F9F7F") ")")
+        "")))
   (concat
    "(@"
    (system-name)
    ")("
-   (eshell/pwd)
+   (shortened-path (eshell/pwd) 20)
    ")"
    (if (ignore-errors (vc-responsible-backend default-directory))
        (concat "["
-               (car (vc-git-branches))
-               "] ± ")
+               (with-face (car (vc-git-branches)) :foreground "#9D6D8E")
+               (git-changes-symbol)
+               "]± ")
      "% ")
    ))
 
 (setq eshell-prompt-function #'kb-eshell-prompt)
 (setq eshell-highlight-prompt nil)
+(setq eshell-history-size 4096)
+(setq eshell-prompt-regexp "(@.*)(.*)\(\[.*\]\)?[%±] ")
 
 (provide 'init-eshell)
 ;;; init-eshell.el ends here
