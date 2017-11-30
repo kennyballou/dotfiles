@@ -75,7 +75,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (setq eshell-prompt-function #'kb-eshell-prompt)
 (setq eshell-highlight-prompt nil)
 (setq eshell-history-size 4096)
-(setq eshell-prompt-regexp "(@.*)(.*)\(\[.*\]\)?[%±] ")
+(setq eshell-prompt-regexp "(.*)(.*)\\(\\[.*\\]\\)?[%±] ")
 
 (provide 'init-eshell)
 ;;; init-eshell.el ends here
