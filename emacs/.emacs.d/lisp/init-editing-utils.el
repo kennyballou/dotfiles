@@ -161,10 +161,9 @@
 ;; Cut/copy the current line if no region is active
 ;;----------------------------------------------------------------------------
 (require-package 'whole-line-or-region)
-(whole-line-or-region-mode t)
-(when (maybe-require-package 'delight)
-  (delight 'whole-line-or-region-mode nil 'whole-line-or-region))
-(make-variable-buffer-local 'whole-line-or-region-mode)
+(whole-line-or-region-global-mode t)
+(when (maybe-require-package 'diminish)
+  (diminish 'whole-line-or-region-local-mode))
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)

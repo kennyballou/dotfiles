@@ -47,8 +47,10 @@
   (delight 'disable-mouse-mode nil 'disable-mouse))
 
 ;;scroll margin
-(require 'smooth-scrolling)
-(setq smooth-scrolling-margin 10)
+(use-package smooth-scrolling
+	     :init
+	     (setq smooth-scrolling-margin 10)
+	     )
 
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here
