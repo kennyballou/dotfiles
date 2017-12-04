@@ -13,6 +13,7 @@
 (use-package org-cliplink)
 (use-package org-fstree)
 (use-package ob-elixir)
+(use-package ess)
 (use-package ob-go)
 (use-package ob-ipython)
 (use-package ob-mongo)
