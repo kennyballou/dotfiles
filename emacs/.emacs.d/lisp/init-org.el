@@ -15,7 +15,6 @@
 (use-package ob-elixir)
 (use-package ess)
 (use-package ob-go)
-(use-package ob-ipython)
 (use-package ob-mongo)
 (use-package ox-gfm)
 
@@ -206,7 +205,6 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
      (go . t)
      (gnuplot . t)
      (haskell . t)
-     (ipython . t)
      (java . t)
      (js . t)
      (latex . t)
