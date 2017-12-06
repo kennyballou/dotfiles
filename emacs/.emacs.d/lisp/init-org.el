@@ -17,6 +17,7 @@
 (use-package ob-go)
 (use-package ob-mongo)
 (use-package ox-gfm)
+(use-package org-babel-eval-in-repl)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
