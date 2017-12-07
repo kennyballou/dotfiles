@@ -8,6 +8,10 @@
 (defvar eshell-highlight-prompt)
 (defvar eshell-history-size)
 (defvar eshell-prompt-regexp)
+(defvar eshell-banner-message)
+
+
+(setq eshell-banner-message "\n\n")
 
 ;;; https://www.emacswiki.org/emacs/EshellFunctions#toc2
 (defun eshell/emacs (&rest args)
