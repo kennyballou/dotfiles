@@ -6,6 +6,7 @@
 (defvar venv-dirlookup-names)
 (defvar venv-location)
 (defvar python-shell-interpreter)
+(defvar python-shell-interpreter-args)
 
 (add-to-list 'auto-mode-alist '("SConstruct\\'" . 'python-mode))
 (add-to-list 'auto-mode-alist '("SConscript\\'" . 'python-mode))
@@ -41,7 +42,8 @@
               (lambda () (flycheck-select-checker 'python-flake8)))))
 
 (when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython"))
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "--profile=emacs"))
 
 (provide 'init-python)
 ;;; init-python.el ends here
