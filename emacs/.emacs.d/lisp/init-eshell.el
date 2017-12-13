@@ -62,6 +62,12 @@ left to try and get the PATH down to, at most, MAX-LEN."
       (if (> status 0)
           (concat "(" (with-face "ϟ" :foreground "#7F9F7F") ")")
         "")))
+  (defun git-branch-name ()
+    "Return the current git branch, or 'root' if nil."
+    (let ((branch (vc-git-branches)))
+      (if (not (eq branch nil))
+          branch
+        (list "new-repo"))))
   (concat
    "(@"
    (system-name)
@@ -70,7 +76,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
    ")"
    (if (ignore-errors (vc-responsible-backend default-directory))
        (concat "["
-               (with-face (car (vc-git-branches)) :foreground "#9D6D8E")
+               (with-face (car (git-branch-name)) :foreground "#9D6D8E")
                (git-changes-symbol)
                "]± ")
      "% ")
