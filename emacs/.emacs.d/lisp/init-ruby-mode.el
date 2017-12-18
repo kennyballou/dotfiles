@@ -52,15 +52,7 @@
 ;;; Robe
 (when (maybe-require-package 'robe)
   (with-eval-after-load 'ruby-mode
-    (add-hook 'ruby-mode-hook 'robe-mode))
-  (with-eval-after-load 'company
-    (dolist (hook '(ruby-mode-hook
-                    inf-ruby-mode-hook
-                    html-erb-mode-hook
-                    haml-mode))
-      (add-hook hook
-                (lambda () (sanityinc/local-push-company-backend
-                            'company-robe))))))
+    (add-hook 'ruby-mode-hook 'robe-mode)))
 
 ;; ri support
 (require-package 'yari)
