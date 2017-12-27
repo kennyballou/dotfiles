@@ -28,6 +28,17 @@
                        #'expand-file-name
                        (eshell-flatten-list (reverse args))))))
 
+(defun eshell/valgrind (&rest args)
+  "Open valgrind with ARGS process into compiling output buffer."
+  (let ((command (concat "valgrind" " " (string-join args " "))))
+    (if (and (eshell-interactive-output-p)
+             (not eshell-in-pipeline-p)
+             (not eshell-in-subcommand-p))
+        (let ((valgrind-output-buffer (get-buffer-create "*valgrind*")))
+          (call-process-shell-command command nil valgrind-output-buffer t)
+          (switch-to-buffer-other-window valgrind-output-buffer)))
+      (call-process-shell-command command nil nil t)))
+
 ;;; https://www.emacswiki.org/emacs/EshellPrompt
 (defmacro with-face (str &rest properties)
   "Add face properties to STR using PROPERTIES list."
