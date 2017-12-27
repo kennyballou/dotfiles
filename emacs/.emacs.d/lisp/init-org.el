@@ -33,7 +33,7 @@
       org-export-coding-system 'utf-8
       org-html-validation-link nil
       org-export-kill-product-buffer-when-displayed t
-      org-tags-column 80
+      org-tags-column 75
       org-search-view-always-boolean t
       org-refile-targets '((nil :maxlevel . 2))
       org-enforce-todo-dependencies t
@@ -47,7 +47,7 @@
       org-clock-persistence-insinuate t
       org-clock-persist t
       org-clock-in-resume t
-      org-clock-in-switch-to-state "STARTED"
+      org-clock-in-switch-to-state "IN-PROGRESS"
       org-clock-into-drawer t
       org-time-clocksum-format
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
@@ -66,18 +66,17 @@
 
 (setq org-capture-templates
       `(("t" "todo" entry (file+headline kb/org-current-notes-file "Tasks")
-         "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+         "* TODO %?\n%U\n")
         ("n" "note" entry (file+headline kb/org-current-notes-file "Notes")
-         "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+         "* %? :NOTE:\n%U\n%a\n")
         ("x" "project todo" entry (file+headline
                                    gf/org-resolve-project-org-file "Tasks")
-         "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+         "* TODO %?\n%U\n")
         ("z" "project note" entry (file+headline
                                    gf/org-resolve-project-org-file "Notes")
-         "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+         "* %? :NOTE:\n%U\n%a\n")
         ("r" "respond" entry (file+headline kb/org-current-notes-file "Tasks")
-         "* NEXT Respond to %:from on %:subject\nSCHEDULED: \t\n%U\n%a\n"
-         :clock-in t :clock-resume t :immediate-finish t)
+         "* NEXT Respond to %:from on %:subject\nSCHEDULED: \t\n%U\n%a\n")
         ))
 
 (setq org-todo-keywords
