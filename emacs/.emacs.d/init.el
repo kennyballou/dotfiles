@@ -97,6 +97,7 @@
 (require 'init-tex)
 (require 'init-org)
 (require 'init-eshell)
+(require 'init-pcomplete)
 (require 'init-term)
 
 ;; email and such
