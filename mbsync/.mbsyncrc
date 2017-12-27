@@ -1,0 +1,70 @@
+# mbsyncrc based on
+# http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/
+# and
+# http://www.ict4g.net/adolfo/notes/2014/12/27/EmacsIMAP.html
+IMAPAccount devnulllabs
+AuthMechs GSSAPI, CRAM-MD5, PLAIN, LOGIN
+Host mail.runbox.com
+User kballou%devnulllabs.io
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+PipelineDepth 1
+
+IMAPStore devnulllabs-remote
+Account devnulllabs
+
+MaildirStore devnulllabs-local
+Path ~/.mail/
+Inbox ~/.mail/INBOX
+Trash ~/.mail/trash
+
+Channel devnulllabs-inbox
+Master :devnulllabs-remote:
+Slave :devnulllabs-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
+
+Channel devnulllabs-sent
+Master :devnulllabs-remote:"Sent"
+Slave :devnulllabs-local:"sent"
+Create Both
+Expunge Both
+SyncState *
+
+Channel devnulllabs-archive
+Master :devnulllabs-remote:"Archives"
+Slave :devnulllabs-local:"archive"
+Create Both
+Expunge Both
+SyncState *
+
+Channel devnulllabs-trash
+Master :devnulllabs-remote:"Trash"
+Slave :devnulllabs-local:"trash"
+Create Both
+Expunge Both
+SyncState *
+
+Channel devnulllabs-spam
+Master :devnulllabs-remote:"Spam"
+Slave :devnulllabs-local:"spam"
+Create Both
+Expunge Both
+SyncState *
+
+Channel devnulllabs-lists
+Master :devnulllabs-remote:"lists"
+Slave :devnulllabs-local:"lists"
+Create Both
+Expunge Both
+SyncState *
+
+Group devnulllabs
+Channel devnulllabs-inbox
+Channel devnulllabs-sent
+Channel devnulllabs-archive
+Channel devnulllabs-trash
+Channel devnulllabs-lists
