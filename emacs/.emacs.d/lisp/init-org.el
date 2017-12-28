@@ -213,7 +213,6 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
      (octave . t)
      (perl . t)
      (python . t)
-     (R . t)
      (ruby . t)
      (scala . t)
      (screen . nil)
