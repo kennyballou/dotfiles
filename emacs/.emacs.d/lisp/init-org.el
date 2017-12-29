@@ -10,12 +10,17 @@
 
 (require 'org)
 (require 'ox-md)
-(use-package org-cliplink)
-(use-package org-fstree)
-(use-package ob-elixir)
+(use-package org-cliplink
+  :pin melpa-unstable)
+(use-package org-fstree
+  :pin melpa-unstable)
+(use-package ob-elixir
+  :pin melpa-unstable)
 (use-package ess)
-(use-package ob-go)
-(use-package ob-mongo)
+(use-package ob-go
+  :pin melpa-unstable)
+(use-package ob-mongo
+  :pin melpa-unstable)
 (use-package ox-gfm)
 (use-package org-babel-eval-in-repl)
 

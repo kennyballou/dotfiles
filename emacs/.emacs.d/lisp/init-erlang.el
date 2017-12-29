@@ -10,7 +10,8 @@
 (defvar edts)
 (use-package erlang
   :config (kb/erlang-config))
-(use-package edts)
+(use-package edts
+  :defer t)
 
 (provide 'init-erlang)
 ;;; init-erlang.el ends here

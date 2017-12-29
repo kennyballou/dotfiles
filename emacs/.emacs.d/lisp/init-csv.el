@@ -2,9 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar csv-mode)
+(defvar csv)
 (defvar csv-separators)
-(use-package csv-mode
+(use-package csv
   :mode "\\.[Cc][Ss][Vv]\\'"
   :config (setq csv-separators '("," ";" "|" " ")))
 

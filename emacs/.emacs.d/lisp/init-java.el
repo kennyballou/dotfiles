@@ -5,6 +5,7 @@
 (defvar jdee)
 
 (use-package jdee
+  :pin melpa-unstable
   :defer t)
 
 (provide 'init-java)

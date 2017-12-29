@@ -48,9 +48,8 @@
 
 ;;scroll margin
 (use-package smooth-scrolling
-	     :init
-	     (setq smooth-scrolling-margin 10)
-	     )
+  :init
+  (setq smooth-scrolling-margin 10))
 
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here

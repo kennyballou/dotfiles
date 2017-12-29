@@ -3,6 +3,9 @@
 ;;; Misc config - yet to be placed in separate files
 ;;; Code:
 
+(defvar f)
+(use-package f)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (add-hook 'prog-mode-hook 'goto-address-prog-mode)
