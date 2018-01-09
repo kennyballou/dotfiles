@@ -13,7 +13,7 @@ conky.config = {
 
 conky.text = [[
 [
-${if_match ${new_mails ${HOME}/.mail/kballou-devnulllabs.io/INBOX}>=1}
+${if_match ${new_mails ${HOME}/.mail/INBOX}>=1}
 {"full_text": "",
  "background": "\#222222",
  "color": "\#343434",
