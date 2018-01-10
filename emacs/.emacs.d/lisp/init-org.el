@@ -23,6 +23,7 @@
   :pin melpa-unstable)
 (use-package ox-gfm)
 (use-package org-babel-eval-in-repl)
+(use-package htmlize)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
