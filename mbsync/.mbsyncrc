@@ -17,7 +17,6 @@ Account devnulllabs
 MaildirStore devnulllabs-local
 Path ~/.mail/
 Inbox ~/.mail/INBOX
-Trash ~/.mail/trash
 
 Channel devnulllabs-inbox
 Master :devnulllabs-remote:
