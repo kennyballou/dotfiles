@@ -77,7 +77,6 @@
                            :to "*@devnulllabs.io")))
           :vars '((user-mail-address . "kballou@devnulllabs.io")
                   (user-full-name . "Kenny Ballou")
-                  (mu4e-maildir . "~/.mail/kballou-devnulllabs.io/")
                   (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
                   (mu4e-compose-signature . ":SIG:!0xB0CAA28A02958308!:\n")))
         ,(make-mu4e-context
@@ -91,7 +90,6 @@
                            :to "*@homecu.*\'")))
           :vars '((user-mail-address . "kenny@homecu.com")
                   (user-full-name . "Kenny Ballou")
-                  (mu4e-maildir . "~/.mail/kenny-homecu.com/")
                   (my-xpgp-key-uri . "http://pgp.mit.edu/pks/lookup?op=vindex&search=0x9295F09320C0160A")
                   (mu4e-compose-signature . (concat
                                              "Kenny Ballou\n"
