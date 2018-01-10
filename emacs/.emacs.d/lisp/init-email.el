@@ -41,7 +41,7 @@
                                     "kennyballou@u.boisestate.edu"
                                     "kenny@homecu.com"))
 
-(setq mu4e-get-mail-command "offlineimap")
+(setq mu4e-get-mail-command "mbsync -a")
 
 (setq mu4e-headers-sort-field :date
       mu4e-headers-sort-direction 'ascending)
