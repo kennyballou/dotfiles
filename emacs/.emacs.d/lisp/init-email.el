@@ -22,7 +22,7 @@
 
 (setq mu4e-use-fancy-chars t)
 
-(setq mu4e-maildir "~/.mail/")
+(setq mu4e-maildir "~/.mail")
 
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
 
