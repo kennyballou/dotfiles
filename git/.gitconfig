@@ -41,3 +41,5 @@
 	prune = true
 [sendmail]
 	smtpserver = /usr/bin/msmtp
+[sendemail]
+	confirm = auto
