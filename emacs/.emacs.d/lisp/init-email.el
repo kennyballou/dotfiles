@@ -51,7 +51,8 @@
       mail-specifiy-envelope-from t
       message-sendmail-f-is-evil nil
       mail-envelope-from 'header
-      message-sendmail-envelope-from 'header)
+      message-sendmail-envelope-from 'header
+      mu4e-change-filenames-when-moving t)
 
 (setq mu4e-sent-messages-behavior
       (lambda ()
