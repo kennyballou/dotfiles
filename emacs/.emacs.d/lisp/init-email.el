@@ -18,7 +18,7 @@
 
 (require 'mu4e)
 
-(setq mu4e-compose-format-flowed t)
+(setq mu4e-compose-format-flowed nil)
 
 (setq mu4e-use-fancy-chars t)
 
