@@ -3,7 +3,7 @@ set realname = "Kenny Ballou"
 set from = "kballou@devnulllabs.io"
 alternates kennethmgballou@gmail.com
 set mbox_type = Maildir
-set folder = "~/.mail/kballou-devnulllabs.io"
+set folder = "~/.mail/"
 set spoolfile = "=INBOX"
 set postponed = "=drafts"
 set sendmail = "/usr/bin/msmtp -a kballou"
