@@ -7,7 +7,8 @@
 (defconst pcmpl-git-commands
   '("add" "bisect" "branch" "checkout" "clone" "commit"
     "diff" "fetch" "grep" "init" "log" "merge" "mv" "pull"
-    "push" "rebase" "reset" "rm" "show" "status" "tag")
+    "push" "rebase" "reset" "rm" "show" "status" "tag"
+    "send-email" "format-patch" "am" "apply" "cherry-pick")
   "List of `git' commands.")
 
 (defvar pcmpl-git-ref-list-cmd "git for-each-ref refs/ --format='%(refname)'"
@@ -31,8 +32,8 @@
   ;; complete files/directories forever if the command is `add' or `rm'.
   ((pcomplete-match (regexp-opt '("add" "rm")) 1)
    (while (pcomplete-here (pcomplete-entries))))
-  ;; provide branch completion for the command `checkout'.
-  ((pcomplete-match "checkout" 1)
+  ;; provide branch completion for the command `checkout' and `cherry-pick'.
+  ((or (pcomplete-match "checkout" 1) (pcomplete-match "cherry-pick" 1))
    (pcomplete-here* (pcmpl-git-get-refs "heads")))))
 
 
