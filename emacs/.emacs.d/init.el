@@ -63,6 +63,7 @@
 (require 'init-git)
 (require 'init-projectile)
 (require 'init-compile)
+(require 'init-c)
 (require 'init-markdown)
 (require 'init-csv)
 (require 'init-erlang)
