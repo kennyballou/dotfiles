@@ -7,7 +7,7 @@ fi
 if [ -n "INSIDE_EMACS" ]; then
     unset EDITOR
 else
-    export EDITOR='emacs'
+    export EDITOR='emacsclient -t -a emacs -nw'
 fi
 
 eval $(dircolors "$HOME/.config/DIR_COLORS")
