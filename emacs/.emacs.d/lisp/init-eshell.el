@@ -9,6 +9,9 @@
 (defvar eshell-history-size)
 (defvar eshell-prompt-regexp)
 (defvar eshell-banner-message)
+(defvar eshell-visual-commands)
+(defvar eshell-visual-options)
+(defvar eshell-visual-subcommands)
 
 
 (setq eshell-banner-message "\n\n")
@@ -100,6 +103,12 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (setq eshell-highlight-prompt nil)
 (setq eshell-history-size 4096)
 (setq eshell-prompt-regexp "(.*)(.*)\\(\\[.*\\]\\)?[%±] ")
+(dolist (cmd '("vim"))
+  (add-to-list 'eshell-visual-commands cmd))
+(dolist (subcmd '(("git" "log" "diff" "show")
+                  ("docker" ("build" "run" "exec"))
+                  ("make" ("nconfig" "menuconfig"))))
+  (add-to-list 'eshell-visual-subcommands subcmd))
 
 (setenv "PAGER" "")
 
