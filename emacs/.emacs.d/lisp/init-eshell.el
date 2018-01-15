@@ -3,6 +3,7 @@
 ;;; Code:
 
 (require 'eshell)
+(require 'em-term)
 
 (defvar eshell-prompt-function)
 (defvar eshell-highlight-prompt)
