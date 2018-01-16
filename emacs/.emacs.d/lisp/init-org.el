@@ -82,7 +82,7 @@
                                    gf/org-resolve-project-org-file "Notes")
          "* %? :NOTE:\n%U\n%a\n")
         ("r" "respond" entry (file+headline kb/org-current-notes-file "Tasks")
-         "* NEXT Respond to %:from on %:subject\nSCHEDULED: \t\n%U\n%a\n")
+         "* NEXT Respond %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")
         ))
 
 (setq org-todo-keywords

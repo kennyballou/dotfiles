@@ -17,6 +17,7 @@
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 
 (require 'mu4e)
+(require 'org-mu4e)
 
 (setq mu4e-compose-format-flowed nil)
 
@@ -52,7 +53,8 @@
       message-sendmail-f-is-evil nil
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header
-      mu4e-change-filenames-when-moving t)
+      mu4e-change-filenames-when-moving t
+      org-mu4e-link-query-in-headers-mode nil)
 
 (setq mu4e-sent-messages-behavior
       (lambda ()
