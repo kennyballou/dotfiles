@@ -10,6 +10,7 @@
 (use-package dockerfile-mode)
 (use-package docker-compose-mode)
 (use-package docker-tramp)
+(require 'docker-tramp-compat)
 
 (provide 'init-docker)
 ;;; init-docker.el ends here
