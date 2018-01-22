@@ -55,7 +55,7 @@
 (require 'init-recentf)
 (require 'init-smex)
 (require 'init-ivy)
-;; (require 'init-sessions)
+(require 'init-sessions)
 (require 'init-mmm)
 (require 'init-editing-utils)
 (require 'init-whitespace)
