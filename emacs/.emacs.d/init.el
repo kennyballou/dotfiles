@@ -100,6 +100,8 @@
 (require 'init-eshell)
 (require 'init-pcomplete)
 (require 'init-term)
+(unless (version< emacs-version "25.0")
+  (require 'init-xref))
 
 ;; email and such
 (require 'init-email)
