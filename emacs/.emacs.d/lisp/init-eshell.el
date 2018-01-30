@@ -108,7 +108,8 @@ left to try and get the PATH down to, at most, MAX-LEN."
   (add-to-list 'eshell-visual-commands cmd))
 (dolist (subcmd '(("git" "log" "diff" "show")
                   ("docker" "build" "run" "exec" "logs")
-                  ("make" "nconfig" "menuconfig" "dev-run" "run")))
+                  ("make" "nconfig" "menuconfig" "dev-run" "run")
+                  ("mix" "test")))
   (add-to-list 'eshell-visual-subcommands subcmd))
 
 (setenv "PAGER" "")
