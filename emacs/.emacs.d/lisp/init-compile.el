@@ -11,7 +11,7 @@
 (defvar window-buffer)
 (defvar compilation-filter-start)
 
-(defun sanityinc/alert-after-compliation-finish (buf result)
+(defun sanityinc/alert-after-compilation-finish (buf result)
   "If BUF is hidden, use `alert' to report compilation RESULT."
   (when (buffer-live-p buf)
     (unless (catch 'is-visible
