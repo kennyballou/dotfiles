@@ -104,7 +104,11 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (setq eshell-highlight-prompt nil)
 (setq eshell-history-size 4096)
 (setq eshell-prompt-regexp "(.*)(.*)\\(\\[.*\\]\\)?[%±] ")
-(dolist (cmd '("vim" "yarn" "composer" "pip"))
+(dolist (cmd '("vim"
+               "yarn"
+               "composer"
+               "pip"
+               "qemu-system-x86_64"))
   (add-to-list 'eshell-visual-commands cmd))
 (dolist (subcmd '(("git" "log" "diff" "show")
                   ("docker" "build" "run" "exec" "logs")
