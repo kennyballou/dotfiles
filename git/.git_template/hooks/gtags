@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+DIR="$(git rev-parse --git-dir)"
+trap 'rm -r "${DIR}/$$.gtags"' EXIT
+mkdir "${DIR}/$$.gtags"
+git ls-files | gtags --file=- "${DIR}/$$.gtags"
+mv ${DIR}/$$.gtags/* "${DIR}/.."
