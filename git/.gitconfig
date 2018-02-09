@@ -43,3 +43,5 @@
 	smtpserver = /usr/bin/msmtp
 [sendemail]
 	confirm = auto
+[init]
+	templatedir = /home/kb/.git.template.d
