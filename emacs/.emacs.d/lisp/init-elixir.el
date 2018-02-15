@@ -2,6 +2,19 @@
 ;;; Commentary:
 ;;; Code:
 
+;; (defvar elixir-mode)
+;; (defvar alchemist)
+
+;; (use-package alchemist
+;;   :mode (("\\.ex\\'" . alchemist-mode)
+;;          ("\\.exs\\'" . alchemist-mode))
+;;   )
+
+;; (use-package elixir-mode
+;;   :mode (("\\.ex\\'" . elixir-mode)
+;;          ("\\.exs\\'" . elixir-mode))
+;;   )
+
 (require-package 'alchemist)
 (require-package 'elixir-mode)
 (when (maybe-require-package 'flycheck)
