@@ -110,7 +110,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
                "pip"
                "qemu-system-x86_64"))
   (add-to-list 'eshell-visual-commands cmd))
-(dolist (subcmd '(("git" "log" "diff" "show")
+(dolist (subcmd '(("git" "log" "diff" "show" "help")
                   ("docker" "build" "run" "exec" "logs")
                   ("make" "nconfig" "menuconfig" "dev-run" "run")
                   ("mix" "test")))
