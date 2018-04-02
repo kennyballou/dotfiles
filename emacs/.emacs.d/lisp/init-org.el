@@ -10,7 +10,6 @@
 
 (require 'org)
 (require 'ox-md)
-(require 'ox-bibtex)
 (use-package org-cliplink
   :pin melpa-unstable)
 (use-package org-fstree
