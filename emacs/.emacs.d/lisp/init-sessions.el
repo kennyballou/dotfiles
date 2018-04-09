@@ -6,6 +6,7 @@
 (defvar desktop-auto-save-timeout)
 (defvar session-save-file)
 (defvar session-name-disable-regexp)
+(defvar session-save-file-coding-system)
 (defvar desktop-globals-to-save)
 
 ;; save list of open files to ~/.emacs.d/.emacs.desktop
@@ -35,12 +36,13 @@
 
 ;; Restore histories and registers after saving
 (setq-default history-length 1000)
-(savehist-mode t)
+(add-hook 'after-init-hook savehist-mode t)
 
 (require-package 'session)
 
 (setq session-save-file (expand-file-name ".session" user-emacs-directory))
 (setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
+(setq session-save-file-coding-system 'utf-8)
 (add-hook 'after-init-hook 'session-initialize)
 
 ;; save a bunch of variables to the desktop file
