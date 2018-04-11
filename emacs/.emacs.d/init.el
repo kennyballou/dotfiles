@@ -109,10 +109,6 @@
 
 (maybe-require-package 'regex-tool)
 
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
 ;; customize interface configuration
 (when (file-exists-p custom-file)
   (load custom-file))
