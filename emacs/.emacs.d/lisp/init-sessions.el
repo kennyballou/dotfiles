@@ -1,4 +1,4 @@
-;;; init-sessions --- Session management configuraiton
+;;; init-sessions --- Session management configuration
 ;;; Commentary:
 ;;; Code:
 
