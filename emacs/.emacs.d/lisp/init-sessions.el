@@ -8,10 +8,12 @@
 (defvar session-name-disable-regexp)
 (defvar session-save-file-coding-system)
 (defvar desktop-globals-to-save)
+(defvar desktop-restore-eager)
 
 ;; save list of open files to ~/.emacs.d/.emacs.desktop
 (setq desktop-path (list user-emacs-directory)
-      desktop-auto-save-timeout 600)
+      desktop-auto-save-timeout 600
+      desktop-restore-eager 10)
 (desktop-save-mode 1)
 
 (defadvice desktop-read (around time-restore activate)
