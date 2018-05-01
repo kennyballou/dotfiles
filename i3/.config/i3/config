@@ -128,6 +128,7 @@ for_window [class="(?i)urxvt" title="ranger"] floating enable
 for_window [class="(?i)sxiv"] floating enable
 for_window [class="(?i)virtualbox"] floating enable
 for_window [class="(?i)erlang"] floating enable
+for_window [class="(?i)matplotlib"] floating enable
 
 
 # Other window settings
