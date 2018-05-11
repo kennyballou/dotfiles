@@ -17,7 +17,7 @@
   :init
   (when (executable-find "ipython")
     (setq python-shell-interpreter "ipython"
-          python-shell-interpreter-args "--profile=emacs"))
+          python-shell-interpreter-args "--profile=emacs --simple-prompt"))
   :config
   (use-package pip-requirements)
   (use-package virtualenvwrapper
