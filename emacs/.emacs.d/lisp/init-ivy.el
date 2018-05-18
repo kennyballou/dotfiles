@@ -3,30 +3,42 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'ivy)
-  (add-hook 'after-init-hook 'ivy-mode)
-  (with-eval-after-load 'ivy
-    (setq-default ivy-use-virtual-buffers t
-                  ivy-virtual-abbreviate 'fullpath
-                  ivy-count-format "%d/%d: "
-                  projectile-completion-system 'ivy
-                  ivy-initial-inputs-alist)
-    (when (maybe-require-package 'delight)
-      (delight 'ivy-mode nil 'ivy))))
+(defvar ivy-mode)
 
+(use-package ivy
+  :commands ivy-mode
+  :init
+  (require 'ivy nil t)
+  (defvar projectile-completion-system)
+  (defvar magit-completing-read-function)
+  (defvar dumb-jump-selector)
+  (defvar rtags-display-result-backend)
+  (setq-default ivy-use-virtual-buffers t
+                ivy-virtual-abbreviate 'fullpath
+                ivy-count-format "%d/%d: "
+                ivy-initial-inputs-alist)
+  (setq projectile-completion-system 'ivy
+        magit-completing-read-function 'ivy-completing-read
+        dumb-jump-selector 'ivy
+        rtags-display-result-backend 'ivy)
+  :config (ivy-mode 1)
+  :hook (after-init-hook . ivy-mode)
+  :delight)
 
-(when (maybe-require-package 'counsel)
-  (setq-default counsel-mode-override-describe-bindings t)
-  (when (maybe-require-package 'delight)
-      (delight 'counsel-mode nil 'counsel))
-  (add-hook 'after-init-hook 'counsel-mode)
+(use-package counsel
+  :delight
+  :hook (after-init-hook . counsel-mode)
+  :init
+  (setq-default consul-mode-override-describe-bindings t))
 
-  (when (maybe-require-package 'swiper)
-    (with-eval-after-load 'ivy
-      (defun sanityinc/swiper-at-point (sym)
-        "Use `swiper' to search for a the symbol at point."
-        (interactive (list (thing-at-point 'symbol)))
-        (swiper sym))
-      (global-set-key (kbd "M-s /") 'sanityinc/swiper-at-point))))
+(use-package swiper
+  :functions sanityinc/swiper-at-point
+  :bind (("M-s /" . #'sanityinc/swiper-at-point))
+  :init
+  (defun sanityinc/swiper-at-point (sym)
+    "Use `swiper' to search for a the symbol at point."
+    (interactive (list (thing-at-point 'symbol)))
+    (swiper sym)))
 
 (provide 'init-ivy)
+;;; init-ivy.el ends here

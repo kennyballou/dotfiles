@@ -1,8 +1,31 @@
-;; Add spell-checking in comments for all programming language modes
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+;;; init-flyspell -- flyspell configuration and setup
+;;; Commentary:
+;;; Code:
 
-(with-eval-after-load 'flyspell
-  (define-key flyspell-mode-map (kbd "C-;") nil)
-  (add-to-list 'flyspell-prog-text-faces 'nxml-text-face))
+(defvar flyspell)
+(defvar ispell-program-name)
+(defvar flyspell-prog-mode)
+(defvar flyspell-use-meta-tab)
+(defvar flyspell-prog-text-faces)
+(defvar flyspell-mode-map)
+
+(use-package flyspell
+  :ensure nil
+  :preface (require 'ispell)
+  :bind (:map flyspell-mode-map
+         ("C-;" . nil))
+  :when (executable-find ispell-program-name)
+  :commands (flyspell-mode flyspell-prog-mode)
+  :config
+  (setq flyspell-use-meta-tab nil)
+  (add-to-list 'flyspell-prog-text-faces 'nxml-text-face)
+  :init
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode))
+
+;; (with-eval-after-load 'flyspell
+;;   (define-key flyspell-mode-map (kbd "C-;") nil))
+
 
 (provide 'init-flyspell)
+;;; init-flyspell.el ends here

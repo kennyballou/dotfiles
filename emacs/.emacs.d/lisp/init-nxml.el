@@ -61,3 +61,4 @@ indentation rules."
    t))
 
 (provide 'init-nxml)
+;;; init-nxml.el ends here
