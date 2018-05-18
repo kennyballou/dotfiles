@@ -9,8 +9,7 @@
 (use-package dired
   :ensure nil
   :init (require 'dired)
-  :bind (("C-c J" . dired-double-jump)
-         :map dired-mode-map
+  :bind (:map dired-mode-map
          ("C-c C-c" . compile)
          ("r" . browse-url-of-dired-file))
   :config
