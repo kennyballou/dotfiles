@@ -5,6 +5,7 @@
 
 (dolist (pkg '(("melpa-stable" . "https://stable.melpa.org/packages/")
                ("org" . "http://orgmode.org/elpa/")
+               ("gnu" . "http://elpa.gnu.org/packages/")
                ("melpa-unstable" . "https://melpa.org/packages/")))
         (add-to-list 'package-archives pkg))
 
