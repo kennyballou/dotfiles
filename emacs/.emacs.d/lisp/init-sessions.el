@@ -11,11 +11,17 @@
 (defvar session-initialize)
 (defvar desktop-globals-to-save)
 (defvar desktop-restore-eager)
+(defvar desktop-files-not-to-save)
+(defvar desktop-modes-not-to-save)
 
 ;; save list of open files to ~/.emacs.d/.emacs.desktop
 (setq desktop-path (list user-emacs-directory)
       desktop-auto-save-timeout 600
-      desktop-restore-eager 10)
+      desktop-restore-eager 10
+      desktop-files-not-to-save
+      "\\(^/[^/:]*:\\|(ftp)$\\)|\\(^*.pdf$\\)\\|\\(^*.jpg$\\)\\|\\(^*.png$\\)")
+(dolist (mode (list 'PDFView 'DocView))
+  (add-to-list 'desktop-modes-not-to-save mode t nil))
 (desktop-save-mode 1)
 
 ;; Restore histories and registers after saving
