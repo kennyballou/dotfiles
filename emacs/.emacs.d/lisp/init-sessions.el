@@ -4,9 +4,11 @@
 
 (defvar desktop-path)
 (defvar desktop-auto-save-timeout)
+(defvar session)
 (defvar session-save-file)
 (defvar session-name-disable-regexp)
 (defvar session-save-file-coding-system)
+(defvar session-initialize)
 (defvar desktop-globals-to-save)
 (defvar desktop-restore-eager)
 
@@ -20,12 +22,12 @@
 (setq-default history-length 1000)
 (add-hook 'after-init-hook (lambda () savehist-mode t))
 
-(require-package 'session)
-
-(setq session-save-file (expand-file-name ".session" user-emacs-directory))
-(setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
-(setq session-save-file-coding-system 'utf-8)
-(add-hook 'after-init-hook 'session-initialize)
+(use-package session
+  :init
+  (setq session-save-file (expand-file-name ".session" user-emacs-directory))
+  (setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
+  (setq session-save-file-coding-system 'utf-8)
+  :hook (after-init-hook . #'session-initialize))
 
 ;; save a bunch of variables to the desktop file
 ;; for lists specify the length of the maximal saved data also
