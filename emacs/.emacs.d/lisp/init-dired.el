@@ -41,5 +41,15 @@
 ;;          :map dired-mode-map
 ;;          (")" . dired-omit-mode)))
 
+
+;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
+;; preview files in dired
+(use-package peep-dired
+  :pin "melpa-unstable"
+  :ensure t
+  :defer t
+  :bind (:map dired-mode-map
+              ("P" . peep-dired)))
+
 (provide 'init-dired)
 ;;; init-dired.el ends here
