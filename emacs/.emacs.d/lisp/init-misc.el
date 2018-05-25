@@ -4,6 +4,7 @@
 ;;; Code:
 
 (defvar f)
+(defvar multiple-cursors)
 (use-package f)
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -25,6 +26,9 @@
    (normal-mode)))
 
 (add-to-list 'auto-mode-alist '("Procfile" . 'conf-mode))
+
+(use-package multiple-cursors
+  :bind ("C-c m c" . 'mc/edit-lines))
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
