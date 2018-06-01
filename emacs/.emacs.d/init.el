@@ -45,6 +45,7 @@
 
 ;; Load configs for specific features and modes
 (require 'init-themes)
+(require 'init-spaceline)
 (require 'init-gui-frames)
 (require 'init-dired)
 (require 'init-isearch)
