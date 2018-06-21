@@ -109,6 +109,7 @@
 (unless (version< emacs-version "25.0")
   (require 'init-xref))
 (require 'init-guix)
+(require 'init-nix)
 
 ;; email and such
 (require 'init-email)
