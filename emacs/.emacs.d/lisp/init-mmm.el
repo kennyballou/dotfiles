@@ -1,5 +1,6 @@
 ;;; init-mmm --- Multimajor mode configuration
 ;;; Commentary:
+;;; https://matthewbauer.us/blog/bauer.html
 ;;; Code:
 
 (defvar mmm-mode)

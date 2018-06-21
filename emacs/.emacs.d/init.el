@@ -127,9 +127,9 @@
 ;; Locales (setting them earlier in this file doesn't work in X)
 (require 'init-locales)
 
-(when (maybe-require-package 'uptimes)
-  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
-
+(use-package uptimes
+  :hook
+  ((after-init-hook . (lambda () (require 'uptimes)))))
 
 (provide 'init)
 ;;; init.el ends here

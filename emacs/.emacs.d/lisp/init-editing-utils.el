@@ -2,6 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar autorevert)
+(defvar auto-revert-mode)
+(defvar expand-region)
+(defvar guide-key/guide-key-sequence)
+
 (require-package 'unfill)
 
 (maybe-require-package 'list-unicode-display)
@@ -25,10 +30,15 @@
  truncate-lines nil
  truncate-partial-width-windows nil)
 
-(global-auto-revert-mode)
-(when (maybe-require-package 'delight)
-  (with-eval-after-load 'after-init-hook
-    (delight 'global-auto-revert-mode nil 'autorevert)))
+(use-package autorevert
+  :ensure nil
+  :delight auto-revert-mode
+  :demand
+  :commands auto-revert-mode
+  :init
+  (add-hook 'dired-mode-hook #'auto-revert-mode)
+  :config
+  (global-auto-revert-mode t))
 
 (defvar global-auto-revert-non-file-buffers)
 (defvar auto-revert-verbose)
@@ -100,9 +110,9 @@
 (show-paren-mode 1)
 
 ;; Expand region
-(require-package 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
+(use-package expand-region
+  :bind
+  (("C-=" . er/expand-region)))
 
 ;; Don't disable case-change functions
 (put 'upcase-region 'disabled nil)
@@ -168,26 +178,24 @@
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-
-(require-package 'guide-key)
-(defvar guide-key/guide-key-sequence)
-(setq guide-key/guide-key-sequence '("C-x"
-                                     "C-c"
-                                     "C-x 4"
-                                     "C-x 5"
-                                     "C-c ;"
-                                     "C-c ; f"
-                                     "C-c ' f"
-                                     "C-x n"
-                                     "C-x C-r"
-                                     "C-x r"
-                                     "M-s"
-                                     "C-h"
-                                     "C-c C-a"))
-(add-hook 'after-init-hook
-          (lambda ()
-            (guide-key-mode 1)
-            (delight 'guide-key-mode nil 'guide-key)))
+(use-package guide-key
+  :delight
+  :config
+  (setq guide-key/guide-key-sequence '("C-x"
+                                       "C-c"
+                                       "C-x 4"
+                                       "C-x 5"
+                                       "C-c ;"
+                                       "C-c ; f"
+                                       "C-c ' f"
+                                       "C-x n"
+                                       "C-x C-r"
+                                       "C-x r"
+                                       "M-s"
+                                       "C-h"
+                                       "C-c C-a"))
+  :hook
+  (after-init-hook  . (lambda () (guide-key-mode 1))))
 
 (global-hl-line-mode t)
 
