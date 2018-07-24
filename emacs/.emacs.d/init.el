@@ -93,6 +93,7 @@
 (require 'init-toml)
 (require 'init-yaml)
 (require 'init-docker)
+(require 'init-scheme)
 (unless (version<= emacs-version "24.2")
   (require 'init-clojure)
   (require 'init-clojure-cider))
