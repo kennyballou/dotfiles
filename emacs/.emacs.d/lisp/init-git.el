@@ -40,8 +40,6 @@
   (setq-default magit-diff-refine-hunk t)
   (defvar magit-last-seen-setup-instructions "1.4.0")
   (add-hook 'magit-popup-mode-hook 'sanityinc/no-trailing-whitespace)
-  :custom
-  (customize-set-value 'git-commit-summary-max-length 50)
   )
 
 (use-package fullframe
@@ -55,7 +53,9 @@
   (git-commit-mode-hook . (lambda ()
                             'goto-address-mode
                             (set-fill-column 72)
-                            (global-whitespace-mode nil))))
+                            (global-whitespace-mode nil)))
+  :custom
+  (customize-set-value 'git-commit-summary-max-length 50))
 
 (provide 'init-git)
 ;;; init-git.el ends here
