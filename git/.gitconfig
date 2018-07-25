@@ -29,6 +29,11 @@
 	stashes = stash list
 	remotes = remote -v
 	graph = log --graph --branches --remotes --tags --date-order
+	commit-reference = !git --no-pager show \
+	--no-patch \
+	--date=short \
+	--pretty='format:%h ("%s", %ad)' \
+	$@
 [grep]
 	extendRegexp = true
 	lineNumber = true
