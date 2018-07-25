@@ -9,4 +9,4 @@ html-renderer "w3m -dump -T text/html"
 
 ignore-mode "display"
 
-include "~/.config/newsbeuter/killfile"
+include "~/.config/newsboat/killfile"
