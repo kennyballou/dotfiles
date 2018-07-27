@@ -1,5 +1,7 @@
 GUIX_PROFILE="${HOME}/.guix-profile"
-export PATH="${GUIX_PROFILE}/bin:${GUIX_PROFILE}/sbin${PATH:+:}${PATH}"
+GUIX_CURRENT="${HOME}/.config/guix/current"
+GUIX_BIN="${GUIX_CURRENT}/bin"
+export PATH="${GUIX_BIN}:${GUIX_PROFILE}/bin:${GUIX_PROFILE}/sbin${PATH:+:}${PATH}"
 export SSL_CERT_DIR="${GUIX_PROFILE}/etc/ssl/certs"
 export SSL_CERT_FILE="${GUIX_PROFILE}/etc/ssl/certs/ca-certificates.crt"
 export GIT_SSL_CAINFO="${SSL_CERT_FILE}"
