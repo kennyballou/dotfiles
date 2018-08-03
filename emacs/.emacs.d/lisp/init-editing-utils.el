@@ -3,9 +3,14 @@
 ;;; Code:
 
 (defvar autorevert)
+(defvar guide-key)
 (defvar auto-revert-mode)
 (defvar expand-region)
+(defvar er/expand-region)
 (defvar guide-key/guide-key-sequence)
+(defvar whole-line-or-region)
+(defvar whole-line-or-region-local-mode)
+(defvar highlight-escape-sequences)
 
 (require-package 'unfill)
 
@@ -111,8 +116,9 @@
 
 ;; Expand region
 (use-package expand-region
-  :bind
-  (("C-=" . er/expand-region)))
+  :commands er/expand-region
+  :config
+  (bind-key "C-=" #'er/expand-region))
 
 ;; Don't disable case-change functions
 (put 'upcase-region 'disabled nil)
@@ -170,13 +176,14 @@
 ;;----------------------------------------------------------------------------
 ;; Cut/copy the current line if no region is active
 ;;----------------------------------------------------------------------------
-(require-package 'whole-line-or-region)
-(whole-line-or-region-global-mode t)
-(when (maybe-require-package 'diminish)
-  (diminish 'whole-line-or-region-local-mode))
+(use-package whole-line-or-region
+  :diminish whole-line-or-region-local-mode
+  :init
+  (whole-line-or-region-global-mode t))
 
-(require-package 'highlight-escape-sequences)
-(hes-mode)
+(use-package highlight-escape-sequences
+  :init
+  (hes-mode))
 
 (use-package guide-key
   :delight

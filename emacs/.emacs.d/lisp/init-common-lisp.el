@@ -39,10 +39,11 @@
                  '(ccl ("ccl") :coding-system utf-8-unix))))
 
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . 'lisp-mode))
-(add-hook 'lisp-mode-hook (lambda ()
-                            (unless (featurep 'slime)
-                              (require 'slime)
-                              (normal-mode))))
+(remove-hook 'lisp-mode-hook #'slime-lisp-mode-hook)
+;; (add-hook 'lisp-mode-hook (lambda ()
+;;                             (unless (featurep 'slime)
+;;                               (require 'slime)
+;;                               (normal-mode))))
 
 ;; Fromt http://bc.tech.coop/blog/070515.html
 (defun lispdoc ()

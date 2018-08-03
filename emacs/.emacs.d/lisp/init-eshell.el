@@ -13,6 +13,7 @@
 (defvar eshell-visual-commands)
 (defvar eshell-visual-options)
 (defvar eshell-visual-subcommands)
+(defvar slime-mode)
 
 
 (setq eshell-banner-message "\n\n")
@@ -84,8 +85,8 @@ left to try and get the PATH down to, at most, MAX-LEN."
     "Return the current git branch, or 'root' if nil."
     (let ((branch (vc-git-branches)))
       (if (not (eq branch nil))
-          branch
-        (list "new-repo"))))
+          (car branch)
+        "new-repo")))
   (concat
    "(@"
    (system-name)
@@ -94,7 +95,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
    ")"
    (if (ignore-errors (vc-responsible-backend default-directory))
        (concat "["
-               (with-face (car (git-branch-name)) :foreground "#9D6D8E")
+               (with-face (git-branch-name) :foreground "#9D6D8E")
                (git-changes-symbol)
                "]± ")
      "% ")
@@ -117,6 +118,23 @@ left to try and get the PATH down to, at most, MAX-LEN."
   (add-to-list 'eshell-visual-subcommands subcmd))
 
 (setenv "PAGER" "")
+(let* ((user-home (getenv "HOME"))
+       (guix-profile (concat user-home ".guix-profile"))
+       (guix-current (concat user-home "/.config/guix/current"))
+       (guix-bin (concat guix-current "/bin"))
+       (ssl-cert-dir (concat guix-profile "/etc/ssl/certs"))
+       (ssl-cert-file (concat ssl-cert-dir "/ca-certificates.crt")))
+  (progn
+    (eshell/addpath (concat guix-profile "/bin"))
+    (setenv "PATH" (concat guix-profile "/bin" (getenv "PATH")))
+    (setenv "SSL_CERT_DIR" ssl-cert-dir)
+    (setenv "SSL_CERT_FILE" ssl-cert-file)
+    (setenv "GIT_SSL_CAINFO" ssl-cert-file)
+    (setenv "GUIX_LOCPATH" (concat guix-profile "/lib/locale"))))
+
+;; disable slime in eshell
+(add-hook 'eshell-mode-hook
+          (lambda () (setq slime-mode nil)))
 
 (provide 'init-eshell)
 ;;; init-eshell.el ends here
