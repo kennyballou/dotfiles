@@ -19,8 +19,12 @@
 (use-package gitignore-mode)
 (use-package gitconfig-mode)
 (use-package git-timemachine)
+(use-package ghub
+  :ensure t
+  :pin melpa-unstable)
 
 (use-package magit
+  :after ghub
   :preface
   (defun magit-dired-other-window ()
     (interactive)
@@ -48,7 +52,11 @@
   (fullframe magit-status magit-mode-quit-window)
   )
 
+(use-package with-editor
+  :ensure t
+  :pin melpa-unstable)
 (use-package git-commit
+  :after with-editor
   :hook
   (git-commit-mode-hook . (lambda ()
                             'goto-address-mode
