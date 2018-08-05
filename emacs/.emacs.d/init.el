@@ -97,7 +97,7 @@
 (unless (version<= emacs-version "24.2")
   (require 'init-clojure)
   (require 'init-clojure-cider))
-(require 'init-common-lisp)
+;; (require 'init-common-lisp)
 (require 'init-spelling)
 (require 'init-misc)
 (require 'init-folding)
