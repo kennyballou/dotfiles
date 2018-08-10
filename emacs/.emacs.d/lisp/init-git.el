@@ -63,7 +63,7 @@
                             (set-fill-column 72)
                             (global-whitespace-mode nil)))
   :custom
-  (customize-set-value 'git-commit-summary-max-length 50))
+  (git-commit-summary-max-length 50))
 
 (provide 'init-git)
 ;;; init-git.el ends here
