@@ -8,6 +8,29 @@
 ;;; https://github.com/jcf/emacs.d/blob/master/init-org.org
 ;;; Code:
 
+(defvar org-cliplink)
+(defvar org-fstree)
+(defvar org-archive-mark-done)
+(defvar org-export-kill-product-buffer-when-displayed)
+(defvar org-search-view-always-boolean)
+(defvar org-files)
+(defvar org-clock-persistence-insinuate)
+(defvar org-clock-persist)
+(defvar org-clock-in-resume)
+(defvar org-clock-in-switch-to-state)
+(defvar org-clock-into-drawer)
+(defvar org-babel-clojure-backend)
+(defvar org-capture-templates)
+(defvar org-pomodoro)
+(defvar melpa-unstable)
+(defvar ob-elixir)
+(defvar ess)
+(defvar ob-go)
+(defvar ob-mongo)
+(defvar ox-gfm)
+(defvar org-babel-eval-in-repl)
+(defvar htmlize)
+
 (require 'org)
 (require 'ox-md)
 (use-package org-cliplink
@@ -28,6 +51,8 @@
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
 (define-key global-map (kbd "C-c c") 'org-capture)
+(unbind-key "<M-S-left>" org-mode-map)
+(unbind-key "<M-S-right>" org-mode-map)
 
 ;; Various preferences
 (setq org-log-done t
@@ -184,7 +209,7 @@ an org file, relative to `org-directory'.
 Example:
 \'((\"/home/emacs/some-company/some-project\"
 \"projects/some-company.org\")
-(\"/home/emacs/some-company/different-project\" \"projects/some-company.org\"))")
+\(\"/home/emacs/some-company/different-project\" \"projects/some-company.org\"))")
 
 (defun gf/org-resolve-project-org-file ()
   "Get the path of the org file for the current project.
@@ -236,6 +261,8 @@ Open either current project notes, or default notes file"
     (kb/org-switch-to-current-notes-file)))
 
 (global-set-key (kbd "C-c n") #'kb/org-switch-to-notes)
+
+(use-package org-pomodoro)
 
 (provide 'init-org)
 ;;; init-org.el ends here
