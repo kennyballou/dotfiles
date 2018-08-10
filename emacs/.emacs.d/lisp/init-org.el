@@ -110,6 +110,8 @@
          "* %? :NOTE:\n%U\n%a\n")
         ("r" "respond" entry (file+headline kb/org-current-notes-file "Tasks")
          "* NEXT Respond %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")
+        ("m" "Meeting" entry (file+headline kb/org-current-notes-file "Tasks")
+         "* MEETING with %? :MEETING:\n%U")
         ))
 
 (setq org-todo-keywords
