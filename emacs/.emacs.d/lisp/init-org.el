@@ -76,6 +76,7 @@
       org-files (append
                  (file-expand-wildcards (concat org-directory "*/*.org"))
                  (file-expand-wildcards (concat org-directory "*/*/*.org")))
+      org-log-state-notes-into-drawer t
       org-clock-persistence-insinuate t
       org-clock-persist t
       org-clock-in-resume t
