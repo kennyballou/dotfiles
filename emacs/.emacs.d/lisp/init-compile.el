@@ -16,8 +16,8 @@
   (when (buffer-live-p buf)
     (unless (catch 'is-visible
               (walk-windows (lambda (w)
-                              (when (eq window-buffer w) buf)
-                              (throw 'is-visible t)))
+                              (when (eq (window-buffer w) buf)
+                              (throw 'is-visible t))))
               nil)
       (alert (concat "Compilation " result)
              :buffer buf
