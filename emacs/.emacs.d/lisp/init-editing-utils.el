@@ -116,9 +116,7 @@
 
 ;; Expand region
 (use-package expand-region
-  :commands er/expand-region
-  :config
-  (bind-key "C-=" #'er/expand-region))
+  :bind (("C-=" . #'er/expand-region)))
 
 ;; Don't disable case-change functions
 (put 'upcase-region 'disabled nil)
