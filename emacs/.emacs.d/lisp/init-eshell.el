@@ -119,7 +119,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
 
 (setenv "PAGER" "")
 (let* ((user-home (getenv "HOME"))
-       (guix-profile (concat user-home ".guix-profile"))
+       (guix-profile (concat user-home "/.guix-profile"))
        (guix-current (concat user-home "/.config/guix/current"))
        (guix-bin (concat guix-current "/bin"))
        (ssl-cert-dir (concat guix-profile "/etc/ssl/certs"))
