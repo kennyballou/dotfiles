@@ -2,15 +2,23 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar flycheck)
+(defvar flycheck-color-mode-line)
 (defvar flycheck-display-errors-function)
 
-(when (maybe-require-package 'flycheck)
-  (add-hook 'after-init-hook 'global-flycheck-mode)
+(use-package flycheck
+  :defer 2
+  :diminish
+  :init (global-flycheck-mode)
+  :config
   (setq flycheck-display-errors-function
         #'flycheck-display-error-messages-unless-error-list)
+  :custom
+  (flycheck-display-errors-delay .3))
 
-  (when (maybe-require-package 'flycheck-color-mode-line)
-    (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
+(use-package flycheck-color-mode-line
+  :after flycheck
+  :init (flycheck-color-mode-line-mode))
 
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends here
