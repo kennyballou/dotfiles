@@ -2,9 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'diff-hl)
-  (add-hook 'prog-mode-hook 'diff-hl-mode)
-  (add-hook 'vc-dir-mode-hook 'diff-hl-mode))
+(defvar diff-hl)
+
+(use-package diff-hl
+  :hook ((prog-mode . diff-hl-mode)
+         (vc-dir-mode . diff-hl-mode)))
 
 (provide 'init-vc)
 ;;; init-vc.el ends here
