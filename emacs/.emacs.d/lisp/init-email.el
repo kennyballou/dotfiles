@@ -27,7 +27,7 @@
 
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
 
-(setq message-citation-line-format "On %Y年%m月%d日 %H:%M %Z, %N wrote:")
+(setq message-citation-line-format "On %Y-%m-%d %H:%M %Z, %N wrote:")
 (setq message-citation-line-function #'message-insert-formatted-citation-line)
 
 (setq mu4e-view-show-addresses t)
@@ -54,7 +54,10 @@
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header
       mu4e-change-filenames-when-moving t
-      org-mu4e-link-query-in-headers-mode nil)
+      org-mu4e-link-query-in-headers-mode nil
+      message-kill-buffer-on-exit t
+      mu4e-context-policy 'pick-first
+      mu4e-confirm-quit nil)
 
 (setq mu4e-sent-messages-behavior
       (lambda ()
