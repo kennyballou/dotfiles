@@ -1,44 +1,40 @@
 [global_config]
-  geometry_hinting = False
+  enabled_plugins = ,
   title_hide_sizetext = True
   title_transmit_bg_color = "#c800ae"
-  enabled_plugins = ,
-  borderless = True
 [keybindings]
-  help             = None
+  help = None
+  switch_to_tab_1 = None
   switch_to_tab_10 = None
-  switch_to_tab_6 = None
-  switch_to_tab_7 = None
-  switch_to_tab_4 = None
-  switch_to_tab_5 = None
   switch_to_tab_2 = None
   switch_to_tab_3 = None
-  switch_to_tab_1 = None
+  switch_to_tab_4 = None
+  switch_to_tab_5 = None
+  switch_to_tab_6 = None
+  switch_to_tab_7 = None
   switch_to_tab_8 = None
   switch_to_tab_9 = None
-[profiles]
-  [[default]]
-    palette = "#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc:#040404:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc"
-    background_color = "#3f3f3f"
-    cursor_color = "#dcdcdc"
-    foreground_color = "#dcdcdc"
-    scrollbar_position = hidden
-    use_system_font = False
-    custom_command = env TERM=xterm-256color zsh
-    urgent_bell = True
-    background_image = None
-    use_custom_command = True
-    scroll_on_output = False
-    show_titlebar = False
-    font = DejaVu Sans Mono 10
-    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
       profile = default
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#3f3f3f"
+    cursor_color = "#dcdcdc"
+    custom_command = env TERM=xterm-256color zsh
+    font = DejaVu Sans Mono 10
+    foreground_color = "#dcdcdc"
+    palette = "#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc:#040404:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    urgent_bell = True
+    use_custom_command = True
+    use_system_font = False
