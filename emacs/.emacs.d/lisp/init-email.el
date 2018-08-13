@@ -61,7 +61,8 @@
 
 (setq mu4e-sent-messages-behavior
       (lambda ()
-        (if (string= (message-sendmail-envelope-from) "kenny@homecu.com")
+        (if (or (string= (message-sendmail-envelope-from) "kenny@homecu.com")
+                (string= (message-sendmail-envelope-from) "kennyballou@u.boisestate.edu"))
             'delete
           'sent)))
 
@@ -101,6 +102,19 @@
                                              "Kenny Ballou\n"
                                              "SRE @ HomeCU\n"
                                              ":SIG:!0x9295F09320C0160A!:\n"))))
+        ,(make-mu4e-context
+          :name "bsu"
+          :enter-func (lambda () (mu4e-message "entered bsu"))
+          :leave-func (lambda () (mu4e-message "left bsu"))
+          :match-func (lambda (msg)
+                        (when msg
+                          (mu4e-message-contact-field-matches
+                           msg
+                           :to "kennyballou@u.boisestate.edu\'")))
+          :vars '((user-mail-address . "kennyballou@u.boisestate.edu")
+                  (user-full-name . "Kenny Ballou")
+                  (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
+                  (mu4e-compose-signature . ":SIG:!0xB0CAA28A02958308!:\n")))
         ))
 
 (add-hook 'mu4e-compose-mode-hook
