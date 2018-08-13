@@ -18,7 +18,9 @@
 
 (use-package gitignore-mode)
 (use-package gitconfig-mode)
-(use-package git-timemachine)
+(use-package git-timemachine
+  :defer 1
+  :diminish)
 (use-package ghub
   :ensure t
   :pin melpa-unstable)
@@ -55,13 +57,20 @@
 (use-package with-editor
   :ensure t
   :pin melpa-unstable)
+
+;; Some added additions from
+;; https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
 (use-package git-commit
-  :after with-editor
+  :after with-editor magit
   :hook
-  (git-commit-mode-hook . (lambda ()
-                            'goto-address-mode
-                            (set-fill-column 72)
-                            (global-whitespace-mode nil)))
+  (git-commit-mode . my/git-commit-config-setup)
+  :preface
+  (defun my/git-commit-config-setup ()
+    "Configures several commit message settings."
+    (goto-address-mode)
+    (set-fill-column 72)
+    (setq-local comment-auto-fill-only-comments nil)
+    (global-whitespace-mode nil))
   :custom
   (git-commit-summary-max-length 50))
 
