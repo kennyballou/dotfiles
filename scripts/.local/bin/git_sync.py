@@ -9,7 +9,7 @@ import multiprocessing
 from funcy import compose
 from funcy import partial
 
-NPROC = int(multiprocessing.cpu_count() * 2 / 3)
+NPROC = min(int(multiprocessing.cpu_count() * 2 / 3), 4)
 WORKSPACE_DIR = os.path.join(os.environ['HOME'], 'workspace')
 EXCLUDES = [
     'tmp',
