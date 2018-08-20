@@ -3,6 +3,7 @@
 ;;; Code:
 
 (defvar jdee)
+(defvar melpa-unstable)
 
 (use-package jdee
   :pin melpa-unstable
