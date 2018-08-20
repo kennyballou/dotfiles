@@ -61,12 +61,6 @@
 (add-hook 'text-mode-hook (lambda ()
                             (set-fill-column 79) (turn-on-auto-fill)))
 
-(use-package auto-fill
-  :ensure nil
-  :diminish
-  :hook text-mode)
-
-
 ;; Indent
 (setq standard-indent 4)
 (setq-default tab-width 4
