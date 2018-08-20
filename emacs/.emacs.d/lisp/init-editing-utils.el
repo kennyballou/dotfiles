@@ -37,7 +37,7 @@
 
 (use-package autorevert
   :ensure nil
-  :delight auto-revert-mode
+  :diminish
   :demand
   :commands auto-revert-mode
   :init

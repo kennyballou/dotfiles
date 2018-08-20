@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar auto-fill)
+(defvar text-mode)
+
 (require-package 'whitespace)
 (require-package 'whitespace-cleanup-mode)
 (require-package 'fill-column-indicator)
@@ -56,7 +59,12 @@
               lines-tail)))
 (add-hook 'find-file-hook 'whitespace-mode)
 (add-hook 'text-mode-hook (lambda ()
-  (set-fill-column 79) (turn-on-auto-fill)))
+                            (set-fill-column 79) (turn-on-auto-fill)))
+
+(use-package auto-fill
+  :ensure nil
+  :diminish
+  :hook text-mode)
 
 
 ;; Indent
