@@ -49,7 +49,7 @@
 
 (defadvice shell-command-on-region
     (after sanityinc/shell-command-in-view-mode
-           (start end command &toptional output-buffer &rest other-args)
+           (start end command &optional output-buffer &rest other-args)
            activate)
   "Put \"*Shell Command Output*\" buffers into view-mode."
   (unless output-buffer
