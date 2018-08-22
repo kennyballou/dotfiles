@@ -12,6 +12,7 @@
 (defvar flycheck-disabled-checkers)
 (defvar anaconda-mode)
 (defvar anaconda-eldoc-mode)
+(defvar ein)
 
 (use-package python
   :init
@@ -36,6 +37,10 @@
   :after python
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
+
+(use-package ein
+  :pin melpa-unstable
+  :defer t)
 
 (when (maybe-require-package 'flycheck)
   (with-eval-after-load 'flycheck
