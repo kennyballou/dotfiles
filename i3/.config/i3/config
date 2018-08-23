@@ -8,7 +8,7 @@ font xft:DejaVu Sans Mono 10
 floating_modifier $ALT
 
 # start a terminal
-bindsym $ALT+Return exec i3-sensible-terminal
+bindsym $ALT+Return exec terminator
 # start ranger
 bindsym $ALT+slash exec urxvt -e ranger
 
