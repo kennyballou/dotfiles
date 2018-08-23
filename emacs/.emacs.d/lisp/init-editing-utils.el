@@ -11,6 +11,7 @@
 (defvar whole-line-or-region)
 (defvar whole-line-or-region-local-mode)
 (defvar highlight-escape-sequences)
+(defvar olivetti)
 
 (require-package 'unfill)
 
@@ -184,7 +185,7 @@
   (hes-mode))
 
 (use-package guide-key
-  :delight
+  :diminish
   :config
   (setq guide-key/guide-key-sequence '("C-x"
                                        "C-c"
@@ -204,6 +205,8 @@
 
 (global-hl-line-mode t)
 
+(use-package olivetti
+  :defer t)
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
