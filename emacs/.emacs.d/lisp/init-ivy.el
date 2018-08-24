@@ -27,7 +27,6 @@
 
 (use-package counsel
   :delight
-  :hook (after-init-hook . counsel-mode)
   :init
   (setq-default consul-mode-override-describe-bindings t))
 

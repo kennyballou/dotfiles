@@ -56,6 +56,7 @@
 (require 'init-flyspell)
 (require 'init-recentf)
 (require 'init-smex)
+(require 'init-ido)
 (require 'init-ivy)
 (require 'init-mwim)
 (require 'init-company)
