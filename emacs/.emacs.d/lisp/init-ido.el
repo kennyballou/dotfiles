@@ -5,6 +5,7 @@
 ;;; Code:
 
 (defvar ido)
+(defvar ido-vertical-mode)
 
 (require 'ido)
 
@@ -14,6 +15,10 @@
 (setq ido-create-new-buffer 'always)
 
 (ido-mode 1)
+
+(use-package ido-vertical-mode
+  :init
+  (ido-vertical-mode))
 
 (provide 'init-ido)
 ;;; init-ido.el ends here
