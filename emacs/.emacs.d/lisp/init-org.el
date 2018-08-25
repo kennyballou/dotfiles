@@ -26,6 +26,7 @@
 (defvar ob-elixir)
 (defvar ess)
 (defvar ob-go)
+(defvar ob-ipython)
 (defvar ob-mongo)
 (defvar ox-gfm)
 (defvar org-babel-eval-in-repl)
@@ -47,6 +48,9 @@
 (use-package ox-gfm)
 (use-package org-babel-eval-in-repl)
 (use-package htmlize)
+(use-package ob-ipython
+  :pin melpa-unstable
+  :defer t)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -248,6 +252,7 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
      (octave . t)
      (perl . t)
      (python . t)
+     (ipython . t)
      (ruby . t)
      (scala . t)
      (screen . nil)
