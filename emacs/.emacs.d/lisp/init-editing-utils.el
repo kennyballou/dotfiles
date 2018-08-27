@@ -12,6 +12,7 @@
 (defvar whole-line-or-region-local-mode)
 (defvar highlight-escape-sequences)
 (defvar olivetti)
+(defvar define-word)
 
 (require-package 'unfill)
 
@@ -206,6 +207,9 @@
 (global-hl-line-mode t)
 
 (use-package olivetti
+  :defer t)
+
+(use-package define-word
   :defer t)
 
 (provide 'init-editing-utils)
