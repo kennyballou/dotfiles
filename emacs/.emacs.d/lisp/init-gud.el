@@ -2,12 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar gud)
-(defvar gud-gdb)
+(defvar realgud)
 
-(use-package gud
-  :ensure nil
-  :commands gud-gdb)
+(use-package realgud)
 
 (provide 'init-gud)
 ;;; init-gud.el ends here
