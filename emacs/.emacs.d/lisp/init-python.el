@@ -28,12 +28,10 @@
     (setq venv-location (expand-file-name "~/.venvs"))
     :config
 
-    (venv-initialize-interactive-shells)
-
-    )
-  )
+    (venv-initialize-interactive-shells)))
 
 (use-package anaconda-mode
+  :diminish
   :after python
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
@@ -42,11 +40,9 @@
   :pin melpa-unstable
   :defer t)
 
-(when (maybe-require-package 'flycheck)
-  (with-eval-after-load 'flycheck
-    (add-to-list 'flycheck-disabled-checkers 'python-pylint)
-    (add-hook 'python-mode-hook
-              (lambda () (flycheck-select-checker 'python-flake8)))))
+;; (with-eval-after-load 'flycheck
+;;   (add-hook 'python-mode-hook
+;;             (lambda () (flycheck-select-checker 'python-flake8))))
 
 (provide 'init-python)
 ;;; init-python.el ends here

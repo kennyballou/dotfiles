@@ -2,8 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'zenburn-theme)
-(require-package 'anti-zenburn-theme)
+(defvar zenburn-theme)
+(defvar anti-zenburn-theme)
+
+(use-package zenburn-theme)
+(use-package anti-zenburn-theme)
 
 ;; Add toggle between zen and anti-zen
 

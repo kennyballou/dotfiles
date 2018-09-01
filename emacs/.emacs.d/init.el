@@ -40,8 +40,9 @@
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
 
-(require-package 'wgrep)
-(require-package 'delight)
+(use-package wgrep)
+(use-package delight)
+(use-package diminish)
 
 ;; Load configs for specific features and modes
 (require 'init-themes)

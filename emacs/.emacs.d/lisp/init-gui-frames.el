@@ -41,12 +41,13 @@
           (lambda ()
             (setq line-spacing 0)))
 
-(require-package 'disable-mouse)
-
-(when (maybe-require-package 'delight)
-  (delight 'disable-mouse-mode nil 'disable-mouse))
+(defvar disable-mouse)
+(use-package disable-mouse
+  :diminish)
 
 ;;scroll margin
+(defvar smooth-scrolling)
+(defvar smooth-scrolling-margin)
 (use-package smooth-scrolling
   :init
   (setq smooth-scrolling-margin 10))

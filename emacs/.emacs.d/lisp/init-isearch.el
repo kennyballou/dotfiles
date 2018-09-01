@@ -4,14 +4,17 @@
 
 ;; show number of matches while searching
 (defvar anzu-mode-lighter)
-(when (maybe-require-package 'anzu)
+(defvar anzu)
+(use-package anzu
+  :init
   (global-anzu-mode t)
   (setq anzu-mode-lighter "")
+  :config
   (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
   (global-set-key [remap query-replace] 'anzu-query-replace))
 
 ;; Activate occur easily inside isearch
-(when (maybe-require-package 'emacs '(24 3))
+(when (version< emacs-version "24.3")
   (define-key isearch-mode-map (kbd "C-c C-o") 'isearch-occur))
 
 ;; DEL during isearch should edit the search string

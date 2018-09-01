@@ -2,10 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'tidy)
-(add-hook 'html-mode-hook (lambda () (tidy-build-menu html-mode-map)))
+(defvar tagedit)
+(defvar tidy)
+(use-package tidy
+  :init
+  (add-hook 'html-mode-hook (lambda () (tidy-build-menu html-mode-map))))
 
-(require-package 'tagedit)
+(use-package tagedit)
 (with-eval-after-load 'sgml-mode
   (add-hook 'sgml-mode-hook (lambda () (tagedit-mode 1))))
 

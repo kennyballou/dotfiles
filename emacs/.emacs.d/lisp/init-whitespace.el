@@ -2,13 +2,17 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar whitespace)
+(defvar whitespace-cleanup-mode)
+(defvar fill-column-indicator)
+(defvar column-marker)
 (defvar auto-fill)
 (defvar text-mode)
 
-(require-package 'whitespace)
-(require-package 'whitespace-cleanup-mode)
-(require-package 'fill-column-indicator)
-(require-package 'column-marker)
+(use-package whitespace)
+(use-package whitespace-cleanup-mode)
+(use-package fill-column-indicator)
+(use-package column-marker)
 
 (setq-default show-trailing-whitespace t)
 

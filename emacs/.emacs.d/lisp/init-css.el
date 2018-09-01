@@ -3,7 +3,11 @@
 ;;; Code:
 
 ;;; Colourise CSS colour literals
-(when (maybe-require-package 'rainbow-mode)
+
+(defvar rainbow-mode)
+(use-package rainbow-mode
+  :defer t
+  :init
   (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
     (add-hook hook 'rainbow-mode)))
 
@@ -35,23 +39,32 @@
     (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
 
 ;;; SASS and SCSS
-(require-package 'sass-mode)
-(require-package 'scss-mode)
+(defvar sass-mode)
+(defvar scss-mode)
+(defvar less-css-mode)
+(defvar skewer-less)
+(defvar skewer-mode)
+(defvar css-eldoc)
+(use-package sass-mode)
+(use-package scss-mode)
 (setq-default scss-compile-at-save nil)
 
 ;;; LESS
-(require-package 'less-css-mode)
-(when (maybe-require-package 'skewer-less)
-  (add-hook 'less-css-mode-hook 'skewer-less-mode))
+(use-package less-css-mode)
+(use-package skewer-less
+  :after less-css-mode
+  :hook (less-css-mode-hook . skewer-less-mode))
 
 ;; Skewer CSS
-(when (maybe-require-package 'skewer-mode)
-  (add-hook 'css-mode-hook 'skewer-css-mode))
+(use-package skewer-mode
+  :hook css-mode-hook)
 
 ;;; Use eldoc for syntax hints
-(require-package 'css-eldoc)
-(autoload 'turn-on-css-eldoc "css-eldoc")
-(add-hook 'css-mode-hook 'turn-on-css-eldoc)
+(use-package css-eldoc
+  :defer t
+  :hook (css-mode-hook . turn-on-css-eldoc)
+  :init
+  (autoload 'turn-on-css-eldoc "css-eldoc"))
 
 (provide 'init-css)
 ;;; init-css.el ends here

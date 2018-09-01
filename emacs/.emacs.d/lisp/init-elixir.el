@@ -2,26 +2,26 @@
 ;;; Commentary:
 ;;; Code:
 
-;; (defvar elixir-mode)
-;; (defvar alchemist)
+(defvar elixir-mode)
+(defvar alchemist)
+(defvar flycheck-credo)
+(defvar flycheck-elixir)
 
-;; (use-package alchemist
-;;   :mode (("\\.ex\\'" . alchemist-mode)
-;;          ("\\.exs\\'" . alchemist-mode))
-;;   )
+(use-package alchemist
+  :diminish
+  :config
+  (diminish 'alchemist-phoenix-mode))
+(use-package elixir-mode)
 
-;; (use-package elixir-mode
-;;   :mode (("\\.ex\\'" . elixir-mode)
-;;          ("\\.exs\\'" . elixir-mode))
-;;   )
+(use-package flycheck-credo
+  :defer t
+  :after elixir-mode
+  :hook (elixir-mode . flycheck-credo-setup))
+(use-package flycheck-elixir
+  :defer t
+  :after elixir-mode)
 
-(require-package 'alchemist)
-(require-package 'elixir-mode)
-(when (maybe-require-package 'flycheck)
-  (require-package 'flycheck-credo)
-  (require-package 'flycheck-elixir))
-
-(add-hook 'elixir-mode-hook 'flycheck-credo-setup)
+;; (add-hook 'elixir-mode-hook 'flycheck-credo-setup)
 
 (provide 'init-elixir)
 ;;; init-elixir.el ends here

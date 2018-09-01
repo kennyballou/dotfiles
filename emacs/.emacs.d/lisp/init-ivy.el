@@ -4,15 +4,15 @@
 ;;; Code:
 
 (defvar ivy-mode)
+(defvar projectile-completion-system)
+(defvar magit-completing-read-function)
+(defvar dumb-jump-selector)
+(defvar rtags-display-result-backend)
 
 (use-package ivy
   :commands ivy-mode
   :init
   (require 'ivy nil t)
-  (defvar projectile-completion-system)
-  (defvar magit-completing-read-function)
-  (defvar dumb-jump-selector)
-  (defvar rtags-display-result-backend)
   (setq-default ivy-use-virtual-buffers t
                 ivy-virtual-abbreviate 'fullpath
                 ivy-count-format "%d/%d: "

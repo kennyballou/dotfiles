@@ -7,6 +7,7 @@
 (defvar company)
 
 (use-package company
+  :diminish
   :hook ((prog-mode . company-mode)
          (comint-mode . company-mode))
   :bind (("C-M-/" . company-complete)
@@ -17,7 +18,6 @@
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
   :config
-  (diminish 'company-mode)
   (defun sanityinc/local-push-company-backend (backend)
     "Add BACKEND to a buffer-local version of `company-backends'."
     (make-local-variable 'company-backends)

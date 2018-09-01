@@ -2,10 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'haml-mode)
+(defvar haml-mode)
 
-(with-eval-after-load 'haml-mode
-  (define-key haml-mode-map (kbd "C-o") 'open-line))
+(use-package haml-mode)
 
 (provide 'init-haml)
 ;;; init-haml.el ends here

@@ -42,8 +42,10 @@ indentation rules."
     (indent-region begin end)))
 
 ;; Integration with tidy for html + xml
-(require-package 'tidy)
-(add-hook 'nxml-mode-hook (lambda () (tidy-build-menu nxml-mode-map)))
+(defvar tidy)
+(use-package tidy
+  :init
+  (add-hook 'nxml-mode-hook (lambda () (tidy-build-menu nxml-mode-map))))
 
 (defun sanityinc/tidy-buffer-xml (beg end)
   "Run \"tidy -xml\" on the region from BEG to END, or whole buffer."
