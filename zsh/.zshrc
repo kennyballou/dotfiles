@@ -12,7 +12,6 @@ setopt prompt_subst
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias sudo='sudo -E'
 
 prompt_char() {
     branch=`git branch 2> /dev/null | grep \* | awk '{print $2}'`
