@@ -5,8 +5,8 @@
 (defvar zenburn-theme)
 (defvar anti-zenburn-theme)
 
-(use-package zenburn-theme)
 (use-package anti-zenburn-theme)
+(use-package zenburn-theme)
 
 ;; Add toggle between zen and anti-zen
 

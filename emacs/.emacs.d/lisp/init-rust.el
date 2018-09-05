@@ -2,10 +2,16 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'rust-mode)
-  (when (maybe-require-package 'racer)
-    (add-hook 'rust-mode-hook #'racer-mode)
-    (add-hook 'racer-mode-hook #'eldoc-mode)))
+(defvar rust-mode)
+(defvar racer)
+
+(use-package racer
+  :defer t
+  :hook ((racer-mode-hook . eldoc-mode)))
+
+(use-package rust-mode
+  :after racer
+  :hook ((rust-mode-hook . racer-mode)))
 
 (provide 'init-rust)
 ;;; init-rust.el ends here

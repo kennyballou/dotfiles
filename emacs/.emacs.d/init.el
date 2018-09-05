@@ -40,6 +40,7 @@
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
 
+(use-package bind-key)
 (use-package wgrep)
 (use-package delight)
 (use-package diminish)
@@ -71,6 +72,8 @@
 (require 'init-projectile)
 (require 'init-gud)
 (require 'init-compile)
+(require 'init-regex)
+;; Languages and Language Modes
 (require 'init-c)
 (require 'init-markdown)
 (require 'init-csv)
@@ -79,14 +82,12 @@
 (require 'init-java)
 (require 'init-javascript)
 (require 'init-php)
-
 (require 'init-nxml)
 (require 'init-html)
 (require 'init-css)
 (require 'init-haml)
 (require 'init-python)
-(unless (version<= emacs-version "24.3")
-  (require 'init-haskell))
+(require 'init-haskell)
 (require 'init-elm)
 (require 'init-ruby-mode)
 (require 'init-rust)
@@ -116,8 +117,6 @@
 
 ;; email and such
 (require 'init-email)
-
-(maybe-require-package 'regex-tool)
 
 ;; customize interface configuration
 (when (file-exists-p custom-file)

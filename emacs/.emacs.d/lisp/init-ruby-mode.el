@@ -2,65 +2,61 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'ruby-mode)
-(require-package 'ruby-hash-syntax)
+(defvar ruby-mode)
+(defvar ruby-hash-syntax)
+(defvar rspec-mode)
+(defvar inf-ruby)
+(defvar ruby-compilation)
+(defvar yari)
+(defvar robe)
+(defvar goto-gem)
+(defvar bundler)
 
-(dolist (regxmode (list '("Rakefile\\'" . 'ruby-mode)
-                        '("\\.rake\\'" . 'ruby-mode)
-                        '("\\.rxml\\'" . 'ruby-mode)
-                        '("\\.rjs\\'" . 'ruby-mode)
-                        '("\\.librc\\'" . 'ruby-mode)
-                        '("\\.pryrc\\'" . 'ruby-mode)
-                        '("\\.builder\\'" . 'ruby-mode)
-                        '("\\.ru\\'" . 'ruby-mode)
-                        '("\\.gemspec\\'" . 'ruby-mode)
-                        '("Gemfile\\'" . 'ruby-mode)
-                        '("Kirkfile\\'" . 'ruby-mode)
-                        '("Gemfile\\.lock\\'" . 'conf-mode)))
-  (add-to-list 'auto-mode-alist regxmode))
-
-(setq-default
- ruby-use-encoding-map nil
- ruby-insert-encoding-magic-comment nil)
-
-(with-eval-after-load 'ruby-mode
-  ;; Stupidly the non bundled ruby-mode isn't a drived mode of
-  ;; prog-mode: we run the latter's hooks anyway in that case.
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (unless (derived-mode-p 'prog-mode)
-                (run-hook 'prog-mode-hook)))))
-
-(add-hook 'ruby-mode-hook 'subword-mode)
-
-(require-package 'rspec-mode)
-
-;; Inferior ruby
-(require-package 'inf-ruby)
-
-;;; Ruby compilation
-(require-package 'ruby-compilation)
-
-(with-eval-after-load 'ruby-mode
-  (let ((m ruby-mode-map))
-    (define-key m [S-f7] 'ruby-compilation-this-buffer)
-    (define-key m [f7] 'ruby-compilation-this-test)))
-
-(with-eval-after-load 'ruby-compilation
+(use-package ruby-hash-syntax
+  :defer t)
+(use-package rspec-mode
+  :defer t)
+(use-package inf-ruby
+  :defer t)
+(use-package ruby-compilation
+  :defer t
+  :config
   (defalias 'rake 'ruby-compilation-rake))
+(use-package yari
+  :defer t
+  :config
+  (defalias 'ri 'yari))
+(use-package robe
+  :defer t)
+(use-package goto-gem
+  :defer t)
+(use-package bundler)
 
-;;; Robe
-(when (maybe-require-package 'robe)
-  (with-eval-after-load 'ruby-mode
-    (add-hook 'ruby-mode-hook 'robe-mode)))
-
-;; ri support
-(require-package 'yari)
-(defalias 'ri 'yari)
-
-(require-package 'goto-gem)
-
-(require-package 'bundler)
+(use-package ruby-mode
+  :defer t
+  :after (rspec-mode inf-ruby ruby-compilation)
+  :mode (("Rakefile\\'" . ruby-mode)
+         ("\\.rake\\'" . ruby-mode)
+         ("\\.rxml\\'" . ruby-mode)
+         ("\\.rjs\\'" . ruby-mode)
+         ("\\.librc\\'" . ruby-mode)
+         ("\\.pryrc\\'" . ruby-mode)
+         ("\\.builder\\'" . ruby-mode)
+         ("\\.ru\\'" . ruby-mode)
+         ("\\.gemspec\\'" . ruby-mode)
+         ("Gemfile\\'" . ruby-mode)
+         ("Kirkfile\\'" . ruby-mode))
+  :init
+  (setq-default ruby-use-encoding-map nil)
+  (setq-default ruby-insert-encoding-magic-comment nil)
+  :hook
+  ((ruby-mode-hook . (lambda () (unless derived-mode-p #'prog-mode)
+                       (run-hook 'prog-mode-hook)))
+   (ruby-mode-hook . subword-mode))
+  :bind (:map ruby-mode-map
+              ("S-f7" . ruby-compilation-this-buffer)
+              ("f7" . ruby-compilation-this-test))
+  )
 
 ;;; ERB
 (require-package 'mmm-mode)

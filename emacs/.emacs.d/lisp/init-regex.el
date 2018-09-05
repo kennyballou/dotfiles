@@ -1,9 +1,22 @@
-(maybe-require-package 'regex-tool)
+;;; init-regrex --- Regex and RE Builder Configuration
+;;; Commentary:
+;;; Code:
 
-(setq-default regex-tool-backend 'perl)
+(defvar regex-tool)
+(defvar re-builder)
+(defvar reb-mode-map)
 
-(after-load 're-builder
-            ;;support a slightly more idomatic quit binding in re-builder
-            (define-key reb-mode-map (kbd "C-c C-k") 'reb-quit))
+(use-package regex-tool
+  :defer t
+  :init
+  (setq-default regex-tool-backend 'perl))
+
+(use-package re-builder
+  :ensure nil
+  :defer t
+  :bind (:map reb-mode-map
+              ;;support a slightly more idomatic quit binding in re-builder
+              ("C-c C-k" . reb-quit)))
 
 (provide 'init-regex)
+;;; init-regex.el ends here

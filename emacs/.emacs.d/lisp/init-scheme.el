@@ -6,6 +6,5 @@
 
 (use-package geiser)
 
-
 (provide 'init-scheme)
 ;;; init-scheme.el ends here

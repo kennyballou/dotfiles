@@ -93,8 +93,10 @@
         (when modi/htmlize-initial-flyspell-mode
           (setq flyspell-mode 1)))
 
-      (add-hook 'htmlize-before-hook #'modi/htmlize-before-hook-flyspell-disable)
-      (add-hook 'htmlize-after-hook #'modi/htmlize-after-hook-flyspell-enable-maybe))))
+      (add-hook 'htmlize-before-hook
+                #'modi/htmlize-before-hook-flyspell-disable)
+      (add-hook 'htmlize-after-hook
+                #'modi/htmlize-after-hook-flyspell-enable-maybe))))
 
 (use-package ob-ipython
   :pin melpa-unstable

@@ -1,54 +1,38 @@
 ;;; init-haskell --- Haskell Mode Configurations
 ;;; Commentary:
-;; TODO: https://wunki.org/posts/2014-05-17-haskell-packages-development.html
-;; https://github.com/chrisdone/chrisdone-emacs/blob/master/config/haskell.el
-;; TODO: ghci-ng
-;; TODO: don't pop up *Warnings* if haskell-stylish-on-save fails
-;; TODO: purescript-mode
 ;;; Code:
 
-(require-package 'haskell-mode)
+(defvar haskell-mode)
+(defvar intero)
+(defvar flycheck)
+(defvar intero-mode-map)
+(defvar hindent)
 
-;; Use intero for completion and flycheck
+(use-package hindent
+  :defer t)
 
-(when (maybe-require-package 'intero)
-  (with-eval-after-load 'haskell-mode
-    (intero-global-mode)
-    (add-hook 'haskell-mode-hook 'eldoc-mode))
-  (with-eval-after-load 'intero
-    ;; Don't clobber sanityinc/counsel-search-projectile binding
-    (define-key intero-mode-map (kbd "M-?") nil)
-    (with-eval-after-load 'flycheck
-      (flycheck-add-next-checker 'intero
-                                 '(warning . haskell-hlint)))))
+(use-package intero
+  :defer
+  :after flycheck
+  :config
+  (unbind-key (kbd "M-?") intero-mode-map)
+  (flycheck-add-next-checker 'intero
+                             '(warning . haskell-hlint)))
 
-(add-to-list 'auto-mode-alist '("\\.ghci\\'" . 'haskell-mode))
-
-;; Indentation
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-;; Source code helpers
-(add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
-
-(setq-default haskell-stylish-on-save t)
-
-(when (maybe-require-package 'hindent)
-  (add-hook 'haskell-mode-hook 'hindent-mode))
-
-(with-eval-after-load 'haskell-mode
-  (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
-  (define-key haskell-mode-map (kbd "C-o") 'open-line))
-
-(with-eval-after-load 'page-break-lines
-  (push 'haskell-mode 'page-break-lines-mode))
-
-(with-eval-after-load 'haskell
-  (define-key interactive-haskell-mode-map
-    (kbd "M-N")
-    'haskell-goto-next-error)
-  (define-key interactive-haskell-mode-map
-    (kbd "M-P")
-    'haskell-goto-prev-error))
+(use-package haskell-mode
+  :after (intero hindent flycheck)
+  :hook ((haskell-mode-hook . eldoc-mode))
+  :interpreter ("ghci" . haskell-mode)
+  :bind (:map interactive-haskell-mode-map
+              ("M-N" . haskell-goto-next-error)
+              ("M-P" . haskell-goto-prev-error)
+              :map haskell-mode-map
+              ("C-c h" . hoogle)
+              ("C-o" . open-line))
+  :init
+  (setq-default haskell-stylish-on-save t)
+  :config
+  (intero-global-mode))
 
 (provide 'init-haskell)
 ;;; init-haskell.el ends here

@@ -2,9 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'yaml-mode)
-  (add-to-list 'auto-mode-alist '("\\.yml\\.erb'". 'yaml-mode))
-  (add-hook 'yaml-mode-hook 'goto-address-prog-mode))
+(defvar yaml-mode)
+
+(use-package yaml-mode
+  :defer t
+  :mode "\\.yml\\.erb\\'"
+  :hook ((yaml-mode-hook . goto-address-prog-mode)))
 
 (provide 'init-yaml)
 ;;; init-yaml.el ends here

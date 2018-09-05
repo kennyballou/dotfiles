@@ -70,7 +70,7 @@
         (server :default "postgres")
         (port :default 5432)))
 
-(setq sql-connection-alist '())
+(setq-default sql-connection-alist '())
 
 ;; https://truongtx.me/2014/08/23/setup-emacs-as-an-sql-database-client
 (defun open-sql-connection (product connection)

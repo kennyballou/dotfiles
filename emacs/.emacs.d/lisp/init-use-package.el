@@ -15,12 +15,11 @@
 
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
 
 (setq use-package-always-ensure t)
 (setq use-package-always-pin "melpa-stable")
 
+(use-package bind-key)
 
 (provide 'init-use-package)
 ;;; init-use-package.el ends here

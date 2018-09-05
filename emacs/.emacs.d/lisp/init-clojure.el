@@ -2,12 +2,16 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'clojure-mode)
-  (require-package 'cljsbuild-mode)
-  (require-package 'elein)
+(defvar clojure-mode)
+(defvar cljsbuild-mode)
+(defvar elein)
 
-  (with-eval-after-load 'clojure-mode
-    (add-hook 'clojure-mode-hook 'subword-mode)))
+(use-package cljsbuild-mode)
+(use-package elein)
+(use-package clojure-mode
+  :after (cljsbuild-mode elein)
+  :defer t
+  :hook ((clojure-mode-hook . subword-mode)))
 
 (provide 'init-clojure)
 ;;; init-clojure.el ends here

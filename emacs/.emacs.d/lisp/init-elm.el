@@ -2,17 +2,25 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'elm-mode)
+(defvar flycheck)
+(defvar flycheck-elm)
+(defvar elm-mode)
+
+(use-package flycheck-elm
+  :after flycheck)
+
+(use-package elm-mode
+  :after (flycheck flycheck-elm)
+  :defer t
+  :diminish
+  :init
   (setq-default elm-format-on-save t)
-  (with-eval-after-load 'elm-mode
-    (delight 'elm-indent-mode nil 'elm-indent)
-    (when (executable-find "elm-oracle")
-      (add-hook 'elm-mode-hook 'elm-oracle-setup-completion))
-    (when (executable-find "elm-format")
-      (setq-default elm-format-on-save t)))
-  (when (maybe-require-package 'flycheck-elm)
-    (with-eval-after-load 'elm-mode
-      (flycheck-elm-setup))))
+  :config
+  (flycheck-elm-setup)
+  (when (executable-find "elm-oracle")
+    (add-hook 'elm-mode-hook 'elm-oracle-setup-completion))
+  (when (executable-find "elm-format")
+    (setq-default elm-format-on-save t)))
 
 (provide 'init-elm)
 ;;; init-elm.el ends here
