@@ -118,6 +118,9 @@
 ;; email and such
 (require 'init-email)
 
+;; pdf-tools
+(require 'init-pdf-tools)
+
 ;; customize interface configuration
 (when (file-exists-p custom-file)
   (load custom-file))
