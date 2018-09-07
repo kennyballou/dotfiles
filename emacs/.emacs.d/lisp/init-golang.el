@@ -1,12 +1,22 @@
-(require-package 'go-mode)
-(require-package 'go-autocomplete)
+;;; init-golang --- Go Mode Configuration and Setup
+;;; Commentary:
+;;; Code:
 
-(when (boundp 'auto-complete-mode)
-  (require 'go-autocomplete)
+(defvar go-mode)
+(defvar go-autocomplete)
+
+(use-package go-autocomplete
+  :after (auto-complete-mode)
+  :defer t
+  :config
   (ac-config-default))
 
-(add-hook 'go-mode-hook
-          (lambda () (setq indent-tabs-mode nil
-                           (setq tab-width 2))))
+(use-package go-mode
+  :after (go-autocomplete)
+  :defer t
+  :hook (go-mode-hook . (lambda ()
+                          (setq indent-tabs-mode nil)
+                          (setq tab-width 4))))
 
 (provide 'init-golang)
+;;; init-golang.el ends here

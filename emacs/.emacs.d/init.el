@@ -79,6 +79,7 @@
 (require 'init-csv)
 (require 'init-erlang)
 (require 'init-elixir)
+(require 'init-golang)
 (require 'init-java)
 (require 'init-javascript)
 (require 'init-php)
