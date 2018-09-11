@@ -43,7 +43,7 @@
 (defun site-lisp-library-loadable-p (name)
   "Return whether or not the library `name' can be loaded from a
 source file under ~/.emacs.d/site-lisp/name'"
-  (let ((f (locate-library (symbol-name name))))
+  (let ((f (locate-library name)))
     (and f (string-prefix-p (file-name-as-directory (site-lisp-dir-for name)) f))))
 
 (provide 'init-site-lisp)
