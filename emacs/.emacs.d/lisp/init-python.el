@@ -18,25 +18,28 @@
   :init
   (when (executable-find "ipython")
     (setq python-shell-interpreter "ipython"
-          python-shell-interpreter-args "--profile=emacs --simple-prompt"))
-  :config
-  (use-package pip-requirements)
-  (use-package virtualenvwrapper
-    :ensure t
-    :init
-    (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
-    (setq venv-location (expand-file-name "~/.venvs"))
-    :config
+          python-shell-interpreter-args "--profile=emacs --simple-prompt")))
 
-    (venv-initialize-interactive-shells)))
+(use-package pip-requirements
+  :after (python))
+(use-package virtualenvwrapper
+  :after (python)
+  :ensure t
+  :init
+  (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
+  (setq venv-location (expand-file-name "~/.venvs"))
+  :config
+
+  (venv-initialize-interactive-shells))
 
 (use-package anaconda-mode
+  :after (python)
   :diminish
-  :after python
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
 
 (use-package ein
+  :after (python)
   :pin melpa-unstable
   :defer t)
 
