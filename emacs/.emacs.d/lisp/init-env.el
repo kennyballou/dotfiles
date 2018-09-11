@@ -15,7 +15,7 @@
        (guix-bin (concat guix-current "/bin"))
        (python-path (getenv "PYTHONPATH"))
        (c-include-path (getenv "C_INCLUDE_PATH"))
-       (cpp-include-path (getenv "CPP_INCLUDE_PATH"))
+       (cpp-include-path (getenv "CPLUS_INCLUDE_PATH"))
        (library-path (getenv "LIBRARY_PATH"))
        (ssl-cert-dir (concat guix-profile "/etc/ssl/certs"))
        (ssl-cert-file (concat ssl-cert-dir "/ca-certificates.crt")))
@@ -26,14 +26,18 @@
     (setenv "SSL_CERT_FILE" ssl-cert-file)
     (setenv "GIT_SSL_CAINFO" ssl-cert-file)
     (setenv "GUIX_LOCPATH" (concat guix-profile "/lib/locale"))
-    (setenv "PYTHONPATH" (kb/join-paths '((concat guix-profile "/lib/python3.6")
-                                          python-path)))
-    (setenv "C_INCLUDE_PATH" (kb/join-paths '((concat guix-profile "/include")
-                                              c-include-path)))
-    (setenv "CPLUS_INCLUDE_PATH" (kb/join-paths '((concat guix-profile "/include")
-                                                  cpp-include-path))
-            (setenv "LIBRARY_PATH" (kb/join-paths '((concat guix-profile "/lib")
-                                                    library-path))))))
+    (setenv "PYTHONPATH" (kb/join-paths
+                          (list (concat guix-profile "/lib/python3.6")
+                                python-path)))
+    (setenv "C_INCLUDE_PATH" (kb/join-paths
+                              (list (concat guix-profile "/include")
+                                    c-include-path)))
+    (setenv "CPLUS_INCLUDE_PATH" (kb/join-paths
+                                  (list (concat guix-profile "/include")
+                                        cpp-include-path))
+            (setenv "LIBRARY_PATH" (kb/join-paths
+                                    (list (concat guix-profile "/lib")
+                                          library-path))))))
 
 (provide 'init-env)
 ;;; init-env.el ends here
