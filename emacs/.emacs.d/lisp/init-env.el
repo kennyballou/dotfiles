@@ -7,7 +7,10 @@
 (defun kb/join-paths (paths &optional path-separator)
   "Join the given PATHS together using the PATH-SEPARATOR."
   (or path-separator (setq path-separator ":"))
-  (s-join path-separator (seq-filter (lambda (x) (> (length x) 0)) paths)))
+  ;; Remove duplicate path entries
+  (let* ((split-paths (lambda (p) (s-split path-separator p)))
+         (paths-to-join (-flatten (map 'list split-paths paths))))
+    (s-join path-separator (seq-uniq paths-to-join))))
 
 (let* ((user-home (getenv "HOME"))
        (guix-profile (concat user-home "/.guix-profile"))
