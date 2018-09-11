@@ -118,19 +118,6 @@ left to try and get the PATH down to, at most, MAX-LEN."
   (add-to-list 'eshell-visual-subcommands subcmd))
 
 (setenv "PAGER" "")
-(let* ((user-home (getenv "HOME"))
-       (guix-profile (concat user-home "/.guix-profile"))
-       (guix-current (concat user-home "/.config/guix/current"))
-       (guix-bin (concat guix-current "/bin"))
-       (ssl-cert-dir (concat guix-profile "/etc/ssl/certs"))
-       (ssl-cert-file (concat ssl-cert-dir "/ca-certificates.crt")))
-  (progn
-    (eshell/addpath (concat guix-profile "/bin"))
-    (setenv "PATH" (concat guix-profile "/bin" (getenv "PATH")))
-    (setenv "SSL_CERT_DIR" ssl-cert-dir)
-    (setenv "SSL_CERT_FILE" ssl-cert-file)
-    (setenv "GIT_SSL_CAINFO" ssl-cert-file)
-    (setenv "GUIX_LOCPATH" (concat guix-profile "/lib/locale"))))
 
 ;; disable slime in eshell
 (add-hook 'eshell-mode-hook

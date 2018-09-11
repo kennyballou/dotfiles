@@ -30,6 +30,7 @@
     (lambda () (setq gc-cons-threshold (* 20 1024 1024)))))
 
 ;; Begin Bootstrapping
+(require 'init-env)
 (require 'init-utils)
 (require 'init-site-lisp)
 (require 'init-elpa)
