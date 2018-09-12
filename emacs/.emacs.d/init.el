@@ -119,6 +119,7 @@
 
 ;; email and such
 (require 'init-email)
+(require 'init-elfeed)
 
 ;; pdf-tools
 (require 'init-pdf-tools)
