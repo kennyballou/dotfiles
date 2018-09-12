@@ -40,6 +40,7 @@
 (setq mu4e-user-mail-address-list '("kballou@devnulllabs.io"
                                     "kennethmgballou@gmail.com"
                                     "kennyballou@u.boisestate.edu"
+                                    "kennyballou@boisestate.edu"
                                     "kenny@homecu.com"))
 
 (setq mu4e-get-mail-command "mbsync -a")
