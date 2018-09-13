@@ -30,13 +30,13 @@
     (lambda () (setq gc-cons-threshold (* 20 1024 1024)))))
 
 ;; Begin Bootstrapping
-(require 'init-env)
 (require 'init-utils)
 (require 'init-site-lisp)
 (require 'init-elpa)
 (require 'init-use-package)
 (require 'init-exec-path)
 (require 'init-backupfiles)
+(require 'init-env)
 
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
