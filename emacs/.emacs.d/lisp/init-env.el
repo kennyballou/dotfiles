@@ -3,14 +3,15 @@
 ;;; Code:
 
 (require 'eshell)
+(require 'dash)
 
 (defun kb/join-paths (paths &optional path-separator)
   "Join the given PATHS together using the PATH-SEPARATOR."
   (or path-separator (setq path-separator ":"))
   ;; Remove duplicate path entries
-  (let* ((split-paths (lambda (p) (s-split path-separator p)))
+  (let* ((split-paths (lambda (p) (split-string p path-separator)))
          (paths-to-join (-flatten (map 'list split-paths paths))))
-    (s-join path-separator (seq-uniq paths-to-join))))
+    (string-join (seq-uniq paths-to-join) path-separator)))
 
 (let* ((user-home (getenv "HOME"))
        (guix-profile (concat user-home "/.guix-profile"))
