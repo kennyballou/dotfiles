@@ -45,6 +45,9 @@
 (use-package wgrep)
 (use-package delight)
 (use-package diminish)
+(use-package fullframe)
+
+(fullframe list-packages quit-window)
 
 ;; Load configs for specific features and modes
 (require 'init-themes)

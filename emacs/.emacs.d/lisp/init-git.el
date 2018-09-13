@@ -46,11 +46,7 @@
   (setq-default magit-diff-refine-hunk t)
   (defvar magit-last-seen-setup-instructions "1.4.0")
   (add-hook 'magit-popup-mode-hook 'sanityinc/no-trailing-whitespace)
-  )
-
-(use-package fullframe
-  :requires magit
-  :preface
+  :config
   (fullframe magit-status magit-mode-quit-window)
   )
 

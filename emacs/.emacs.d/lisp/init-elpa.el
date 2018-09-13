@@ -59,10 +59,5 @@ locate PACKAGE."
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-(defvar list-packages)
-(defvar quit-window)
-(require-package 'fullframe)
-(fullframe list-packages quit-window)
-
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
