@@ -8,6 +8,7 @@
 (defvar typescript-mode)
 (defvar add-node-modules-path)
 (defvar auto-mode-list)
+(defvar melpa-unstable)
 
 (use-package json-mode)
 (use-package js2-mode
@@ -94,7 +95,7 @@
   (add-hook 'skewer-mode-hook
             (lambda () (inferior-js-keys-mode -1))))
 
-(use-package add-node-moudules-path
+(use-package add-node-modules-path
   :pin melpa-unstable
   :after (typescript-mode js2-mode)
   :defer t
