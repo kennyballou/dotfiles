@@ -24,8 +24,9 @@
 (defvar rainbow-mode)
 (defvar rainbow-delimiters)
 (defvar whole-line-or-region-global-mode)
+(defvar unfill)
 
-(require-package 'unfill)
+(use-package unfill)
 
 (maybe-require-package 'list-unicode-display)
 

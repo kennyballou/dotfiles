@@ -6,6 +6,7 @@
 (defvar melpa-unstable)
 
 (require 'eshell)
+(require 'subr-x)
 (use-package dash
   :pin melpa-unstable)
 

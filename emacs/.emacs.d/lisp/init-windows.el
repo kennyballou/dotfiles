@@ -1,9 +1,14 @@
 ;;; -*- lexical-binding: t -*-
+;;; init-windows -- Window Configuration
+;;; Commentary:
+;;; Code:
+
 ;; Navigate window layouts with "C-c <left>" and "C-c <right>"
 (add-hook 'after-init-hook 'winner-mode)
 
 ;; Make "C-x o" prompt for a target window when there are more than 2
-(require-package 'switch-window)
+(defvar switch-window)
+(use-package switch-window)
 (setq-default switch-window-shortcut-style 'alphabet)
 (setq-default switch-window-timeout nil)
 (global-set-key (kbd "C-x o") 'switch-window)
@@ -79,3 +84,4 @@ Call a second time to restore the original window configuration."
   (windmove-default-keybindings 'control))
 
 (provide 'init-windows)
+;;; init-windows.el ends here

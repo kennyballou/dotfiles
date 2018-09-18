@@ -9,9 +9,12 @@
 (defvar auto-fill)
 (defvar text-mode)
 
-(use-package whitespace)
-(use-package whitespace-cleanup-mode)
-(use-package fill-column-indicator)
+(use-package whitespace
+  :diminish)
+(use-package whitespace-cleanup-mode
+  :diminish)
+(use-package fill-column-indicator
+  :diminish)
 ;; (use-package column-marker)
 
 (setq-default show-trailing-whitespace t)
@@ -38,10 +41,10 @@
 
 (global-whitespace-cleanup-mode t)
 (global-whitespace-mode t)
-(when (maybe-require-package 'delight)
-  (delight '((whitespace-cleanup-mode nil whitespace-cleanup-mode)
-             (whitespace-mode nil whitespace)
-             (global-whitespace-mode nil whitespace))))
+;; (when (maybe-require-package 'delight)
+;;   (delight '((whitespace-cleanup-mode nil whitespace-cleanup-mode)
+;;              (whitespace-mode nil whitespace)
+;;              (global-whitespace-mode nil whitespace))))
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
 

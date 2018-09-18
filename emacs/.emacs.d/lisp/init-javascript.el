@@ -6,6 +6,9 @@
 (defvar js2-mode)
 (defvar coffee-mode)
 (defvar typescript-mode)
+(defvar add-node-modules-path)
+(defvar auto-mode-list)
+
 (use-package json-mode)
 (use-package js2-mode
   :config
@@ -56,12 +59,11 @@
 
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
-(when (and (executable-find "ag")
-           (maybe-require-package 'xref-js2))
-  (with-eval-after-load 'js2-mode
-    (define-key js2-mode-map (kbd "M-.") nil)
-    (add-hook 'js2-mode-hook
-              (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
+(use-package xref-js2
+  :after js2-mode
+  :defer t
+  :config
+  (add-to-list 'xref-backend-functions #'xref-js2-xref-backend))
 
 (when (fboundp 'coffee-mode)
   (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode)))
@@ -92,11 +94,12 @@
   (add-hook 'skewer-mode-hook
             (lambda () (inferior-js-keys-mode -1))))
 
-(when (maybe-require-package 'add-node-modules-path)
-  (with-eval-after-load 'typescript-mode
-    (add-hook 'typescript-mode-hook 'add-node-modules-path))
-  (with-eval-after-load 'js2-mode
-    (add-hook 'js2-mode-hook 'add-node-modules-path)))
+(use-package add-node-moudules-path
+  :pin melpa-unstable
+  :after (typescript-mode js2-mode)
+  :defer t
+  :hook ((typescript-mode . add-node-modules-path)
+         (js2-mode . add-node-modules-path)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
