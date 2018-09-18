@@ -11,6 +11,7 @@
 (defvar robe)
 (defvar goto-gem)
 (defvar bundler)
+(defvar melpa-unstable)
 
 (use-package ruby-hash-syntax
   :defer t)
@@ -23,6 +24,7 @@
   :config
   (defalias 'rake 'ruby-compilation-rake))
 (use-package yari
+  :pin melpa-unstable
   :defer t
   :config
   (defalias 'ri 'yari))

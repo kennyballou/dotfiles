@@ -43,7 +43,8 @@
 
 (use-package bind-key)
 (use-package wgrep)
-(use-package delight)
+(use-package delight
+  :pin gnu)
 (use-package diminish)
 (use-package fullframe)
 

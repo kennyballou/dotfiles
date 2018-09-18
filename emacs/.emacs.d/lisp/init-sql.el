@@ -5,10 +5,8 @@
 (defvar sql-postgres-login-params)
 (defvar sql-connection-alist)
 (defvar sql-product)
-(defvar sql-indent)
 
 (require 'sql)
-(use-package sql-indent)
 
 (with-eval-after-load 'sql
   ;; sql-mode basically requires an uncustomized environment

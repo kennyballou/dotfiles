@@ -37,8 +37,8 @@
 (require 'ox-md)
 (use-package org-cliplink
   :pin melpa-unstable)
-(use-package org-fstree
-  :pin melpa-unstable)
+;; (use-package org-fstree
+;;   :pin melpa-unstable)
 (use-package ob-elixir
   :pin melpa-unstable)
 (use-package ess)

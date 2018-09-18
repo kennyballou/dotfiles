@@ -5,11 +5,17 @@
 ;;; Colourise CSS colour literals
 
 (defvar rainbow-mode)
-(use-package rainbow-mode
-  :defer t
-  :init
-  (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
-    (add-hook hook 'rainbow-mode)))
+(defvar sass-mode)
+(defvar scss-mode)
+(defvar less-css-mode)
+(defvar skewer-less)
+(defvar skewer-mode)
+(defvar css-eldoc)
+
+(require 'rainbow-mode)
+
+(dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
+  (add-hook hook 'rainbow-mode))
 
 ;;; Embedding in HTML
 (require 'mmm-mode)
@@ -39,12 +45,6 @@
     (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
 
 ;;; SASS and SCSS
-(defvar sass-mode)
-(defvar scss-mode)
-(defvar less-css-mode)
-(defvar skewer-less)
-(defvar skewer-mode)
-(defvar css-eldoc)
 (use-package sass-mode)
 (use-package scss-mode)
 (setq-default scss-compile-at-save nil)
@@ -61,6 +61,7 @@
 
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
+  :pin melpa-unstable
   :defer t
   :hook (css-mode-hook . turn-on-css-eldoc)
   :init

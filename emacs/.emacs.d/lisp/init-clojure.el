@@ -5,9 +5,12 @@
 (defvar clojure-mode)
 (defvar cljsbuild-mode)
 (defvar elein)
+(defvar melpa-unstable)
 
-(use-package cljsbuild-mode)
-(use-package elein)
+(use-package cljsbuild-mode
+  :pin melpa-unstable)
+(use-package elein
+  :pin melpa-unstable)
 (use-package clojure-mode
   :after (cljsbuild-mode elein)
   :defer t

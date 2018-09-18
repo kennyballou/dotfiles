@@ -1,6 +1,14 @@
-(require-package 'rainbow-mode)
-(require-package 'rainbow-delimiters)
+;;; init-rainbow --- Rainbow mode configuration
+;;; Commentary:
+;;; Code:
 
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(defvar rainbow-mode)
+(defvar rainbow-delimiters)
+
+(use-package rainbow-mode
+  :pin gnu)
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (provide 'init-rainbow)
+;;; init-rainbow.el ends here

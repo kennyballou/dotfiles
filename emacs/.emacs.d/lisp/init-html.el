@@ -3,10 +3,11 @@
 ;;; Code:
 
 (defvar tagedit)
-(defvar tidy)
-(use-package tidy
-  :init
-  (add-hook 'html-mode-hook (lambda () (tidy-build-menu html-mode-map))))
+;; (defvar tidy)
+;; (use-package tidy
+;;   :pin
+;;   :init
+;;   (add-hook 'html-mode-hook (lambda () (tidy-build-menu html-mode-map))))
 
 (use-package tagedit)
 (with-eval-after-load 'sgml-mode

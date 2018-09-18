@@ -12,7 +12,7 @@
 (use-package whitespace)
 (use-package whitespace-cleanup-mode)
 (use-package fill-column-indicator)
-(use-package column-marker)
+;; (use-package column-marker)
 
 (setq-default show-trailing-whitespace t)
 

@@ -7,7 +7,7 @@
                ("org" . "https://orgmode.org/elpa/")
                ("gnu" . "http://elpa.gnu.org/packages/")
                ("melpa-unstable" . "https://melpa.org/packages/")))
-        (add-to-list 'package-archives pkg))
+  (add-to-list 'package-archives pkg))
 
 (let ((local-package-el (locate-library "package")))
   (when (string-match-p (concat "^" (regexp-quote user-emacs-directory))
@@ -58,6 +58,8 @@ locate PACKAGE."
 ;;; Fire up package.el
 (setq package-enable-at-startup nil)
 (package-initialize)
+
+(package-refresh-contents)
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here

@@ -5,9 +5,11 @@
 (defvar regex-tool)
 (defvar re-builder)
 (defvar reb-mode-map)
+(defvar melpa-unstable)
 
 (use-package regex-tool
   :defer t
+  :pin melpa-unstable
   :init
   (setq-default regex-tool-backend 'perl))
 

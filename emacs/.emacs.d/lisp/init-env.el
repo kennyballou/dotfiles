@@ -2,8 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar dash)
+(defvar melpa-unstable)
+
 (require 'eshell)
-(require 'dash)
+(use-package dash
+  :pin melpa-unstable)
+
 
 (defun kb/join-paths (paths &optional path-separator)
   "Join the given PATHS together using the PATH-SEPARATOR."

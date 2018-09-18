@@ -20,6 +20,10 @@
 (defvar avy)
 (defvar avy-goto-char-timer)
 (defvar multiple-cursors)
+(defvar melpa-unstable)
+(defvar rainbow-mode)
+(defvar rainbow-delimiters)
+(defvar whole-line-or-region-global-mode)
 
 (require-package 'unfill)
 
@@ -87,16 +91,20 @@
     (delight 'subword-mode nil 'subword)))
 
 
-(use-package nlinum)
+(use-package nlinum
+  :pin gnu
+  :hook (text-mode . nlinum-mode))
 
-(when (require-package 'rainbow-delimiters)
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-
+(use-package rainbow-mode
+  :pin gnu)
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
 
 (use-package undo-tree
+  :pin gnu
   :diminish
   :config
   (global-undo-tree-mode))
@@ -182,12 +190,14 @@
 ;;----------------------------------------------------------------------------
 (use-package whole-line-or-region
   :diminish whole-line-or-region-local-mode
-  :init
+  :defer t
+  :commands whole-line-or-region-global-mode
+  :config
   (whole-line-or-region-global-mode t))
 
-(use-package highlight-escape-sequences
-  :init
-  (hes-mode))
+;; (use-package highlight-escape-sequences
+;;   :init
+;;   (hes-mode))
 
 (use-package guide-key
   :diminish
