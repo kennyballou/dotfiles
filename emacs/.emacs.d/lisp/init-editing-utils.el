@@ -91,10 +91,26 @@
   (with-eval-after-load 'subword
     (delight 'subword-mode nil 'subword)))
 
+(global-display-line-numbers-mode t)
 
-(use-package nlinum
-  :pin gnu
-  :hook (text-mode . nlinum-mode))
+(defun kb/no-line-numbers ()
+  "Turn off line numbers for buffers.
+
+Inspired by `sanityinc/no-trailing-whitespace'"
+  (display-line-numbers-mode 0))
+
+(dolist (hook '(special-mode-hook
+                Info-mode-hook
+                eww-mode-hook
+                term-mode-hook
+                multi-term-mode-hook
+                comint-mode-hook
+                compilation-mode-hook
+                twittering-mode-hook
+                minibuffer-setup-hook
+                calendar-mode-hook
+                eshell-mode-hook))
+  (add-hook hook #'kb/no-line-numbers))
 
 (use-package rainbow-mode
   :pin gnu)

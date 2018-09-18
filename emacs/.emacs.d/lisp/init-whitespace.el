@@ -10,9 +10,13 @@
 (defvar text-mode)
 
 (use-package whitespace
-  :diminish)
+  :delight global-whitespace-mode
+  :config
+  (global-whitespace-mode t))
 (use-package whitespace-cleanup-mode
-  :diminish)
+  :diminish
+  :config
+  (global-whitespace-cleanup-mode t))
 (use-package fill-column-indicator
   :diminish)
 ;; (use-package column-marker)
@@ -38,13 +42,6 @@
                 calendar-mode-hook
                 eshell-mode-hook))
   (add-hook hook #'sanityinc/no-trailing-whitespace))
-
-(global-whitespace-cleanup-mode t)
-(global-whitespace-mode t)
-;; (when (maybe-require-package 'delight)
-;;   (delight '((whitespace-cleanup-mode nil whitespace-cleanup-mode)
-;;              (whitespace-mode nil whitespace)
-;;              (global-whitespace-mode nil whitespace))))
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
 
