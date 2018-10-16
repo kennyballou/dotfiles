@@ -38,6 +38,9 @@
 (require 'init-backupfiles)
 (require 'init-env)
 
+;; Allow users to provide an optional "init-preload-local.el"
+(require 'init-preload-local nil t)
+
 (provide 'init)
 ;;; init.el ends here
 
