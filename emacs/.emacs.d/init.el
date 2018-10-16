@@ -48,6 +48,7 @@
 
 ;; Load configs for specific features and modes
 (require 'init-themes)
+(require 'init-spaceline)
 
 (provide 'init)
 ;;; init.el ends here
