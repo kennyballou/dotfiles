@@ -52,6 +52,7 @@
 (require 'init-gui-frames)
 (require 'init-dired)
 (require 'init-isearch)
+(require 'init-grep)
 
 (provide 'init)
 ;;; init.el ends here
