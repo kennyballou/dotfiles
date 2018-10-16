@@ -33,6 +33,7 @@
 ;; Begin Bootstrapping
 (require 'init-site-lisp)
 (require 'init-elpa)
+(require 'init-use-package)
 
 (provide 'init)
 ;;; init.el ends here
