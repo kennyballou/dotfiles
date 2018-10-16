@@ -51,6 +51,7 @@
 (require 'init-spaceline)
 (require 'init-gui-frames)
 (require 'init-dired)
+(require 'init-isearch)
 
 (provide 'init)
 ;;; init.el ends here
