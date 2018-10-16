@@ -50,6 +50,7 @@
 (require 'init-themes)
 (require 'init-spaceline)
 (require 'init-gui-frames)
+(require 'init-dired)
 
 (provide 'init)
 ;;; init.el ends here
