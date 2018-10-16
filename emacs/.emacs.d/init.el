@@ -30,6 +30,9 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; Begin Bootstrapping
+(require 'init-site-lisp)
+
 (provide 'init)
 ;;; init.el ends here
 
