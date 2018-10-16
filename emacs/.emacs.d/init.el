@@ -54,6 +54,7 @@
 (require 'init-isearch)
 (require 'init-grep)
 (require 'init-uniquify)
+(require 'init-ibuffer)
 
 (provide 'init)
 ;;; init.el ends here
