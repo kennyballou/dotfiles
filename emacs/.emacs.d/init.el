@@ -49,6 +49,7 @@
 ;; Load configs for specific features and modes
 (require 'init-themes)
 (require 'init-spaceline)
+(require 'init-gui-frames)
 
 (provide 'init)
 ;;; init.el ends here
