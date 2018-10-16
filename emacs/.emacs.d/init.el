@@ -36,6 +36,7 @@
 (require 'init-use-package)
 (require 'init-exec-path)
 (require 'init-backupfiles)
+(require 'init-env)
 
 (provide 'init)
 ;;; init.el ends here
