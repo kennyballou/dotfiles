@@ -35,6 +35,7 @@
 (require 'init-elpa)
 (require 'init-use-package)
 (require 'init-exec-path)
+(require 'init-backupfiles)
 
 (provide 'init)
 ;;; init.el ends here
