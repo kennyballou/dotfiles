@@ -46,6 +46,9 @@
 
 (fullframe list-packages quit-window)
 
+;; Load configs for specific features and modes
+(require 'init-themes)
+
 (provide 'init)
 ;;; init.el ends here
 
