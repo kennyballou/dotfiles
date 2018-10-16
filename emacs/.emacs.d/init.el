@@ -41,6 +41,11 @@
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
 
+(use-package wgrep)
+(use-package fullframe)
+
+(fullframe list-packages quit-window)
+
 (provide 'init)
 ;;; init.el ends here
 
