@@ -34,6 +34,7 @@
 (require 'init-site-lisp)
 (require 'init-elpa)
 (require 'init-use-package)
+(require 'init-exec-path)
 
 (provide 'init)
 ;;; init.el ends here
