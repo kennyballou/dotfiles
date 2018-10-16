@@ -53,6 +53,7 @@
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
+(require 'init-uniquify)
 
 (provide 'init)
 ;;; init.el ends here
