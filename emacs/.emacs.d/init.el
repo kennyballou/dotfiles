@@ -55,6 +55,7 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
+(require 'init-recentf)
 
 (provide 'init)
 ;;; init.el ends here
