@@ -56,6 +56,7 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-recentf)
+(require 'init-smex)
 
 (provide 'init)
 ;;; init.el ends here
