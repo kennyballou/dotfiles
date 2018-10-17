@@ -60,6 +60,7 @@
 (require 'init-ido)
 (require 'init-ivy)
 (require 'init-mwim)
+(require 'init-company)
 
 (provide 'init)
 ;;; init.el ends here
