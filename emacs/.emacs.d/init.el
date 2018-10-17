@@ -59,6 +59,7 @@
 (require 'init-smex)
 (require 'init-ido)
 (require 'init-ivy)
+(require 'init-mwim)
 
 (provide 'init)
 ;;; init.el ends here
