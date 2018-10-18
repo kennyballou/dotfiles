@@ -63,6 +63,7 @@
 (require 'init-company)
 (require 'init-mmm)
 (require 'init-editing-utils)
+(require 'init-buf-mov)
 
 (provide 'init)
 ;;; init.el ends here
