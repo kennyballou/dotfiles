@@ -65,6 +65,8 @@
 (require 'init-editing-utils)
 (require 'init-buf-mov)
 (require 'init-whitespace)
+(require 'init-vc)
+(require 'init-git)
 
 (provide 'init)
 ;;; init.el ends here
