@@ -61,6 +61,7 @@
 (require 'init-ivy)
 (require 'init-mwim)
 (require 'init-company)
+(require 'init-mmm)
 
 (provide 'init)
 ;;; init.el ends here
