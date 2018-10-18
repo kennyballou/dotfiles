@@ -62,6 +62,7 @@
 (require 'init-mwim)
 (require 'init-company)
 (require 'init-mmm)
+(require 'init-editing-utils)
 
 (provide 'init)
 ;;; init.el ends here
