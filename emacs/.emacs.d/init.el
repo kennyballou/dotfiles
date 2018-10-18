@@ -67,6 +67,7 @@
 (require 'init-whitespace)
 (require 'init-vc)
 (require 'init-git)
+(require 'init-projectile)
 
 (provide 'init)
 ;;; init.el ends here
