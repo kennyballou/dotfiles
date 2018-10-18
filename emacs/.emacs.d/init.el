@@ -64,6 +64,7 @@
 (require 'init-mmm)
 (require 'init-editing-utils)
 (require 'init-buf-mov)
+(require 'init-whitespace)
 
 (provide 'init)
 ;;; init.el ends here
