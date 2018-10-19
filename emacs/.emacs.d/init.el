@@ -69,6 +69,7 @@
 (require 'init-git)
 (require 'init-projectile)
 (require 'init-gud)
+(require 'init-compile)
 
 (provide 'init)
 ;;; init.el ends here
