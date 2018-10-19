@@ -88,6 +88,7 @@
 ;; Languages and Language Modes
 (require 'init-c)
 (require 'init-csv)
+(require 'init-css)
 
 (provide 'init)
 ;;; init.el ends here
