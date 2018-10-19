@@ -93,6 +93,7 @@
 (require 'init-elixir)
 (require 'init-elm)
 (require 'init-erlang)
+(require 'init-golang)
 
 (provide 'init)
 ;;; init.el ends here
