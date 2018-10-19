@@ -95,6 +95,7 @@
 (require 'init-erlang)
 (require 'init-golang)
 (require 'init-haskell)
+(require 'init-html)
 
 (provide 'init)
 ;;; init.el ends here
