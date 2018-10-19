@@ -70,6 +70,7 @@
 (require 'init-projectile)
 (require 'init-gud)
 (require 'init-compile)
+(require 'init-regex)
 
 (provide 'init)
 ;;; init.el ends here
