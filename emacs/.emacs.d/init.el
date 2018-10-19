@@ -75,6 +75,7 @@
 (require 'init-flyspell)
 (require 'init-spelling)
 (require 'init-misc)
+(require 'init-folding)
 
 (provide 'init)
 ;;; init.el ends here
