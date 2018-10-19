@@ -77,6 +77,9 @@
 (require 'init-misc)
 (require 'init-folding)
 
+;; Shells and Terms
+(require 'init-eshell)
+
 (provide 'init)
 ;;; init.el ends here
 
