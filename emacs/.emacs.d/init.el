@@ -79,6 +79,8 @@
 
 ;; Shells and Terms
 (require 'init-eshell)
+(require 'init-term)
+
 
 (provide 'init)
 ;;; init.el ends here
