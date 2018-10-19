@@ -74,6 +74,7 @@
 (require 'init-sessions)
 (require 'init-flyspell)
 (require 'init-spelling)
+(require 'init-misc)
 
 (provide 'init)
 ;;; init.el ends here

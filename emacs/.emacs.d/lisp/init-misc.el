@@ -1,0 +1,33 @@
+;;; init-misc --- Miscellaneous Configuration
+;;; Commentary:
+;;; Misc config - yet to be placed in separate files
+;;; Code:
+
+(defvar f)
+(defvar multiple-cursors)
+(use-package f)
+
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(add-hook 'prog-mode-hook 'goto-address-prog-mode)
+(setq goto-address-mail-face 'link)
+
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+(add-hook 'after-save-hook 'sanityinc/set-mode-for-new-scripts)
+
+(defun sanityinc/set-mode-for-new-scripts ()
+  "Invoke `normal-mode' if this file is a script and in `fundamental-mode'."
+  (and
+   (eq major-mode 'fundamental-mode)
+   (>= (buffer-size) 2)
+   (save-restriction
+     (widen)
+     (string= "#!" (buffer-substring (point-min) (+ 2 (point-min)))))
+   (normal-mode)))
+
+(add-to-list 'auto-mode-alist '("Procfile" . 'conf-mode))
+
+(use-package multiple-cursors)
+
+(provide 'init-misc)
+;;; init-misc.el ends here
