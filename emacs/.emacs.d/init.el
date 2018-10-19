@@ -85,6 +85,8 @@
 (require 'init-term)
 (require 'init-pcomplete)
 
+;; Languages and Language Modes
+(require 'init-c)
 
 (provide 'init)
 ;;; init.el ends here
