@@ -90,6 +90,7 @@
 (require 'init-csv)
 (require 'init-css)
 (require 'init-docker)
+(require 'init-elixir)
 
 (provide 'init)
 ;;; init.el ends here
