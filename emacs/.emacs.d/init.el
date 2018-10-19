@@ -71,6 +71,7 @@
 (require 'init-gud)
 (require 'init-compile)
 (require 'init-regex)
+(require 'init-sessions)
 
 (provide 'init)
 ;;; init.el ends here
