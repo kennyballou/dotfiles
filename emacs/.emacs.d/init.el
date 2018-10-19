@@ -89,6 +89,7 @@
 (require 'init-c)
 (require 'init-csv)
 (require 'init-css)
+(require 'init-docker)
 
 (provide 'init)
 ;;; init.el ends here
