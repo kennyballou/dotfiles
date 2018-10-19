@@ -92,6 +92,7 @@
 (require 'init-docker)
 (require 'init-elixir)
 (require 'init-elm)
+(require 'init-erlang)
 
 (provide 'init)
 ;;; init.el ends here
