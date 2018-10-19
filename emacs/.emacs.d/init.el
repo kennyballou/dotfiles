@@ -76,6 +76,8 @@
 (require 'init-spelling)
 (require 'init-misc)
 (require 'init-folding)
+(unless (version< emacs-version "25.0")
+  (require 'init-xref))
 
 ;; Shells and Terms
 (require 'init-eshell)
