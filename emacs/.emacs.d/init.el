@@ -91,6 +91,7 @@
 (require 'init-css)
 (require 'init-docker)
 (require 'init-elixir)
+(require 'init-elm)
 
 (provide 'init)
 ;;; init.el ends here
