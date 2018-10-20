@@ -123,6 +123,9 @@
 ;; PDF-tools
 (require 'init-pdf-tools)
 
+;; Allow optional "init-local"
+(require 'init-local nil t)
+
 (provide 'init)
 ;;; init.el ends here
 
