@@ -105,6 +105,7 @@
 (require 'init-rust)
 (require 'init-scala)
 (require 'init-scheme)
+(require 'init-sql)
 
 (provide 'init)
 ;;; init.el ends here
