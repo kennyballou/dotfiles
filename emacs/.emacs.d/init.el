@@ -103,6 +103,7 @@
 (require 'init-javascript)
 (require 'init-markdown)
 (require 'init-nix)
+(require 'init-nxml)
 (require 'init-php)
 (require 'init-python)
 (require 'init-ruby-mode)
