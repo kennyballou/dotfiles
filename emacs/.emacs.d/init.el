@@ -101,6 +101,7 @@
 (require 'init-markdown)
 (require 'init-php)
 (require 'init-python)
+(require 'init-ruby-mode)
 
 (provide 'init)
 ;;; init.el ends here
