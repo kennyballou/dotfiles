@@ -120,6 +120,9 @@
 (require 'init-ledger)
 (require 'init-org)
 
+;; PDF-tools
+(require 'init-pdf-tools)
+
 (provide 'init)
 ;;; init.el ends here
 
