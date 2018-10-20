@@ -100,6 +100,7 @@
 (require 'init-javascript)
 (require 'init-markdown)
 (require 'init-php)
+(require 'init-python)
 
 (provide 'init)
 ;;; init.el ends here
