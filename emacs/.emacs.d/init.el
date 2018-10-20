@@ -126,6 +126,9 @@
 ;; Allow optional "init-local"
 (require 'init-local nil t)
 
+;; Locales (setting them earlier in this file doesn't work in X)
+(require 'init-locales)
+
 (provide 'init)
 ;;; init.el ends here
 
