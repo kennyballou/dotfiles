@@ -116,6 +116,7 @@
 
 ;; Email and Such
 (require 'init-email)
+(require 'init-elfeed)
 (require 'init-ledger)
 (require 'init-org)
 
