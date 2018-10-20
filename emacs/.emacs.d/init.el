@@ -87,6 +87,8 @@
 
 ;; Languages and Language Modes
 (require 'init-c)
+(require 'init-clojure)
+(require 'init-clojure-cider)
 (require 'init-csv)
 (require 'init-css)
 (require 'init-docker)
