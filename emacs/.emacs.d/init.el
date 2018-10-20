@@ -107,6 +107,7 @@
 (require 'init-scheme)
 (require 'init-sql)
 (require 'init-tex)
+(require 'init-toml)
 
 (provide 'init)
 ;;; init.el ends here
