@@ -106,6 +106,7 @@
 (require 'init-scala)
 (require 'init-scheme)
 (require 'init-sql)
+(require 'init-tex)
 
 (provide 'init)
 ;;; init.el ends here
