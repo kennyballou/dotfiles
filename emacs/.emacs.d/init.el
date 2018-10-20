@@ -98,6 +98,7 @@
 (require 'init-html)
 (require 'init-java)
 (require 'init-javascript)
+(require 'init-markdown)
 
 (provide 'init)
 ;;; init.el ends here
