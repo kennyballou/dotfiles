@@ -99,6 +99,7 @@
 (require 'init-java)
 (require 'init-javascript)
 (require 'init-markdown)
+(require 'init-php)
 
 (provide 'init)
 ;;; init.el ends here
