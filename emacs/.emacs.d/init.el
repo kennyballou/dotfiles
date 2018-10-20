@@ -114,6 +114,9 @@
 (require 'init-tex)
 (require 'init-toml)
 
+;; Email and Such
+(require 'init-email)
+
 (provide 'init)
 ;;; init.el ends here
 
