@@ -104,6 +104,7 @@
 (require 'init-ruby-mode)
 (require 'init-rust)
 (require 'init-scala)
+(require 'init-scheme)
 
 (provide 'init)
 ;;; init.el ends here
