@@ -102,6 +102,7 @@
 (require 'init-php)
 (require 'init-python)
 (require 'init-ruby-mode)
+(require 'init-rust)
 
 (provide 'init)
 ;;; init.el ends here
