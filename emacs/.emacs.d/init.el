@@ -103,6 +103,7 @@
 (require 'init-python)
 (require 'init-ruby-mode)
 (require 'init-rust)
+(require 'init-scala)
 
 (provide 'init)
 ;;; init.el ends here
