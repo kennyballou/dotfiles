@@ -116,6 +116,7 @@
 
 ;; Email and Such
 (require 'init-email)
+(require 'init-ledger)
 
 (provide 'init)
 ;;; init.el ends here
