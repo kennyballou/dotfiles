@@ -97,6 +97,7 @@
 (require 'init-haskell)
 (require 'init-html)
 (require 'init-java)
+(require 'init-javascript)
 
 (provide 'init)
 ;;; init.el ends here
