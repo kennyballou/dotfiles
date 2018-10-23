@@ -37,7 +37,8 @@
     (setenv "GIT_SSL_CAINFO" ssl-cert-file)
     (setenv "GUIX_LOCPATH" (concat guix-profile "/lib/locale"))
     (setenv "PYTHONPATH" (kb/join-paths
-                          (list (concat guix-profile "/lib/python3.6")
+                          (list (concat guix-profile
+                                        "/lib/python3.6/site-packages")
                                 python-path)))
     (setenv "C_INCLUDE_PATH" (kb/join-paths
                               (list (concat guix-profile "/include")
