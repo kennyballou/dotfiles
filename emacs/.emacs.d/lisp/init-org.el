@@ -6,6 +6,10 @@
 ;;; https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el
 ;;; Various inclusions from jcf:
 ;;; https://github.com/jcf/emacs.d/blob/master/init-org.org
+;;; Reworked with offerings from
+;;; http://cachestocaches.com/2016/9/my-workflow-org-agenda/
+;;; And
+;;; http://doc.norang.ca/org-mode.htm
 ;;; Code:
 
 (defvar org-cliplink)
@@ -22,6 +26,10 @@
 (defvar org-babel-clojure-backend)
 (defvar org-capture-templates)
 (defvar org-pomodoro)
+(defvar org-agenda-dim-blocked-tasks)
+(defvar org-agenda-compact-blocks)
+(defvar org-agenda-custom-commands)
+(defvar org-agenda-show-future-repeats)
 (defvar melpa-unstable)
 (defvar ob-elixir)
 (defvar ess)
@@ -117,110 +125,127 @@
       org-edit-timestamp-down-means-later t
       org-archive-mark-done nil
       org-hide-emphasis-markers t
-      org-catch-invisible-edits 'show
+      org-catch-invisible-edits 'error
       org-export-coding-system 'utf-8
       org-html-validation-link nil
       org-export-kill-product-buffer-when-displayed t
       org-tags-column 75
       org-search-view-always-boolean t
-      org-refile-targets '((nil :maxlevel . 2))
+      org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9)))
+      org-refile-use-outline-path t
+      org-indirect-buffer-display 'current-window
       org-enforce-todo-dependencies t
+      org-fast-tag-selection-include-todo t
       org-use-fast-todo-selection t
+      org-treat-S-cursor-todo-selection-as-state-change nil
       org-confirm-babel-evaluate nil
       org-src-fontify-natively t
       org-src-tab-acts-natively t
+      org-agenda-dim-blocked-tasks nil
+      org-agenda-compact-blocks t
+      org-agenda-show-future-repeats t
       org-files (append
+                 (file-expand-wildcards (concat org-directory "*.org"))
                  (file-expand-wildcards (concat org-directory "*/*.org"))
                  (file-expand-wildcards (concat org-directory "*/*/*.org")))
       org-log-state-notes-into-drawer t
       org-clock-persistence-insinuate t
       org-clock-persist t
       org-clock-in-resume t
-      org-clock-in-switch-to-state "IN-PROGRESS"
       org-clock-into-drawer t
       org-time-clocksum-format
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
       org-babel-clojure-backend 'cider
+      org-src-preserve-indentation nil
+      org-edit-src-content-indentation 0
+      ;; Agenda log mode items to display (closed and state changes by default)
+      org-agenda-log-mode-items (quote (closed state))
       org-agenda-files
         (append
-         (file-expand-wildcards (concat org-directory "notes/*.org"))
+         (file-expand-wildcards (concat org-directory "notes.org"))
+         (file-expand-wildcards (concat org-directory "refile.org"))
          (file-expand-wildcards (concat org-directory "topics/*.org"))
          (file-expand-wildcards (concat org-directory "projects/*.org"))
          (file-expand-wildcards (concat org-directory "projects/*/*.org"))
          (file-expand-wildcards (concat org-directory "topics/*/*.org"))))
 
+;;;; Refile settings
+; Exclude DONE state tasks from refile targets
+(defun bh/verify-refile-target ()
+"Exclude todo keywords with a done state from refile targets."
+  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
 
-(defvar org-projects-dir (expand-file-name
-                          (concat org-directory "projects")))
+(setq org-refile-target-verify-function #'bh/verify-refile-target)
+
+(defvar org-projects-dir (expand-file-name (concat org-directory "projects")))
+(defvar kb/org-refile (concat org-directory "refile.org"))
+(defvar kb/org-notes-file (concat org-directory "notes.org"))
+(defvar kb/org-journal-file (concat org-directory "journal.org"))
+(setq org-default-notes-file kb/org-refile)
 
 (setq org-capture-templates
-      `(("t" "todo" entry (file+headline kb/org-current-notes-file "Tasks")
-         "* TODO %?\n%U\n")
-        ("n" "note" entry (file+headline kb/org-current-notes-file "Notes")
-         "* %? :NOTE:\n%U\n%a\n")
-        ("x" "project todo" entry (file+headline
-                                   gf/org-resolve-project-org-file "Tasks")
-         "* TODO %?\n%U\n")
-        ("z" "project note" entry (file+headline
-                                   gf/org-resolve-project-org-file "Notes")
-         "* %? :NOTE:\n%U\n%a\n")
-        ("r" "respond" entry (file+headline kb/org-current-notes-file "Tasks")
-         "* NEXT Respond %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")
-        ("m" "Meeting" entry (file+headline kb/org-current-notes-file "Tasks")
-         "* MEETING with %? :MEETING:\n%U")
+      `(("t" "todo" entry (file kb/org-refile)
+         "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+        ("r" "respond" entry (file kb/org-refile)
+         "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n"
+         :clock-in t :clock-resume t :immediate-finish t)
+        ("n" "note" entry (file kb/org-refile)
+         "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+        ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
+         "* %?\n%U\n" :clock-in t :clock-resume t)
+        ("w" "org-protocol" entry (file kb/org-refile)
+         "* TODO Review %c\n%U\n" :immediate-finish t)
+        ("m" "Meeting" entry (file kb/org-refile)
+         "* MEETING with %? :MEETING:\n%U"
+         :clock-in t :clock-resume t)
+        ("p" "Phone call" entry (file kb/org-refile)
+         "* PHONE %? :PHONE:\n%U"
+         :clock-in t :clock-resume t)
         ))
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS(s!)" "|" "DONE(d!/!)")
-              (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
-              (sequence "WAITING(w@/!)" "DELEGATED(e!)" "HOLD(h)" "|" "CANCELLED(c@/!)")))
-      org-todo-repeat-to-state "NEXT")
+      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+              (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
+
+(setq org-todo-repeat-to-state "NEXT")
 
 (setq org-todo-keyword-faces
-      (quote (("NEXT" :inherit warning)
-              ("PROJECT" :inherit font-lock-string-face))))
+      (quote (("TODO" :foreground "#9C6363" :weight bold)
+              ("NEXT" :foreground "#8CD0D3" :weight bold)
+              ("DONE" :foreground "#8FB28F" :weight bold)
+              ("WAITING" :foreground "#DFAF8F" :weight bold)
+              ("HOLD" :foreground "#DC8CC3" :weight bold)
+              ("INACTIVE" :foreground "#DC8CC3" :weight bold)
+              ("CANCELLED" :foreground "#8FB28F" :weight bold)
+              ("MEETING" :foreground "#8FB28F" :weight bold)
+              ("PHONE" :foreground "#8FB28F" :weight bold))))
 
-(defun gf/org-reload ()
-  "Reload the org file for the current month.
-Useful for long running Emacs instance."
-  (interactive)
-  (setq org-files (append
-                   (file-expand-wildcards (concat org-directory "*/*.org"))
-                   (file-expand-wildcards (concat org-directory "*/*/*.org"))))
+(setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
-  ;; Notes are grouped by month in ~notes/~ for automatic archival.
-  ;; At the start of every month, move over notes that are still relevant.
-  ;; Agenda files are only used for searching - this setup is
-  ;; desiged to work without scheduling, tags etc.
-  (setq org-agenda-files
-        (append
-         (file-expand-wildcards (concat org-directory "notes/*.org"))
-         (file-expand-wildcards (concat org-directory "topics/*.org"))
-         (file-expand-wildcards (concat org-directory "topics/*/*.org"))
-         (file-expand-wildcards (concat org-directory "projects/*.org"))
-         (file-expand-wildcards (concat org-directory "projects/*/*.org"))
-         ))
-  (setq org-default-notes-file (kb/org-current-notes-file)))
-
-(defun kb/org-current-notes-file ()
-  "Get the path for the current notes file.
-Inspired by gf/org-current-month-notes-file"
-  (concat org-directory "notes/"
-          (format-time-string "%Y-%m.org")))
+(setq org-agenda-custom-commands
+      (quote (("N" "Notes" tags "NOTE"
+               ((org-agenda-overriding-header "Notes")
+                (org-tags-match-list-sublevels t)))
+              ("d" "Today"
+               ((agenda "" nil)
+                (tags "REFILE"
+                      ((org-agenda-overriding-header "Tasks to Refile:")
+                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
+                           ((org-agenda-overriding-header "Next Tasks:"))))))))
 
 (defun kb/org-switch-to-current-notes-file ()
   "Open current notes file."
   (interactive)
-  (find-file (kb/org-current-notes-file)))
-
-(defun gf/org-refile-files-first ()
-  "Choose an org file to file in, then pick the node.
-This prevents Emacs opening all of the refile targets at once."
-  (interactive)
-  (let ((file (list (completing-read "Refile to: " org-files nil t))))
-    (let ((org-refile-targets `((,file :maxlevel . 1))))
-      (org-refile)))
-  (org-save-all-org-buffers))
+  (find-file (concat org-directory "notes.org")))
 
 (defun gf/create-org-path (path)
   "Create a name suitable for an org file from the last part of the file PATH."
@@ -316,11 +341,10 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
   "Switch to notes.
 Open either current project notes, or default notes file"
   (interactive)
-  (if (projectile-project-p)
+  (if (and (projectile-project-p)
+           (not (equal (projectile-project-name) ".org")))
       (gf/org-switch-to-project-org-file)
     (kb/org-switch-to-current-notes-file)))
-
-(global-set-key (kbd "C-c n") #'kb/org-switch-to-notes)
 
 (use-package org-pomodoro)
 
