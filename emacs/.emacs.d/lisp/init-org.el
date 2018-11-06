@@ -30,6 +30,7 @@
 (defvar org-agenda-compact-blocks)
 (defvar org-agenda-custom-commands)
 (defvar org-agenda-show-future-repeats)
+(defvar org-ditaa-jar-path)
 (defvar melpa-unstable)
 (defvar ob-elixir)
 (defvar ess)
@@ -37,12 +38,20 @@
 (defvar ob-ipython)
 (defvar ob-mongo)
 (defvar ox-gfm)
+(defvar ob-ditaa)
 (defvar org-babel-eval-in-repl)
 (defvar htmlize)
 (defvar fci-mode)
+(defvar graphviz-dot-mode)
+
 
 (require 'org)
 (require 'ox-md)
+(use-package ob-ditaa
+  :ensure nil
+  :config
+  (setq org-ditaa-jar-path "~/.emacs.d/ditaa/ditaa.jar"))
+(use-package graphviz-dot-mode)
 (use-package org-cliplink
   :pin melpa-unstable)
 ;; (use-package org-fstree
@@ -316,6 +325,8 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
    'org-babel-load-languages
    `((awk . t)
      (clojure . t)
+     (ditaa . t)
+     (dot . t)
      (elixir . t)
      (emacs-lisp . t)
      (go . t)
