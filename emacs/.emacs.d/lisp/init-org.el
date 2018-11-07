@@ -177,6 +177,7 @@
          (file-expand-wildcards (concat org-directory "topics/*.org"))
          (file-expand-wildcards (concat org-directory "projects/*.org"))
          (file-expand-wildcards (concat org-directory "projects/*/*.org"))
+         (file-expand-wildcards (concat org-directory "projects/*/*/*.org"))
          (file-expand-wildcards (concat org-directory "topics/*/*.org"))))
 
 ;;;; Refile settings
