@@ -78,10 +78,11 @@ left to try and get the PATH down to, at most, MAX-LEN."
         "")))
   (defun git-branch-name ()
     "Return the current git branch, or 'root' if nil."
-    (let ((branch (vc-git-branches)))
-      (if (not branch)
-          (car branch)
-        "(root new-repo)")))
+    (let* ((branches (vc-git-branches))
+           (branch (car branches)))
+      (if (eq branch nil)
+          "(root new-repo)"
+        branch)))
   (concat
    "(@"
    (system-name)
