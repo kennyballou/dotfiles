@@ -130,6 +130,7 @@ for_window [class="(?i)virtualbox"] floating enable
 for_window [class="(?i)erlang"] floating enable
 for_window [class="(?i)matplotlib"] floating enable
 for_window [class="(?i)arandr"] floating enable
+for_window [class="(?i)display"] floating enable
 
 
 # Other window settings
