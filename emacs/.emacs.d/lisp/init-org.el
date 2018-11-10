@@ -215,6 +215,8 @@
          :clock-in t :clock-resume t)
         ))
 
+(add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
+
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
