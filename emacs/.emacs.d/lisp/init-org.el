@@ -250,7 +250,8 @@
                       ((org-agenda-overriding-header "Tasks to Refile:")
                        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
-                           ((org-agenda-overriding-header "Next Tasks:"))))))))
+                           ((org-agenda-overriding-header "Next Tasks:"))))
+               ((org-agenda-span 'day))))))
 
 (defun kb/org-switch-to-current-notes-file ()
   "Open current notes file."
