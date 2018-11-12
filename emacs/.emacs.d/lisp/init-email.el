@@ -60,12 +60,7 @@
       mu4e-context-policy 'pick-first
       mu4e-confirm-quit nil)
 
-(setq mu4e-sent-messages-behavior
-      (lambda ()
-        (if (or (string= (message-sendmail-envelope-from) "kenny@homecu.com")
-                (string= (message-sendmail-envelope-from) "kennyballou@u.boisestate.edu"))
-            'delete
-          'sent)))
+(setq mu4e-sent-messages-behavior 'sent)
 
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
