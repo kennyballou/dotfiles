@@ -8,6 +8,7 @@
 (defvar column-marker)
 (defvar auto-fill)
 (defvar text-mode)
+(defvar default-tab-width)
 
 (use-package whitespace
   :diminish
@@ -71,6 +72,7 @@
 ;; Indent
 (setq standard-indent 4)
 (setq-default tab-width 4
+              default-tab-width 4
               indent-tabs-mode nil)
 
 ;;newlines
