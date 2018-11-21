@@ -14,7 +14,8 @@
   :mode "\\.ledger\\'"
   :config
   ;; Use ISO format
-  (setq ledger-default-date-format "%Y-%m-%d"))
+  (setq ledger-default-date-format "%Y-%m-%d")
+  (setq ledger-use-iso-dates t))
 
 (use-package flycheck-ledger
   :after ledger-mode
