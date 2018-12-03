@@ -175,6 +175,8 @@
         (append
          (file-expand-wildcards (concat org-directory "notes.org"))
          (file-expand-wildcards (concat org-directory "refile.org"))
+         (file-expand-wildcards (concat org-directory "house.org"))
+         (file-expand-wildcards (concat org-directory "cars.org"))
          (file-expand-wildcards (concat org-directory "topics/*.org"))
          (file-expand-wildcards (concat org-directory "projects/*.org"))
          (file-expand-wildcards (concat org-directory "projects/*/*.org"))
