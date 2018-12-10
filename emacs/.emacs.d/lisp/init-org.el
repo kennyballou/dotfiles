@@ -195,6 +195,7 @@
 (defvar kb/org-refile (concat org-directory "refile.org"))
 (defvar kb/org-notes-file (concat org-directory "notes.org"))
 (defvar kb/org-journal-file (concat org-directory "journal.org"))
+(defvar kb/org-bookmarks-file (concat org-directory "bookmarks.org"))
 (setq org-default-notes-file kb/org-refile)
 
 (setq org-capture-templates
@@ -212,6 +213,8 @@
         ("m" "Meeting" entry (file kb/org-refile)
          "* MEETING with %? :MEETING:\n%U"
          :clock-in t :clock-resume t)
+        ("b" "Bookmark" entry (file kb/org-bookmarks-file)
+         "* %x\n%U\n%?" :clock-resume t)
         ("p" "Phone call" entry (file kb/org-refile)
          "* PHONE %? :PHONE:\n%U"
          :clock-in t :clock-resume t)
