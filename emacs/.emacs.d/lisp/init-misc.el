@@ -29,5 +29,11 @@
 
 (use-package multiple-cursors)
 
+(if (display-graphic-p)
+    (progn
+      (if (> (x-display-pixel-width) 1080)
+          (setq split-height-threshold 160)
+        (setq split-height-threshold 80))))
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
