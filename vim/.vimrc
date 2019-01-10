@@ -1,30 +1,4 @@
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle.vim
-call vundle#begin()
-Plugin 'gmarik/vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'greyblake/vim-preview'
-Plugin 'vim-scripts/VimClojure'
-Plugin 'saltstack/salt-vim'
-Plugin 'fatih/vim-go'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-surround'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'jimenezrick/vimerl'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'ledger/vim-ledger'
-Plugin 'jbgutierrez/vim-babel'
-Plugin 'hashivim/vim-terraform'
-Plugin 'mxw/vim-jsx'
-Plugin 'flowtype/vim-flow'
-Plugin 'mfukar/robotframework-vim'
-Plugin 'elzr/vim-json'
-Plugin 'stephpy/vim-yaml'
-Plugin 'vim-syntastic/syntastic'
-call vundle#end()
 filetype plugin on
 if &term=~'xterm'
 set t_Co=256
@@ -55,25 +29,11 @@ set noerrorbells
 set novisualbell
 set vb t_vb=
 set diffopt=filler,context:3,vertical
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-au Syntax html,xml RainbowParenthesesLoadChevrons
 let mapleader = ","
-let g:gitgutter_enabled = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 "disable concealing
-let g:vim_json_syntax_conceal = 0
-noremap <leader>r :RainbowParenthesesToggle<CR>
 noremap <leader>s :set spell!<CR>
 noremap <leader>h :%!xxd<CR>
 noremap <leader>d :%!xxd -r<CR>
-noremap <leader>g :GitGutterToggle<CR>
-noremap <leader>c :SyntasticToggleMode<CR>
 set directory=~/.vim/temp/
 set backupdir=~/.vim/backup/
 function! FileSize()
@@ -95,8 +55,6 @@ set statusline+=%t
 set statusline+=%m
 set statusline+=%r
 set statusline+=%{FileSize()}
-set statusline+=%{fugitive#statusline()}
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%=
 set statusline+=[%{&fenc}]
 set statusline+=%y
