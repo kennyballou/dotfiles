@@ -79,6 +79,7 @@
 (unless (version< emacs-version "25.0")
   (require 'init-xref))
 (require 'init-flycheck)
+(require 'init-tramp)
 
 ;; Shells and Terms
 (require 'init-eshell)
