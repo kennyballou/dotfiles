@@ -9,6 +9,7 @@
 (defvar projectile-completion-system)
 (defvar projectile-enable-caching)
 (defvar projectile-globally-ignored-files)
+(defvar counsel-projectile)
 
 (use-package projectile
   :ensure t
@@ -33,6 +34,12 @@
      (if (file-remote-p default-directory)
          " Proj"
        (format " Proj[%s]" (projectile-project-name))))))
+
+(use-package counsel-projectile
+  :ensure t
+  :after projectile
+  :config
+  (counsel-projectile-mode 1))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here
