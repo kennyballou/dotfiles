@@ -13,8 +13,7 @@
 (when (and (executable-find "ag")
            (require 'ag))
   (use-package wgrep-ag)
-  (setq-default ag-highlight-search t)
-  (global-set-key (kbd "M-?") 'ag-project))
+  (setq-default ag-highlight-search t))
 
 (provide 'init-grep)
 ;;; init-grep.el ends here
