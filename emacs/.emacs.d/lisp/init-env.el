@@ -28,7 +28,8 @@
        (cpp-include-path (getenv "CPLUS_INCLUDE_PATH"))
        (library-path (getenv "LIBRARY_PATH"))
        (ssl-cert-dir (concat guix-profile "/etc/ssl/certs"))
-       (ssl-cert-file (concat ssl-cert-dir "/ca-certificates.crt")))
+       (ssl-cert-file (concat ssl-cert-dir "/ca-certificates.crt"))
+       (ghc-package-path (getenv "GHC_PACKAGE_PATH")))
   (progn
     (eshell/addpath (concat guix-profile "/bin"))
     (setenv "PATH" (concat guix-profile "/bin" (getenv "PATH")))
@@ -40,6 +41,10 @@
                           (list (concat guix-profile
                                         "/lib/python3.6/site-packages")
                                 python-path)))
+    (setenv "GHC_PACKAGE_PATH" (kb/join-paths
+                                (list (concat guix-profile
+                                              "/lib/ghc-8.0.2/package.conf.d")
+                                      ghc-package-path)))
     (setenv "C_INCLUDE_PATH" (kb/join-paths
                               (list (concat guix-profile "/include")
                                     c-include-path)))
