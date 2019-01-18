@@ -45,10 +45,10 @@
                                     c-include-path)))
     (setenv "CPLUS_INCLUDE_PATH" (kb/join-paths
                                   (list (concat guix-profile "/include")
-                                        cpp-include-path))
-            (setenv "LIBRARY_PATH" (kb/join-paths
-                                    (list (concat guix-profile "/lib")
-                                          library-path))))))
+                                        cpp-include-path)))
+    (setenv "LIBRARY_PATH" (kb/join-paths
+                            (list (concat guix-profile "/lib")
+                                  library-path)))))
 
 (provide 'init-env)
 ;;; init-env.el ends here
