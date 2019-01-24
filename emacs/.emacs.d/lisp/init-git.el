@@ -15,12 +15,16 @@
 (defvar gitignore-mode)
 (defvar gitconfig-mode)
 (defvar git-timemachine)
+(defvar forge)
 
 (use-package gitignore-mode)
 (use-package gitconfig-mode)
 (use-package git-timemachine
   :defer 1
   :diminish)
+
+(use-package forge
+  :ensure t)
 
 (use-package magit
   :preface
