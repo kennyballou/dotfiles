@@ -21,12 +21,8 @@
 (use-package git-timemachine
   :defer 1
   :diminish)
-(use-package ghub
-  :ensure t
-  :pin melpa-unstable)
 
 (use-package magit
-  :after ghub
   :preface
   (defun magit-dired-other-window ()
     (interactive)
