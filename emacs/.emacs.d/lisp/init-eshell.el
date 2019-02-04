@@ -43,6 +43,15 @@
         (compile command)
       (compile command t))))
 
+(defun eshell/make (&rest args)
+  "Open make with ARGS process into compilation output Buffer."
+  (let ((command (concat "make" " " (string-join args " "))))
+    (if (and (eshell-interactive-output-p)
+             (not eshell-in-pipeline-p)
+             (not eshell-in-subcommand-p))
+        (compile command)
+      (compile command t))))
+
 ;;; https://www.emacswiki.org/emacs/EshellPrompt
 (defmacro with-face (str &rest properties)
   "Add face properties to STR using PROPERTIES list."
