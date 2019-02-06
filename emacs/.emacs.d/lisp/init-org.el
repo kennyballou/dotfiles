@@ -32,6 +32,7 @@
 (defvar org-agenda-show-future-repeats)
 (defvar org-agenda-log-mode-items)
 (defvar org-ditaa-jar-path)
+(defvar org-ref)
 (defvar melpa-unstable)
 (defvar ob-elixir)
 (defvar ess)
@@ -69,6 +70,9 @@
 (use-package ox-gfm)
 (use-package org-babel-eval-in-repl
   :pin melpa-unstable)
+(use-package org-ref
+  :config
+  (setq org-ref-completion-library 'org-ref-ivy-cite))
 ;; https://www.reddit.com/r/emacs/comments/57gteu/org_export_html_source_code_blocks_adds_trailing/
 ;; https://github.com/kaushalmodi/.emacs.d/blob/15df5b075a4cd4a8ed7332237c0e33e75b430a36/setup-files/setup-htmlize.el#L10-L28
 (use-package htmlize
