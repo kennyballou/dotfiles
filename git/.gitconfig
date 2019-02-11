@@ -51,3 +51,5 @@
 	confirm = auto
 [init]
 	templatedir = /home/kb/.git.template.d
+[github]
+	user = kennyballou
