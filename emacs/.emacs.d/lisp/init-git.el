@@ -24,6 +24,7 @@
   :diminish)
 
 (use-package forge
+  :pin melpa-unstable
   :ensure t)
 
 (use-package magit
