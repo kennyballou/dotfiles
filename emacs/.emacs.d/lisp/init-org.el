@@ -46,6 +46,7 @@
 
 
 (require 'org)
+(require 'holidays)
 (require 'ox-md)
 (use-package ob-ditaa
   :ensure nil
@@ -174,6 +175,7 @@
       org-agenda-files
         (append
          (file-expand-wildcards (concat org-directory "notes.org"))
+         (file-expand-wildcards (concat org-directory "holidays.org"))
          (file-expand-wildcards (concat org-directory "refile.org"))
          (file-expand-wildcards (concat org-directory "house.org"))
          (file-expand-wildcards (concat org-directory "cars.org"))
