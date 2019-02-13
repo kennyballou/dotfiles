@@ -166,8 +166,7 @@
       org-clock-persist t
       org-clock-in-resume t
       org-clock-into-drawer t
-      org-time-clocksum-format
-      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
+      org-duration-format (("d" . nil) ("h" . t) ("min" . t))
       org-babel-clojure-backend 'cider
       org-src-preserve-indentation nil
       org-edit-src-content-indentation 0
