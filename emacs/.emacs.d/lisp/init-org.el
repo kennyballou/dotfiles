@@ -30,6 +30,7 @@
 (defvar org-agenda-compact-blocks)
 (defvar org-agenda-custom-commands)
 (defvar org-agenda-show-future-repeats)
+(defvar org-agenda-log-mode-items)
 (defvar org-ditaa-jar-path)
 (defvar melpa-unstable)
 (defvar ob-elixir)
