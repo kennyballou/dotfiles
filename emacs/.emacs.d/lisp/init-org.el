@@ -254,6 +254,11 @@
 (setq org-agenda-custom-commands
       (quote (("M" "3 Month" agenda "3 month view"
                 ((org-agenda-span 90)))
+              ("Y" "Holidays" agenda "Year view"
+               ((org-agenda-category-filter-preset (quote ("+Holiday")))
+                (org-agenda-span 'year)
+                (org-agenda-time-grid nil)
+                ))
               ("N" "Notes" tags "NOTE"
                ((org-agenda-overriding-header "Notes")
                 (org-tags-match-list-sublevels t)))
