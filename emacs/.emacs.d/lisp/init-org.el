@@ -31,6 +31,7 @@
 (defvar org-agenda-custom-commands)
 (defvar org-agenda-show-future-repeats)
 (defvar org-agenda-log-mode-items)
+(defvar org-duration-format)
 (defvar org-ditaa-jar-path)
 (defvar org-ref)
 (defvar melpa-unstable)
@@ -170,7 +171,7 @@
       org-clock-persist t
       org-clock-in-resume t
       org-clock-into-drawer t
-      org-duration-format (("d" . nil) ("h" . t) ("min" . t))
+      org-duration-format (quote (("d" . nil) ("h" . t) ("min" . t)))
       org-babel-clojure-backend 'cider
       org-src-preserve-indentation nil
       org-edit-src-content-indentation 0
