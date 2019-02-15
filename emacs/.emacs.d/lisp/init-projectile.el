@@ -28,12 +28,11 @@
     (add-to-list 'guide-key/guide-key-sequence "C-c p"))
 
   ;; Shorter modeline
-  (setq-default
-   projectile-mode-line
-   '(:eval
-     (if (file-remote-p default-directory)
-         " Proj"
-       (format " Proj[%s]" (projectile-project-name))))))
+  (setq-default projectile-mode-line-function
+                (lambda ()
+                  (if (file-remote-p default-directory)
+                      "Projectile"
+                    (format " Proj[%s]" (projectile-project-name))))))
 
 (use-package counsel-projectile
   :ensure t
