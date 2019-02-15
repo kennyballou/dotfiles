@@ -13,6 +13,8 @@
 
 (use-package projectile
   :ensure t
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
   :init (add-hook 'after-init-hook 'projectile-global-mode)
   :config
 
