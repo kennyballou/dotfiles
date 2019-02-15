@@ -2,8 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'ido)
-
 (defvar projectile)
 (defvar projectile-switch-project-action)
 (defvar projectile-completion-system)
@@ -19,7 +17,7 @@
   :config
 
   (setq projectile-switch-project-action 'projectile-dired
-        projectile-completion-system 'ido
+        projectile-completion-system 'ivy
         projectile-enable-caching t)
 
   (add-to-list 'projectile-globally-ignored-files "node-modules")
