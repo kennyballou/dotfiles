@@ -58,8 +58,7 @@
   (setq magit-pop-revision-stack-format '("%h (\"%s\", %ad)")))
 
 (use-package with-editor
-  :ensure t
-  :pin melpa-unstable)
+  :ensure t)
 
 ;; Some added additions from
 ;; https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
