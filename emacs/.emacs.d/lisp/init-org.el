@@ -222,7 +222,7 @@
          :clock-in t :clock-resume t)
         ("b" "Bookmark" entry (file kb/org-bookmarks-file)
          "* %x\n%U\n%?" :clock-resume t)
-        ("p" "Phone call" entry (file kb/org-refile)
+        ("p" "Phone call" entry (file+olp+datetree kb/org-journal-file)
          "* PHONE %? :PHONE:\n%U"
          :clock-in t :clock-resume t)
         ))
