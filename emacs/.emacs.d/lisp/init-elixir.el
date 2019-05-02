@@ -22,3 +22,4 @@
   :after elixir-mode)
 
 (provide 'init-elixir)
+;;; init-elixir.el ends here
