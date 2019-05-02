@@ -21,8 +21,6 @@
       desktop-restore-eager 10
       desktop-files-not-to-save
       "\\(^/[^/:]*:\\|(ftp)$\\)|\\(^*.pdf$\\)\\|\\(^*.jpg$\\)\\|\\(^*.png$\\)")
-(dolist (mode (list 'PDFView 'DocView))
-  (add-to-list 'desktop-modes-not-to-save mode t nil))
 (desktop-save-mode 1)
 
 ;; Restore histories and registers after saving
