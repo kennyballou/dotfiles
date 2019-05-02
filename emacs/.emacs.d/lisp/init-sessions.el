@@ -16,6 +16,7 @@
 
 ;; save list of open files to ~/.emacs.d/.emacs.desktop
 (setq desktop-path (list user-emacs-directory)
+      desktop-restore-frames nil
       desktop-auto-save-timeout 600
       desktop-restore-eager 10
       desktop-files-not-to-save
