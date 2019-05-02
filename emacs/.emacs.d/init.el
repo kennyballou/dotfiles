@@ -68,7 +68,7 @@
 (require 'init-vc)
 (require 'init-git)
 (require 'init-projectile)
-(require 'init-gud)
+;; (require 'init-gud)
 (require 'init-compile)
 (require 'init-regex)
 (require 'init-sessions)
