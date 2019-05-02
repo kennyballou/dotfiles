@@ -30,7 +30,7 @@
 
 (use-package unfill)
 
-(maybe-require-package 'list-unicode-display)
+(use-package list-unicode-display)
 
 ;; Some basic preferences
 (setq-default
