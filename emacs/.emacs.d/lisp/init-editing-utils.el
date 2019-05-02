@@ -52,7 +52,6 @@
  truncate-partial-width-windows nil)
 
 (use-package autorevert
-  :ensure nil
   :diminish auto-revert-mode
   :demand
   :commands auto-revert-mode
@@ -113,8 +112,7 @@ Inspired by `sanityinc/no-trailing-whitespace'"
                 eshell-mode-hook))
   (add-hook hook #'kb/no-line-numbers))
 
-(use-package rainbow-mode
-  :pin gnu)
+(use-package rainbow-mode)
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -122,7 +120,6 @@ Inspired by `sanityinc/no-trailing-whitespace'"
   (global-prettify-symbols-mode))
 
 (use-package undo-tree
-  :pin gnu
   :diminish
   :config
   (global-undo-tree-mode))

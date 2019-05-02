@@ -7,7 +7,6 @@
 (defvar jdee-server-dir)
 
 (use-package jdee
-  :pin melpa-unstable
   :defer t
   :custom
   (jdee-server-dir (string-join (list (getenv "HOME")

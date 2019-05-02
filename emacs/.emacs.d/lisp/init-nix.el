@@ -9,8 +9,7 @@
 
 (use-package nix-mode)
 (use-package nix-buffer)
-(use-package nix-update
-  :pin melpa-unstable)
+(use-package nix-update)
 
 (provide 'init-nix)
 ;;; init-nix.el ends here

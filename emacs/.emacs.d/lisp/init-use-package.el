@@ -15,12 +15,10 @@
 (eval-when-compile
   (require 'use-package))
 
-(setq use-package-always-ensure t)
-(setq use-package-always-pin "melpa-stable")
+(setq use-package-always-ensure nil)
 
 (use-package bind-key)
-(use-package delight
-  :pin gnu)
+(use-package delight)
 (use-package diminish)
 
 (provide 'init-use-package)

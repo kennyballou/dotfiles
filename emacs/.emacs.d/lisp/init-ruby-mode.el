@@ -24,7 +24,6 @@
   :config
   (defalias 'rake 'ruby-compilation-rake))
 (use-package yari
-  :pin melpa-unstable
   :defer t
   :config
   (defalias 'ri 'yari))

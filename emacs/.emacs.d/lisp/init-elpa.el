@@ -3,11 +3,7 @@
 ;;; Code:
 (require 'package)
 
-(dolist (pkg '(("melpa-stable" . "https://stable.melpa.org/packages/")
-               ("org" . "https://orgmode.org/elpa/")
-               ("gnu" . "http://elpa.gnu.org/packages/")
-               ("melpa-unstable" . "https://melpa.org/packages/")))
-  (add-to-list 'package-archives pkg))
+(setq package-archives nil)
 
 (let ((local-package-el (locate-library "package")))
   (when (string-match-p (concat "^" (regexp-quote user-emacs-directory))

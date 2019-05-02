@@ -7,7 +7,6 @@
 (defvar dired-mode-map)
 
 (use-package dired
-  :ensure nil
   :init (require 'dired)
   :bind (:map dired-mode-map
          ("C-c C-c" . compile)
@@ -18,8 +17,6 @@
 ;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
 ;; preview files in dired
 (use-package peep-dired
-  :pin "melpa-unstable"
-  :ensure t
   :defer t
   :bind (:map dired-mode-map
               ("P" . peep-dired)))

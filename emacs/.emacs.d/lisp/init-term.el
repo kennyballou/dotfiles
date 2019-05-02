@@ -7,7 +7,6 @@
 (defvar multi-term-program)
 
 (use-package multi-term
-  :ensure t
   :init
   (setq multi-term-program "/bin/zsh")
   (add-hook 'term-mode-hook

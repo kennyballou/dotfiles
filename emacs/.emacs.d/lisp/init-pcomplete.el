@@ -7,12 +7,9 @@
 (defvar pcmpl-pip)
 (defvar pcomplete-extension)
 (defvar melpa-unstable)
-(use-package pcmpl-args
-  :pin melpa-unstable)
-(use-package pcmpl-git
-  :pin melpa-unstable)
-(use-package pcmpl-pip
-  :pin melpa-unstable)
+(use-package pcmpl-args)
+(use-package pcmpl-git)
+(use-package pcmpl-pip)
 (use-package pcomplete-extension)
 
 

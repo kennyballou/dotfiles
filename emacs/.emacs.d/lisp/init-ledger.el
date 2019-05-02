@@ -6,7 +6,6 @@
 (defvar flycheck-ledger)
 
 (use-package ledger-mode
-  :ensure t
   :bind (:map ledger-mode-map
          ("RET" . newline)
          ("C-o" . open-line))

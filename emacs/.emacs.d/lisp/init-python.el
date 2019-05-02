@@ -24,7 +24,6 @@
 
 (use-package virtualenvwrapper
   :after (python)
-  :ensure t
   :init
   (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
   (setq venv-location (expand-file-name "~/.venvs")))
@@ -36,7 +35,6 @@
 
 (use-package ein
   :after (python)
-  :pin melpa-unstable
   :defer t)
 
 (provide 'init-python)

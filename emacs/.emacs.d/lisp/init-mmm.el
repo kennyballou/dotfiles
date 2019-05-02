@@ -9,13 +9,11 @@
 (defvar mmm-submode-decoration-level)
 
 (use-package mmm-mode
-  :pin gnu
   :commands mmm-mode
   :config
   (setq mmm-global-mode 'buffers-with-submode-classes)
   (setq mmm-submode-decoration-level 2)
   (use-package mmm-auto
-    :ensure nil
     :demand))
 
 (provide 'init-mmm)

@@ -6,7 +6,6 @@
 (defvar ibuffer-quit)
 
 (use-package ibuffer
-  :ensure nil
   :config
   (fullframe ibuffer ibuffer-quit))
 

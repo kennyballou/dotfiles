@@ -9,12 +9,10 @@
 
 (use-package regex-tool
   :defer t
-  :pin melpa-unstable
   :init
   (setq-default regex-tool-backend 'perl))
 
 (use-package re-builder
-  :ensure nil
   :defer t
   :bind (:map reb-mode-map
               ;;support a slightly more idomatic quit binding in re-builder

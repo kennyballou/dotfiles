@@ -96,7 +96,6 @@
             (lambda () (inferior-js-keys-mode -1))))
 
 (use-package add-node-modules-path
-  :pin melpa-unstable
   :after (typescript-mode js2-mode)
   :defer t
   :hook ((typescript-mode . add-node-modules-path)

@@ -23,9 +23,7 @@
   :defer 1
   :diminish)
 
-(use-package forge
-  :pin melpa-unstable
-  :ensure t)
+(use-package forge)
 
 (use-package magit
   :preface
@@ -53,12 +51,10 @@
 
 (use-package magit-extras
   :after magit
-  :ensure nil
   :init
   (setq magit-pop-revision-stack-format '("%h (\"%s\", %ad)")))
 
-(use-package with-editor
-  :ensure t)
+(use-package with-editor)
 
 ;; Some added additions from
 ;; https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/

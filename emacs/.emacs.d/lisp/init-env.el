@@ -7,8 +7,7 @@
 
 (require 'eshell)
 (require 'subr-x)
-(use-package dash
-  :pin melpa-unstable)
+(use-package dash)
 
 
 (defun kb/join-paths (paths &optional path-separator)

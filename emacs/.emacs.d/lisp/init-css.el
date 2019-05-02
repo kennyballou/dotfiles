@@ -61,7 +61,6 @@
 
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
-  :pin melpa-unstable
   :defer t
   :hook (css-mode-hook . turn-on-css-eldoc)
   :init

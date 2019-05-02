@@ -8,12 +8,10 @@
 (defvar melpa-unstable)
 
 (use-package flycheck-elm
-  :pin melpa-unstable
   :after flycheck)
 
 (use-package elm-mode
   :after (flycheck flycheck-elm)
-  :pin melpa-unstable
   :defer t
   :diminish
   :init

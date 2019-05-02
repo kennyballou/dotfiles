@@ -52,25 +52,19 @@
 (require 'holidays)
 (require 'ox-md)
 (use-package ob-ditaa
-  :ensure nil
   :config
   (setq org-ditaa-jar-path "~/.emacs.d/ditaa/ditaa.jar"))
 (use-package graphviz-dot-mode)
-(use-package org-cliplink
-  :pin melpa-unstable)
-;; (use-package org-fstree
-;;   :pin melpa-unstable)
-(use-package ob-elixir
-  :pin melpa-unstable)
-(use-package ess
-  :pin melpa-unstable)
-(use-package ob-go
-  :pin melpa-unstable)
-(use-package ob-mongo
-  :pin melpa-unstable)
+(use-package org-cliplink)
+(use-package org-fstree)
+(use-package ob-elixir)
+(use-package ess)
+(use-package ob-go)
+(use-package ob-ipython
+  :defer t)
+(use-package ob-mongo)
 (use-package ox-gfm)
-(use-package org-babel-eval-in-repl
-  :pin melpa-unstable)
+(use-package org-babel-eval-in-repl)
 (use-package org-ref
   :config
   (setq org-ref-completion-library 'org-ref-ivy-cite))
@@ -123,10 +117,6 @@
                 #'modi/htmlize-before-hook-flyspell-disable)
       (add-hook 'htmlize-after-hook
                 #'modi/htmlize-after-hook-flyspell-enable-maybe))))
-
-(use-package ob-ipython
-  :pin melpa-unstable
-  :defer t)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)

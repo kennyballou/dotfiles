@@ -6,8 +6,7 @@
 (defvar geben)
 (use-package php-mode)
 
-(use-package geben
-  :pin melpa-unstable)
+(use-package geben)
 
 (provide 'init-php)
 ;;; init-php.el ends here

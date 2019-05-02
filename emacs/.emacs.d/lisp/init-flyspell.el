@@ -10,7 +10,6 @@
 (defvar flyspell-mode-map)
 
 (use-package flyspell
-  :ensure nil
   :diminish
   :preface (require 'ispell)
   :bind (:map flyspell-mode-map

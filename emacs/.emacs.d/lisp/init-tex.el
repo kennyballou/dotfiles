@@ -10,7 +10,6 @@
 (defvar reftex-plug-into-AUCTeX)
 
 (use-package tex
-  :ensure auctex
   :hook ((TeX-mode-hook . LaTeX-math-mode)
          (TeX-mode-hook . latex-extra-mode)
          (TeX-mode-hook . turn-on-reftex))

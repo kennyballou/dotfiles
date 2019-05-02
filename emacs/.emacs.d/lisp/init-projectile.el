@@ -10,7 +10,6 @@
 (defvar counsel-projectile)
 
 (use-package projectile
-  :ensure t
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init (add-hook 'after-init-hook 'projectile-global-mode)
@@ -35,7 +34,6 @@
                     (format " Proj[%s]" (projectile-project-name))))))
 
 (use-package counsel-projectile
-  :ensure t
   :after projectile
   :config
   (counsel-projectile-mode 1))
