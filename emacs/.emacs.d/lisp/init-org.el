@@ -56,7 +56,6 @@
   (setq org-ditaa-jar-path "~/.emacs.d/ditaa/ditaa.jar"))
 (use-package graphviz-dot-mode)
 (use-package org-cliplink)
-(use-package org-fstree)
 (use-package ob-elixir)
 (use-package ess)
 (use-package ob-go)
