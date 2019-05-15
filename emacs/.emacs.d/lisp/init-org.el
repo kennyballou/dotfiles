@@ -191,6 +191,7 @@
 (defvar kb/org-refile (concat org-directory "refile.org"))
 (defvar kb/org-notes-file (concat org-directory "notes.org"))
 (defvar kb/org-journal-file (concat org-directory "journal.org"))
+(defvar kb/org-work-journal-file (concat org-directory "work.org"))
 (defvar kb/org-bookmarks-file (concat org-directory "bookmarks.org"))
 (setq org-default-notes-file kb/org-refile)
 
@@ -204,7 +205,9 @@
          "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
          "* %?\n%U\n" :clock-in t :clock-resume t)
-        ("w" "org-protocol" entry (file kb/org-refile)
+        ("w" "Work Log" entry (file+olp+datetree kb/org-work-journal-file)
+         "* %?\n%U\n" :clock-out t :clock-resume t)
+        ("o" "org-protocol" entry (file kb/org-refile)
          "* TODO Review %c\n%U\n" :immediate-finish t)
         ("m" "Meeting" entry (file kb/org-refile)
          "* MEETING with %? :MEETING:\n%U"
