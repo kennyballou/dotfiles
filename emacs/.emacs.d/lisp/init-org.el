@@ -165,7 +165,7 @@
       org-src-preserve-indentation nil
       org-edit-src-content-indentation 0
       ;; Agenda log mode items to display (closed and state changes by default)
-      org-agenda-log-mode-items (quote (closed state))
+      org-agenda-log-mode-items (quote (closed clock state))
       org-agenda-files
         (append
          (file-expand-wildcards (concat org-directory "notes.org"))
