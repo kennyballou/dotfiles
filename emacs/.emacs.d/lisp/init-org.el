@@ -159,7 +159,7 @@
       org-clock-persistence-insinuate t
       org-clock-persist t
       org-clock-in-resume t
-      org-clock-into-drawer t
+      org-clock-into-drawer "CLOCK"
       org-duration-format (quote (("d" . nil) ("h" . t) ("min" . t)))
       org-babel-clojure-backend 'cider
       org-src-preserve-indentation nil
