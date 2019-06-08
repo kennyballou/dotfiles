@@ -5,13 +5,6 @@
 (defvar use-package-always-ensure)
 (defvar use-package-always-pin)
 
-;;; Bootstrap use-package
-;;; Install use-package if it's not already installed.
-;;; use-package is used to configure the rest of packages.
-;;; https://caolan.org/dotfiles/emacs.html
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (eval-when-compile
   (require 'use-package))
 
