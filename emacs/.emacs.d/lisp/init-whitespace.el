@@ -59,10 +59,9 @@
 (defvar whitespace-style)
 (setq whitespace-style
       (quote (face
-              trailing
+              trailing-mark
               tab-mark
-              newline
-              lines-tail)))
+              newline)))
 (add-hook 'find-file-hook 'whitespace-mode)
 (add-hook 'text-mode-hook (lambda ()
                             (set-fill-column 79) (turn-on-auto-fill)))
