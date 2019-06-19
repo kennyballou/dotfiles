@@ -5,7 +5,7 @@ RefuseManualStop=no
 
 [Timer]
 Persistent=false
-OnCalendar=*-*-* *:*:*/10
+OnCalendar=*:0/10
 Unit=mbsync.service
 
 [Install]
