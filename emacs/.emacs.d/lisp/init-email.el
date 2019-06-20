@@ -49,7 +49,7 @@
       mu4e-headers-sort-direction 'ascending)
 
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
-(setq sendmail-program "/usr/bin/msmtp"
+(setq sendmail-program "msmtp"
       mail-specifiy-envelope-from t
       message-sendmail-f-is-evil nil
       mail-envelope-from 'header
