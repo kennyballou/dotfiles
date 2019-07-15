@@ -221,6 +221,9 @@
 
 (add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
 
+;;; https://emacs.stackexchange.com/q/51631/17096
+(add-hook 'org-log-buffer-setup-hook (lambda () (setq-local fill-column 72)))
+
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
