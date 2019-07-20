@@ -238,7 +238,7 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 (use-package olivetti
   :defer t
   :config
-  (setq olivetti-minimum-body-width 90))
+  (setq olivetti-minimum-body-width 100))
 
 (use-package define-word
   :defer t)
