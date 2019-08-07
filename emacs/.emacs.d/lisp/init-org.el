@@ -232,7 +232,8 @@
 
 (setq org-capture-templates-contexts
       '(("n" "tn" (kb/org-clocking-p))
-        ("n" "n" (kb/org-not-clocking-p))))
+        ("n" "n" (kb/org-not-clocking-p))
+        ("r" ((in-mode . "mu4e-view")))))
 
 (add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
 
