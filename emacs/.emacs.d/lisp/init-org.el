@@ -25,6 +25,7 @@
 (defvar org-clock-into-drawer)
 (defvar org-babel-clojure-backend)
 (defvar org-capture-templates)
+(defvar org-capture-templates-contexts)
 (defvar org-pomodoro)
 (defvar org-agenda-dim-blocked-tasks)
 (defvar org-agenda-compact-blocks)
@@ -195,14 +196,24 @@
 (defvar kb/org-bookmarks-file (concat org-directory "bookmarks.org"))
 (setq org-default-notes-file kb/org-refile)
 
+(defun kb/org-clocking-p ()
+  "Return non-nil if currently tracking time, otherwise, nil."
+  (not (eq nil org-clock-current-task)))
+
+(defun kb/org-not-clocking-p ()
+  "Return nil if not tracking time, otherwise, non-nil."
+  (eq nil org-clock-current-task))
+
 (setq org-capture-templates
-      `(("t" "todo" entry (file kb/org-refile)
+      '(("t" "todo" entry (file kb/org-refile)
          "* TODO %?\n%U\n" :clock-in t :clock-resume t)
         ("r" "respond" entry (file kb/org-refile)
          "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n"
          :clock-in t :clock-resume t :immediate-finish t)
+        ("tn" "note on task" entry (clock)
+         "* %? :NOTE:\n%U\n%a\n" :empty-lines 1)
         ("n" "note" entry (file kb/org-refile)
-         "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+         "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
          "* %?\n%U\n" :clock-in t :clock-resume t)
         ("w" "Work Log" entry (file+olp+datetree kb/org-work-journal-file)
@@ -218,6 +229,10 @@
          "* PHONE %? :PHONE:\n%U"
          :clock-in t :clock-resume t)
         ))
+
+(setq org-capture-templates-contexts
+      '(("n" "tn" (kb/org-clocking-p))
+        ("n" "n" (kb/org-not-clocking-p))))
 
 (add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
 
