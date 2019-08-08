@@ -14,8 +14,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 prompt_char() {
-    branch=`git branch 2> /dev/null | grep \* | awk '{print $2}'`
-    if [ ${branch} ]; then
+    branch=$(git branch 2> /dev/null | grep \* | awk '{print $2}')
+    if [[ ${branch} ]]; then
         gp="[%{$fg[magenta]%}${branch}"
         if [ `git status --porcelain 2> /dev/null | wc -l` -ne 0 ]; then
             gp="${gp}%{$reset_color%}(%{$fg[green]%}ϟ%{$reset_color%})"
@@ -28,7 +28,7 @@ prompt_char() {
 }
 PROMPT='(@%m)(%1~)$(prompt_char) '
 rprompt_precmd() {
-    if [ $? -ne 0 ]; then
+    if [[ $? -ne 0 ]]; then
         RPROMPT="(%{$fg[red]%}%?%{$reset_color%})"
     else
         RPROMPT=""
