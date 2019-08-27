@@ -13,6 +13,20 @@ setopt prompt_subst
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+if [[ "${TERM}" == "tramp" ]]; then
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    if whence -w precmd >/dev/null; then
+        unfunction precmd
+    fi
+    if whence -w preexec >/dev/null; then
+        unfunction preexec
+    fi
+    PS1="$ "
+    return
+fi
+
 prompt_char() {
     branch=$(git branch 2> /dev/null | grep \* | awk '{print $2}')
     if [[ ${branch} ]]; then
