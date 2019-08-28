@@ -84,7 +84,6 @@
 
 ;; Shells and Terms
 (require 'init-eshell)
-(require 'init-term)
 (require 'init-pcomplete)
 
 ;; Languages and Language Modes
