@@ -3,6 +3,9 @@
 ;;; Code:
 
 (defvar geiser)
+(defvar geiser-active-implementations)
+
+(setq geiser-active-implementations '(guile))
 
 (use-package geiser)
 
