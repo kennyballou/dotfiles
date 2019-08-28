@@ -14,8 +14,9 @@
   "Join the given PATHS together using the PATH-SEPARATOR."
   (or path-separator (setq path-separator ":"))
   ;; Remove duplicate path entries
-  (let* ((split-paths (lambda (p) (split-string p path-separator)))
-         (paths-to-join (-flatten (map 'list split-paths paths))))
+  (let* ((paths (-remove (lambda (p) (not p)) paths))
+         (split-paths (lambda (p) (split-string p path-separator)))
+         (paths-to-join (-flatten (map #'list split-paths paths))))
     (string-join (seq-uniq paths-to-join) path-separator)))
 
 (let* ((user-home (getenv "HOME"))
