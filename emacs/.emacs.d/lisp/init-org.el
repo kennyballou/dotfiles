@@ -377,6 +377,7 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
      (python . t)
      (ruby . t)
      (scala . t)
+     (scheme . t)
      (screen . nil)
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (sql . t)
