@@ -232,5 +232,7 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 (use-package define-word
   :defer t)
 
+(setq backward-delete-char-untabify-method 'hungry)
+
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
