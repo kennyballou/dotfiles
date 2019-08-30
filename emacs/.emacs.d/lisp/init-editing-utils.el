@@ -176,17 +176,6 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 (global-unset-key [M-right])
 
 
-
-(defun kill-back-to-indentation ()
-  "Kill from point back to the first non-whitespace character on the line."
-  (interactive)
-  (let ((prev-pos (point)))
-    (back-to-indentation)
-    (kill-region (point) prev-pos)))
-
-(global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
-
-
 ;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
 (defun backward-up-sexp (arg)
   "Jump up to the start of the ARG'th enclosing sexp."
