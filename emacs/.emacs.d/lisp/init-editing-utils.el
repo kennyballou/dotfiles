@@ -234,5 +234,12 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 
 (setq backward-delete-char-untabify-method 'hungry)
 
+
+
+(use-package page-break-lines
+  :diminish
+  :config
+  (global-page-break-lines-mode t))
+
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
