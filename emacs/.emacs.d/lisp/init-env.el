@@ -7,7 +7,7 @@
 
 (require 'eshell)
 (require 'subr-x)
-(use-package dash)
+(require 'dash)
 
 
 (defun kb/join-paths (paths &optional path-separator)
