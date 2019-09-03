@@ -13,7 +13,8 @@
   :diminish
   :preface (require 'ispell)
   :bind (:map flyspell-mode-map
-         ("C-;" . nil))
+              ("C-;" . nil)
+              ("C-c $" . nil))
   :when (executable-find ispell-program-name)
   :commands (flyspell-mode flyspell-prog-mode)
   :config
