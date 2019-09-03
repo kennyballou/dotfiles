@@ -210,7 +210,6 @@
               uniquify-after-kill-buffer-p t
               use-dialog-box nil
               use-file-dialog nil
-              use-package-always-defer t
               use-package-enable-imenu-support t
               use-package-expand-minimally nil
               version-control t
