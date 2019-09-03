@@ -88,7 +88,7 @@
               eval-expression-print-level nil
               explicit-shell-args '("-c" "export EMACS= INSIDE_EMACS=; stty echo; shell")
               expand-region-contract-fast-key "j"
-              fill-column 80
+              fill-column 79
               flycheck-check-syntax-automatically '(save
                                                     idle-change
                                                     mode-enabled
