@@ -37,8 +37,9 @@
               compilation-auto-jump-to-first-error nil
               compilation-environment '("TERM=xterm-256color")
               compilation-scroll-output nil
-              compilation-skip-threshold 2 completions-format
-              'vertical completion-cycle-threshold 5
+              compilation-skip-threshold 2
+              completions-format 'vertical
+              completion-cycle-threshold 5
               counsel-find-file-at-point t
               counsel-mode-override-describe-bindings t
               create-lockfiles t
@@ -46,22 +47,25 @@
               delete-old-versions t delete-by-moving-to-trash t
               dired-auto-revert-buffer t
               dired-hide-details-hide-symlink-targets nil
-              dired-dwim-target t dired-listing-switches "-alhv"
-              dired-omit-verbose nil dired-omit-files "^\\."
+              dired-dwim-target t
+              dired-listing-switches "-alhv"
+              dired-omit-verbose nil
+              dired-omit-files "^\\."
               dired-recursive-copies 'always
               dired-recursive-deletes 'always
               dtrt-indent-verbosity 0 disabled-command-function
               nil echo-keystrokes 1 enable-recursive-minibuffers
               nil erc-autoaway-idle-seconds 600
               erc-autojoin-timing 'ident erc-fill-prefix " "
-              erc-insert-timestamp-function
-              'erc-insert-timestamp-left erc-interpret-mirc-color
-              t erc-kill-buffer-on-part t
+              erc-insert-timestamp-function 'erc-insert-timestamp-left
+              erc-interpret-mirc-color t
+              erc-kill-buffer-on-part t
               erc-kill-queries-on-quit t
-              erc-kill-server-buffer-on-quit t erc-prompt (lambda
-              nil (concat "[" (buffer-name) "]"))
-              erc-prompt-for-password nil erc-query-display
-              'buffer erc-server-coding-system '(utf-8 . utf-8)
+              erc-kill-server-buffer-on-quit t
+              erc-prompt (lambda () (concat "[" (buffer-name) "]"))
+              erc-prompt-for-password nil
+              erc-query-display 'buffer
+              erc-server-coding-system '(utf-8 . utf-8)
               erc-timestamp-format "%H:%M:%S "
               erc-timestamp-only-if-changed-flag nil
               erc-try-new-nick-p nil eshell-banner-message ""
@@ -77,12 +81,12 @@
               eshell-list-files-after-cd t
               eshell-ln-interactive-query t
               eshell-mv-interactive-query t
-              eshell-output-filter-functions
-              '(eshell-handle-ansi-color
-              eshell-handle-control-codes
-              eshell-watch-for-password-prompt
-              eshell-truncate-buffer) eshell-plain-echo-behavior
-              nil eshell-review-quick-commands t
+              eshell-output-filter-functions '(eshell-handle-ansi-color
+                                               eshell-handle-control-codes
+                                               eshell-watch-for-password-prompt
+                                               eshell-truncate-buffer)
+              eshell-plain-echo-behavior nil
+              eshell-review-quick-commands t
               eshell-rm-interactive-query t
               eval-expression-print-length 20
               eval-expression-print-level nil
