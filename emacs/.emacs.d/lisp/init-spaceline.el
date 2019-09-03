@@ -5,10 +5,12 @@
 (defvar spaceline)
 (defvar spaceline-config)
 
-(use-package spaceline)
+(use-package spaceline
+  :demand t)
 
 (use-package spaceline-config
-  :ensure spaceline
+  :after spaceline
+  :demand t
   :config
   (spaceline-emacs-theme))
 
