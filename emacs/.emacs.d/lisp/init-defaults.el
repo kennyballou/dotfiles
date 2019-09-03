@@ -154,7 +154,6 @@
               nsm-save-host-names t
               ns-function-modifier 'hyper
               ns-pop-up-frames nil
-              org-blank-before-new-entry '((heading) (plain-list-item))
               org-export-in-background t
               org-log-done 'time
               org-log-done-with-time t
