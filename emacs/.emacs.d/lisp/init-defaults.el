@@ -21,15 +21,15 @@
               comint-scroll-show-maximum-output nil
               company-auto-complete (lambda () (and (company-tooltip-visible-p)
                                                (company-explicit-action-p)))
-              company-frontends
-              '(company-pseudo-tooltip-unless-just-one-frontend
-              company-preview-frontend
-              company-echo-metadata-frontend)
+              company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                                  company-preview-frontend
+                                  company-echo-metadata-frontend)
               company-continue-commands '(not save-buffer
-              save-some-buffers save-buffers-kill-terminal
-              save-buffers-kill-emacs
-              comint-previous-matching-input-from-input
-              comint-next-matching-input-from-input)
+                                              save-some-buffers
+                                              save-buffers-kill-terminal
+                                              save-buffers-kill-emacs
+                                              comint-previous-matching-input-from-input
+                                              comint-next-matching-input-from-input)
               company-require-match nil
               company-selection-wrap-around t
               compilation-always-kill nil
@@ -44,7 +44,8 @@
               counsel-mode-override-describe-bindings t
               create-lockfiles t
               checkdoc-spellcheck-documentation-flag t
-              delete-old-versions t delete-by-moving-to-trash t
+              delete-old-versions t
+              delete-by-moving-to-trash t
               dired-auto-revert-buffer t
               dired-hide-details-hide-symlink-targets nil
               dired-dwim-target t
@@ -53,9 +54,11 @@
               dired-omit-files "^\\."
               dired-recursive-copies 'always
               dired-recursive-deletes 'always
-              dtrt-indent-verbosity 0 disabled-command-function
-              nil echo-keystrokes 1 enable-recursive-minibuffers
-              nil erc-autoaway-idle-seconds 600
+              dtrt-indent-verbosity 0
+              disabled-command-function nil
+              echo-keystrokes 1
+              enable-recursive-minibuffers nil
+              erc-autoaway-idle-seconds 600
               erc-autojoin-timing 'ident erc-fill-prefix " "
               erc-insert-timestamp-function 'erc-insert-timestamp-left
               erc-interpret-mirc-color t
@@ -76,7 +79,8 @@
               eshell-cp-overwrite-files nil
               eshell-default-target-is-dot t
               eshell-destroy-buffer-when-process-dies t
-              eshell-highlight-prompt t eshell-hist-ignoredups t
+              eshell-highlight-prompt t
+              eshell-hist-ignoredups t
               eshell-history-size 10000
               eshell-list-files-after-cd t
               eshell-ln-interactive-query t
