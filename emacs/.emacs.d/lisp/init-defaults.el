@@ -37,7 +37,6 @@
               compilation-auto-jump-to-first-error nil
               compilation-environment '("TERM=xterm-256color")
               compilation-scroll-output nil
-              compilation-skip-threshold 2
               completions-format 'vertical
               completion-cycle-threshold 5
               counsel-find-file-at-point t
