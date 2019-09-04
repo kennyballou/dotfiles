@@ -70,8 +70,10 @@
               erc-server-coding-system '(utf-8 . utf-8)
               erc-timestamp-format "%H:%M:%S "
               erc-timestamp-only-if-changed-flag nil
-              erc-try-new-nick-p nil eshell-banner-message ""
-              eshell-cd-on-directory t eshell-cmpl-autolist t
+              erc-try-new-nick-p nil
+              eshell-banner-message ""
+              eshell-cd-on-directory t
+              eshell-cmpl-autolist t
               eshell-cmpl-cycle-completions t
               eshell-cmpl-cycle-cutoff-length 2
               eshell-cp-interactive-query t
