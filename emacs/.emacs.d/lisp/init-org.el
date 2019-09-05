@@ -355,6 +355,8 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
   (interactive)
   (find-file (gf/org-resolve-project-org-file)))
 
+
+
 (with-eval-after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -382,6 +384,18 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (sql . t)
      (sqlite . t))))
+
+(defun org-babel-scheme-session-buffer (session)
+  "Return the current session of SESSION otherwise nil."
+  (org-babel-scheme-get-session-buffer session))
+
+(defun org-babel-scheme-initiate-session (&optional session params)
+  "Create a session named SESSION according to PARAMS."
+  (let ((name (org-babel-scheme-make-session-name "" session 'guile)))
+    (org-babel-scheme-set-session-buffer name (org-babel-scheme-get-repl
+                                               'guile session))))
+
+
 
 (defun kb/org-switch-to-notes ()
   "Switch to notes.
