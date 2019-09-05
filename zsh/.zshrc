@@ -13,7 +13,7 @@ setopt prompt_subst
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-if [[ "${TERM}" == "tramp" ]]; then
+if [[ "${TERM}" == "dumb" ]]; then
     unsetopt zle
     unsetopt prompt_cr
     unsetopt prompt_subst

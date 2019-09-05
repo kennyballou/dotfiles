@@ -13,7 +13,6 @@
 (define-key global-map (kbd "C-c s") #'counsel-tramp)
 
 (setq tramp-default-method "ssh")
-(setq tramp-terminal-type "tramp")
 
 (provide 'init-tramp)
 ;;; init-tramp.el ends here
