@@ -2,9 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar dash)
-(defvar melpa-unstable)
-
 (require 'eshell)
 (require 'subr-x)
 (require 'dash)
