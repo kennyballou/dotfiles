@@ -38,6 +38,7 @@
 (require 'init-exec-path)
 (require 'init-backupfiles)
 (require 'init-env)
+(require 'init-epa)
 
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
