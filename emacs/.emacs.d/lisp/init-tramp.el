@@ -6,13 +6,15 @@
 (defvar helm-tramp)
 (defvar tramp-default-method)
 (defvar tramp-terminal-type)
+(defvar tramp-verbose)
 
 (use-package helm-tramp
   :after helm)
 
 (define-key global-map (kbd "C-c s") #'helm-tramp)
 
-(setq tramp-default-method "ssh")
+(setq tramp-default-method "ssh"
+      tramp-verbose 1)
 
 (provide 'init-tramp)
 ;;; init-tramp.el ends here
