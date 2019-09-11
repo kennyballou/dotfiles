@@ -164,7 +164,10 @@
               org-src-preserve-indentation t
               org-src-tab-acts-natively t
               parens-require-spaces t
-              projectile-globally-ignored-files '("TAGS")
+              projectile-globally-ignored-files '("TAGS"
+                                                  "GPATH"
+                                                  "GTAGS"
+                                                  "GRTAGS")
               projectile-enable-caching t
               projectile-ignored-project-function 'file-remote-p
               projectile-switch-project-action 'projectile-dired
