@@ -58,9 +58,7 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-recentf)
-(require 'init-smex)
-;; (require 'init-ido)
-(require 'init-ivy)
+(require 'init-helm)
 (require 'init-mwim)
 (require 'init-company)
 (require 'init-mmm)
@@ -82,6 +80,7 @@
 (require 'init-folding)
 (unless (version< emacs-version "25.0")
   (require 'init-xref))
+(require 'init-tags)
 (require 'init-flycheck)
 (require 'init-tramp)
 

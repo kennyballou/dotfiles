@@ -3,6 +3,8 @@
 ;;; Code:
 
 (defvar flyspell)
+(defvar helm-flyspell)
+(defvar helm-flyspell-correct)
 (defvar ispell-program-name)
 (defvar flyspell-prog-mode)
 (defvar flyspell-use-meta-tab)
@@ -23,6 +25,12 @@
   :init
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'prog-mode-hook 'flyspell-prog-mode))
+
+(use-package helm-flyspell
+  :commands helm-flyspell-correct
+  :after flyspell
+  :bind (:map flyspell-mode-map
+              ("C-c ." . helm-flyspell-correct)))
 
 (provide 'init-flyspell)
 ;;; init-flyspell.el ends here

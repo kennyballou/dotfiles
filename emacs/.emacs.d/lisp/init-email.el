@@ -16,8 +16,18 @@
 ;; not sure this is explicitly needed yet..
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 
+(defvar helm-mu)
+
 (require 'mu4e)
 (require 'org-mu4e)
+(use-package helm-mu
+  :after (mu4e helm)
+  :bind (:map mu4e-main-mode-map
+         ("s" . #'helm-mu)
+         :map mu4e-headers-mode-map
+         ("s" . #'helm-mu)
+         :map mu4e-view-mode-map
+         ("s" . #'helm-mu)))
 
 (setq mu4e-compose-format-flowed nil)
 

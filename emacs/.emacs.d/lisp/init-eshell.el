@@ -4,6 +4,7 @@
 
 (require 'eshell)
 (require 'em-term)
+(require 'helm-eshell)
 
 (defvar eshell-prompt-function)
 (defvar eshell-highlight-prompt)
@@ -118,6 +119,14 @@ left to try and get the PATH down to, at most, MAX-LEN."
 ;; disable slime in eshell
 (add-hook 'eshell-mode-hook
           (lambda () (setq slime-mode nil)))
+
+
+
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+
+
 
 (provide 'init-eshell)
 ;;; init-eshell.el ends here

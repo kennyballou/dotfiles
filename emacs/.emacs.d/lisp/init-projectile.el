@@ -7,7 +7,7 @@
 (defvar projectile-completion-system)
 (defvar projectile-enable-caching)
 (defvar projectile-globally-ignored-files)
-(defvar counsel-projectile)
+(defvar helm-projectile)
 
 (use-package projectile
   :bind-keymap
@@ -15,7 +15,6 @@
   :config
 
   (setq projectile-switch-project-action 'projectile-dired
-        projectile-completion-system 'ivy
         projectile-enable-caching t)
 
   (add-to-list 'projectile-globally-ignored-files "node-modules")
@@ -32,10 +31,8 @@
                       "Projectile"
                     (format " Proj[%s]" (projectile-project-name))))))
 
-(use-package counsel-projectile
-  :after projectile
-  :config
-  (counsel-projectile-mode 1))
+(use-package helm-projectile
+  :after (projectile helm))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

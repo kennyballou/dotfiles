@@ -6,6 +6,7 @@
 (defvar flycheck-color-mode-line)
 (defvar flycheck-disabled-checkers)
 (defvar flycheck-display-errors-function)
+(defvar helm-flycheck)
 
 (use-package flycheck
   :defer 2
@@ -21,6 +22,9 @@
 (use-package flycheck-color-mode-line
   :after flycheck
   :init (flycheck-color-mode-line-mode))
+
+(use-package helm-flycheck
+  :after (helm flycheck))
 
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends here
