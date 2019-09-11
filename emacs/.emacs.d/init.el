@@ -86,6 +86,7 @@
 (require 'init-tramp)
 
 ;; Shells and Terms
+(require 'init-shell)
 (require 'init-eshell)
 (require 'init-pcomplete)
 
