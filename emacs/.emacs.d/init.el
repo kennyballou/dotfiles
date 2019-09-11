@@ -64,6 +64,7 @@
 (require 'init-mwim)
 (require 'init-company)
 (require 'init-mmm)
+(require 'init-polymode)
 (require 'init-editing-utils)
 (require 'init-buf-mov)
 (require 'init-whitespace)
