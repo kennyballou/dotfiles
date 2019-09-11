@@ -33,6 +33,18 @@
   (load-theme 'zenburn t)
   (reapply-theme))
 
+(defun space-light ()
+  "Active spacemacs light theme."
+  (interactive)
+  (load-theme 'spacemacs-light t)
+  (reapply-theme))
+
+(defun space-dark ()
+  "Activate spacemacs dark theme."
+  (interactive)
+  (load-theme 'spacemacs-dark t)
+  (reapply-theme))
+
 (add-hook 'after-init-hook 'dark)
 
 (provide 'init-themes)
