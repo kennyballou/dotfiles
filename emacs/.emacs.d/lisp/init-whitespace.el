@@ -4,7 +4,6 @@
 
 (defvar whitespace)
 (defvar whitespace-cleanup-mode)
-(defvar fill-column-indicator)
 (defvar column-marker)
 (defvar auto-fill)
 (defvar text-mode)
@@ -19,9 +18,6 @@
   :diminish
   :config
   (global-whitespace-cleanup-mode t))
-(use-package fill-column-indicator
-  :diminish)
-;; (use-package column-marker)
 
 (setq-default show-trailing-whitespace t)
 
@@ -76,25 +72,6 @@
 
 ;;newlines
 (setq require-final-newline t)
-
-;; fci mode
-;; https://www.emacswiki.org/emacs/FillColumnIndicator
-(defvar fci-mode)
-(customize-set-value 'fci-rule-column 79)
-(customize-set-value 'fci-rule-width 5)
-(define-globalized-minor-mode global-fci-mode fci-mode
-  (lambda ()
-    (if (and
-         (not (string-match "^\*.*\*$" (buffer-name)))
-         (not (string-match "^magit.*$" (buffer-name)))
-         (not (eq major-mode 'dired-mode))
-         (not (eq major-mode 'term-mode))
-         (not (eq major-mode 'multi-term-mode))
-         )
-        (fci-mode 1))))
-(global-fci-mode 1)
-
-(add-hook 'after-change-major-mode-hook 'global-fci-mode)
 
 (provide 'init-whitespace)
 ;;; init-whitespace.el ends here
