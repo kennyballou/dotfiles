@@ -8,17 +8,30 @@
 (use-package anti-zenburn-theme)
 (use-package zenburn-theme)
 
+(setq-default custom-enabled-themes '(dark))
+
+;; ensure that themes will be applied even if they have not been customized.
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-themes.el
+(defun reapply-themes ()
+  "Forcibly load the themes listed in `custom-enabled-themes'."
+  (dolist (theme custom-enabled-themes)
+    (unless (custom-theme-p theme)
+      (load-theme theme)))
+  (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
+
 ;; Add toggle between zen and anti-zen
 
 (defun light ()
   "Activate anti-zenburn theme."
   (interactive)
-  (load-theme 'anti-zenburn t))
+  (load-theme 'anti-zenburn t)
+  (reapply-theme))
 
 (defun dark ()
   "Activate zenburn theme."
   (interactive)
-  (load-theme 'zenburn t))
+  (load-theme 'zenburn t)
+  (reapply-theme))
 
 (add-hook 'after-init-hook 'dark)
 
