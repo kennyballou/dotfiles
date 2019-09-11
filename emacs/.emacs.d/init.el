@@ -91,6 +91,7 @@
 (require 'init-pcomplete)
 
 ;; Languages and Language Modes
+(require 'init-semantic)
 (require 'init-c)
 (require 'init-clojure)
 (require 'init-clojure-cider)
