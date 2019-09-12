@@ -160,6 +160,35 @@
          (file-expand-wildcards (concat org-directory "projects/*/*/*.org"))
          (file-expand-wildcards (concat org-directory "topics/*/*.org"))))
 
+
+
+(setq org-latex-prefer-user-labels t
+      org-latex-listings t)
+(setq org-latex-listings-options
+      '(("breaklines" "true")
+        ("firstnumber" "auto")
+        ("frame" "single")
+        ("mathescape" "true")
+        ("numbers" "left")
+        ("numbersep" "5pt")
+        ("numberstyle" "\\tiny")
+        ("showspaces" "false")
+        ("showstringspaces" "false")
+        ("stepnumber" "1")
+        ("title" "\\lstname")))
+
+(add-to-list 'org-latex-listings-langs '(scheme "Lisp"))
+
+(add-to-list 'org-latex-default-packages-alist '("" "listings" t))
+
+(setq org-latex-pdf-process
+      '("pdflatex -interaction nonstopmode -output-directory %o %f"
+        "bibtex %b"
+        "pdflatex -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -interaction nonstopmode -output-directory %o %f"))
+
+
+
 ;;;; Refile settings
 ; Exclude DONE state tasks from refile targets
 (defun bh/verify-refile-target ()
