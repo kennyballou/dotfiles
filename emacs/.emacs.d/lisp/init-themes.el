@@ -8,7 +8,7 @@
 (use-package anti-zenburn-theme)
 (use-package zenburn-theme)
 
-(setq-default custom-enabled-themes '(dark))
+(setq-default custom-enabled-themes '(zenburn))
 
 ;; ensure that themes will be applied even if they have not been customized.
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-themes.el
