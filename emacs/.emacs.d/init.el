@@ -31,6 +31,7 @@
   (load custom-file))
 
 ;; Begin Bootstrapping
+(require 'init-server)
 (require 'init-defaults)
 (require 'init-site-lisp)
 (require 'init-elpa)
