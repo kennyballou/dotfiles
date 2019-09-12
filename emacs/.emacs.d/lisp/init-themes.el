@@ -25,25 +25,25 @@
   "Activate anti-zenburn theme."
   (interactive)
   (load-theme 'anti-zenburn t)
-  (reapply-theme))
+  (reapply-themes))
 
 (defun dark ()
   "Activate zenburn theme."
   (interactive)
   (load-theme 'zenburn t)
-  (reapply-theme))
+  (reapply-themes))
 
 (defun space-light ()
   "Active spacemacs light theme."
   (interactive)
   (load-theme 'spacemacs-light t)
-  (reapply-theme))
+  (reapply-themes))
 
 (defun space-dark ()
   "Activate spacemacs dark theme."
   (interactive)
   (load-theme 'spacemacs-dark t)
-  (reapply-theme))
+  (reapply-themes))
 
 (add-hook 'after-init-hook 'dark)
 
