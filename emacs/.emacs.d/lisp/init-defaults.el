@@ -131,7 +131,7 @@
               ispell-extra-args '("--sug-mode=ultra")
               ispell-silently-savep t
               ispell-quietly t
-              jit-lock-defer-time 0.01
+              jit-lock-defer-time 0
               js2-mode-show-parse-errors nil
               js2-mode-show-strict-warnings nil
               kill-do-not-save-duplicates t
