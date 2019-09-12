@@ -85,7 +85,7 @@
 (add-hook 'helm-minibuffer-set-up-hook
           #'spacemacs//helm-hide-minibuffer-maybe)
 
-(setq helm-autoresize-max-height 0)
+(setq helm-autoresize-max-height 30)
 (setq helm-autoresize-min-height 20)
 (setq helm-apropos-fuzzy-match t)
 (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
