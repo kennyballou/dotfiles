@@ -222,7 +222,7 @@
         ("tn" "note on task" entry (clock)
          "* %? :NOTE:\n%U\n%a\n" :empty-lines 1)
         ("n" "note" entry (file kb/org-refile)
-         "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
+         "* %? :NOTE:\n%U\n")
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
          "* %?\n%U\n" :clock-in t :clock-resume t)
         ("w" "Work Log" entry (file+olp+datetree kb/org-work-journal-file)
