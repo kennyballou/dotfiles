@@ -25,6 +25,7 @@
 (defvar helm-recentf-fuzzy-match)
 (defvar helm-semantic-fuzzy-match)
 (defvar helm-sources-using-default-as-input)
+(defvar helm-split-window-inside-p)
 (defvar swiper-helm)
 
 
@@ -97,6 +98,7 @@
 (setq helm-imenu-fuzzy-match t)
 (setq helm-ff-search-library-in-sexp t)
 (setq helm-ff-file-name-history-use-recentf t)
+(setq helm-split-window-inside-p t)
 (helm-autoresize-mode t)
 
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
