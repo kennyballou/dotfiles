@@ -104,6 +104,8 @@
 (unbind-key "<M-S-left>" org-mode-map)
 (unbind-key "<M-S-right>" org-mode-map)
 
+
+
 ;; Various preferences
 (setq org-log-done t
       org-directory "~/.org/"
@@ -249,6 +251,8 @@
 ;;; https://emacs.stackexchange.com/q/51631/17096
 (add-hook 'org-log-buffer-setup-hook (lambda () (setq-local fill-column 72)))
 
+
+
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
@@ -274,6 +278,8 @@
               ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
               ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+
+
 
 (setq org-agenda-custom-commands
       (quote (("M" "3 Month" agenda "3 month view"
