@@ -58,9 +58,14 @@
               trailing-mark
               tab-mark
               newline)))
-(add-hook 'find-file-hook 'whitespace-mode)
-(add-hook 'text-mode-hook (lambda ()
-                            (set-fill-column 79) (turn-on-auto-fill)))
+
+(defun kb/text-mode-setup ()
+  "text-mode setup hook."
+  (whitespace-mode t)
+  (set-fill-column 79)
+  (turn-on-auto-fill))
+
+(add-hook 'text-mode-hook #'kb/text-mode-setup)
 
 (diminish 'auto-fill-function)
 
