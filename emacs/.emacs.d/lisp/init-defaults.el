@@ -226,6 +226,6 @@
               whitespace-auto-cleanup t
               whitespace-rescan-timer-time nil
               whitespace-silent t)
-              
+
 (provide 'init-defaults)
 ;;; init-defaults.el ends here
