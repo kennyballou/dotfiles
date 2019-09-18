@@ -4,7 +4,7 @@ else
     export PAGER='less'
 fi
 
-if [[ -n "INSIDE_EMACS" ]]; then
+if [[ -n "${INSIDE_EMACS}" ]]; then
     unset EDITOR
 else
     export EDITOR='emacs'
