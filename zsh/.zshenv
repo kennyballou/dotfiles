@@ -6,6 +6,7 @@ fi
 
 if [[ -n "${INSIDE_EMACS}" ]]; then
     unset EDITOR
+    unset VISUAL
 else
     export EDITOR='emacs'
 fi
