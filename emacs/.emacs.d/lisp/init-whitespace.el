@@ -4,6 +4,7 @@
 
 (defvar whitespace)
 (defvar whitespace-cleanup-mode)
+(defvar unicode-whitespace)
 (defvar column-marker)
 (defvar auto-fill)
 (defvar text-mode)
@@ -20,6 +21,9 @@
   (global-whitespace-cleanup-mode t))
 
 (setq-default show-trailing-whitespace t)
+
+(use-package unicode-whitespace
+  :after (whitespace))
 
 ;;; Whitespace
 
