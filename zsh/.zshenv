@@ -9,6 +9,7 @@ if [[ -n "${INSIDE_EMACS}" ]]; then
     unset VISUAL
 else
     export EDITOR='emacs'
+    export VISUAL="emacsclient -c"
 fi
 
 eval $(dircolors "${HOME}/.config/DIR_COLORS")

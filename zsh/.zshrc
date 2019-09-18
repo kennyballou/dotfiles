@@ -1,4 +1,5 @@
 autoload -U compinit promptinit -U colors && colors
+autoload -z edit-command-line
 bindkey -e
 compinit
 promptinit
@@ -9,6 +10,8 @@ setopt inc_append_history
 setopt share_history
 setopt extended_history
 setopt prompt_subst
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
