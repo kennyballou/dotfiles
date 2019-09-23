@@ -16,7 +16,7 @@
   :after (go-autocomplete)
   :commands (gofmt-before-save)
   :defer t
-  :init
+  :config
   (add-hook 'go-mode-hook (lambda ()
                             (setq indent-tabs-mode t)
                             (setq tab-width 4)))
