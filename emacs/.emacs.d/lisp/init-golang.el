@@ -4,6 +4,7 @@
 
 (defvar go-mode)
 (defvar go-autocomplete)
+(defvar before-save-hook)
 
 (use-package go-autocomplete
   :after (auto-complete-mode)
@@ -13,10 +14,13 @@
 
 (use-package go-mode
   :after (go-autocomplete)
+  :commands (gofmt-before-save)
   :defer t
-  :hook (go-mode-hook . (lambda ()
-                          (setq indent-tabs-mode t)
-                          (setq tab-width 4))))
+  :init
+  (add-hook 'go-mode-hook (lambda ()
+                            (setq indent-tabs-mode t)
+                            (setq tab-width 4)))
+  (add-hook 'before-save-hook #'gofmt-before-save))
 
 (provide 'init-golang)
 ;;; init-golang.el ends here
