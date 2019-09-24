@@ -122,6 +122,7 @@
       org-search-view-always-boolean t
       org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9)))
+      org-outline-path-complete-in-steps nil
       org-refile-use-outline-path t
       org-indirect-buffer-display 'current-window
       org-enforce-todo-dependencies t
