@@ -241,5 +241,13 @@ Inspired by `sanityinc/no-trailing-whitespace'"
   :config
   (global-page-break-lines-mode t))
 
+
+
+(use-package editorconfig
+  :config
+  (editorconfig-mode t))
+
+
+
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
