@@ -244,6 +244,7 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 
 
 (use-package editorconfig
+  :diminish
   :config
   (editorconfig-mode t))
 
