@@ -32,6 +32,7 @@
 (defvar org-agenda-custom-commands)
 (defvar org-agenda-show-future-repeats)
 (defvar org-agenda-log-mode-items)
+(defvar org-agenda-exporter-settings)
 (defvar org-duration-format)
 (defvar org-ditaa-jar-path)
 (defvar org-ref)
@@ -301,6 +302,15 @@
                 (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
                            ((org-agenda-overriding-header "Next Tasks:"))))
                ((org-agenda-span 'day))))))
+
+
+(setq org-agenda-exporter-settings
+      '((ps-number-of-columns 2)
+        (ps-landscape-mode t)
+        (org-agenda-add-entry-text-maxlines 5)
+        (htmlize-output-type 'css)))
+
+
 
 (defun kb/org-switch-to-current-notes-file ()
   "Open current notes file."
