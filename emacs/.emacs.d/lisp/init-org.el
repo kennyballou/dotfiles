@@ -285,7 +285,11 @@
 
 (setq org-agenda-custom-commands
       (quote (("M" "3 Month" agenda "3 month view"
-                ((org-agenda-span 90)))
+               ((org-agenda-span 90)))
+              ("D" "Deadlines" agenda "Upcoming Deadlines over the next 3 months"
+               ((org-agenda-span 90)
+                (org-deadline-warning-days 90)
+                (org-agenda-entry-types '(:deadline))))
               ("Y" "Holidays" agenda "Year view"
                ((org-agenda-category-filter-preset (quote ("+Holiday")))
                 (org-agenda-span 'year)
