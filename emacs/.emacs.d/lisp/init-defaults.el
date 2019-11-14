@@ -83,6 +83,7 @@
               eshell-highlight-prompt t
               eshell-hist-ignoredups t
               eshell-history-size 10000
+              eshell-buffer-maximum-lines 100000
               eshell-list-files-after-cd t
               eshell-ln-interactive-query t
               eshell-mv-interactive-query t
