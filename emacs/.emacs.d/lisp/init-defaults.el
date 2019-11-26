@@ -156,7 +156,7 @@
               nsm-save-host-names t
               ns-function-modifier 'hyper
               ns-pop-up-frames nil
-              org-export-in-background t
+              org-export-in-background nil
               org-log-done 'time
               org-log-done-with-time t
               org-return-follows-links t
