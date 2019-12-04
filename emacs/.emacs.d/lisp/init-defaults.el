@@ -93,7 +93,7 @@
                                                eshell-truncate-buffer)
               eshell-plain-echo-behavior nil
               eshell-review-quick-commands t
-              eshell-rm-interactive-query t
+              eshell-rm-interactive-query nil
               eval-expression-print-length 20
               eval-expression-print-level nil
               explicit-shell-args '("-c" "export EMACS= INSIDE_EMACS=; stty echo; shell")
