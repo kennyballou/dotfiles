@@ -8,7 +8,7 @@ if [[ -n "${INSIDE_EMACS}" ]]; then
     unset EDITOR
     unset VISUAL
 else
-    export EDITOR='emacs'
+    export EDITOR="emacsclient"
     export VISUAL="emacsclient -c"
 fi
 
