@@ -60,10 +60,6 @@
   :config
   (global-auto-revert-mode t))
 
-
-(setq global-auto-revert-non-file-buffers t
-      auto-revert-verbose nil)
-
 (transient-mark-mode t)
 
 ;;; A simple visible bell which works in all terminal types
