@@ -9,7 +9,8 @@
               apropros-do-all t
               async-shell-command-buffer 'new-buffer
               auth-source-save-behavior t
-              auto-revert-check-vc-info t
+              auto-revert-check-vc-info nil
+              auto-revert-remote-files nil
               auto-revert-verbose nil
               auto-save-visited-file-name t
               backward-delete-char-untabify-method 'hungry
@@ -217,6 +218,7 @@
               use-file-dialog nil
               use-package-enable-imenu-support t
               use-package-expand-minimally nil
+              vc-handled-backends '(Git)
               version-control t
               view-read-only t
               view-inhibit-help-message t
