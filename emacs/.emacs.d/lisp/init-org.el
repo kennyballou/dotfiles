@@ -115,7 +115,7 @@
       org-edit-timestamp-down-means-later t
       org-archive-mark-done nil
       org-hide-emphasis-markers t
-      org-catch-invisible-edits 'error
+      org-catch-invisible-edits 'show-and-error
       org-export-coding-system 'utf-8
       org-html-validation-link nil
       org-export-kill-product-buffer-when-displayed t
