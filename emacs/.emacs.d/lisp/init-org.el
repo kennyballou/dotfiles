@@ -211,11 +211,11 @@
 
 (defun kb/org-clocking-p ()
   "Return non-nil if currently tracking time, otherwise, nil."
-  (not (eq nil org-clock-current-task)))
+  (not (eq nil (org-clock-is-active))))
 
 (defun kb/org-not-clocking-p ()
   "Return nil if not tracking time, otherwise, non-nil."
-  (eq nil org-clock-current-task))
+  (eq nil (org-clock-is-active)))
 
 (setq org-capture-templates
       '(("t" "todo" entry (file kb/org-refile)
