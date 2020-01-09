@@ -224,7 +224,7 @@
          "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n"
          :clock-in t :clock-resume t :immediate-finish t)
         ("tn" "note on task" entry (clock)
-         "* Note taken on %U :NOTE:\n%a\n\n%?" :empty-lines 1)
+         "* Note taken on %U\n%a\n\n%?" :empty-lines 1)
         ("n" "note" entry (file kb/org-refile)
          "* %? :NOTE:\n%U\n")
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
