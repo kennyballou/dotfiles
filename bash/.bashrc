@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# shellcheck source=/home/kb/.profile
+[[ -f ~/.profile ]] && source "${HOME}/.profile"
+
 export HISTIGNORE="[]*:&:bg:fg:ls -l:ls -al:ls -la"
 export HISTTIMEFORMAT="%Y-%m-%dT%H:%M:%S "
 export HISTCONTROL=ignoreboth:erasedups
