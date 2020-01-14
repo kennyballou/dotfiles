@@ -23,6 +23,7 @@
 (defvar org-clock-in-resume)
 (defvar org-clock-in-switch-to-state)
 (defvar org-clock-into-drawer)
+(defvar org-clock-out-remove-zero-time-clocks)
 (defvar org-babel-clojure-backend)
 (defvar org-capture-templates)
 (defvar org-capture-templates-contexts)
@@ -142,6 +143,7 @@
                  (file-expand-wildcards (concat org-directory "*/*/*.org")))
       org-log-state-notes-into-drawer t
       org-clock-persistence-insinuate t
+      org-clock-out-remove-zero-time-clocks t
       org-clock-persist t
       org-clock-in-resume t
       org-clock-into-drawer "CLOCK"
