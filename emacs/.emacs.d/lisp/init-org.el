@@ -14,6 +14,7 @@
 
 (defvar org-cliplink)
 (defvar org-fstree)
+(defvar org-archive-location)
 (defvar org-archive-mark-done)
 (defvar org-export-kill-product-buffer-when-displayed)
 (defvar org-search-view-always-boolean)
@@ -114,6 +115,7 @@
       org-ellipsis "⤵"
       org-special-ctrl-a/e t
       org-edit-timestamp-down-means-later t
+      org-archive-location "%s_archive::datetree/"
       org-archive-mark-done nil
       org-hide-emphasis-markers t
       org-catch-invisible-edits 'show-and-error
