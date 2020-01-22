@@ -60,6 +60,7 @@
 (require 'init-ibuffer)
 (require 'init-recentf)
 (require 'init-helm)
+(require 'init-hydra)
 (require 'init-mwim)
 (require 'init-company)
 (require 'init-mmm)
