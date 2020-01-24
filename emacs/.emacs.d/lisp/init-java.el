@@ -42,7 +42,7 @@
               ("C-M-." . helm-imenu)
               ("M-r" . meghanada-reference)
               ("M-t" . meghanada-typeinfo)
-              ("C-z" . hydra-meghananda/body)))
+              ("C-z" . hydra-meghanada/body)))
 
 (defhydra hydra-meghanada (:hint nil :exit t)
   "
