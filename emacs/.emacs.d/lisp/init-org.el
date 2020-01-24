@@ -412,7 +412,6 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
      (perl . t)
      (python . t)
      (ruby . t)
-     (scala . t)
      (scheme . t)
      (screen . nil)
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
