@@ -439,6 +439,31 @@ Open either current project notes, or default notes file"
       (gf/org-switch-to-project-org-file)
     (kb/org-switch-to-current-notes-file)))
 
+
+
+(defhydra help/hydra/timestamp (:hint nil :exit t)
+  "
+_ts_:  Inactive timestamp with seconds
+_utc_: Ianctive timestamp with seconds in UTC
+"
+  ("q" exit)
+  ("ts" help/org-time-stamp-with-seconds-now)
+  ("utc" help/org-time-stamp-with-seconds-now-utc))
+
+(defun help/org-time-stamp-with-seconds-now ()
+  "Insert inactive Org timestamp with seconds."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]")))
+
+(defun help/org-time-stamp-with-seconds-now-utc ()
+  "Insert inactive Org timestamp with seconds in UTC."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]" nil t)))
+
+(define-key org-mode-map (kbd "C-c t") help/hydra/timestamp/body)
+
+
+
 (use-package org-pomodoro)
 
 (provide 'init-org)
