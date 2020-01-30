@@ -29,7 +29,9 @@
                 (lambda ()
                   (if (file-remote-p default-directory)
                       "Projectile"
-                    (format " Proj[%s]" (projectile-project-name))))))
+                    (format " Proj[%s]" (projectile-project-name)))))
+  :init
+  (add-hook 'after-init-hook (lambda () (projectile-mode))))
 
 (use-package helm-projectile
   :after (projectile helm))
