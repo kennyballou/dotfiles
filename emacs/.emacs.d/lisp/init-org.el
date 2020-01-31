@@ -464,7 +464,7 @@ _utc_: Ianctive timestamp with seconds in UTC
   (interactive)
   (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]" nil t)))
 
-(define-key org-mode-map (kbd "C-c t") help/hydra/timestamp/body)
+(define-key org-mode-map (kbd "C-c t") #'help/hydra/timestamp/body)
 
 
 
