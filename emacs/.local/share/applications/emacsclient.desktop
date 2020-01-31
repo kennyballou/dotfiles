@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=emacsclient
+GenericName=Emacs Client
+Comment=Shared Emacs Session
+Exec=emacsclient
+Terminal=false
+Type=Application
+Categories=System;
+MimeType=all/text;text/plain;
