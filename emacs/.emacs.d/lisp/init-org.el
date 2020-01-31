@@ -50,9 +50,11 @@
 (defvar htmlize)
 (defvar fci-mode)
 (defvar graphviz-dot-mode)
+(defvar org-id)
 
 
 (require 'org)
+(require 'org-id)
 (require 'holidays)
 (require 'ox-md)
 (use-package ob-ditaa
@@ -253,6 +255,8 @@
         ("r" ((in-mode . "mu4e-view")))))
 
 (add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
+;; https://stackoverflow.com/a/16247032/7492588
+(add-hook 'org-capture-prepare-finalize-hook #'org-id-get-create)
 
 ;;; https://emacs.stackexchange.com/q/51631/17096
 (add-hook 'org-log-buffer-setup-hook (lambda () (setq-local fill-column 72)))
@@ -461,6 +465,20 @@ _utc_: Ianctive timestamp with seconds in UTC
   (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]" nil t)))
 
 (define-key org-mode-map (kbd "C-c t") help/hydra/timestamp/body)
+
+
+
+(defun kb/org-id-get-create-all-items ()
+  "Add ORG ID attributes to all tasks/items in the current buffer.
+https://stackoverflow.com/a/13349772/7492588
+https://stackoverflow.com/a/16247032/7492588"
+  (interactive)
+  (org-map-entries #'org-id-get-create))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'kb/org-id-get-create-all-items)))
+
 
 
 
