@@ -120,6 +120,7 @@
 (require 'init-sql)
 (require 'init-tex)
 (require 'init-toml)
+(require 'init-ocaml)
 
 ;; Email and Such
 (require 'init-email)
