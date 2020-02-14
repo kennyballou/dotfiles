@@ -29,11 +29,16 @@
 
 (use-package multiple-cursors)
 
-(if (display-graphic-p)
+(defun kb/init-window-split ()
+  "Initialize automatic split thresholds for X."
+  (interactive)
+  (if (display-graphic-p)
     (progn
       (if (> (x-display-pixel-width) 1080)
           (setq split-height-threshold 160)
-        (setq split-height-threshold 80))))
+        (setq split-height-threshold 80)))))
+
+(kb/init-window-split)
 
 ;; https://trey-jackson.blogspot.com/2010/04/emacs-tip-36-abort-minibuffer-when.html
 (defun stop-using-minibuffer ()
