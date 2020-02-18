@@ -32,7 +32,7 @@
 	commit-reference = !git --no-pager show \
 	--no-patch \
 	--date=short \
-	--pretty='format:%h ("%s", %ad)' \
+	--pretty='format:%h ("%s", %ad)\n' \
 	$@
 [grep]
 	extendRegexp = true
