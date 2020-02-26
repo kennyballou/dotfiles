@@ -13,11 +13,7 @@
 (defvar jedi)
 (defvar ein)
 
-(use-package python
-  :init
-  (when (executable-find "ipython")
-    (setq python-shell-interpreter "ipython"
-          python-shell-interpreter-args "--profile=emacs --simple-prompt")))
+(use-package python)
 
 (use-package pip-requirements
   :after (python))
