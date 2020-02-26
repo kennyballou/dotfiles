@@ -10,7 +10,7 @@
 (use-package zenburn-theme
   :defer t)
 
-(setq-default custom-enabled-themes '(zenburn))
+(setq-default custom-enabled-themes '(whiteboard))
 
 ;; ensure that themes will be applied even if they have not been customized.
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-themes.el
@@ -47,7 +47,13 @@
   (load-theme 'spacemacs-dark t)
   (reapply-themes))
 
-(add-hook 'after-init-hook 'dark)
+(defun light-whiteboard ()
+  "Activate whiteboard theme."
+  (interactive)
+  (load-theme 'whiteboard t)
+  (reapply-themes))
+
+(add-hook 'after-init-hook #'light-whiteboard)
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
