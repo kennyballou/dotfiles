@@ -5,8 +5,10 @@
 (defvar zenburn-theme)
 (defvar anti-zenburn-theme)
 
-(use-package anti-zenburn-theme)
-(use-package zenburn-theme)
+(use-package anti-zenburn-theme
+  :defer t)
+(use-package zenburn-theme
+  :defer t)
 
 (setq-default custom-enabled-themes '(zenburn))
 
