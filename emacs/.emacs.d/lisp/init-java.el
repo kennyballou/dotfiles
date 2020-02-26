@@ -9,6 +9,7 @@
 (defvar meghanada-javac-xlint)
 (defvar melpa-unstable)
 (defvar jdee-server-dir)
+(defvar c-basic-offset)
 
 (use-package autodisass-java-bytecode
   :defer t)
@@ -34,6 +35,8 @@
               (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
   :config
   (setq indent-tabs-mode nil)
+  (setq tab-width 4)
+  (setq c-basic-offset 4)
   (setq meghanada-server-remote-debug t)
   (setq meghanada-javac-xlint "-Xlint:all,-processing")
   :bind (:map meghanada-mode-map
