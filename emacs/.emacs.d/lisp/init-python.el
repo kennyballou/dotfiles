@@ -10,7 +10,7 @@
 (defvar python-shell-interpreter)
 (defvar python-shell-interpreter-args)
 (defvar flycheck-disabled-checkers)
-(defvar jedi)
+(defvar anaconda-mode)
 (defvar ein)
 
 (use-package python)
@@ -24,10 +24,10 @@
   (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
   (setq venv-location (expand-file-name "~/.venvs")))
 
-(use-package jedi
+(use-package anaconda-mode
   :after python
   :defer t
-  :hook ((python-mode . jedi-mode)))
+  :hook ((python-mode . anaconda-mode)))
 
 (use-package ein
   :after (python)
