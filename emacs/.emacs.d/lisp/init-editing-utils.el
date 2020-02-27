@@ -251,5 +251,9 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 
 
 
+(diminish 'abbrev-mode)
+
+
+
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
