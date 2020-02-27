@@ -85,6 +85,7 @@
 (require 'init-tags)
 (require 'init-flycheck)
 (require 'init-tramp)
+(require 'init-yas)
 
 ;; Shells and Terms
 (require 'init-shell)
