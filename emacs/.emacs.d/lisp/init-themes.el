@@ -10,7 +10,7 @@
 (use-package zenburn-theme
   :defer t)
 
-(setq-default custom-enabled-themes '(whiteboard))
+(setq-default custom-enabled-themes '(leuven))
 
 ;; ensure that themes will be applied even if they have not been customized.
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-themes.el
@@ -47,13 +47,13 @@
   (load-theme 'spacemacs-dark t)
   (reapply-themes))
 
-(defun light-whiteboard ()
-  "Activate whiteboard theme."
+(defun light-leuven ()
+  "Activate leuven theme."
   (interactive)
-  (load-theme 'whiteboard t)
+  (load-theme 'leuven t)
   (reapply-themes))
 
-(add-hook 'after-init-hook #'light-whiteboard)
+(add-hook 'after-init-hook #'light-leuven)
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
