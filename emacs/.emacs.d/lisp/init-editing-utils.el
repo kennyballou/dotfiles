@@ -246,5 +246,10 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 
 
 
+(use-package smartparens
+  :diminish)
+
+
+
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
