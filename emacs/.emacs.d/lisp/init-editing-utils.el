@@ -252,6 +252,7 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 
 
 (diminish 'abbrev-mode)
+(diminish 'eldoc-mode)
 
 
 
