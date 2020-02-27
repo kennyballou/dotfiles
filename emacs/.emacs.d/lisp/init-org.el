@@ -421,6 +421,7 @@ This version uses Glynn Forrest's assoc list, but uses a different version of
      (scheme . t)
      (screen . nil)
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
+     (ocaml . t)
      (sql . t)
      (sqlite . t))))
 
