@@ -4,8 +4,8 @@
 # http://www.ict4g.net/adolfo/notes/2014/12/27/EmacsIMAP.html
 IMAPAccount devnulllabs
 AuthMechs GSSAPI, CRAM-MD5, PLAIN, LOGIN
-Host mail.runbox.com
-User kballou%devnulllabs.io
+Host imap.fastmail.com
+User kballou@devnulllabs.io
 SSLType IMAPS
 SSLVersions TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -19,9 +19,8 @@ Path ~/.mail/
 Inbox ~/.mail/INBOX
 
 Channel devnulllabs-inbox
-Master :devnulllabs-remote:
-Slave :devnulllabs-local:
-Patterns "INBOX"
+Master :devnulllabs-remote:"Inbox"
+Slave :devnulllabs-local:"INBOX"
 Create Both
 Expunge Both
 SyncState *
@@ -34,7 +33,7 @@ Expunge Both
 SyncState *
 
 Channel devnulllabs-archive
-Master :devnulllabs-remote:"Archives"
+Master :devnulllabs-remote:"Archive"
 Slave :devnulllabs-local:"archive"
 Create Both
 Expunge Both
