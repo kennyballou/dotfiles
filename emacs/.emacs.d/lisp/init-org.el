@@ -476,7 +476,8 @@ _utc_: Ianctive timestamp with seconds in UTC
 https://stackoverflow.com/a/13349772/7492588
 https://stackoverflow.com/a/16247032/7492588"
   (interactive)
-  (org-map-entries #'org-id-get-create))
+  (if (eq major-mode 'org-mode)
+      (org-map-entries #'org-id-get-create)))
 
 (add-hook 'org-mode-hook
           (lambda ()
