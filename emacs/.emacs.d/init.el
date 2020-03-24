@@ -128,6 +128,7 @@
 (require 'init-elfeed)
 (require 'init-ledger)
 (require 'init-org)
+(require 'init-mpd)
 
 ;; PDF-tools
 (require 'init-pdf-tools)
