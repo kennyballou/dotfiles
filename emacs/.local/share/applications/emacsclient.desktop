@@ -3,6 +3,7 @@
 Name=emacsclient
 GenericName=Emacs Client
 Comment=Shared Emacs Session
+Icon=emacs
 Exec=emacsclient
 Terminal=false
 Type=Application
