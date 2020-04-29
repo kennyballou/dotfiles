@@ -75,7 +75,6 @@
 (require 'init-compile)
 (require 'init-regex)
 (require 'init-sessions)
-(require 'init-flyspell)
 (require 'init-spelling)
 (require 'init-misc)
 (require 'init-windows)
