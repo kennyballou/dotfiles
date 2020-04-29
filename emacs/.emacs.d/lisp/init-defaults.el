@@ -116,7 +116,7 @@
                                           org-mode)
               flyspell-abbrev-p nil
               flyspell-auto-correct nil
-              flyspell-highlight-properties nil
+              flyspell-highlight-properties t
               flyspell-incorrect-hook nil
               flyspell-issue-welcome-flag nil
               global-auto-revert-non-file-buffers t
