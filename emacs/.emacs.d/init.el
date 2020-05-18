@@ -128,6 +128,7 @@
 (require 'init-ledger)
 (require 'init-org)
 (require 'init-mpd)
+(require 'init-bbdb)
 
 ;; PDF-tools
 (require 'init-pdf-tools)

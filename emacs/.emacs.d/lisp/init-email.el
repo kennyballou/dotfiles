@@ -137,6 +137,16 @@
 ;; Replace default compose with mu4e
 (global-set-key (kbd "C-x m") 'mu4e-compose-new)
 
+
+
+(setq bbdb-mail-user-agent 'mu4e-user-agent)
+(setq mu4e-view-mode-hook 'bbdb-mua-auto-update)
+(setq mu4e-compose-complete-addresses nil)
+(setq bbdb-mua-pop-up nil)
+(setq bbdb-mua-pop-up-window-size 5)
+(setq mu4e-view-show-addresses t)
+
+
 
 (provide 'init-email)
 ;;; init-email.el ends here
