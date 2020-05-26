@@ -2,9 +2,12 @@
 	name = Kenny Ballou
 	email = kballou@devnulllabs.io
 	signingKey = B0CAA28A02958308
+[interactive]
+	diffFilter = delta --color-only
 [core]
 	editor = vim
 	excludesfile = /home/kb/.config/git/global-ignore
+	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='zenburn'
 [merge]
 	ff = only
 	tool = gvimdiff
