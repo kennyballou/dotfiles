@@ -239,7 +239,7 @@
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
          "* %?\n%U\n" :clock-in t :clock-resume t)
         ("w" "Work Log" entry (file+olp+datetree kb/org-work-journal-file)
-         "* %?\n%U\n" :clock-resume t)
+         "* %?\n%U\n" :clock-in t :clock-resume t)
         ("d" "Daily Schedule" entry (file+olp+datetree kb/org-daily-file)
          "* %?\n%U\n" :clock-resume t)
         ("o" "org-protocol" entry (file kb/org-refile)
