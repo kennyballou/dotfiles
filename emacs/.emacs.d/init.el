@@ -8,7 +8,7 @@
 ;;; and many others.
 ;;; Code:
 
-(let ((minver "24.1"))
+(let ((minver "26.2"))
   (when (version< emacs-version minver)
     (error "Emacs is too old, this config requires v%s or higher" minver)))
 
@@ -79,8 +79,7 @@
 (require 'init-misc)
 (require 'init-windows)
 (require 'init-folding)
-(unless (version< emacs-version "25.0")
-  (require 'init-xref))
+(require 'init-xref)
 (require 'init-tags)
 (require 'init-flycheck)
 (require 'init-tramp)
