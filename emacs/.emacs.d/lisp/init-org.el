@@ -35,7 +35,7 @@
 (defvar org-agenda-show-future-repeats)
 (defvar org-agenda-log-mode-items)
 (defvar org-agenda-exporter-settings)
-(defvar org-attach-directory)
+(defvar org-attach-id-dir)
 (defvar org-duration-format)
 (defvar org-ditaa-jar-path)
 (defvar org-ref)
@@ -158,7 +158,7 @@
       org-edit-src-content-indentation 0
       ;; Agenda log mode items to display (closed and state changes by default)
       org-agenda-log-mode-items (quote (closed clock state))
-      org-attach-directory "/home/kb/sync/org-data"
+      org-attach-id-dir (expand-file-name "~/sync/org-data")
       org-agenda-files
         (append
          (file-expand-wildcards (concat org-directory "notes.org"))
