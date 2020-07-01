@@ -5,4 +5,4 @@ RefuseManualStop=yes
 
 [Service]
 Type=oneshot
-ExecStart=mbsync -a
+ExecStart=/run/current-system/sw/bin/mbsync -a
