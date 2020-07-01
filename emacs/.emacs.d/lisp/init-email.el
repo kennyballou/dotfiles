@@ -136,6 +136,11 @@
 
 ;; Replace default compose with mu4e
 (global-set-key (kbd "C-x m") 'mu4e-compose-new)
+;; Add shortcut for _only_ updating the index
+(define-key mu4e-main-mode-map (kbd "u") #'mu4e-update-index)
+;; http://pragmaticemacs.com/emacs/some-useful-mu4e-shortcuts/
+;; Add CC line
+(define-key mu4e-compose-mode-map (kbd "C-1 c") #'message-goto-cc)
 
 
 
