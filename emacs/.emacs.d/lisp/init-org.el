@@ -455,10 +455,12 @@ Open either current project notes, or default notes file"
   "
 _ts_:  Inactive timestamp with seconds
 _utc_: Ianctive timestamp with seconds in UTC
+_d_:   Inactive date Local time
 "
   ("q" exit)
   ("ts" help/org-time-stamp-with-seconds-now)
-  ("utc" help/org-time-stamp-with-seconds-now-utc))
+  ("utc" help/org-time-stamp-with-seconds-now-utc)
+  ("d" help/org-date))
 
 (defun help/org-time-stamp-with-seconds-now ()
   "Insert inactive Org timestamp with seconds."
@@ -469,6 +471,11 @@ _utc_: Ianctive timestamp with seconds in UTC
   "Insert inactive Org timestamp with seconds in UTC."
   (interactive)
   (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]" nil t)))
+
+(defun help/org-date ()
+  "Insert inactive Org date."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a]")))
 
 (define-key org-mode-map (kbd "C-c t") #'help/hydra/timestamp/body)
 
