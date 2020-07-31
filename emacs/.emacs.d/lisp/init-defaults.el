@@ -157,6 +157,7 @@
               nsm-save-host-names t
               ns-function-modifier 'hyper
               ns-pop-up-frames nil
+              org-deadline-warning-days 30
               org-export-in-background nil
               org-log-done 'time
               org-log-done-with-time t
