@@ -142,6 +142,7 @@
       org-agenda-dim-blocked-tasks nil
       org-agenda-compact-blocks t
       org-agenda-show-future-repeats t
+      org-todo-repeat-to-state "TODO"
       org-files (append
                  (file-expand-wildcards (concat org-directory "*.org"))
                  (file-expand-wildcards (concat org-directory "*/*.org"))
@@ -271,8 +272,6 @@
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
-
-(setq org-todo-repeat-to-state "NEXT")
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "#9C6363" :weight bold)
