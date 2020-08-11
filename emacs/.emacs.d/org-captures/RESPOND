@@ -1,0 +1,9 @@
+* NEXT Respond (%:from) %:subject
+  SCHEDULED: %t
+  :PROPERTIES:
+  :ID:       %(org-id-uuid)
+  :CREATED:  %U
+  :Date:     %:date
+  :Message:  %a
+  :Author:   %:from
+  :END:

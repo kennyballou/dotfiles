@@ -229,30 +229,28 @@
 
 (setq org-capture-templates
       '(("t" "todo" entry (file kb/org-refile)
-         "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+         (file "~/.emacs.d/org-captures/TODO") :clock-in t :clock-resume t)
         ("r" "respond" entry (file kb/org-refile)
-         "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n"
+         (file "~/.emacs.d/org-captures/RESPOND")
          :clock-in t :clock-resume t :immediate-finish t)
         ("tn" "note on task" entry (clock)
-         "* Note taken on %U\n%a\n\n%?" :empty-lines 1)
+         (file "~/.emacs.d/org-captures/TASK_NOTE") :empty-lines 1)
         ("n" "note" entry (file kb/org-refile)
-         "* %? :NOTE:\n%U\n")
+         (file "~/.emacs.d/org-captures/NOTE"))
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
-         "* %?\n%U\n" :clock-in t :clock-resume t)
+         (file "~/.emacs.d/org-captures/JOURNAL") :clock-in t :clock-resume t)
         ("w" "Work Log" entry (file+olp+datetree kb/org-work-journal-file)
-         "* %?\n%U\n" :clock-in t :clock-resume t)
+         (file "~/.emacs.d/org-captures/JOURNAL") :clock-in t :clock-resume t)
         ("d" "Daily Schedule" entry (file+olp+datetree kb/org-daily-file)
-         "* %?\n%U\n" :clock-resume t)
+         (file "~/.emacs.d/org-captures/JOURNAL") :clock-resume t)
         ("o" "org-protocol" entry (file kb/org-refile)
-         "* TODO Review %c\n%U\n" :immediate-finish t)
+         (file "~/.emacs.d/org-captures/ORG-PROTOCOL") :immediate-finish t)
         ("m" "Meeting" entry (file kb/org-refile)
-         "* MEETING with %? :MEETING:\n%U"
-         :clock-in t :clock-resume t)
+         (file "~/.emacs.d/org-captures/MEETING") :clock-in t :clock-resume t)
         ("b" "Bookmark" entry (file kb/org-bookmarks-file)
-         "* %x\n%U\n%?" :clock-resume t)
+         (file "~/.emacs.d/org-captures/BOOKMARK") :clock-resume t)
         ("p" "Phone call" entry (file+olp+datetree kb/org-journal-file)
-         "* PHONE %? :PHONE:\n%U"
-         :clock-in t :clock-resume t)
+         (file "~/.emacs.d/org-captures/PHONE") :clock-in t :clock-resume t)
         ))
 
 (setq org-capture-templates-contexts

@@ -1,0 +1,5 @@
+* %? :NOTE:
+  :PROPERTIES:
+  :ID:       %(org-id-uuid)
+  :CREATED:  %U
+  :END:

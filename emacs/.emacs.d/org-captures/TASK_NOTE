@@ -1,0 +1,7 @@
+* Note taken on %U
+  :PROPERTIES:
+  :ID:       %(org-id-uuid)
+  :Link:     %a
+  :END:
+
+%?
