@@ -1,0 +1,11 @@
+[Unit]
+Description=simple xbindkeys service
+
+[Service]
+Type=forking
+ExecStart=/run/current-system/sw/bin/xbindkeys
+Restart=on-failure
+TimeoutStartSec=20
+
+[Install]
+WantedBy=default.target
