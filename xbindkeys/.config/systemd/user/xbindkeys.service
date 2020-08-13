@@ -1,5 +1,6 @@
 [Unit]
 Description=simple xbindkeys service
+Wants=
 
 [Service]
 Type=forking
