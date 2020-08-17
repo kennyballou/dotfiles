@@ -279,7 +279,6 @@
               ("HOLD" :foreground "#DC8CC3" :weight bold)
               ("INACTIVE" :foreground "#DC8CC3" :weight bold)
               ("CANCELLED" :foreground "#8FB28F" :weight bold)
-              ("MEETING" :foreground "#8FB28F" :weight bold)
               ("PHONE" :foreground "#8FB28F" :weight bold))))
 
 (setq org-todo-state-tags-triggers

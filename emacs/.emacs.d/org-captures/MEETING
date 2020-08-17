@@ -1,4 +1,4 @@
-* MEETING with %? :MEETING:
+* %? :MEETING:
   :PROPERTIES:
   :ID:       %(org-id-uuid)
   :CREATED:  %U
