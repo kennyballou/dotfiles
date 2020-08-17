@@ -4,10 +4,19 @@
 
 (defvar zenburn-theme)
 (defvar anti-zenburn-theme)
+(defvar spacemacs-theme)
+(defvar doom-themes)
+(defvar solarized-theme)
 
 (use-package anti-zenburn-theme
   :defer t)
 (use-package zenburn-theme
+  :defer t)
+(use-package spacemacs-theme
+  :defer t)
+(use-package doom-themes
+  :defer t)
+(use-package solarized-theme
   :defer t)
 
 (setq-default custom-enabled-themes '(leuven))
