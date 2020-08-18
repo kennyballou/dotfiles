@@ -20,30 +20,18 @@
   :config
   (global-whitespace-cleanup-mode t))
 
-(setq-default show-trailing-whitespace t)
-
 (use-package unicode-whitespace
   :after (whitespace))
 
 ;;; Whitespace
 
-(defun sanityinc/no-trailing-whitespace ()
-  "Turn off display of trailing whitespace in this buffer."
-  (setq show-trailing-whitespace nil))
+(defun sanityinc/show-trailing-whitespace ()
+  "Enable display of trailing whiteSpace in this buffer."
+  (setq-local show-trailing-whitespace t))
 
-;; But don't show trailing whitespace in SQLi, inf-ruby, etc
-(dolist (hook '(special-mode-hook
-                Info-mode-hook
-                eww-mode-hook
-                term-mode-hook
-                multi-term-mode-hook
-                comint-mode-hook
-                compilation-mode-hook
-                twittering-mode-hook
-                minibuffer-setup-hook
-                calendar-mode-hook
-                eshell-mode-hook))
-  (add-hook hook #'sanityinc/no-trailing-whitespace))
+;; Explicitly show trailing whiteSpace in these modes
+(dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+  (add-hook hook #'sanityinc/show-trailing-whitespace))
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
 

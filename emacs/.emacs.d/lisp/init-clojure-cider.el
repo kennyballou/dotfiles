@@ -12,8 +12,7 @@
   (setq nrepl-popup-stacktraces nil)
   :hook ((cider-mode-hook . eldoc-mode)
          (cider-repl-mode-hook . subword-mode)
-         (cider-repl-mode-hook . paredit-mode)
-         (cider-repl-mode-hook . #'sanityinc/no-trailing-whitespace)))
+         (cider-repl-mode-hook . paredit-mode)))
 
 (use-package flycheck-clojure
   :after (clojure flycheck)

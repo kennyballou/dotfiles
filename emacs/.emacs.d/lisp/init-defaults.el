@@ -203,6 +203,7 @@
               set-mark-command-repeat-pop t
               shell-completion-execonly nil
               shell-input-autoexpand nil
+              show-trailing-whitespace nil
               sp-autoskip-closing-pair 'always
               tab-always-indent 'complete
               tab-width 4
