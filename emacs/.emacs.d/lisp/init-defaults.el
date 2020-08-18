@@ -44,6 +44,7 @@
               counsel-mode-override-describe-bindings t
               create-lockfiles t
               checkdoc-spellcheck-documentation-flag t
+              default-tab-width 4
               delete-old-versions t
               delete-by-moving-to-trash t
               dired-auto-revert-buffer t
@@ -204,6 +205,7 @@
               shell-input-autoexpand nil
               sp-autoskip-closing-pair 'always
               tab-always-indent 'complete
+              tab-width 4
               term-input-autoexpand t
               term-input-ignoredups t
               term-input-ring-file-name t

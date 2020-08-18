@@ -73,9 +73,6 @@
 
 ;; Indent
 (setq standard-indent 4)
-(setq-default tab-width 4
-              default-tab-width 4
-              indent-tabs-mode nil)
 
 ;;newlines
 (setq require-final-newline t)
