@@ -93,6 +93,8 @@
 
 ;; Languages and Language Modes
 (require 'init-semantic)
+(require 'init-lsp)
+(require 'init-dap)
 (require 'init-c)
 (require 'init-clojure)
 (require 'init-clojure-cider)
