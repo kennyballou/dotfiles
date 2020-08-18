@@ -47,8 +47,6 @@
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
 
-(setq-default indicate-empty-lines t)
-
 (defvar whitespace-display-mappings)
 (setq whitespace-display-mappings
       '(
