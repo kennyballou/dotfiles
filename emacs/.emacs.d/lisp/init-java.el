@@ -29,9 +29,6 @@
   (add-hook 'java-mode-hook
             (lambda ()
               (meghanada-mode t)
-              (smartparens-mode t)
-              (rainbow-delimiters-mode t)
-              (auto-highlight-symbol-mode t)
               (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
   :config
   (setq indent-tabs-mode nil)
