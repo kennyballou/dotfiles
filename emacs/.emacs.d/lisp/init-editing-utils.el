@@ -251,6 +251,12 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 
 
 
+(use-package auto-highlight-symbol
+  :defer t
+  :diminish)
+
+
+
 (diminish 'abbrev-mode)
 (diminish 'eldoc-mode)
 
