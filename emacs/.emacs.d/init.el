@@ -32,6 +32,7 @@
 
 ;; Begin Bootstrapping
 (require 'init-server)
+(require 'init-dbus)
 (require 'init-defaults)
 (require 'init-site-lisp)
 (require 'init-elpa)
