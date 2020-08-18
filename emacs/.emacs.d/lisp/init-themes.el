@@ -19,7 +19,7 @@
 (use-package solarized-theme
   :defer t)
 
-(setq-default custom-enabled-themes '(leuven))
+(setq-default custom-enabled-themes '(spacemacs-light))
 
 ;; ensure that themes will be applied even if they have not been customized.
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-themes.el
@@ -62,7 +62,7 @@
   (load-theme 'leuven t)
   (reapply-themes))
 
-(add-hook 'after-init-hook #'light-leuven)
+(add-hook 'after-init-hook #'space-light)
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
