@@ -478,12 +478,16 @@ _d_:   Inactive date Local time
 
 
 
+(defvar kb/org-id-ignored-filenames (list "README")
+  "Base filenames to ignore when saving org files.")
+
 (defun kb/org-id-get-create-all-items ()
   "Add ORG ID attributes to all tasks/items in the current buffer.
 https://stackoverflow.com/a/13349772/7492588
 https://stackoverflow.com/a/16247032/7492588"
   (interactive)
-  (if (eq major-mode 'org-mode)
+  (if (and (eq major-mode 'org-mode)
+           (not (member (file-name-base (buffer-file-name)) kb/org-id-ignored-filenames)))
       (org-map-entries #'org-id-get-create)))
 
 (add-hook 'org-mode-hook
