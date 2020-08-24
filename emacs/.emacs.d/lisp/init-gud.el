@@ -6,5 +6,8 @@
 
 (use-package realgud)
 
+(use-package realgud-jdb
+  :after realgud)
+
 (provide 'init-gud)
 ;;; init-gud.el ends here
