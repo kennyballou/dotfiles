@@ -34,7 +34,9 @@
   (add-hook 'after-init-hook (lambda () (projectile-mode))))
 
 (use-package helm-projectile
-  :after (projectile helm))
+  :after (projectile helm)
+  :config
+  (helm-projectile-on))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here
