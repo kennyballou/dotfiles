@@ -4,7 +4,7 @@
 
 (defvar browse-kill-ring)
 (defvar autorevert)
-(defvar guide-key)
+(defvar which-key)
 (defvar auto-revert-mode)
 (defvar expand-region)
 (defvar er/expand-region)
@@ -199,24 +199,13 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 ;;   :init
 ;;   (hes-mode))
 
-(use-package guide-key
+(use-package which-key
   :diminish
   :config
-  (setq guide-key/guide-key-sequence '("C-x"
-                                       "C-c"
-                                       "C-x 4"
-                                       "C-x 5"
-                                       "C-c ;"
-                                       "C-c ; f"
-                                       "C-c ' f"
-                                       "C-x n"
-                                       "C-x C-r"
-                                       "C-x r"
-                                       "M-s"
-                                       "C-h"
-                                       "C-c C-a"))
-  :hook
-  (after-init-hook  . (lambda () (guide-key-mode 1))))
+  (which-key-mode)
+  (which-key-setup-side-window-right)
+  (setq which-key-idle-delay 0.3)
+  (setq which-key-use-C-h-commands nil))
 
 (global-hl-line-mode t)
 
