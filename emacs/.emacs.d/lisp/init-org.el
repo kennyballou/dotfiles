@@ -317,7 +317,11 @@
                        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
                            ((org-agenda-overriding-header "Next Tasks:"))))
-               ((org-agenda-span 'day))))))
+               ((org-agenda-span 'day)))
+              ("P" "Projects" tags "project"
+               ((org-agenda-overriding-header "Projects")
+                (org-tags-match-list-sublevels t)))
+              )))
 
 
 (setq org-agenda-exporter-settings
