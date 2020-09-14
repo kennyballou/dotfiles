@@ -251,6 +251,9 @@
          (file "~/.emacs.d/org-captures/BOOKMARK") :clock-resume t)
         ("p" "Phone call" entry (file+olp+datetree kb/org-journal-file)
          (file "~/.emacs.d/org-captures/PHONE") :clock-in t :clock-resume t)
+        ("P" "Project" entry (file kb/org-refile)
+         (file "~/.emacs.d/org-captures/PROJECT") :clock-in t :clock-resume t)
+
         ))
 
 (setq org-capture-templates-contexts
