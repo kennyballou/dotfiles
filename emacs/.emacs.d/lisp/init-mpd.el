@@ -11,8 +11,8 @@
 
 (defhydra kb/hydra/mpdel (:hint nil :exit t)
   "
-_SPC_:  Play/Pause
-_s_:    Stop Playback
+_SPC_:  Play/Pause                 _n_: next song_
+_s_:    Stop Playback              _p_: previous song
 _r_:    Randomize playback
 _dr_:   Disable random playback
 _R_:    Repeat placback
@@ -24,7 +24,9 @@ _dR_:   Disable repeat
   ("r" libmpdel-playback-set-random)
   ("dr" libmpdel-playback-unset-random)
   ("R" libmpdel-playback-set-repeat)
-  ("dR" libmpdel-playback-unset-repeat))
+  ("dR" libmpdel-playback-unset-repeat)
+  ("n" libmpdel-playback-next)
+  ("p" libmpdel-playback-previous))
 
 (define-key global-map (kbd "C-x Z h") #'kb/hydra/mpdel/body)
 
