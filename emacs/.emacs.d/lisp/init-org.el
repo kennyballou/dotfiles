@@ -159,7 +159,7 @@
       org-edit-src-content-indentation 0
       ;; Agenda log mode items to display (closed and state changes by default)
       org-agenda-log-mode-items (quote (closed clock state))
-      org-attach-id-dir (expand-file-name "~/sync/org-data")
+      org-attach-id-dir (expand-file-name "~/.org/data")
       org-agenda-files
         (append
          (file-expand-wildcards (concat org-directory "notes.org"))
