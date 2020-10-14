@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar lsp-mode)
 (defvar elixir-mode)
 (defvar alchemist)
 (defvar flycheck-credo)
@@ -11,7 +12,14 @@
   :diminish
   :config
   (diminish 'alchemist-phoenix-mode))
-(use-package elixir-mode)
+
+(use-package elixir-mode
+  :after lsp-mode
+  :init
+  (defun kb/elixir-mode ()
+    (lsp-mode)
+    (lsp-deferred))
+  :hook (elixir-mode . kb/elixir-mode))
 
 (use-package flycheck-credo
   :defer t

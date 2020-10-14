@@ -12,11 +12,21 @@
 
 (use-package json-mode)
 (use-package js2-mode
+  :init
+  (defun kb/js2-mode ()
+    (lsp-mode)
+    (lsp-deferred))
+  :hook (js2-mode . kb/js2-mode)
   :config
   (setq-default js2-basic-offset 4
-              js2-bounce-indent-p nil))
+                js2-bounce-indent-p nil))
 (use-package coffee-mode)
-(use-package typescript-mode)
+(use-package typescript-mode
+  :init
+  (defun kb/typescript-mode ()
+    (lsp-mode)
+    (lsp-deferred))
+  :hook (typescript-mode . kb/typescript--mode))
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))

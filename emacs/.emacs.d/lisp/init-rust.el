@@ -11,7 +11,12 @@
 
 (use-package rust-mode
   :after racer
-  :hook ((rust-mode-hook . racer-mode)))
+  :init
+  (defun kb/rust-mode ()
+    (racer-mode)
+    (lsp-mode)
+    (lsp-deferred))
+  :hook (rust-mode-hook . kb/rust-mode))
 
 (provide 'init-rust)
 ;;; init-rust.el ends here

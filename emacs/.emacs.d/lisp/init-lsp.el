@@ -24,7 +24,10 @@
   (setq lsp-inhibit-message t
         lsp-eldoc-render-all nil
         lsp-enable-file-watchers nil
-        lsp-highlight-symbol-at-point nil))
+        lsp-highlight-symbol-at-point nil
+        lsp-clients-clangd-args '("-j=4"
+                                  "-background-index"
+                                  "-log=error")))
 
 (use-package lsp-ui
   :after lsp

@@ -50,14 +50,16 @@
   :init
   (setq-default ruby-use-encoding-map nil)
   (setq-default ruby-insert-encoding-magic-comment nil)
-  :hook
-  ((ruby-mode-hook . (lambda () (unless derived-mode-p #'prog-mode)
-                       (run-hook 'prog-mode-hook)))
-   (ruby-mode-hook . subword-mode))
+  (defun kb/ruby-mode ()
+    (unless derived-mode-p #'prog-mode
+            (run-hook 'prog-mode-hook))
+    (subword-mode)
+    (lsp-mode)
+    (lsp-deferred))
+  :hook (ruby-mode . kb/ruby-mode)
   :bind (:map ruby-mode-map
               ("S-f7" . ruby-compilation-this-buffer)
-              ("f7" . ruby-compilation-this-test))
-  )
+              ("f7" . ruby-compilation-this-test)))
 
 ;;; ERB
 (require 'mmm-mode)

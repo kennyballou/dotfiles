@@ -6,7 +6,12 @@
 
 (defvar tuareg)
 
-(use-package tuareg)
+(use-package tuareg
+  :init
+  (defun kb/ocaml-mode ()
+    (lsp-mode)
+    (lsp-deferred))
+  :hook (tuareg-mode-hook . kb/ocaml-mode))
 
 (provide 'init-ocaml)
 ;;; init-ocaml.el ends here

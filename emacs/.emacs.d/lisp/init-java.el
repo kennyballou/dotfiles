@@ -22,31 +22,34 @@
 ;; https://gitlab.com/skybert/my-little-friends/-/blob/master/emacs/.emacs.d/tkj-java.el
 (use-package lsp-java
   :init
-  (defun kb/java-mode-config ()
+  (defun kb/java-mode ()
+    "Configure java mode settings."
     (subword-mode)
     (setq-local tab-width 4)
     (setq-local c-basic-offset 4)
-    (lsp))
-
+    (lsp-deferred))
   :config
+
   ;; Enable dap-java
   (require 'dap-java)
 
   (setq lsp-java-vmargs
         (list "-noverify"
+              "-Xms1G"
               "-Xmx2G"
-              "-XX:+UseG1GC"
+              "-XX:+UnlockExperimentalVMOptions"
+              "-XX:+UseZGC"
               "-XX:+UseStringDeduplication")
         lsp-file-watch-ignored '(".idea" ".ensime_cache" ".eunit" "node_modules"
                                  ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr"
                                  "_darcs" ".tox" ".svn" ".stack-work" "build")
 
         lsp-java-save-action-organize-imports nil
-        lsp-enable-on-type-formatting t
+        lsp-enable-on-type-formatting nil
         lsp-enable-indentation t)
 
-  :hook (java-mode  . kb/java-mode-config)
-  :after (lsp lsp-mode dap-mode))
+  :hook (java-mode . kb/java-mode)
+  :after (lsp-mode dap-mode))
 
 (use-package dap-java
   :ensure nil

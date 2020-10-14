@@ -3,35 +3,21 @@
 ;;; Code:
 
 (defvar go-mode)
-(defvar go-eldoc)
 (defvar go-stacktracer)
-(defvar go-autocomplete)
 (defvar before-save-hook)
 
-(use-package go-autocomplete
-  :after (auto-complete-mode)
-  :defer t
-  :config
-  (ac-config-default))
-
 (use-package go-mode
-  :after (go-autocomplete)
+  :after (lsp-mode)
   :commands (gofmt-before-save)
-  :defer t
+  :init
+  (defun kb/golang-mode ()
+    (setq-local indent-tabs-mode t)
+    (setq-local tab-width 4)
+    (lsp-mode)
+    (lsp-deferred))
   :config
-  (setq auto-mode-alist
-      (append '(("go.mod" . text-mode)) auto-mode-alist))
-  (add-hook 'go-mode-hook (lambda ()
-                            (setq indent-tabs-mode t)
-                            (setq tab-width 4)))
-  (add-hook 'before-save-hook #'gofmt-before-save))
-
-(use-package go-eldoc
-  :after (go-mode)
-  :commands (go-eldoc-setup)
-  :diminish eldoc-mode
-  :config
-  (add-hook 'go-mode-hook #'go-eldoc-setup))
+  (add-hook 'before-save-hook #'gofmt-before-save)
+  :hook (go-mode . kb/golang-mode))
 
 (use-package go-stacktracer)
 

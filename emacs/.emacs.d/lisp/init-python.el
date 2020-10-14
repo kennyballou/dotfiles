@@ -10,10 +10,14 @@
 (defvar python-shell-interpreter)
 (defvar python-shell-interpreter-args)
 (defvar flycheck-disabled-checkers)
-(defvar anaconda-mode)
 (defvar ein)
 
-(use-package python)
+(use-package python
+  :init
+  (defun kb/python-mode ()
+    (lsp-mode)
+    (lsp-deferred))
+  :hook (python-mode . kb/python-mode))
 
 (use-package pip-requirements
   :after (python))
@@ -22,12 +26,7 @@
   :after (python)
   :init
   (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
-  (setq venv-location (expand-file-name "~/.venvs")))
-
-(use-package anaconda-mode
-  :after python
-  :defer t
-  :hook ((python-mode . anaconda-mode)))
+  (setq venv-location (expand-file-name "~/.cache/venvs")))
 
 (use-package ein
   :after (python)
