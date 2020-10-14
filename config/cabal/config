@@ -1,0 +1,4 @@
+library-vanilla: False
+shared: True
+executable-dynamic: True
+ghc-options: -dynamic

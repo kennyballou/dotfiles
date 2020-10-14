@@ -1,8 +1,0 @@
-[Unit]
-Description=Mail sync
-RefuseManualStart=no
-RefuseManualStop=yes
-
-[Service]
-Type=oneshot
-ExecStart=/run/current-system/sw/bin/mbsync -a

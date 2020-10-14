@@ -1,0 +1,4 @@
+{ ... }:
+{
+  programs.info.enable = true;
+}
