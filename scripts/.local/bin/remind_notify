@@ -1,3 +1,0 @@
-#!/bin/sh
-
-remind -z5 -k"notify-send -t 0 'Reminder:' %s &" ~/.reminders &
