@@ -13,7 +13,6 @@
 
 (use-package clojure-mode
   :after (cljsbuild-mode elein)
-  :defer t
   :hook ((clojure-mode-hook . subword-mode)))
 
 (provide 'init-clojure)

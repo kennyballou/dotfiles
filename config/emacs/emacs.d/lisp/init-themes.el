@@ -8,16 +8,11 @@
 (defvar doom-themes)
 (defvar solarized-theme)
 
-(use-package anti-zenburn-theme
-  :defer t)
-(use-package zenburn-theme
-  :defer t)
-(use-package spacemacs-theme
-  :defer t)
-(use-package doom-themes
-  :defer t)
-(use-package solarized-theme
-  :defer t)
+(use-package anti-zenburn-theme)
+(use-package zenburn-theme)
+(use-package spacemacs-theme)
+(use-package doom-themes)
+(use-package solarized-theme)
 
 (setq-default custom-enabled-themes '(spacemacs-light))
 

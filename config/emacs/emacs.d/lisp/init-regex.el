@@ -8,12 +8,10 @@
 (defvar melpa-unstable)
 
 (use-package regex-tool
-  :defer t
   :init
   (setq-default regex-tool-backend 'perl))
 
 (use-package re-builder
-  :defer t
   :bind (:map reb-mode-map
               ;;support a slightly more idomatic quit binding in re-builder
               ("C-c C-k" . reb-quit)))

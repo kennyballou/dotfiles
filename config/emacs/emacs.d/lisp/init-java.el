@@ -10,11 +10,7 @@
 (defvar dap-java)
 (defvar c-basic-offset)
 
-(use-package autodisass-java-bytecode
-  :defer t
-  :config
-  ;; It's not sufficient for this package to work without this require??
-  (require 'autodisass-java-bytecode))
+(use-package autodisass-java-bytecode)
 
 ;; Loosely borrowed from
 ;; https://github.com/jmibanez/jmi-dotemacs/blob/master/development.init.el#L139

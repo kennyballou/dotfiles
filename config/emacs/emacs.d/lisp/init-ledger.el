@@ -17,8 +17,7 @@
   (setq ledger-use-iso-dates t))
 
 (use-package flycheck-ledger
-  :after ledger-mode
-  :defer t)
+  :after ledger-mode)
 
 (provide 'init-ledger)
 ;;; init-ledger.el ends here

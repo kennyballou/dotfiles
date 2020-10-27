@@ -66,8 +66,7 @@
 (use-package ob-elixir)
 (use-package ess)
 (use-package ob-go)
-(use-package ob-ipython
-  :defer t)
+(use-package ob-ipython)
 (use-package ob-mongo)
 (use-package ox-gfm)
 (use-package org-babel-eval-in-repl)
@@ -77,7 +76,6 @@
 ;; https://www.reddit.com/r/emacs/comments/57gteu/org_export_html_source_code_blocks_adds_trailing/
 ;; https://github.com/kaushalmodi/.emacs.d/blob/15df5b075a4cd4a8ed7332237c0e33e75b430a36/setup-files/setup-htmlize.el#L10-L28
 (use-package htmlize
-  :defer t
   :config
   (progn
 

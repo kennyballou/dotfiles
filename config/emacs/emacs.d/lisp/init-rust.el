@@ -6,7 +6,6 @@
 (defvar racer)
 
 (use-package racer
-  :defer t
   :hook ((racer-mode-hook . eldoc-mode)))
 
 (use-package rust-mode

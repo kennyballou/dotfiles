@@ -22,11 +22,9 @@
   :hook (elixir-mode . kb/elixir-mode))
 
 (use-package flycheck-credo
-  :defer t
   :after elixir-mode
   :hook (elixir-mode . flycheck-credo-setup))
 (use-package flycheck-elixir
-  :defer t
   :after elixir-mode)
 
 (provide 'init-elixir)

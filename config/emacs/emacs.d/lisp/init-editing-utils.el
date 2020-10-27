@@ -190,7 +190,6 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 ;;----------------------------------------------------------------------------
 (use-package whole-line-or-region
   :diminish whole-line-or-region-local-mode
-  :defer t
   :commands whole-line-or-region-global-mode
   :config
   (whole-line-or-region-global-mode t))
@@ -210,12 +209,10 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 (global-hl-line-mode t)
 
 (use-package olivetti
-  :defer t
   :config
   (setq olivetti-minimum-body-width 100))
 
-(use-package define-word
-  :defer t)
+(use-package define-word)
 
 (setq backward-delete-char-untabify-method 'hungry)
 
@@ -241,7 +238,6 @@ Inspired by `sanityinc/no-trailing-whitespace'"
 
 
 (use-package auto-highlight-symbol
-  :defer t
   :diminish)
 
 

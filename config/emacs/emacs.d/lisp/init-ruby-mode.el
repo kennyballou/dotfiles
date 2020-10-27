@@ -13,28 +13,19 @@
 (defvar bundler)
 (defvar melpa-unstable)
 
-(use-package ruby-hash-syntax
-  :defer t)
-(use-package rspec-mode
-  :defer t)
-(use-package inf-ruby
-  :defer t)
+(use-package ruby-hash-syntax)
+(use-package rspec-mode)
+(use-package inf-ruby)
 (use-package ruby-compilation
-  :defer t
   :config
   (defalias 'rake 'ruby-compilation-rake))
 (use-package yari
-  :defer t
   :config
   (defalias 'ri 'yari))
-(use-package robe
-  :defer t)
-(use-package goto-gem
-  :defer t)
+(use-package robe)
 (use-package bundler)
 
 (use-package ruby-mode
-  :defer t
   :after (rspec-mode inf-ruby ruby-compilation)
   :mode (("Rakefile\\'" . ruby-mode)
          ("\\.rake\\'" . ruby-mode)

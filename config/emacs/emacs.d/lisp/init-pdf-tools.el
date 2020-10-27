@@ -5,7 +5,6 @@
 (defvar pdf-tools)
 
 (use-package pdf-tools
-  :defer t
   :magic ("%PDF" . pdf-view-mdoe)
   :config
   (pdf-tools-install))

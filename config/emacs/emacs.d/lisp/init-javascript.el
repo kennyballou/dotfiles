@@ -72,7 +72,6 @@
 
 (use-package xref-js2
   :after js2-mode
-  :defer t
   :config
   (add-to-list 'xref-backend-functions #'xref-js2-xref-backend))
 
@@ -107,7 +106,6 @@
 
 (use-package add-node-modules-path
   :after (typescript-mode js2-mode)
-  :defer t
   :hook ((typescript-mode . add-node-modules-path)
          (js2-mode . add-node-modules-path)))
 

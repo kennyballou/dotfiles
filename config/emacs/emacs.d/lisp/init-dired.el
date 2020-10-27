@@ -17,7 +17,6 @@
 ;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
 ;; preview files in dired
 (use-package peep-dired
-  :defer t
   :bind (:map dired-mode-map
               ("P" . peep-dired)))
 

@@ -7,8 +7,7 @@
 (use-package erlang
   :config
   (require 'erlang-start))
-(use-package edts
-  :defer t)
+(use-package edts)
 
 (provide 'init-erlang)
 ;;; init-erlang.el ends here

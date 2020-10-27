@@ -13,7 +13,6 @@
 
 (use-package elm-mode
   :after (flycheck flycheck-elm)
-  :defer t
   :diminish
   :config
   (flycheck-elm-setup)

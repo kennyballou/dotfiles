@@ -29,8 +29,7 @@
   (setq venv-location (expand-file-name "~/.cache/venvs")))
 
 (use-package ein
-  :after (python)
-  :defer t)
+  :after (python))
 
 (provide 'init-python)
 ;;; init-python.el ends here

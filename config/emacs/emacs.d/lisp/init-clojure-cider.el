@@ -7,7 +7,6 @@
 (defvar nrepl-popup-stacktraces)
 
 (use-package cider
-  :defer t
   :init
   (setq nrepl-popup-stacktraces nil)
   :hook ((cider-mode-hook . eldoc-mode)
@@ -16,7 +15,6 @@
 
 (use-package flycheck-clojure
   :after (clojure flycheck)
-  :defer t
   :config
   (flycheck-clojure-setup))
 

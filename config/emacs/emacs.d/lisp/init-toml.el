@@ -6,7 +6,6 @@
 (defvar melpa-unstable)
 
 (use-package toml-mode
-  :defer t
   :hook ((toml-mode-hook . goto-address-prog-mode)))
 
 (provide 'init-toml)
