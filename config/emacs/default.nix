@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  emacs-dir = "${config.home.homeDirectory}/.config/emacs";
+in
 {
   xdg.configFile.emacs-init = {
     source = ./emacs.d/init.el;
@@ -28,6 +31,18 @@
     recursive = true;
     source = ./emacs.d/xml;
     target = "emacs/xml";
+  };
+  xdg.configFile.emacs-schemas = {
+    target = "emacs/schemas.xml";
+    text = ''
+    <?xml version="1.0"?>
+    <locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+        <uri pattern="pom.xml" uri="file://${emacs-dir}/xml/maven-v4_0_0.rnc"/>
+        <uri pattern="build.xml" uri="file://${emacs-dir}/xml/ant-1.8.2.rnc"/>
+        <uri ns="http://docbook.org/ns/docbook"
+             uri="${pkgs.docbook5}/share/xml/docbook-5.0/rng/docbookxi.rnc"/>
+    </locatingRules>
+    '';
   };
   xdg.dataFile.emacsclient = {
     source = ./emacsclient.desktop;
