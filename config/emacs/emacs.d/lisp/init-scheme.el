@@ -5,7 +5,7 @@
 (defvar geiser)
 (defvar geiser-active-implementations)
 
-(setq geiser-active-implementations '(guile))
+(setq geiser-active-implementations '(guile racket))
 
 (use-package geiser)
 
