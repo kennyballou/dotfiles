@@ -124,6 +124,7 @@ in rec {
     helm-gtags
     helm-lsp
     helm-mu
+    helm-pass
     helm-projectile
     helm-rg
     helm-sql-connect
@@ -169,6 +170,7 @@ in rec {
     org-ref
     ox-gfm
     page-break-lines
+    pass
     pcmpl-args
     pcmpl-git
     pcmpl-pip
