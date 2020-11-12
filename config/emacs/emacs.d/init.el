@@ -126,13 +126,13 @@
 (require 'init-ocaml)
 
 ;; Email and Such
-(require 'init-email)
 (require 'init-auth-sources)
+(require 'init-bbdb)
+(require 'init-mu4e)
 (require 'init-elfeed)
 (require 'init-ledger)
 (require 'init-org)
 (require 'init-mpd)
-(require 'init-bbdb)
 
 ;; PDF-tools
 (require 'init-pdf-tools)
