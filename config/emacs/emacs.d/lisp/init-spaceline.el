@@ -12,7 +12,10 @@
   :after spaceline
   :demand t
   :config
-  (spaceline-emacs-theme))
+  (spaceline-helm-mode 1)
+  (spaceline-emacs-theme)
+  (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-mu4e-alert-segment-off))
 
 
 (provide 'init-spaceline)
