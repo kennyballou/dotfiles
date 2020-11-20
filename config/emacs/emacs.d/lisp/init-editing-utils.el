@@ -68,26 +68,13 @@
   (with-eval-after-load 'subword
     (delight 'subword-mode nil 'subword)))
 
-(global-display-line-numbers-mode t)
+(defun kb/enable-line-numbers ()
+  "Turn on line number display."
+  (setq-local display-line-numbers t))
 
-(defun kb/no-line-numbers ()
-  "Turn off line numbers for buffers.
-
-Inspired by `sanityinc/no-trailing-whitespace'"
-  (display-line-numbers-mode 0))
-
-(dolist (hook '(special-mode-hook
-                Info-mode-hook
-                eww-mode-hook
-                term-mode-hook
-                multi-term-mode-hook
-                comint-mode-hook
-                compilation-mode-hook
-                twittering-mode-hook
-                minibuffer-setup-hook
-                calendar-mode-hook
-                eshell-mode-hook))
-  (add-hook hook #'kb/no-line-numbers))
+;; explicitly enable line numbers modes
+(dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+  (add-hook hook #'kb/enable-line-numbers))
 
 (use-package rainbow-mode)
 (use-package rainbow-delimiters
