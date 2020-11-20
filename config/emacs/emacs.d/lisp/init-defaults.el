@@ -14,8 +14,13 @@
               auto-revert-verbose nil
               auto-save-visited-file-name t
               backward-delete-char-untabify-method 'hungry
+              blink-cursor-interval 0.4
+              bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
               bookmark-save-flag t
+              buffers-menu-max-size 30
               c-syntactic-indentation t
+              case-fold-search t
+              column-number-mode t
               comint-process-echoes t
               comint-input-ignoredups t
               comint-prompt-read-only t
@@ -47,6 +52,7 @@
               default-tab-width 4
               delete-old-versions t
               delete-by-moving-to-trash t
+              delete-selection-mode t
               dired-auto-revert-buffer t
               dired-hide-details-hide-symlink-targets nil
               dired-dwim-target t
@@ -58,6 +64,8 @@
               dtrt-indent-verbosity 0
               disabled-command-function nil
               echo-keystrokes 1
+              ediff-split-window-function 'split-window-horizontally
+              ediff-window-setup-function 'ediff-setup-windows-plain
               enable-recursive-minibuffers nil
               erc-autoaway-idle-seconds 600
               erc-autojoin-timing 'ident erc-fill-prefix " "
@@ -152,6 +160,7 @@
               minibuffer-prompt-properties '(read-only t
                                                        cursor-intangible t
                                                        face minibuffer-prompt)
+              mouse-yank-at-point t
               next-error-recenter t
               notmuch-show-logo nil
               nrepl-log-messages t
@@ -194,6 +203,8 @@
                                               kill-ring
                                               comint-input-ring)
               savehist-autosave-interval 60
+              scroll-preserve-screen-position 'always
+              set-mark-command-repeat-pop t
               auto-window-vscroll nil
               hscroll-margin 5
               hscroll-step 5
@@ -210,10 +221,13 @@
               term-input-autoexpand t
               term-input-ignoredups t
               term-input-ring-file-name t
+              tooltip-delay 1.5
               tramp-default-proxies-alist '(((regexp-quote (system-name)) nil nil)
                                             (nil "\\`root\\'" "/ssh:%h:")
                                             (".*" "\\`root\\'" "/ssh:%h:"))
               tramp-default-user nil
+              truncate-lines nil
+              truncate-partial-width-windows nil
               text-quoting-style 'grave
               tls-checktrust t
               undo-limit 80000
