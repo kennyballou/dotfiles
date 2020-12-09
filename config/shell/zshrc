@@ -52,3 +52,5 @@ rprompt_precmd() {
     fi
 }
 precmd_functions+=(rprompt_precmd)
+
+eval "$(direnv hook zsh)"

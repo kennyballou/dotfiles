@@ -64,6 +64,7 @@ in rec {
     define-word
     diff-hl
     diminish
+    direnv
     disable-mouse
     docker
     docker-compose-mode

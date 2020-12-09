@@ -32,3 +32,5 @@ else
     export EDITOR='emacsclient'
     export VISUAL='emacsclient'
 fi
+
+eval "$(direnv hook bash)"

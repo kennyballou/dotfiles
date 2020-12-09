@@ -24,6 +24,7 @@ with pkgs; [
   dos2unix
   dot2tex
   duplicity
+  direnv
   elm-environment
   emacs-overlay
   enchant

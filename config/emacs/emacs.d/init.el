@@ -93,6 +93,7 @@
 (require 'init-pcomplete)
 
 ;; Languages and Language Modes
+(require 'init-direnv)
 (require 'init-semantic)
 (require 'init-lsp)
 (require 'init-dap)
