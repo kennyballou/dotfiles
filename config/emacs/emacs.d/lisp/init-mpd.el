@@ -6,6 +6,8 @@
 
 (use-package mpdel
   :diminish mpdel-mode
+  :init
+  (setq libmpdel-hostname (format "/run/user/%d/mpd/socket" (user-uid)))
   :config
   (mpdel-mode))
 
