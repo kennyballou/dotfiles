@@ -52,6 +52,7 @@
 (defvar fci-mode)
 (defvar graphviz-dot-mode)
 (defvar org-id)
+(defvar org-startup-folded)
 
 
 (require 'org)
@@ -158,6 +159,7 @@
       ;; Agenda log mode items to display (closed and state changes by default)
       org-agenda-log-mode-items (quote (closed clock state))
       org-attach-id-dir (expand-file-name "~/.org/data")
+      org-startup-folded 'overview
       org-agenda-files
         (append
          (file-expand-wildcards (concat org-directory "notes.org"))
