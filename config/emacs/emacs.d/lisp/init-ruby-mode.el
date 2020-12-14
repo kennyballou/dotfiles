@@ -47,10 +47,7 @@
     (subword-mode)
     (lsp-mode)
     (lsp-deferred))
-  :hook (ruby-mode . kb/ruby-mode)
-  :bind (:map ruby-mode-map
-              ("S-f7" . ruby-compilation-this-buffer)
-              ("f7" . ruby-compilation-this-test)))
+  :hook (ruby-mode . kb/ruby-mode))
 
 ;;; ERB
 (require 'mmm-mode)
