@@ -4,13 +4,14 @@
 
 (defvar zenburn-theme)
 (defvar anti-zenburn-theme)
-(defvar spacemacs-theme)
+(defvar spacemacs-common)
 (defvar doom-themes)
 (defvar solarized-theme)
 
 (use-package anti-zenburn-theme)
 (use-package zenburn-theme)
-(use-package spacemacs-theme)
+(use-package spacemacs-common
+  :config (load-theme 'spacemacs-light t))
 (use-package doom-themes)
 (use-package solarized-theme)
 
