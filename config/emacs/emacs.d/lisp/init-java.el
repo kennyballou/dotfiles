@@ -29,7 +29,8 @@
   ;; Enable dap-java
   (require 'dap-java)
 
-  (setq lsp-java-vmargs
+  (setq lsp-java-java-path (expand-file-name "~/.nix-profile/bin/java")
+        lsp-java-vmargs
         (list "-noverify"
               "-Xms1G"
               "-Xmx2G"
