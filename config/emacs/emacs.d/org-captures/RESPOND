@@ -3,7 +3,7 @@
   :PROPERTIES:
   :ID:       %(org-id-uuid)
   :CREATED:  %U
-  :Date:     %:date
+  :Date:     %:date-timestamp-inactive
   :Message:  %a
   :Author:   %:from
   :END:
