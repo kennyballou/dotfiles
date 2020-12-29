@@ -97,6 +97,7 @@ with pkgs; [
   patchutils
   pdftk
   php-environment
+  pidgin-with-plugins
   plantuml
   poppler_utils
   pv
