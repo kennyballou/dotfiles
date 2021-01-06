@@ -125,6 +125,7 @@ with pkgs; [
   tmux
   tokei
   tree
+  units
   unzip
   urlwatch
   vim
