@@ -26,6 +26,7 @@ with pkgs; [
   duplicity
   direnv
   elm-environment
+  eclipses.eclipse-java
   emacs-overlay
   enchant
   entr
@@ -63,6 +64,8 @@ with pkgs; [
   inkscape.out
   iotop
   isync
+  jetbrains.idea-community
+  jmeter
   john
   jq
   js-environment
@@ -129,6 +132,7 @@ with pkgs; [
   unzip
   urlwatch
   vim
+  visualvm
   w3m
   watch
   watchman
