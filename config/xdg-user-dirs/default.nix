@@ -1,14 +1,17 @@
 { ... }:
+let
+  home = builtins.getEnv "HOME";
+in
 {
   xdg.userDirs = {
     enable = true;
-    desktop = "";
-    documents = "documents";
-    download = "downloads";
-    music = "music";
-    pictures = "pictures";
-    publicShare = "public";
-    templates = "templates";
-    videos = "videos";
+    desktop = "${home}/desktop";
+    documents = "${home}/documents";
+    download = "${home}/downloads";
+    music = "${home}/music";
+    pictures = "${home}/pictures";
+    publicShare = "${home}/public";
+    templates = "${home}/templates";
+    videos = "${home}/videos";
   };
 }
