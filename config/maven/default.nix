@@ -12,7 +12,7 @@
           <vendor>OpenJDK</vendor>
         </provides>
         <configuration>
-          <jdkHome>${pkgs.openjdk8}</jdkHome>
+          <jdkHome>${pkgs.jvm-environment8}</jdkHome>
         </configuration>
       </toolchain>
       <toolchain>
@@ -22,17 +22,17 @@
           <vendor>OpenJDK</vendor>
         </provides>
         <configuration>
-          <jdkHome>${pkgs.openjdk11}</jdkHome>
+          <jdkHome>${pkgs.jvm-environment11}</jdkHome>
         </configuration>
       </toolchain>
       <toolchain>
         <type>jdk</type>
         <provides>
-          <version>14</version>
+          <version>15</version>
           <vendor>OpenJDK</vendor>
         </provides>
         <configuration>
-          <jdkHome>${pkgs.openjdk14}</jdkHome>
+          <jdkHome>${pkgs.jvm-environment}</jdkHome>
         </configuration>
       </toolchain>
     </toolchains>
