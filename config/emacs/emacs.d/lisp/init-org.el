@@ -108,71 +108,70 @@
 
 
 ;; Various preferences
-(setq org-log-done t
-      org-directory "~/.org/"
-      org-ellipsis "⤵"
-      org-special-ctrl-a/e t
-      org-edit-timestamp-down-means-later t
-      org-archive-location "%s_archive::datetree/"
-      org-archive-mark-done nil
-      org-hide-emphasis-markers t
-      org-catch-invisible-edits 'show-and-error
-      org-export-coding-system 'utf-8
-      org-html-validation-link nil
-      org-export-kill-product-buffer-when-displayed t
-      org-tags-column 75
-      org-search-view-always-boolean t
-      org-refile-targets (quote ((nil :maxlevel . 9)
-                                 (org-agenda-files :maxlevel . 9)))
-      org-outline-path-complete-in-steps nil
-      org-refile-use-outline-path t
-      org-indirect-buffer-display 'current-window
-      org-enforce-todo-dependencies t
-      org-fast-tag-selection-include-todo t
-      org-use-fast-todo-selection t
-      org-treat-S-cursor-todo-selection-as-state-change nil
-      org-confirm-babel-evaluate nil
-      org-src-fontify-natively t
-      org-src-tab-acts-natively t
-      org-agenda-dim-blocked-tasks nil
-      org-agenda-compact-blocks t
-      org-agenda-show-future-repeats t
-      org-todo-repeat-to-state "TODO"
-      org-files (append
+(setq org-log-done t)
+(setq org-directory "~/.org/")
+(setq org-ellipsis "⤵")
+(setq org-special-ctrl-a/e t)
+(setq org-edit-timestamp-down-means-later t)
+(setq org-archive-location "%s_archive::datetree/")
+(setq org-archive-mark-done nil)
+(setq org-hide-emphasis-markers t)
+(setq org-catch-invisible-edits 'show-and-error)
+(setq org-export-coding-system 'utf-8)
+(setq org-html-validation-link nil)
+(setq org-export-kill-product-buffer-when-displayed t)
+(setq org-tags-column 75)
+(setq org-search-view-always-boolean t)
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-outline-path t)
+(setq org-indirect-buffer-display 'current-window)
+(setq org-enforce-todo-dependencies t)
+(setq org-fast-tag-selection-include-todo t)
+(setq org-use-fast-todo-selection t)
+(setq org-treat-S-cursor-todo-selection-as-state-change nil)
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
+(setq org-agenda-dim-blocked-tasks nil)
+(setq org-agenda-compact-blocks t)
+(setq org-agenda-show-future-repeats t)
+(setq org-todo-repeat-to-state "TODO")
+(setq org-files (append
                  (file-expand-wildcards (concat org-directory "*.org"))
                  (file-expand-wildcards (concat org-directory "*/*.org"))
-                 (file-expand-wildcards (concat org-directory "*/*/*.org")))
-      org-log-state-notes-into-drawer t
-      org-clock-persistence-insinuate t
-      org-clock-out-remove-zero-time-clocks t
-      org-clock-persist t
-      org-clock-in-resume t
-      org-clock-into-drawer "CLOCK"
-      org-duration-format (quote (("d" . nil) ("h" . t) ("min" . t)))
-      org-babel-clojure-backend 'cider
-      org-src-preserve-indentation nil
-      org-edit-src-content-indentation 0
-      ;; Agenda log mode items to display (closed and state changes by default)
-      org-agenda-log-mode-items (quote (closed clock state))
-      org-attach-id-dir (expand-file-name "~/.org/data")
-      org-startup-folded 'overview
-      org-agenda-files
-        (append
-         (file-expand-wildcards (concat org-directory "notes.org"))
-         (file-expand-wildcards (concat org-directory "holidays.org"))
-         (file-expand-wildcards (concat org-directory "refile.org"))
-         (file-expand-wildcards (concat org-directory "house.org"))
-         (file-expand-wildcards (concat org-directory "cars.org"))
-         (file-expand-wildcards (concat org-directory "topics/*.org"))
-         (file-expand-wildcards (concat org-directory "projects/*.org"))
-         (file-expand-wildcards (concat org-directory "projects/*/*.org"))
-         (file-expand-wildcards (concat org-directory "projects/*/*/*.org"))
-         (file-expand-wildcards (concat org-directory "topics/*/*.org"))))
+                 (file-expand-wildcards (concat org-directory "*/*/*.org"))))
+(setq org-log-state-notes-into-drawer t)
+(setq org-clock-persistence-insinuate t)
+(setq org-clock-out-remove-zero-time-clocks t)
+(setq org-clock-persist t)
+(setq org-clock-in-resume t)
+(setq org-clock-into-drawer "CLOCK")
+(setq org-duration-format (quote (("d" . nil) ("h" . t) ("min" . t))))
+(setq org-babel-clojure-backend 'cider)
+(setq org-src-preserve-indentation nil)
+(setq org-edit-src-content-indentation 0)
+;; Agenda log mode items to display (closed and state changes by default)
+(setq org-agenda-log-mode-items (quote (closed clock state)))
+(setq org-attach-id-dir (expand-file-name "~/.org/data"))
+(setq org-startup-folded 'fold)
+(setq org-agenda-files (append
+                        (file-expand-wildcards (concat org-directory "notes.org"))
+                        (file-expand-wildcards (concat org-directory "holidays.org"))
+                        (file-expand-wildcards (concat org-directory "refile.org"))
+                        (file-expand-wildcards (concat org-directory "house.org"))
+                        (file-expand-wildcards (concat org-directory "cars.org"))
+                        (file-expand-wildcards (concat org-directory "topics/*.org"))
+                        (file-expand-wildcards (concat org-directory "projects/*.org"))
+                        (file-expand-wildcards (concat org-directory "projects/*/*.org"))
+                        (file-expand-wildcards (concat org-directory "projects/*/*/*.org"))
+                        (file-expand-wildcards (concat org-directory "topics/*/*.org"))))
 
 
 
-(setq org-latex-prefer-user-labels t
-      org-latex-listings t)
+(setq org-latex-prefer-user-labels t)
+(setq org-latex-listings t)
 (setq org-latex-listings-options
       '(("breaklines" "true")
         ("firstnumber" "auto")
@@ -325,7 +324,8 @@
                        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
                            ((org-agenda-overriding-header "Next Tasks:"))))
-               ((org-agenda-span 'day))
+               ((org-agenda-span 'day)
+                (org-agenda-log-mode t))
                ("/home/kb/.cache/agenda.html"))
               ("P" "Projects" tags "project"
                ((org-agenda-overriding-header "Projects")

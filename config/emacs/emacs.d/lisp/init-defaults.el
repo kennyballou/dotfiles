@@ -3,250 +3,263 @@
 ;;; https://matthewbauer.us/blog/bauer.html
 ;;; Code:
 
-(setq-default TeX-auto-save t
-              TeX-engine 'xetex
-              ad-redefinition-action 'accept
-              apropros-do-all t
-              async-shell-command-buffer 'new-buffer
-              auth-source-save-behavior t
-              auto-revert-check-vc-info nil
-              auto-revert-remote-files nil
-              auto-revert-verbose nil
-              auto-save-visited-file-name t
-              backward-delete-char-untabify-method 'hungry
-              blink-cursor-interval 0.4
-              bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
-              bookmark-save-flag t
-              buffers-menu-max-size 30
-              c-syntactic-indentation t
-              case-fold-search t
-              column-number-mode t
-              comint-process-echoes t
-              comint-input-ignoredups t
-              comint-prompt-read-only t
-              comint-scroll-show-maximum-output nil
-              company-auto-complete (lambda () (and (company-tooltip-visible-p)
-                                               (company-explicit-action-p)))
-              company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
-                                  company-preview-frontend
-                                  company-echo-metadata-frontend)
-              company-continue-commands '(not save-buffer
-                                              save-some-buffers
-                                              save-buffers-kill-terminal
-                                              save-buffers-kill-emacs
-                                              comint-previous-matching-input-from-input
-                                              comint-next-matching-input-from-input)
-              company-require-match nil
-              company-selection-wrap-around t
-              compilation-always-kill nil
-              compilation-ask-about-save nil
-              compilation-auto-jump-to-first-error nil
-              compilation-environment '("TERM=xterm-256color")
-              compilation-scroll-output nil
-              completions-format 'vertical
-              completion-cycle-threshold 5
-              counsel-find-file-at-point t
-              counsel-mode-override-describe-bindings t
-              create-lockfiles t
-              checkdoc-spellcheck-documentation-flag t
-              default-tab-width 4
-              delete-old-versions t
-              delete-by-moving-to-trash t
-              delete-selection-mode t
-              dired-auto-revert-buffer t
-              dired-hide-details-hide-symlink-targets nil
-              dired-dwim-target t
-              dired-listing-switches "-alhv"
-              dired-omit-verbose nil
-              dired-omit-files "^\\."
-              dired-recursive-copies 'always
-              dired-recursive-deletes 'always
-              dtrt-indent-verbosity 0
-              disabled-command-function nil
-              echo-keystrokes 1
-              ediff-split-window-function 'split-window-horizontally
-              ediff-window-setup-function 'ediff-setup-windows-plain
-              enable-recursive-minibuffers nil
-              erc-autoaway-idle-seconds 600
-              erc-autojoin-timing 'ident erc-fill-prefix " "
-              erc-insert-timestamp-function 'erc-insert-timestamp-left
-              erc-interpret-mirc-color t
-              erc-kill-buffer-on-part t
-              erc-kill-queries-on-quit t
-              erc-kill-server-buffer-on-quit t
-              erc-prompt (lambda () (concat "[" (buffer-name) "]"))
-              erc-prompt-for-password nil
-              erc-query-display 'buffer
-              erc-server-coding-system '(utf-8 . utf-8)
-              erc-timestamp-format "%H:%M:%S "
-              erc-timestamp-only-if-changed-flag nil
-              erc-try-new-nick-p nil
-              eshell-banner-message ""
-              eshell-cd-on-directory t
-              eshell-cmpl-autolist t
-              eshell-cmpl-cycle-completions t
-              eshell-cmpl-cycle-cutoff-length 2
-              eshell-cp-interactive-query t
-              eshell-cp-overwrite-files nil
-              eshell-default-target-is-dot t
-              eshell-destroy-buffer-when-process-dies t
-              eshell-highlight-prompt t
-              eshell-hist-ignoredups t
-              eshell-history-size 10000
-              eshell-buffer-maximum-lines 100000
-              eshell-list-files-after-cd t
-              eshell-ln-interactive-query t
-              eshell-mv-interactive-query t
-              eshell-output-filter-functions '(eshell-handle-ansi-color
-                                               eshell-handle-control-codes
-                                               eshell-watch-for-password-prompt
-                                               eshell-truncate-buffer)
-              eshell-plain-echo-behavior nil
-              eshell-review-quick-commands t
-              eshell-rm-interactive-query nil
-              eval-expression-print-length 20
-              eval-expression-print-level nil
-              explicit-shell-args '("-c" "export EMACS= INSIDE_EMACS=; stty echo; shell")
-              expand-region-contract-fast-key "j"
-              fill-column 79
-              flycheck-check-syntax-automatically '(save
-                                                    idle-change
-                                                    mode-enabled
-                                                    new-line)
-              flycheck-display-errors-function 'flycheck-display-error-messages-unless-error-list
-              flycheck-idle-change-delay 0.001
-              flycheck-standard-error-navigation nil
-              flycheck-global-modes '(not erc-mode
-                                          message-mode
-                                          git-commit-mode
-                                          view-mode
-                                          outline-mode
-                                          text-mode
-                                          org-mode)
-              flyspell-abbrev-p nil
-              flyspell-auto-correct nil
-              flyspell-highlight-properties t
-              flyspell-incorrect-hook nil
-              flyspell-issue-welcome-flag nil
-              global-auto-revert-non-file-buffers t
-              highlight-nonselected-windows nil
-              history-delete-duplicates t
-              history-length 20000
-              hippie-expand-verbose nil
-              iedit-toggle-key-default nil
-              imenu-auto-rescan t
-              indicate-empty-lines t
-              indent-tabs-mode nil
-              inhibit-startup-screen t
-              inhibit-startup-echo-area-message t
-              ispell-extra-args '("--sug-mode=ultra")
-              ispell-silently-savep t
-              ispell-quietly t
-              jit-lock-defer-time 0
-              js2-mode-show-parse-errors nil
-              js2-mode-show-strict-warnings nil
-              kill-do-not-save-duplicates t
-              kill-whole-line nil
-              load-prefer-newer t
-              magit-log-auto-more t
-              magit-clone-set-remote.pushDefault t
-              magit-ediff-dwim-show-on-hunks t
-              magit-fetch-arguments nil
-              magit-process-popup-time 15
-              magit-stage-all-confirm nil
-              magit-unstage-all-confirm nil
-              mmm-global-mode 'buffers-with-submode-classes
-              mmm-submode-decoration-level 2
-              minibuffer-prompt-properties '(read-only t
-                                                       cursor-intangible t
-                                                       face minibuffer-prompt)
-              mouse-yank-at-point t
-              next-error-recenter t
-              notmuch-show-logo nil
-              nrepl-log-messages t
-              nsm-save-host-names t
-              ns-function-modifier 'hyper
-              ns-pop-up-frames nil
-              org-deadline-warning-days 30
-              org-export-in-background nil
-              org-log-done 'time
-              org-log-done-with-time t
-              org-return-follows-links t
-              org-special-ctrl-a/e t
-              org-src-fontify-natively t
-              org-src-preserve-indentation t
-              org-src-tab-acts-natively t
-              parens-require-spaces t
-              projectile-globally-ignored-files '("TAGS"
-                                                  "GPATH"
-                                                  "GTAGS"
-                                                  "GRTAGS")
-              projectile-enable-caching t
-              projectile-ignored-project-function 'file-remote-p
-              projectile-switch-project-action 'projectile-dired
-              projectile-do-log nil
-              projectile-verbose nil
-              reb-re-syntax 'string
-              require-final-newline t
-              resize-mini-windows t
-              ring-bell-function 'ignore
-              rtags-completions-enabled t
-              rtags-imenu-syntax-highlighting 10
-              ruby-insert-encoding-magic-comment nil
-              sh-guess-basic-offset t
-              same-window-buffer-names '("*eshell*" "*shell*" "*mail*"
-                                         "*inferior-lisp*" "*ielm*" "*scheme")
-              save-abbrevs 'silently
-              save-interprogram-paste-before-kill t
-              savehist-additional-variables '(search-ring
-                                              regexp-search-ring
-                                              kill-ring
-                                              comint-input-ring)
-              savehist-autosave-interval 60
-              scroll-preserve-screen-position 'always
-              set-mark-command-repeat-pop t
-              auto-window-vscroll nil
-              hscroll-margin 5
-              hscroll-step 5
-              scroll-preserve-screen-position 'always
-              send-mail-function 'smtpmail-send-it
-              sentence-end-double-space t
-              set-mark-command-repeat-pop t
-              shell-completion-execonly nil
-              shell-input-autoexpand nil
-              show-trailing-whitespace nil
-              sp-autoskip-closing-pair 'always
-              tab-always-indent 'complete
-              tab-width 4
-              term-input-autoexpand t
-              term-input-ignoredups t
-              term-input-ring-file-name t
-              tooltip-delay 1.5
-              tramp-default-proxies-alist '(((regexp-quote (system-name)) nil nil)
-                                            (nil "\\`root\\'" "/ssh:%h:")
-                                            (".*" "\\`root\\'" "/ssh:%h:"))
-              tramp-default-user nil
-              truncate-lines nil
-              truncate-partial-width-windows nil
-              text-quoting-style 'grave
-              tls-checktrust t
-              undo-limit 80000
-              uniquify-after-kill-buffer-p t
-              use-dialog-box nil
-              use-file-dialog nil
-              use-package-enable-imenu-support t
-              use-package-expand-minimally nil
-              vc-handled-backends '(Git)
-              version-control t
-              view-read-only t
-              view-inhibit-help-message t
-              visiable-bell nil
-              visible-cursor t
-              woman-imenu t
-              whitespace-line-column 80
-              whitespace-auto-cleanup t
-              whitespace-rescan-timer-time nil
-              whitespace-silent t)
+(setq-default mouse-yank-at-point t)
+(setq-default next-error-recenter t)
+(setq-default notmuch-show-logo nil)
+(setq-default nrepl-log-messages t)
+(setq-default ns-function-modifier 'hyper)
+(setq-default ns-pop-up-frames nil)
+(setq-default nsm-save-host-names t)
+(setq-default org-deadline-warning-days 30)
+(setq-default org-export-in-background nil)
+(setq-default org-log-done 'time)
+(setq-default org-log-done-with-time t)
+(setq-default org-return-follows-links t)
+(setq-default org-special-ctrl-a/e t)
+(setq-default org-src-fontify-natively t)
+(setq-default org-src-preserve-indentation t)
+(setq-default org-src-tab-acts-natively t)
+(setq-default org-startup-folded 'fold)
+(setq-default parens-require-spaces t)
+(setq-default projectile-globally-ignored-files
+              '("TAGS"
+                "GPATH"
+                "GTAGS"
+                "GRTAGS"))
+(setq-default TeX-auto-save t)
+(setq-default TeX-engine 'xetex)
+(setq-default ad-redefinition-action 'accept)
+(setq-default apropros-do-all t)
+(setq-default async-shell-command-buffer 'new-buffer)
+(setq-default auth-source-save-behavior t)
+(setq-default auto-revert-check-vc-info nil)
+(setq-default auto-revert-remote-files nil)
+(setq-default auto-revert-verbose nil)
+(setq-default auto-save-visited-file-name t)
+(setq-default auto-window-vscroll nil)
+(setq-default backward-delete-char-untabify-method 'hungry)
+(setq-default blink-cursor-interval 0.4)
+(setq-default bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory))
+(setq-default bookmark-save-flag t)
+(setq-default buffers-menu-max-size 30)
+(setq-default c-syntactic-indentation t)
+(setq-default case-fold-search t)
+(setq-default checkdoc-spellcheck-documentation-flag t)
+(setq-default column-number-mode t)
+(setq-default comint-input-ignoredups t)
+(setq-default comint-process-echoes t)
+(setq-default comint-prompt-read-only t)
+(setq-default comint-scroll-show-maximum-output nil)
+(setq-default company-auto-complete
+              (lambda () (and (company-tooltip-visible-p) (company-explicit-action-p))))
+(setq-default company-continue-commands
+              '(not save-buffer
+                    save-some-buffers
+                    save-buffers-kill-terminal
+                    save-buffers-kill-emacs
+                    comint-previous-matching-input-from-input
+                    comint-next-matching-input-from-input))
+(setq-default company-frontends
+              '(company-pseudo-tooltip-unless-just-one-frontend
+                company-preview-frontend
+                company-echo-metadata-frontend))
+(setq-default company-require-match nil)
+(setq-default company-selection-wrap-around t)
+(setq-default compilation-always-kill nil)
+(setq-default compilation-ask-about-save nil)
+(setq-default compilation-auto-jump-to-first-error nil)
+(setq-default compilation-environment '("TERM=xterm-256color"))
+(setq-default compilation-scroll-output nil)
+(setq-default completion-cycle-threshold 5)
+(setq-default completions-format 'vertical)
+(setq-default counsel-find-file-at-point t)
+(setq-default counsel-mode-override-describe-bindings t)
+(setq-default create-lockfiles t)
+(setq-default default-tab-width 4)
+(setq-default delete-by-moving-to-trash t)
+(setq-default delete-old-versions t)
+(setq-default delete-selection-mode t)
+(setq-default dired-auto-revert-buffer t)
+(setq-default dired-dwim-target t)
+(setq-default dired-hide-details-hide-symlink-targets nil)
+(setq-default dired-listing-switches "-alhv")
+(setq-default dired-omit-files "^\\.")
+(setq-default dired-omit-verbose nil)
+(setq-default dired-recursive-copies 'always)
+(setq-default dired-recursive-deletes 'always)
+(setq-default disabled-command-function nil)
+(setq-default dtrt-indent-verbosity 0)
+(setq-default echo-keystrokes 1)
+(setq-default ediff-split-window-function 'split-window-horizontally)
+(setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq-default enable-recursive-minibuffers nil)
+(setq-default erc-autoaway-idle-seconds 600)
+(setq-default erc-autojoin-timing 'ident erc-fill-prefix " ")
+(setq-default erc-insert-timestamp-function 'erc-insert-timestamp-left)
+(setq-default erc-interpret-mirc-color t)
+(setq-default erc-kill-buffer-on-part t)
+(setq-default erc-kill-queries-on-quit t)
+(setq-default erc-kill-server-buffer-on-quit t)
+(setq-default erc-prompt (lambda () (concat "[" (buffer-name) "]")))
+(setq-default erc-prompt-for-password nil)
+(setq-default erc-query-display 'buffer)
+(setq-default erc-server-coding-system '(utf-8 . utf-8))
+(setq-default erc-timestamp-format "%H:%M:%S ")
+(setq-default erc-timestamp-only-if-changed-flag nil)
+(setq-default erc-try-new-nick-p nil)
+(setq-default eshell-banner-message "")
+(setq-default eshell-buffer-maximum-lines 100000)
+(setq-default eshell-cd-on-directory t)
+(setq-default eshell-cmpl-autolist t)
+(setq-default eshell-cmpl-cycle-completions t)
+(setq-default eshell-cmpl-cycle-cutoff-length 2)
+(setq-default eshell-cp-interactive-query t)
+(setq-default eshell-cp-overwrite-files nil)
+(setq-default eshell-default-target-is-dot t)
+(setq-default eshell-destroy-buffer-when-process-dies t)
+(setq-default eshell-highlight-prompt t)
+(setq-default eshell-hist-ignoredups t)
+(setq-default eshell-history-size 10000)
+(setq-default eshell-list-files-after-cd t)
+(setq-default eshell-ln-interactive-query t)
+(setq-default eshell-mv-interactive-query t)
+(setq-default eshell-output-filter-functions
+              '(eshell-handle-ansi-color
+                eshell-handle-control-codes
+                eshell-watch-for-password-prompt
+                eshell-truncate-buffer))
+(setq-default eshell-plain-echo-behavior nil)
+(setq-default eshell-review-quick-commands t)
+(setq-default eshell-rm-interactive-query nil)
+(setq-default eval-expression-print-length 20)
+(setq-default eval-expression-print-level nil)
+(setq-default expand-region-contract-fast-key "j")
+(setq-default explicit-shell-args
+              '("-c" "export EMACS= INSIDE_EMACS=; stty echo; shell"))
+(setq-default fill-column 79)
+(setq-default flycheck-check-syntax-automatically
+              '(save idle-change mode-enabled new-line))
+(setq-default flycheck-display-errors-function
+              'flycheck-display-error-messages-unless-error-list)
+(setq-default flycheck-global-modes
+              '(not
+                erc-mode
+                message-mode
+                git-commit-mode
+                view-mode
+                outline-mode
+                text-mode
+                org-mode))
+(setq-default flycheck-idle-change-delay 0.001)
+(setq-default flycheck-standard-error-navigation nil)
+(setq-default flyspell-abbrev-p nil)
+(setq-default flyspell-auto-correct nil)
+(setq-default flyspell-highlight-properties t)
+(setq-default flyspell-incorrect-hook nil)
+(setq-default flyspell-issue-welcome-flag nil)
+(setq-default global-auto-revert-non-file-buffers t)
+(setq-default highlight-nonselected-windows nil)
+(setq-default hippie-expand-verbose nil)
+(setq-default history-delete-duplicates t)
+(setq-default history-length 20000)
+(setq-default hscroll-margin 5)
+(setq-default hscroll-step 5)
+(setq-default iedit-toggle-key-default nil)
+(setq-default imenu-auto-rescan t)
+(setq-default indent-tabs-mode nil)
+(setq-default indicate-empty-lines t)
+(setq-default inhibit-startup-echo-area-message t)
+(setq-default inhibit-startup-screen t)
+(setq-default ispell-extra-args '("--sug-mode=ultra"))
+(setq-default ispell-quietly t)
+(setq-default ispell-silently-savep t)
+(setq-default jit-lock-defer-time 0)
+(setq-default js2-mode-show-parse-errors nil)
+(setq-default js2-mode-show-strict-warnings nil)
+(setq-default kill-do-not-save-duplicates t)
+(setq-default kill-whole-line nil)
+(setq-default load-prefer-newer t)
+(setq-default magit-clone-set-remote.pushDefault t)
+(setq-default magit-ediff-dwim-show-on-hunks t)
+(setq-default magit-fetch-arguments nil)
+(setq-default magit-log-auto-more t)
+(setq-default magit-process-popup-time 15)
+(setq-default magit-stage-all-confirm nil)
+(setq-default magit-unstage-all-confirm nil)
+(setq-default minibuffer-prompt-properties
+              '(read-only t cursor-intangible t face minibuffer-prompt))
+(setq-default mmm-global-mode 'buffers-with-submode-classes)
+(setq-default mmm-submode-decoration-level 2)
+(setq-default projectile-do-log nil)
+(setq-default projectile-enable-caching t)
+(setq-default projectile-ignored-project-function 'file-remote-p)
+(setq-default projectile-switch-project-action 'projectile-dired)
+(setq-default projectile-verbose nil)
+(setq-default reb-re-syntax 'string)
+(setq-default require-final-newline t)
+(setq-default resize-mini-windows t)
+(setq-default ring-bell-function 'ignore)
+(setq-default rtags-completions-enabled t)
+(setq-default rtags-imenu-syntax-highlighting 10)
+(setq-default ruby-insert-encoding-magic-comment nil)
+(setq-default same-window-buffer-names
+              '("*eshell*"
+                "*shell*"
+                "*mail*"
+                "*inferior-lisp*"
+                "*ielm*"
+                "*scheme"))
+(setq-default save-abbrevs 'silently)
+(setq-default save-interprogram-paste-before-kill t)
+(setq-default savehist-additional-variables
+              '(search-ring
+                regexp-search-ring
+                kill-ring
+                comint-input-ring))
+(setq-default savehist-autosave-interval 60)
+(setq-default scroll-preserve-screen-position 'always)
+(setq-default scroll-preserve-screen-position 'always)
+(setq-default send-mail-function 'smtpmail-send-it)
+(setq-default sentence-end-double-space t)
+(setq-default set-mark-command-repeat-pop t)
+(setq-default set-mark-command-repeat-pop t)
+(setq-default sh-guess-basic-offset t)
+(setq-default shell-completion-execonly nil)
+(setq-default shell-input-autoexpand nil)
+(setq-default show-trailing-whitespace nil)
+(setq-default sp-autoskip-closing-pair 'always)
+(setq-default tab-always-indent 'complete)
+(setq-default tab-width 4)
+(setq-default term-input-autoexpand t)
+(setq-default term-input-ignoredups t)
+(setq-default term-input-ring-file-name t)
+(setq-default text-quoting-style 'grave)
+(setq-default tls-checktrust t)
+(setq-default tooltip-delay 1.5)
+(setq-default tramp-default-proxies-alist
+              '(((regexp-quote (system-name)) nil nil)
+                (nil "\\`root\\'" "/ssh:%h:")
+                (".*" "\\`root\\'" "/ssh:%h:")))
+(setq-default tramp-default-user nil)
+(setq-default truncate-lines nil)
+(setq-default truncate-partial-width-windows nil)
+(setq-default undo-limit 80000)
+(setq-default uniquify-after-kill-buffer-p t)
+(setq-default use-dialog-box nil)
+(setq-default use-file-dialog nil)
+(setq-default use-package-enable-imenu-support t)
+(setq-default use-package-expand-minimally nil)
+(setq-default vc-handled-backends '(Git))
+(setq-default version-control t)
+(setq-default view-inhibit-help-message t)
+(setq-default view-read-only t)
+(setq-default visiable-bell nil)
+(setq-default visible-cursor t)
+(setq-default whitespace-auto-cleanup t)
+(setq-default whitespace-line-column 80)
+(setq-default whitespace-rescan-timer-time nil)
+(setq-default whitespace-silent t)
+(setq-default woman-imenu t)
 
 (provide 'init-defaults)
 ;;; init-defaults.el ends here
