@@ -107,6 +107,7 @@ with pkgs; [
   rtags
   screen
   shellcheck
+  signal-desktop
   silver-searcher
   slack
   socat
