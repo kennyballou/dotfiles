@@ -9,10 +9,8 @@ with pkgs; [
   aspellDicts.en
   aspellDicts.en-computers
   aspellDicts.en-science
-  autogen
   bash-completion
   bashInteractive
-  beam-environment
   breezy
   cacert
   chromium
@@ -25,7 +23,6 @@ with pkgs; [
   dot2tex
   duplicity
   direnv
-  elm-environment
   eclipses.eclipse-java
   emacs-overlay
   enchant
@@ -40,20 +37,19 @@ with pkgs; [
   fonts-overlay
   fzf
   gawk
-  ghc-environment
   gimp
   git-tools
   global
   gnugrep
-  gnumake
   gnupg
   gnuplot
   gnused
   gnutar
   gnutls
-  golang-environment
   graphviz-nox
   groff
+  guile
+  guile-lint
   hammer
   highlight
   htmlTidy
@@ -68,7 +64,6 @@ with pkgs; [
   jmeter
   john
   jq
-  js-environment
   jvm-environment11
   klavaro
   ledger
@@ -78,7 +73,6 @@ with pkgs; [
   mercurial
   mitmproxy
   mkpasswd
-  ml-environment
   mpc_cli
   mpd
   msmtp
@@ -99,7 +93,6 @@ with pkgs; [
   patch
   patchutils
   pdftk
-  php-environment
   pidgin-with-plugins
   plantuml
   poppler_utils
@@ -107,12 +100,11 @@ with pkgs; [
   pwgen
   python-environment
   qrencode
-  r-environment
+  racket
   renameutils
   ripgrep
   rsync
   rtags
-  scheme-environment
   screen
   shellcheck
   silver-searcher
@@ -123,7 +115,6 @@ with pkgs; [
   subversion
   svg2tikz
   tcpdump
-  texFull
   time
   tmux
   tokei
