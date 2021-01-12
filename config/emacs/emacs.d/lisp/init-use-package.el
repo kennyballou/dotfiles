@@ -11,7 +11,6 @@
 (setq use-package-always-ensure nil)
 
 (use-package bind-key)
-(use-package delight)
 (use-package diminish)
 
 (provide 'init-use-package)

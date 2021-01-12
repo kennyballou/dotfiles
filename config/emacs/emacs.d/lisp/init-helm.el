@@ -31,8 +31,7 @@
 
 
 (use-package helm
-  :config
-  (delight 'helm-mode))
+  :diminish)
 
 (use-package helm-config
   :diminish)

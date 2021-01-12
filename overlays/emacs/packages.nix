@@ -227,7 +227,6 @@ in rec {
     zenburn-theme
   ]) ++ (with epkgs.elpaPackages; [
     auctex
-    delight
     pinentry
     python
     rainbow-mode

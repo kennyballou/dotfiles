@@ -63,11 +63,6 @@
 
 (global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
 
-(when (eval-when-compile (string< "24.3.1" emacs-version))
-  ;; https://github.com/purcell/emacs.d/issues/138
-  (with-eval-after-load 'subword
-    (delight 'subword-mode nil 'subword)))
-
 (defun kb/enable-line-numbers ()
   "Turn on line number display."
   (setq-local display-line-numbers t))

@@ -21,11 +21,11 @@
 (defvar counsel-mode-override-describe-bindings)
 
 (use-package ivy
-  :delight)
+  :diminish)
 (use-package swiper
-  :delight)
+  :diminish)
 (use-package counsel
-  :delight)
+  :diminish)
 
 (ivy-mode 1)
 

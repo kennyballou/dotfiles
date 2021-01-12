@@ -12,7 +12,6 @@
 
 (use-package whitespace
   :diminish
-  :delight global-whitespace-mode
   :config
   (global-whitespace-mode t))
 (use-package whitespace-cleanup-mode
