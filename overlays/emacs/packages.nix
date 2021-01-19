@@ -40,6 +40,7 @@ in rec {
     anaconda-mode
     anti-zenburn-theme
     anzu
+    auth-source-pass
     autodisass-java-bytecode
     avy
     bash-completion
