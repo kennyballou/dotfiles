@@ -3,6 +3,12 @@
   xdg.mimeApps = {
     enable = true;
     associations = {
+      added = {
+        "image/gif" = [ "gimp.desktop" "org.gnome.eog.desktop" ];
+        "image/jpeg" = [ "gimp.desktop" "org.gnome.eog.desktop" ];
+        "image/png" = [ "gimp.desktop" "org.gnome.eog.desktop" ];
+      };
+      removed = {};
     };
     defaultApplications = {
       "all/text" = [ "emacsclient.desktop" "emacs.desktop" ];
