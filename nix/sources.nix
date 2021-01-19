@@ -11,6 +11,6 @@
   };
   home-manager = builtins.fetchGit {
     url = "https://github.com/nix-community/home-manager.git";
-    rev = "275d1b52126674764f0f3d15c73c2add511bd310";
+    rev = "65d0e2d241519e010251aca29cf5d3a71fd84f2f";
   };
 }
