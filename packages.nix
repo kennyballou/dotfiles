@@ -23,6 +23,7 @@ with pkgs; [
   dot2tex
   duplicity
   direnv
+  duplicity-backup-sh
   eclipses.eclipse-java
   emacs-overlay
   enchant
