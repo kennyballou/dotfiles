@@ -37,6 +37,7 @@ with pkgs; [
   fonts-overlay
   fzf
   gawk
+  gen-sshconfig-sh
   gimp
   git-tools
   global
@@ -58,6 +59,7 @@ with pkgs; [
   imagemagick
   imgcat
   inkscape.out
+  install-git-hooks-sh
   iotop
   isync
   jetbrains.idea-community
@@ -106,7 +108,9 @@ with pkgs; [
   rsync
   rtags
   screen
+  shadir-sh
   shellcheck
+  shreddir-sh
   signal-desktop
   silver-searcher
   slack

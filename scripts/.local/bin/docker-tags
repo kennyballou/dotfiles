@@ -1,4 +1,0 @@
-#!/bin/sh
-
-curl -fSsL "https://index.docker.io/v1/repositories/$1/tags" |
-    jq -r '.[] | .name'

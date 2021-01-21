@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-docker volume ls \
-    --quiet \
-    --filter dangling=true \
-    | xargs --no-run-if-empty docker volume rm
