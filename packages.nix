@@ -16,13 +16,13 @@ with pkgs; [
   chromium
   diffstat
   diffutils
+  direnv
   ditaa
   dnsutils
   docbook5
   dos2unix
   dot2tex
   duplicity
-  direnv
   duplicity-backup-sh
   eclipses.eclipse-java
   emacs-overlay
@@ -137,9 +137,9 @@ with pkgs; [
   wget
   whois
   wireshark-qt
+  wkhtmltopdf
   wordnet
   xbindkeys
-  wkhtmltopdf
   xorg.xev
   xorriso
   xsensors
