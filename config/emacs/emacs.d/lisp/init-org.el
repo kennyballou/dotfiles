@@ -325,7 +325,8 @@
                 (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
                            ((org-agenda-overriding-header "Next Tasks:"))))
                ((org-agenda-span 'day)
-                (org-agenda-log-mode t))
+                (org-agenda-log-mode t)
+                (org-deadline-warning-days 14))
                ("/home/kb/.cache/agenda.html"))
               ("P" "Projects" tags "project"
                ((org-agenda-overriding-header "Projects")
