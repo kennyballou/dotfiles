@@ -108,7 +108,7 @@
 
 
 ;; Various preferences
-(setq org-log-done t)
+(setq org-log-done 'time)
 (setq org-directory "~/.org/")
 (setq org-ellipsis "⤵")
 (setq org-special-ctrl-a/e t)
