@@ -9,7 +9,12 @@
   :bind (:map ledger-mode-map
          ("RET" . newline)
          ("C-o" . open-line))
-  :hook (ledger-mode-hook . goto-address-prog-mode)
+  :init
+  (defun kb/ledger-mode ()
+    "Configure ledger mode settings."
+    (goto-address-prog-mode t)
+    (page-break-lines-mode t))
+  :hook (ledger-mode-hook . kb/ledger-mode)
   :mode "\\.ledger\\'"
   :config
   ;; Use ISO format
