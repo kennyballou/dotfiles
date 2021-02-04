@@ -158,7 +158,7 @@
 (setq org-startup-folded 'fold)
 (setq org-agenda-files (append
                         (file-expand-wildcards (concat org-directory "notes.org"))
-                        (file-expand-wildcards (concat org-directory "holidays.org"))
+                        (file-expand-wildcards (concat org-directory "diary.org"))
                         (file-expand-wildcards (concat org-directory "refile.org"))
                         (file-expand-wildcards (concat org-directory "house.org"))
                         (file-expand-wildcards (concat org-directory "cars.org"))
