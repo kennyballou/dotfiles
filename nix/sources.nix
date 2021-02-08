@@ -2,7 +2,7 @@
   nixpkgs = {
     unstable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
-      rev = "de9aef76867eb0f0e81ade31274dd63b196d66fc";
+      rev = "6dbcdd2bc19d4377a250c73e658445426de64957";
     };
     stable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
@@ -11,6 +11,6 @@
   };
   home-manager = builtins.fetchGit {
     url = "https://github.com/nix-community/home-manager.git";
-    rev = "65d0e2d241519e010251aca29cf5d3a71fd84f2f";
+    rev = "87e2ec341bfda373d50ab58529b4bbb0eb9eb9a0";
   };
 }
