@@ -1,5 +1,6 @@
 # https://github.com/jwiegley/nix-config/blob/4d296ad/overlays/emacs/builder.nix
 { stdenv
+, pkgs
 , emacs
 , name
 , src
@@ -25,6 +26,6 @@ stdenv.mkDerivation {
   meta = {
     description = "Emacs projects from the Internet that just compile `.el` files";
     homepage = http://www.emacswiki.org;
-    platforms = stdenv.lib.platforms.all;
+    platforms = pkgs.lib.platforms.all;
   };
 }

@@ -2,7 +2,6 @@
 { pkgs, ... }:
 let
   inherit (pkgs) fetchurl fetchgit fetchFromGitHub stdenv;
-  inherit (stdenv) lib;
 
   withPatches = pkg: patches:
     pkg.OverrideAttrs(attrs: { inherit patches; });

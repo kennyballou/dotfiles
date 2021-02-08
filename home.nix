@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  lib = pkgs.stdenv.lib;
+  lib = pkgs.lib;
 
   utils = import ./nix/utils.nix { pkgs = pkgs; };
   home-dir = builtins.getEnv "HOME";
