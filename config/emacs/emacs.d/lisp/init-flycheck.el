@@ -16,6 +16,14 @@
   (setq flycheck-display-errors-function
         #'flycheck-display-error-messages-unless-error-list)
   (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+  (dolist (mode '(gfm-mode
+                  latex-mode
+                  markdown-mode
+                  message-mode
+                  org-mode
+                  tex-mode
+                  text-mode))
+    (flycheck-add-mode 'proselint mode))
   :custom
   (flycheck-display-errors-delay .3))
 
