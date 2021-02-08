@@ -99,6 +99,7 @@ with pkgs; [
   pidgin-with-plugins
   plantuml
   poppler_utils
+  proselint
   pv
   pwgen
   python-environment
