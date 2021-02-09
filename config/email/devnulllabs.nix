@@ -50,7 +50,7 @@ in
       groups = {
         devnulllabs.channels = {
           inbox = {
-            masterPattern = "Inbox";
+            masterPattern = "INBOX";
             slavePattern = "INBOX";
           };
           sent = {
