@@ -154,6 +154,7 @@ in rec {
     magit
     markdown-mode
     mmm-mode
+    modus-themes
     mpdel
     multiple-cursors
     mwim

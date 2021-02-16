@@ -15,7 +15,7 @@
 (use-package doom-themes)
 (use-package solarized-theme)
 
-(setq-default custom-enabled-themes '(spacemacs-light))
+(setq-default custom-enabled-themes '(modus-operandi))
 
 ;; ensure that themes will be applied even if they have not been customized.
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-themes.el
@@ -58,7 +58,19 @@
   (load-theme 'leuven t)
   (reapply-themes))
 
-(add-hook 'after-init-hook #'space-light)
+(defun modus-operandi ()
+  "Activate modus operandi theme."
+  (interactive)
+  (load-theme 'modus-operandi t)
+  (reapply-themes))
+
+(defun modus-vivendi ()
+  "Activate modus vivendi theme."
+  (interactive)
+  (load-theme 'modus-vivendi t)
+  (reapply-themes))
+
+(add-hook 'after-init-hook #'modus-operandi)
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
