@@ -67,7 +67,6 @@ with pkgs; [
   jmeter
   john
   jq
-  jvm-environment11
   klavaro
   ledger
   less
@@ -86,6 +85,7 @@ with pkgs; [
   nmap
   notmuch
   octave
+  openjdk11
   openssh
   openssl
   openvpn
