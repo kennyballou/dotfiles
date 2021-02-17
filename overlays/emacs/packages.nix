@@ -214,7 +214,6 @@ in rec {
     unfill
     unicode-fonts
     unicode-whitespace
-    uptimes
     use-package
     virtualenvwrapper
     wgrep-ag

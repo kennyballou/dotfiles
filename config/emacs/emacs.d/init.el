@@ -147,10 +147,6 @@
 (require 'init-locales)
 (require 'init-unicode)
 
-(use-package uptimes
-  :hook
-  ((after-init-hook . (lambda () (require 'uptimes)))))
-
 (provide 'init)
 ;;; init.el ends here
 
