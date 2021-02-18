@@ -3,7 +3,7 @@ source "~/.mutt/keybindings"
 source "~/.mutt/mailing_lists.muttrc"
 
 macro index <f2> '<enter-command> source ~/.mutt/kballou_devnulllabs.mutt<enter><change-folder>!<enter>'
-macro index <f3> '<enter-command> source ~/.mutt/kenny_homecu.mutt<enter><change-folder>!<enter>'
+macro index <f3> '<enter-command> source ~/.mutt/kennyballou_uboisestate.mutt<enter><change-folder>!<enter>'
 
 set timeout = 3
 set mail_check = 0

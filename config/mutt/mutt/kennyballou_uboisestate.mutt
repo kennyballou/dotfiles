@@ -1,15 +1,14 @@
 # vim: syntax=muttrc:
 set realname = "Kenny Ballou"
-set from = "kballou@devnulllabs.io"
-alternates kennethmgballou@gmail.com
+set from = "kennyballou@u.boisestate.edu"
+alternates "kennyballou@boisestate.edu"
 set mbox_type = Maildir
-set folder = "~/.mail/devnulllabs.io/"
+set folder = "~/.mail/u.boisestate.edu/"
 set spoolfile = "=INBOX"
 set postponed = "=drafts"
-set sendmail = "msmtp -a devnulllabs"
+set sendmail = "msmtp -a uboisestate"
 set sendmail_wait = 0
-set copy=yes
-set record = "=sent"
+unset record
 
 unmailboxes *
 mailboxes +INBOX \
@@ -19,6 +18,6 @@ mailboxes +INBOX \
 
 set pgp_sign_as="0xB0CAA28A02958308"
 my_hdr X-PGP-Key: https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt
-set signature="~/.mutt/kballou_devnulllabs.signature"
+set signature="~/.mutt/kennyballou_uboisestate.signature"
 
-macro index O "<shell-escape>mbsync -a devnulllabs<return>" "Sync all folders"
+macro index O "<shell-escape>mbsync -a uboisestate<return>" "Sync all folders"

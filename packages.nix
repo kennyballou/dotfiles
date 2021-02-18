@@ -80,6 +80,7 @@ with pkgs; [
   msmtp
   mtr
   mu
+  mutt
   ncmpcpp
   nix-tools
   nmap
