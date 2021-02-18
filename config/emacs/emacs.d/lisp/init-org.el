@@ -35,6 +35,8 @@
 (defvar org-agenda-show-future-repeats)
 (defvar org-agenda-log-mode-items)
 (defvar org-agenda-exporter-settings)
+(defvar org-agenda-skip-deadline-if-done)
+(defvar org-agenda-skip-scheduled-if-done)
 (defvar org-attach-id-dir)
 (defvar org-duration-format)
 (defvar org-ditaa-jar-path)
@@ -137,6 +139,8 @@
 (setq org-agenda-dim-blocked-tasks nil)
 (setq org-agenda-compact-blocks t)
 (setq org-agenda-show-future-repeats t)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
 (setq org-todo-repeat-to-state "TODO")
 (setq org-files (append
                  (file-expand-wildcards (concat org-directory "*.org"))
