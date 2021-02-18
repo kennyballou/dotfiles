@@ -2,7 +2,7 @@
   nixpkgs = {
     unstable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
-      rev = "6dbcdd2bc19d4377a250c73e658445426de64957";
+      rev = "be864bbd6763cd4c92777643b9c4c6f07c3390d5";
     };
     stable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";

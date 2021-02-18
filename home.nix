@@ -12,7 +12,7 @@ in
     config = import ./config/nixpkgs/config.nix;
     overlays = [
       (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/emacs-overlay/archive/5840795329e0a045b3411e7599b9f68aa63ad334.tar.gz;
+        url = https://github.com/nix-community/emacs-overlay/archive/52482f5231015a1657702512297bcb057faf2696.tar.gz;
       }))
     ] ++ utils.importDirs ./overlays;
   };
