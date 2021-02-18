@@ -155,7 +155,7 @@
 ;; Agenda log mode items to display (closed and state changes by default)
 (setq org-agenda-log-mode-items (quote (closed clock state)))
 (setq org-attach-id-dir (expand-file-name "~/.org/data"))
-(setq org-startup-folded 'fold)
+(setq org-startup-folded t)
 
 
 
