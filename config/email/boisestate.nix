@@ -31,9 +31,9 @@ in
         syslog  = "on";
       };
     };
-    mu.enable = true;
+    mu.enable = false;
     mbsync = {
-      enable = true;
+      enable = false;
       create = "both";
       remove = "both";
       extraConfig = {

@@ -1,0 +1,117 @@
+IMAPAccount devnulllabs
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+Host imap.fastmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty --decrypt ~/.mail/kballou.devnulllabs.io.gpg"
+PipelineDepth 1
+Port 993
+SSLType IMAPS
+Timeout 60
+User kballou@devnulllabs.io
+
+IMAPStore devnulllabs-remote
+Account devnulllabs
+
+MaildirStore devnulllabs-local
+Inbox /home/kb/.mail/devnulllabs.io/INBOX
+Path /home/kb/.mail/devnulllabs.io/
+SubFolders Verbatim
+
+Channel devnulllabs-archive
+Far :devnulllabs-remote:Archive
+Near :devnulllabs-local:archive
+Create Both
+Expunge Both
+
+Channel devnulllabs-inbox
+Far :devnulllabs-remote:INBOX
+Near :devnulllabs-local:INBOX
+Create Both
+Expunge Both
+
+Channel devnulllabs-lists
+Far :devnulllabs-remote:lists
+Near :devnulllabs-local:lists
+Create Both
+Expunge Both
+
+Channel devnulllabs-sent
+Far :devnulllabs-remote:Sent
+Near :devnulllabs-local:sent
+Create Both
+Expunge Both
+
+Channel devnulllabs-spam
+Far :devnulllabs-remote:Spam
+Near :devnulllabs-local:spam
+Create Both
+Expunge Both
+
+Channel devnulllabs-trash
+Far :devnulllabs-remote:Trash
+Near :devnulllabs-local:trash
+Create Both
+Expunge Both
+
+Group devnulllabs
+Channel devnulllabs-archive
+Channel devnulllabs-inbox
+Channel devnulllabs-lists
+Channel devnulllabs-sent
+Channel devnulllabs-spam
+Channel devnulllabs-trash
+
+
+IMAPAccount uboisestate
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+Host imap.gmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty --decrypt ~/.mail/kennyballou.u.boisestate.edu.gpg"
+PipelineDepth 2
+Port 993
+SSLType IMAPS
+Timeout 60
+User kennyballou@u.boisestate.edu
+
+IMAPStore uboisestate-remote
+Account uboisestate
+
+MaildirStore uboisestate-local
+Inbox /home/kb/.mail/u.boisestate.edu/INBOX
+Path /home/kb/.mail/u.boisestate.edu/
+SubFolders Verbatim
+
+Channel uboisestate-archive
+Far ":uboisestate-remote:[Gmail]/All Mail"
+Near :uboisestate-local:archive
+Create Both
+Expunge Both
+
+Channel uboisestate-inbox
+Far :uboisestate-remote:INBOX
+Near :uboisestate-local:INBOX
+Create Both
+Expunge Both
+
+Channel uboisestate-sent
+Far ":uboisestate-remote:[Gmail]/Sent Mail"
+Near :uboisestate-local:sent
+Create Both
+Expunge Both
+
+Channel uboisestate-spam
+Far :uboisestate-remote:[Gmail]/Spam
+Near :uboisestate-local:spam
+Create Both
+Expunge Both
+
+Channel uboisestate-trash
+Far :uboisestate-remote:[Gmail]/Trash
+Near :uboisestate-local:trash
+Create Both
+Expunge Both
+
+Group uboisestate
+Channel uboisestate-archive
+Channel uboisestate-inbox
+Channel uboisestate-sent
+Channel uboisestate-spam
+Channel uboisestate-trash

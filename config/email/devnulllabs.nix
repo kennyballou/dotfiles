@@ -25,6 +25,12 @@ in
         useStartTls = true;
       };
     };
+    folders = {
+      drafts = "drafts";
+      inbox = "INBOX";
+      sent = "sent";
+      trash = "trash";
+    };
     msmtp = {
       enable = true;
       extraConfig = {
@@ -32,9 +38,9 @@ in
         syslog = "on";
       };
     };
-    mu.enable = true;
+    mu.enable = false;
     mbsync = {
-      enable = true;
+      enable = false;
       create = "both";
       remove = "both";
       extraConfig = {
