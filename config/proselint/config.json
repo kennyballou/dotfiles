@@ -10,7 +10,7 @@
         "consistency.spelling"          : true,
         "corporate_speak.misc"          : true,
         "cursing.filth"                 : true,
-        "cursing.nfl"                   : true,
+        "cursing.nfl"                   : false,
         "cursing.nword"                 : true,
         "dates_times.am_pm"             : true,
         "dates_times.dates"             : true,
