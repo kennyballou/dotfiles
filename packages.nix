@@ -64,6 +64,7 @@ with pkgs; [
   iotop
   isync
   jetbrains.idea-community
+  jitsi-meet-electron
   jmeter
   john
   jq
