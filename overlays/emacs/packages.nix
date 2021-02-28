@@ -168,8 +168,11 @@ in rec {
     olivetti
     org-babel-eval-in-repl
     org-cliplink
+    org-gcal
     org-pomodoro
+    org-projectile
     org-ref
+    org-sync
     ox-gfm
     page-break-lines
     pass
