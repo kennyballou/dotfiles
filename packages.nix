@@ -25,6 +25,7 @@ with pkgs; [
   duplicity
   duplicity-backup-sh
   eclipses.eclipse-java
+  element-desktop
   emacs-overlay
   enchant
   entr
@@ -86,6 +87,7 @@ with pkgs; [
   nix-tools
   nmap
   notmuch
+  obs-studio
   octave
   openjdk11
   openssh
@@ -97,6 +99,7 @@ with pkgs; [
   parallel
   patch
   patchutils
+  pdfpc
   pdftk
   pidgin-with-plugins
   plantuml
