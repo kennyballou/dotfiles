@@ -153,6 +153,7 @@ in rec {
     lsp-ui
     magit
     markdown-mode
+    mbsync
     mmm-mode
     modus-themes
     mpdel
