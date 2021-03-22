@@ -29,6 +29,9 @@
   ;; Enable dap-java
   (require 'dap-java)
 
+  (setq lsp-java-server-install-dir (concat user-emacs-directory "lsp/eclipse.jdt.ls/server/"))
+  (setq lsp-java-workspace-dir (expand-file-name (concat user-emacs-directory "eclipse.jdt.ls/workspace/")))
+  (setq lsp-java-workspace-cache-dir (expand-file-name (concat user-emacs-directory "eclipse.jdt.ls/workspace/.cache/")))
   (setq lsp-java-java-path (expand-file-name "~/.nix-profile/bin/java"))
   (setq lsp-java-vmargs
         (list "-noverify"
