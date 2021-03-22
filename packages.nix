@@ -135,6 +135,7 @@ with pkgs; [
   units
   unzip
   urlwatch
+  vale
   vim
   visualvm
   w3m
