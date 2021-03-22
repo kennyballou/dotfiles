@@ -29,21 +29,21 @@
   ;; Enable dap-java
   (require 'dap-java)
 
-  (setq lsp-java-java-path (expand-file-name "~/.nix-profile/bin/java")
-        lsp-java-vmargs
+  (setq lsp-java-java-path (expand-file-name "~/.nix-profile/bin/java"))
+  (setq lsp-java-vmargs
         (list "-noverify"
               "-Xms1G"
               "-Xmx2G"
               "-XX:+UnlockExperimentalVMOptions"
               "-XX:+UseZGC"
-              "-XX:+UseStringDeduplication")
-        lsp-file-watch-ignored '(".idea" ".ensime_cache" ".eunit" "node_modules"
+              "-XX:+UseStringDeduplication"))
+  (setq lsp-file-watch-ignored '(".idea" ".ensime_cache" ".eunit" "node_modules"
                                  ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr"
-                                 "_darcs" ".tox" ".svn" ".stack-work" "build")
+                                 "_darcs" ".tox" ".svn" ".stack-work" "build"))
 
-        lsp-java-save-action-organize-imports nil
-        lsp-enable-on-type-formatting nil
-        lsp-enable-indentation t)
+  (setq lsp-java-save-action-organize-imports nil)
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-enable-indentation t)
 
   :hook (java-mode . kb/java-mode)
   :after (lsp-mode dap-mode))
