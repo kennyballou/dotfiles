@@ -6,14 +6,13 @@ let
   home-dir = builtins.getEnv "HOME";
   xdg = config.xdg;
   nixpath = "${home-dir}/.nix-profile";
+  sources = import ./nix/sources.nix;
 in
 {
   nixpkgs = {
     config = import ./config/nixpkgs/config.nix;
     overlays = [
-      (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/emacs-overlay/archive/dc7b0dc373cd09dd7274c6f571692a2985aff623.tar.gz;
-      }))
+      (import sources.emacs-overlay.stable)
     ] ++ utils.importDirs ./overlays;
   };
   imports = (utils.importDirs ./config) ++ [
