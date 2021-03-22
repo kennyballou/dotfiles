@@ -85,6 +85,7 @@ with pkgs; [
   mutt
   ncmpcpp
   nix-tools
+  nix-search-emacs-packages-sh
   nmap
   notmuch
   obs-studio
