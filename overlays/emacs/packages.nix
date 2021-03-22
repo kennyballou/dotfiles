@@ -97,6 +97,7 @@ in rec {
     flycheck-pos-tip
     flycheck-posframe
     flycheck-rust
+    flycheck-vale
     fold-dwim
     forge
     fullframe

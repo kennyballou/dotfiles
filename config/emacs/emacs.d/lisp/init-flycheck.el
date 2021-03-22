@@ -7,6 +7,8 @@
 (defvar flycheck-disabled-checkers)
 (defvar flycheck-display-errors-function)
 (defvar helm-flycheck)
+(defvar flycheck-vale)
+(defvar flycheck-vale-setup)
 
 (use-package flycheck
   :defer 2
@@ -44,14 +46,18 @@
   :after flycheck
   ;;:if (display-graphic-p)
   :hook (flycheck-mode . flycheck-popup-tip-mode))
+
+(use-package flycheck-vale
+  :after flycheck
+  :commands flycheck-vale-setup
+  :init
+  (flycheck-vale-setup)
+  :config
   (dolist (mode '(gfm-mode
                   latex-mode
-                  markdown-mode
                   message-mode
-                  org-mode
-                  tex-mode
-                  text-mode))
-    (flycheck-add-mode 'proselint mode))
+                  tex-mode))
+    (flycheck-add-mode 'vale mode)))
 
 (use-package flycheck-color-mode-line
   :after flycheck
