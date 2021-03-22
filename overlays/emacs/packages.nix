@@ -93,6 +93,9 @@ in rec {
     flycheck-haskell
     flycheck-ledger
     flycheck-ocaml
+    flycheck-popup-tip
+    flycheck-pos-tip
+    flycheck-posframe
     flycheck-rust
     fold-dwim
     forge
