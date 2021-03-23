@@ -48,5 +48,9 @@
 
 (add-hook 'mouse-leave-buffer-hook #'stop-using-minibuffer)
 
+;; unset goal column
+;; I don't really have a use for this
+(unbind-key (kbd "C-x C-n") 'global-map)
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
