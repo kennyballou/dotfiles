@@ -223,6 +223,8 @@
          :clock-in t :clock-resume t :immediate-finish t)
         ("tn" "note on task" entry (clock)
          (file "~/.config/emacs/org-captures/TASK_NOTE") :empty-lines 1)
+        ("tr" "related task" entry (clock)
+         (file "~/.config/emacs/org-captures/RELATED_TODO"))
         ("n" "note" entry (file kb/org-refile)
          (file "~/.config/emacs/org-captures/NOTE"))
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
@@ -258,6 +260,7 @@
 
 (setq org-capture-templates-contexts
       '(("n" "tn" (kb/org-clocking-p))
+        ("r" "tr" (kb/org-clocking-p))
         ("n" "n" (kb/org-not-clocking-p))
         ("r" ((in-mode . "mu4e-view")))))
 

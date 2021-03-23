@@ -1,0 +1,5 @@
+* TODO %?
+  :PROPERTIES:
+  :ID:       %(org-id-uuid)
+  :Link:     %a
+  :END:
