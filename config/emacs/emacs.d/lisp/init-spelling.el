@@ -15,11 +15,13 @@
 
 (use-package ispell
   :config
+  (setq ispell-program-name "aspell")
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--camel-case")))
 
 (use-package flyspell
   :after ispell
   :diminish
+  :if (executable-find ispell-program-name)
   :bind (:map flyspell-mode-map
               ("C-;" . nil)
               ("C-c $" . nil))
