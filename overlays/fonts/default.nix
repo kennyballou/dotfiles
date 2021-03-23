@@ -6,6 +6,7 @@ self: super:
     paths = with self; [
       carlito
       dejavu_fonts
+      emacs-all-the-icons-fonts
       hack-font
       inconsolata-nerdfont
       ipafont

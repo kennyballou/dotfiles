@@ -55,6 +55,7 @@
 
 ;; Load configs for specific features and modes
 (require 'init-themes)
+(require 'init-icons)
 (require 'init-spaceline)
 (require 'init-gui-frames)
 (require 'init-dired)

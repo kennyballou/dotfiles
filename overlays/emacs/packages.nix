@@ -33,6 +33,10 @@ in rec {
   };
 
   emacs-package-list = (epkgs: (with epkgs.melpaPackages; [
+    all-the-icons
+    all-the-icons-dired
+    all-the-icons-gnus
+    all-the-icons-ibuffer
     add-node-modules-path
     ag
     alchemist
@@ -217,6 +221,8 @@ in rec {
     switch-window
     tagedit
     toml-mode
+    treemacs
+    treemacs-all-the-icons
     tuareg
     typescript-mode
     unfill
