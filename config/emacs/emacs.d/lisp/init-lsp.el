@@ -77,7 +77,11 @@
   (setq lsp-ui-sideline-ignore-duplicate t)
   (setq lsp-ui-sideline-show-code-actions nil)
   (setq lsp-ui-sideline-show-diagnostics nil)
-  (setq lsp-ui-sideline-show-symbol nil))
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-symbol nil)
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-position 'top)
+  (setq lsp-ui-doc-alignment 'window))
 
 (use-package helm-lsp :after (lsp-mode helm))
 
