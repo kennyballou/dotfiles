@@ -43,42 +43,41 @@
 
 (use-package lsp-mode
   :config
-  (setq lsp-log-io nil
-        lsp-trace nil
-        lsp-print-performance nil
-        lsp-auto-guess-root t
-        lsp-document-sync-method 'incremental
-        lsp-response-timeout 10
-        lsp-prefer-flymake nil
-        lsp-inhibit-message t
-        lsp-eldoc-render-all nil
-        lsp-enable-file-watchers nil
-        lsp-highlight-symbol-at-point nil
-        lsp-clients-clangd-args '("-j=4"
-                                  "-background-index"
-                                  "-log=error")
-        lsp-clients-go-server-args '("--cache-style=always"
+  (setq lsp-log-io nil)
+  (setq lsp-trace nil)
+  (setq lsp-print-performance nil)
+  (setq lsp-auto-guess-root t)
+  (setq lsp-document-sync-method 'incremental)
+  (setq lsp-response-timeout 10)
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-inhibit-message t)
+  (setq lsp-eldoc-render-all nil)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-highlight-symbol-at-point nil)
+  (setq lsp-clients-clangd-args '("-j=4"
+                                  "--index"
+                                  "-log=error"))
+  (setq lsp-clients-go-server-args '("--cache-style=always"
                                      "--diagnostics-style=onsave")))
 
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
   :config
-  (setq lsp-ui-doc-delay 0.3
-        lsp-ui-sideline-enable nil
-        lsp-ui-flycheck-enable t
-        lsp-ui-imenu-enable t
-        lsp-ui-imenu-kind-position 'top
-        lsp-ui-peek-enable t
-        lsp-ui-peek-fontify 'on-demand
-        lsp-ui-peek-list-width 50
-        lsp-ui-peek-list-height 20
-        lsp-ui-sideline-code-actions-prefix ""
-        lsp-ui-sideline-ignore-duplicate t
-        lsp-ui-sideline-show-code-actions nil
-        lsp-ui-sideline-show-diagnostics nil
-        lsp-ui-sideline-show-hover nil
-        lsp-ui-sideline-show-symbol nil))
+  (setq lsp-ui-doc-delay 0.3)
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-flycheck-enable t)
+  (setq lsp-ui-imenu-enable t)
+  (setq lsp-ui-imenu-kind-position 'top)
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-fontify 'on-demand)
+  (setq lsp-ui-peek-list-width 50)
+  (setq lsp-ui-peek-list-height 20)
+  (setq lsp-ui-sideline-code-actions-prefix "")
+  (setq lsp-ui-sideline-ignore-duplicate t)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-ui-sideline-show-diagnostics nil)
+  (setq lsp-ui-sideline-show-symbol nil))
 
 (use-package helm-lsp :after (lsp-mode helm))
 
