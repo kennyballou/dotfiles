@@ -43,6 +43,7 @@ in rec {
     anaconda-mode
     anti-zenburn-theme
     anzu
+    auctex-latexmk
     auth-source-pass
     autodisass-java-bytecode
     avy

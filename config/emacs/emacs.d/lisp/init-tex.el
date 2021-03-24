@@ -63,5 +63,12 @@
 
 (use-package helm-bibtex)
 
+(use-package auctex-latexmk
+  :after tex
+  :config
+  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+  :init
+  (auctex-latexmk-setup))
+
 (provide 'init-tex)
 ;;; init-tex.el ends here
