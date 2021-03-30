@@ -6,7 +6,7 @@
 (defvar unicode-fonts)
 
 (use-package unicode-fonts
-  :config
+  :init
   (unicode-fonts-setup))
 
 (provide 'init-unicode)
