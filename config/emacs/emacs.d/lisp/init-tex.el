@@ -58,10 +58,33 @@
   (setq TeX-source-correlate-start-server t)
   (setq-default TeX-master nil)
   (setq TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  (setq bibtex-dialect 'biblatex)
   :hook ((LaTeX-mode . kb/tex-mode)
          (TeX-mode . kb/tex-mode)))
 
-(use-package helm-bibtex)
+(use-package helm-bibtex
+  :bind ("C-c C-r" . #'helm-bibtex)
+  :config
+  ;; These values are set in `init-local.el'
+  ;; (setq bibtex-completion-bibliography nil)
+  ;; (setq bibtex-completion-notes-path nil)
+  ;; (setq bibtex-completion-library-path nil)
+  (setq bibtex-completion-additional-search-fields '(journal booktitle))
+  (setq bibtex-completion-display-formats
+        '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
+          (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+          (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+          (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+          (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
+  (setq bibtex-completion-pdf-symbol "⌘")
+  (setq bibtex-completion-notes-symbol "✎")
+  (setq bibtex-completion-pdf-field nil)
+  (setq bibtex-completion-pdf-extension '(".pdf" ".djvu"))
+  (setq bibtex-completion-format-citation-functions
+        '((org-mode      . bibtex-completion-format-org-link-to-PDF)
+          (latex-mode    . bibtex-completion-format-citation-cite)
+          (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+          (default       . bibtex-completion-format-citation-default))))
 
 (use-package auctex-latexmk
   :after tex
