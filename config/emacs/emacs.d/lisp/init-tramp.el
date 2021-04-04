@@ -13,8 +13,8 @@
 
 (define-key global-map (kbd "C-c s") #'helm-tramp)
 
-(setq tramp-default-method "ssh"
-      tramp-verbose 1)
+(setq tramp-default-method "ssh")
+(setq tramp-verbose 1)
 
 (add-hook 'helm-tramp-pre-command-hook '(lambda ()
                                           (projectile-mode 0)
