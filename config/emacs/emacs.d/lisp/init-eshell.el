@@ -57,6 +57,14 @@
   "Add face properties to STR using PROPERTIES list."
   `(propertize ,str 'face (list ,@properties)))
 
+(defun kb/system-name ()
+  "Return the current system name.
+
+Includes remote system names"
+  (replace-regexp-in-string "\n$"
+                            ""
+                            (shell-command-to-string "hostname")))
+
 (defun shortened-path (path max-len)
   "Return a modified version of PATH up to MAX-LEN.
 Replace some components with single characters starting from the
@@ -95,7 +103,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
         branch)))
   (concat
    "(@"
-   (system-name)
+   (kb/system-name)
    ")("
    (shortened-path (eshell/pwd) 20)
    ")"
