@@ -47,6 +47,8 @@
   (setq lsp-java-save-action-organize-imports nil)
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-enable-indentation t)
+  (setq lsp-java-format-settings-url (expand-file-name (concat user-emacs-directory "/lsp-java/GoogleStyles.xml")))
+  (setq lsp-java-format-settings-profile "GoogleStyle")
 
   :hook (java-mode . kb/java-mode)
   :after (lsp-mode dap-mode))

@@ -22,6 +22,11 @@ in
     source = ./emacs.d/site-lisp;
     target = "emacs/site-lisp";
   };
+  xdg.configFile.emacs-lsp-java = {
+    recursive = true;
+    source = ./emacs.d/lsp-java;
+    target = "emacs/lsp-java";
+  };
   xdg.configFile.emacs-snippets = {
     recursive = true;
     source = ./emacs.d/snippets;
