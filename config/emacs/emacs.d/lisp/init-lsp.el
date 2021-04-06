@@ -42,6 +42,11 @@
 
 
 (use-package lsp-mode
+  :init
+  (defun kb/lsp-mode ()
+    "Configure lsp mode."
+    (lsp-enable-which-key-integration))
+  :hook ((lsp-mode . kb/lsp-mode))
   :config
   (setq lsp-log-io nil)
   (setq lsp-trace nil)
