@@ -23,6 +23,7 @@
     (subword-mode)
     (setq-local tab-width 4)
     (setq-local c-basic-offset 4)
+    (lsp-java-boot-lens-mode)
     (lsp-deferred))
   :config
 
@@ -47,6 +48,8 @@
   (setq lsp-java-save-action-organize-imports nil)
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-enable-indentation t)
+  (setq lsp-java-import-maven-enabled t)
+  (setq lsp-java-maven-download-sources t)
   (setq lsp-java-format-settings-url (expand-file-name (concat user-emacs-directory "/lsp-java/GoogleStyles.xml")))
   (setq lsp-java-format-settings-profile "GoogleStyle")
 
