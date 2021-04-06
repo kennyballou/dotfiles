@@ -8,7 +8,7 @@
 (use-package dap-mode
   :after lsp-mode
   :config
-  (dap-mode t)
+  (dap-auto-configure-mode)
   (dap-ui-mode t))
 
 (use-package dap-hydra
