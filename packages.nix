@@ -105,6 +105,7 @@ with pkgs; [
   pidgin-with-plugins
   plantuml
   poppler_utils
+  postman
   pv
   pwgen
   python-environment
