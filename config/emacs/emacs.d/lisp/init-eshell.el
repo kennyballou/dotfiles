@@ -118,6 +118,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (setq eshell-prompt-function #'kb-eshell-prompt)
 (setq eshell-highlight-prompt nil)
 (setq eshell-history-size 4096)
+(setq eshell-history-ignoredups t)
 (setq eshell-prompt-regexp "(.*)(.*)\\(\\[.*\\]\\)?[%±] ")
 (dolist (cmd '("vim"
                "yarn"
