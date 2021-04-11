@@ -11,7 +11,7 @@
   };
   home-manager = builtins.fetchGit {
     url = "https://github.com/nix-community/home-manager.git";
-    rev = "ddcd476603dfd3388b1dc8234fa9d550156a51f5";
+    rev = "91418d3e57e96dc9f520931401c653becd33b4a4";
   };
   emacs-overlay = {
     master = builtins.fetchTarball {
