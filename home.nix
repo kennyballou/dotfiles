@@ -1,10 +1,7 @@
 { pkgs, config, ... }:
 let
-  lib = pkgs.lib;
-
   utils = import ./nix/utils.nix { pkgs = pkgs; };
   home-dir = builtins.getEnv "HOME";
-  xdg = config.xdg;
   nixpath = "${home-dir}/.nix-profile";
   sources = import ./nix/sources.nix;
 in
