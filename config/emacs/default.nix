@@ -3,6 +3,10 @@ let
   emacs-dir = "${config.home.homeDirectory}/.config/emacs";
 in
 {
+  xdg.configFile.emacs-early-init = {
+    source = ./emacs.d/early-init.el;
+    target = "emacs/early-init.el";
+  };
   xdg.configFile.emacs-init = {
     source = ./emacs.d/init.el;
     target = "emacs/init.el";

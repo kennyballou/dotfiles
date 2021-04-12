@@ -20,13 +20,6 @@
 
 (defconst *spell-check-support-enabled* t)
 
-;; Adjust Garbage Collection Settings
-(let ((normal-gc-cons-threshold (* 20 1024 1024))
-      (init-gc-cons-threshold (* 128 1024 1024)))
-  (setq gc-cons-threshold init-gc-cons-threshold)
-  (add-hook 'after-init-hook
-            (lambda () (setq gc-cons-threshold (* 20 1024 1024)))))
-
 (setq read-process-output-max (* 4096 1024))
 
 ;; customize interface configuration
@@ -54,7 +47,7 @@
 (fullframe list-packages quit-window)
 
 ;; Load configs for specific features and modes
-(require 'init-themes)
+;;(require 'init-themes)
 (require 'init-icons)
 (require 'init-spaceline)
 (require 'init-gui-frames)
