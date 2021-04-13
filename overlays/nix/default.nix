@@ -4,6 +4,7 @@ self: super:
     name = "nix-tools";
     ignoreCollisions = true;
     paths = with self;[
+      nixpkgs-fmt
       nix-bash-completions
       nix-diff
       nix-index
