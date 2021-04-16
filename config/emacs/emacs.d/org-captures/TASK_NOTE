@@ -1,7 +1,12 @@
-* Note taken on %U
+* %^{Description}
   :PROPERTIES:
   :ID:       %(org-id-uuid)
+  :CREATED:  %U
   :Link:     %a
+  :Task:     %K
   :END:
+
+%(when (not (string-blank-p "%i"))
+  (format "#+begin_example\n%s\n#+end_example\n" "%i"))
 
 %?

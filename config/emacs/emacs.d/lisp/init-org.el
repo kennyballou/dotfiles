@@ -206,6 +206,7 @@
 (defvar kb/org-journal-file (concat org-directory "journal.org"))
 (defvar kb/org-work-journal-file (concat org-directory "work.org"))
 (defvar kb/org-bookmarks-file (concat org-directory "bookmarks.org"))
+(defvar kb/org-logbook-file (concat org-directory "logbook.org"))
 (setq org-default-notes-file kb/org-refile)
 
 (defun kb/org-clocking-p ()
@@ -222,7 +223,7 @@
         ("r" "respond" entry (file kb/org-refile)
          (file "~/.config/emacs/org-captures/RESPOND")
          :clock-in t :clock-resume t :immediate-finish t)
-        ("tn" "note on task" entry (clock)
+        ("tn" "note on task" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/TASK_NOTE") :empty-lines 1)
         ("tr" "related task" entry (clock)
          (file "~/.config/emacs/org-captures/RELATED_TODO"))
