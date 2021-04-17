@@ -1,4 +1,4 @@
-# https://github.com/jwiegley/nix-config/blob/4d296ad/overlays/emacs/builder.nix
+# https://github.com/jwiegley/nix-config/blob/ba43753/overlays/emacs/builder.nix
 { stdenv
 , pkgs
 , emacs
@@ -17,6 +17,11 @@ stdenv.mkDerivation {
   buildInputs = [ emacs ] ++ buildInputs;
   buildPhase = ''
     ${preBuild}
+    ARGS=$(find ${pkgs.lib.concatStrings
+      (builtins.map (arg: arg + "/share/emacs/site-lisp ") buildInputs)} \
+      -type d -exec echo -L {} \;)
+    mkdir $out
+    export HOME=$out
     ${emacs}/bin/emacs -Q -nw -L . --batch -f batch-byte-compile *.el
   '';
   installPhase = ''
