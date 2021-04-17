@@ -32,6 +32,16 @@ in rec {
     buildInputs = [ hexrgb ];
   };
 
+  awqat = compileElispFiles {
+    name = "awqat.el";
+    src = fetchFromGitHub {
+      owner = "waqtalsalah";
+      repo = "awqat";
+      rev = "09106d79f50a1b8fbb0cbc017da0714a7c4ce3b3";
+      sha256 = "1my82b2yzirzmphv25cyk0yldvg0fxaa43vrpxg7x6ldn7npvfvj";
+    };
+  };
+
   emacs-package-list = (epkgs: (with epkgs.melpaPackages; [
     all-the-icons
     all-the-icons-dired
@@ -249,6 +259,7 @@ in rec {
     undo-tree
   ]) ++ (with epkgs.melpaStablePackages; [
   ]) ++ [
+    awqat
     ascii
     hexrgb
   ]);

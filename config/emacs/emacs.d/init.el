@@ -131,6 +131,7 @@
 (require 'init-org)
 (require 'init-mpd)
 (require 'init-astronomical)
+(require 'init-awqat)
 
 ;; PDF-tools
 (require 'init-pdf-tools)
