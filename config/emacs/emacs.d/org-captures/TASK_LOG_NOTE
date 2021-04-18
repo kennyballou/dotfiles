@@ -1,0 +1,8 @@
+* %^{Description}
+  :PROPERTIES:
+  :ID:       %(org-id-uuid)
+  :CREATED:  %U
+  :Link:     %a
+  :END:
+
+%?

@@ -225,6 +225,8 @@
          :clock-in t :clock-resume t :immediate-finish t)
         ("tn" "note on task" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/TASK_NOTE") :empty-lines 1)
+        ("l" "logbook entry" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/TASK_LOG_NOTE") :empty-lines 1)
         ("tr" "related task" entry (clock)
          (file "~/.config/emacs/org-captures/RELATED_TODO"))
         ("n" "note" entry (file kb/org-refile)
