@@ -163,6 +163,12 @@
 (setq org-agenda-log-mode-items (quote (closed clock state)))
 (setq org-attach-id-dir (expand-file-name "~/.org/data"))
 (setq org-startup-folded t)
+(setq calendar-time-display-form '(24-hours
+                                   ":"
+                                   minutes
+                                   (if time-zone " (")
+                                   time-zone
+                                   (if time-zone ")")))
 
 
 
