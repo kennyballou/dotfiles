@@ -23,6 +23,8 @@
 (defvar lsp-document-sync-method)
 (defvar lsp-response-timeout)
 (defvar lsp-clients-go-server-args)
+(defvar lsp-semantic-tokens-enable)
+(defvar lsp-completion-provider)
 (defvar lsp-ui-doc-delay)
 (defvar lsp-ui-sideline-enable)
 (defvar lsp-ui-sideline-show-symbol)
@@ -63,7 +65,9 @@
                                   "--index"
                                   "-log=error"))
   (setq lsp-clients-go-server-args '("--cache-style=always"
-                                     "--diagnostics-style=onsave")))
+                                     "--diagnostics-style=onsave"))
+  (setq lsp-semantic-tokens-enable t)
+  (setq lsp-completion-provider ':capf))
 
 (use-package lsp-ui
   :after lsp-mode
