@@ -28,7 +28,6 @@
 (require 'init-server)
 (require 'init-dbus)
 (require 'init-defaults)
-(require 'init-site-lisp)
 (require 'init-elpa)
 (require 'init-use-package)
 (require 'init-exec-path)
