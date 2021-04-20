@@ -1,12 +1,12 @@
 IMAPAccount devnulllabs
 CertificateFile /etc/ssl/certs/ca-certificates.crt
-Host imap.fastmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty --decrypt ~/.mail/kballou.devnulllabs.io.gpg"
+Host imap.gmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty --decrypt ~/.mail/kb.devnulllabs.io.gpg"
 PipelineDepth 1
 Port 993
 SSLType IMAPS
 Timeout 60
-User kballou@devnulllabs.io
+User kb@devnulllabs.io
 
 IMAPStore devnulllabs-remote
 Account devnulllabs
@@ -17,45 +17,43 @@ Path /home/kb/.mail/devnulllabs.io/
 SubFolders Verbatim
 
 Channel devnulllabs-archive
-Far :devnulllabs-remote:Archive
+Far ":devnulllabs-remote:[Gmail]/All Mail"
 Near :devnulllabs-local:archive
 Create Both
 Expunge Both
+SyncState *
 
 Channel devnulllabs-inbox
 Far :devnulllabs-remote:INBOX
 Near :devnulllabs-local:INBOX
 Create Both
 Expunge Both
-
-Channel devnulllabs-lists
-Far :devnulllabs-remote:lists
-Near :devnulllabs-local:lists
-Create Both
-Expunge Both
+SyncState *
 
 Channel devnulllabs-sent
-Far :devnulllabs-remote:Sent
+Far ":devnulllabs-remote:[Gmail]/Sent Mail"
 Near :devnulllabs-local:sent
 Create Both
 Expunge Both
+SyncState *
 
 Channel devnulllabs-spam
-Far :devnulllabs-remote:Spam
+Far :devnulllabs-remote:[Gmail]/Spam
 Near :devnulllabs-local:spam
 Create Both
 Expunge Both
+SyncState *
 
 Channel devnulllabs-trash
-Far :devnulllabs-remote:Trash
+Far :devnulllabs-remote:[Gmail]/Trash
 Near :devnulllabs-local:trash
 Create Both
 Expunge Both
+SyncState *
 
 Group devnulllabs
 Channel devnulllabs-archive
 Channel devnulllabs-inbox
-Channel devnulllabs-lists
 Channel devnulllabs-sent
 Channel devnulllabs-spam
 Channel devnulllabs-trash
@@ -91,11 +89,11 @@ Near :uboisestate-local:INBOX
 Create Both
 Expunge Both
 
-Channel uboisestate-sent
-Far ":uboisestate-remote:[Gmail]/Sent Mail"
-Near :uboisestate-local:sent
-Create Both
-Expunge Both
+# Channel uboisestate-sent
+# Far ":uboisestate-remote:[Gmail]/Sent Mail"
+# Near :uboisestate-local:sent
+# Create Both
+# Expunge Both
 
 Channel uboisestate-spam
 Far :uboisestate-remote:[Gmail]/Spam
@@ -112,6 +110,6 @@ Expunge Both
 Group uboisestate
 Channel uboisestate-archive
 Channel uboisestate-inbox
-Channel uboisestate-sent
+# Channel uboisestate-sent
 Channel uboisestate-spam
 Channel uboisestate-trash

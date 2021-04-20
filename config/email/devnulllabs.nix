@@ -5,20 +5,20 @@ in
 {
   accounts.email.accounts.devnulllabs = {
     primary = true;
-    address = "kballou@devnulllabs.io";
+    address = "kb@devnulllabs.io";
     maildir.path = "devnulllabs.io";
     imap = {
-      host = "imap.fastmail.com";
+      host = "imap.gmail.com";
       port = 993;
       tls = {
         enable = true;
         useStartTls = false;
       };
     };
-    userName = "kballou@devnulllabs.io";
-    passwordCommand = "gpg -q --for-your-eyes-only --no-tty --decrypt ~/.mail/kballou.devnulllabs.io.gpg";
+    userName = "kb@devnulllabs.io";
+    passwordCommand = "gpg -q --for-your-eyes-only --no-tty --decrypt ~/.mail/kb.devnulllabs.io.gpg";
     smtp = {
-      host = "smtp.fastmail.com";
+      host = "smtp.gmail.com";
       port = 587;
       tls = {
         enable = true;
