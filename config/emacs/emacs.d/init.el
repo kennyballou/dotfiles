@@ -16,8 +16,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(require 'init-benchmarking) ;; measure startup time
-
 (defconst *spell-check-support-enabled* t)
 
 (setq read-process-output-max (* 4096 1024))
