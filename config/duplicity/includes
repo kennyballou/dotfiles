@@ -1,4 +1,5 @@
 + /etc/nixos
 - /home/kb/music
+- /home/kb/.local/share/containers
 + /home
 - **
