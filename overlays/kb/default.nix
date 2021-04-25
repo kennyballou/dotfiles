@@ -1,5 +1,6 @@
 self: super:
 {
+  backup-sh = super.callPackage ../../packages/scripts/backup-sh {};
   duplicity-backup-sh = super.callPackage ../../packages/scripts/duplicity-backup-sh {};
   gen-sshconfig-sh = super.callPackage ../../packages/scripts/gen-sshconfig-sh {};
   git-sync-py = super.callPackage ../../packages/scripts/git-sync-py {};

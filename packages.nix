@@ -9,6 +9,7 @@ with pkgs; [
   aspellDicts.en
   aspellDicts.en-computers
   aspellDicts.en-science
+  backup-sh
   bash-completion
   bashInteractive
   breezy
