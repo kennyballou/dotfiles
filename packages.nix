@@ -75,6 +75,7 @@ with pkgs; [
   less
   libreoffice
   librsvg
+  mc
   mercurial
   mitmproxy
   mkpasswd
@@ -112,6 +113,7 @@ with pkgs; [
   python-environment
   qrencode
   racket
+  ranger
   renameutils
   ripgrep
   rsync
