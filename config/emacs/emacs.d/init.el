@@ -118,6 +118,7 @@
 (require 'init-tex)
 (require 'init-toml)
 (require 'init-ocaml)
+(require 'init-z3)
 
 ;; Email and Such
 (require 'init-auth-sources)

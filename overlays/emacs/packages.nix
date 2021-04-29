@@ -249,6 +249,7 @@ in rec {
     xref-js2
     yari
     yasnippet
+    z3-mode
     zenburn-theme
   ]) ++ (with epkgs.elpaPackages; [
     auctex
