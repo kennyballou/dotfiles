@@ -8,5 +8,5 @@ exec ${pkgs.duplicity}/bin/duplicity --full-if-older-than 1M \
      --include-filelist "${builtins.getEnv "HOME"}/.config/duplicity/includes" \
      --rsync-options "--bwlimit=2048K" \
      / \
-     rsync://usw-s008.rsync.net/backup/kb/$(hostname)/duplicity
+     rsync://usw-s008.rsync.net/backup/kb/$(${pkgs.nettools}/bin/hostname)/duplicity
 ''
