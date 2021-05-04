@@ -28,11 +28,11 @@
       <toolchain>
         <type>jdk</type>
         <provides>
-          <version>15</version>
+          <version>16</version>
           <vendor>OpenJDK</vendor>
         </provides>
         <configuration>
-          <jdkHome>${pkgs.openjdk15}</jdkHome>
+          <jdkHome>${pkgs.openjdk16}</jdkHome>
         </configuration>
       </toolchain>
     </toolchains>
