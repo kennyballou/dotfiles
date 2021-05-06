@@ -27,30 +27,74 @@
 
 This is used internally by `vde/modus-themes-toggle'.
 https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L26"
-  (setq modus-operandi-theme-slanted-constructs t)
-  (setq modus-operandi-theme-bold-constructs t)
-  (setq modus-operandi-theme-subtle-diffs t)
-  (setq modus-operandi-theme-rainbow-headings t)
-  (setq modus-operandi-theme-section-headings nil)
-  (setq modus-operandi-theme-scale-headings nil)
-  (setq modus-operandi-theme-fringes 'subtle) ; {nil,'subtle,'intense}
-  (setq modus-operandi-theme-mode-line 'moody) ; {nil,'3d,'moody}
-  (setq modus-operandi-theme-3d-modeline t)
-  (setq modus-operandi-theme-faint-syntax nil)
-  (setq modus-operandi-theme-intense-hl-line t)
-  (setq modus-operandi-theme-intense-paren-match t)
-  (setq modus-operandi-theme-prompts 'subtle) ; {nil,'subtle,'intense}
-  (setq modus-operandi-theme-completions 'opinionated) ; {nil,'moderate,'opinionated}
-  (setq modus-operandi-theme-diffs 'desaturated) ; {nil,'desaturated,'fg-only}
-  (setq modus-operandi-theme-org-blocks 'greyscale) ; {nil,'greyscale,'rainbow}
-  (setq modus-operandi-theme-variable-pitch-headings nil)
-  (setq modus-operandi-theme-rainbow-headings t)
-  (setq modus-operandi-theme-section-headings nil)
-  (setq modus-operandi-theme-scale-headings t)
-  (setq modus-operandi-theme-scale-1 1.05)
-  (setq modus-operandi-theme-scale-2 1.1)
-  (setq modus-operandi-theme-scale-3 1.15)
-  (setq modus-operandi-theme-scale-4 1.2)
+  (setq modus-themes-slanted-constructs t)
+  (setq modus-themes-bold-constructs nil)
+  (setq modus-themes-no-mixed-fonts nil)
+  (setq modus-themes-subtle-line-numbers nil)
+  (setq modus-themes-success-deuteranopia t)
+
+  (setq modus-themes-fringes nil) ; {nil,'subtle,'intense}
+
+  ;; Options for `modus-themes-lang-checkers': nil,
+  ;; 'straight-underline, 'subtle-foreground,
+  ;; 'subtle-foreground-straight-underline, 'intense-foreground,
+  ;; 'intense-foreground-straight-underline, 'colored-background
+  (setq modus-themes-lang-checkers nil)
+
+  ;; Options for `modus-themes-mode-line': nil, '3d, 'moody,
+  ;; 'borderless, 'borderless-3d, 'borderless-moody, 'accented,
+  ;; 'accented-3d, 'accented-moody
+  (setq modus-themes-mode-line '3d)
+
+  ;; Options for `modus-themes-syntax': nil, 'faint,
+  ;; 'yellow-comments, 'green-strings,
+  ;; 'yellow-comments-green-strings, 'alt-syntax,
+  ;; 'alt-syntax-yellow-comments, 'faint-yellow-comments
+  (setq modus-themes-syntax nil)
+
+  ;; Options for `modus-themes-hl-line': nil, 'intense-background,
+  ;; 'accented-background, 'underline-neutral,
+  ;; 'underline-accented, 'underline-only-neutral,
+  ;; 'underline-only-accented
+  (setq modus-themes-hl-line 'underline-neutral)
+
+  (setq modus-themes-paren-match 'subtle-bold) ; {nil,'subtle-bold,'intense,'intense-bold}
+
+  ;; Options for `modus-themes-links': nil, 'faint,
+  ;; 'neutral-underline, 'faint-neutral-underline, 'no-underline,
+  ;; 'underline-only, 'neutral-underline-only
+  (setq modus-themes-links 'neutral-underline)
+
+  ;; Options for `modus-themes-prompts': nil, 'subtle-accented,
+  ;; 'intense-accented, 'subtle-gray, 'intense-gray
+  (setq modus-themes-prompts 'subtle-gray)
+
+  (setq modus-themes-completions 'opinionated) ; {nil,'moderate,'opinionated}
+
+  ;; Options for `modus-themes-region': nil, 'no-extend, 'bg-only,
+  ;; 'bg-only-no-extend, 'accent, 'accent-no-extend
+  (setq modus-themes-region 'bg-only-no-extend)
+
+  ;; Options for `modus-themes-diffs': nil, 'desaturated,
+  ;; 'bg-only, 'deuteranopia, 'fg-only-deuteranopia
+  (setq modus-themes-diffs 'desaturated)
+
+  (setq modus-themes-org-blocks 'grayscale) ; {nil,'grayscale,'rainbow}
+  (setq modus-themes-org-habit nil) ; {nil,'simplified,'traffic-light}
+
+  (setq modus-themes-headings ; this is an alist: read the manual or its doc string
+        '((1 . line)
+          (2 . rainbow-line-no-bold)
+          (t . no-bold)))
+
+  (setq modus-themes-variable-pitch-ui nil)
+  (setq modus-themes-variable-pitch-headings t)
+  (setq modus-themes-scale-headings t)
+  (setq modus-themes-scale-1 1.1)
+  (setq modus-themes-scale-2 1.15)
+  (setq modus-themes-scale-3 1.21)
+  (setq modus-themes-scale-4 1.27)
+  (setq modus-themes-scale-5 1.33)
   (load-theme 'modus-operandi t))
 
 (defun vde/modus-operandi-custom ()
