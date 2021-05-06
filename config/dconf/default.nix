@@ -13,7 +13,20 @@ in
         "remove-old-temp-files" = true;
         "remove-old-trash-files" = true;
       };
+      "org/gnome/desktop/interface" = {
+        "font-name" = "DejaVu Sans 10";
+        "monospace-font-name" = "DejaVu Sans Mono 10";
+        "gtk-im-module" = "gtk-im-context-simple";
+        "gtk-theme" = "Nordic-darker";
+        "icon-theme" = "Tela-dark";
+        "locate-pointer" = false;
+        "show-battery-percentage" = true;
+        "clock-show-date" = true;
+        "clock-show-seconds" = false;
+        "clock-show-weekday" = false;
+      };
       "org/gnome/desktop/wm/keybindings" = {
+        "move-to-workspace-1" = "@as []";
         "activate-window-menu" = "@as []";
         "panel-run-dialog" = [ "<Alt>space" ];
       };
@@ -37,10 +50,26 @@ in
       };
       "org/gnome/desktop/wm/preferences" = {
         "button-layout" = "appmenu:minimize,maximize,close";
-        "focus-mode" = "sloppy";  # focus on hover
+        "focus-mode" = "strict";
         "mouse-button-modifier" = "<Alt>";
         "resize-with-right-button" = true;
         "titlebar-font" = "DejaVu Sans 11";
+      };
+      "org/gnome/shell" = {
+        enabled-extensions = [
+          "apps-menu@gnome-shell-extensions.gcampax.github.com"
+          "user-theme@gnome-shell-extensions.gcampax.github.com"
+          "gsconnect@andyholms.github.io"
+        ];
+        favorite-apps = [
+          "firefox.desktop"
+          "chromium-browser.desktop"
+          "emacs.desktop"
+          "Alacritty.desktop"
+          "org.gnome.Calendar.desktop"
+          "org.gnome.Nautilus.desktop"
+          "gnome-control-center.desktop"
+        ];
       };
     };
   };
