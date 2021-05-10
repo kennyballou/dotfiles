@@ -166,7 +166,7 @@
   :config
   (which-key-mode)
   (which-key-setup-side-window-right)
-  (setq which-key-idle-delay 0.3)
+  (setq which-key-idle-delay 0.5)
   (setq which-key-use-C-h-commands nil))
 
 (global-hl-line-mode t)
