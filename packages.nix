@@ -90,6 +90,7 @@ with pkgs; [
   nix-search-emacs-packages-sh
   nmap
   notmuch
+  nox
   obs-studio
   octave
   openjdk11
