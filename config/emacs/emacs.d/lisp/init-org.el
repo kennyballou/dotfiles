@@ -325,6 +325,11 @@
               ("N" "Notes" tags "NOTE"
                ((org-agenda-overriding-header "Notes")
                 (org-tags-match-list-sublevels t)))
+              ("l" "Logbook" tags "RECORD"
+               ((org-agenda--insert-overriding-header "Logbook")
+                (org-tags-match-list-sublevels t)
+                (org-agenda-filter-by-category (quote ("+logbook")))
+                (org-agenda-span 'day)))
               ("d" "Today"
                ((agenda "" nil)
                 (tags "REFILE"
