@@ -6,7 +6,7 @@ let
 in
 {
   dconf = {
-    enable = true;
+    enable = false;
     settings = {
       "org/gnome/desktop/privacy" = {
         "recent-files-max-age" = -1;
