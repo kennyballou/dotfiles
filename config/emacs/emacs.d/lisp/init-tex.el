@@ -50,7 +50,7 @@
                                      ((output-dvi style-pstricks)
                                       "dvips and gv")
                                      (output-dvi "xdvi")
-                                     (output-pdf "Evince" "pdf-tools")
+                                     (output-pdf "okular" "pdf-tools")
                                      (output-html "xdg-open")))
   (setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
   (setq TeX-source-correlate-method '((dvi . source-specials)
