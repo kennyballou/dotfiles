@@ -141,7 +141,7 @@ with pkgs; [
   urlwatch
   vale
   vim
-  visualvm
+  #visualvm
   w3m
   watch
   watchman
