@@ -25,6 +25,9 @@ in
         "clock-show-seconds" = false;
         "clock-show-weekday" = false;
       };
+      "org/gnome/desktop/media-handling" = {
+        "autorun-never" = true;
+      };
       "org/gnome/desktop/wm/keybindings" = {
         "move-to-workspace-1" = "@as []";
         "activate-window-menu" = "@as []";
