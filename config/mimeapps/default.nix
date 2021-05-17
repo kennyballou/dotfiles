@@ -30,7 +30,8 @@
       "x-scheme-handler/http" = [ "firefox.desktop" ];
       "x-scheme-handler/https" = [ "firefox.desktop" ];
       "x-scheme-handler/unknown" = [ "emacsclient.desktop" ];
-
+      "x-scheme-handler/sgnl" = [ "signal-desktop.desktop" ];
+      "x-scheme-handler/signalcaptcha" = [ "signal-desktop.desktop" ];
     };
   };
 }
