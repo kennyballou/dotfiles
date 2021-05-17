@@ -1,7 +1,7 @@
 { config, ... }:
 {
   services.kdeconnect = {
-    enable = true;
-    indicator = true;
+    enable = false;
+    indicator = false;
   };
 }
