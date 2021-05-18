@@ -114,7 +114,13 @@ https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L2
 (add-hook 'contrib/after-load-theme-hook 'vde/modus-operandi-custom)
 (kb/modus-operandi)
 
-(defconst font-height 130
+(set-face-attribute 'default nil
+                    :family "DejaVu Sans Mono"
+                    :height 110
+                    :weight 'normal
+                    :width 'normal)
+
+(defconst font-height 110
   "Default font-height to use.")
 (defconst font-family-mono "DejaVu Mono"
   "Default monospace font-family to use.")
