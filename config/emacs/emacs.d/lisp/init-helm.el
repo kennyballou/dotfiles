@@ -28,6 +28,7 @@
 (defvar helm-sources-using-default-as-input)
 (defvar helm-split-window-inside-p)
 (defvar swiper-helm)
+(defvar helm-rg)
 
 
 (use-package helm
@@ -109,6 +110,9 @@
 (when (executable-find "ack-grep")
   (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
         helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+
+(when (executable-find "rg")
+  (use-package helm-rg))
 
 (provide 'init-helm)
 ;;; init-helm.el ends here
