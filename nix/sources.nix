@@ -1,5 +1,10 @@
 {
   nixpkgs = {
+    kb = builtins.fetchGit {
+      url = "https://github.com/kennyballou/nixpkgs.git";
+      ref = "override-erlang-emacs-mode";
+      rev = "a730bb1666e7614071a0c7b1ed4dac5ba5d03753";
+    };
     unstable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
       rev = "94b2848559b12a8ed1fe433084686b2a81123c99";

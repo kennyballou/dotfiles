@@ -1,5 +1,6 @@
 let
   sources = import ./nix/sources.nix;
+  kb = sources.nixpkgs.kb;
   unstable = sources.nixpkgs.unstable;
   stable = sources.nixpkgs.stable;
   home-manager = sources.home-manager;
