@@ -6,16 +6,16 @@ in
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Tela-dark";
-      package = null;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
     theme = {
       name = "Nordic-darker";
       package = pkgs.nordic;
     };
     font = {
-      name = "DejaVu Sans";
-      package = pkgs.dejavu_fonts;
+      name = "Noto Sans";
+      package = pkgs.noto-fonts;
       size = 10;
     };
     gtk2.extraConfig = ''
@@ -25,6 +25,7 @@ in
       gtk-menu-images=1
       gtk-button-images=1
       gtk-cursor-theme-size=24
+      gtk-cursor-theme-name="breeze_cursors"
     '';
     gtk3.bookmarks = [
       "file://${home.homeDirectory}/workspace"
