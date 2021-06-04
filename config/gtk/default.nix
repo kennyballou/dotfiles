@@ -3,6 +3,11 @@ let
   home = config.home;
 in
 {
+  xdg.configFile."gtkrc".text = ''
+  include "${pkgs.nordic}/share/themes/Nordic-darker/gtk-2.0/gtkrc"
+  gtk-theme-name="Nordic-darker";
+  '';
+
   gtk = {
     enable = true;
     iconTheme = {
