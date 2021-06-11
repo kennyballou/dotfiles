@@ -5,6 +5,7 @@ with pkgs; [
   alacritty
   apg
   aria2
+  ario
   aspell
   aspellDicts.en
   aspellDicts.en-computers
