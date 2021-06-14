@@ -16,6 +16,7 @@ with pkgs; [
   breezy
   cacert
   chromium
+  ddcutil
   diffstat
   diffutils
   direnv
