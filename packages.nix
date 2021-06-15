@@ -161,6 +161,7 @@ with pkgs; [
   xz
   youtube-dl
   yubikey-personalization
+  zeal
   zip
   zoom-us
   zotero
