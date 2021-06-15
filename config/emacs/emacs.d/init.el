@@ -79,6 +79,7 @@
 (require 'init-flycheck)
 (require 'init-tramp)
 (require 'init-yas)
+(require 'init-zeal)
 
 ;; Shells and Terms
 (require 'init-shell)

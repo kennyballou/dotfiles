@@ -250,6 +250,7 @@ in rec {
     yari
     yasnippet
     z3-mode
+    zeal-at-point
     zenburn-theme
   ]) ++ (with epkgs.elpaPackages; [
     auctex
