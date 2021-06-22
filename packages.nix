@@ -73,6 +73,7 @@ with pkgs; [
   john
   jq
   klavaro
+  kopia
   ledger
   less
   libreoffice
