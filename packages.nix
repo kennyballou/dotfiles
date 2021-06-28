@@ -164,6 +164,7 @@ with pkgs; [
   xz
   youtube-dl
   yubikey-personalization
+  z3
   zeal
   zip
   zoom-us
