@@ -54,7 +54,6 @@ in rec {
     anti-zenburn-theme
     anzu
     auctex-latexmk
-    auth-source-pass
     autodisass-java-bytecode
     avy
     bash-completion
