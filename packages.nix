@@ -84,6 +84,7 @@ with pkgs; [
   mkpasswd
   mpc_cli
   mpd
+  mpdris2
   msmtp
   mtr
   mu
@@ -110,6 +111,7 @@ with pkgs; [
   pdftk
   pidgin-with-plugins
   plantuml
+  playerctl
   poppler_utils
   postman
   pv
