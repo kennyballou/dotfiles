@@ -1,7 +1,7 @@
 * %^{Description} :RECORD:
   :PROPERTIES:
   :ID:       %(org-id-uuid)
-  :CREATED:  %U
+  :CREATED:  %T
   :Link:     %a
   :END:
 
