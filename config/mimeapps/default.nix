@@ -32,6 +32,7 @@
       "x-scheme-handler/unknown" = [ "emacsclient.desktop" ];
       "x-scheme-handler/sgnl" = [ "signal-desktop.desktop" ];
       "x-scheme-handler/signalcaptcha" = [ "signal-desktop.desktop" ];
+      "x-scheme-handler/element" = [ "element-desktop.desktop" ];
     };
   };
 }
