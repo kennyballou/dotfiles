@@ -90,6 +90,7 @@ with pkgs; [
   mu
   mutt
   ncmpcpp
+  niv
   nix-tools
   nix-search-emacs-packages-sh
   nmap
