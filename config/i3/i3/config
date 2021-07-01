@@ -8,15 +8,15 @@ font xft:DejaVu Sans Mono 10
 floating_modifier $ALT
 
 # start a terminal
-bindsym $ALT+Return exec terminator
+bindsym $ALT+Return exec alacritty
 # start ranger
-bindsym $ALT+slash exec urxvt -e ranger
+bindsym $ALT+slash exec krusader
 
 # kill focused window
 bindsym $SUP+q kill
 
 # start dmenu (a program launcher)
-bindsym $ALT+space exec dmenu_run
+bindsym $ALT+space exec rofi -show combi
 
 # change focus
 bindsym $SUP+h focus left
