@@ -169,6 +169,7 @@ in rec {
     lsp-mode
     lsp-java
     lsp-ui
+    lua-mode
     magit
     markdown-mode
     mbsync

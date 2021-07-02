@@ -106,6 +106,7 @@
 (require 'init-html)
 (require 'init-java)
 (require 'init-javascript)
+(require 'init-lua)
 (require 'init-markdown)
 (require 'init-nix)
 (require 'init-nxml)
