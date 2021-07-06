@@ -115,7 +115,7 @@ https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L2
 (kb/modus-operandi)
 
 (set-face-attribute 'default nil
-                    :family "DejaVu Sans Mono"
+                    :family "DejaVuSansMono Nerd Font Mono"
                     :height 110
                     :weight 'normal
                     :width 'normal)
