@@ -12,7 +12,8 @@ in
       (import sources.emacs-overlay.stable)
     ] ++ utils.importDirs ./overlays;
   };
-  imports = (utils.importDirs ./config) ++ [
+  imports = (utils.importDirs ./config) ++
+            (utils.importDirs ./private) ++ [
     ./config/xresources/dpi-96.nix
     ./config/email/devnulllabs.nix
     ./config/email/boisestate.nix
