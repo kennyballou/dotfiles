@@ -193,6 +193,7 @@ https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L2
 
 (set-fontset-font t 'symbol "Noto Emoji")
 (set-fontset-font t 'symbol "all-the-icons" nil 'append)
+(set-fontset-font t '(#xF0000 . #xF14FF) "Material Design Icons" nil 'append)
 (set-fontset-font t 'symbol "Symbola" nil 'append)
 
 ; Ignore X resources; its settings would be redundant with the other settings
