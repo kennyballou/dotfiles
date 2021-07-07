@@ -6,7 +6,7 @@ self: super:
     paths = [
       self.gitAndTools.delta
       self.gitAndTools.git-crypt
-      self.gitAndTools.gitFastExport
+      #self.gitAndTools.gitFastExport
       self.gitAndTools.pass-git-helper
       self.gitAndTools.tig
       self.gitFull
