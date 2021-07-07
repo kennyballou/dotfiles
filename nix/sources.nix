@@ -7,7 +7,7 @@
     };
     unstable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
-      rev = "3bc8e5cd23b84b2e149e7aaad57117da16a19e6f";
+      rev = "3e0ce8c5d478d06b37a4faa7a4cc8642c6bb97de";
     };
     stable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
@@ -24,7 +24,7 @@
     };
     stable = builtins.fetchGit {
       url = "https://github.com/nix-community/emacs-overlay.git";
-      rev = "b909dd44b8b557f3ef7b250f3a32e0cff32a8c97";
+      rev = "bfc8f6edcb7bcf3cf24e4a7199b3f6fed96aaecf";
     };
   };
 }
