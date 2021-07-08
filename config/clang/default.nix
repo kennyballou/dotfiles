@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  home-dir = builtins.getEnv "HOME";
+  home-dir = config.home.homeDirectory;
   nixpath = "${home-dir}/.nix-profile";
 in
 {
