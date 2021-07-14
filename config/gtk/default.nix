@@ -1,11 +1,10 @@
 { pkgs, config, ... }:
 let
-  home = config.home;
+  home-dir = config.home.homeDirectory;
 in
 {
   xdg.configFile."gtkrc".text = ''
-  include "${pkgs.nordic}/share/themes/Nordic-darker/gtk-2.0/gtkrc"
-  gtk-theme-name="Nordic-darker";
+  gtk-theme-name="Adwaita-dark";
   '';
 
   gtk = {
@@ -15,13 +14,15 @@ in
       package = pkgs.papirus-icon-theme;
     };
     theme = {
-      name = "Nordic-darker";
-      package = pkgs.nordic;
+      name = "Adwaita-dark";
     };
     font = {
-      name = "Noto Sans";
-      package = pkgs.noto-fonts;
-      size = 10;
+      name = "DejaVu Sans Book";
+      package = pkgs.dejavu_fonts;
+      size = 11;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 0;
     };
     gtk2.extraConfig = ''
       gtk-enable-animations=1
@@ -39,8 +40,8 @@ in
       gtk-xft-rgba="rgb"
     '';
     gtk3.bookmarks = [
-      "file://${home.homeDirectory}/workspace"
-      "file://${home.homeDirectory}/workspace/src"
+      "file://${home-dir}/workspace"
+      "file://${home-dir}/workspace/src"
     ];
   };
 }
