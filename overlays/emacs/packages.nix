@@ -48,6 +48,7 @@ in rec {
     all-the-icons-gnus
     all-the-icons-ibuffer
     add-node-modules-path
+    adoc-mode
     ag
     alchemist
     anaconda-mode
