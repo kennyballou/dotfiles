@@ -6,7 +6,8 @@
 (defvar z3-solver-cmd)
 
 (use-package z3-mode
-  :mode "\\.smt2\\'"
+  :mode (("\\.smt2\\'" . z3-mode)
+         ("\\.z3\\'" . z3-mode))
   :config
   (setq z3-solver-cmd "z3"))
 
