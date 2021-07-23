@@ -204,7 +204,7 @@ https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L2
 ;; - Resetting Garbage Collection and file-name-handler values.
 (add-hook 'after-init-hook
           (lambda ()
-            (setq gc-cons-threshold 67108864)
+            (setq gc-cons-threshold 100000000)
             (setq gc-cons-percentage 0.1)
             (setq file-name-handler-alist file-name-handler-alist-original)
             (garbage-collect)) t)
