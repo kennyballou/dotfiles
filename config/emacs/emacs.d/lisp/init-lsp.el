@@ -25,6 +25,9 @@
 (defvar lsp-clients-go-server-args)
 (defvar lsp-semantic-tokens-enable)
 (defvar lsp-completion-provider)
+(defvar lsp-idle-delay)
+(defvar lsp-modeline-code-actions-enable)
+(defvar lsp-modeline-diagnostics-enable)
 (defvar lsp-ui-doc-delay)
 (defvar lsp-ui-sideline-enable)
 (defvar lsp-ui-sideline-show-symbol)
@@ -41,6 +44,9 @@
 (defvar lsp-ui-sideline-show-diagnostics)
 (defvar lsp-ui-sideline-show-hover)
 (defvar lsp-ui-sideline-show-symbol)
+(defvar lsp-ui-doc-show-with-cursor)
+(defvar lsp-ui-doc-position)
+(defvar lsp-ui-doc-alignment)
 
 
 (use-package lsp-mode
@@ -57,10 +63,13 @@
   (setq lsp-document-sync-method 'incremental)
   (setq lsp-response-timeout 10)
   (setq lsp-prefer-flymake nil)
+  (setq lsp-idle-delay 0.500)
   (setq lsp-inhibit-message t)
   (setq lsp-eldoc-render-all nil)
   (setq lsp-enable-file-watchers nil)
   (setq lsp-highlight-symbol-at-point nil)
+  (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-clients-clangd-args '("-j=4"
                                   "--index"
                                   "-log=error"))

@@ -46,6 +46,7 @@
                                  "_darcs" ".tox" ".svn" ".stack-work" "build"))
 
   (setq lsp-java-save-action-organize-imports nil)
+  (setq lsp-java-completion-max-results 20)
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-enable-indentation t)
   (setq lsp-java-import-maven-enabled t)
