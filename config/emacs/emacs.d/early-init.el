@@ -88,7 +88,7 @@ https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L2
           (t . no-bold)))
 
   (setq modus-themes-variable-pitch-ui nil)
-  (setq modus-themes-variable-pitch-headings t)
+  (setq modus-themes-variable-pitch-headings nil)
   (setq modus-themes-scale-headings t)
   (setq modus-themes-scale-1 1.1)
   (setq modus-themes-scale-2 1.15)
