@@ -8,7 +8,7 @@
 (with-eval-after-load 'sgml-mode
   (add-hook 'sgml-mode-hook (lambda () (tagedit-mode 1))))
 
-(add-to-list 'auto-mode-alist '("\\.\\(jsp\\|tpml\\)\\'" . 'html-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(jsp\\|tpml\\)\\'" . html-mode))
 
 ;; Note: ERB is configured in init-ruby-mode
 

@@ -28,22 +28,9 @@
     (lsp-deferred))
   :hook (typescript-mode . kb/typescript--mode))
 
-(defcustom preferred-javascript-mode
-  (first (remove-if-not #'fboundp '(js2-mode js-mode)))
-  "Javascript mode to use for .js files."
-  :type 'symbol
-  :group 'programming
-  :options '(js2-mode js-mode))
-
 (defconst preferred-javascript-indent-level 4)
 
-;; Need to first remove from list if present, since elpa adds entries too, which
-;; may be in an arbitrary order
-(eval-when-compile (require 'cl-lib))
-(setq auto-mode-list (cons `("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
-                           (loop for entry in auto-mode-alist
-                                 unless (eq preferred-javascript-mode (cdr entry))
-                                 collect entry)))
+(add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
 
 ;; js-2 mode
 ;; change some defaults
@@ -68,7 +55,7 @@
 ;; js-mode
 (setq-default js-indent-level preferred-javascript-indent-level)
 
-(add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 (use-package xref-js2
   :after js2-mode
@@ -93,7 +80,9 @@
 
   (define-minor-mode inferior-js-keys-mode
     "Bindings for communicating with inferior js interpreter."
-    nil "InfJS" inferior-js-minor-mode-map)
+    :init-value nil
+    :lighter "InfJS"
+    :keymap inferior-js-minor-mode-map)
 
   (dolist (hook '(js2-mode-hook js-mode-hook))
     (add-hook hook 'inferior-js-keys-mode)))
