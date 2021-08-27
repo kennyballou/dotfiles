@@ -14,7 +14,10 @@
   (dap-mode t)
   (dap-auto-configure-mode)
   (dap-ui-mode t)
-  (dap-tooltip-mode t))
+  (dap-tooltip-mode t)
+  (bind-key (kbd "<f7>") #'dap-step-in dap-mode-map)
+  (bind-key (kbd "<f8>") #'dap-next dap-mode-map)
+  (bind-key (kbd "<f9>") #'dap-continue dap-mode-map))
 
 (use-package dap-hydra
   :after dap-mode)
