@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 let
   emacs-dir = "${config.home.homeDirectory}/.config/emacs";
+  kb-emacs = pkgs.callPackage ../../packages/emacs {};
 in
 {
   xdg.configFile.emacs-early-init = {
@@ -58,6 +59,11 @@ in
     target = "applications/emacsclient.desktop";
   };
   home.sessionVariables = {
-    EDITOR = "${pkgs.emacs-overlay}/bin/emacsclient -a";
+    EDITOR = "${kb-emacs}/bin/emacsclient -a";
+  };
+
+  programs.emacs = {
+    enable = true;
+    package = kb-emacs;
   };
 }

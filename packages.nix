@@ -29,7 +29,6 @@ with pkgs; [
   duplicity-backup-sh
   eclipses.eclipse-java
   element-desktop
-  emacs-overlay
   enchant
   entr
   exiv2
@@ -87,6 +86,7 @@ with pkgs; [
   mpdris2
   msmtp
   mtr
+  multimarkdown
   mu
   mutt
   ncmpcpp
