@@ -15,6 +15,7 @@ with pkgs; [
   bashInteractive
   breezy
   cacert
+  catdocx
   chromium
   ddcutil
   diffstat
