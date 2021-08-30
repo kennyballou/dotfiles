@@ -17,7 +17,6 @@ swap:
   'chat ?bots?': chatbot(s)
   adaptor: adapter
   administrate: administer
-  afterwards: afterward
   alphabetic: alphabetical
   alphanumerical: alphanumeric
   anti-aliasing: antialiasing
