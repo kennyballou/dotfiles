@@ -47,6 +47,7 @@
 (defvar lsp-ui-doc-show-with-cursor)
 (defvar lsp-ui-doc-position)
 (defvar lsp-ui-doc-alignment)
+(defvar lsp-auto-configure)
 
 
 (use-package lsp-mode
@@ -58,6 +59,7 @@
   :config
   (setq lsp-log-io nil)
   (setq lsp-trace nil)
+  (setq lsp-auto-configure nil)
   (setq lsp-print-performance nil)
   (setq lsp-auto-guess-root t)
   (setq lsp-document-sync-method 'incremental)
