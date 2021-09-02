@@ -29,6 +29,9 @@
 (defvar org-capture-templates)
 (defvar org-capture-templates-contexts)
 (defvar org-pomodoro)
+(defvar org-pomodoro-long-break-frequency)
+(defvar org-pomodoro-ticking-frequency)
+(defvar org-pomodoro-ticking-sound-p)
 (defvar org-agenda-dim-blocked-tasks)
 (defvar org-agenda-compact-blocks)
 (defvar org-agenda-custom-commands)
@@ -523,7 +526,11 @@ https://stackoverflow.com/a/16247032/7492588"
 
 
 
-(use-package org-pomodoro)
+(use-package org-pomodoro
+  :config
+  (setq org-pomodoro-long-break-frequency 2)
+  (setq org-pomodoro-ticking-sound-p t)
+  (setq org-pomodoro-ticking-frequency 60))
 
 (provide 'init-org)
 ;;; init-org.el ends here
