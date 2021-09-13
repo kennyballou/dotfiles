@@ -49,24 +49,24 @@ in
       groups = {
         uboisestate.channels = {
           inbox = {
-            masterPattern = "INBOX";
-            slavePattern = "INBOX";
+            farPattern = "INBOX";
+            nearPattern = "INBOX";
           };
           sent = {
-            masterPattern = "[Gmail]/Sent Mail";
-            slavePattern = "sent";
+            farPattern = "[Gmail]/Sent Mail";
+            nearPattern = "sent";
           };
           archive = {
-            masterPattern = "[Gmail]/All Mail";
-            slavePattern = "archive";
+            farPattern = "[Gmail]/All Mail";
+            nearPattern = "archive";
           };
           trash = {
-            masterPattern = "[Gmail]/Trash";
-            slavePattern = "trash";
+            farPattern = "[Gmail]/Trash";
+            nearPattern = "trash";
           };
           spam = {
-            masterPattern = "[Gmail]/Spam";
-            slavePattern = "spam";
+            farPattern = "[Gmail]/Spam";
+            nearPattern = "spam";
           };
         };
       };

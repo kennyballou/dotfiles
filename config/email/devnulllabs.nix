@@ -56,28 +56,28 @@ in
       groups = {
         devnulllabs.channels = {
           inbox = {
-            masterPattern = "INBOX";
-            slavePattern = "INBOX";
+            farPattern = "INBOX";
+            nearPattern = "INBOX";
           };
           sent = {
-            masterPattern = "Sent";
-            slavePattern = "sent";
+            farPattern = "Sent";
+            nearPattern = "sent";
           };
           archive = {
-            masterPattern = "Archive";
-            slavePattern = "archive";
+            farPattern = "Archive";
+            nearPattern = "archive";
           };
           trash = {
-            masterPattern = "Trash";
-            slavePattern = "trash";
+            farPattern = "Trash";
+            nearPattern = "trash";
           };
           spam = {
-            masterPattern = "Spam";
-            slavePattern = "spam";
+            farPattern = "Spam";
+            nearPattern = "spam";
           };
           lists = {
-            masterPattern = "lists";
-            slavePattern = "lists";
+            farPattern = "lists";
+            nearPattern = "lists";
           };
         };
       };
