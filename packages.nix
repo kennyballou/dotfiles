@@ -98,7 +98,7 @@ with pkgs; [
   notmuch
   nox
   obs-studio
-  octave
+  octaveFull
   openjdk11
   openssh
   openssl
