@@ -14,8 +14,8 @@
   ("C-c p" . projectile-command-map)
   :config
 
-  (setq projectile-switch-project-action 'projectile-dired
-        projectile-enable-caching t)
+  (setq projectile-switch-project-action 'projectile-dired)
+  (setq projectile-enable-caching t)
 
   (add-to-list 'projectile-globally-ignored-files "node-modules")
 
