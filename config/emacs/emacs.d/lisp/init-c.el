@@ -3,7 +3,7 @@
 ;;; Code:
 
 (defvar c-default-style)
-(setq c-default-style `((java-mode . "java")
+(setq c-default-style '((java-mode . "java")
                         (awk-mode . "awk")
                         (c-mode . "linux")
                         (other . "gnu")))
