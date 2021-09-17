@@ -2,7 +2,7 @@
   :PROPERTIES:
   :ID:       %(org-id-uuid)
   :CREATED:  %T
-  :Link:     %a
+  :Link:     [[%F][%f]]
   :END:
 
 %?
