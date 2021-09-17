@@ -529,8 +529,7 @@ https://stackoverflow.com/a/16247032/7492588"
 (use-package org-pomodoro
   :config
   (setq org-pomodoro-long-break-frequency 2)
-  (setq org-pomodoro-ticking-sound-p t)
-  (setq org-pomodoro-ticking-frequency 60))
+  (setq org-pomodoro-ticking-sound-p nil))
 
 (provide 'init-org)
 ;;; init-org.el ends here
