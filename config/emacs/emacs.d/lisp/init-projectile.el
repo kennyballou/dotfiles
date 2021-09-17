@@ -16,6 +16,7 @@
 
   (setq projectile-switch-project-action 'projectile-dired)
   (setq projectile-enable-caching t)
+  (setq projectile-per-project-compilation-buffer t)
 
   (add-to-list 'projectile-globally-ignored-files "node-modules")
 
