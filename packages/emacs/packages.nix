@@ -169,6 +169,7 @@ in rec {
     lsp-haskell
     lsp-mode
     lsp-java
+    lsp-python-ms
     lsp-ui
     lua-mode
     magit

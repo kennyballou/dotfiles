@@ -13,13 +13,12 @@ self: super:
           pyflakes
           pygobject3
           pyparsing
-          python-language-server
           setuptools
           virtualenv
           yamllint
         ]
       ))
-
+      self.python-language-server
       self.setupcfg2nix
     ];
   };

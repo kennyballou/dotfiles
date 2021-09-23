@@ -11,6 +11,7 @@
 (defvar python-shell-interpreter-args)
 (defvar flycheck-disabled-checkers)
 (defvar ein)
+(defvar lsp-python-ms)
 
 (use-package python
   :init
@@ -30,6 +31,10 @@
 
 (use-package ein
   :after (python))
+
+(use-package lsp-python-ms
+  :init
+  (setq lsp-python-ms-executable (executable-find "python-language-server")))
 
 (provide 'init-python)
 ;;; init-python.el ends here
