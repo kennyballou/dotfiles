@@ -256,7 +256,7 @@
         ("o" "org-protocol" entry (file kb/org-refile)
          (file "~/.config/emacs/org-captures/ORG-PROTOCOL")
          :immediate-finish t)
-        ("m" "Meeting" entry (file kb/org-refile)
+        ("m" "Meeting" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/MEETING")
          :clock-in t
          :clock-resume t)
