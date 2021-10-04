@@ -72,6 +72,7 @@ with pkgs; [
   jmeter
   john
   jq
+  kitty
   klavaro
   kopia
   ledger
