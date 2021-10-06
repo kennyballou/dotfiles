@@ -7,7 +7,7 @@
     };
     unstable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
-      rev = "b5182c214fac1e6db9f28ed8a7cfc2d0c255c763";
+      rev = "ee084c02040e864eeeb4cf4f8538d92f7c675671";
     };
     stable = builtins.fetchGit {
       url = "https://github.com/NixOS/nixpkgs.git";
@@ -16,7 +16,7 @@
   };
   home-manager = builtins.fetchGit {
     url = "https://github.com/nix-community/home-manager.git";
-    rev = "66d9dbfa36f59748e06bb30cd98b3f4ad76cd482";
+    rev = "d9fe208f3ccd7047a29eb31fd0cd3191c4445323";
   };
   emacs-overlay = {
     master = builtins.fetchTarball {
@@ -24,7 +24,7 @@
     };
     stable = builtins.fetchGit {
       url = "https://github.com/nix-community/emacs-overlay.git";
-      rev = "5fa26165cf34adbe693b159093ea15f24f7f7ea4";
+      rev = "8a47765478628f684b09d7f7aa5960e697309c74";
     };
   };
 }
