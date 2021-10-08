@@ -117,6 +117,7 @@
 ;; Various preferences
 (setq org-log-done 'time)
 (setq org-directory "~/.org/")
+(setq org-id-locations-file (expand-file-name (concat user-emacs-directory ".org-id-locations")))
 (setq org-ellipsis "⤵")
 (setq org-special-ctrl-a/e t)
 (setq org-edit-timestamp-down-means-later t)
