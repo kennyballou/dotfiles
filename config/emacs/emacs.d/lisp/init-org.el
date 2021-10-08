@@ -278,7 +278,8 @@
       '(("n" "tn" (kb/org-clocking-p))
         ("r" "tr" (kb/org-clocking-p))
         ("n" "n" (kb/org-not-clocking-p))
-        ("r" ((in-mode . "mu4e-view")))))
+        ("r" ((in-mode . "Article")
+              (in-mode . "Summary")))))
 
 (add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
 ;; https://stackoverflow.com/a/16247032/7492588
