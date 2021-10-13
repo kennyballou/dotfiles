@@ -4,6 +4,7 @@ let
 in
 {
   home.sessionVariables = {
+    QT_STYLE_OVERRIDE = "";
     QT_QPA_PLATFORMTHEME = "gnome";
   };
 
