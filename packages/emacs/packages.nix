@@ -68,6 +68,7 @@ in rec {
     clojure-mode
     coffee-mode
     company
+    company-native-complete
     counsel
     counsel-projectile
     counsel-tramp
@@ -180,6 +181,7 @@ in rec {
     mpdel
     multiple-cursors
     mwim
+    native-complete
     nix-buffer
     nix-mode
     nix-update

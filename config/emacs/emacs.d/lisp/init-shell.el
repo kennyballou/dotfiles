@@ -23,5 +23,15 @@
 (add-hook 'shell-dynamic-complete-functions
           'bash-completion-dynamic-complete)
 
+(with-eval-after-load 'shell
+  (native-complete-setup-bash))
+
+(defun shell-mode-hook-setup ()
+  "Setup `shell-mode'."
+  (add-hook 'completion-at-point-functions #'native-complete-at-point nil t)
+  (setq-local company-backends '((company-files company-native-complete)))
+  (local-set-key (kbd "TAB") #'company-complete))
+(add-hook 'shell-mode-hook #'shell-mode-hook-setup)
+
 (provide 'init-shell)
 ;;; init-shell.el ends here
