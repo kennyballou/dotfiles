@@ -48,6 +48,7 @@
 (defvar lsp-ui-doc-position)
 (defvar lsp-ui-doc-alignment)
 (defvar lsp-auto-configure)
+(defvar lsp-file-watch-ignored)
 
 
 (use-package lsp-mode
@@ -77,6 +78,28 @@
                                   "-log=error"))
   (setq lsp-clients-go-server-args '("--cache-style=always"
                                      "--diagnostics-style=onsave"))
+  (setq lsp-file-watch-ignored
+        '("[/\\\\]\\.direnv$"
+          "[/\\\\]\\.git$"
+          "[/\\\\]\\.hg$"
+          "[/\\\\]\\.bzr$"
+          "[/\\\\]_darcs$"
+          "[/\\\\]\\.svn$"
+          "[/\\\\]_FOSSIL_$"
+          "[/\\\\]\\.idea$"
+          "[/\\\\]\\.ensime_cache$"
+          "[/\\\\]\\.eunit$"
+          "[/\\\\]node_modules$"
+          "[/\\\\]\\.fslckout$"
+          "[/\\\\]\\.tox$"
+          "[/\\\\]\\.stack-work$"
+          "[/\\\\]\\.bloop$"
+          "[/\\\\]\\.metals$"
+          "[/\\\\]target$"
+          "[/\\\\]\\.deps$"
+          "[/\\\\]\\.build-aux$"
+          "[/\\\\]autom4te.cache$"
+          "[/\\\\]\\.reference$"))
   (setq lsp-semantic-tokens-enable t)
   (setq lsp-completion-provider ':capf))
 
