@@ -117,6 +117,7 @@
 (require 'init-rust)
 (require 'init-scala)
 (require 'init-scheme)
+(require 'init-slurm)
 (require 'init-sql)
 (require 'init-tex)
 (require 'init-toml)

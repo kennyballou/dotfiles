@@ -78,6 +78,7 @@ in rec {
     css-eldoc
     csv
     d-mode
+    dash
     dap-mode
     define-word
     diff-hl
@@ -228,6 +229,7 @@ in rec {
     session
     skewer-less
     skewer-mode
+    slurm-mode
     smartparens
     smex
     smooth-scrolling
