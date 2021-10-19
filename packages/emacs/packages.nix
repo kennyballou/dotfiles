@@ -64,6 +64,8 @@ in rec {
     buffer-move
     bundler
     cider
+    citeproc
+    citeproc-org
     cljsbuild-mode
     clojure-mode
     coffee-mode
