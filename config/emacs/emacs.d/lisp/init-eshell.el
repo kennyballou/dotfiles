@@ -161,6 +161,12 @@ left to try and get the PATH down to, at most, MAX-LEN."
 
 
 
+(use-package eshell-vterm
+  :after eshell
+  :config
+  (eshell-vterm-mode))
+
+
 
 (provide 'init-eshell)
 ;;; init-eshell.el ends here

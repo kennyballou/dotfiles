@@ -33,5 +33,7 @@
   (local-set-key (kbd "TAB") #'company-complete))
 (add-hook 'shell-mode-hook #'shell-mode-hook-setup)
 
+(use-package vterm)
+
 (provide 'init-shell)
 ;;; init-shell.el ends here

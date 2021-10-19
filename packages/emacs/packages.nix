@@ -98,6 +98,7 @@ in rec {
     elixir-mode
     elm-mode
     erlang
+    eshell-vterm
     ess
     exec-path-from-shell
     expand-region
@@ -247,6 +248,7 @@ in rec {
     unicode-whitespace
     use-package
     virtualenvwrapper
+    vterm
     wgrep-ag
     which-key
     whitespace-cleanup-mode
