@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
-  home-dir = builtins.getEnv "HOME";
-  background = "${home-dir}/pictures/wallpapers/background.png";
+  background = "${pkgs.plasma-workspace-wallpapers}/share/wallpapers/Flow/contents/images/5120x2880.jpg";
 in {
   systemd.user.services = {
     "background" = {
