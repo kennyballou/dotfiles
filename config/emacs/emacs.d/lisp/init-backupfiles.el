@@ -14,16 +14,16 @@
   (set-file-modes --lockfile-directory #o700))
 (setq backup-directory-alist `(("." . ,--backup-directory)))
 (setq auto-save-file-name-transforms `((".*" ,--lockfile-directory t)))
-(setq make-backup-files t
-      backup-by-copying t
-      version-control t
-      delete-old-versions t
-      delete-by-moving-to-trash nil
-      kept-old-versions 6
-      kept-new-versions 9
-      auto-save-default t
-      auto-save-timeout 20
-      auto-save-interval 200)
+(setq make-backup-files t)
+(setq backup-by-copying t)
+(setq version-control t)
+(setq delete-old-versions t)
+(setq delete-by-moving-to-trash nil)
+(setq kept-old-versions 6)
+(setq kept-new-versions 9)
+(setq auto-save-default t)
+(setq auto-save-timeout 20)
+(setq auto-save-interval 200)
 
 (provide 'init-backupfiles)
 ;;; init-backupfiles.el ends here
