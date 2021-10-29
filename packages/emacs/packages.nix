@@ -127,8 +127,7 @@ in rec {
     git-auto-commit-mode
     git-commit
     git-timemachine
-    gitconfig-mode
-    gitignore-mode
+    git-modes
     go-autocomplete
     go-eldoc
     go-mode
