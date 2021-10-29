@@ -32,7 +32,7 @@
           <vendor>OpenJDK</vendor>
         </provides>
         <configuration>
-          <jdkHome>${pkgs.openjdk16}</jdkHome>
+          <jdkHome>${pkgs.openjdk17}</jdkHome>
         </configuration>
       </toolchain>
     </toolchains>
