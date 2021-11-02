@@ -124,6 +124,8 @@ in rec {
     geben
     geben-helm-projectile
     geiser
+    geiser-guile
+    geiser-racket
     git-auto-commit-mode
     git-commit
     git-timemachine
