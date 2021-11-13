@@ -253,7 +253,6 @@ in rec {
     virtualenvwrapper
     vterm
     wgrep-ag
-    which-key
     whitespace-cleanup-mode
     whole-line-or-region
     with-editor

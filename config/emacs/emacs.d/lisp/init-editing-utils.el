@@ -4,7 +4,6 @@
 
 (defvar browse-kill-ring)
 (defvar autorevert)
-(defvar which-key)
 (defvar auto-revert-mode)
 (defvar expand-region)
 (defvar er/expand-region)
@@ -160,14 +159,6 @@
 ;; (use-package highlight-escape-sequences
 ;;   :init
 ;;   (hes-mode))
-
-(use-package which-key
-  :diminish
-  :config
-  (which-key-mode)
-  (which-key-setup-side-window-right)
-  (setq which-key-idle-delay 0.5)
-  (setq which-key-use-C-h-commands nil))
 
 (global-hl-line-mode t)
 
