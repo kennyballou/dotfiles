@@ -8,11 +8,14 @@ self: super:
           flake8
           gprof2dot
           ipython
+          matplotlib
+          pandas
           pip
           pycodestyle
           pyflakes
           pygobject3
           pyparsing
+          scipy
           setuptools
           virtualenv
           yamllint
