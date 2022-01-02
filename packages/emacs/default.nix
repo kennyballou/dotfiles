@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> { }, ... }:
 let
   utils = import ../../nix/utils.nix { pkgs = pkgs; };
-  gtk3-emacs = (pkgs.emacs.override {
+  gtk3-emacs = (pkgs.emacsUnstable.override {
     withGTK3 = true;
     withGTK2 = false;
   });
