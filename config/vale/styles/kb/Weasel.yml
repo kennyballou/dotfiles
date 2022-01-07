@@ -8,7 +8,6 @@ tokens:
   - accidentally
   - additionally
   - allegedly
-  - alternatively
   - angrily
   - anxiously
   - approximately
@@ -29,7 +28,6 @@ tokens:
   - carelessly
   - cautiously
   - cheerfully
-  - clearly
   - closely
   - coldly
   - completely
@@ -65,7 +63,6 @@ tokens:
   - faithfully
   - fatally
   - fiercely
-  - finally
   - fondly
   - few
   - foolishly
@@ -94,7 +91,6 @@ tokens:
   - ingeniously
   - innocently
   - inquisitively
-  - interestingly
   - irritably
   - jiggly
   - joyously
@@ -103,7 +99,6 @@ tokens:
   - largely
   - lately
   - lazily
-  - likely
   - literally
   - lonely
   - loosely
@@ -162,7 +157,6 @@ tokens:
   - sharply
   - shortly
   - shyly
-  - significantly
   - silently
   - simply
   - sleepily
