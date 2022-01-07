@@ -17,6 +17,7 @@ with pkgs; [
   cacert
   catdocx
   chromium
+  coq
   ddcutil
   diffstat
   diffutils
@@ -43,6 +44,7 @@ with pkgs; [
   fzf
   gawk
   gen-sshconfig-sh
+  getmail
   gimp
   git-tools
   global
@@ -121,6 +123,7 @@ with pkgs; [
   pwgen
   python-environment
   qrencode
+  (rWrapper.override{ packages = with rPackages; [ ggplot2 dplyr xts ]; })
   racket
   ranger
   renameutils
@@ -162,6 +165,7 @@ with pkgs; [
   xbindkeys
   xorg.xev
   xorriso
+  xournal
   xsensors
   xsv
   xz
