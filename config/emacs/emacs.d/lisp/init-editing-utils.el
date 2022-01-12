@@ -77,11 +77,6 @@
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
 
-(use-package undo-tree
-  :diminish
-  :config
-  (global-undo-tree-mode))
-
 ;; Zap *up* to char is a handy pair for zap-to-char
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
