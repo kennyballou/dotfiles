@@ -69,7 +69,7 @@
 (require 'init-gud)
 (require 'init-compile)
 (require 'init-regex)
-(require 'init-sessions)
+(require 'init-perspective)
 (require 'init-spelling)
 (require 'init-misc)
 (require 'init-windows)

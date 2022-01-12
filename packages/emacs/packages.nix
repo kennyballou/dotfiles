@@ -211,6 +211,8 @@ in rec {
     pcomplete-extension
     pdf-tools
     peep-dired
+    perspective
+    persp-projectile
     php-mode
     pip-requirements
     polymode
