@@ -3,11 +3,10 @@
 	email = kb@devnulllabs.io
 	signingKey = B0CAA28A02958308
 [core]
-	editor = vim
+	editor = emacsclient -c
 	excludesfile = /home/kb/.config/git/global-ignore
 [merge]
 	ff = only
-	tool = gvimdiff
 	conflictstyle = diff3
 [color]
 	status = auto
