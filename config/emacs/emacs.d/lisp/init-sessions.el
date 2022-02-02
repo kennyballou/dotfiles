@@ -15,11 +15,11 @@
 (defvar desktop-modes-not-to-save)
 
 ;; save list of open files to ~/.config/emacs/.emacs.desktop
-(setq desktop-path (list user-emacs-directory)
-      desktop-restore-frames nil
-      desktop-auto-save-timeout 600
-      desktop-restore-eager 10
-      desktop-files-not-to-save
+(setq desktop-path (list user-emacs-directory))
+(setq desktop-restore-frames nil)
+(setq desktop-auto-save-timeout 600)
+(setq desktop-restore-eager 10)
+(setq desktop-files-not-to-save
       "\\(^/[^/:]*:\\|(ftp)$\\)|\\(^*.pdf$\\)\\|\\(^*.jpg$\\)\\|\\(^*.png$\\)")
 (desktop-save-mode 1)
 
