@@ -1,9 +1,9 @@
-* NEXT Respond (%:from) %:subject
-SCHEDULED: %t
+* TODO %?
 :PROPERTIES:
 :ID:       %(org-id-uuid)
 :CREATED:  %U
 :Date:     %:date-timestamp-inactive
+:Subject:  %:subject
 :Message:  %a
 :Author:   %:from
 :END:

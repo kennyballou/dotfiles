@@ -1,7 +1,7 @@
 * %x
-  :PROPERTIES:
-  :ID:       %(org-id-uuid)
-  :CREATED:  %U
-  :END:
+:PROPERTIES:
+:ID:       %(org-id-uuid)
+:CREATED:  %U
+:END:
 
 %?

@@ -1,6 +1,6 @@
 * [/] %? :project:
-  :PROPERTIES:
-  :ID:       %(org-id-uuid)
-  :CREATED:  %U
-  :COOKIE_DATA: todo recursive
-  :END:
+:PROPERTIES:
+:ID:       %(org-id-uuid)
+:CREATED:  %U
+:COOKIE_DATA: todo recursive
+:END:

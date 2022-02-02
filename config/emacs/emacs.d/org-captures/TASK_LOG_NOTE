@@ -1,8 +1,8 @@
 * %^{Description} :RECORD:
-  :PROPERTIES:
-  :ID:       %(org-id-uuid)
-  :CREATED:  %T
-  :Link:     [[%F][%f]]
-  :END:
+:PROPERTIES:
+:ID:       %(org-id-uuid)
+:CREATED:  %T
+:Link:     [[%F][%f]]
+:END:
 
 %?

@@ -1,10 +1,10 @@
 * %k :RECORD:
-  :PROPERTIES:
-  :ID:       %(org-id-uuid)
-  :CREATED:  %T
-  :Link:     %a
-  :Task:     %K
-  :END:
+:PROPERTIES:
+:ID:       %(org-id-uuid)
+:CREATED:  %T
+:Link:     %a
+:Task:     %K
+:END:
 
 %(when (not (string-blank-p "%i"))
   (format "#+begin_example\n%s\n#+end_example\n" "%i"))
