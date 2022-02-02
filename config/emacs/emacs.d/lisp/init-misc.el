@@ -52,5 +52,16 @@
 ;; I don't really have a use for this
 (unbind-key (kbd "C-x C-n") 'global-map)
 
+;; advice
+;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el
+;; from simple.el
+(defadvice kill-line (before kill-line-autoreindent activate)
+  "Kill excess whitespace when joining lines.
+If the next line is joined to the current line, kill the extra indent whitespace in front of the next line."
+  (when (and (eolp) (not (bolp)))
+    (save-excursion
+      (forward-char 1)
+      (just-one-space 1))))
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
