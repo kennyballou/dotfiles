@@ -118,6 +118,7 @@ in rec {
     flycheck-posframe
     flycheck-rust
     flycheck-vale
+    flyspell-correct
     fold-dwim
     forge
     fullframe
@@ -126,6 +127,7 @@ in rec {
     geiser
     geiser-guile
     geiser-racket
+    ggtags
     git-auto-commit-mode
     git-commit
     git-timemachine
@@ -178,6 +180,7 @@ in rec {
     lsp-python-ms
     lsp-ui
     lua-mode
+    marginalia
     magit
     markdown-mode
     mbsync
@@ -217,6 +220,7 @@ in rec {
     pip-requirements
     polymode
     projectile
+    proof-general
     racer
     rainbow-delimiters
     realgud
@@ -266,6 +270,10 @@ in rec {
     zenburn-theme
   ]) ++ (with epkgs.elpaPackages; [
     auctex
+    gnorb
+    mct
+    org
+    orgalist
     pinentry
     python
     rainbow-mode
