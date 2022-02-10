@@ -1,11 +1,11 @@
 (list (channel
        (name 'guix)
        (url "https://git.savannah.gnu.org/git/guix.git")
-       (commit "5b465de06c8d310edb067234769d43c9e7c8d4cc"))
+       (commit "a0bf73143b3662a0b902a06928977f6aeb97573c"))
       (channel
        (name 'nonguix)
        (url "https://gitlab.com/nonguix/nonguix")
-       (commit "ca0837cc70d5b4d3fce83b34c31b3378f60f4498"))
+       (commit "098407e11bad9564f5e0e5aa0b07e22cf509ea4e"))
       (channel
        (name 'rde)
        (url "https://github.com/abcdw/rde")
