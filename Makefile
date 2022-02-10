@@ -1,22 +1,59 @@
 NIX_FILES = $(shell find . name -name '*.nix' -type f)
 MAX_AGE=14d
+CHANNEL_FILE=./config/guix/channels.scm
+HOSTS=h4x daeva eligos baal
+SYSTEMS=$(patsubst %,systems/%,$(HOSTS))
+HOMES=$(patsubst %,homes/%,$(HOSTS))
+HOSTNAME=$(shell hostname)
 
 .PHONY: all
 all: build
 
+.PHONY: list
+list:
+	@LC_ALL=C $(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
+
+.PHONY: pull
+pull:
+	guix time-machine -C $(CHANNEL_FILE) -- pull
+
 .PHONY: news
 news:
-	nix-shell --run "home-manager news"
+	guix time-machine -C $(CHANNEL_FILE) -- pull --news
 
-.PHONY: build
-build:
-	nix-shell --run "home-manager build"
+.PHONY: reconfigure-home
+reconfigure-home:
+	guix time-machine -C $(CHANNEL_FILE) -- home reconfigure homes/$(HOSTNAME).scm
 
-.PHONY: switch
-switch:
-	nix-shell --run "home-manager switch"
+.PHONY: rollback-home
+	guix time-machine -C $(CHANNEL_FILE) -- home roll-back homes/$(HOSTNAME).scm
+
+.PHONY: reconfigure-system
+reconfigure-system:
+	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system reconfigure systems/$(HOSTNAME).scm
+
+.PHONY: rollback-system
+rollback-system:
+	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system roll-back systems/$(HOSTNAME).scm
+
+.PHONY: lint
+lint:
+	guix lint --load-path=./ ./
 
 .PHONY: clean
 clean:
 	-rm -rv result
 	-nix-collect-garbage --delete-older-than $(MAX_AGE)
+
+.PHONY: all-systems
+all-systems: $(SYSTEMS)
+
+.PHONY: all-homes
+all-homes: $(HOMES)
+
+$(HOMES):
+	guix time-machine -C $(CHANNEL_FILE) -- home build $@.scm
+
+.PHONY: $(SYSTEMS)
+$(SYSTEMS):
+	guix time-machine -C $(CHANNEL_FILE) -- system build $@.scm
