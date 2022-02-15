@@ -22,6 +22,7 @@
   #:use-module (kbg services config kitty)
   #:use-module (kbg services config nixpkgs)
   #:use-module (kbg services config shepherd)
+  #:use-module (kbg services config vars)
   #:use-module (kbg services config xdg)
   #:use-module (kbg services emacs)
   #:use-module (kbg services mcron)
@@ -39,6 +40,7 @@
           git-config-service
           ;; global-config-service
           emacs-service
+          home-vars-service
           kitty-config-service
           mcron-service
           mpd-service
