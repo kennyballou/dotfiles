@@ -35,7 +35,7 @@
 
 (define garbage-collector-job
   #~(job "5 0 * * *"
-         "guix gc --free-space 50G"))
+         "guix gc --collect-garbage"))
 
 (define install-grub-efi-removable
   #~(lambda (bootloader efi-dir mount-point)
