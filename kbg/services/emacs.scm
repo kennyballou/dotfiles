@@ -14,8 +14,9 @@
 
 (define rewrite
   (package-input-rewriting
-   `((,emacs-xyz:emacs-cider . ,emacs-cider)
-     (,emacs-xyz:emacs-async . ,emacs-async)
+   `((,emacs-xyz:emacs-async . ,emacs-async)
+     (,emacs-xyz:emacs-cider . ,emacs-cider)
+     (,emacs-xyz:emacs-dash . ,emacs-dash)
      (,emacs-xyz:emacs-tablist . ,emacs-tablist))))
 
 (define emacs-packages
