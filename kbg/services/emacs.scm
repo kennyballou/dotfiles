@@ -192,7 +192,7 @@
         emacs-mwim
         emacs-native-complete
         emacs-nix-mode
-        emacs-ob-ipython
+        ;; emacs-ob-ipython
         emacs-olivetti
         emacs-orderless
         emacs-org
