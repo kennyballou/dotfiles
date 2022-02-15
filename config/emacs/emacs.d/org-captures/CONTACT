@@ -1,0 +1,12 @@
+* %?
+:PROPERTIES:
+:ID:       %(org-id-uuid)
+:CREATED:  %U
+:PHONE:
+:ALIAS:
+:NICKNAME:
+:ADDRESS:
+:BIRTHDAY:
+:EMAIL:
+:NOTE:
+:END:
