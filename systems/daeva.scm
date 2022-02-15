@@ -140,7 +140,18 @@
                              (extra-config (list %xorg-libinput-config))))
                            (service nix-service-type)
                            (service pcscd-service-type)
-                           (service tlp-service-type)
+                           (service tlp-service-type
+                                    (tlp-configuration
+                                     (cpu-scaling-governor-on-ac (list "performance"))
+                                     (cpu-scaling-governor-on-bat (list "powersave"))
+                                     (cpu-scaling-min-freq-on-ac  2400000)
+                                     (cpu-scaling-min-freq-on-bat 1200000)
+                                     (cpu-boost-on-ac? #t)
+                                     (cpu-boost-on-bat? #f)
+                                     (energy-perf-policy-on-ac "performance")
+                                     (energy-perf-policy-on-bat "powersave")
+                                     (pcie-aspm-on-ac "performance")
+                                     (pcie-aspm-on-bat "powersupersave")))
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
                                            (list garbage-collector-job
