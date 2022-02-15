@@ -23,6 +23,7 @@
   #:use-module (gnu packages libusb)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages lsof)
+  #:use-module (gnu packages mc)
   #:use-module (gnu packages ncdu)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages nfs)
@@ -33,6 +34,7 @@
   #:use-module (gnu packages pv)
   #:use-module (gnu packages rsync)
   #:use-module (gnu packages rust-apps)
+  #:use-module (gnu packages screen)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages shells)
   #:use-module (gnu packages shellutils)
@@ -79,6 +81,7 @@
         less
         lsof
         ltrace
+        mc
         mg
         mtr
         ncdu
@@ -88,6 +91,7 @@
         nss-certs
         openssh
         openssl
+        parallel
         pciutils
         progress
         pv
@@ -96,6 +100,7 @@
         renameutils
         ripgrep
         rsync
+        screen
         sed
         smartmontools
         socat
@@ -113,4 +118,5 @@
         whois
         wireguard-tools
         xfsprogs
-        xz))
+        xz
+        zip))
