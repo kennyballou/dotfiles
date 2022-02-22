@@ -40,6 +40,10 @@ rollback-system:
 lint:
 	guix lint --load-path=./ ./
 
+.PHONY: refresh
+refresh:
+	guix time-machine -C $(CHANNEL_FILE) -- refresh
+
 .PHONY: clean
 clean:
 	-rm -rv result
