@@ -67,6 +67,7 @@ table inet filter {
         udp dport 19302-19309 counter accept comment "Google Meet Ports"
         tcp dport 1714-1764 counter accept comment "KDEConnect"
         udp dport 1714-1764 counter accept comment "KDEConnect"
+        udp dport 51820 counter accept comment "WireGuard"
         counter
     }
 }
