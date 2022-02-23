@@ -31,12 +31,19 @@
   #:use-module (kbg system xorg))
 
 (define nix-gc-job
-  #~(job "5 1 * * *"
-         "nix-collect-garbage --delete-old"))
+  #~(job '(next-hour '(1))
+         "nix-collect-garbage --delete-old"
+         "nix garbage collection"))
+
+(define guix-gc-repair-job
+  #~(job '(next-hour '(0))
+         "guix gc --verify=contents,repair"
+         "guix store repair"))
 
 (define garbage-collector-job
-  #~(job "5 0 * * *"
-         "guix gc --collect-garbage"))
+  #~(job "5 0 * * 0"
+         "guix gc --collect-garbage"
+         "guix garbage collection"))
 
 (define install-grub-efi-removable
   #~(lambda (bootloader efi-dir mount-point)
@@ -157,6 +164,7 @@
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
                                            (list garbage-collector-job
+                                                 guix-gc-repair-job
                                                  nix-gc-job)))
                      %kbg-desktop-services))
 
