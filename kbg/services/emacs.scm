@@ -222,6 +222,7 @@
         emacs-pinentry
         emacs-pip-requirements
         emacs-polymode
+        emacs-powerline
         emacs-projectile
         emacs-proof-general
         emacs-racer
