@@ -120,6 +120,7 @@
         plantuml
         playerctl
         poppler
+        qpdf
         qrencode
         ;; ublock-origin-chromium
         ungoogled-chromium/wayland
