@@ -1,0 +1,3 @@
+--file=~/.ledger/journal.ledger
+--input-date-format %Y-%m-%d
+--date-format %Y-%m-%d
