@@ -6,18 +6,25 @@
 (define xdg-config-service
   (list (service home-xdg-mime-applications-service-type
                  (home-xdg-mime-applications-configuration
+                  (added '((image/png . gimp)
+                           (image/jpeg . gimp)))
                   (default '((all/text . emacsclient)
                              (application/pdf . evince)
                              (application/jpg . (eog gimp))
                              (image/gif . (eog gimp))
                              (image/jpeg . (eog gimp))
                              (image/png . (eog gimp))
+                             (image/svg . eog)
+                             (image/webp . eog)
                              (inode/direcotory . nautilus)
                              (text/plain . emacsclient)
                              (text/x-java . emacsclient)
                              (text/x-makefile . emacsclient)
                              (text/x-shellscript . emacsclient)
-                             (text/html . emacsclient)))))
+                             (text/html . emacsclient)
+                             (x-scheme-handler/http . firefox)
+                             (x-scheme-handler/https . firefox)
+                             (x-scheme-handler/zoommtg . us.zoom.Zoom)))))
         (service home-xdg-user-directories-service-type
                  (home-xdg-user-directories-configuration
                   (desktop "$HOME/desktop")
