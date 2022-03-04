@@ -26,9 +26,8 @@
   #:use-module (gnu packages text-editors)
   #:use-module (gnu packages textutils)
   #:use-module (gnu packages version-control)
-  #:use-module (gnu packages vim))
-
-(export %kbg-base-development-packages)
+  #:use-module (gnu packages vim)
+  #:export (%kbg-base-development-packages))
 
 (define %kbg-base-development-packages
   (list
