@@ -27,12 +27,14 @@
   #:use-module (gnu packages textutils)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages vim)
+  #:use-module (kbg packages coq-xyz)
   #:export (%kbg-base-development-packages))
 
 (define %kbg-base-development-packages
   (list
    ;; autogen
    coq
+   coq-math-classes
    diffstat
    diffutils
    direnv
