@@ -17,6 +17,7 @@
   #:use-module (kbg packages profiles desktop)
   #:use-module (kbg packages profiles fonts)
   #:use-module (kbg packages emacs)
+  #:use-module (kbg services config flatpak)
   #:use-module (kbg services config git)
   #:use-module (kbg services config global)
   #:use-module (kbg services config gnuplot)
@@ -40,9 +41,10 @@
 
  (services
   (append bash-service
+          emacs-service
+          flatpak-config-service
           git-config-service
           ;; global-config-service
-          emacs-service
           gnuplot-config-service
           home-vars-service
           kitty-config-service
