@@ -141,7 +141,9 @@
                              (gnome gnome-sans-ssh-agent)))
                            ;;(geoclue-service)
                            (bluetooth-service #:auto-enable? #t)
-                           (service cups-service-type)
+                           (service cups-service-type
+                                    (cups-configuration
+                                     (web-interface? #t)))
                            (set-xorg-configuration
                             (xorg-configuration
                              (keyboard-layout keyboard-layout)
