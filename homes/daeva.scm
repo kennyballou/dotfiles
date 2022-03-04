@@ -19,6 +19,7 @@
   #:use-module (kbg packages emacs)
   #:use-module (kbg services config git)
   #:use-module (kbg services config global)
+  #:use-module (kbg services config gnuplot)
   #:use-module (kbg services config kitty)
   #:use-module (kbg services config ledger)
   #:use-module (kbg services config nixpkgs)
@@ -42,6 +43,7 @@
           git-config-service
           ;; global-config-service
           emacs-service
+          gnuplot-config-service
           home-vars-service
           kitty-config-service
           ledger-config-service
