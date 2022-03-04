@@ -56,8 +56,8 @@ all-systems: $(SYSTEMS)
 all-homes: $(HOMES)
 
 $(HOMES):
-	guix time-machine -C $(CHANNEL_FILE) -- home build $@.scm
+	guix time-machine -C $(CHANNEL_FILE) -- home build --cores=2 $@.scm
 
 .PHONY: $(SYSTEMS)
 $(SYSTEMS):
-	guix time-machine -C $(CHANNEL_FILE) -- system build $@.scm
+	guix time-machine -C $(CHANNEL_FILE) -- system build --cores=2 $@.scm
