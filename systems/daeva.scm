@@ -163,7 +163,7 @@
                            (nftables-service "daeva")
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
-                                           (list garbage-collector-job
+                                           (list ;; garbage-collector-job
                                                  guix-gc-repair-job
                                                  nix-gc-job)))
                      %kbg-desktop-services))
