@@ -14,4 +14,6 @@
      (substitute-keyword-arguments
          (package-arguments gnome-keyring)
        ((#:configure-flags flags)
-        `(cons "--disable-ssh-agent" ,flags))))))
+        `(append (list "--disable-ssh-agent"
+                       "--enable-pam")
+             ,flags))))))
