@@ -17,6 +17,7 @@
   #:use-module (kbg packages profiles desktop)
   #:use-module (kbg packages profiles fonts)
   #:use-module (kbg packages emacs)
+  #:use-module (kbg services config direnv)
   #:use-module (kbg services config flatpak)
   #:use-module (kbg services config git)
   #:use-module (kbg services config global)
@@ -42,6 +43,7 @@
  (services
   (append bash-service
           emacs-service
+          direnv-config-service
           flatpak-config-service
           git-config-service
           ;; global-config-service
