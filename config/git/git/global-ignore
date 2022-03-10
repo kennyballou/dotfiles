@@ -2,5 +2,6 @@ GTAGS
 GRTAGS
 GPATH
 .envrc
+.direnv/
 .projectile
 .kopiaignore
