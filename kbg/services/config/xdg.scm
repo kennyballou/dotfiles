@@ -6,11 +6,11 @@
 (define xdg-config-service
   (list (service home-xdg-mime-applications-service-type
                  (home-xdg-mime-applications-configuration
-                  (added '((image/png . gimp)
-                           (image/jpeg . gimp)))
+                  (added '((image/png . gimp.desktop)
+                           (image/jpeg . gimp.desktop)))
                   (default '((all/text . emacsclient)
                              (application/pdf . evince)
-                             (application/jpg . (eog gimp))
+                             (application/jpg . (eog gimp.desktop))
                              (image/gif . (eog gimp))
                              (image/jpeg . (eog gimp))
                              (image/png . (eog gimp))
