@@ -16,23 +16,11 @@
   #:use-module (kbg packages profiles development)
   #:use-module (kbg packages profiles desktop)
   #:use-module (kbg packages profiles fonts)
-  #:use-module (kbg packages emacs)
-  #:use-module (kbg services config direnv)
-  #:use-module (kbg services config flatpak)
-  #:use-module (kbg services config git)
-  #:use-module (kbg services config global)
-  #:use-module (kbg services config gnuplot)
-  #:use-module (kbg services config kitty)
-  #:use-module (kbg services config ledger)
-  #:use-module (kbg services config nixpkgs)
-  #:use-module (kbg services config shepherd)
-  #:use-module (kbg services config vale)
-  #:use-module (kbg services config vars)
-  #:use-module (kbg services config xdg)
+  #:use-module (kbg services config dotfiles)
   #:use-module (kbg services emacs)
   #:use-module (kbg services mcron)
-  #:use-module (kbg services mpd)
-  #:use-module (kbg services shell))
+  #:use-module (kbg services shell)
+  #:use-module (kbg services shepherd))
 
 (home-environment
  (packages
@@ -42,18 +30,8 @@
 
  (services
   (append bash-service
+          (configs-for-host 'daeva)
           emacs-service
-          direnv-config-service
-          flatpak-config-service
-          git-config-service
-          ;; global-config-service
-          gnuplot-config-service
-          home-vars-service
-          kitty-config-service
-          ledger-config-service
           mcron-service
-          mpd-service
-          nixpkgs-config-service
-          shepherd-user-services
-          vale-config-service
-          xdg-config-service)))
+          (services-for-host 'daeva))))
+          ;; shepherd-user-services
