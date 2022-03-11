@@ -1,0 +1,9 @@
+---
+extends: substitution
+message: "Ooops: use '%s' instead of '%s'."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  'vise versa': 'vice versa'
