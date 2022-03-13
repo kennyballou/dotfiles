@@ -22,7 +22,6 @@
   #:use-module (gnu packages rust-apps)
   #:use-module (gnu packages shellutils)
   #:use-module (gnu packages sqlite)
-  #:use-module (gnu packages statistics)
   #:use-module (gnu packages text-editors)
   #:use-module (gnu packages textutils)
   #:use-module (gnu packages version-control)
@@ -60,7 +59,6 @@
    patchutils
    perf
    python
-   r
    racket
    rtags
    shellcheck

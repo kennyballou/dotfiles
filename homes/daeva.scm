@@ -16,6 +16,7 @@
   #:use-module (kbg packages profiles development)
   #:use-module (kbg packages profiles desktop)
   #:use-module (kbg packages profiles fonts)
+  #:use-module (kbg packages profiles statistics)
   #:use-module (kbg services config dotfiles)
   #:use-module (kbg services emacs)
   #:use-module (kbg services mcron)
@@ -26,6 +27,7 @@
  (packages
   (append %kbg-base-development-packages
           %kbg-desktop-packages
+          %kbg-statistics-packages
           %kbg-fonts))
 
  (services
