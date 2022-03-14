@@ -225,6 +225,7 @@
         emacs-powerline
         emacs-projectile
         emacs-proof-general
+        emacs-pulsar
         emacs-racer
         emacs-rainbow-mode
         emacs-rainbow-delimiters

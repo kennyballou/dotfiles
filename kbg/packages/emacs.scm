@@ -13,7 +13,8 @@
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:export (emacs-awqat
-            emacs-bibtex-to-plain-text))
+            emacs-bibtex-to-plain-text
+            emacs-pulsar))
 
 (define emacs-awqat
   (let ((baseurl "https://raw.githubusercontent.com/zkry/awqat/")
@@ -73,3 +74,30 @@ easily pasted into other programs that are unfriendly to LaTeX (or for quickly
 sharing references with colleagues or friends through email, etc.).")
       (home-page "https://github.com/kennyballou/bibtex-to-plain-text.el")
       (license license:gpl2))))
+
+(define emacs-pulsar
+  (let ((baseurl "https://gitlab.com/protesilaos/pulsar/-/raw/")
+        (filename "pulsar.el")
+        (commit "82946880b58949817bfae5daf89532111dbb1f96")
+        (revision "0"))
+    (package
+     (name "emacs-pulsar")
+     (version (git-version "0.0" revision commit))
+     (source (origin
+              (method url-fetch)
+              (uri (string-append baseurl
+                                  commit
+                                  "/"
+                                  filename))
+              (file-name filename)
+              (sha256
+               (base32 "0zhip53iw8k0pi6qggrzy2cgbfw3jcs1w8yablb3w0jl401qrx4h"))))
+     (build-system emacs-build-system)
+     (synopsis "Pulse line after running select functions")
+     (description "This is a small package that temporarily highlights the
+current line after a given function is invoked.  The affected functions are
+defined in the user option `pulsar-pulse-functions'.  What Pulsar does is set
+up an advice so that those functions run a hook after they are called.  The
+pulse effect is added there (`pulsar-after-function-hook').")
+     (home-page "https://protesilaos.com/emacs/pulsar")
+     (license license:gpl3))))
