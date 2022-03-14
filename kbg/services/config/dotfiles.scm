@@ -7,6 +7,7 @@
   #:use-module (kbg services config flatpak)
   #:use-module (kbg services config git)
   #:use-module (kbg services config global)
+  #:use-module (kbg services config gnupg)
   #:use-module (kbg services config gnuplot)
   #:use-module (kbg services config kitty)
   #:use-module (kbg services config ledger)
@@ -22,6 +23,7 @@
           flatpak-config-service
           git-config-service
           ;; global-config-service
+          gnupg-config-service
           gnuplot-config-service
           home-vars-service
           kitty-config-service
