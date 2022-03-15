@@ -1415,6 +1415,7 @@ Replace global hl-mode with pulsar package.
 
 (setq pulsar-face 'pulsar-magenta)
 (setq pulsar-delay 0.05)
+(setq pulsar-pulse t)
 #+end_src
 
 Wrap [[help:recenter-top-bottom][recenter-top-bottom]] so that it pulses as well.

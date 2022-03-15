@@ -78,7 +78,7 @@ sharing references with colleagues or friends through email, etc.).")
 (define emacs-pulsar
   (let ((baseurl "https://gitlab.com/protesilaos/pulsar/-/raw/")
         (filename "pulsar.el")
-        (commit "82946880b58949817bfae5daf89532111dbb1f96")
+        (commit "fca0e538155226bc34703a9d24adc15515bb9b80")
         (revision "0"))
     (package
      (name "emacs-pulsar")
@@ -91,7 +91,7 @@ sharing references with colleagues or friends through email, etc.).")
                                   filename))
               (file-name filename)
               (sha256
-               (base32 "0zhip53iw8k0pi6qggrzy2cgbfw3jcs1w8yablb3w0jl401qrx4h"))))
+               (base32 "1zh80sl33czfp5bzg95nf7qqr4dkhi0ljngzcf7fp0qz83x5sbnf"))))
      (build-system emacs-build-system)
      (synopsis "Pulse line after running select functions")
      (description "This is a small package that temporarily highlights the
