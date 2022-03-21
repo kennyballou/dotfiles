@@ -11,13 +11,15 @@
   #:use-module (kbg services gnupg)
   #:use-module (kbg services mcron)
   #:use-module (kbg services mpd)
+  #:use-module (kbg services syncthing)
   #:export (services-for-host))
 
 (define daeva-shepherd-services
   (list (service home-shepherd-service-type
                  (home-shepherd-configuration
                   (services (append gnupg-service
-                                    mpd-service))))))
+                                    mpd-service
+                                    syncthing-service))))))
 
 (define (services-for-host hostname)
   (cond ((eq? hostname 'daeva)
