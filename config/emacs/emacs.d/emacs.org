@@ -1638,7 +1638,7 @@ https://matthewbauer.us/blog/bauer.html
   (helm-projectile-on))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package persp-projectile
   :after perspective)
 #+end_src
@@ -1743,7 +1743,7 @@ https://matthewbauer.us/blog/bauer.html
 :ID:       c10c11ef-f5d6-4716-b828-4b7c8afdca41
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package perspective
   :bind
   ("C-x C-b" . persp-list-buffers)
