@@ -6,7 +6,8 @@
   #:use-module (gnu home services))
 
 (define (direnv-config-text)
-  (mixed-text-file "source" nix-direnv "/share/direnvrc"
+  (mixed-text-file "direnvrc"
+                   "source " nix-direnv "/share/direnvrc"
                    "\n"))
 
 (define-public direnv-config-service
