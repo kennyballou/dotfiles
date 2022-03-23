@@ -10,4 +10,9 @@
                  (home-bash-configuration
                   (guix-defaults? #t)
                   (bash-profile (list (local-file (string-append %dotfiles-root "config/shell/bash_profile"))))
-                  (bashrc (list (local-file (string-append %dotfiles-root "config/shell/bashrc"))))))))
+                  (bashrc (list (local-file (string-append %dotfiles-root "config/shell/bashrc"))))))
+        (simple-service 'profile-d
+                        home-files-service-type
+                        `(("profile.d"
+                           ,(local-file (string-append %dotfiles-root "config/shell/profile.d")
+                                        #:recursive? #t))))))
