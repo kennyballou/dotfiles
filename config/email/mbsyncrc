@@ -82,34 +82,39 @@ Far ":uboisestate-remote:[Gmail]/All Mail"
 Near :uboisestate-local:archive
 Create Both
 Expunge Both
+SyncState *
 
 Channel uboisestate-inbox
 Far :uboisestate-remote:INBOX
 Near :uboisestate-local:INBOX
 Create Both
 Expunge Both
+SyncState *
 
-# Channel uboisestate-sent
-# Far ":uboisestate-remote:[Gmail]/Sent Mail"
-# Near :uboisestate-local:sent
-# Create Both
-# Expunge Both
+Channel uboisestate-sent
+Far ":uboisestate-remote:[Gmail]/Sent Mail"
+Near :uboisestate-local:sent
+Create Both
+Expunge Both
+SyncState *
 
 Channel uboisestate-spam
 Far :uboisestate-remote:[Gmail]/Spam
 Near :uboisestate-local:spam
 Create Both
 Expunge Both
+SyncState *
 
 Channel uboisestate-trash
 Far :uboisestate-remote:[Gmail]/Trash
 Near :uboisestate-local:trash
 Create Both
 Expunge Both
+SyncState *
 
 Group uboisestate
 Channel uboisestate-archive
 Channel uboisestate-inbox
-# Channel uboisestate-sent
+Channel uboisestate-sent
 Channel uboisestate-spam
 Channel uboisestate-trash

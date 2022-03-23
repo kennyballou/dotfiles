@@ -4,6 +4,7 @@
   #:use-module (guix)
   #:use-module (gnu home services)
   #:use-module (kbg services config direnv)
+  #:use-module (kbg services config email)
   #:use-module (kbg services config flatpak)
   #:use-module (kbg services config git)
   #:use-module (kbg services config global)
@@ -20,6 +21,7 @@
 
 (define daeva-configs
   (append direnv-config-service
+          email-config-service
           flatpak-config-service
           git-config-service
           ;; global-config-service
