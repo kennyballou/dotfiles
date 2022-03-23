@@ -184,7 +184,6 @@
         emacs-marginalia
         emacs-markdown-mode
         emacs-mbsync
-        rde:emacs-mct
         emacs-mmm-mode
         emacs-modus-themes
         emacs-mpdel
