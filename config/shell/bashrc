@@ -1,17 +1,9 @@
-#!/usr/bin/env bash
-
-# shellcheck source=/home/kb/.profile
-[[ -f ~/.profile ]] && source "${HOME}/.profile"
-
 export HISTIGNORE="[]*:&:bg:fg:ls -l:ls -al:ls -la"
 export HISTTIMEFORMAT="%Y-%m-%dT%H:%M:%S "
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=200000
 export HISTSIZE=200000
 shopt -s histappend
-
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
 
 if [[ "${TERM}" == "dumb" ]]; then
     alias m='cat'
