@@ -16,11 +16,18 @@
                      (requirement '())
                      (start #~(make-system-constructor
                                #$(file-append gnupg "/bin/gpg-agent")
+                               " "
                                "--daemon"
+                               " "
                                "--verbose"
-                               "--options" (string-append (getenv "HOME") "/.gnupg/gpg-agent.conf")))
+                               " "
+                               "--options"
+                               " "
+                               (string-append (getenv "HOME") "/.gnupg/gpg-agent.conf")))
                      (stop #~(make-system-destructor
                               #$(file-append gnupg "/bin/gpg-connect-agent")
+                              " "
                               "killagent"
+                              " "
                               "/bye")))))
     (list gpg-agent)))
