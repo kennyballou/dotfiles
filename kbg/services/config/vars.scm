@@ -11,4 +11,5 @@
                         '(("ASPELL_CONF" . "\"per-conf ${XDG_CONFIG_HOME}/aspell/aspell.conf; personal ${XDG_CONFIG_HOME}/aspell/en.pws; repl ${XDG_CONFIG_HOME}/aspell/en.prepl\"")
                           ("_JAVA_OPTIONS" . "\"-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel\"")
                           ("MPD_HOST" . "/run/user/1000/mpd/socket")
-                          ("EDITOR" . "emacsclient")))))
+                          ("EDITOR" . "emacsclient")
+                          ("PARALLEL_HOME" . "${XDG_CACHE_HOME}/parallel")))))

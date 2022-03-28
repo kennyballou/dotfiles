@@ -14,6 +14,7 @@
   #:use-module (kbg services config ledger)
   #:use-module (kbg services config mpd)
   #:use-module (kbg services config nixpkgs)
+  #:use-module (kbg services config parallel)
   #:use-module (kbg services config vale)
   #:use-module (kbg services config vars)
   #:use-module (kbg services config xdg)
@@ -32,6 +33,7 @@
           ledger-config-service
           mpd-config-service
           nixpkgs-config-service
+          parallel-config-service
           vale-config-service
           xdg-config-service))
 
