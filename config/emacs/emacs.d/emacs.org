@@ -684,6 +684,11 @@ $ emacsclient -c"
                                         cpp-include-path)))))
 #+end_src
 
+#+begin_src elisp
+(let ((ssh-auth-sock (string-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
+  (setenv "SSH_AUTH_SOCK" ssh-auth-sock))
+#+end_src
+
 *** EasyPG
 :PROPERTIES:
 :ID:       d5df41e6-a853-4690-a654-ee04e22f2e5c
