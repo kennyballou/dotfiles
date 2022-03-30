@@ -9,7 +9,7 @@
                   (added '((image/png . gimp.desktop)
                            (image/jpeg . gimp.desktop)))
                   (default '((all/text . emacsclient)
-                             (application/pdf . evince)
+                             (application/pdf . org.gnome.Evince.desktop)
                              (application/jpg . (eog gimp.desktop))
                              (image/gif . (eog gimp))
                              (image/jpeg . (eog gimp))
