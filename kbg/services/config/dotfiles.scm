@@ -10,6 +10,7 @@
   #:use-module (kbg services config global)
   #:use-module (kbg services config gnupg)
   #:use-module (kbg services config gnuplot)
+  #:use-module (kbg services config guix)
   #:use-module (kbg services config kitty)
   #:use-module (kbg services config ledger)
   #:use-module (kbg services config mpd)
@@ -28,6 +29,7 @@
           ;; global-config-service
           gnupg-config-service
           gnuplot-config-service
+          guix-config-service
           home-vars-service
           kitty-config-service
           ledger-config-service
