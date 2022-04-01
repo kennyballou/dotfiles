@@ -61,3 +61,7 @@ $(HOMES):
 .PHONY: $(SYSTEMS)
 $(SYSTEMS):
 	guix time-machine -C $(CHANNEL_FILE) -- system build --cores=2 $@.scm
+
+## Private targets
+config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el: config/emacs/emacs.d/emacs.org
+	emacs -Q --batch --eval "(progn (require 'ob-tangle) (dolist (file command-line-args-left) (with-current-buffer (find-file-noselect file) (org-babel-tangle))))" "$<"
