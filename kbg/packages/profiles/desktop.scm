@@ -85,7 +85,7 @@
         firefox/wayland
         flatpak
         fontconfig
-        ;; freecad
+        freecad
         fzf
         gawk
         getmail
