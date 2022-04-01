@@ -1,6 +1,7 @@
 * =~/.config/emacs.d/=
 :PROPERTIES:
 :ID:       defa5909-a6c9-4310-9237-b01c8db940ee
+:header-args: elisp: :results none
 :END:
 
 Tangle all the things from orgmode!
