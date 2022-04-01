@@ -4208,7 +4208,7 @@ Configuration borrowed from the tutorial found here:
                          err-buffer)))
 #+end_src
 
-**** mu4e -- Disabled
+**** mu4e
 :PROPERTIES:
 :ID:       5a1f2181-6b0f-4b78-a648-54ced20d028b
 :END:
@@ -4216,11 +4216,15 @@ Configuration borrowed from the tutorial found here:
 Configuration taken from the tutorial found here:
 - https://vxlabs.com/2014/06/06/configuring-emacs-mu4e-with-nullmailer-offlineimap-and-multiple-identities/
 - https://vxlabs.com/2017/02/07/mu4e-0-9-18-e-mailing-with-emacs-now-even-better/
+- http://www.cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (require 'mu4e)
 (require 'mu4e-vars)
 (require 'org-mu4e)
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package helm-mu
   :after (mu4e helm)
   :bind (:map mu4e-main-mode-map
@@ -4229,32 +4233,36 @@ Configuration taken from the tutorial found here:
               ("s" . #'helm-mu)
               :map mu4e-view-mode-map
               ("s" . #'helm-mu)))
+#+end_src
 
-(setq mu4e-compose-format-flowed nil
-      mu4e-use-fancy-chars t
-      mu4e-headers-date-format "%Y-%m-%d %H:%M"
-      message-citation-line-format "On %Y-%m-%d %H:%M %Z, %N wrote:"
-      message-citation-line-function #'message-insert-formatted-citation-line
-      mu4e-view-show-addresses t
-      mu4e-get-mail-command "mbsync -a"
-      mu4e-headers-sort-field :date
-      mu4e-headers-sort-direction 'ascending
-      message-send-mail-function 'message-send-mail-with-sendmail
-      sendmail-program "msmtp"
-      mail-specifiy-envelope-from t
-      message-sendmail-f-is-evil nil
-      message-sendmail-envelope-from 'header
-      mu4e-change-filenames-when-moving t
-      org-mu4e-link-query-in-headers-mode nil
-      message-kill-buffer-on-exit t
-      mu4e-context-policy 'pick-first
-      mu4e-confirm-quit nil
-      mu4e-sent-messages-behavior 'sent
-      ;; without this, "symbol's value as variable is void: mml2014-use" when signing
-      ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
-      ;; so set to epg and all was good!
-      ;; to sign a mail: M-x mml-secure-sign-pgpmime
-      mml2014-use 'epg)
+#+begin_src elisp
+(setq mu4e-compose-format-flowed nil)
+(setq mu4e-use-fancy-chars t)
+(setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
+(setq message-citation-line-format "On %Y-%m-%d %H:%M %Z, %N wrote:")
+(setq message-citation-line-function #'message-insert-formatted-citation-line)
+(setq mu4e-view-show-addresses t)
+(setq mu4e-get-mail-command "mbsync -a")
+(setq mu4e-headers-sort-field :date)
+(setq mu4e-headers-sort-direction 'ascending)
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq sendmail-program "msmtp")
+(setq mail-specifiy-envelope-from t)
+(setq message-sendmail-f-is-evil nil)
+(setq message-sendmail-envelope-from 'header)
+(setq mu4e-change-filenames-when-moving t)
+(setq org-mu4e-link-query-in-headers-mode nil)
+(setq message-kill-buffer-on-exit t)
+(setq mu4e-context-policy 'pick-first)
+(setq mu4e-confirm-quit nil)
+(setq mu4e-sent-messages-behavior 'sent)
+(setq mu4e-completing-read-function 'completing-read)
+(setq mu4e-view-use-old nil)
+;; without this, "symbol's value as variable is void: mml2014-use" when signing
+;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
+;; so set to epg and all was good!
+;; to sign a mail: M-x mml-secure-sign-pgpmime
+(setq mml2014-use 'epg)
 
 
 
@@ -4278,6 +4286,12 @@ Configuration taken from the tutorial found here:
 ;;                   (mu4e-sent-messages-behavior . 'sent)))
 ;;         ))
 
+;; (add-to-list 'mu4e-bookmarks
+;;        (make-mu4e-bookmark
+;;         :name "All Inboxes"
+;;         :query "maildir:/Exchange/INBOX OR maildir:/Gmail/INBOX"
+;;         :key ?i))
+
 (add-hook 'mu4e-compose-mode-hook
           (lambda ()
             (set-fill-column 72)
@@ -4294,14 +4308,16 @@ Configuration taken from the tutorial found here:
 ;; Add CC line
 (define-key mu4e-compose-mode-map (kbd "C-1 c") #'message-goto-cc)
 
-
+(setq mu4e-get-mail-command "mbsync -a")
+#+end_src
 
-(setq bbdb-mail-user-agent 'mu4e-user-agent
-      mu4e-view-mode-hook 'bbdb-mua-auto-update
-      mu4e-compose-complete-addresses nil
-      bbdb-mua-pop-up nil
-      bbdb-mua-pop-up-window-size 5
-      mu4e-view-show-addresses t)
+#+begin_src elisp :tangle no
+(setq bbdb-mail-user-agent 'mu4e-user-agent)
+(setq mu4e-view-mode-hook 'bbdb-mua-auto-update)
+(setq mu4e-compose-complete-addresses nil)
+(setq bbdb-mua-pop-up nil)
+(setq bbdb-mua-pop-up-window-size 5)
+(setq mu4e-view-show-addresses t)
 #+end_src
 
 **** gnus -- Disabled
