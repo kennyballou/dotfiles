@@ -4263,34 +4263,89 @@ Configuration taken from the tutorial found here:
 ;; so set to epg and all was good!
 ;; to sign a mail: M-x mml-secure-sign-pgpmime
 (setq mml2014-use 'epg)
+#+end_src
 
-
+#+begin_src elisp
+(defun kb/msg-to-devnulllabs-p (msg)
+  "Is MSG addressed to personal."
+  (when msg
+    (mu4e-message-contact-field-matches msg :to "\.*@devnulllabs.io\'")))
 
-;; (setq mu4e-contexts
-;;       `(,(make-mu4e-context
-;;           :name "account"
-;;           :match-func (lambda (msg) (kb/msg-to-account-p msg))
-;;           :vars `((mu4e-root-maildir . ,(kb/account-maildir))
-;;                   (user-mail-address . "mail@example.com")
-;;                   (user-full-name . "User Name")
-;;                   (my-xpgp-key-uri . "https://example.com/path/to/public.asc")
-;;                   (mu4e-compose-signature . "\n")
-;;                   (mu4e-maildir-shortcuts . ((:maildir "/account/INBOX" :key ?i)
-;;                                              (:maildir "/account/archive" :key ?a)
-;;                                              (:maildir "/account/trash" :key ?t)
-;;                                              (:maildir "/account/sent" :key ?s)))
-;;                   (mu4e-trash-folder . "/account/trash")
-;;                   (mu4e-refile-folder . "/account/archive")
-;;                   (mu4e-sent-folder . "/account/sent")
-;;                   (mu4e-drafts-folder . "/account/drafts")
-;;                   (mu4e-sent-messages-behavior . 'sent)))
-;;         ))
+(defun kb/devnulllabs-maildir ()
+  "Return base maildir for devnulllabs."
+  (expand-file-name "~/.mail/devnulllabs.io/"))
 
-;; (add-to-list 'mu4e-bookmarks
-;;        (make-mu4e-bookmark
-;;         :name "All Inboxes"
-;;         :query "maildir:/Exchange/INBOX OR maildir:/Gmail/INBOX"
-;;         :key ?i))
+(defun kb/msg-to-boisestate-p (msg)
+  "Is MSG addressed to BSU account."
+  (when msg
+    (mu4e-message-contact-field-matches msg :to "kennyballou\.*@(u.)?boisestate.edu\'")))
+
+(defun kb/boisestate-maildir ()
+  "Return base maildir for uboisestate."
+  (expand-file-name "~/.mail/u.boisestate.edu/"))
+
+(defun kb/smart-folders-fn (folder)
+  "Return a function that maps a message into the account appropriate FOLDER."
+  (let (folder folder)
+    (lambda (msg)
+      (cond ((kb/msg-to-devnulllabs-p msg) (concat (kb/devnulllabs-maildir) folder))
+            ((kb/msg-to-boisestate-p msg) (concat (kb/boisestate-maildir) folder))
+            (t (concat (kb/devnulllabs-maildir) folder))))))
+
+(setq mu4e-refile-folder (kb/smart-folders-fn "archive")
+      mu4e-drafts-folder (kb/smart-folders-fn "drafts")
+      mu4e-sent-folder (kb/smart-folders-fn "sent")
+      mu4e-trash-folder (kb/smart-folders-fn "trash"))
+
+(setq mu4e-user-mail-address-list '("kb@devnulllabs.io"
+                                    "kballou@devnulllabs.io"
+                                    "kenny@devnulllabs.io"
+                                    "kennethmgballou@gmail.com"
+                                    "kennyballou@u.boisestate.edu"
+                                    "kennyballou@boisestate.edu"))
+
+(setq mu4e-contexts
+      `(,(make-mu4e-context
+          :name "devnulllabs"
+          :match-func (lambda (msg) (kb/msg-to-devnulllabs-p msg))
+          :vars `((mu4e-root-maildir . ,(kb/devnulllabs-maildir))
+                  (user-mail-address . "kballou@devnulllabs.io")
+                  (user-full-name . "Kenny Ballou")
+                  (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
+                  (mu4e-compose-signature . ":SIG:!0xB0CAA28A02958308!:\n")
+                  (mu4e-maildir-shortcuts . ((:maildir "/devnulllabs.io/INBOX" :key ?i)
+                                             (:maildir "/devnulllabs.io/archive" :key ?a)
+                                             (:maildir "/devnulllabs.io/trash" :key ?t)
+                                             (:maildir "/devnulllabs.io/sent" :key ?s)))
+                  (mu4e-trash-folder . "/devnulllabs.io/trash")
+                  (mu4e-refile-folder . "/devnulllabs.io/archive")
+                  (mu4e-sent-folder . "/devnulllabs.io/sent")
+                  (mu4e-drafts-folder . "/devnulllabs.io/drafts")
+                  (mu4e-sent-messages-behavior . delete)))
+        ,(make-mu4e-context
+          :name "bsu"
+          :match-func (lambda (msg) (kb/msg-to-boisestate-p msg))
+          :vars `((mu4e-root-maildir . ,(kb/boisestate-maildir))
+                  (user-mail-address . "kennyballou@u.boisestate.edu")
+                  (user-full-name . "Kenny Ballou")
+                  (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
+                  (mu4e-compose-signature . ":SIG:!0xB0CAA28A02958308!:\n")
+                  (mu4e-maildir-shortcuts . ((:maildir "/u.boisestate.edu/INBOX" :key ?i)
+                                             (:maildir "/u.boisestate.edu/archive" :key ?a)
+                                             (:maildir "/u.boisestate.edu/trash" :key ?t)
+                                             (:maildir "/u.boisestate.edu/sent" :key ?s)))
+                  (mu4e-trash-folder . "/u.boisestate.edu/trash")
+                  (mu4e-refile-folder . "/u.boisestate.edu/archive")
+                  (mu4e-sent-folder . "/u.boisestate.edu/sent")
+                  (mu4e-drafts-folder . "/u.boisestate.edu/drafts")
+                  (mu4e-sent-messages-behavior . delete)))
+        ))
+
+(add-to-list 'mu4e-bookmarks
+       (make-mu4e-bookmark
+        :name "All Inboxes"
+        :query "maildir:/devnulllabs.io/INBOX OR maildir:/u.boisestate.edu/INBOX"
+        :key ?i))
 
 (add-hook 'mu4e-compose-mode-hook
           (lambda ()
