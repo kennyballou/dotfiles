@@ -28,6 +28,7 @@
   #:use-module (kbg packages gnome)
   #:use-module (kbg services desktop)
   #:use-module (kbg services nftables)
+  #:use-module ((kbg system mcron) :prefix mcron:)
   #:use-module (kbg system xorg))
 
 (define install-grub-efi-removable
@@ -150,9 +151,7 @@
                            (nftables-service "daeva")
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
-                                           (list ;; garbage-collector-job
-                                                 guix-gc-repair-job
-                                                 nix-gc-job)))
+                                           (list mcron:guix-gc-repair-job)))
                      %kbg-desktop-services))
 
    ;; Allow resolution of '.local' host names with mDNS.
