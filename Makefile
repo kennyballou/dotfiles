@@ -6,8 +6,8 @@ SYSTEMS=$(patsubst %,systems/%,$(HOSTS))
 HOMES=$(patsubst %,homes/%,$(HOSTS))
 HOSTNAME=$(shell hostname)
 
-.PHONY: all
-all: build
+.PHONY: current-system
+current-system: config/emacs/emacs.d/init.el homes/$(HOSTNAME) systems/$(HOSTNAME)
 
 .PHONY: list
 list:
