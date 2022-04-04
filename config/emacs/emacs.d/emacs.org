@@ -4398,7 +4398,6 @@ Configuration borrowed from the tutorial found here:
               ((string-match-p "archive" group) 'never)
               (t 30))))
 #+end_src
-
 **** ERC
 :PROPERTIES:
 :ID:       1d2bc479-8dac-46c7-ba69-9a726968ed43
@@ -4408,6 +4407,20 @@ Configuration borrowed from the tutorial found here:
 (require 'erc-match)
 (setq erc-echo-notices-in-minibuffer-flag t)
 (setq erc-keywords '("kennyballou"))
+#+end_src
+**** elfeed
+:PROPERTIES:
+:ID:       5f76c0d2-17a2-4752-b158-74695b1e0f04
+:END:
+
+#+begin_src elisp
+(use-package elfeed)
+
+(use-package elfeed-org
+  :after elfeed
+  :config
+  (setq rmh-elfeed-org-files (list "~/.org/elfeed.org"))
+  (elfeed-org))
 #+end_src
 
 *** MultiMedia
