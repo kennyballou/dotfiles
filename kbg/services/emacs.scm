@@ -201,6 +201,7 @@
         emacs-org-contacts
         emacs-org-contrib
         emacs-org-gcal
+        emacs-org-mime
         emacs-org-pandoc-import
         emacs-org-pomodoro
         emacs-org-ref

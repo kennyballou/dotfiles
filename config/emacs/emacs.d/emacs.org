@@ -3842,6 +3842,21 @@ Update project status when updating the cookie statistics.
   (setq org-pomodoro-ticking-sound-p nil))
 #+end_src
 
+**** Org Mime
+:PROPERTIES:
+:ID:       44e6e5a4-d7e7-4089-8406-3472e11820e5
+:END:
+
+#+begin_src elisp
+(use-package org-mime
+  :config
+  (setq org-mime-export-options '(:with-latex dvipng
+                                  :section-numbers nil
+                                  :with-author nil
+                                  :with-toc nil))
+  (setq org-mime-ascii 'utf-8))
+#+end_src
+
 **** Org Babel
 :PROPERTIES:
 :ID:       41d5ffaf-4b44-4436-b3ae-c4e9f9fc0cf6
