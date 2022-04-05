@@ -244,6 +244,7 @@
         ;; emacs-session
         emacs-shroud
         emacs-shx
+        emacs-simple-httpd
         ;; emacs-skewer-less
         emacs-skewer-mode
         emacs-slurm-mode
