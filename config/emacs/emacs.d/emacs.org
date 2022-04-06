@@ -547,6 +547,9 @@ $ emacsclient -c"
 (setq-default whitespace-rescan-timer-time nil)
 (setq-default whitespace-silent t)
 (setq-default woman-imenu t)
+
+(setq-default next-error-message-highlight t)
+(setq-default read-minibuffer-restore-windows nil)
 #+end_src
 
 *** Package Configuration
