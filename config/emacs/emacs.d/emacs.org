@@ -4439,6 +4439,16 @@ Configuration borrowed from the tutorial found here:
   (setq rmh-elfeed-org-files (list "~/.org/elfeed.org"))
   (elfeed-org))
 #+end_src
+**** World-Clock
+:PROPERTIES:
+:ID:       8e06ba9b-0911-4691-8ebe-8759197c0ca1
+:END:
+
+#+begin_src elisp
+(setq zoneinfo-style-world-list
+      '(("Etc/UTC" "UTC")
+        ("Etc/GMT-12" "AoE")))
+#+end_src
 
 *** MultiMedia
 :PROPERTIES:
