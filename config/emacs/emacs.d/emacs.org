@@ -4223,7 +4223,11 @@ Configuration taken from the tutorial found here:
         (:name "Last 7 Days"
          :query "date:7d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
          :hide-unread t
-         :key ?w)))
+         :key ?w)
+        (:name "Last Month"
+         :query "date:30d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+         :hide-unread t
+         :key ?m)))
 
 (add-hook 'mu4e-compose-mode-hook
           (lambda ()
