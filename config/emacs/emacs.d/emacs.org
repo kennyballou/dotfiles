@@ -3600,6 +3600,8 @@ http://doc.norang.ca/org-mode.htm
         ("n" "n" (kb/org-not-clocking-p))
         ("t" "tm" ((in-mode . "mu4e-view")
                    (in-mode . "mu4e-headers")))
+        ("t" "t" ((not-in-mode . "mu4e-view")
+                  (not-in-mode . "mu4e-headers")))
         ("r" ((in-mode . "mu4e-view")
               (in-mode . "mu4e-headers")))))
 
