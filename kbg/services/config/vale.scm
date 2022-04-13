@@ -7,8 +7,8 @@
 (define-public vale-config-service
   (list (simple-service 'vale-config
                         home-files-service-type
-                        `(("vale.ini"
+                        `((".vale.ini"
                            ,(local-file (string-append %dotfiles-root "config/vale/vale.ini")))
-                          ("config/vale/styles"
+                          (".config/vale/styles"
                            ,(local-file (string-append %dotfiles-root "config/vale/styles")
                                         #:recursive? #t))))))

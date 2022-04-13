@@ -7,7 +7,7 @@
 (define-public guix-config-service
   (list (simple-service 'guix-config
                         home-files-service-type
-                        `(("config/guix/channels.scm"
+                        `((".config/guix/channels.scm"
                            ,(local-file (string-append %dotfiles-root "config/guix/channels.scm")))
-                          ("config/guix/shell-authorized-directories"
+                          (".config/guix/shell-authorized-directories"
                            ,(local-file (string-append %dotfiles-root "config/guix/shell-authorized-directories")))))))

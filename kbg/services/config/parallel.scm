@@ -7,5 +7,5 @@
 (define-public parallel-config-service
   (list (simple-service 'parallel-config
                         home-files-service-type
-                        `(("parallel/will-cite"
+                        `((".parallel/will-cite"
                            ,(mixed-text-file "will-cite" "\n"))))))

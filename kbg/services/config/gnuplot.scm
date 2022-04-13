@@ -15,4 +15,4 @@
 (define-public gnuplot-config-service
   (list (simple-service 'gnuplot-config
                         home-files-service-type
-                        `(("gnuplot" ,(gnuplot-config-text))))))
+                        `((".gnuplot" ,(gnuplot-config-text))))))

@@ -7,7 +7,7 @@
 (define-public email-config-service
   (list (simple-service 'email-config
                         home-files-service-type
-                        `(("mbsyncrc"
+                        `((".mbsyncrc"
                            ,(local-file (string-append %dotfiles-root "config/email/mbsyncrc")))
-                          ("config/msmtp/config"
+                          (".config/msmtp/config"
                            ,(local-file (string-append %dotfiles-root "config/email/msmtprc")))))))

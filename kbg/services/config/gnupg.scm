@@ -17,9 +17,9 @@
 (define-public gnupg-config-service
   (list (simple-service 'gnupg-config
                         home-files-service-type
-                        `(("gnupg/gpg.conf"
+                        `((".gnupg/gpg.conf"
                            ,(local-file (string-append %dotfiles-root "config/gnupg/gpg.conf")))
-                          ("gnupg/gpg-agent.conf"
+                          (".gnupg/gpg-agent.conf"
                            ,gpg-agent-config)
-                          ("gnupg/scdaemon.conf"
+                          (".gnupg/scdaemon.conf"
                            ,(local-file (string-append %dotfiles-root "config/gnupg/scdaemon.conf")))))))

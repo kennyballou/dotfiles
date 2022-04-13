@@ -5,7 +5,7 @@
   #:use-module (gnu home services))
 
 (define (git-file fname)
-  (string-append "config/git/" fname))
+  (string-append ".config/git/" fname))
 
 (define-public git-config-service
   (list (simple-service 'git-config

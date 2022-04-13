@@ -8,5 +8,5 @@
 (define nixpkgs-config-service
   (list (simple-service 'nixpkgs-config
                         home-files-service-type
-                        `(("config/nixpkgs/config.nix"
+                        `((".config/nixpkgs/config.nix"
                           ,(local-file (string-append %dotfiles-root "config/nixpkgs/config.nix")))))))

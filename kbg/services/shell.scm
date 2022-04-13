@@ -12,6 +12,6 @@
                   (bashrc (list (local-file (string-append %dotfiles-root "config/shell/bashrc"))))))
         (simple-service 'profile-d
                         home-files-service-type
-                        `(("profile.d"
+                        `((".profile.d"
                            ,(local-file (string-append %dotfiles-root "config/shell/profile.d")
                                         #:recursive? #t))))))

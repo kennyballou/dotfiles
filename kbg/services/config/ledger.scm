@@ -7,5 +7,5 @@
 (define-public ledger-config-service
   (list (simple-service 'ledger-config
                         home-files-service-type
-                        `(("ledgerrc"
+                        `((".ledgerrc"
                            ,(local-file (string-append %dotfiles-root "config/ledger/ledgerrc")))))))

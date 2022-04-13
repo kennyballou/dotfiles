@@ -8,5 +8,5 @@
 (define kitty-config-service
   (list (simple-service 'kitty-config
                         home-files-service-type
-                        `(("config/kitty/kitty.conf"
+                        `((".config/kitty/kitty.conf"
                            ,(local-file (string-append %dotfiles-root "config/kitty/kitty.conf")))))))

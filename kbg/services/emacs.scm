@@ -280,7 +280,7 @@
         emacs-zenburn-theme)))
 
 (define (emacs-file fname)
-  (string-append "config/emacs/" fname))
+  (string-append ".config/emacs/" fname))
 
 (define-public emacs-service
   (list (simple-service 'emacs-config
@@ -289,7 +289,7 @@
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/early-init.el")))
                           (,(emacs-file "init.el")
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/init.el")))
-                          ("gnus.el"
+                          (".gnus.el"
                            ,(if (file-exists? (string-append %dotfiles-root "config/emacs/emacs.d/gnus.el"))
                                 (local-file (string-append %dotfiles-root "config/emacs/emacs.d/gnus.el"))
                                 (plain-file "gnus.el" "")))

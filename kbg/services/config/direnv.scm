@@ -15,5 +15,5 @@
 (define-public direnv-config-service
   (list (simple-service 'direnv-config
                         home-files-service-type
-                        `(("config/direnv/direnvrc"
+                        `((".config/direnv/direnvrc"
                            ,(direnv-config-text))))))

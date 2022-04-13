@@ -7,5 +7,5 @@
 (define-public global-config-service
   (list (simple-service 'global-config
                         home-files-service-type
-                        `(("globalrc"
+                        `((".globalrc"
                            ,(local-file (string-append %dotfiles-root "config/global/globalrc")))))))
