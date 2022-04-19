@@ -51,7 +51,7 @@
 
 (define daeva-system
   (operating-system
-   (kernel linux)
+   (kernel linux-lts)
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
    (host-name "daeva")
