@@ -11,5 +11,7 @@
                         '(("_JAVA_OPTIONS" . "\"-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel\"")
                           ("ASPELL_CONF" . "\"per-conf ${XDG_CONFIG_HOME}/aspell/aspell.conf; personal ${XDG_CONFIG_HOME}/aspell/en.pws; repl ${XDG_CONFIG_HOME}/aspell/en.prepl\"")
                           ("EDITOR" . "emacsclient")
+                          ("GUIX_EXTENSIONS_PATH" . "${GUIX_PROFILE}/share/guix/extensions")
+                          ("GUIX_PROFILE" . "${HOME}/.guix-home/profile")
                           ("MPD_HOST" . "/run/user/1000/mpd/socket")
                           ("PARALLEL_HOME" . "${XDG_CACHE_HOME}/parallel")))))
