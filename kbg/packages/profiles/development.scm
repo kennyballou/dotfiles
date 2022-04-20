@@ -14,7 +14,6 @@
   #:use-module (gnu packages java)
   #:use-module (gnu packages maths)
   #:use-module (gnu packages networking)
-  #:use-module (gnu packages package-management)
   #:use-module (gnu packages parallel)
   #:use-module (gnu packages patchutils)
   #:use-module (gnu packages pretty-print)
@@ -28,6 +27,7 @@
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages vim)
   #:use-module (kbg packages coq-xyz)
+  #:use-module (kbg packages gwl)
   #:export (%kbg-base-development-packages))
 
 (define %kbg-base-development-packages
