@@ -3552,14 +3552,12 @@ http://doc.norang.ca/org-mode.htm
          :clock-in t :clock-resume t :immediate-finish t)
         ("tn" "note on task" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/TASK_NOTE") :empty-lines 1)
-        ("l" "logbook entry" entry (file+olp+datetree kb/org-logbook-file)
+        ("n" "logbook entry" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/TASK_LOG_NOTE") :empty-lines 1)
         ("tr" "related task" entry (clock)
          (file "~/.config/emacs/org-captures/RELATED_TODO"))
         ("tm" "todo from mail" entry (file kb/org-refile)
          (file "~/.config/emacs/org-captures/TODO_MAIL") :clock-in t :clock-resume t)
-        ("n" "note" entry (file kb/org-refile)
-         (file "~/.config/emacs/org-captures/NOTE"))
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
          (file "~/.config/emacs/org-captures/JOURNAL")
          :clock-in t
@@ -3669,9 +3667,6 @@ Update project status when updating the cookie statistics.
                 (org-agenda-span 'year)
                 (org-agenda-time-grid nil)
                 ))
-              ("N" "Notes" tags "NOTE"
-               ((org-agenda-overriding-header "Notes")
-                (org-tags-match-list-sublevels t)))
               ("l" "Logbook" tags "RECORD"
                ((org-agenda--insert-overriding-header "Logbook")
                 (org-tags-match-list-sublevels t)
