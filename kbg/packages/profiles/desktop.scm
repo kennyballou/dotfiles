@@ -65,6 +65,8 @@
         gst-plugins-good
         gst-plugins-ugly
         hplip-plugin
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
         xdg-utils
         xev
         xkill
