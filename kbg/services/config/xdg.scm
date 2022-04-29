@@ -34,4 +34,4 @@
                   (pictures "$HOME/pictures")
                   (publicshare "$HOME/public")
                   (templates "$HOME")
-                  (videos "$HOME")))))
+                  (videos "$HOME/videos")))))
