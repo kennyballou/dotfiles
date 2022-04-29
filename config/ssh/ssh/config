@@ -1,4 +1,3 @@
-# vim: filetype=sshconfig:
 Host *
     PreferredAuthentications publickey,password
     VisualHostKey yes
@@ -8,3 +7,5 @@ Host *
     ControlMaster auto
     ControlPath ~/.ssh/sockets/%r@%h-%p
     ControlPersist 600
+
+Include ~/.ssh/config.d/*.conf

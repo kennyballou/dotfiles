@@ -16,6 +16,7 @@
   #:use-module (kbg services config mpd)
   #:use-module (kbg services config nixpkgs)
   #:use-module (kbg services config parallel)
+  #:use-module (kbg services config ssh)
   #:use-module (kbg services config vale)
   #:use-module (kbg services config vars)
   #:use-module (kbg services config xdg)
@@ -36,6 +37,7 @@
           mpd-config-service
           nixpkgs-config-service
           parallel-config-service
+          ssh-config-service
           vale-config-service
           xdg-config-service))
 
@@ -53,6 +55,9 @@
           mpd-config-service
           nixpkgs-config-service
           parallel-config-service
+          ssh-config-service
+          vale-config-service
+          xdg-config-service))
           vale-config-service
           xdg-config-service))
 
