@@ -4553,6 +4553,7 @@ _dR_:   Disable repeat
 ;;; Local Variables:
 ;;; coding: utf-8
 ;;; no-byte-compile: t
+;;; End:
 
 #+end_src
 
