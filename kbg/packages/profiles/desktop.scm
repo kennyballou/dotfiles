@@ -125,7 +125,7 @@
         qpdf
         qrencode
         ;; ublock-origin-chromium
-        ungoogled-chromium/wayland
+        ungoogled-chromium
         vlc
         units
         wavemon
