@@ -19,7 +19,7 @@
 
 (define nix-gc-job
   #~(job '(next-hour '(1))
-         "nix-collect-garbage --delete-old"
+         "nix-collect-garbage --delete-older-than 30d"
          "nix garbage collection"))
 
 (define guix-gc-repair-job
@@ -29,5 +29,5 @@
 
 (define guix-gc-job
   #~(job "5 0 * * 0"
-         "guix gc --collect-garbage"
+         "guix gc --free-space=10G"
          "guix garbage collection"))
