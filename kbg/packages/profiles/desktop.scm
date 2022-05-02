@@ -23,6 +23,7 @@
   #:use-module (gnu packages gawk)
   #:use-module (gnu packages gimp)
   #:use-module (gnu packages gnome)
+  #:use-module (gnu packages gnome-xyz)
   #:use-module (gnu packages gnupg)
   #:use-module (gnu packages gnuzilla)
   #:use-module (gnu packages gstreamer)
@@ -116,6 +117,7 @@
         p7zip
         pandoc
         paperkey
+        papirus-icon-theme
         password-store
         pdfpc
         picard
