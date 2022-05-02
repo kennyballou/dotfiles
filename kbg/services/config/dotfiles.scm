@@ -58,6 +58,23 @@
           ssh-config-service
           vale-config-service
           xdg-config-service))
+
+(define koi-configs
+  (append direnv-config-service
+          email-config-service
+          flatpak-config-service
+          git-config-service
+          ;; global-config-service
+          gnupg-config-service
+          gnuplot-config-service
+          guix-config-service
+          home-vars-service
+          kitty-config-service
+          ledger-config-service
+          mpd-config-service
+          nixpkgs-config-service
+          parallel-config-service
+          ssh-config-service
           vale-config-service
           xdg-config-service))
 
@@ -66,4 +83,6 @@
          daeva-configs)
         ((eq? hostname 'yak)
          yak-configs)
+        ((eq? hostname 'koi)
+         koi-configs)
         (else '())))

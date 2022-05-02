@@ -28,9 +28,18 @@
                                     mpd-service
                                     syncthing-service))))))
 
+(define koi-shepherd-services
+  (list (service home-shepherd-service-type
+                 (home-shepherd-configuration
+                  (services (append gnupg-service
+                                    mpd-service
+                                    syncthing-service))))))
+
 (define (services-for-host hostname)
   (cond ((eq? hostname 'daeva)
          daeva-shepherd-services)
         ((eq? hostname 'yak)
          yak-shepherd-services)
+        ((eq? hostname 'koi)
+         koi-shepherd-services)
         (else '())))
