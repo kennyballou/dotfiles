@@ -1,4 +1,4 @@
-* %k :RECORD:
+* %k: %^{Description} :RECORD:
 :PROPERTIES:
 :ID:       %(org-id-uuid)
 :CREATED:  %T
