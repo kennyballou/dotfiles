@@ -4425,6 +4425,16 @@ Configuration borrowed from the tutorial found here:
 :END:
 
 #+begin_src elisp
+(setq erc-server "irc.libera.chat")
+(setq erc-nick "kennyballou")
+(setq erc-user-full-name "Kenny Ballou")
+(setq erc-track-shorten-start 8)
+(setq erc-autojoin-channels-alist '(("irc.libera-chat" "#emacs" "#guix")))
+(setq erc-kill-buffer-on-part t)
+(setq erc-auto-query 'bury)
+#+end_src
+
+#+begin_src elisp
 (require 'erc-match)
 (setq erc-echo-notices-in-minibuffer-flag t)
 (setq erc-keywords '("kennyballou"))
