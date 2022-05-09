@@ -55,7 +55,7 @@
    mercurial
    mg
    octave
-   openjdk11
+   `(,openjdk11 "jdk")
    parallel
    patch
    patchutils
