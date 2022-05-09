@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
 function use_guix() {
-    if [[ -f channels.scm ]]; then
-        echo 2> "Using Guix version from channels.scm"
-        export GUIX_ENVIRONMENT=$(guix time-machine --channels ./channels.scm -- shell -- bash -c 'echo ${GUIX_ENVIRONMENT}')
-        eval "$(guix time-machine --channels ./channels.scm -- shell ${FLAGS} --search-paths)"
+    GIT_ROOT="$(git rev-parse --show-toplevel)"
+    GUIX_CHANNELS="${GIT_ROOT}/channels.scm"
+    if [[ -f ${GUIX_CHANNELS} ]]; then
+        echo "Using Guix version from ${GUIX_CHANNELS}"
+        GUIX_ENVIRONMENT=$(guix time-machine --channels=${GUIX_CHANNELS} -- shell -- bash -c 'echo ${GUIX_ENVIRONMENT}')
+        export GUIX_ENVIRONMENT
+        eval "$(guix time-machine --channels=${GUIX_CHANNELS} -- shell --search-paths)"
     else
-        echo "${FLAGS}"
-        export GUIX_ENVIRONMENT=$(guix shell -- bash -c 'echo ${GUIX_ENVIRONMENT}')
+        GUIX_ENVIRONMENT=$(guix shell -- bash -c 'echo ${GUIX_ENVIRONMENT}')
+        export GUIX_ENVIRONMENT
         eval "$(guix shell --search-paths)"
     fi
 }
