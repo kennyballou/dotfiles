@@ -4175,7 +4175,7 @@ Configuration taken from the tutorial found here:
           :name "devnulllabs"
           :match-func (lambda (msg) (kb/msg-to-devnulllabs-p msg))
           :vars `((mu4e-root-maildir . ,(kb/devnulllabs-maildir))
-                  (user-mail-address . "kballou@devnulllabs.io")
+                  (user-mail-address . "kb@devnulllabs.io")
                   (user-full-name . "Kenny Ballou")
                   (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
                   (mu4e-compose-signature . ":SIG:!0xB0CAA28A02958308!:\n")
