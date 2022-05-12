@@ -4451,6 +4451,7 @@ Configuration borrowed from the tutorial found here:
   :after elfeed
   :config
   (setq rmh-elfeed-org-files (list "~/.org/elfeed.org"))
+  (setq elfeed-search-filter "@12-hours-ago +unread")
   (elfeed-org))
 #+end_src
 **** World-Clock
