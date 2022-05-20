@@ -5,6 +5,7 @@
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages networking)
   #:use-module (gnu services networking)
+  #:use-module (gnu services sound)
   #:use-module (gnu services xorg)
   #:use-module (gnu packages vpn)
   #:export (%kbg-desktop-services))
@@ -20,4 +21,5 @@
                    (gdm-service-type config =>
                                      (gdm-configuration
                                       (inherit config)
-                                      (wayland? #t)))))
+                                      (wayland? #t)))
+                   (delete pulseaudio-service-type)))
