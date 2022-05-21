@@ -7,10 +7,6 @@
        (url "https://gitlab.com/nonguix/nonguix")
        (commit "dae8645813454a687b24846a8126bd758fbdc8c9"))
       (channel
-       (name 'rde)
-       (url "https://github.com/abcdw/rde")
-       (commit "b8dcdcaa4ae52fbb3add722840a8f01eec219802"))
-      (channel
        (name 'flat)
        (url "https://github.com/flatwhatson/guix-channel.git")
        (commit "f43c67e47f1ca83d045f35c31772c5e4eb64b2a2"))

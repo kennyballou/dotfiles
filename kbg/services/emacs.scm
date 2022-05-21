@@ -8,7 +8,6 @@
   #:use-module (gnu packages emacs-xyz)
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
   #:use-module (flat packages emacs)
-  #:use-module ((rde packages) #:prefix rde:)
   #:use-module (emacs packages melpa)
   #:use-module (kbg packages emacs))
 
