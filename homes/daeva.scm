@@ -20,6 +20,8 @@
   #:use-module (kbg services config dotfiles)
   #:use-module (kbg services emacs)
   #:use-module (kbg services mcron)
+  #:use-module (kbg services dbus)
+  #:use-module (kbg services pipewire)
   #:use-module (kbg services shell)
   #:use-module (kbg services shepherd))
 
@@ -35,5 +37,7 @@
           (configs-for-host 'daeva)
           emacs-service
           mcron-service
+          (list (service home-dbus-service-type)
+                (service home-pipewire-service-type))
           (services-for-host 'daeva))))
           ;; shepherd-user-services
