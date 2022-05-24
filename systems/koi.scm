@@ -20,6 +20,7 @@
   #:use-module (gnu system file-systems)
   #:use-module (gnu system nss)
   #:use-module (gnu packages gnome)
+  #:use-module (gnu packages linux)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
   #:use-module (nongnu packages printers)
@@ -46,6 +47,8 @@
 (define koi-system
   (operating-system
    (kernel linux-lts)
+   (kernel-loadable-modules
+    (list v4l2loopback-linux-module))
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
    (host-name "koi")
