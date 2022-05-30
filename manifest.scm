@@ -1,4 +1,5 @@
 (specifications->manifest
- '("make"
+ '("emacs-no-x"
+   "make"
    "man-db"
    "info-reader"))
