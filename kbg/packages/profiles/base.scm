@@ -14,6 +14,7 @@
   #:use-module (gnu packages disk)
   #:use-module (gnu packages entr)
   #:use-module (gnu packages file)
+  #:use-module (gnu packages file-systems)
   #:use-module (gnu packages gawk)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages gnupg)
@@ -57,6 +58,7 @@
 
 (define %kbg-base-packages
   (list bash-completion
+        bindfs
         cpufrequtils
         cryptsetup
         curl
