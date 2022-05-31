@@ -7,6 +7,10 @@
        (url "https://gitlab.com/nonguix/nonguix")
        (commit "a95251a11f108b4d7f86a483841e3bf962ce9606"))
       (channel
+       (name 'kbg)
+       (url "https://git.sr.ht/~kennyballou/guix-channel.git")
+       (commit "70a79b00238c36038fcb30a89d862d41a2708647"))
+      (channel
        (name 'flat)
        (url "https://github.com/flatwhatson/guix-channel.git")
        (commit "be5c389f28e29419f738bf552357fb3789565c17"))

@@ -9,7 +9,7 @@
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
   #:use-module (flat packages emacs)
   #:use-module (emacs packages melpa)
-  #:use-module (kbg packages emacs))
+  #:use-module (kbg packages emacs-xyz))
 
 (define rewrite
   (package-input-rewriting
