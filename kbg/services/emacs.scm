@@ -80,6 +80,7 @@
         emacs-elein
         emacs-elfeed
         emacs-elfeed-org
+        emacs-elgantt
         emacs-elixir-mode
         emacs-elm-mode
         emacs-emms
@@ -203,6 +204,7 @@
         emacs-org-mime
         emacs-org-pandoc-import
         emacs-org-pomodoro
+        emacs-org-ql
         emacs-org-ref
         emacs-ox-gfm
         emacs-page-break-lines
