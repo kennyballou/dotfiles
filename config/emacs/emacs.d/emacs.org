@@ -3966,6 +3966,19 @@ https://orgmode.org/worg/org-hacks.html#orgf1fe951
   (awqat-set-preset-isna))
 #+end_src
 
+*** elgantt
+:PROPERTIES:
+:ID:       270cff5d-0d98-4bad-819c-629a6fe9d37c
+:END:
+
+#+begin_src elisp
+(setq elgantt-header-type 'outline)
+(setq elgantt-insert-blank-line-between-top-level-header t)
+(setq elgantt-startup-folded nil)
+(setq elgantt-show-header-depth t)
+(setq elgantt-draw-overarching-headers t)
+#+end_src
+
 *** Communications and Such
 :PROPERTIES:
 :ID:       6e80a7ca-bd5e-4b64-8241-1f06f0fbbeb5
