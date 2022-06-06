@@ -31,6 +31,7 @@
   #:use-module (kbg packages gnome)
   #:use-module (kbg services desktop)
   #:use-module (kbg services nftables)
+  #:use-module (kbg services slurm)
   #:use-module (kbg system setuid-programs)
   #:use-module ((kbg system mcron) :prefix mcron:)
   #:use-module (kbg system xorg))
@@ -141,6 +142,36 @@
                                      (password-authentication? #f)
                                      (permit-root-login 'prohibit-password)))
                            (nftables-service "yak")
+                           (service munge-service-type)
+                           (service slurm-service-type
+                                    (slurm-configuration
+                                     (SlurmdLogFile "/var/log/slurm/slurmd.log")
+                                     (SlurmctldLogFile "/var/log/slurm/slurmctld.log")
+                                     (ClusterName "yaks")
+                                     (SlurmUser "slurm")
+                                     (SlurmctldHost '("localhost"))
+                                     (DbdHost "localhost")
+                                     (StorageType "accounting_storage/none")
+                                     (slurm-extra-content
+                                      (string-append
+                                       "StateSaveLocation=/var/spool/slurmd/ctld #default /var/spool\n"
+                                       "ReturnToService=1 #default 0\n"
+                                       "DebugFlags=NO_CONF_HASH #default empty\n"
+                                       "SelectType=select/cons_res #default select/linear\n"
+                                       "SelectTypeParameters=CR_CPU #default 0\n"
+                                       "# COMPUTE NODES\n"
+                                       "NodeName=yak CPUs=1 Boards=1 SocketsPerBoard=1 CoresPerSocket=1 ThreadsPerCore=1\n"
+                                       "PartitionName=debug Nodes=ALL Default=YES MaxTime=INFINITE State=UP"))
+                                     (cgroup-extra-content
+                                      (string-append
+                                       "CgroupAutomount=yes #default no\n"
+                                       "ConstrainCores=yes #default no\n"
+                                       "MaxRAMPercent=80  #default 100"))
+                                     (slurmdbd-extra-content
+                                      (string-append
+                                       "LogFile=/var/log/slurm/slurmdbd.log #default none, syslog"))
+                                     (run-slurmdbd? #f)
+                                     (run-slurmctld? #t)))
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
                                            (list mcron:guix-gc-repair-job)))
