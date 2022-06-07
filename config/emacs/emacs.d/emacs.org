@@ -3842,6 +3842,10 @@ Update project status when updating the cookie statistics.
   (setq org-pomodoro-ticking-sound-p nil))
 #+end_src
 
+#+begin_src elisp
+(require 'org-depend)
+#+end_src
+
 **** Org Mime
 :PROPERTIES:
 :ID:       44e6e5a4-d7e7-4089-8406-3472e11820e5
