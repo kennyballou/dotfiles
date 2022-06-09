@@ -3789,13 +3789,13 @@ Update project status when updating the cookie statistics.
 #+begin_src elisp
 (defhydra help/hydra/timestamp (:hint nil :exit t)
   "
-   _ts_:  Inactive timestamp with seconds
-   _utc_: Ianctive timestamp with seconds in UTC
+   _t_s:  Inactive timestamp with seconds
+   _u_tc: Ianctive timestamp with seconds in UTC
    _d_:   Inactive date Local time
    "
   ("q" exit)
-  ("ts" help/org-time-stamp-with-seconds-now)
-  ("utc" help/org-time-stamp-with-seconds-now-utc)
+  ("t" help/org-time-stamp-with-seconds-now)
+  ("u" help/org-time-stamp-with-seconds-now-utc)
   ("d" help/org-date))
 
 (defun help/org-time-stamp-with-seconds-now ()
