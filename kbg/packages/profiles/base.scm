@@ -85,6 +85,7 @@
         ltrace
         mc
         mg
+        mosh
         mtr
         ncdu
         nfs-utils
