@@ -32,7 +32,7 @@
 
 (define %kbg-base-development-packages
   (list
-   ;; autogen
+   autogen
    coq
    coq-math-classes
    diffstat
