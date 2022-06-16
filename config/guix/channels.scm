@@ -9,7 +9,7 @@
       (channel
        (name 'kbg)
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
-       (commit "a915c57d5b99a34d092ba131edb40ad800e4d7ec"))
+       (commit "3c2c03ae5653bf491236dc0b77e46f3bfebe67a1"))
       (channel
        (name 'flat)
        (url "https://github.com/flatwhatson/guix-channel.git")
