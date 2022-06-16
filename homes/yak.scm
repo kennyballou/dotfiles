@@ -16,6 +16,7 @@
   #:use-module (kbg packages profiles development)
   #:use-module (kbg packages profiles desktop)
   #:use-module (kbg packages profiles fonts)
+  #:use-module (kbg packages profiles science)
   #:use-module (kbg packages profiles statistics)
   #:use-module (kbg services config dotfiles)
   #:use-module (kbg services emacs)
@@ -28,6 +29,7 @@
   (append %kbg-base-development-packages
           %kbg-desktop-packages
           %kbg-statistics-packages
+          %kbg-science-packages
           %kbg-fonts))
 
  (services

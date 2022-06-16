@@ -5,7 +5,6 @@
   #:use-module (gnu packages autogen)
   #:use-module (gnu packages base)
   #:use-module (gnu packages code)
-  #:use-module (gnu packages coq)
   #:use-module (gnu packages graphviz)
   #:use-module (gnu packages groff)
   #:use-module (gnu packages guile)
@@ -14,7 +13,6 @@
   #:use-module (gnu packages java)
   #:use-module (gnu packages maths)
   #:use-module (gnu packages networking)
-  #:use-module (gnu packages parallel)
   #:use-module (gnu packages patchutils)
   #:use-module (gnu packages pretty-print)
   #:use-module (gnu packages python)
@@ -26,15 +24,11 @@
   #:use-module (gnu packages textutils)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages vim)
-  #:use-module (kbg packages coq-xyz)
-  #:use-module (kbg packages gwl)
   #:export (%kbg-base-development-packages))
 
 (define %kbg-base-development-packages
   (list
    autogen
-   coq
-   coq-math-classes
    diffstat
    diffutils
    direnv
@@ -43,20 +37,15 @@
    dot2tex
    git
    global
-   gnuplot
-   graphviz
    groff
    guile-3.0
-   gwl
    highlight
    ltrace
    iperf
    gnu-make
    mercurial
    mg
-   octave
    `(,openjdk11 "jdk")
-   parallel
    patch
    patchutils
    perf
@@ -70,5 +59,4 @@
    strace
    subversion
    tokei
-   vim
-   z3))
+   vim))
