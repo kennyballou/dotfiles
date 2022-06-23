@@ -1,7 +1,7 @@
 [user]
 	name = Kenny Ballou
 	email = kb@devnulllabs.io
-	signingKey = B0CAA28A02958308
+	signingKey = 82D94B35744E1B34
 [core]
 	editor = emacsclient -c
 	excludesfile = /home/kb/.config/git/global-ignore
