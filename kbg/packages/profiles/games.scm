@@ -1,8 +1,13 @@
 (define-module (kbg packages profiles games)
   #:use-module (gnu packages emulators)
-  #:export (%kbg-games))
+  #:use-module (nongnu packages steam-client)
+  #:export (%kbg-games-packages
+            %kbg-emulator-packages))
 
-(define %kbg-games
+(define %kbg-games-packages
+  (list steam))
+
+(define %kbg-emulator-packages
   (list dolphin-emu
         mupen64plus-audio-sdl
         mupen64plus-core
