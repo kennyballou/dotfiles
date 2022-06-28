@@ -36,6 +36,10 @@
    dos2unix
    dot2tex
    git
+   `(,git "gui")
+   `(,git "send-email")
+   `(,git "svn")
+   `(,git "subtree")
    global
    groff
    guile-3.0
