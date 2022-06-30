@@ -147,8 +147,10 @@
                                        "PartitionName=debug Nodes=ALL Default=YES MaxTime=INFINITE State=UP"))
                                      (cgroup-extra-content
                                       (string-append
+                                       "CgroupPlugin=cgroup/v1\n"
                                        "CgroupAutomount=yes #default no\n"
                                        "ConstrainCores=yes #default no\n"
+                                       "IgnoreSystemd=yes #default no\n"
                                        "MaxRAMPercent=80  #default 100"))
                                      (slurmdbd-extra-content
                                       (string-append
