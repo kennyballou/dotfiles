@@ -13,7 +13,7 @@
       (channel
        (name 'flat)
        (url "https://github.com/flatwhatson/guix-channel.git")
-       (commit "657da22f0229b978b7bf4e4d476f59f17f6a175f"))
+       (commit "29cdab44a9c4df35a943565b0f11933f1755f266"))
       (channel
        (name 'emacs)
        (url "https://github.com/babariviere/guix-emacs.git")
