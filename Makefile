@@ -1,7 +1,7 @@
 NIX_FILES = $(shell find . name -name '*.nix' -type f)
 MAX_AGE=14d
 CHANNEL_FILE=./config/guix/channels.scm
-HOSTS=h4x daeva eligos baal yak koi bard
+HOSTS=h4x daeva owl baal yak koi bard
 SYSTEMS=$(patsubst %,systems/%,$(HOSTS))
 HOMES=$(patsubst %,homes/%,$(HOSTS))
 HOSTNAME=$(shell hostname)
