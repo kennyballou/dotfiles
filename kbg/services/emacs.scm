@@ -200,6 +200,7 @@
         ;; emacs-org-cliplink
         emacs-org-contacts
         emacs-org-contrib
+        emacs-org-dblock-gantt
         emacs-org-gcal
         emacs-org-mime
         emacs-org-pandoc-import

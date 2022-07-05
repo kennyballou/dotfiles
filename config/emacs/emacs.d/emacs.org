@@ -3846,6 +3846,10 @@ Update project status when updating the cookie statistics.
 (require 'org-depend)
 #+end_src
 
+#+begin_src elisp
+(use-package 'org-dblock-gantt)
+#+end_src
+
 **** Org Mime
 :PROPERTIES:
 :ID:       44e6e5a4-d7e7-4089-8406-3472e11820e5
