@@ -10,6 +10,8 @@
                         home-files-service-type
                         `((".ssh/config"
                            ,(local-file (string-append %dotfiles-root "config/ssh/ssh/config")))
+                          (".ssh/authorized_keys"
+                           ,(local-file (string-append %dotfiles-root "config/ssh/ssh/authorized_keys")))
                           (".ssh/config.d"
                            ,(local-file (string-append %dotfiles-root "config/ssh/ssh/config.d")
                                         #:recursive? #t))))))
