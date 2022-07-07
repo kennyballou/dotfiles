@@ -32,24 +32,6 @@
   #:use-module ((kbg system mcron) :prefix mcron:)
   #:use-module (kbg system xorg))
 
-(define install-grub-efi-removable
-  #~(lambda (bootloader efi-dir mount-point)
-      (when efi-dir
-        (let ((grub-install (string-append bootloader "/sbin/grub-install"))
-              (install-dir (string-append mount-point "/boot"))
-              (target-esp (if (file-exists? (string-append mount-point efi-dir))
-                              (string-append mount-point efi-dir)
-                              efi-dir)))
-          (setenv "GRUB_ENABLE_CRYPTODISK" "y")
-          (invoke/quiet grub-install "--boot-directory" install-dir
-                        "--efi-directory" target-esp
-                        "--removable")))))
-
-(define grub-efi-removable
-  (bootloader
-   (inherit grub-efi-bootloader)
-   (installer install-grub-efi-removable)))
-
 (define daeva-system
   (operating-system
    (kernel linux-lts)
@@ -67,7 +49,7 @@
    (keyboard-layout (keyboard-layout "us" #:options '("ctrl:nocaps")))
 
    (bootloader (bootloader-configuration
-                (bootloader grub-efi-removable)
+                (bootloader grub-efi-removable-bootloader)
                 (targets '("/boot/efi"))
                 (keyboard-layout keyboard-layout)))
 
