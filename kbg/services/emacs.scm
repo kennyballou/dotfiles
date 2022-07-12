@@ -56,7 +56,7 @@
         emacs-counsel-tramp
         emacs-coverlay
         ;; emacs-css-eldoc
-        emacs-csv
+        emacs-csv-mode
         emacs-d-mode
         emacs-dap-mode
         emacs-dash

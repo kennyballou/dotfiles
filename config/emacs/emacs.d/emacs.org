@@ -2483,9 +2483,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
 :END:
 
 #+begin_src elisp
-(use-package csv
-  :mode "\\.[Cc][Ss][Vv]\\'"
-  :config (setq csv-separators '("," ";" "|" " ")))
+(use-package csv-mode)
 #+end_src
 
 **** CSS
