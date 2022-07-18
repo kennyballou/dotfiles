@@ -23,14 +23,14 @@ news:
 
 .PHONY: reconfigure-home
 reconfigure-home:
-	guix time-machine -C $(CHANNEL_FILE) -- home reconfigure homes/$(HOSTNAME).scm
+	guix time-machine -C $(CHANNEL_FILE) -- home reconfigure $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
 
 .PHONY: rollback-home
 	guix time-machine -C $(CHANNEL_FILE) -- home roll-back homes/$(HOSTNAME).scm
 
 .PHONY: reconfigure-system
 reconfigure-system:
-	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system reconfigure systems/$(HOSTNAME).scm
+	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system reconfigure $(RECONFIGURE_FLAGS) systems/$(HOSTNAME).scm
 
 .PHONY: rollback-system
 rollback-system:
