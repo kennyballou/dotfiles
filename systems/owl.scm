@@ -32,7 +32,6 @@
   #:use-module (kbg services desktop)
   #:use-module (kbg services nftables)
   #:use-module (kbg services slurm)
-  #:use-module (kbg system setuid-programs)
   #:use-module ((kbg system mcron) :prefix mcron:)
   #:use-module (kbg system xorg))
 
@@ -45,32 +44,99 @@
    (timezone "America/Boise")
    (locale "en_US.utf8")
 
-   (initrd-modules %base-initrd-modules)
+   (initrd-modules (append (list "dm-raid" "raid1")
+			   %base-initrd-modules))
 
    (keyboard-layout (keyboard-layout "us" #:options '("ctrl:nocaps")))
 
    (bootloader (bootloader-configuration
-                (bootloader grub-efi-bootloader)
+                (bootloader grub-efi-removable-bootloader)
                 (targets '("/boot/efi"))
                 (keyboard-layout keyboard-layout)))
 
-   (file-systems (append
-                  (list (file-system
-                         (device (uuid ""))
-                         (mount-point "/")
-                         (type "ext4"))
-                        (file-system
-                         (device (uuid "" 'fat))
-                         (mount-point "/boot/efi")
-                         (type "vfat"))
-                        (file-system
-                         (device (uuid ""))
-                         (mount-point "/home")
-                         (type "xfs")))
-                  %base-file-systems))
+   (mapped-devices
+    (list (mapped-device
+	   (source (list "/dev/nvme0n1p1" "/dev/nvme1n1p1"))
+	   (target "/dev/md124")
+	   (type raid-device-mapping))
+	  (mapped-device
+	   (source (list "/dev/nvme0n1p2" "/dev/nvme1n1p2"))
+	   (target "/dev/md125")
+	   (type raid-device-mapping))
+	  (mapped-device
+	   (source (list "/dev/sda1" "/dev/sdb1"))
+	   (target "/dev/md126")
+	   (type raid-device-mapping))
+	  (mapped-device
+	   (source (list "/dev/sdc1" "/dev/sdd1"))
+	   (target "/dev/md127")
+	   (type raid-device-mapping))
+	  (mapped-device
+	   (source "vg0")
+	   (targets (list "vg0-root" "vg0-opt" "vg0-tmp"))
+	   (type lvm-device-mapping))
+	  (mapped-device
+	   (source "vg1")
+	   (targets (list "vg1-guix" "vg1-nix" "vg1-swap" "vg1-var"))
+	   (type lvm-device-mapping))
+	  (mapped-device
+	   (source "vg2")
+	   (targets (list "vg2-home"))
+	   (type lvm-device-mapping))))
 
-   ;; uuid=47b44fb7-4f6f-4ef5-bb17-2c509a80bc52
-   (swap-devices (list (swap-space (target "/swapfile"))))
+   (file-systems (append (list (file-system
+				(device "/dev/mapper/vg0-root")
+				(mount-point "/")
+				(type "ext4")
+				(needed-for-boot? #t)
+				(dependencies mapped-devices))
+			       (file-system
+				(device "/dev/mapper/vg1-guix")
+				(mount-point "/gnu")
+				(type "xfs")
+				(needed-for-boot? #t)
+				(dependencies mapped-devices))
+			       (file-system
+				(device "/dev/mapper/vg1-nix")
+				(mount-point "/nix")
+				(type "xfs")
+				(needed-for-boot? #f)
+				(dependencies mapped-devices))
+			       (file-system
+				(device "/dev/mapper/vg0-tmp")
+				(mount-point "/tmp")
+				(type "ext4")
+				(needed-for-boot? #t)
+				(dependencies mapped-devices))
+			       (file-system
+				(device "/dev/mapper/vg1-var")
+				(mount-point "/var")
+				(type "ext4")
+				(needed-for-boot? #t)
+				(dependencies  mapped-devices))
+			       (file-system
+				(device "/dev/md124")
+				(mount-point "/boot/efi")
+				(type "vfat")
+				(needed-for-boot? #t)
+				(dependencies mapped-devices))
+			       (file-system
+				(device "/dev/mapper/vg0-opt")
+				(mount-point "/opt")
+				(type "ext4")
+				(needed-for-boot? #f)
+				(dependencies mapped-devices))
+			       (file-system
+				(device "/dev/mapper/vg2-home")
+				(mount-point "/home")
+				(type "xfs")
+				(needed-for-boot? #f)
+				(dependencies mapped-devices)))
+			 %base-file-systems))
+
+   (swap-devices (list (swap-space (target "/dev/mapper/vg1-swap")
+				   (dependencies mapped-devices)
+				   (discard? #t))))
 
    (users (cons (user-account
                  (name "kb")
@@ -106,7 +172,7 @@
                                     (slurm-configuration
                                      (SlurmdLogFile "/var/log/slurm/slurmd.log")
                                      (SlurmctldLogFile "/var/log/slurm/slurmctld.log")
-                                     (ClusterName "owl")
+                                     (ClusterName "owls")
                                      (SlurmUser "slurm")
                                      (SlurmctldHost '("localhost"))
                                      (DbdHost "localhost")
@@ -119,7 +185,7 @@
                                        "SelectType=select/cons_res #default select/linear\n"
                                        "SelectTypeParameters=CR_CPU #default 0\n"
                                        "# COMPUTE NODES\n"
-                                       "NodeName=yak CPUs=1 Boards=1 SocketsPerBoard=1 CoresPerSocket=1 ThreadsPerCore=1\n"
+                                       "NodeName=owl CPUs=1 Boards=1 SocketsPerBoard=1 CoresPerSocket=1 ThreadsPerCore=1\n"
                                        "PartitionName=debug Nodes=ALL Default=YES MaxTime=INFINITE State=UP"))
                                      (cgroup-extra-content
                                       (string-append
