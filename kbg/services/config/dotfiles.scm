@@ -59,6 +59,17 @@
           vale-config-service
           xdg-config-service))
 
+(define owl-configs
+  (append direnv-config-service
+          git-config-service
+          gnupg-config-service
+          gnuplot-config-service
+          guix-config-service
+          home-vars-service
+          nixpkgs-config-service
+          parallel-config-service
+          ssh-config-service))
+
 (define koi-configs
   (append direnv-config-service
           email-config-service
@@ -85,4 +96,6 @@
          yak-configs)
         ((eq? hostname 'koi)
          koi-configs)
+        ((eq? hostname 'owl)
+         owl-configs)
         (else '())))
