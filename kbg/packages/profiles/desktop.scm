@@ -49,6 +49,7 @@
   #:use-module (gnu packages video)
   #:use-module (gnu packages uml)
   #:use-module (gnu packages web)
+  #:use-module (gnu packages web-browsers)
   #:use-module (gnu packages wordnet)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu packages xorg)
@@ -112,6 +113,7 @@
         mutt
         notmuch
         ncmpcpp
+        nyxt
         obs
         okular
         p7zip
