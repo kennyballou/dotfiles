@@ -3212,6 +3212,9 @@ indentation rules."
     (reftex-isearch-minor-mode t)
     (setq TeX-PDF-mode t)
     (setq TeX-source-correlate-start-server t))
+  ;; temporary fix for auctex-latexmk tex-buf issue.
+  ;; https://github.com/tom-tan/auctex-latexmk/issues/44
+  (provide 'tex-buf)
   :config
   (setq TeX-parse-self t)
   (setq TeX-auto-save t)
