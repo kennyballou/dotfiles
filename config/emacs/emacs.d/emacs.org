@@ -2080,6 +2080,16 @@ buffers.
   :bind ("C-c h d" . #'zeal-at-point))
 #+end_src
 
+*** Help ((wo)man/info)
+:PROPERTIES:
+:ID:       3c59a4db-1f1b-4681-b488-5c2d89e5276f
+:END:
+
+#+begin_src elisp
+(bind-key (kbd "C-c h m") #'man)
+(bind-key (kbd "C-c h w") #'woman)
+#+end_src
+
 *** Shells and Terms
 :PROPERTIES:
 :ID:       989e30d3-f0b8-475c-8fb6-60c2074ea65a
