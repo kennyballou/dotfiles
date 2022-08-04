@@ -9,7 +9,7 @@ Tangle all the things from orgmode!
 ** =early-init.el=
 :PROPERTIES:
 :ID:       7ba2781f-2040-4345-a188-f610f1e798b4
-:header-args:elisp: :tangle ./early-init.el
+:header-args:elisp: :tangle ./early-init.el :tangle-mode (identity #o444)
 :END:
 
 #+begin_src elisp
@@ -206,7 +206,7 @@ Font Config
 ** =init.el=
 :PROPERTIES:
 :ID:       828c7a64-b5e4-4314-a146-9f4cd1813543
-:header-args:elisp: :tangle init.el
+:header-args:elisp: :tangle init.el :tangle-mode (identity #o444)
 :END:
 
 #+begin_src elisp
