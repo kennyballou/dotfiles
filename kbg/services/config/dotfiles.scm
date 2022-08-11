@@ -15,6 +15,7 @@
   #:use-module (kbg services config ledger)
   #:use-module (kbg services config mpd)
   #:use-module (kbg services config nixpkgs)
+  #:use-module (kbg services config nyxt)
   #:use-module (kbg services config parallel)
   #:use-module (kbg services config ssh)
   #:use-module (kbg services config vale)
@@ -36,6 +37,7 @@
           ledger-config-service
           mpd-config-service
           nixpkgs-config-service
+          nyxt-config-service
           parallel-config-service
           ssh-config-service
           vale-config-service
@@ -54,6 +56,7 @@
           kitty-config-service
           mpd-config-service
           nixpkgs-config-service
+          nyxt-config-service
           parallel-config-service
           ssh-config-service
           vale-config-service
@@ -84,6 +87,7 @@
           ledger-config-service
           mpd-config-service
           nixpkgs-config-service
+          nyxt-config-service
           parallel-config-service
           ssh-config-service
           vale-config-service
