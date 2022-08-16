@@ -196,6 +196,7 @@
         emacs-orderless
         emacs-org
         emacs-orgalist
+        emacs-org-brain
         ;; emacs-org-babel-eval-in-repl
         ;; emacs-org-cliplink
         emacs-org-contacts
