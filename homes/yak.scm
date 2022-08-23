@@ -11,6 +11,7 @@
   #:use-module (gnu home services shepherd)
   #:use-module (gnu home services symlink-manager)
   #:use-module (gnu home services xdg)
+  #:use-module (gnu packages engineering)
   #:use-module (kbg)
   #:use-module (kbg packages profiles base)
   #:use-module (kbg packages profiles development)
@@ -22,12 +23,16 @@
   #:use-module (kbg services emacs)
   #:use-module (kbg services mcron)
   #:use-module (kbg services shell)
-  #:use-module (kbg services shepherd))
+  #:use-module (kbg services shepherd)
+  #:use-module (nongnu packages mozilla))
 
 (home-environment
  (packages
   (append %kbg-base-development-packages
-          %kbg-desktop-packages
+          ;; firefox does not build on this machine
+          ;; and we do not need freecad here
+          (filter (lambda (p) (not (member p (list firefox/wayland freecad))))
+                  %kbg-desktop-packages)
           %kbg-statistics-packages
           %kbg-science-packages
           %kbg-fonts))
