@@ -208,6 +208,7 @@
         emacs-org-pomodoro
         emacs-org-ql
         emacs-org-ref
+        emacs-org-roam
         emacs-ox-gfm
         emacs-page-break-lines
         emacs-pass
