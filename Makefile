@@ -49,6 +49,10 @@ clean:
 	-rm -rv result
 	-nix-collect-garbage --delete-older-than $(MAX_AGE)
 
+.PHONY: repl
+repl:
+	guix time-machine -C $(CHANNEL_FILE) -- repl
+
 .PHONY: all-systems
 all-systems: $(SYSTEMS)
 
