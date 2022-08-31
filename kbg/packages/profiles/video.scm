@@ -82,7 +82,7 @@
         sdl-image
         speex
         speexdsp
-        srt-1.4.1
+        srt
         taglib
         twolame
         unzip
