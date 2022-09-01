@@ -26,7 +26,6 @@
   #:use-module (kbg)
   #:use-module (kbg packages profiles base)
   #:use-module (kbg packages profiles desktop)
-  #:use-module (kbg packages gnome)
   #:use-module (kbg services desktop)
   #:use-module (kbg services nftables)
   #:use-module ((kbg system mcron) :prefix mcron:)
@@ -107,9 +106,7 @@
    ;; by clicking the gear.  Use the "desktop" services, which
    ;; include the X11 log-in service, networking with
    ;; NetworkManager, and more.
-   (services (append (list (service gnome-desktop-service-type
-                            (gnome-desktop-configuration
-                             (gnome gnome-sans-ssh-agent)))
+   (services (append (list (service gnome-desktop-service-type)
                            ;;(geoclue-service)
                            (bluetooth-service #:auto-enable? #t)
                            (service cups-service-type
