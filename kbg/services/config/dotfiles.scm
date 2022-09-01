@@ -98,6 +98,10 @@
           vale-config-service
           xdg-config-service))
 
+(define bard-configs
+  (append guix-config-service
+          tmux-config-service))
+
 (define (configs-for-host hostname)
   (cond ((eq? hostname 'daeva)
          daeva-configs)
@@ -107,4 +111,6 @@
          koi-configs)
         ((eq? hostname 'owl)
          owl-configs)
+        ((eq? hostname 'bard)
+         bard-configs)
         (else '())))

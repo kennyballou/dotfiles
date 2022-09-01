@@ -29,5 +29,5 @@
           %kbg-fonts))
 
  (services
-  (append bash-service)))
-          ;;(configs-for-host 'bard))
+  (append bash-service
+          (configs-for-host 'bard))))
