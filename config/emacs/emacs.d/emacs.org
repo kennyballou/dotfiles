@@ -3934,7 +3934,7 @@ Update project status when updating the cookie statistics.
 :ID:       094c4fc2-8596-498a-bb4b-d1772e318ce1
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package org-brain
   :init
   (setq org-brain-path (concat org-directory "/brain"))
