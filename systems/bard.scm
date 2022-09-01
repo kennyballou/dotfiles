@@ -32,7 +32,6 @@
   #:use-module (kbg packages profiles desktop)
   #:use-module (kbg packages profiles games)
   #:use-module (kbg packages profiles video)
-  #:use-module (kbg packages gnome)
   #:use-module (kbg services desktop)
   #:use-module (kbg services nftables)
   #:use-module ((kbg system mcron) :prefix mcron:)
