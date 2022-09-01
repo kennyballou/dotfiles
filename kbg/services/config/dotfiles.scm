@@ -18,6 +18,7 @@
   #:use-module (kbg services config nyxt)
   #:use-module (kbg services config parallel)
   #:use-module (kbg services config ssh)
+  #:use-module (kbg services config tmux)
   #:use-module (kbg services config vale)
   #:use-module (kbg services config vars)
   #:use-module (kbg services config xdg)
@@ -40,6 +41,7 @@
           nyxt-config-service
           parallel-config-service
           ssh-config-service
+          tmux-config-service
           vale-config-service
           xdg-config-service))
 
@@ -59,6 +61,7 @@
           nyxt-config-service
           parallel-config-service
           ssh-config-service
+          tmux-config-service
           vale-config-service
           xdg-config-service))
 
@@ -71,7 +74,8 @@
           home-vars-service
           nixpkgs-config-service
           parallel-config-service
-          ssh-config-service))
+          ssh-config-service
+          tmux-config-service))
 
 (define koi-configs
   (append direnv-config-service
@@ -90,6 +94,7 @@
           nyxt-config-service
           parallel-config-service
           ssh-config-service
+          tmux-config-service
           vale-config-service
           xdg-config-service))
 
