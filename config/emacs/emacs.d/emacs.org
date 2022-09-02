@@ -3979,6 +3979,16 @@ Update project status when updating the cookie statistics.
   (org-roam-setup))
 #+end_src
 
+#+begin_src elisp
+(use-package org-roam-ui
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t)
+  (setq org-roam-ui-follow t)
+  (setq org-roam-ui-update-on-save t)
+  (setq org-roam-ui-open-on-start nil))
+#+end_src
+
 **** Diary and Org Agenda Extras
 :PROPERTIES:
 :ID:       9e4a8207-5798-4dd8-b7c3-71c8f5db6f33
