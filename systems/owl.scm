@@ -181,10 +181,15 @@
                                        "StateSaveLocation=/var/spool/slurmd/ctld #default /var/spool\n"
                                        "ReturnToService=1 #default 0\n"
                                        "DebugFlags=NO_CONF_HASH #default empty\n"
+                                       "DefMemPerCpu=1024\n"
+                                       "MaxMemPerCpu=2000\n"
+                                       "# Scheduling\n"
+                                       "FastSchedule=1\n"
+                                       "SchedulerType=sched/backfill\n"
                                        "SelectType=select/cons_res #default select/linear\n"
-                                       "SelectTypeParameters=CR_CPU #default 0\n"
+                                       "SelectTypeParameters=CR_CPU_Memory #default 0\n"
                                        "# COMPUTE NODES\n"
-                                       "NodeName=owl CPUs=1 Boards=1 SocketsPerBoard=1 CoresPerSocket=1 ThreadsPerCore=1\n"
+                                       "NodeName=owl CPUs=32 RealMemory=64165 Boards=1 SocketsPerBoard=1 CoresPerSocket=16 ThreadsPerCore=2\n"
                                        "PartitionName=debug Nodes=ALL Default=YES MaxTime=INFINITE State=UP"))
                                      (cgroup-extra-content
                                       (string-append
