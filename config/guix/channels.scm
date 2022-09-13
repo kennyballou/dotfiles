@@ -1,15 +1,15 @@
 (list (channel
        (name 'guix)
        (url "https://git.savannah.gnu.org/git/guix.git")
-       (commit "32da9bbc91d365f514ae41528587905b21c41825"))
+       (commit "a7af25ad313bbc10d42801c48cd16dfda53290a1"))
       (channel
        (name 'nonguix)
        (url "https://gitlab.com/nonguix/nonguix")
-       (commit "9563de3037f3e41ac3c0e99176047ce73003b0e6"))
+       (commit "e0951349603581895e0ba61f0e7410368ea1902a"))
       (channel
        (name 'kbg)
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
-       (commit "491424a3c9a7b199abbb42778f04b9da09a5c8b9"))
+       (commit "2dac0a6ef6d2d4ff45c86dd73059fec6fedbe113"))
       (channel
        (name 'flat)
        (url "https://github.com/flatwhatson/guix-channel.git")
@@ -17,4 +17,4 @@
       (channel
        (name 'emacs)
        (url "https://github.com/babariviere/guix-emacs.git")
-       (commit "722063e84d578f040a06e0f8fbf7d73d257c681e")))
+       (commit "c6168c90d4c459c6040505931ab6ffeaa3a8cc0c")))
