@@ -1337,6 +1337,8 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 
 (use-package define-word)
 
+(bind-key (kbd "C-c h d") #'define-word-at-point)
+
 (setq backward-delete-char-untabify-method 'hungry)
 
 
