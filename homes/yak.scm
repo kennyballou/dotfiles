@@ -23,6 +23,8 @@
   #:use-module (kbg services emacs)
   #:use-module (kbg services mcron)
   #:use-module (kbg services shell)
+  #:use-module (kbg services dbus)
+  #:use-module (kbg services pipewire)
   #:use-module (kbg services shepherd)
   #:use-module (nongnu packages mozilla))
 
@@ -41,6 +43,8 @@
   (append bash-service
           (configs-for-host 'yak)
           emacs-service
-          ;; mcron-service
+          (list (service home-dbus-service-type)
+                (service home-pipewire-service-type))
+          mcron-service
           (services-for-host 'yak))))
           ;; shepherd-user-services
