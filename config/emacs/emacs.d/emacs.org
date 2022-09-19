@@ -1378,6 +1378,16 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 
 #+end_src
 
+**** Thesauri
+:PROPERTIES:
+:ID:       a86b1a05-5518-4b80-9bca-94060959b49b
+:END:
+
+#+begin_src elisp
+(use-package synosaurus
+  :hook text-mode)
+#+end_src
+
 **** Pulsar
 :PROPERTIES:
 :ID:       207e8513-d6e5-4ee3-a3d8-425ab3c8c6e4
