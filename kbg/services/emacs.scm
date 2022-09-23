@@ -7,7 +7,6 @@
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
-  #:use-module (flat packages emacs)
   #:use-module (emacs packages melpa)
   #:use-module (kbg packages emacs-xyz))
 
@@ -315,7 +314,7 @@
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/schemas.xml")))))
         (service home-emacs-service-type
                  (home-emacs-configuration
-                  (package emacs-pgtk-native-comp)
+                  (package emacs-next-pgtk)
                   (rebuild-elisp-packages? #t)
                   (server-mode? #t)
                   (elisp-packages emacs-packages)))))
