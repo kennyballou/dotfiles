@@ -63,6 +63,8 @@ table inet filter {
         tcp dport 6697 counter accept comment "IRC"
         tcp dport 2049 ip daddr 10.0.0.0/8 counter accept comment "NFS"
         udp dport 2049 ip daddr 10.0.0.0/8 counter accept comment "NFS"
+        tcp dport 2628 counter accept comment "Dictionary"
+        udp dport 2628 counter accept comment "Dictionary"
         tcp dport 20048 ip daddr 10.0.0.0/8 counter accept comment "NFS"
         udp dport 20048 ip daddr 10.0.0.0/8 counter accept comment "NFS"
         udp dport 19302-19309 counter accept comment "Google Meet Ports"
