@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: et. al.
+# name: et al.
 # key: etal
 # --
-\textit{et.~al.} $0
+\textit{et~al.} $0
