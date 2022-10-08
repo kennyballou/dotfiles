@@ -29,6 +29,7 @@
   #:use-module (kbg packages profiles base)
   #:use-module (kbg packages profiles desktop)
   #:use-module (kbg services desktop)
+  #:use-module (kbg services dict)
   #:use-module (kbg services nftables)
   #:use-module (kbg services slurm)
   #:use-module (kbg system setuid-programs)
@@ -103,6 +104,7 @@
                                      (web-interface? #t)
                                      (extensions
                                       (list cups-filters hplip-minimal splix))))
+                           dictionary-service
                            (set-xorg-configuration
                             (xorg-configuration
                              (keyboard-layout keyboard-layout)
