@@ -1335,10 +1335,6 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
   :config
   (setq olivetti-minimum-body-width 100))
 
-(use-package define-word)
-
-(bind-key (kbd "C-c h d") #'define-word-at-point)
-
 (setq backward-delete-char-untabify-method 'hungry)
 
 
@@ -1376,6 +1372,25 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 (diminish 'eldoc-mode)
 
 
+#+end_src
+
+**** Dictionary
+:PROPERTIES:
+:ID:       c17c3bc7-0d74-43c3-92d2-82f8e853783f
+:END:
+
+#+begin_src elisp
+(require 'dictionary)
+
+(setq dictionary-server "localhost")
+
+(bind-key (kbd "M-#") #'dictionary-lookup-definition)
+#+end_src
+
+#+begin_src elisp
+(use-package define-word)
+
+(bind-key (kbd "C-c h d") #'define-word-at-point)
 #+end_src
 
 **** Thesauri
