@@ -7,3 +7,5 @@ action:
   name: replace
 swap:
   'vise versa': 'vice versa'
+  'vise-versa': 'vice versa'
+  'vice-versa': 'vice versa'
