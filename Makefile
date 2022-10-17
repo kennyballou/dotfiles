@@ -21,6 +21,11 @@ pull:
 news:
 	guix time-machine -C $(CHANNEL_FILE) -- pull --news
 
+.PHONY: update-channels
+update-channels:
+	guix pull --channels=$(CHANNEL_FILE)
+	guix describe --format=channels > $(CHANNEL_FILE)
+
 .PHONY: reconfigure-home
 reconfigure-home:
 	guix time-machine -C $(CHANNEL_FILE) -- home reconfigure $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
