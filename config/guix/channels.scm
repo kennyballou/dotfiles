@@ -8,7 +8,7 @@
         (make-channel-introduction
          "8d45521e2aeac063fba926d375b1a202c5487275"
          (openpgp-fingerprint
-          "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
+          "3625 EE6E E04C 2179 AF71  6983 A09D 60B1 44D1 75FE"))))
       (channel
        (name 'kbg)
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
