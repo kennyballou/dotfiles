@@ -1,11 +1,11 @@
 (define-module (kbg packages profiles desktop)
-  #:use-module (gnu build chromium-extension)
   #:use-module (gnu packages aidc)
   #:use-module (gnu packages aspell)
   #:use-module (gnu packages backup)
   #:use-module (gnu packages base)
   #:use-module (gnu packages bash)
   #:use-module (gnu packages bittorrent)
+  #:use-module (gnu packages browser-extensions)
   #:use-module (gnu packages cdrom)
   #:use-module (gnu packages chromium)
   #:use-module (gnu packages code)
@@ -128,7 +128,7 @@
         poppler
         qpdf
         qrencode
-        ;; ublock-origin-chromium
+        ublock-origin/chromium
         ungoogled-chromium
         vlc
         units
