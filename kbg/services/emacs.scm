@@ -184,7 +184,7 @@
         emacs-markdown-mode
         emacs-mbsync
         emacs-mmm-mode
-        emacs-modus-themes
+        emacs-xyz:emacs-modus-themes
         emacs-mpdel
         emacs-multiple-cursors
         emacs-mwim
