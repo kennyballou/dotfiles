@@ -5,7 +5,6 @@
   #:use-module (gnu home services)
   #:use-module (gnu home-services emacs)
   #:use-module (gnu packages emacs)
-  #:use-module (gnu packages emacs-xyz)
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
   #:use-module (emacs packages melpa)
   #:use-module (kbg packages emacs-xyz))
@@ -29,7 +28,7 @@
         emacs-anzu
         emacs-awqat
         emacs-async
-        emacs-auctex
+        emacs-xyz:emacs-auctex
         emacs-auctex-latexmk
         emacs-autodisass-java-bytecode
         emacs-avy
@@ -55,13 +54,13 @@
         emacs-counsel-tramp
         emacs-coverlay
         ;; emacs-css-eldoc
-        emacs-csv-mode
+        emacs-xyz:emacs-csv-mode
         emacs-d-mode
         emacs-dap-mode
         emacs-dash
-        emacs-debbugs
+        emacs-xyz:emacs-debbugs
         emacs-define-word
-        emacs-delight
+        emacs-xyz:emacs-delight
         emacs-diff-hl
         emacs-diminish
         emacs-direnv
@@ -72,7 +71,7 @@
         emacs-docker-compose-mode
         emacs-docker-tramp
         emacs-dockerfile-mode
-        emacs-ebdb
+        emacs-xyz:emacs-ebdb
         emacs-editorconfig
         ;; emacs-edts
         emacs-ein
@@ -94,7 +93,6 @@
         emacs-f
         ;; emacs-fetchmail
         emacs-flycheck
-        emacs-flycheck
         emacs-flycheck-clojure
         emacs-flycheck-color-mode-line
         ;; emacs-flycheck-credo
@@ -110,7 +108,6 @@
         emacs-flycheck-vale
         emacs-flyspell-correct
         emacs-fold-dwim
-        emacs-forge
         emacs-forge
         emacs-fullframe
         ;; emacs-geben
@@ -193,17 +190,17 @@
         ;; emacs-ob-ipython
         emacs-olivetti
         emacs-orderless
-        emacs-org
-        emacs-orgalist
+        emacs-xyz:emacs-org
+        emacs-xyz:emacs-orgalist
         emacs-org-brain
         ;; emacs-org-babel-eval-in-repl
         ;; emacs-org-cliplink
         emacs-org-contacts
-        emacs-org-contrib
+        emacs-xyz:emacs-org-contrib
         emacs-org-dblock-gantt
         emacs-org-gcal
         emacs-org-mime
-        emacs-org-pandoc-import
+        emacs-xyz:emacs-org-pandoc-import
         emacs-org-pomodoro
         emacs-org-ql
         emacs-org-ref
@@ -223,15 +220,15 @@
         emacs-persp-projectile
         emacs-perspective
         emacs-php-mode
-        emacs-pinentry
+        emacs-xyz:emacs-pinentry
         emacs-pip-requirements
         emacs-polymode
         emacs-powerline
         emacs-projectile
         emacs-proof-general
-        emacs-pulsar
+        emacs-xyz:emacs-pulsar
         emacs-racer
-        emacs-rainbow-mode
+        emacs-xyz:emacs-rainbow-mode
         emacs-rainbow-delimiters
         emacs-realgud
         ;; emacs-realgud-jdb
@@ -256,7 +253,7 @@
         emacs-smex
         emacs-smooth-scrolling
         emacs-spaceline
-        emacs-spinner
+        emacs-xyz:emacs-spinner
         emacs-swiper
         ;; emacs-swiper-helm
         emacs-switch-window
