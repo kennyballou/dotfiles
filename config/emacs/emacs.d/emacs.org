@@ -1401,6 +1401,22 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 #+begin_src elisp
 (use-package synosaurus
   :hook text-mode)
+**** LanguageTool
+:PROPERTIES:
+:ID:       c084445a-9d5c-4a05-8273-f1d6d6cc772d
+:END:
+
+#+begin_src elisp
+(use-package flycheck-languagetool
+  :after flycheck
+  :hook (text-mode . flycheck-languagetool-setup)
+  :init
+  (setq flycheck-languagetool-server-jar (string-join (list user-emacs-directory "language-tool/languagetool-server.jar")))
+  (setq flycheck-languagetool-language "en-US")
+  (setq flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
+  :config
+  (flycheck-add-next-checker 'languagetool 'vale))
+#+end_src
 #+end_src
 
 **** Pulsar
