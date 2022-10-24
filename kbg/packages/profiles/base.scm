@@ -90,6 +90,7 @@
         ncdu
         nfs-utils
         nethogs
+        net-tools
         nmap
         nss-certs
         openssh
