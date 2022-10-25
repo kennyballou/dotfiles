@@ -1400,7 +1400,14 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 
 #+begin_src elisp
 (use-package synosaurus
-  :hook text-mode)
+  :hook text-mode
+  :config
+  (unbind-key (kbd "C-c C-s l"))
+  (unbind-key (kbd "C-c C-s r"))
+  (unbind-key (kbd "C-c C-s i"))
+  (setq synosaurus-backend #'synosaurus-backend-wordnet)
+  (setq synosaurus-choose-method 'ido))
+#+end_src
 **** LanguageTool
 :PROPERTIES:
 :ID:       c084445a-9d5c-4a05-8273-f1d6d6cc772d
