@@ -2052,7 +2052,9 @@ buffers.
   :after flycheck
   ;;:if (display-graphic-p)
   :hook (flycheck-mode . flycheck-popup-tip-mode))
+#+end_src
 
+#+begin_src elisp
 (use-package flycheck-vale
   :after flycheck
   :commands flycheck-vale-setup
@@ -2060,9 +2062,9 @@ buffers.
   (flycheck-vale-setup)
   :config
   (dolist (mode '(gfm-mode
-	              latex-mode
-	              message-mode
-	              tex-mode))
+                  latex-mode
+                  message-mode
+                  tex-mode))
     (flycheck-add-mode 'vale mode)))
 
 (use-package flycheck-color-mode-line
