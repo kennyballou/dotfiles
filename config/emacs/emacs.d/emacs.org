@@ -2385,6 +2385,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
   (setq lsp-print-performance nil)
   (setq lsp-auto-guess-root t)
   (setq lsp-document-sync-method 'incremental)
+  (setq lsp-diagnostics-provider :flycheck)
   (setq lsp-response-timeout 10)
   (setq lsp-prefer-flymake nil)
   (setq lsp-idle-delay 0.500)
