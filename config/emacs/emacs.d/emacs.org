@@ -2390,7 +2390,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
   (setq lsp-prefer-flymake nil)
   (setq lsp-idle-delay 0.500)
   (setq lsp-inhibit-message t)
-  (setq lsp-eldoc-render-all nil)
+  (setq lsp-eldoc-render-all t)
   (setq lsp-enable-file-watchers nil)
   (setq lsp-highlight-symbol-at-point nil)
   (setq lsp-modeline-code-actions-enable nil)
