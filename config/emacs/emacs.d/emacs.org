@@ -1803,13 +1803,12 @@ https://matthewbauer.us/blog/bauer.html
 
 #+begin_src elisp :tangle no
 (use-package perspective
-  :bind
-  ("C-x C-b" . persp-list-buffers)
   :config
+  (setq persp-mode-prefix-key (kbd "C-x p"))
   (setq persp-state-default-file (concat user-emacs-directory "perspective.state"))
-  (persp-mode)
   :init
-  (add-hook 'kill-emacs-hook #'persp-state-save))
+  (add-hook 'kill-emacs-hook #'persp-state-save)
+  (persp-mode))
 #+end_src
 
 *** Spelling
