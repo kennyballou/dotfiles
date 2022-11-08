@@ -16,4 +16,5 @@
                           ("GUIX_EXTENSIONS_PATH" . "${GUIX_PROFILE}/share/guix/extensions")
                           ("GUIX_PROFILE" . "${HOME}/.guix-home/profile")
                           ("MPD_HOST" . "/run/user/1000/mpd/socket")
+                          ("NAUTILUS_EXTENSION_PATH" . "/run/current-system/profile/lib/nautilus/site-extensions")
                           ("PARALLEL_HOME" . "${XDG_CACHE_HOME}/parallel")))))
