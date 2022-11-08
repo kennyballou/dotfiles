@@ -1422,7 +1422,8 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
   (setq flycheck-languagetool-language "en-US")
   (setq flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
   :config
-  (flycheck-add-next-checker 'languagetool 'vale))
+  (flycheck-add-next-checker 'languagetool 'vale)
+  (flycheck-remove-next-checker 'languagetool 'proselint))
 #+end_src
 #+end_src
 
