@@ -3300,6 +3300,7 @@ indentation rules."
     (turn-on-reftex)
     (LaTeX-math-mode t)
     (reftex-isearch-minor-mode t)
+    (flycheck-select-checker 'tex-chktex)
     (setq TeX-PDF-mode t)
     (setq TeX-source-correlate-start-server t))
   ;; temporary fix for auctex-latexmk tex-buf issue.
