@@ -3408,6 +3408,12 @@ Some common Bib/reftex/org-ref actions that are useful to have around.
 (bind-key "C-c o p" #'doi-utils-get-bibtex-entry-pdf)
 #+end_src
 
+Add =languagetool= to =tex-chktex= checker chain.
+
+#+begin_src elisp
+(flycheck-add-next-checker 'tex-chktex '(warning . languagetool))
+#+end_src
+
 **** TOML
 :PROPERTIES:
 :ID:       3841af44-134f-48f6-a323-fc5eacfa5957
