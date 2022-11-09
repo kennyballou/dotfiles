@@ -1739,7 +1739,7 @@ https://blog.jmthornton.net/p/emacs-project-override"
 :ID:       f71600a2-9e68-4450-9f38-180d1138274a
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package realgud)
 #+end_src
 
