@@ -3104,7 +3104,9 @@ indentation rules."
 #+begin_src elisp
 (use-package ein
   :after (python))
+#+end_src
 
+#+begin_src elisp :tangle no
 (use-package lsp-python-ms
   :init
   (setq lsp-python-ms-executable (executable-find "python-language-server")))
