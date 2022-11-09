@@ -1667,7 +1667,7 @@ https://matthewbauer.us/blog/bauer.html
 :ID:       ef251479-852f-429a-80be-556cafaefe76
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package projectile
   :bind-keymap
   ("C-c p" . projectile-command-map)
@@ -1700,6 +1700,10 @@ https://matthewbauer.us/blog/bauer.html
 #+begin_src elisp :tangle no
 (use-package persp-projectile
   :after perspective)
+#+end_src
+
+#+begin_src elisp
+(projectile-mode -1)
 #+end_src
 
 *** Project.el
