@@ -2422,6 +2422,8 @@ left to try and get the PATH down to, at most, MAX-LEN."
 
 #+begin_src elisp
 (use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c e")
   :config
   (setq lsp-log-io nil)
   (setq lsp-trace nil)
