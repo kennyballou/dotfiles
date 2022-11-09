@@ -3426,7 +3426,8 @@ Some common Bib/reftex/org-ref actions that are useful to have around.
 Add =languagetool= to =tex-chktex= checker chain.
 
 #+begin_src elisp
-(flycheck-add-next-checker 'tex-chktex '(warning . languagetool))
+(eval-after-load 'flycheck-languagetool
+  (lambda () (flycheck-add-next-checker 'tex-chktex '(warning . languagetool))))
 #+end_src
 
 **** TOML
