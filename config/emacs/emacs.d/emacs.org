@@ -2890,8 +2890,8 @@ left to try and get the PATH down to, at most, MAX-LEN."
     (lsp-deferred))
   :hook (js2-mode . kb/js2-mode)
   :config
-  (setq-default js2-basic-offset 4
-	            js2-bounce-indent-p nil))
+  (setq-default js2-basic-offset 4)
+  (setq-default js2-bounce-indent-p nil))
 #+end_src
 
 #+begin_src elisp :tangle no
