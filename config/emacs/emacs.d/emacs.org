@@ -2404,6 +2404,17 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (semantic-mode t)
 #+end_src
 
+**** ElDoc
+:PROPERTIES:
+:ID:       e83e8cbe-4f96-4b92-a4d1-3801f32ba1b3
+:END:
+
+#+begin_src elisp
+(use-package eldoc
+  :config
+  (setq eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit))
+#+end_src
+
 **** Language Server Protocol
 :PROPERTIES:
 :ID:       f8dcd5bb-073f-4f38-b359-1e23fce6f40d
