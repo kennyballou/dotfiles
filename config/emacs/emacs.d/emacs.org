@@ -1418,8 +1418,8 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
   :after flycheck
   :hook (text-mode . flycheck-languagetool-setup)
   :init
-  (setq flycheck-languagetool-server-jar (string-join (list user-emacs-directory "language-tool/languagetool-server.jar")))
   (setq flycheck-languagetool-language "en-US")
+  (setq flycheck-languagetool-server-port "9090")
   (setq flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
   :config
   (flycheck-add-next-checker 'languagetool 'vale)

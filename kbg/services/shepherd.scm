@@ -9,6 +9,7 @@
   #:use-module (gnu services audio)
   #:use-module (system repl server)
   #:use-module (kbg services gnupg)
+  #:use-module (kbg services languagetool)
   #:use-module (kbg services mcron)
   #:use-module (kbg services mpd)
   #:use-module (kbg services syncthing)
@@ -25,6 +26,7 @@
   (list (service home-shepherd-service-type
                  (home-shepherd-configuration
                   (services (append gnupg-service
+                                    languagetool-service
                                     mpd-service
                                     syncthing-service))))))
 
