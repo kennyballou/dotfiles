@@ -70,7 +70,6 @@
         ;; emacs-djvu3
         emacs-docker
         emacs-docker-compose-mode
-        emacs-docker-tramp
         emacs-dockerfile-mode
         emacs-xyz:emacs-ebdb
         emacs-editorconfig

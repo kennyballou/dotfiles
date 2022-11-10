@@ -2667,8 +2667,10 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (use-package docker)
 (use-package dockerfile-mode)
 (use-package docker-compose-mode)
-(use-package docker-tramp)
-(require 'docker-tramp-compat)
+#+end_src
+
+#+begin_src elisp
+(use-package tramp-container)
 #+end_src
 
 **** Elixir/Erlang
