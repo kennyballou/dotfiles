@@ -25,12 +25,12 @@
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
        (branch "master")
        (commit
-        "a5da35c59a056000bfb16a7a5f3301472fc2fdf2")
+        "f3d3aa8279b5cdd11a09100a644f8181a8f40f5a")
        (introduction
         (make-channel-introduction
          "a5da35c59a056000bfb16a7a5f3301472fc2fdf2"
          (openpgp-fingerprint
-          "B74C C4B4 1148 C3DB 364B  C211 82D9 4B35 744E 1B34"))))
+          "10F4 14AB D526 0D0E 2372  8C08 FE55 890B 57AE DCE5"))))
       (channel
        (name 'emacs)
        (url "https://github.com/babariviere/guix-emacs.git")
