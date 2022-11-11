@@ -44,7 +44,7 @@
    (locale "en_US.utf8")
 
    (initrd-modules (append (list "dm-raid" "raid1")
-			   %base-initrd-modules))
+                           %base-initrd-modules))
 
    (keyboard-layout (keyboard-layout "us" #:options '("ctrl:nocaps")))
 
@@ -55,87 +55,87 @@
 
    (mapped-devices
     (list (mapped-device
-	   (source (list "/dev/nvme0n1p1" "/dev/nvme1n1p1"))
-	   (target "/dev/md124")
-	   (type raid-device-mapping))
-	  (mapped-device
-	   (source (list "/dev/nvme0n1p2" "/dev/nvme1n1p2"))
-	   (target "/dev/md125")
-	   (type raid-device-mapping))
-	  (mapped-device
-	   (source (list "/dev/sda1" "/dev/sdb1"))
-	   (target "/dev/md126")
-	   (type raid-device-mapping))
-	  (mapped-device
-	   (source (list "/dev/sdc1" "/dev/sdd1"))
-	   (target "/dev/md127")
-	   (type raid-device-mapping))
-	  (mapped-device
-	   (source "vg0")
-	   (targets (list "vg0-root" "vg0-opt" "vg0-tmp"))
-	   (type lvm-device-mapping))
-	  (mapped-device
-	   (source "vg1")
-	   (targets (list "vg1-guix" "vg1-nix" "vg1-swap" "vg1-var"))
-	   (type lvm-device-mapping))
-	  (mapped-device
-	   (source "vg2")
-	   (targets (list "vg2-home"))
-	   (type lvm-device-mapping))))
+           (source (list "/dev/nvme0n1p1" "/dev/nvme1n1p1"))
+           (target "/dev/md124")
+           (type raid-device-mapping))
+          (mapped-device
+           (source (list "/dev/nvme0n1p2" "/dev/nvme1n1p2"))
+           (target "/dev/md125")
+           (type raid-device-mapping))
+          (mapped-device
+           (source (list "/dev/sda1" "/dev/sdb1"))
+           (target "/dev/md126")
+           (type raid-device-mapping))
+          (mapped-device
+           (source (list "/dev/sdc1" "/dev/sdd1"))
+           (target "/dev/md127")
+           (type raid-device-mapping))
+          (mapped-device
+           (source "vg0")
+           (targets (list "vg0-root" "vg0-opt" "vg0-tmp"))
+           (type lvm-device-mapping))
+          (mapped-device
+           (source "vg1")
+           (targets (list "vg1-guix" "vg1-nix" "vg1-swap" "vg1-var"))
+           (type lvm-device-mapping))
+          (mapped-device
+           (source "vg2")
+           (targets (list "vg2-home"))
+           (type lvm-device-mapping))))
 
    (file-systems (append (list (file-system
-				(device "/dev/mapper/vg0-root")
-				(mount-point "/")
-				(type "ext4")
-				(needed-for-boot? #t)
-				(dependencies mapped-devices))
-			       (file-system
-				(device "/dev/mapper/vg1-guix")
-				(mount-point "/gnu")
-				(type "xfs")
-				(needed-for-boot? #t)
-				(dependencies mapped-devices))
-			       (file-system
-				(device "/dev/mapper/vg1-nix")
-				(mount-point "/nix")
-				(type "xfs")
-				(needed-for-boot? #f)
-				(dependencies mapped-devices))
-			       (file-system
-				(device "/dev/mapper/vg0-tmp")
-				(mount-point "/tmp")
-				(type "ext4")
-				(needed-for-boot? #t)
-				(dependencies mapped-devices))
-			       (file-system
-				(device "/dev/mapper/vg1-var")
-				(mount-point "/var")
-				(type "ext4")
-				(needed-for-boot? #t)
-				(dependencies  mapped-devices))
-			       (file-system
-				(device "/dev/md124")
-				(mount-point "/boot/efi")
-				(type "vfat")
-				(needed-for-boot? #t)
-				(dependencies mapped-devices))
-			       (file-system
-				(device "/dev/mapper/vg0-opt")
-				(mount-point "/opt")
-				(type "ext4")
-				(needed-for-boot? #f)
-				(dependencies mapped-devices))
-			       (file-system
-				(device "/dev/mapper/vg2-home")
-				(mount-point "/home")
-				(type "xfs")
-				(needed-for-boot? #f)
-				(dependencies mapped-devices)))
-			 %base-file-systems))
+                                (device "/dev/mapper/vg0-root")
+                                (mount-point "/")
+                                (type "ext4")
+                                (needed-for-boot? #t)
+                                (dependencies mapped-devices))
+                               (file-system
+                                (device "/dev/mapper/vg1-guix")
+                                (mount-point "/gnu")
+                                (type "xfs")
+                                (needed-for-boot? #t)
+                                (dependencies mapped-devices))
+                               (file-system
+                                (device "/dev/mapper/vg1-nix")
+                                (mount-point "/nix")
+                                (type "xfs")
+                                (needed-for-boot? #f)
+                                (dependencies mapped-devices))
+                               (file-system
+                                (device "/dev/mapper/vg0-tmp")
+                                (mount-point "/tmp")
+                                (type "ext4")
+                                (needed-for-boot? #t)
+                                (dependencies mapped-devices))
+                               (file-system
+                                (device "/dev/mapper/vg1-var")
+                                (mount-point "/var")
+                                (type "ext4")
+                                (needed-for-boot? #t)
+                                (dependencies  mapped-devices))
+                               (file-system
+                                (device "/dev/md124")
+                                (mount-point "/boot/efi")
+                                (type "vfat")
+                                (needed-for-boot? #t)
+                                (dependencies mapped-devices))
+                               (file-system
+                                (device "/dev/mapper/vg0-opt")
+                                (mount-point "/opt")
+                                (type "ext4")
+                                (needed-for-boot? #f)
+                                (dependencies mapped-devices))
+                               (file-system
+                                (device "/dev/mapper/vg2-home")
+                                (mount-point "/home")
+                                (type "xfs")
+                                (needed-for-boot? #f)
+                                (dependencies mapped-devices)))
+                         %base-file-systems))
 
    (swap-devices (list (swap-space (target "/dev/mapper/vg1-swap")
-				   (dependencies mapped-devices)
-				   (discard? #t))))
+                                   (dependencies mapped-devices)
+                                   (discard? #t))))
 
    (users (cons (user-account
                  (name "kb")
