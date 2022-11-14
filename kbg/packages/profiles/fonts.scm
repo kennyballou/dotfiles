@@ -5,11 +5,11 @@
 
 (define %kbg-fonts
   (list font-adobe-source-code-pro
-	font-bitstream-vera
-	font-dejavu
-	font-google-noto
-	font-hack
-	font-inconsolata
-	font-ipa-mj-mincho
-	font-liberation))
+        font-bitstream-vera
+        font-dejavu
+        font-google-noto
+        font-hack
+        font-inconsolata
+        font-ipa-mj-mincho
+        font-liberation))
 
