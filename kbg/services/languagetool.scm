@@ -21,7 +21,6 @@
                                                 #$(file-append languagetool "/languagetool-server.jar")
                                                 "org.languagetool.server.HTTPServer"
                                                 "--port"
-                                                "9090"
-                                                "--premiumAlways")))
+                                                "9090")))
                                 (stop #~(make-kill-destructor)))))
     (list languagetool-server)))
