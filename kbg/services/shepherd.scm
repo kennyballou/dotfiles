@@ -19,6 +19,7 @@
   (list (service home-shepherd-service-type
                  (home-shepherd-configuration
                   (services (append gnupg-service
+                                    languagetool-service
                                     mpd-service
                                     syncthing-service))))))
 
@@ -34,6 +35,7 @@
   (list (service home-shepherd-service-type
                  (home-shepherd-configuration
                   (services (append gnupg-service
+                                    languagetool-service
                                     mpd-service
                                     syncthing-service))))))
 
