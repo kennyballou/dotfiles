@@ -1420,6 +1420,8 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
   :init
   (setq flycheck-languagetool-language "en-US")
   (setq flycheck-languagetool-server-port "9090")
+  (setq flycheck-languagetool-url (format "http://localhost:%s"
+                                          flycheck-languagetool-server-port))
   (setq flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
   :config
   (flycheck-add-next-checker 'languagetool 'vale)
