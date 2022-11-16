@@ -74,6 +74,8 @@
         emacs-xyz:emacs-ebdb
         emacs-editorconfig
         ;; emacs-edts
+        emacs-eglot
+        emacs-eglot-java
         emacs-ein
         emacs-elein
         emacs-elfeed
@@ -172,9 +174,9 @@
         emacs-list-unicode-display
         emacs-literate-calc-mode
         emacs-lsp-haskell
+        emacs-lsp-jedi
         emacs-lsp-java
         emacs-lsp-mode
-        emacs-lsp-python-ms
         emacs-lsp-ui
         emacs-lua-mode
         emacs-magit
@@ -231,7 +233,7 @@
         emacs-racer
         emacs-xyz:emacs-rainbow-mode
         emacs-rainbow-delimiters
-        emacs-realgud
+        ;; emacs-realgud
         ;; emacs-realgud-jdb
         emacs-reformatter
         emacs-regex-tool
@@ -240,7 +242,8 @@
         ;; emacs-rspec-mode
         ;; emacs-ruby-compilation
         ;; emacs-ruby-hash-syntax
-        emacs-rust-mode
+        ;; emacs-rust-mode
+        emacs-rustic
         ;; emacs-sass-mode
         ;; emacs-scss-mode
         ;; emacs-session

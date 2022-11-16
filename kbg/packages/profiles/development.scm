@@ -30,6 +30,7 @@
 (define %kbg-base-development-packages
   (list
    autogen
+   darcs
    diffstat
    diffutils
    direnv

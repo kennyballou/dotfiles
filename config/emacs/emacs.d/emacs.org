@@ -1408,6 +1408,50 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
   (setq synosaurus-backend #'synosaurus-backend-wordnet)
   (setq synosaurus-choose-method 'ido))
 #+end_src
+
+**** LTEX Language Server
+:PROPERTIES:
+:ID:       b170b85a-3d40-4bb6-973c-a9f6a5862719
+:END:
+
+#+begin_src elisp :tangle no
+(use-package lsp-ltex
+  :after lsp
+  :hook (text-mode . kb/enable-ltex)
+  :init
+  (defun kb/enable-ltex ()
+    (require 'lsp-ltex)
+    (lsp-deferred))
+  :config
+  (setq lsp-ltex-ls-path (string-join (list user-emacs-directory "/lsp-ltex/")))
+  (setq lsp-ltex-version "15.2.0"))
+#+end_src
+
+**** detex
+:PROPERTIES:
+:ID:       e9352fe8-02e4-4082-9f90-34460f51c9e7
+:END:
+
+Simple function which returns buffer contents untexified.
+
+#+begin_src elisp :tangle no
+(defun detex-filter (contents)
+  "Return buffer contents without (La)TeX commands via `detex'."
+  (2text-filter "detex" contents))
+
+(defun ws-filter (contents)
+  "Return buffer contents without extra whitespace via `sed'."
+  (2text-filter "sed" contents "s/^\\s+//g"))
+
+(defun 2text-filter (program contents &rest ARGS)
+  "Return buffer contents after passing `CONTENTS' to `PROGRAM'."
+  (with-temp-buffer
+    (goto-char (point-min))
+    (insert contents)
+    (apply #'call-process-region (point-min) (point-max) program t t nil ARGS)
+    (buffer-substring-no-properties (point-min) (point-max))))
+#+end_src
+
 **** LanguageTool
 :PROPERTIES:
 :ID:       c084445a-9d5c-4a05-8273-f1d6d6cc772d
@@ -1427,6 +1471,47 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
   (flycheck-add-next-checker 'languagetool 'vale)
   (flycheck-remove-next-checker 'languagetool 'proselint))
 #+end_src
+
+#+begin_src elisp :tangle no
+(defun flycheck-languagetool--start (_checker callback)
+  "Flycheck start function for _CHECKER `languagetool', invoking CALLBACK."
+  (when (or flycheck-languagetool-server-command
+            flycheck-languagetool-server-jar)
+    (unless flycheck-languagetool--started-server
+      (setq flycheck-languagetool--started-server t)
+      (flycheck-languagetool--start-server)))
+
+  (let* ((url-request-method "POST")
+         (url-request-extra-headers
+          '(("Content-Type" . "application/x-www-form-urlencoded")))
+         (disabled-rules
+          (flatten-tree (list
+                         (cdr (assoc "disabledRules"
+                                     flycheck-languagetool-check-params))
+                         (when (bound-and-true-p flyspell-mode)
+                           flycheck-languagetool--spelling-rules))))
+         (other-params (assoc-delete-all "disabledRules"
+                                         flycheck-languagetool-check-params))
+         (url-request-data
+          (mapconcat
+           (lambda (param)
+             (concat (url-hexify-string (car param)) "="
+                     (url-hexify-string (cdr param))))
+           (append other-params
+                   `(("language" . ,flycheck-languagetool-language)
+                     ("text" . ,(detex-filter (buffer-substring-no-properties (point-min) (point-max)))))
+                   (when disabled-rules
+                     (list (cons "disabledRules"
+                                 (string-join disabled-rules ",")))))
+           "&")))
+    (url-retrieve
+     (concat (or flycheck-languagetool-url
+                 (format "http://localhost:%s"
+                         flycheck-languagetool-server-port))
+             "/v2/check")
+     #'flycheck-languagetool--read-results
+     (list (current-buffer) callback)
+     t)))
 #+end_src
 
 **** Pulsar
@@ -2504,6 +2589,14 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 #+end_src
 
+#+begin_src elisp :tangle no
+(use-package eglot
+  :bind (:map eglot-keymap
+              ("C-c e r" . #'eglot-rename))
+  :config
+  (setq eglot-confirm-server-initiated-edits t))
+#+end_src
+
 **** Debug Adapter Protocol
 :PROPERTIES:
 :ID:       d4f6107b-d1f1-4448-bfe3-ed207bf44a26
@@ -2822,7 +2915,21 @@ left to try and get the PATH down to, at most, MAX-LEN."
 
 #+begin_src elisp
 (use-package autodisass-java-bytecode)
+#+end_src
 
+#+begin_src elisp :tangle no
+(use-package eglot-java
+  :init
+  (defun kb/java-mode ()
+    "Configure java mode settings."
+    (subword-mode)
+    (setq-local tab-width 4)
+    (setq-local c-basic-offset 4)
+    (elgot-ensure))
+  :hook (java-mode . kb/java-mode))
+#+end_src
+
+#+begin_src elisp
 ;; Loosely borrowed from
 ;; https://github.com/jmibanez/jmi-dotemacs/blob/master/development.init.el#L139
 ;; Other changes from Torstein as well
@@ -4773,3 +4880,12 @@ _dR_:   Disable repeat
 
 #+end_src
 
+
+* Local Variables :noexport:
+:PROPERTIES:
+:ID:       d02c9b30-8c22-4840-a50c-18cf7bb5506b
+:END:
+
+Local Variables:
+flycheck-disabled-checkers: '(languagetool vale)
+End:
