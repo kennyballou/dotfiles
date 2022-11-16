@@ -5,6 +5,7 @@
   #:use-module (gnu packages autogen)
   #:use-module (gnu packages base)
   #:use-module (gnu packages code)
+  #:use-module (gnu packages containers)
   #:use-module (gnu packages graphviz)
   #:use-module (gnu packages groff)
   #:use-module (gnu packages guile)
@@ -53,6 +54,7 @@
    patch
    patchutils
    perf
+   podman
    python
    racket
    rtags
