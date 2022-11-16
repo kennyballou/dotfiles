@@ -25,10 +25,10 @@
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
        (branch "master")
        (commit
-        "f3d3aa8279b5cdd11a09100a644f8181a8f40f5a")
+        "e7c3fc8c5a3efdc22d54dad0bd2134df80c4b8cb")
        (introduction
         (make-channel-introduction
-         "a5da35c59a056000bfb16a7a5f3301472fc2fdf2"
+         "e7c3fc8c5a3efdc22d54dad0bd2134df80c4b8cb"
          (openpgp-fingerprint
           "10F4 14AB D526 0D0E 2372  8C08 FE55 890B 57AE DCE5"))))
       (channel
