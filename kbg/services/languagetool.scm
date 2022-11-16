@@ -22,7 +22,7 @@
                                                 "org.languagetool.server.HTTPServer"
                                                 "--port"
                                                 "9090"
-                                                (string-append "--languageModel="
-                                                               #$(file-append languagetool-ngram-en "/share/LanguageTool-ngrams/")))))
+                                                "--languageModel"
+                                                #$(file-append languagetool-ngram-en "/share/LanguageTool-ngrams/"))))
                                 (stop #~(make-kill-destructor)))))
     (list languagetool-server)))
