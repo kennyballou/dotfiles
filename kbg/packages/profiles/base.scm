@@ -122,5 +122,6 @@
         whois
         wireguard-tools
         xfsprogs
+        xkcdpass
         xz
         zip))
