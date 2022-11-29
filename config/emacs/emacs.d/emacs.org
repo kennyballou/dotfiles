@@ -3532,6 +3532,7 @@ Some references used for this:
 Some common Bib/reftex/org-ref actions that are useful to have around.
 
 #+begin_src elisp
+(bind-key "C-c o i" #'org-ref-cite-insert-helm)
 (bind-key "C-c o o" #'org-ref-open-bibtex-pdf)
 (bind-key "C-c o n" #'org-ref-open-bibtex-notes)
 (bind-key "C-c o t" #'bibtex-create-plain-text-reference)
