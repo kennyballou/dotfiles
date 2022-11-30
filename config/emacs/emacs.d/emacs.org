@@ -1400,6 +1400,7 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 
 #+begin_src elisp
 (use-package synosaurus
+  :delight
   :hook text-mode
   :config
   (unbind-key (kbd "C-c C-s l"))
@@ -1618,15 +1619,17 @@ https://matthewbauer.us/blog/bauer.html
 
 #+begin_src elisp
 (use-package whitespace
-  :diminish
+  :delight
+  :delight global-whitespace-mode
   :config
   (global-whitespace-mode t))
 (use-package whitespace-cleanup-mode
-  :diminish
+  :delight
   :config
   (global-whitespace-cleanup-mode t))
 
 (use-package unicode-whitespace
+  :delight
   :after (whitespace))
 
 ;;; Whitespace
@@ -2097,6 +2100,7 @@ buffers.
 
 #+begin_src elisp
 (use-package ggtags
+  :delight
   :hook (prog-mode . ggtags-mode))
 #+end_src
 
@@ -4202,6 +4206,7 @@ Update project status when updating the cookie statistics.
 
 #+begin_src elisp
 (use-package org-roam-ui
+  :delight
   :after org-roam
   :config
   (setq org-roam-ui-sync-theme t)
