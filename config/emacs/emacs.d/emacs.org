@@ -4210,7 +4210,7 @@ Update project status when updating the cookie statistics.
   :after org-roam
   :config
   (setq org-roam-ui-sync-theme t)
-  (setq org-roam-ui-follow t)
+  (setq org-roam-ui-follow nil)
   (setq org-roam-ui-update-on-save t)
   (setq org-roam-ui-open-on-start nil))
 #+end_src
