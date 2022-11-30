@@ -1593,7 +1593,9 @@ https://matthewbauer.us/blog/bauer.html
          ("C-x w b" . #'buf-move-left)
          ("C-x w e" . #'buf-move-right)
          ("C-x w f" . #'buf-move-right)))
+#+end_src
 
+#+begin_src elisp :tangle no
 ;; https://nullprogram.com/blog/2013/02/06/
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining-Minor-Modes.html
 (defvar window-resize-mode-delta 5)
@@ -4887,11 +4889,14 @@ _dR_:   Disable repeat
 #+end_src
 
 
-* Local Variables :noexport:
+* Local Variables
 :PROPERTIES:
 :ID:       d02c9b30-8c22-4840-a50c-18cf7bb5506b
 :END:
 
-Local Variables:
-flycheck-disabled-checkers: '(languagetool vale)
-End:
+# Local Variables:
+# flycheck-disabled-checkers: '(languagetool vale)
+# enable-local-eval: t
+# eval: (flycheck-disable-checker 'languagetool)
+# eval: (flycheck-disable-checker 'vale)
+# End:
