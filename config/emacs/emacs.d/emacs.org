@@ -1438,7 +1438,7 @@ Simple function which returns buffer contents untexified.
 #+begin_src elisp :tangle no
 (defun detex-filter (contents)
   "Return buffer contents without (La)TeX commands via `detex'."
-  (2text-filter "detex" contents))
+  (2text-filter "detex" contents "-s"))
 
 (defun ws-filter (contents)
   "Return buffer contents without extra whitespace via `sed'."
@@ -1500,7 +1500,9 @@ Simple function which returns buffer contents untexified.
                      (url-hexify-string (cdr param))))
            (append other-params
                    `(("language" . ,flycheck-languagetool-language)
-                     ("text" . ,(detex-filter (buffer-substring-no-properties (point-min) (point-max)))))
+                     ("text" . ,(detex-filter (buffer-substring-no-properties
+                                               (point-min)
+                                               (point-max)))))
                    (when disabled-rules
                      (list (cons "disabledRules"
                                  (string-join disabled-rules ",")))))
