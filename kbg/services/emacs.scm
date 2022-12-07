@@ -209,6 +209,7 @@
         emacs-org-ref
         emacs-org-roam
         emacs-org-roam-ui
+        emacs-org-web-tools
         emacs-ox-gfm
         emacs-page-break-lines
         emacs-pass

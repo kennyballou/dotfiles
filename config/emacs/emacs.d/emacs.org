@@ -4219,6 +4219,15 @@ Update project status when updating the cookie statistics.
   (setq org-roam-ui-open-on-start nil))
 #+end_src
 
+**** Org Web-Tools
+:PROPERTIES:
+:ID:       e8479be2-8f4e-4b89-a623-4008512ce610
+:END:
+
+#+begin_src elisp
+(use-package org-web-tools)
+#+end_src
+
 **** Diary and Org Agenda Extras
 :PROPERTIES:
 :ID:       9e4a8207-5798-4dd8-b7c3-71c8f5db6f33
