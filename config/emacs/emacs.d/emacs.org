@@ -2357,6 +2357,29 @@ Call `FN2' on all remaining elements in `ARGS'."
 
 (defalias 'eshell/more #'eshell/less)
 
+;;; https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org#map-over-files
+(defun eshell/do (&rest args)
+  "Execute a command sequence over a collection of file elements.
+Separate the sequence and the elements with a `::' string.
+For instance:
+
+  do chown _ angela :: *.org(u'oscar')
+
+The function substitutes the `_' sequence to a single filename
+element, and if not specified, it appends the file name to the
+command.  So the following works as expected:
+
+  do chmod a+x :: *.org"
+  (seq-let (forms elements) (-split-on "::" args)
+    (dolist (element (-flatten (-concat elements)))
+      (message "Working on %s ... %s" element forms)
+      (let* ((form (if (-contains? forms "_")
+                       (-replace "_" element forms)
+                     (-snoc forms element)))
+             (cmd (car form))
+             (args (cdr form)))
+        (eshell-named-command cmd args)))))
+
 (defun eshell/make (&rest args)
   "Open make with ARGS process into compilation output Buffer."
   (let ((command (concat "make" " " (string-join args " "))))
