@@ -2338,6 +2338,25 @@ buffers.
         (compile command)
       (compile command t))))
 
+;;; http://howardism.org/Technical/Emacs/eshell-why.html
+(defun eshell-fn-on-files (fn1 fn2 args)
+  "Call `FN1' on the first argument in list, `ARGS'.
+Call `FN2' on all remaining elements in `ARGS'."
+  (unless (null args)
+    (let ((filenames (flatten-list args)))
+      (funcall fn1 (car filenames))
+      (when (cdr filenames)
+        (mapcar fn2 (cdr filenames))))
+    ;; Return an empty string, as the return value from `FN1'
+    ;; probably isn't helpful to display in the `eshell' window.
+    ""))
+
+(defun eshell/less (&rest args)
+  "Essentially an alias to the `view-file' function."
+  (eshell-fn-on-files #'view-file #'view-file-other-window args))
+
+(defalias 'eshell/more #'eshell/less)
+
 (defun eshell/make (&rest args)
   "Open make with ARGS process into compilation output Buffer."
   (let ((command (concat "make" " " (string-join args " "))))
