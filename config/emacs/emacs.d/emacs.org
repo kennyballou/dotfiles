@@ -2514,6 +2514,15 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (use-package pcomplete-extension)
 #+end_src
 
+#+begin_src elisp
+(defun eshell-to-logbook (string)
+  "Write `STRING' to logbook using org-capture."
+  (org-capture-string string "e"))
+
+(add-to-list 'eshell-virtual-targets
+             '("/dev/e" eshell-to-logbook nil))
+#+end_src
+
 *** Regular Expressions and Other Problems
 :PROPERTIES:
 :ID:       bc913a80-fe1f-4abd-9e09-7c795fbeded9
@@ -3887,6 +3896,10 @@ http://doc.norang.ca/org-mode.htm
          (file "~/.config/emacs/org-captures/TASK_NOTE") :empty-lines 1)
         ("n" "logbook entry" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/TASK_LOG_NOTE") :empty-lines 1)
+        ("e" "Contents to Notebook" entry
+         (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
+         :immediate-finish t :empty-lines 1)
         ("tr" "related task" entry (clock)
          (file "~/.config/emacs/org-captures/RELATED_TODO"))
         ("tm" "todo from mail" entry (file kb/org-refile)
