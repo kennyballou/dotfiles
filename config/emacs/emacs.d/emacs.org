@@ -2476,8 +2476,9 @@ left to try and get the PATH down to, at most, MAX-LEN."
 (add-hook 'eshell-mode-hook
           (lambda () (setq slime-mode nil)))
 
-
+#+end_src
 
+#+begin_src elisp
 ;; https://github.com/szermatt/emacs-bash-completion
 (defun bash-completion-from-eshell ()
   (interactive)
@@ -2490,14 +2491,13 @@ left to try and get the PATH down to, at most, MAX-LEN."
    (save-excursion (eshell-bol) (point))
    (point) t))
 
-
+#+end_src
 
+#+begin_src elisp
 (add-hook 'eshell-mode-hook
           #'(lambda ()
               (define-key eshell-mode-map(kbd "C-c C-l") #'helm-eshell-history)
               (define-key eshell-mode-map (kbd "TAB") #'bash-completion-from-eshell)))
-
-
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -2505,8 +2505,6 @@ left to try and get the PATH down to, at most, MAX-LEN."
   :after eshell
   :config
   (eshell-vterm-mode))
-
-
 #+end_src
 
 #+begin_src elisp
