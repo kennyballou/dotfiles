@@ -3956,6 +3956,8 @@ Update project status when updating the cookie statistics.
                (org-set-property "PROJECT_STATUS" "idea"))
               ((= n-incomplete 0)
                (org-set-property "PROJECT_STATUS" "closed"))
+              ((> n-incomplete 0)
+               (org-set-property "PROJECT_STATUS" "open"))
               (t
                nil)))))
 
