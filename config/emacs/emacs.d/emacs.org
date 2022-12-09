@@ -359,6 +359,7 @@ $ emacsclient -c"
 (setq-default compilation-scroll-output nil)
 (setq-default completion-cycle-threshold 5)
 (setq-default completions-format 'vertical)
+(setq-default completions-ignore-case t)
 (setq-default counsel-find-file-at-point t)
 (setq-default counsel-mode-override-describe-bindings t)
 (setq-default create-lockfiles t)
