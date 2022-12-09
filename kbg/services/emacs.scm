@@ -219,6 +219,7 @@
         emacs-pcmpl-git
         emacs-pcmpl-pip
         emacs-pcomplete-extension
+        emacs-xyz:emacs-pcre2el
         emacs-xyz:emacs-pdf-tools
         emacs-peep-dired
         emacs-persp-projectile
