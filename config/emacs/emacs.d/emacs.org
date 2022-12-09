@@ -3676,12 +3676,22 @@ http://cachestocaches.com/2016/9/my-workflow-org-agenda/
 And
 http://doc.norang.ca/org-mode.htm
 
+**** Initial Requires
+:PROPERTIES:
+:ID:       fb12c868-6eea-4ada-aced-f85f1ca5df23
+:END:
+
 #+begin_src elisp
 (require 'org)
 (require 'org-id)
 (require 'holidays)
 (require 'ox-md)
 #+end_src
+
+**** Graphics and Export
+:PROPERTIES:
+:ID:       6356ad16-3099-443d-8073-043bc9a84c1b
+:END:
 
 #+begin_src elisp :tangle no
 (use-package ob-ditaa
@@ -3733,6 +3743,11 @@ http://doc.norang.ca/org-mode.htm
 (unbind-key "<M-S-left>" org-mode-map)
 (unbind-key "<M-S-right>" org-mode-map)
 #+end_src
+
+**** Various Preferences
+:PROPERTIES:
+:ID:       1de54eab-8be0-44d6-a277-ba9d0aa781df
+:END:
 
 #+begin_src elisp
 ;; Various preferences
@@ -3797,6 +3812,11 @@ http://doc.norang.ca/org-mode.htm
                                    (if time-zone ")")))
 #+end_src
 
+**** \LaTeX Integration
+:PROPERTIES:
+:ID:       02d24593-c78c-4edb-a9d4-caa6ce6f12c7
+:END:
+
 #+begin_src elisp
 (setq org-latex-prefer-user-labels t)
 (setq org-latex-listings t)
@@ -3824,6 +3844,11 @@ http://doc.norang.ca/org-mode.htm
         "pdflatex -interaction nonstopmode -output-directory %o %f"))
 
 #+end_src
+
+**** Incoming Notes: Capture/Refile
+:PROPERTIES:
+:ID:       53cb62b3-16b3-464b-aecf-bfb63a32d5c0
+:END:
 
 #+begin_src elisp
 ;;;; Refile settings
@@ -3962,6 +3987,11 @@ Update project status when updating the cookie statistics.
               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 #+end_src
 
+**** Agenda
+:PROPERTIES:
+:ID:       53b94099-6930-4d85-9acf-077acda74238
+:END:
+
 #+begin_src elisp
 (setq org-agenda-custom-commands
       (quote (("M" "3 Month" agenda "3 month view"
@@ -4010,6 +4040,68 @@ Update project status when updating the cookie statistics.
         (htmlize-output-type 'css)))
 
 #+end_src
+
+***** Diary and Org Agenda Extras
+:PROPERTIES:
+:ID:       9e4a8207-5798-4dd8-b7c3-71c8f5db6f33
+:END:
+
+https://orgmode.org/worg/org-hacks.html#org790bd5a
+https://orgmode.org/worg/org-hacks.html#orgf1fe951
+
+#+begin_src elisp
+(require 'cl-lib)
+(require 'lunar)
+(require 'solar)
+
+(autoload 'solar-sunrise-sunset "solar.el")
+(autoload 'solar-time-string "solar.el")
+
+(setq lunar-phase-names
+      '("🌑 New Moon"
+        "🌓 First Quarter Moon"
+        "🌕 Full Moon"
+        "🌗 Last Quarter Moon"))
+
+(with-suppressed-warnings ((lexical date))
+  (defvar date))
+(defun kb/diary-lunar-phases ()
+  "Show lunar phase in Agenda Buffer."
+  (let* ((phase-list (lunar-phase-list (nth 0 date) (nth 2 date)))
+         (phase (cl-find-if (lambda (phase) (equal (car phase) date))
+                            phase-list)))
+    (when phase
+      (concat (lunar-phase-name (nth 2 phase)) " "
+              (substring (nth 1 phase) 0 5)))))
+
+(defun kb/diary-solar-sunrise ()
+  "Show sunrise in Agenda Buffer."
+  (let ((sunrise (car (car (solar-sunrise-sunset date)))))
+    (concat "Sunrise " (solar-time-string sunrise nil))))
+
+(defun kb/diary-solar-sunset ()
+  "Show sunset in agenda buffer."
+  (let ((sunset (car (cadr (solar-sunrise-sunset date)))))
+    (concat "Sunset " (solar-time-string sunset nil))))
+#+end_src
+
+***** Daily Prayers
+:PROPERTIES:
+:ID:       5b7bda68-43f4-4cc9-a89f-b40cda3a622e
+:END:
+
+#+begin_src elisp
+(use-package awqat
+  :config
+  (setq awqat-asr-hanafi nil)
+  (awqat-set-preset-isna))
+#+end_src
+
+
+**** Navigating (obsolete?)
+:PROPERTIES:
+:ID:       d05a3ea3-e254-4e74-80a2-86aa598c34d5
+:END:
 
 #+begin_src elisp
 (defun kb/org-switch-to-current-notes-file ()
@@ -4094,6 +4186,11 @@ Update project status when updating the cookie statistics.
     (kb/org-switch-to-current-notes-file)))
 #+end_src
 
+**** Editing Utilities: Quick Inserts and Friends
+:PROPERTIES:
+:ID:       135e8764-780e-42de-af34-ec41ae923774
+:END:
+
 #+begin_src elisp
 (defhydra help/hydra/timestamp (:hint nil :exit t)
   "
@@ -4124,6 +4221,13 @@ Update project status when updating the cookie statistics.
 (define-key org-mode-map (kbd "C-c t") #'help/hydra/timestamp/body)
 #+end_src
 
+**** UUIDs everywhere
+:PROPERTIES:
+:ID:       42269ad6-0b7d-426c-875f-79d461be323d
+:END:
+
+Except where they probably shouldn't be added.
+
 #+begin_src elisp
 (defvar kb/org-id-ignored-filenames (list "README"
                                           "outline")
@@ -4143,6 +4247,11 @@ Update project status when updating the cookie statistics.
             (add-hook 'before-save-hook #'kb/org-id-get-create-all-items)))
 #+end_src
 
+**** Pomodoro
+:PROPERTIES:
+:ID:       221ce9dc-4c2b-4d69-a746-e1ea2188a75d
+:END:
+
 #+begin_src elisp
 (use-package org-pomodoro
   :config
@@ -4150,9 +4259,19 @@ Update project status when updating the cookie statistics.
   (setq org-pomodoro-ticking-sound-p nil))
 #+end_src
 
+**** Better Task Dependencies
+:PROPERTIES:
+:ID:       c19300ed-d4e9-4585-b455-2c84c12b74ef
+:END:
+
 #+begin_src elisp
 (require 'org-depend)
 #+end_src
+
+**** Gantt Charts
+:PROPERTIES:
+:ID:       930284fe-4fe2-43a1-89e7-da26650164df
+:END:
 
 #+begin_src elisp
 (require 'org-dblock-gantt)
@@ -4294,62 +4413,6 @@ Update project status when updating the cookie statistics.
 
 #+begin_src elisp
 (use-package org-web-tools)
-#+end_src
-
-**** Diary and Org Agenda Extras
-:PROPERTIES:
-:ID:       9e4a8207-5798-4dd8-b7c3-71c8f5db6f33
-:END:
-
-https://orgmode.org/worg/org-hacks.html#org790bd5a
-https://orgmode.org/worg/org-hacks.html#orgf1fe951
-
-#+begin_src elisp
-(require 'cl-lib)
-(require 'lunar)
-(require 'solar)
-
-(autoload 'solar-sunrise-sunset "solar.el")
-(autoload 'solar-time-string "solar.el")
-
-(setq lunar-phase-names
-      '("🌑 New Moon"
-        "🌓 First Quarter Moon"
-        "🌕 Full Moon"
-        "🌗 Last Quarter Moon"))
-
-(with-suppressed-warnings ((lexical date))
-  (defvar date))
-(defun kb/diary-lunar-phases ()
-  "Show lunar phase in Agenda Buffer."
-  (let* ((phase-list (lunar-phase-list (nth 0 date) (nth 2 date)))
-         (phase (cl-find-if (lambda (phase) (equal (car phase) date))
-                            phase-list)))
-    (when phase
-      (concat (lunar-phase-name (nth 2 phase)) " "
-              (substring (nth 1 phase) 0 5)))))
-
-(defun kb/diary-solar-sunrise ()
-  "Show sunrise in Agenda Buffer."
-  (let ((sunrise (car (car (solar-sunrise-sunset date)))))
-    (concat "Sunrise " (solar-time-string sunrise nil))))
-
-(defun kb/diary-solar-sunset ()
-  "Show sunset in agenda buffer."
-  (let ((sunset (car (cadr (solar-sunrise-sunset date)))))
-    (concat "Sunset " (solar-time-string sunset nil))))
-#+end_src
-
-**** Daily Prayers
-:PROPERTIES:
-:ID:       5b7bda68-43f4-4cc9-a89f-b40cda3a622e
-:END:
-
-#+begin_src elisp
-(use-package awqat
-  :config
-  (setq awqat-asr-hanafi nil)
-  (awqat-set-preset-isna))
 #+end_src
 
 *** elgantt
