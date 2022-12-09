@@ -95,6 +95,7 @@
         emacs-f
         ;; emacs-fetchmail
         emacs-flycheck
+        emacs-flycheck-aspell
         emacs-flycheck-clojure
         emacs-flycheck-color-mode-line
         ;; emacs-flycheck-credo
