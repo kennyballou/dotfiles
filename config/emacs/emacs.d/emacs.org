@@ -4627,6 +4627,10 @@ Configuration taken from the tutorial found here:
 (setq mu4e-view-use-old nil)
 (setq mu4e-headers-include-releated t)
 (setq mu4e-headers-skip-duplicates t)
+(add-to-list 'mu4e-headers-actions
+             '("org-contact-add" . mu4e-action-add-org-contact) t)
+(add-to-list 'mu4e-view-actions
+             '("org-contact-add" . mu4e-action-add-org-contact) t)
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
 ;; so set to epg and all was good!
