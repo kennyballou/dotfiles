@@ -190,6 +190,7 @@
         emacs-multiple-cursors
         emacs-mwim
         emacs-native-complete
+        emacs-nginx-mode
         emacs-nix-mode
         ;; emacs-ob-ipython
         emacs-olivetti

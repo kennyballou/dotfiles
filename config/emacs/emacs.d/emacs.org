@@ -3221,6 +3221,16 @@ Most shell applications accept Perl Compatible Regular Expressions."
   :mode "\\.md\\.html\\'")
 #+end_src
 
+**** nginx
+:PROPERTIES:
+:ID:       0f011145-9b4b-4f97-acb2-6686fdf30017
+:END:
+
+#+begin_src elisp
+(use-package nginx-mode
+  :mode ("/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode))
+#+end_src
+
 **** Nix
 :PROPERTIES:
 :ID:       66d5872f-7ef5-4480-8864-8054c02396c7
