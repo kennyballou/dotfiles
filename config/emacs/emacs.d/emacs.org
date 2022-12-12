@@ -1817,7 +1817,7 @@ compatibility with Projectile, '.projectile' is also considered a project root m
 https://blog.jmthornton.net/p/emacs-project-override"
   (let ((root (or (locate-dominating-file dir ".project.el")
                   (locate-dominating-file dir ".projectile")))
-              (backend (ignore-errors (vc-responsible-backend dir))))
+        (backend (ignore-errors (vc-responsible-backend dir))))
     (when root (if (version<= emacs-version "28")
                    (cons 'vc root)
                  (list 'vc backend root)))))
@@ -4010,7 +4010,7 @@ Update project status when updating the cookie statistics.
               (t
                nil)))))
 
-    (add-hook 'org-after-todo-statistics-hook #'kb/org-update-project-status)
+(add-hook 'org-after-todo-statistics-hook #'kb/org-update-project-status)
 #+end_src
 
 #+begin_src elisp
