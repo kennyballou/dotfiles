@@ -25,12 +25,14 @@
   #:use-module (kbg services dbus)
   #:use-module (kbg services pipewire)
   #:use-module (kbg services shell)
-  #:use-module (kbg services shepherd))
+  #:use-module (kbg services shepherd)
+  #:use-module (nongnu packages mozilla))
 
 (home-environment
  (packages
   (append %kbg-base-development-packages
-          %kbg-desktop-packages
+          (filter (lambda (p) (not (member p (list firefox/wayland))))
+                  %kbg-desktop-packages)
           %kbg-games-packages
           %kbg-science-packages
           %kbg-statistics-packages
