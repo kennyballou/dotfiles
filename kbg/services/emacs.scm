@@ -136,17 +136,17 @@
         emacs-gxref
         emacs-haml-mode
         emacs-haskell-mode
-        emacs-helm
+        ;; emacs-helm
         ;; emacs-helm-bbdb
-        emacs-helm-bibtex
-        emacs-helm-descbinds
-        emacs-helm-flycheck
+        ;; emacs-helm-bibtex
+        ;; emacs-helm-descbinds
+        ;; emacs-helm-flycheck
         ;; emacs-helm-flyspell
-        emacs-helm-gtags
-        emacs-helm-lsp
+        ;; emacs-helm-gtags
+        ;; emacs-helm-lsp
         ;; emacs-helm-mu
-        emacs-helm-pass
-        emacs-helm-projectile
+        ;; emacs-helm-pass
+        ;; emacs-helm-projectile
         ;; emacs-helm-rg
         ;; emacs-helm-sql-connect
         ;; emacs-helm-tramp
@@ -231,7 +231,7 @@
         emacs-pip-requirements
         emacs-polymode
         emacs-powerline
-        emacs-projectile
+        ;; emacs-projectile
         emacs-proof-general
         emacs-xyz:emacs-pulsar
         emacs-racer
