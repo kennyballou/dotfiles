@@ -15,6 +15,7 @@
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
   #:use-module (gnu services security-token)
+  #:use-module (gnu services virtualization)
   #:use-module (gnu services xorg)
   #:use-module (gnu system nss)
   #:use-module (gnu packages gnome)
@@ -91,6 +92,7 @@
                  (supplementary-groups '("audio"
                                          "input"
                                          "kvm"
+                                         "libvirt"
                                          "lp"
                                          "netdev"
                                          "tty"
@@ -135,7 +137,9 @@
                            (nftables-service "daeva")
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
-                                           (list mcron:guix-gc-repair-job)))
+                                           (list mcron:guix-gc-repair-job))
+                           (service virtlog-service-type)
+                           (service libvirt-service-type))
                      %kbg-desktop-services))
 
    ;; Allow resolution of '.local' host names with mDNS.
