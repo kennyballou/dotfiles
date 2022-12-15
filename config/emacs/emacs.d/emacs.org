@@ -4471,7 +4471,7 @@ Except where they probably shouldn't be added.
 :ID:       270cff5d-0d98-4bad-819c-629a6fe9d37c
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (setq elgantt-header-type 'outline)
 (setq elgantt-insert-blank-line-between-top-level-header t)
 (setq elgantt-startup-folded nil)

@@ -80,7 +80,7 @@
         emacs-elein
         emacs-elfeed
         emacs-elfeed-org
-        emacs-elgantt
+        ;; emacs-elgantt
         emacs-elixir-mode
         emacs-elm-mode
         emacs-emms
