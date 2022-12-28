@@ -3345,6 +3345,13 @@ indentation rules."
   (setq lsp-python-ms-executable (executable-find "python-language-server")))
 #+end_src
 
+#+begin_src elisp
+(use-package lsp-jedi
+  :after lsp-mode
+  :config
+  (setq lsp-jedi-executable-command (expand-file-name "~/.nix-profile/bin/jedi-language-server")))
+#+end_src
+
 **** Ruby
 :PROPERTIES:
 :ID:       bd6d4185-b917-4666-a9ce-438052e0d602
