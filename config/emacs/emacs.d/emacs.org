@@ -2592,6 +2592,17 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (direnv-mode))
 #+end_src
 
+**** Subword Mode
+:PROPERTIES:
+:ID:       9622e07f-300a-4c9b-800d-5070ecb3ac45
+:END:
+
+#+begin_src elisp
+(use-package subword
+  :delight subword-mode)
+#+end_src
+
+
 **** Semantic Mode
 :PROPERTIES:
 :ID:       9c4fdc58-6a6f-415f-a30e-eea3bcfffd6a
