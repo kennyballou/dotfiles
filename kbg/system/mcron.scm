@@ -29,5 +29,5 @@
 
 (define guix-gc-job
   #~(job "5 0 * * 0"
-         "guix gc --free-space=10G"
+         "guix gc --delete-generations=14d"
          "guix garbage collection"))
