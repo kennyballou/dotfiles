@@ -8,6 +8,7 @@
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
   #:use-module (emacs packages melpa)
   #:use-module (kbg packages emacs-xyz)
+  #:use-module (kbg packages jdtls)
   #:use-module (kbg packages languagetool))
 
 (define rewrite
@@ -313,6 +314,7 @@
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/lsp-java")
                                         #:recursive? #t))
                           (,(emacs-file "language-tool") ,languagetool)
+                          (,(emacs-file "share/eclipse.jdt.ls") ,jdtls)
                           (,(emacs-file "snippets")
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/snippets")
                                         #:recursive? #t))

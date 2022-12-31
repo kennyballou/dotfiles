@@ -2626,7 +2626,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       f8dcd5bb-073f-4f38-b359-1e23fce6f40d
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c e")
@@ -2707,12 +2707,33 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package eglot
-  :bind (:map eglot-keymap
-              ("C-c e r" . #'eglot-rename))
-  :config
-  (setq eglot-confirm-server-initiated-edits t))
+  :commands (eglot eglot-ensure)
+  :demand t
+  :bind (("C-c e w r" . #'eglot-reconnect)
+         ("C-c e w s" . #'eglot-shutdown)
+         ("C-c e g d" . #'eglot-find-declaration)
+         ("C-c e g r" . #'eglot-find-implementation)
+         ("C-c e g t" . #'eglot-find-typeDefinition)
+         ("C-c e r" . #'eglot-rename))
+:config
+(setq eglot-report-progress t)
+(setq eglot-confirm-server-initiated-edits 'confirm)
+(add-to-list 'eglot-stay-out-of 'flymake)
+(setq eglot-server-programs (list (cons 'java-mode (list "guix"
+                                                         "shell"
+                                                         "--pure"
+                                                         "openjdk@18"
+                                                         "--"
+                                                         (expand-file-name (concat user-emacs-directory
+                                                                                   "share/eclipse.jdt.ls/bin/jdtls"))))
+                                  (cons 'python-mode (list
+                                                      "nix-shell"
+                                                      "--packages"
+                                                      "python310Packages.jedi-language-server"
+                                                      "--run"
+                                                      "jedi-language-server")))))
 #+end_src
 
 **** Debug Adapter Protocol
@@ -2720,7 +2741,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       d4f6107b-d1f1-4448-bfe3-ed207bf44a26
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package dap-mode
   :after lsp-mode
   :config
@@ -2758,8 +2779,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 (defun kb/c-mode ()
   "C minor mode configurations."
-  (lsp-mode)
-  (lsp-deferred))
+  (eglot-ensure))
 
 (add-hook 'c-mode-hook #'kb/c-mode)
 (add-hook 'c++-mode-hook #'kb/c-mode)
@@ -2899,11 +2919,10 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (diminish 'alchemist-phoenix-mode))
 
 (use-package elixir-mode
-  :after lsp-mode
+  :after eglot
   :init
   (defun kb/elixir-mode ()
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (elixir-mode . kb/elixir-mode))
 
 (use-package flycheck-credo
@@ -2915,8 +2934,12 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp :tangle no
 (use-package erlang
+  :init
+  (defun kb/erlang-mode ()
+    (eglot-ensure))
   :config
-  (require 'erlang-start))
+  (require 'erlang-start)
+  :hook (erlang-mode . kb/erlang-mode))
 
 (use-package edts)
 #+end_src
@@ -2959,14 +2982,13 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package go-mode
-  :after (lsp-mode)
+  :after eglot
   :commands (gofmt-before-save)
   :init
   (defun kb/golang-mode ()
     (setq-local indent-tabs-mode t)
     (setq-local tab-width 4)
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :config
   (add-hook 'before-save-hook #'gofmt-before-save)
   :hook (go-mode . kb/golang-mode))
@@ -3000,8 +3022,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (setq-default haskell-stylish-on-save t)
   (defun kb/haskell-mode ()
     (eldoc-mode)
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (haskell-mode . kb/haskell-mode)
   :bind (:map haskell-mode-map
               ("C-c h" . hoogle)
@@ -3035,19 +3056,29 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (use-package autodisass-java-bytecode)
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package eglot-java
+  :after eglot
+  :config
+  (setq eglot-java-eclipse-jdt-args (list "-noverify"
+                                          "-Xms1G"
+                                          "-Xmx2G"
+                                          "-XX:+UnlockExperimentalVMOptions"
+                                          "-XX:+UseZGC"
+                                          "-XX:+UseStringDeduplication"
+                                          "-XX:AdaptiveSizePolicyWeight=90"
+                                          "-Dsun.zip.disableMemoryMapping=true"))
   :init
   (defun kb/java-mode ()
     "Configure java mode settings."
     (subword-mode)
     (setq-local tab-width 4)
     (setq-local c-basic-offset 4)
-    (elgot-ensure))
+    (eglot-ensure))
   :hook (java-mode . kb/java-mode))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 ;; Loosely borrowed from
 ;; https://github.com/jmibanez/jmi-dotemacs/blob/master/development.init.el#L139
 ;; Other changes from Torstein as well
@@ -3065,7 +3096,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
   ;; Enable dap-java
   (require 'dap-java)
-
   (setq lsp-java-server-install-dir (concat user-emacs-directory "lsp/eclipse.jdt.ls/server/"))
   (setq lsp-java-workspace-dir (expand-file-name (concat user-emacs-directory "eclipse.jdt.ls/workspace/")))
   (setq lsp-java-workspace-cache-dir (expand-file-name (concat user-emacs-directory "eclipse.jdt.ls/workspace/.cache/")))
@@ -3118,8 +3148,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (use-package js2-mode
   :init
   (defun kb/js2-mode ()
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (js2-mode . kb/js2-mode)
   :config
   (setq-default js2-basic-offset 4)
@@ -3134,8 +3163,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (use-package typescript-mode
   :init
   (defun kb/typescript-mode ()
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (typescript-mode . kb/typescript--mode))
 
 (defconst preferred-javascript-indent-level 4)
@@ -3148,7 +3176,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (with-eval-after-load 'js2-mode
   ;; Disable js2-mode's syntax error highlighting by default ...
   (setq-default js2-mode-show-parse-errors nil
-	            js2-mode-show-strict-warnings nil)
+                js2-mode-show-strict-warnings nil)
   ;; ... but enable it if flycheck can't handle javascript
   (autoload 'flycheck-get-checker-for-buffer "flycheck")
   (defun sanityinc/disable-js2-checks-if-flycheck-active ()
@@ -3325,10 +3353,11 @@ indentation rules."
 (use-package python
   :init
   (defun kb/python-mode ()
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (python-mode . kb/python-mode))
+#+end_src
 
+#+begin_src elisp
 (use-package pip-requirements
   :after (python))
 #+end_src
@@ -3352,7 +3381,7 @@ indentation rules."
   (setq lsp-python-ms-executable (executable-find "python-language-server")))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package lsp-jedi
   :after lsp-mode
   :config
@@ -3397,8 +3426,7 @@ indentation rules."
     (unless derived-mode-p #'prog-mode
             (run-hook 'prog-mode-hook))
     (subword-mode)
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (ruby-mode . kb/ruby-mode))
 
 ;;; ERB
@@ -3450,8 +3478,7 @@ indentation rules."
   :init
   (defun kb/rust-mode ()
     (racer-mode)
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (rust-mode-hook . kb/rust-mode))
 #+end_src
 
@@ -3701,8 +3728,7 @@ Add =languagetool= to =tex-chktex= checker chain.
 (use-package tuareg
   :init
   (defun kb/ocaml-mode ()
-    (lsp-mode)
-    (lsp-deferred))
+    (eglot-ensure))
   :hook (tuareg-mode-hook . kb/ocaml-mode))
 #+end_src
 
