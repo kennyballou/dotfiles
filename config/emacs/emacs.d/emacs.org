@@ -1954,14 +1954,11 @@ https://blog.jmthornton.net/p/emacs-project-override"
 
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package flyspell
   :after ispell
   :diminish
   :if (executable-find ispell-program-name)
-  :bind (:map flyspell-mode-map
-              ("C-;" . nil)
-              ("C-c $" . nil))
   :when (executable-find ispell-program-name)
   :commands (flyspell-mode flyspell-prog-mode)
   :config
@@ -1978,7 +1975,7 @@ https://blog.jmthornton.net/p/emacs-project-override"
               ("C-c ." . flyspell-correct-wrapper)))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package flycheck-aspell
   :after flycheck
   :config
@@ -1992,7 +1989,7 @@ https://blog.jmthornton.net/p/emacs-project-override"
   (add-to-list 'flycheck-checkers 'mail-aspell-dynaimc))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (with-eval-after-load 'flycheck-aspell
   (flycheck-aspell-define-checker "org"
                                   "Org" ("--add-filter" "url")
