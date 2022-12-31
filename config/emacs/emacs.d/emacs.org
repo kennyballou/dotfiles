@@ -1930,12 +1930,12 @@ https://blog.jmthornton.net/p/emacs-project-override"
 :ID:       c10c11ef-f5d6-4716-b828-4b7c8afdca41
 :END:
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package perspective
   :config
-  (setq persp-mode-prefix-key (kbd "C-x p"))
-  (setq persp-state-default-file (concat user-emacs-directory "perspective.state"))
+  (setq persp-state-default-file (concat user-emacs-directory "perspective.state/default"))
   :init
+  (setq persp-mode-prefix-key (kbd "C-c p"))
   (add-hook 'kill-emacs-hook #'persp-state-save)
   (persp-mode))
 #+end_src
