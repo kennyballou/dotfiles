@@ -56,7 +56,7 @@
    patchutils
    perf
    podman
-   python
+   python-wrapper
    racket
    rtags
    shellcheck
