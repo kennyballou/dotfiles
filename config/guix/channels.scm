@@ -25,7 +25,7 @@
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
        (branch "master")
        (commit
-        "b9d0b8041d28ebd9f85cb041aa3f2235c8b39417")
+        "0b125f322e431a932c55a4bb5f2c6049c2f5b327")
        (introduction
         (make-channel-introduction
          "b9d0b8041d28ebd9f85cb041aa3f2235c8b39417"
@@ -36,7 +36,7 @@
        (url "https://github.com/babariviere/guix-emacs.git")
        (branch "master")
        (commit
-        "030527a7cd13d3a1541e09b64dfc76cc3480158a")
+        "0128a3492cda1c613f19394ee8e273cc28d41b49")
        (introduction
         (make-channel-introduction
          "8d45521e2aeac063fba926d375b1a202c5487275"
