@@ -2334,7 +2334,6 @@ buffers.
 #+begin_src elisp
 (require 'eshell)
 (require 'em-term)
-(require 'helm-eshell)
 
 (setq eshell-banner-message "\n\n")
 
