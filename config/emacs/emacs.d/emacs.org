@@ -288,6 +288,11 @@ $ emacsclient -c"
 :ID:       51b73308-55a1-4d0d-9c9f-615d067cddc0
 :END:
 
+**** Default Variables
+:PROPERTIES:
+:ID:       99fb653d-9fcd-402c-9eee-540e0ea04ba1
+:END:
+
 #+begin_src elisp
 ;; https://matthewbauer.us/blog/bauer.html
 
@@ -551,6 +556,20 @@ $ emacsclient -c"
 
 (setq-default next-error-message-highlight t)
 (setq-default read-minibuffer-restore-windows nil)
+#+end_src
+
+**** Default Keybindings
+:PROPERTIES:
+:ID:       68e29e76-cba3-44fc-abc2-68cc607af115
+:END:
+
+#+begin_src elisp
+(dolist (key (list (kbd "C-x C-n") ;; unset goal column
+                   (kbd "C-z") ;; unset suspend-frame
+                   (kbd "C-x C-z") ;; unset suspend-frame
+                   ))
+  (global-unset-key key))
+
 #+end_src
 
 *** Package Configuration
@@ -2045,10 +2064,6 @@ https://blog.jmthornton.net/p/emacs-project-override"
     (abort-recursive-edit)))
 
 (add-hook 'mouse-leave-buffer-hook #'stop-using-minibuffer)
-
-;; unset goal column
-;; I don't really have a use for this
-(unbind-key (kbd "C-x C-n") 'global-map)
 
 ;; advice
 ;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el
