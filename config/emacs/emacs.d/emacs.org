@@ -1143,9 +1143,8 @@ https://tuhdo.github.io/helm-intro.html
 #+begin_src elisp
 (setq ido-create-new-buffer 'always)
 (setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
 (setq ido-ignore-extensions t)
-(ido-mode 1)
+(ido-everywhere)
 #+end_src
 
 *** Move where I mean
