@@ -1959,12 +1959,12 @@ https://blog.jmthornton.net/p/emacs-project-override"
               ("C-c C-k" . reb-quit)))
 #+end_src
 
-*** Perspective
+*** Perspective -- Disabled
 :PROPERTIES:
 :ID:       c10c11ef-f5d6-4716-b828-4b7c8afdca41
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package perspective
   :config
   (setq persp-state-default-file (concat user-emacs-directory "perspective.state/default"))
