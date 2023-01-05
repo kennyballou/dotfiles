@@ -381,6 +381,7 @@ $ emacsclient -c"
 (setq-default dired-recursive-copies 'always)
 (setq-default dired-recursive-deletes 'always)
 (setq-default disabled-command-function nil)
+(setq-default display-time-24hr-format t)
 (setq-default dtrt-indent-verbosity 0)
 (setq-default echo-keystrokes 1)
 (setq-default ediff-split-window-function 'split-window-horizontally)
@@ -763,7 +764,12 @@ $ emacsclient -c"
 (use-package all-the-icons)
 #+end_src
 
-*** Spaceline -- Disabled
+*** Modeline
+:PROPERTIES:
+:ID:       c878a9ac-2e3d-464e-a481-f95f9309ab18
+:END:
+
+**** Spaceline -- Disabled
 :PROPERTIES:
 :ID:       06593606-1e9f-4b05-8f52-2047fb85fb46
 :END:
@@ -782,15 +788,24 @@ $ emacsclient -c"
   (spaceline-toggle-mu4e-alert-segment-off))
 #+end_src
 
-*** Powerline
+**** Powerline
 :PROPERTIES:
-:ID:       c878a9ac-2e3d-464e-a481-f95f9309ab18
+:ID:       b0f7d023-6c9e-42e1-bfd1-ce4113782673
 :END:
 
 #+begin_src elisp
 (use-package powerline
   :init
   (powerline-default-theme))
+#+end_src
+
+**** Display Time
+:PROPERTIES:
+:ID:       e3456b0d-0dfa-4b77-a508-b20e863f186a
+:END:
+
+#+begin_src elisp
+(display-time-mode t)
 #+end_src
 
 *** GUI Frame Configurations
