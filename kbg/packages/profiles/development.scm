@@ -51,7 +51,6 @@
    gnu-make
    mercurial
    mg
-   `(,openjdk18 "jdk")
    patch
    patchutils
    perf
