@@ -139,7 +139,9 @@
                                            mcron-service-type
                                            (list mcron:guix-gc-repair-job))
                            (service virtlog-service-type)
-                           (service libvirt-service-type))
+                           (service libvirt-service-type)
+                           (service tor-service-type
+                                    (tor-configuration)))
                      %kbg-desktop-services))
 
    ;; Allow resolution of '.local' host names with mDNS.
