@@ -228,7 +228,6 @@
         ;; emacs-persp-projectile
         emacs-perspective
         emacs-php-mode
-        emacs-xyz:emacs-pinentry
         emacs-pip-requirements
         emacs-polymode
         emacs-powerline
