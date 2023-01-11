@@ -318,6 +318,8 @@
                           (,(emacs-file "snippets")
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/snippets")
                                         #:recursive? #t))
+                          (,(emacs-file "transient/levels.el")
+                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/transient/levels.el")))
                           (,(emacs-file "schemas.xml")
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/schemas.xml")))))
         (service home-emacs-service-type
