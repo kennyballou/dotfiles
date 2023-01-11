@@ -8,7 +8,8 @@
   #:use-module (gnu home services shepherd)
   #:use-module (gnu packages java)
   #:use-module (kbg packages languagetool)
-  #:export (languagetool-service))
+  #:use-module (kbg packages ltex-ls)
+  #:export (languagetool-service ltex-service))
 
 (define languagetool-service
   (let* ((languagetool-server (shepherd-service
@@ -24,5 +25,18 @@
                                                 "9090"
                                                 "--languageModel"
                                                 #$(file-append languagetool-ngram-en "/share/LanguageTool-ngrams/"))))
-                                (stop #~(make-kill-destructor)))))
-    (list languagetool-server)))
+                                (stop #~(make-kill-destructor))))
+         (ltex-server (shepherd-service
+                       (provision '(ltex-ls))
+                       (requirement '(languagetool))
+                       (documentation "Run TCP LTEX LanguageServer which uses LanguageTool")
+                       (start #~(make-forkexec-constructor
+                                 (list #$(file-append openjdk "/bin/java")
+                                       "-classpath"
+                                       #$(file-append ltex-ls "/lib/*:")
+                                       "org.bsplines.ltexls.LtexLanguageServerLauncher"
+                                       "--host=localhost"
+                                       "--port=9091"
+                                       "--server-type=TcpSocket")))
+                       (stop #~(make-kill-destructor)))))
+    (list languagetool-server ltex-server)))

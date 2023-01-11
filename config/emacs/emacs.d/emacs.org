@@ -1447,6 +1447,9 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 :END:
 
 #+begin_src elisp :tangle no
+(add-to-list 'eglot-server-programs '(text-mode "localhost" 9091))
+#+end_src
+#+begin_src elisp :tangle no
 (use-package lsp-ltex
   :after lsp
   :hook (text-mode . kb/enable-ltex)
