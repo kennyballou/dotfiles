@@ -2601,6 +2601,15 @@ Most shell applications accept Perl Compatible Regular Expressions."
        (rxt-elisp-to-pcre (rx ,@expressions)))))
 #+end_src
 
+*** Daemons
+:PROPERTIES:
+:ID:       a72ec17f-6a12-4889-bfc7-2509004b00ab
+:END:
+
+#+begin_src elisp
+(use-package daemons)
+#+end_src
+
 *** Languages and Language Modes
 :PROPERTIES:
 :ID:       436be882-9c6b-462b-9b1c-9219031e33d3

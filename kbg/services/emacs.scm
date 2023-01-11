@@ -58,6 +58,7 @@
         ;; emacs-css-eldoc
         emacs-xyz:emacs-csv-mode
         emacs-d-mode
+        emacs-daemons
         emacs-dap-mode
         emacs-dash
         emacs-xyz:emacs-debbugs
