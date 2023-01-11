@@ -573,6 +573,15 @@ $ emacsclient -c"
 
 #+end_src
 
+*** Password Caching
+:PROPERTIES:
+:ID:       1da63c25-419a-449e-8e20-3432a3a0c5ad
+:END:
+
+#+begin_src elisp
+(setq password-cache-expiry 1800)
+#+end_src
+
 *** Package Configuration
 :PROPERTIES:
 :ID:       4931bd29-9293-47b5-810b-5103cf3cbfa6
