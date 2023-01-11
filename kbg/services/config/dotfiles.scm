@@ -3,6 +3,7 @@
   #:use-module (gnu)
   #:use-module (guix)
   #:use-module (gnu home services)
+  #:use-module (kbg services config aspell)
   #:use-module (kbg services config direnv)
   #:use-module (kbg services config email)
   #:use-module (kbg services config flatpak)
@@ -25,7 +26,8 @@
   #:export (configs-for-host))
 
 (define daeva-configs
-  (append direnv-config-service
+  (append aspell-config-service
+          direnv-config-service
           email-config-service
           flatpak-config-service
           git-config-service
