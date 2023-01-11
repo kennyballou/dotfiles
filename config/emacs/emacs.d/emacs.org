@@ -4275,7 +4275,11 @@ https://orgmode.org/worg/org-hacks.html#orgf1fe951
          (project-name (car (last path-components))))
     (list org-name project-name)))
 
+#+end_src
 
+I do not use these navigation tricks anymore.
+
+#+begin_src elisp :tangle no
 (defvar gf/org-project-file-override-alist '()
   "An association list of projectile directories and the project org file.
    This enables overriding the default behaviour of
@@ -4305,7 +4309,7 @@ https://orgmode.org/worg/org-hacks.html#orgf1fe951
 
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (defun kb/org-switch-to-notes ()
   "Switch to notes.
    Open either current project notes, or default notes file"
