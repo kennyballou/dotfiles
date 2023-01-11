@@ -2762,7 +2762,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (setq eglot-server-programs (list (cons 'java-mode (list "guix"
                                                          "shell"
                                                          "--pure"
-                                                         "openjdk@18"
+                                                         "openjdk@18:jdk"
                                                          "--"
                                                          (expand-file-name (concat user-emacs-directory
                                                                                    "share/eclipse.jdt.ls/bin/jdtls"))))
