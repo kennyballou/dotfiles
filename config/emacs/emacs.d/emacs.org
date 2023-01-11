@@ -314,11 +314,6 @@ $ emacsclient -c"
 (setq-default org-src-tab-acts-natively t)
 (setq-default org-startup-folded 'fold)
 (setq-default parens-require-spaces t)
-(setq-default projectile-globally-ignored-files
-              '("TAGS"
-                "GPATH"
-                "GTAGS"
-                "GRTAGS"))
 (setq-default TeX-auto-save t)
 (setq-default TeX-engine 'xetex)
 (setq-default ad-redefinition-action 'accept)
@@ -484,11 +479,6 @@ $ emacsclient -c"
               '(read-only t cursor-intangible t face minibuffer-prompt))
 (setq-default mmm-global-mode 'buffers-with-submode-classes)
 (setq-default mmm-submode-decoration-level 2)
-(setq-default projectile-do-log nil)
-(setq-default projectile-enable-caching t)
-(setq-default projectile-ignored-project-function 'file-remote-p)
-(setq-default projectile-switch-project-action 'projectile-dired)
-(setq-default projectile-verbose nil)
 (setq-default reb-re-syntax 'string)
 (setq-default require-final-newline t)
 (setq-default resize-mini-windows t)
