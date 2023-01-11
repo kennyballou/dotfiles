@@ -4583,6 +4583,13 @@ Except where they probably shouldn't be added.
   (auth-source-pass-enable))
 #+end_src
 
+Remove unencrypted files from the list of [[help:auth-sources][auth-sources]]:
+
+#+begin_src elisp
+(dolist (file '("~/.authinfo" "~/.netrc"))
+  (delete file auth-sources))
+#+end_src
+
 **** Org-Contacts
 :PROPERTIES:
 :ID:       49e301c9-cdaa-4890-a3be-34b17d050b05
