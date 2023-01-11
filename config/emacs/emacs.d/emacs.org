@@ -719,10 +719,7 @@ $ emacsclient -c"
 :END:
 
 #+begin_src elisp
-(use-package pinentry
-  :config
-  (setq epa-pinentry-mode 'loopback)
-  (pinentry-start))
+(setq epg-pinentry-mode 'loopback)
 #+end_src
 
 *** Preload Local -- Disabled
