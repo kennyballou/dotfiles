@@ -5,6 +5,9 @@ HOSTS=h4x daeva owl baal yak koi bard
 SYSTEMS=$(patsubst %,systems/%,$(HOSTS))
 HOMES=$(patsubst %,homes/%,$(HOSTS))
 HOSTNAME=$(shell hostname)
+NPROC=$(shell nproc)
+CORES=$(guile (max 1 (floor (/ $(NPROC) 4))))
+
 
 .PHONY: current-system
 current-system: config/emacs/emacs.d/init.el homes/$(HOSTNAME) systems/$(HOSTNAME)
@@ -65,11 +68,11 @@ all-systems: $(SYSTEMS)
 all-homes: $(HOMES)
 
 $(HOMES):
-	guix time-machine -C $(CHANNEL_FILE) -- home build --cores=2 $@.scm
+	guix time-machine -C $(CHANNEL_FILE) -- home build --cores=$(CORES) $@.scm
 
 .PHONY: $(SYSTEMS)
 $(SYSTEMS):
-	guix time-machine -C $(CHANNEL_FILE) -- system build --cores=2 $@.scm
+	guix time-machine -C $(CHANNEL_FILE) -- system build --cores=$(CORES) $@.scm
 
 ## Private targets
 config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el: config/emacs/emacs.d/emacs.org
