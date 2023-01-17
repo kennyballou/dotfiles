@@ -1498,7 +1498,7 @@ Simple function which returns buffer contents untexified.
   :hook (text-mode . flycheck-languagetool-setup)
   :init
   (setq flycheck-languagetool-language "en-US")
-  (setq flycheck-languagetool-server-port "9090")
+  (setq flycheck-languagetool-server-port 9092)
   (setq flycheck-languagetool-url (format "http://localhost:%s"
                                           flycheck-languagetool-server-port))
   (setq flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
