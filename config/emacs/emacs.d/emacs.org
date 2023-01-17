@@ -3783,6 +3783,19 @@ Add =languagetool= to =tex-chktex= checker chain.
   (setq z3-solver-cmd "z3"))
 #+end_src
 
+**** Restclient
+:PROPERTIES:
+:ID:       70b06475-b91f-4c4e-a0a9-a3202991fdda
+:END:
+
+#+begin_src elisp
+(use-package restclient)
+#+end_src
+
+#+begin_src elisp
+(use-package ob-restclient)
+#+end_src
+
 *** Org Mode
 :PROPERTIES:
 :ID:       4f622896-6d42-4913-bb17-297a038f9c94
@@ -4446,6 +4459,7 @@ Except where they probably shouldn't be added.
      (perl . t)
      (python . t)
      (R . t)
+     (restclient . t)
      (scheme . t)
      (screen . nil)
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)

@@ -199,6 +199,7 @@
         emacs-orderless
         emacs-xyz:emacs-org
         emacs-xyz:emacs-orgalist
+        emacs-ob-restclient
         emacs-org-brain
         ;; emacs-org-babel-eval-in-repl
         ;; emacs-org-cliplink
@@ -243,6 +244,7 @@
         emacs-reformatter
         emacs-regex-tool
         emacs-repl-toggle
+        emacs-restclient
         emacs-robe
         ;; emacs-rspec-mode
         ;; emacs-ruby-compilation
