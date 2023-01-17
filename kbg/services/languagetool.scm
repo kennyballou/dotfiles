@@ -2,13 +2,15 @@
   #:use-module (kbg)
   #:use-module (gnu)
   #:use-module (guix)
+  #:use-module (gnu packages python)
   #:use-module (gnu services)
   #:use-module (gnu services shepherd)
   #:use-module (gnu home services)
   #:use-module (gnu home services shepherd)
   #:use-module (gnu packages java)
   #:use-module (kbg packages languagetool)
-  #:use-module (kbg packages ltex-ls))
+  #:use-module (kbg packages ltex-ls)
+  #:use-module (kbg packages python-xyz))
 
 (define-public languagetool-shepherd-service
   (shepherd-service
@@ -43,6 +45,27 @@
    ;; #:log-file ".local/var/log/ltex-ls.log"))
    (stop #~(make-kill-destructor))))
 
+(define-public yalafi-shepherd-service
+  (shepherd-service
+   (provision '(yalafi))
+   (requirement '(languagetool))
+   (documentation "Run YaLafi to filter markup for LanguageTool.  Forks itself without pidfile.")
+   (start #~(fork+exec-command
+             (list #$(file-append python-minimal-wrapper "/bin/python")
+                   "-m"
+                   "yalafi.shell"
+                   "--server"
+                   "http://localhost:9090/v2/check"
+                   "--as-server"
+                   "9092")
+             #:log-file ".share/var/log/yalafi.log"
+             #:environment-variables (append (list (string-append
+                                                    "PYTHONPATH="
+                                                    #$(file-append python-yalafi-custom-server
+                                                                   "/lib/python3.9/site-packages/")))
+                                             (default-environment-variables))))
+   (stop #~(make-kill-destructor))))
+
 (define-public languagetool-service
   (list languagetool-shepherd-service
-        ltex-shepherd-service))
+        yalafi-shepherd-service))
