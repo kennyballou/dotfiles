@@ -4367,6 +4367,17 @@ I do not use these navigation tricks anymore.
 (define-key org-mode-map (kbd "C-c t") #'help/hydra/timestamp/body)
 #+end_src
 
+#+begin_src elisp
+(defun kb/org-insert-ts-list-item ()
+  "Insert new list item with inactive timestamp at point."
+  (interactive)
+  (insert "- ")
+  (help/org-time-stamp-with-seconds-now)
+  (insert ": "))
+
+(bind-key (kbd "C-c i") #'kb/org-insert-ts-list-item org-mode-map)
+#+end_src
+
 **** UUIDs everywhere
 :PROPERTIES:
 :ID:       42269ad6-0b7d-426c-875f-79d461be323d
