@@ -4,6 +4,7 @@
   #:use-module (guix)
   #:use-module (gnu home services)
   #:use-module (kbg services config aspell)
+  #:use-module (kbg services config chktex)
   #:use-module (kbg services config direnv)
   #:use-module (kbg services config email)
   #:use-module (kbg services config flatpak)
@@ -27,6 +28,7 @@
 
 (define daeva-configs
   (append aspell-config-service
+          chktex-config-service
           direnv-config-service
           email-config-service
           flatpak-config-service
