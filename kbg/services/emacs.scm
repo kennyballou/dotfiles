@@ -112,6 +112,25 @@
         ;; emacs-flycheck-posframe
         emacs-flycheck-rust
         emacs-flycheck-vale
+        emacs-flymake-coffee
+        emacs-flymake-collection
+        emacs-flymake-go
+        emacs-flymake-elixir
+        emacs-flymake-eslint
+        emacs-flymake-flycheck
+        emacs-flymake-joker
+        emacs-flymake-json
+        emacs-flymake-languagetool
+        emacs-flymake-less
+        emacs-flymake-markdownlint
+        emacs-flymake-python-pyflakes
+        emacs-flymake-quickdef
+        emacs-flymake-racket
+        emacs-flymake-shell
+        emacs-flymake-shellcheck
+        emacs-flymake-sqlfluff
+        emacs-flymake-yaml
+        emacs-flymake-vale
         emacs-flyspell-correct
         emacs-fold-dwim
         emacs-forge
