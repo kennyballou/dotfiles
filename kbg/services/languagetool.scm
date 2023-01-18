@@ -25,8 +25,7 @@
                    "--port"
                    "9090"
                    "--languageModel"
-                   #$(file-append languagetool-ngram-en "/share/LanguageTool-grams/"))
-             #:log-file ".share/var/log/languagetool.log"))
+                   #$(file-append languagetool-ngram-en "/share/LanguageTool-ngrams/"))))
    (stop #~(make-kill-destructor))))
 
 (define-public ltex-shepherd-service
@@ -58,7 +57,6 @@
                    "http://localhost:9090/v2/check"
                    "--as-server"
                    "9092")
-             #:log-file ".share/var/log/yalafi.log"
              #:environment-variables (append (list (string-append
                                                     "PYTHONPATH="
                                                     #$(file-append python-yalafi-custom-server
