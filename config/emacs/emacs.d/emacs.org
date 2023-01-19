@@ -426,6 +426,21 @@ $ emacsclient -c"
 (setq-default explicit-shell-args
               '("-c" "export EMACS= INSIDE_EMACS=; stty echo; shell"))
 (setq-default fill-column 79)
+(setq-default flycheck-check-syntax-automatically
+              '(save idle-change mode-enabled new-line))
+(setq-default flycheck-display-errors-function
+              'flycheck-display-error-messages-unless-error-list)
+(setq-default flycheck-global-modes
+              '(not
+                erc-mode
+                message-mode
+                git-commit-mode
+                view-mode
+                outline-mode
+                text-mode
+                org-mode))
+(setq-default flycheck-idle-change-delay 0.001)
+(setq-default flycheck-standard-error-navigation nil)
 (setq-default flyspell-abbrev-p nil)
 (setq-default flyspell-auto-correct nil)
 (setq-default flyspell-highlight-properties t)
@@ -1477,7 +1492,7 @@ Simple function which returns buffer contents untexified.
 :ID:       c084445a-9d5c-4a05-8273-f1d6d6cc772d
 :END:
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package flycheck-languagetool
   :after flycheck
   :hook (text-mode . flycheck-languagetool-setup)
@@ -2176,7 +2191,7 @@ buffers.
 :ID:       a670c02f-5b74-4584-ac02-b3a0c43fb1cc
 :END:
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package flycheck
   :defer 2
   :diminish
@@ -2214,14 +2229,14 @@ buffers.
   (setq flycheck-pos-tip-timeout 30))
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package flycheck-popup-tip
   :after flycheck
   ;;:if (display-graphic-p)
   :hook (flycheck-mode . flycheck-popup-tip-mode))
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package flycheck-vale
   :after flycheck
   :commands flycheck-vale-setup
@@ -2242,69 +2257,6 @@ buffers.
 #+begin_src elisp :tangle no
 (use-package helm-flycheck
   :after (helm flycheck))
-#+end_src
-
-*** Flymake
-:PROPERTIES:
-:ID:       18b837af-f004-4033-ae39-f1d55025d844
-:END:
-
-#+begin_src elisp
-(use-package flymake
-  :hook ((text-mode . flymake-mode)
-         (prog-mode . flymake-mode))
-  :config
-  (setq flymake-wrap-around t)
-  (setq flymake-mode-line-lighter "F~")
-  :bind (:map flymake-mode-map
-              ("C-c f s" . flymake-start)
-              ("C-c f n" . flymake-goto-next-error)
-              ("C-c f p" . flymake-goto-prev-error)
-              ("C-c f l" . flymake-show-buffer-diagnostics)))
-#+end_src
-
-**** Flycheck
-:PROPERTIES:
-:ID:       2d770c62-a6ed-44dd-8007-4e5ef03440d9
-:END:
-
-#+begin_src elisp
-(dolist (fn (list (flymake-flycheck-diagnostic-function-for 'tex-chktex)))
-  (add-to-list 'flymake-diagnostic-functions fn))
-#+end_src
-
-**** Vale
-:PROPERTIES:
-:ID:       dd30be85-b411-496d-a61f-bf9bb95e4d54
-:END:
-
-#+begin_src elisp
-(use-package flymake-vale
-  :after flymake
-  :hook ((text-mode . flymake-vale-maybe-load)
-         (latex-mode . flymake-vale-maybe-load)
-         (org-mode . flymake-vale-maybe-load)
-         (markdown-mode . flymake-vale-maybe-load)
-         (message-mode . flymake-vale-maybe-load)))
-#+end_src
-
-**** LanguageTool
-:PROPERTIES:
-:ID:       e0a1ab42-d5dd-4020-8975-2cd31f852d57
-:END:
-
-#+begin_src elisp
-(use-package flymake-languagetool
-  :after flymake
-  :hook ((text-mode . flymake-languagetool-maybe-load)
-         (latex-mode . flymake-languagetool-maybe-load)
-         (org-mode . flymake-languagetool-maybe-load)
-         (markdown-mode . flymake-languagetool-maybe-load)
-         (message-mode . flymake-languagetool-maybe-load))
-  :init
-  (setq flymake-languagetool-url "http://localhost:9092")
-  (setq flymake-languagetool-server-port nil)
-  (setq flymake-languagetool-server-jar nil))
 #+end_src
 
 *** Tramp
@@ -3340,12 +3292,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (use-package markdown-mode
   :mode "\\.md\\.html\\'")
-#+end_src
-
-#+begin_src elisp :tangle no
-(use-package flymake-markdownlint
-  :after flymake
-  :config)
 #+end_src
 
 **** nginx
