@@ -2,6 +2,7 @@
   #:use-module (kbg)
   #:use-module (gnu)
   #:use-module (guix)
+  #:use-module (guix git-download)
   #:use-module (gnu home services)
   #:use-module (gnu home-services emacs)
   #:use-module (gnu packages emacs)
@@ -10,6 +11,25 @@
   #:use-module (kbg packages emacs-xyz)
   #:use-module (kbg packages jdtls)
   #:use-module (kbg packages languagetool))
+
+(define my-emacs-next
+  (let ((commit "29a8a1885d9f4825190d2575849f7605b3d6dffb")
+        (revision "0"))
+    (package
+     (inherit emacs-next-pgtk)
+     (name "emacs-next-pgtk")
+     (version (git-version "29.0.50" revision commit))
+     (source
+      (origin
+       (inherit (package-source emacs-next-pgtk))
+       (method git-fetch)
+       (uri (git-reference
+             (url "https://git.savannah.gnu.org/git/emacs.git/")
+             (commit commit)))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32
+         "12x40v9b03qwhrr36kyy4sq20p63a1f7lyz502virbfmhzi0shi0")))))))
 
 (define rewrite
   (package-input-rewriting
@@ -326,7 +346,7 @@
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/schemas.xml")))))
         (service home-emacs-service-type
                  (home-emacs-configuration
-                  (package emacs-next-pgtk)
+                  (package my-emacs-next)
                   (rebuild-elisp-packages? #t)
                   (server-mode? #t)
                   (elisp-packages emacs-packages)))))
