@@ -7,6 +7,7 @@ HOMES=$(patsubst %,homes/%,$(HOSTS))
 HOSTNAME=$(shell hostname)
 NPROC=$(shell nproc)
 CORES=$(guile (max 1 (floor (/ $(NPROC) 4))))
+LOAD_PATH=--load-path=./
 
 
 .PHONY: current-system
@@ -31,22 +32,22 @@ update-channels:
 
 .PHONY: reconfigure-home
 reconfigure-home:
-	guix time-machine -C $(CHANNEL_FILE) -- home reconfigure $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
+	guix time-machine -C $(CHANNEL_FILE) -- home $(LOAD_PATH) reconfigure $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
 
 .PHONY: rollback-home
-	guix time-machine -C $(CHANNEL_FILE) -- home roll-back homes/$(HOSTNAME).scm
+	guix time-machine -C $(CHANNEL_FILE) -- home $(LOAD_PATH) roll-back homes/$(HOSTNAME).scm
 
 .PHONY: reconfigure-system
 reconfigure-system:
-	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system reconfigure $(RECONFIGURE_FLAGS) systems/$(HOSTNAME).scm
+	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system $(LOAD_PATH) reconfigure $(RECONFIGURE_FLAGS) systems/$(HOSTNAME).scm
 
 .PHONY: rollback-system
 rollback-system:
-	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system roll-back systems/$(HOSTNAME).scm
+	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system $(LOAD_PATH) roll-back systems/$(HOSTNAME).scm
 
 .PHONY: lint
 lint:
-	guix lint --load-path=./ ./
+	guix lint $(LOAD_PATH) ./
 
 .PHONY: refresh
 refresh:
@@ -59,7 +60,7 @@ clean:
 
 .PHONY: repl
 repl:
-	guix time-machine -C $(CHANNEL_FILE) -- repl
+	guix time-machine -C $(CHANNEL_FILE) -- repl $(LOAD_PATH)
 
 .PHONY: all-systems
 all-systems: $(SYSTEMS)
@@ -68,11 +69,11 @@ all-systems: $(SYSTEMS)
 all-homes: $(HOMES)
 
 $(HOMES):
-	guix time-machine -C $(CHANNEL_FILE) -- home build --cores=$(CORES) $@.scm
+	guix time-machine -C $(CHANNEL_FILE) -- home build $(LOAD_PATH) --cores=$(CORES) $@.scm
 
 .PHONY: $(SYSTEMS)
 $(SYSTEMS):
-	guix time-machine -C $(CHANNEL_FILE) -- system build --cores=$(CORES) $@.scm
+	guix time-machine -C $(CHANNEL_FILE) -- system $(LOAD_PATH) build --cores=$(CORES) $@.scm
 
 ## Private targets
 config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el: config/emacs/emacs.d/emacs.org
