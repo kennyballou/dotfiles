@@ -439,7 +439,7 @@ $ emacsclient -c"
                 outline-mode
                 text-mode
                 org-mode))
-(setq-default flycheck-idle-change-delay 0.001)
+(setq-default flycheck-idle-change-delay 0.5)
 (setq-default flycheck-standard-error-navigation nil)
 (setq-default flyspell-abbrev-p nil)
 (setq-default flyspell-auto-correct nil)
