@@ -1,4 +1,4 @@
-(define-module (systems daeva)
+(define-module (systems yak)
   #:use-module (guix)
   #:use-module (guix records)
   #:use-module (guix utils)
@@ -9,6 +9,7 @@
   #:use-module (gnu services cups)
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
+  #:use-module (gnu services docker)
   #:use-module (gnu services linux)
   #:use-module (gnu services mcron)
   #:use-module (gnu services networking)
@@ -32,15 +33,12 @@
   #:use-module (kbg services dict)
   #:use-module (kbg services nftables)
   #:use-module (kbg services slurm)
-  #:use-module (kbg system setuid-programs)
   #:use-module ((kbg system mcron) :prefix mcron:)
   #:use-module (kbg system xorg))
 
 (define yak-system
   (operating-system
    (kernel linux-lts)
-   (kernel-loadable-modules
-    (list v4l2loopback-linux-module))
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
    (host-name "yak")
@@ -56,34 +54,76 @@
                 (targets '("/boot/efi"))
                 (keyboard-layout keyboard-layout)))
 
+   (mapped-devices
+    (list (mapped-device
+           (source "vg0")
+           (targets (list "vg0-root" "vg0-var" "vg0-tmp" "vg0-nix" "vg0-guix" "vg0-var" "vg0-swap"))
+           (type lvm-device-mapping))
+          (mapped-device
+           (source "vg1")
+           (targets (list "vg1-home"))
+           (type lvm-device-mapping))))
+
    (file-systems (append
                   (list (file-system
-                         (device (uuid "acc24667-d071-48dc-81f7-b077e838b29f"))
+                         (device "/dev/mapper/vg0-root")
                          (mount-point "/")
-                         (type "ext4"))
+                         (type "ext4")
+                         (needed-for-boot? #t)
+                         (dependencies mapped-devices))
+                        (file-system
+                         (device "/dev/mapper/vg0-guix")
+                         (mount-point "/gnu")
+                         (type "xfs")
+                         (needed-for-boot? #t)
+                         (dependencies mapped-devices))
+                        (file-system
+                         (device "/dev/mapper/vg0-nix")
+                         (mount-point "/nix")
+                         (type "xfs")
+                         (needed-for-boot? #f)
+                         (dependencies mapped-devices))
+                        (file-system
+                         (device "/dev/mapper/vg0-var")
+                         (mount-point "/var")
+                         (type "ext4")
+                         (needed-for-boot? #t)
+                         (dependencies mapped-devices))
+                        (file-system
+                         (device "/dev/mapper/vg0-tmp")
+                         (mount-point "/tmp")
+                         (type "ext4")
+                         (needed-for-boot? #t)
+                         (dependencies mapped-devices))
+                        (file-system
+                         (device "/dev/mapper/vg0-opt")
+                         (mount-point "/opt")
+                         (type "ext4")
+                         (needed-for-boot? #f)
+                         (dependencies mapped-devices))
                         (file-system
                          (device (uuid "EAB6-6000" 'fat))
                          (mount-point "/boot/efi")
                          (type "vfat"))
                         (file-system
-                         (device (uuid "1ca489ef-8d04-40a5-bd1c-a5ee9333a27a"))
+                         (device "/dev/mapper/vg1-home")
                          (mount-point "/home")
-                         (type "xfs")))
+                         (type "xfs")
+                         (needed-for-boot? #f)
+                         (dependencies mapped-devices)))
                   %base-file-systems))
 
-   ;; uuid=47b44fb7-4f6f-4ef5-bb17-2c509a80bc52
-   (swap-devices (list (swap-space (target "/swapfile"))))
+   (swap-devices (list (swap-space (target "/dev/mapper/vg0-swap")
+                                   (dependencies mapped-devices)
+                                   (discard? #t))))
 
    (users (cons (user-account
                  (name "kb")
                  (group "users")
-                 (supplementary-groups '("audio"
-                                         "input"
+                 (supplementary-groups '("input"
                                          "kvm"
-                                         "lp"
                                          "netdev"
                                          "tty"
-                                         "video"
                                          "wheel")))
                 %base-user-accounts))
 
@@ -92,25 +132,7 @@
                      %kbg-bare-desktop-packages
                      %base-packages))
 
-   ;; Add GNOME and Xfce---we can choose at the log-in screen
-   ;; by clicking the gear.  Use the "desktop" services, which
-   ;; include the X11 log-in service, networking with
-   ;; NetworkManager, and more.
-   (services (append (list (service gnome-desktop-service-type)
-                           ;;(geoclue-service)
-                           (bluetooth-service #:auto-enable? #t)
-                           (service cups-service-type
-                                    (cups-configuration
-                                     (web-interface? #t)
-                                     (extensions
-                                      (list cups-filters hplip-minimal splix))))
-                           dictionary-service
-                           (set-xorg-configuration
-                            (xorg-configuration
-                             (keyboard-layout keyboard-layout)
-                             (extra-config (list %xorg-libinput-config))))
-                           (service nix-service-type)
-                           (service pcscd-service-type)
+   (services (append (list (service nix-service-type)
                            (service tlp-service-type
                                     (tlp-configuration
                                      (cpu-scaling-governor-on-ac (list "performance"))
@@ -121,9 +143,10 @@
                            (service openssh-service-type
                                     (openssh-configuration
                                      (x11-forwarding? #f)
-                                     (password-authentication? #f)
+                                     (password-authentication? #t)
                                      (permit-root-login 'prohibit-password)))
                            (nftables-service "yak")
+                           (service singularity-service-type)
                            (service munge-service-type)
                            (service slurm-service-type
                                     (slurm-configuration
@@ -164,12 +187,10 @@
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
                                            (list mcron:guix-gc-repair-job)))
-                     %kbg-desktop-services))
+                     (modify-services %kbg-desktop-services
+                                      (delete gdm-service-type))))
 
    ;; Allow resolution of '.local' host names with mDNS.
-   (name-service-switch %mdns-host-lookup-nss)
-
-   (setuid-programs (append %kb-setuid-programs
-                            %setuid-programs))))
+   (name-service-switch %mdns-host-lookup-nss)))
 
 yak-system

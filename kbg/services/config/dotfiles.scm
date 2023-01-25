@@ -51,22 +51,14 @@
 
 (define yak-configs
   (append direnv-config-service
-          email-config-service
-          flatpak-config-service
           git-config-service
-          ;; global-config-service
-          gnupg-config-service
           gnuplot-config-service
           guix-config-service
           home-vars-service
-          kitty-config-service
-          mpd-config-service
           nixpkgs-config-service
-          nyxt-config-service
           parallel-config-service
           ssh-config-service
           tmux-config-service
-          vale-config-service
           xdg-config-service))
 
 (define owl-configs

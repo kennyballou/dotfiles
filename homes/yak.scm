@@ -31,20 +31,9 @@
 (home-environment
  (packages
   (append %kbg-base-development-packages
-          ;; firefox does not build on this machine
-          ;; and we do not need freecad here
-          (filter (lambda (p) (not (member p (list firefox/wayland freecad))))
-                  %kbg-desktop-packages)
           %kbg-statistics-packages
-          %kbg-science-packages
-          %kbg-fonts))
+          %kbg-science-packages))
 
  (services
   (append bash-service
-          (configs-for-host 'yak)
-          emacs-service
-          (list (service home-dbus-service-type)
-                (service home-pipewire-service-type))
-          mcron-service
-          (services-for-host 'yak))))
-          ;; shepherd-user-services
+          (configs-for-host 'yak))))
