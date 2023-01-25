@@ -1,56 +1,54 @@
 table inet filter {
     chain input {
         type filter hook input priority 0; policy drop;
-        ct state invalid counter drop comment "drop invalid packets"
-        ct state established,related counter accept comment "accept related connections"
-        iif lo counter accept
-        iif != lo ip daddr 127.0.0.1/8 counter drop
-        iif != lo ip6 daddr ::1/128 counter drop
-        ip protocol icmp counter accept
-        ip6 nexthdr ipv6-icmp counter accept
-        udp dport domain ip saddr 172.16.0.0/12 counter accept
-        tcp dport ssh counter accept
-        tcp dport 3000 ip saddr 127.0.0.1/8 counter accept
-        tcp dport 8000 ip saddr 127.0.0.1/8 counter accept
-        tcp dport 8080 ip saddr { 127.0.0.1/8, 10.0.0.0/8 } counter accept
-        tcp dport http-alt ip saddr { 127.0.0.1/8, 10.0.0.0/8 } counter accept
-        counter
+        ct state invalid drop comment "drop invalid packets"
+        ct state established,related accept comment "accept related connections"
+        iif lo accept
+        iif != lo ip daddr 127.0.0.1/8 drop
+        iif != lo ip6 daddr ::1/128 drop
+        ip protocol icmp accept
+        ip6 nexthdr ipv6-icmp accept
+        udp dport domain ip saddr 172.16.0.0/12 accept
+        tcp dport ssh accept
+        tcp dport 3000 ip saddr 127.0.0.1/8 accept
+        tcp dport 8000 ip saddr 127.0.0.1/8 accept
+        tcp dport 8080 ip saddr { 127.0.0.1/8, 10.0.0.0/8 } accept
+        tcp dport http-alt ip saddr { 127.0.0.1/8, 10.0.0.0/8 } accept
+
     }
 
     chain forward {
         type filter hook forward priority 0; policy drop;
-        ct state established,related counter accept
-        counter
+        ct state established,related accept
     }
 
     chain output {
         type filter hook output priority 0; policy drop;
-        ct state established,related counter accept
-        icmp type echo-request counter accept
-        icmp type echo-reply counter accept
-        ip daddr 127.0.0.0/8 counter accept
-        ip6 daddr ::1 counter accept
-        udp dport domain counter accept
-        tcp dport 853 counter accept comment "DNS over TLS"
-        udp dport 853 counter accept comment "DNS over TLS"
-        tcp dport http counter accept
-        tcp dport https counter accept
-        udp dport https counter accept
-        tcp dport ssh counter accept
-        tcp dport bootps counter accept
-        udp dport bootps counter accept
-        tcp dport ntp counter accept
-        udp dport ntp counter accept
-        tcp dport nntps counter accept
-        udp dport nntps counter accept
-        tcp dport rsync counter accept
-        udp dport rsync counter accept
-        tcp dport 8000 counter accept
-        tcp dport http-alt counter accept
-        tcp dport 2049 ip daddr 10.0.0.0/8 counter accept comment "NFS"
-        udp dport 2049 ip daddr 10.0.0.0/8 counter accept comment "NFS"
-        tcp dport 20048 ip daddr 10.0.0.0/8 counter accept comment "NFS"
-        udp dport 20048 ip daddr 10.0.0.0/8 counter accept comment "NFS"
-        counter
+        ct state established,related accept
+        icmp type echo-request accept
+        icmp type echo-reply accept
+        ip daddr 127.0.0.0/8 accept
+        ip6 daddr ::1 accept
+        udp dport domain accept
+        tcp dport 853 accept comment "DNS over TLS"
+        udp dport 853 accept comment "DNS over TLS"
+        tcp dport http accept
+        tcp dport https accept
+        udp dport https accept
+        tcp dport ssh accept
+        tcp dport bootps accept
+        udp dport bootps accept
+        tcp dport ntp accept
+        udp dport ntp accept
+        tcp dport nntps accept
+        udp dport nntps accept
+        tcp dport rsync accept
+        udp dport rsync accept
+        tcp dport 8000 accept
+        tcp dport http-alt accept
+        tcp dport 2049 ip daddr 10.0.0.0/8 accept comment "NFS"
+        udp dport 2049 ip daddr 10.0.0.0/8 accept comment "NFS"
+        tcp dport 20048 ip daddr 10.0.0.0/8 accept comment "NFS"
+        udp dport 20048 ip daddr 10.0.0.0/8 accept comment "NFS"
     }
 }
