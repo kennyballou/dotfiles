@@ -143,7 +143,15 @@
                            (service virtlog-service-type)
                            (service libvirt-service-type)
                            (service tor-service-type
-                                    (tor-configuration)))
+                                    (tor-configuration))
+                           (simple-service 'subordinate-ids
+                                           special-files-service-type
+                                           `(("/etc/subuid" ,(mixed-text-file "subuid"
+                                                                              "kb:100000:65536"
+                                                                              "\n"))
+                                             ("/etc/subgid" ,(mixed-text-file "subgid"
+                                                                              "kb:100000:65536"
+                                                                              "\n")))))
                      %kbg-desktop-services))
 
    ;; Allow resolution of '.local' host names with mDNS.
