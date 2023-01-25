@@ -9,6 +9,7 @@
   #:use-module (gnu services cups)
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
+  #:use-module (gnu services docker)
   #:use-module (gnu services linux)
   #:use-module (gnu services mcron)
   #:use-module (gnu services networking)
@@ -138,6 +139,7 @@
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
                                            (list mcron:guix-gc-repair-job))
+                           (service singularity-service-type)
                            (service virtlog-service-type)
                            (service libvirt-service-type)
                            (service tor-service-type
