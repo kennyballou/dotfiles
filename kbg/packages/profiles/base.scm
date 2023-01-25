@@ -97,6 +97,7 @@
         openssl
         parallel
         pciutils
+        perl
         progress
         pv
         pwgen
