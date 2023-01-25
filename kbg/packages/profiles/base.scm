@@ -31,6 +31,7 @@
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages parallel)
   #:use-module (gnu packages password-utils)
+  #:use-module (gnu packages perl)
   #:use-module (gnu packages pciutils)
   #:use-module (gnu packages pv)
   #:use-module (gnu packages rsync)
