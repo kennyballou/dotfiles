@@ -4160,7 +4160,8 @@ Update project status when updating the cookie statistics.
                       ((org-agenda-overriding-header "Tasks to Refile:")
                        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
-                           ((org-agenda-overriding-header "Next Tasks:")))
+                           ((org-agenda-overriding-header "Next Tasks:")
+                            (org-agenda-sorting-strategy '(priority-up effort-down))))
                 (search "+PROJECT_STATUS {open}"
                         ((org-agenda-overriding-header "Open Projects:")
                          (org-tags-match-list-sublevels nil))))
