@@ -24,6 +24,13 @@ Tangle all the things from orgmode!
 (setq gc-cons-percentage 0.6)
 #+end_src
 
+Log the current version Emacs.  It's helpful to know what exactly is running
+since it can be exceedingly easy to confuse it.
+
+#+begin_src elisp
+(message (emacs-version))
+#+end_src
+
 #+begin_src elisp
 (defvar file-name-handler-alist-original file-name-handler-alist)
 (setq file-name-handler-alist nil)
