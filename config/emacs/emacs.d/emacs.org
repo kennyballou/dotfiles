@@ -4162,10 +4162,10 @@ Update project status when updating the cookie statistics.
                 (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
                            ((org-agenda-overriding-header "Next Tasks:")))
                 (search "+PROJECT_STATUS {open}"
-                      ((org-agenda-overriding-header "Open Projects:")
-                       (org-tags-match-list-sublevels nil)))
-                ()
-                ("/home/kb/.cache/agenda.html")))
+                        ((org-agenda-overriding-header "Open Projects:")
+                         (org-tags-match-list-sublevels nil))))
+               ((org-agenda-tag-filter '("-CLIENT")))
+               ("/home/kb/.cache/agenda.html"))
               ("P" . "Projects")
               ("Po" "Open Projects" search "+PROJECT_STATUS {open}")
               ("Pc" "Cancelled Projects" search "+PROJECT_STATUS {cancelled}")
