@@ -570,6 +570,17 @@ $ emacsclient -c"
 
 #+end_src
 
+*** minibuffer
+:PROPERTIES:
+:ID:       81f4c60c-5adc-4403-b460-2116da44d46b
+:END:
+
+Do not make me type ~C-q SPC~ to insert spaces!
+
+#+begin_src elisp
+(define-key minibuffer-local-completion-map (kbd "SPC") #'self-insert-command)
+#+end_src
+
 *** Password Caching
 :PROPERTIES:
 :ID:       1da63c25-419a-449e-8e20-3432a3a0c5ad
