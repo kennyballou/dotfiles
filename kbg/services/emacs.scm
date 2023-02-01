@@ -18,7 +18,7 @@
     (package
      (inherit emacs-next-pgtk)
      (name "emacs-next-pgtk")
-     (version (git-version "29.0.50" revision commit))
+     (version (git-version "30.0.50" revision commit))
      (source
       (origin
        (inherit (package-source emacs-next-pgtk))
