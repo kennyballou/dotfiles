@@ -178,8 +178,14 @@
                                            mcron-service-type
                                            (list mcron:guix-gc-repair-job))
                            (service singularity-service-type)
-                           (service virtlog-service-type)
-                           (service libvirt-service-type)
+                           (service virtlog-service-type
+                                    (virtlog-configuration))
+                           (service libvirt-service-type
+                                    (libvirt-configuration
+                                     (unix-sock-group "libvirt")
+                                     (listen-tls? #f)
+                                     (listen-tcp? #f)
+                                     (min-workers 1)))
                            (service tor-service-type
                                     (tor-configuration))
                            (simple-service 'subordinate-ids
