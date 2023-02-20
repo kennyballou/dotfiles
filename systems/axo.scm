@@ -161,6 +161,7 @@
                              (extra-config (list %xorg-libinput-config))))
                            (service nix-service-type)
                            (service pcscd-service-type)
+                           (service earlyoom-service-type)
                            (service tlp-service-type
                                     (tlp-configuration
                                      (cpu-scaling-governor-on-ac (list "performance"))
