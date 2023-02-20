@@ -22,6 +22,14 @@
                                     languagetool-service
                                     mpd-service
                                     syncthing-service))))))
+(define axo-shepherd-services
+  (list (service home-shepherd-service-type
+                 (home-shepherd-configuration
+                  (services (append gnupg-service
+                                    languagetool-service
+                                    mpd-service
+                                    syncthing-service))))))
+
 
 (define yak-shepherd-services
   (list (service home-shepherd-service-type
@@ -42,6 +50,8 @@
 (define (services-for-host hostname)
   (cond ((eq? hostname 'daeva)
          daeva-shepherd-services)
+        ((eq? hostname 'axo)
+         axo-shepherd-services)
         ((eq? hostname 'yak)
          yak-shepherd-services)
         ((eq? hostname 'koi)
