@@ -151,6 +151,7 @@
    ;; include the X11 log-in service, networking with
    ;; NetworkManager, and more.
    (services (append (list (service gnome-desktop-service-type)
+                           (service gnome-keyring-service-type)
                            ;;(geoclue-service)
                            (bluetooth-service #:auto-enable? #t)
                            (service cups-service-type
