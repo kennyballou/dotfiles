@@ -28,6 +28,7 @@
   #:use-module (kbg)
   #:use-module (kbg packages profiles base)
   #:use-module (kbg packages profiles desktop)
+  #:use-module (kbg packages profiles laptop)
   #:use-module (kbg services desktop)
   #:use-module (kbg services dict)
   #:use-module (kbg services nftables)
@@ -142,6 +143,7 @@
    ;; This is where we specify system-wide packages.
    (packages (append %kbg-base-packages
                      %kbg-bare-desktop-packages
+                     %kbg-laptop-packages
                      %base-packages))
 
    ;; Add GNOME and Xfce---we can choose at the log-in screen
