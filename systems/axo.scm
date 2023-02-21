@@ -38,6 +38,7 @@
 (define axo-system
   (operating-system
    (kernel linux)
+   (kernel-arguments '("mem_sleep_default=deep nvme.noacpi=1 i915.enable_psr=1 modprobe.blacklist=hid_sensor_hub"))
    (kernel-loadable-modules
     (list v4l2loopback-linux-module))
    (firmware (list linux-firmware))
