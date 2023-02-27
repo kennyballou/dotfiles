@@ -48,15 +48,18 @@
   (shepherd-service
    (provision '(yalafi))
    (requirement '(languagetool))
-   (documentation "Run YaLafi to filter markup for LanguageTool.  Forks itself without pidfile.")
-   (start #~(fork+exec-command
+   (documentation "Run YaLafi to filter markup for LanguageTool.  Forks itself WITH pidfile.")
+   (start #~(make-forkexec-constructor
              (list #$(file-append python-minimal-wrapper "/bin/python")
                    "-m"
                    "yalafi.shell"
+                   "--pidfile"
+                   "/run/user/1000/yalafi/pid"
                    "--server"
                    "http://localhost:9090/v2/check"
                    "--as-server"
                    "9092")
+             #:pid-file "/run/user/1000/yalafi/pid"
              #:environment-variables (append (list (string-append
                                                     "PYTHONPATH="
                                                     #$(file-append python-yalafi-custom-server
