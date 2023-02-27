@@ -31,6 +31,8 @@ since it can be exceedingly easy to confuse it.
 (message (emacs-version))
 #+end_src
 
+Early Theme configuration
+
 #+begin_src elisp
 (defvar file-name-handler-alist-original file-name-handler-alist)
 (setq file-name-handler-alist nil)
@@ -191,7 +193,7 @@ Font Config
 #+end_src
 
 #+begin_src elisp
-                                        ; Ignore X resources; its settings would be redundant with the other settings
+;; Ignore X resources; its settings would be redundant with the other settings
 ;; in this file and can conflict with later config (particularly where the
 ;; cursor color is concerned).
 (advice-add #'x-apply-session-resources :override #'ignore)
@@ -632,6 +634,15 @@ Do not make me type ~C-q SPC~ to insert spaces!
 
 (use-package bind-key)
 (use-package diminish)
+#+end_src
+
+*** Themes
+:PROPERTIES:
+:ID:       9d2ea8c1-9fc4-4922-b406-9f7d36b79335
+:END:
+
+#+begin_src elisp
+(use-package modus-themes)
 #+end_src
 
 *** Execution Path
