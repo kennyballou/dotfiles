@@ -645,6 +645,19 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (use-package modus-themes)
 #+end_src
 
+*** Circadian
+:PROPERTIES:
+:ID:       6b4f091d-6d76-4880-bb0d-8ce4ab4db252
+:END:
+
+#+begin_src elisp
+(use-package circadian
+  :config
+  (setq circadian-themes '(("08:00" . modus-operandi)
+                           ("19:00" . modus-vivendi)))
+  (circadian-setup))
+#+end_src
+
 *** Execution Path
 :PROPERTIES:
 :ID:       0e42516d-f87a-46a4-a62c-774a5f46450d

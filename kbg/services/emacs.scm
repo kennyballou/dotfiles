@@ -64,6 +64,7 @@
         emacs-buffer-move
         ;; emacs-bundler
         emacs-cider
+        emacs-circadian
         emacs-citeproc
         emacs-citeproc-org
         emacs-cljsbuild-mode
