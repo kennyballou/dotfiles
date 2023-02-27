@@ -4612,6 +4612,18 @@ Except where they probably shouldn't be added.
   (setq org-roam-ui-open-on-start nil))
 #+end_src
 
+**** Org Roam Bibtex
+:PROPERTIES:
+:ID:       de45e883-1889-4dec-982e-fade7c9c1968
+:END:
+
+#+begin_src elisp
+(use-package org-roam-bibtex
+  :after org-roam
+  :config
+  (require 'org-ref))
+#+end_src
+
 **** Org Web-Tools
 :PROPERTIES:
 :ID:       e8479be2-8f4e-4b89-a623-4008512ce610

@@ -234,6 +234,7 @@
         emacs-org-ql
         emacs-org-ref
         emacs-org-roam
+        emacs-org-roam-bibtex
         emacs-org-roam-ui
         emacs-org-web-tools
         emacs-ox-gfm
