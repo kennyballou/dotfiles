@@ -5136,7 +5136,9 @@ Configuration borrowed from the tutorial found here:
 :END:
 
 #+begin_src elisp
-(use-package elfeed)
+(use-package elfeed
+  :config
+  (run-at-time t (* 8 3600) #'elfeed-update))
 
 (use-package elfeed-org
   :after elfeed
