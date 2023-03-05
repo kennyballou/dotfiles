@@ -2596,7 +2596,6 @@ left to try and get the PATH down to, at most, MAX-LEN."
 #+begin_src elisp
 (add-hook 'eshell-mode-hook
           #'(lambda ()
-              (define-key eshell-mode-map(kbd "C-c C-l") #'helm-eshell-history)
               (define-key eshell-mode-map (kbd "TAB") #'bash-completion-from-eshell)))
 #+end_src
 
