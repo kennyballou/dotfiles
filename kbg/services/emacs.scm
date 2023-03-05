@@ -103,6 +103,7 @@
         emacs-elein
         emacs-elfeed
         emacs-elfeed-org
+        emacs-elfeed-score
         ;; emacs-elgantt
         emacs-elixir-mode
         emacs-elm-mode

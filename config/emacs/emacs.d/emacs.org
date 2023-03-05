@@ -5152,6 +5152,12 @@ Configuration borrowed from the tutorial found here:
   (setq rmh-elfeed-org-files (list "~/.org/elfeed.org"))
   (setq elfeed-search-filter "@12-hours-ago +unread")
   (elfeed-org))
+
+(use-package elfeed-score
+  :after elfeed
+  :init
+  (elfeed-score-enable)
+  (define-key elfeed-search-mode-map "=" elfeed-score-map))
 #+end_src
 **** World-Clock
 :PROPERTIES:
