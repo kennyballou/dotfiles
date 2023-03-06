@@ -65,6 +65,8 @@
         ;; emacs-bundler
         emacs-cider
         emacs-circadian
+        emacs-citar
+        emacs-citar-org-roam
         emacs-citeproc
         emacs-citeproc-org
         emacs-cljsbuild-mode

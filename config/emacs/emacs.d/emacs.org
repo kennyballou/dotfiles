@@ -4639,6 +4639,22 @@ Except where they probably shouldn't be added.
 (use-package org-web-tools)
 #+end_src
 
+*** Citar
+:PROPERTIES:
+:ID:       52d5f4a2-8c77-499a-bb76-79181eb274e2
+:END:
+
+#+begin_src elisp
+(use-package citar)
+#+end_src
+
+#+begin_src elisp
+(use-package citar-org-roam
+  :after citar org-roam
+  :diminish
+  :config (citar-org-roam-mode))
+#+end_src
+
 *** elgantt
 :PROPERTIES:
 :ID:       270cff5d-0d98-4bad-819c-629a6fe9d37c
