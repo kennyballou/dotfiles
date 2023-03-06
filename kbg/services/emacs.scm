@@ -86,6 +86,7 @@
         emacs-dash
         emacs-xyz:emacs-debbugs
         emacs-define-word
+        emacs-deft
         emacs-xyz:emacs-delight
         emacs-diff-hl
         emacs-diminish

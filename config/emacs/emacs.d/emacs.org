@@ -4655,6 +4655,22 @@ Except where they probably shouldn't be added.
   :config (citar-org-roam-mode))
 #+end_src
 
+*** deft
+:PROPERTIES:
+:ID:       b8449e52-6410-4692-a723-1d3301ce14c6
+:END:
+
+#+begin_src elisp
+(use-package deft
+  :commands (deft deft-find-file)
+  :bind (("C-c d d" . deft)
+         ("C-c d f" . deft-find-file))
+  :config
+  (setq deft-extensions '("txt" "tex" "org" "md"))
+  (setq deft-recursive t)
+  (setq deft-directory org-directory))
+#+end_src
+
 *** elgantt
 :PROPERTIES:
 :ID:       270cff5d-0d98-4bad-819c-629a6fe9d37c
