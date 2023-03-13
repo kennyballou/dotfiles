@@ -58,12 +58,12 @@
                    "-m"
                    "yalafi.shell"
                    "--pidfile"
-                   "/run/user/1000/yalafi/pid"
+                   (format #f "/run/user/~a/yalafi.pid" (getuid))
                    "--server"
                    "http://localhost:9090/v2/check"
                    "--as-server"
                    "9092")
-             #:pid-file "/run/user/1000/yalafi/pid"
+             #:pid-file (format #f "/run/user/~a/yalafi.pid" (getuid))
              #:log-file (format #f "~a/yalafi.log"
                                 (or (getenv "XDG_LOG_HOME")
                                     (format #f "~a/.local/var/log"
