@@ -25,7 +25,11 @@
                    "--port"
                    "9090"
                    "--languageModel"
-                   #$(file-append languagetool-ngram-en "/share/LanguageTool-ngrams/"))))
+                   #$(file-append languagetool-ngram-en "/share/LanguageTool-ngrams/"))
+             #:log-file (format #f "~a/languagetool.log"
+                                (or (getenv "XDG_LOG_HOME")
+                                    (format #f "~a/.local/var/log"
+                                            (getenv "HOME"))))))
    (stop #~(make-kill-destructor))))
 
 (define-public ltex-shepherd-service
@@ -60,6 +64,10 @@
                    "--as-server"
                    "9092")
              #:pid-file "/run/user/1000/yalafi/pid"
+             #:log-file (format #f "~a/yalafi.log"
+                                (or (getenv "XDG_LOG_HOME")
+                                    (format #f "~a/.local/var/log"
+                                            (getenv "HOME"))))
              #:environment-variables (append (list (string-append
                                                     "PYTHONPATH="
                                                     #$(file-append python-yalafi-custom-server
