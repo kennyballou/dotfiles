@@ -910,6 +910,18 @@ Set initial frame sizes
 (add-to-list 'default-frame-alist '(width . 90))
 #+end_src
 
+Golden Ratio frame resizing
+
+#+begin_src elisp
+(use-package golden-ratio
+  :diminish golden
+  :config
+  (setq golden-ratio-auto-scale nil)
+  (setq golden-ratio-adjust-factor 1.0)
+  (setq golden-ratio-wide-adjust-factor 0.8)
+  (golden-ratio-mode 1))
+#+end_src
+
 *** dired
 :PROPERTIES:
 :ID:       f67852f8-d563-4fbe-bf98-30afc3239cf8

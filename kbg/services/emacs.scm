@@ -135,6 +135,7 @@
         emacs-git-timemachine
         emacs-gnuplot
         emacs-gnus-alias
+        emacs-golden-ratio
         emacs-go-autocomplete
         emacs-go-eldoc
         emacs-go-mode
