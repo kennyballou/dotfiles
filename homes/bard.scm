@@ -1,4 +1,4 @@
-(define-module (homes daeva)
+(define-module (homes bard)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu services)

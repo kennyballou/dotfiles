@@ -1,4 +1,4 @@
-(define-module (systems daeva)
+(define-module (systems bard)
   #:use-module (guix)
   #:use-module (guix records)
   #:use-module (guix utils)
