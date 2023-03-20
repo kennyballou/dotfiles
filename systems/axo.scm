@@ -153,8 +153,10 @@
    ;; NetworkManager, and more.
    (services (append (list (service gnome-desktop-service-type)
                            (service gnome-keyring-service-type)
-                           ;;(geoclue-service)
-                           (bluetooth-service #:auto-enable? #t)
+                           (service geoclue-service-type)
+                           (service bluetooth-service-type
+                                    (bluetooth-configuration
+                                     (name "axo")))
                            (service cups-service-type
                                     (cups-configuration
                                      (web-interface? #t)))
