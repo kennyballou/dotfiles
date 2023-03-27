@@ -47,7 +47,7 @@ rollback-system:
 
 .PHONY: lint
 lint:
-	guix lint $(LOAD_PATH) ./
+	guix time-machine -C $(CHANNEL_FILE) -- lint $(LOAD_PATH) ./
 
 .PHONY: refresh
 refresh:
