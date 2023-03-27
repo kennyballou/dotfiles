@@ -4564,6 +4564,10 @@ Except where they probably shouldn't be added.
     (shell-command-on-region (point-min) (point-max) "z3 -in")))
 #+end_src
 
+#+begin_src elisp
+(use-package ob-async)
+#+end_src
+
 **** Org Brain
 :PROPERTIES:
 :ID:       094c4fc2-8596-498a-bb4b-d1772e318ce1

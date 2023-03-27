@@ -206,6 +206,7 @@
         emacs-orderless
         emacs-xyz:emacs-org
         emacs-xyz:emacs-orgalist
+        emacs-ob-async
         emacs-ob-restclient
         emacs-org-brain
         ;; emacs-org-babel-eval-in-repl
