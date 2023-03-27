@@ -1,3 +1,5 @@
+(use-modules (gnu packages))
+
 (specifications->manifest
  '("emacs-no-x"
    "make"
