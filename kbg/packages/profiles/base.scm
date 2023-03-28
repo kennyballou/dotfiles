@@ -111,6 +111,7 @@
         smartmontools
         socat
         stow
+        sysstat
         tar
         tcpdump
         time
