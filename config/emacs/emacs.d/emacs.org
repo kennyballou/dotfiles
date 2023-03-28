@@ -4826,7 +4826,6 @@ Configuration taken from the tutorial found here:
 #+begin_src elisp
 (require 'mu4e)
 (require 'mu4e-vars)
-(require 'org-mu4e)
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -4856,7 +4855,6 @@ Configuration taken from the tutorial found here:
 (setq message-sendmail-f-is-evil nil)
 (setq message-sendmail-envelope-from 'header)
 (setq mu4e-change-filenames-when-moving t)
-(setq org-mu4e-link-query-in-headers-mode nil)
 (setq message-kill-buffer-on-exit t)
 (setq mu4e-context-policy 'pick-first)
 (setq mu4e-confirm-quit nil)
