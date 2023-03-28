@@ -19,6 +19,7 @@
   #:use-module (gnu packages python)
   #:use-module (gnu packages racket)
   #:use-module (gnu packages rust-apps)
+  #:use-module (gnu packages search)
   #:use-module (gnu packages shellutils)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages text-editors)
@@ -65,4 +66,5 @@
    strace
    subversion
    tokei
+   ugrep
    vim))
