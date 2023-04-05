@@ -295,6 +295,7 @@
         emacs-whitespace-cleanup-mode
         emacs-whole-line-or-region
         emacs-with-editor
+        emacs-xyz:emacs-xr
         emacs-xref-js2
         emacs-yasnippet
         emacs-z3-mode

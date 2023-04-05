@@ -2020,6 +2020,10 @@ https://blog.jmthornton.net/p/emacs-project-override"
               ("C-c C-k" . reb-quit)))
 #+end_src
 
+#+begin_src elisp
+(use-package xr)
+#+end_src
+
 *** Perspective -- Disabled
 :PROPERTIES:
 :ID:       c10c11ef-f5d6-4716-b828-4b7c8afdca41
@@ -4300,7 +4304,6 @@ https://orgmode.org/worg/org-hacks.html#orgf1fe951
   (setq awqat-asr-hanafi nil)
   (awqat-set-preset-isna))
 #+end_src
-
 
 **** Navigating (obsolete?)
 :PROPERTIES:
