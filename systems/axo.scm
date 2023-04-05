@@ -153,7 +153,6 @@
    ;; NetworkManager, and more.
    (services (append (list (service gnome-desktop-service-type)
                            (service gnome-keyring-service-type)
-                           (service geoclue-service-type)
                            (service bluetooth-service-type
                                     (bluetooth-configuration
                                      (name "axo")))
