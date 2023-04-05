@@ -4650,6 +4650,17 @@ Except where they probably shouldn't be added.
   (require 'org-ref))
 #+end_src
 
+**** Org Transclusion
+:PROPERTIES:
+:ID:       99301a23-6d1a-4ed2-bca6-e8444d57dbb6
+:END:
+
+#+begin_src elisp
+(use-package org-transclusion
+  :after org
+  :bind-keymap ("C-c n t" . org-transclusion-map))
+#+end_src
+
 **** Org Web-Tools
 :PROPERTIES:
 :ID:       e8479be2-8f4e-4b89-a623-4008512ce610

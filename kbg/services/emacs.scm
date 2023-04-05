@@ -223,6 +223,7 @@
         emacs-org-roam
         emacs-org-roam-bibtex
         emacs-org-roam-ui
+        emacs-xyz:emacs-org-transclusion
         emacs-org-web-tools
         emacs-ox-gfm
         emacs-page-break-lines
