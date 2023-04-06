@@ -4620,21 +4620,11 @@ Except where they probably shouldn't be added.
          ("C-c n I" . org-roam-node-insert-immediate))
   :config
   (setq org-roam-capture-templates
-        `(("d" "default" plain "%?"
-           :target (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org"
-                              "#+title: ${title}\n#+filetags:\n")
+        '(("d" "default" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
+           :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org" "")
            :unnarrowed t)
-          ("b" "bibliographic" plain "%?"
-           :target (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org"
-                              ,(concat ":PROPERTIES:\n"
-                                       ":ROAM_REFS: cite:&${title}\n"
-                                       ":END:\n"
-                                       "#+title: ${title}\n"
-                                       "#+filetags: literature\n\n"
-                                       "appeared ::\n"
-                                       "keywords ::\n\n"
-                                       "#+begin_src bibtex :tangle (concat (org-attach-dir-get-create) \"/${title}.bib\")\n"
-                                       "#+end_src\n"))
+          ("b" "bibliographic" plain (file "~/.config/emacs/org-roam-templates/BIB-ENTRY")
+           :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org" "")
            :unnarrowed t)))
   (org-roam-setup))
 #+end_src
