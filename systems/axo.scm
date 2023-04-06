@@ -32,6 +32,7 @@
   #:use-module (kbg services desktop)
   #:use-module (kbg services dict)
   #:use-module (kbg services nftables)
+  #:use-module (kbg services boltd)
   #:use-module ((kbg system mcron) :prefix mcron:)
   #:use-module (kbg system xorg))
 
@@ -153,6 +154,7 @@
    ;; NetworkManager, and more.
    (services (append (list (service gnome-desktop-service-type)
                            (service gnome-keyring-service-type)
+                           (service boltd-service-type)
                            (service bluetooth-service-type
                                     (bluetooth-configuration
                                      (name "axo")))
