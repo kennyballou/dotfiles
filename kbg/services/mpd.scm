@@ -31,5 +31,11 @@
                               "--no-daemon"
                               (string-append (getenv "HOME")
                                              "/.config/mpd/mpd.conf"))))
-              (stop #~(make-kill-destructor)))))
+              (stop #~(make-kill-destructor))
+              (actions (list (shepherd-action
+                              (name 'update-db)
+                              (documentation "Update MPD Database")
+                              (procedure #~(lambda (running . args)
+                                             (system (string-join (list #$(file-append mpd-mpc "/bin/mpc")
+                                                                        "update") " "))))))))))
     (list mpd-create-socket-dir mpd)))
