@@ -21,7 +21,7 @@
                                  (start #~(make-forkexec-constructor
                                            (list #$(file-append coreutils "/bin/mkdir")
                                                  "-p"
-                                                 "/run/user/1000/mpd")))))
+                                                 (format #f "/run/user/~a/mpd" (getuid)))))))
          (mpd (shepherd-service
               (documentation "User MPD daemon")
               (provision '(mpd))
@@ -29,8 +29,8 @@
               (start #~(make-forkexec-constructor
                         (list #$(file-append mpd "/bin/mpd")
                               "--no-daemon"
-                              (string-append (getenv "HOME")
-                                             "/.config/mpd/mpd.conf"))))
+                              (string-append (getenv "XDG_CONFIG_HOME")
+                                             "/mpd/mpd.conf"))))
               (stop #~(make-kill-destructor))
               (actions (list (shepherd-action
                               (name 'update-db)
