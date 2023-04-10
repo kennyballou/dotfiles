@@ -23,6 +23,7 @@
   #:use-module (kbg services config tmux)
   #:use-module (kbg services config vale)
   #:use-module (kbg services config vars)
+  #:use-module (kbg services config wallpaper)
   #:use-module (kbg services config xdg)
   #:export (configs-for-host))
 
@@ -70,6 +71,7 @@
           ssh-config-service
           tmux-config-service
           vale-config-service
+          wallpaper-config-service
           xdg-config-service))
 
 (define yak-configs
