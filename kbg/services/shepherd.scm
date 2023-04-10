@@ -12,6 +12,7 @@
   #:use-module (kbg services languagetool)
   #:use-module (kbg services mcron)
   #:use-module (kbg services mpd)
+  #:use-module (kbg services parallel)
   #:use-module (kbg services syncthing)
   #:export (services-for-host))
 
@@ -28,6 +29,7 @@
                   (services (append gnupg-service
                                     languagetool-service
                                     mpd-service
+                                    parallel-mk-temp-dir-service
                                     syncthing-service))))))
 
 
@@ -37,6 +39,7 @@
                   (services (append gnupg-service
                                     languagetool-service
                                     mpd-service
+                                    parallel-mk-temp-dir-service
                                     syncthing-service))))))
 
 (define koi-shepherd-services
