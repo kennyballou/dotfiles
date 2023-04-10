@@ -31,8 +31,7 @@
 (home-environment
  (packages
   (append %kbg-base-development-packages
-          (filter (lambda (p) (not (member p (list firefox/wayland))))
-                  %kbg-desktop-packages)
+          (filter-packages (list firefox/wayland) %kbg-desktop-packages)
           %kbg-games-packages
           %kbg-science-packages
           %kbg-statistics-packages
