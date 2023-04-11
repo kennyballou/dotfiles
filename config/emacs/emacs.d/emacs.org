@@ -4212,7 +4212,7 @@ Update project status when updating the cookie statistics.
                 (org-agenda-span 'year)
                 (org-agenda-time-grid nil)
                 ))
-              ("l" "Logbook" tags "RECORD"
+              ("l" "Logbook" tags "LOGENTRY"
                ((org-agenda--insert-overriding-header "Logbook")
                 (org-tags-match-list-sublevels t)
                 (org-agenda-filter-by-category (quote ("+logbook")))

@@ -1,4 +1,4 @@
-* %^{Description} :RECORD:
+* %^{Description} :LOGENTRY:
 :PROPERTIES:
 :ID:       %(org-id-uuid)
 :CREATED:  %T
