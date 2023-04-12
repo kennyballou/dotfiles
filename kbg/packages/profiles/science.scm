@@ -10,7 +10,10 @@
 (define %kbg-science-packages
   (list
    coq
+   coq-mathcomp
    coq-math-classes
+   coq-semantics
+   coq-stdpp
    gnuplot
    graphviz
    gwl
