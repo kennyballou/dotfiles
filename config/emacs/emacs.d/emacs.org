@@ -418,7 +418,7 @@ $ emacsclient -c"
 (setq-default eshell-highlight-prompt t)
 (setq-default eshell-hist-ignoredups t)
 (setq-default eshell-history-size 10000)
-(setq-default eshell-list-files-after-cd t)
+(setq-default eshell-list-files-after-cd nil)
 (setq-default eshell-ln-interactive-query t)
 (setq-default eshell-mv-interactive-query t)
 (setq-default eshell-output-filter-functions
