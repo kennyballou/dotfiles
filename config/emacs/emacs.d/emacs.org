@@ -421,11 +421,6 @@ $ emacsclient -c"
 (setq-default eshell-list-files-after-cd nil)
 (setq-default eshell-ln-interactive-query t)
 (setq-default eshell-mv-interactive-query t)
-(setq-default eshell-output-filter-functions
-              '(eshell-handle-ansi-color
-                eshell-handle-control-codes
-                eshell-watch-for-password-prompt
-                eshell-truncate-buffer))
 (setq-default eshell-plain-echo-behavior nil)
 (setq-default eshell-review-quick-commands t)
 (setq-default eshell-rm-interactive-query nil)
