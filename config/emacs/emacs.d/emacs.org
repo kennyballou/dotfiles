@@ -2680,15 +2680,27 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       436be882-9c6b-462b-9b1c-9219031e33d3
 :END:
 
-**** Direnv
+**** Direnv (disabled)
 :PROPERTIES:
 :ID:       3a4cfdc1-82bf-41e8-bd17-e016ba0a1d59
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package direnv
   :config
   (direnv-mode))
+#+end_src
+
+**** envrc
+:PROPERTIES:
+:ID:       24f43f5a-0616-442c-8b9c-4d4c745e0676
+:END:
+
+#+begin_src elisp
+(use-package envrc
+  :diminish
+  :init
+  (envrc-global-mode))
 #+end_src
 
 **** Subword Mode
