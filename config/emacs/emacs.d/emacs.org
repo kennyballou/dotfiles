@@ -3643,7 +3643,8 @@ indentation rules."
 
 #+begin_src elisp
 (use-package slurm-mode)
-(use-package slurm-script-mode)
+(use-package slurm-script-mode
+  :diminish)
 #+end_src
 
 **** SQL
