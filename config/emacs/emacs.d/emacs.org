@@ -3120,6 +3120,17 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (use-package go-stacktracer)
 #+end_src
 
+**** Graphviz Mode
+:PROPERTIES:
+:ID:       4c4d9b4b-6d5b-491f-a7c3-18c5ed074c3a
+:END:
+
+#+begin_src elisp
+(use-package graphviz-dot-mode
+  :config
+  (setq graphviz-dot-indent-width 4))
+#+end_src
+
 **** Guix
 :PROPERTIES:
 :ID:       f6828526-1eff-4447-9284-0ffe6139772d
