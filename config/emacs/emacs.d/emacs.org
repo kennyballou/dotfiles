@@ -632,6 +632,20 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (use-package diminish)
 #+end_src
 
+
+*** helpful
+:PROPERTIES:
+:ID:       de78bcf2-912a-4c25-adb1-db4f197b3bd2
+:END:
+
+#+begin_src elisp
+(use-package helpful
+  :bind (("C-h f" . helpful-callable)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-h x" . helpful-command)))
+#+end_src
+
 *** Themes
 :PROPERTIES:
 :ID:       9d2ea8c1-9fc4-4922-b406-9f7d36b79335
