@@ -4971,7 +4971,11 @@ Configuration taken from the tutorial found here:
                   (user-mail-address . "kb@devnulllabs.io")
                   (user-full-name . "Kenny Ballou")
                   (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
-                  (mu4e-compose-signature . ":SIG:!0xB0CAA28A02958308!:\n")
+                  (mu4e-compose-signature . ,(string-join '("(:person"
+                                                            "  (:name Kenny Ballou)"
+                                                            "  (:email kb@devnulllabs.io)"
+                                                            "  (:pgp 0xB0CAA28A02958308))")
+                                                            "\n"))
                   (mu4e-maildir-shortcuts . ((:maildir "/devnulllabs.io/INBOX" :key ?i)
                                              (:maildir "/devnulllabs.io/archive" :key ?a)
                                              (:maildir "/devnulllabs.io/trash" :key ?t)
