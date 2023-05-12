@@ -6,7 +6,6 @@ level: suggestion
 tokens:
   - absolutely
   - accidentally
-  - additionally
   - allegedly
   - angrily
   - anxiously
@@ -127,7 +126,6 @@ tokens:
   - poorly
   - powerfully
   - presumably
-  - previously
   - promptly
   - punctually
   - quarterly
