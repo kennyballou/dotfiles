@@ -11,6 +11,7 @@
                         home-environment-variables-service-type
                         `(("_JAVA_OPTIONS" . "-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel")
                           ("ASPELL_CONF" . "per-conf ${XDG_CONFIG_HOME}/aspell/aspell.conf; personal ${XDG_CONFIG_HOME}/aspell/en.pws; repl ${XDG_CONFIG_HOME}/aspell/en.prepl")
+                          ("CALIBRE_USE_DARK_PALETTE" . "1")
                           ("EDITOR" . "emacsclient")
                           ("GUILE_DRMAA_LIBRARY" . ,(file-append slurm-drmaa "/lib/libdrmaa.so"))
                           ("GUIX_EXTENSIONS_PATH" . "${GUIX_PROFILE}/share/guix/extensions")
