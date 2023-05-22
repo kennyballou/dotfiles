@@ -1,6 +1,7 @@
 GTAGS
 GRTAGS
 GPATH
+.env
 .envrc
 .direnv/
 .projectile
