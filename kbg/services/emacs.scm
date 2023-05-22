@@ -58,6 +58,7 @@
         emacs-counsel
         emacs-counsel-projectile
         emacs-counsel-tramp
+        emacs-cov
         emacs-coverlay
         ;; emacs-css-eldoc
         emacs-xyz:emacs-csv-mode

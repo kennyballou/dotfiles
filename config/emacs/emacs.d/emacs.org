@@ -2745,6 +2745,17 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (setq eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit))
 #+end_src
 
+**** cov
+:PROPERTIES:
+:ID:       190a08fd-eb80-4aba-b96e-952180b305db
+:END:
+
+#+begin_src elisp
+(use-package cov
+  :config
+  (setq cov-coverage-mode t))
+#+end_src
+
 **** Language Server Protocol
 :PROPERTIES:
 :ID:       f8dcd5bb-073f-4f38-b359-1e23fce6f40d
