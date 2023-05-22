@@ -71,7 +71,7 @@
              #:environment-variables (append (list (string-append
                                                     "PYTHONPATH="
                                                     #$(file-append python-yalafi-custom-server
-                                                                   "/lib/python3.9/site-packages/")))
+                                                                   "/lib/python3.10/site-packages/")))
                                              (default-environment-variables))))
    (stop #~(make-kill-destructor))))
 
