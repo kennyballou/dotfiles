@@ -15,6 +15,7 @@
   #:use-module (kbg services config guix)
   #:use-module (kbg services config kitty)
   #:use-module (kbg services config ledger)
+  #:use-module (kbg services config maven)
   #:use-module (kbg services config mpd)
   #:use-module (kbg services config nixpkgs)
   #:use-module (kbg services config nyxt)
@@ -64,6 +65,7 @@
           home-vars-service
           kitty-config-service
           ledger-config-service
+          maven-config-service
           mpd-config-service
           nixpkgs-config-service
           nyxt-config-service
