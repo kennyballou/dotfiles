@@ -4670,7 +4670,7 @@ Except where they probably shouldn't be added.
   (setq org-roam-ui-sync-theme t)
   (setq org-roam-ui-follow nil)
   (setq org-roam-ui-update-on-save t)
-  (setq org-roam-ui-open-on-start nil))
+  (setq org-roam-ui-open-on-start t))
 #+end_src
 
 **** Org Roam Bibtex
