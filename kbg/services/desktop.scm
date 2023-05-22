@@ -3,8 +3,10 @@
   #:use-module (guix)
   #:use-module (gnu services)
   #:use-module (gnu services base)
+  #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
   #:use-module (gnu packages gnome)
+  #:use-module (gnu packages linux)
   #:use-module (gnu packages networking)
   #:use-module (gnu services networking)
   #:use-module (gnu services sound)
@@ -37,4 +39,9 @@
                                      (gdm-configuration
                                       (inherit config)
                                       (wayland? #t)))
+                   (dbus-root-service-type config =>
+                                           (dbus-configuration
+                                            (inherit config)
+                                            (verbose? #f)
+                                            (services (list gdm))))
                    (delete pulseaudio-service-type)))
