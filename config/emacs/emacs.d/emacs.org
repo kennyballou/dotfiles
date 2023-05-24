@@ -4677,6 +4677,9 @@ Except where they probably shouldn't be added.
 (use-package org-roam-ui
   :delight
   :after org-roam
+  :bind (("C-c n o a" . org-roam-ui-add-to-local-graph)
+         ("C-c n o l" . org-roam-ui-node-local)
+         ("C-c n o z" . org-roam-ui-node-zoom))
   :config
   (setq org-roam-ui-sync-theme t)
   (setq org-roam-ui-follow nil)
