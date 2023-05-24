@@ -3432,23 +3432,23 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :END:
 
 #+begin_src elisp
-(dolist (regexmode (list '("\\.xml\\'" . #'nxml-mode)
-                         '("\\.xsd\\'" . #'nxml-mode)
-                         '("\\.sch\\'" . #'nxml-mode)
-                         '("\\.rng\\'" . #'nxml-mode)
-                         '("\\.xlst\\'" . #'nxml-mode)
-                         '("\\.svg\\'" . #'nxml-mode)
-                         '("\\.rss\\'" . #'nxml-mode)
-                         '("\\.gpx\\'" . #'nxml-mode)
-                         '("\\.tcx\\'" . #'nxml-mode)
-                         '("\\.plist\\'" . #'nxml-mode)))
-  (add-to-list 'auto-mode-alist regexmode))
+(dolist (mode (list '("\\.xml\\'" . nxml-mode)
+                         '("\\.xsd\\'" . nxml-mode)
+                         '("\\.sch\\'" . nxml-mode)
+                         '("\\.rng\\'" . nxml-mode)
+                         '("\\.xlst\\'" . nxml-mode)
+                         '("\\.svg\\'" . nxml-mode)
+                         '("\\.rss\\'" . nxml-mode)
+                         '("\\.gpx\\'" . nxml-mode)
+                         '("\\.tcx\\'" . nxml-mode)
+                         '("\\.plist\\'" . nxml-mode)))
+  (add-to-list 'auto-mode-alist mode))
 
-(setq magic-mode-alist (cons '("<\\?xml " . nxml-mode) magic-mode-alist))
 (add-to-list 'magic-mode-alist '("<\\?xml " . nxml-mode))
 (fset 'xml-mode 'nxml-mode)
-(add-hook 'nxml-mode-hook (lambda ()
-                            (set (make-local-variable 'ido-use-filename-at-point) nil)))
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (set (make-local-variable 'ido-use-filename-at-point) nil)))
 (setq nxml-slash-auto-complete-flag t)
 
 ;; See: http://sinewalker.wordpress.com/2008/06/26/pretty-printing-xml-with-emacs-nxml-mode/
