@@ -4,5 +4,5 @@
 appeared ::
 keywords ::
 
-#+begin_src: bibtex :tangle (concat (org-attach-dir-get-create) "/${title}.bib")
+#+begin_src bibtex :tangle (concat (org-attach-dir-get-create) "/${title}.bib")
 #+end_src
