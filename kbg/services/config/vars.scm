@@ -9,7 +9,7 @@
 (define home-vars-service
   (list (simple-service 'home-vars
                         home-environment-variables-service-type
-                        `(("_JAVA_OPTIONS" . "-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel")
+                        `(("_JAVA_OPTIONS" . "-Dawt.useSystemAAFontSettings=on")
                           ("ASPELL_CONF" . "per-conf ${XDG_CONFIG_HOME}/aspell/aspell.conf; personal ${XDG_CONFIG_HOME}/aspell/en.pws; repl ${XDG_CONFIG_HOME}/aspell/en.prepl")
                           ("CALIBRE_USE_DARK_PALETTE" . "1")
                           ("EDITOR" . "emacsclient")
