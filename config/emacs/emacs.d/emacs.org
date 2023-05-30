@@ -4757,7 +4757,15 @@ not strictly necessary.
 :END:
 
 #+begin_src elisp
-(use-package citar)
+(use-package citar
+  :custom
+  (org-cite-global-bibliography (list bibtex-files))
+  (citar-bibliography (list bibtex-files))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  :bind (("C-c d o" . citar-open)
+         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))))
 #+end_src
 
 #+begin_src elisp
