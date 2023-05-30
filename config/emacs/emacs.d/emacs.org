@@ -5038,7 +5038,11 @@ Configuration taken from the tutorial found here:
                   (user-mail-address . "kennyballou@u.boisestate.edu")
                   (user-full-name . "Kenny Ballou")
                   (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
-                  (mu4e-compose-signature . ":SIG:!0xB0CAA28A02958308!:\n")
+                  (mu4e-compose-signature . ,(string-join '("(:person"
+                                                            "  (:name Kenny Ballou)"
+                                                            "  (:email kennyballou@(u.)?boisestate.edu)"
+                                                            "  (:pgp 0xB0CAA28A02958308))")
+                                                          "\n"))
                   (mu4e-maildir-shortcuts . ((:maildir "/u.boisestate.edu/INBOX" :key ?i)
                                              (:maildir "/u.boisestate.edu/archive" :key ?a)
                                              (:maildir "/u.boisestate.edu/trash" :key ?t)
