@@ -5371,6 +5371,19 @@ _dR_:   Disable repeat
   :magic ("%PDF" . pdf-view-mdoe))
 #+end_src
 
+*** Async
+:PROPERTIES:
+:ID:       b46b0f43-ef4d-49fc-9818-6b5fd34d72af
+:END:
+
+#+begin_src elisp
+(use-package async
+  :diminish
+  :init
+  (dired-async-mode t)
+  (async-bytecomp-package-mode t))
+#+end_src
+
 *** Init Local
 :PROPERTIES:
 :ID:       3bb4b7cf-7889-4add-bb21-e47ab9ad6df2
