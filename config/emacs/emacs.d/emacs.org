@@ -4616,6 +4616,38 @@ Except where they probably shouldn't be added.
 (use-package ob-async)
 #+end_src
 
+
+Loosely borrowed from:
+https://kitchingroup.cheme.cmu.edu/blog/2015/11/20/Asynchronously-running-python-blocks-in-org-mode/.
+
+A more versatile approach may be feasible, but for my current needs, something
+that simply spawns the tangled script is sufficient.  It would be nice to be
+able to see the error and output stream in some temporary buffer, but that's
+not strictly necessary.
+
+#+begin_src elisp
+(defun org-babel-async-execute:bash ()
+  "Run a BASH block at point asynchronously."
+  (interactive)
+
+  (let ((current-file (buffer-file-name))
+        (uuid (org-id-uuid))
+        (temporary-file-directory "./")
+        (tempfile (make-temp-file "sh-"))
+        (context (org-element-property :name (org-element-context))))
+    (org-babel-tangle '(4) tempfile)
+    (org-babel-remove-result)
+
+    (async-start
+     `(lambda ()
+        (prog1
+            (shell-command-to-string (format "bash %s" ,tempfile))
+          (delete-file ,tempfile)))
+     `(lambda (_results)
+        "Code that runs when the async function finishes."
+        (message (format "%s job has finished" ,(or context uuid)))))))
+#+end_src
+
 **** Org Brain
 :PROPERTIES:
 :ID:       094c4fc2-8596-498a-bb4b-d1772e318ce1
