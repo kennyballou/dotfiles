@@ -20,6 +20,7 @@
   #:use-module (kbg services config nixpkgs)
   #:use-module (kbg services config nyxt)
   #:use-module (kbg services config parallel)
+  #:use-module (kbg services config pdfpc)
   #:use-module (kbg services config ssh)
   #:use-module (kbg services config tmux)
   #:use-module (kbg services config vale)
@@ -70,6 +71,7 @@
           nixpkgs-config-service
           nyxt-config-service
           parallel-config-service
+          pdfpc-config-service
           ssh-config-service
           tmux-config-service
           vale-config-service
