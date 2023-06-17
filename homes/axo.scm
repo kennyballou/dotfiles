@@ -32,7 +32,6 @@
  (packages
   (append %kbg-base-development-packages
           (filter-packages (list firefox/wayland) %kbg-desktop-packages)
-          %kbg-games-packages
           %kbg-science-packages
           %kbg-statistics-packages
           %kbg-fonts))
