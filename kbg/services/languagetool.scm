@@ -27,7 +27,7 @@
                    "--languageModel"
                    #$(file-append languagetool-ngram-en "/share/LanguageTool-ngrams/"))
              #:log-file (format #f "~a/languagetool.log"
-                                (or (getenv "XDG_LOG_HOME")
+                                (or (getenv "XDG_STATE_HOME")
                                     (format #f "~a/.local/var/log"
                                             (getenv "HOME"))))))
    (stop #~(make-kill-destructor))))
@@ -65,7 +65,7 @@
                    "9092")
              #:pid-file (format #f "/run/user/~a/yalafi.pid" (getuid))
              #:log-file (format #f "~a/yalafi.log"
-                                (or (getenv "XDG_LOG_HOME")
+                                (or (getenv "XDG_STATE_HOME")
                                     (format #f "~a/.local/var/log"
                                             (getenv "HOME"))))
              #:environment-variables (append (list (string-append

@@ -178,7 +178,7 @@ connect to it.")
                                       (home-emacs-configuration-package config)
                                       "/bin/emacs") "--fg-daemon")
                              #:log-file (string-append
-                                         (or (getenv "XDG_LOG_HOME")
+                                         (or (getenv "XDG_STATE_HOME")
                                              (format #f "~a/.local/var/log"
                                                      (getenv "HOME")))
                                          "/emacs.log")))
