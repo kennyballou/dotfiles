@@ -1,5 +1,8 @@
 # -*- mode: snippet -*-
 # name: i.e.,
 # key: ie
+# Local Variables:
+# require-final-newline: nil
+# End:
 # --
-\textit{i.e.,} $0
+i.e., $0

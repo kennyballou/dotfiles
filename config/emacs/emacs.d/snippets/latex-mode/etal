@@ -1,5 +1,8 @@
 # -*- mode: snippet -*-
 # name: et al.
 # key: etal
+# Local Variables:
+# require-final-newline: nil
+# End:
 # --
-\textit{et~al.} $0
+et~al. $0

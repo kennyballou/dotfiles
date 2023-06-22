@@ -1,5 +1,8 @@
 # -*- mode: snippet -*-
 # name: e.g.,
 # key: eg
+# Local Variables:
+# require-final-newline: nil
+# End:
 # --
-\textit{e.g.,} $0
+e.g., $0
