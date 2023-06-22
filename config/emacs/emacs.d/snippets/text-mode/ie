@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: i.e.,
+# key: ie
+# Local Variables:
+# require-final-newline: nil
+# End:
+# --
+i.e., $0
