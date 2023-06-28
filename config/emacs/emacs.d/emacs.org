@@ -4079,8 +4079,25 @@ http://doc.norang.ca/org-mode.htm
         ("title" "\\lstname")))
 
 (add-to-list 'org-latex-listings-langs '(scheme "Lisp"))
+#+end_src
 
-(add-to-list 'org-latex-default-packages-alist '("" "listings" t))
+#+begin_src elisp
+(setq org-latex-default-packages-alist
+      '(("" "listings" t nil)
+        ("AUTO" "inputenc" t
+         ("pdflatex"))
+        ("T1" "fontenc" t
+         ("pdflatex"))
+        ("" "graphicx" t nil)
+        ("" "longtable" nil nil)
+        ("" "wrapfig" nil nil)
+        ("" "rotating" nil nil)
+        ("normalem" "ulem" t nil)
+        ("" "amsmath" t nil)
+        ("" "amssymb" t nil)
+        ("" "capt-of" nil nil)
+        ("hidelinks" "hyperref" nil nil)))
+#+end_src
 
 (setq org-latex-pdf-process
       '("pdflatex -interaction nonstopmode -output-directory %o %f"
