@@ -4099,11 +4099,9 @@ http://doc.norang.ca/org-mode.htm
         ("hidelinks" "hyperref" nil nil)))
 #+end_src
 
+#+begin_src elisp
 (setq org-latex-pdf-process
-      '("pdflatex -interaction nonstopmode -output-directory %o %f"
-        "bibtex %b"
-        "pdflatex -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -interaction nonstopmode -output-directory %o %f"))
+      '("latexmk -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
 
 #+end_src
 
