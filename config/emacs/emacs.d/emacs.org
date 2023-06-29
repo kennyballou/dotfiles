@@ -2536,7 +2536,7 @@ left to try and get the PATH down to, at most, MAX-LEN."
   (let* ((components (split-string (abbreviate-file-name path)
                                    (f-path-separator)))
          (len (+ (1- (length components))
-                 (reduce '+ components :key 'length)))
+                 (seq-reduce #'+ (seq-map #'length components) 0)))
          (str ""))
     (while (and (> len max-len)
                 (cdr components))
@@ -2545,8 +2545,8 @@ left to try and get the PATH down to, at most, MAX-LEN."
                               (string (elt (car components) 0) ?/)))
             len (- len (1- (length (car components))))
             components (cdr components)))
-    (concat str (reduce
-                 (lambda (a b) (concat a (f-path-separator) b)) components))))
+    (concat str (seq-reduce
+                 (lambda (a b) (concat a (f-path-separator) b)) components ""))))
 
 (defun kb-eshell-prompt ()
   "Modified version of `shk-eshell-prompt-function' from Emacs wiki."
