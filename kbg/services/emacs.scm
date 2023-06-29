@@ -82,7 +82,7 @@
         emacs-xyz:emacs-ebdb
         emacs-editorconfig
         ;; emacs-edts
-        emacs-eglot
+        emacs-xyz:emacs-eglot
         emacs-eglot-java
         emacs-ein
         emacs-elein
