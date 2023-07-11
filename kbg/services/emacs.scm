@@ -125,6 +125,7 @@
         emacs-fullframe
         ;; emacs-geben
         ;; emacs-geben-helm-projectile
+        emacs-gc-stats
         emacs-geiser
         emacs-geiser-guile
         emacs-geiser-racket

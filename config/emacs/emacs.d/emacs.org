@@ -632,6 +632,16 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (use-package diminish)
 #+end_src
 
+*** GC Statistics
+:PROPERTIES:
+:ID:       a65cc73e-bffc-4f7b-a6b8-4829ec71608b
+:END:
+
+#+begin_src elisp
+(use-package emacs-gc-stats
+  :init
+  (emacs-gc-stats-mode +1))
+#+end_src
 
 *** helpful
 :PROPERTIES:
