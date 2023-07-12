@@ -4726,6 +4726,9 @@ not strictly necessary.
            :unnarrowed t)
           ("b" "bibliographic" plain (file "~/.config/emacs/org-roam-templates/BIB-ENTRY")
            :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org" "")
+           :unnarrowed t)
+          ("l" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
+           :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-logbook-${slug}.org" "")
            :unnarrowed t)))
   (org-roam-setup))
 #+end_src
