@@ -4,3 +4,6 @@
 :CREATED:  %U
 :COOKIE_DATA: todo recursive
 :END:
+
+#+BEGIN: gantt :tstart "<today>" :tend "<+3m>" :tunit "month"
+#+END:
