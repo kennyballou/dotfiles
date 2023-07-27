@@ -299,6 +299,7 @@
         emacs-whitespace-cleanup-mode
         emacs-whole-line-or-region
         emacs-with-editor
+        emacs-wordnut
         emacs-xyz:emacs-xr
         emacs-xref-js2
         emacs-yasnippet

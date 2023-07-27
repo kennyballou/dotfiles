@@ -1517,6 +1517,15 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 (bind-key (kbd "C-c h d") #'define-word-at-point)
 #+end_src
 
+**** WordNet
+:PROPERTIES:
+:ID:       0d64e43d-ed0c-4e41-9e1f-86d2728cff59
+:END:
+
+#+begin_src elisp
+(use-package wordnut)
+#+end_src
+
 **** Thesauri
 :PROPERTIES:
 :ID:       a86b1a05-5518-4b80-9bca-94060959b49b
