@@ -294,6 +294,7 @@
         emacs-use-package
         ;; emacs-virtualenvwrapper
         emacs-vterm
+        emacs-xyz:emacs-vundo
         ;; emacs-wgrep-ag
         emacs-whitespace-cleanup-mode
         emacs-whole-line-or-region

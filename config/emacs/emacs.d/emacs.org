@@ -1240,6 +1240,18 @@ https://tuhdo.github.io/helm-intro.html
 (ido-everywhere)
 #+end_src
 
+*** vundo
+:PROPERTIES:
+:ID:       35c51bf3-9a5b-46ce-b787-4f6ab9e141f4
+:END:
+
+#+begin_src elisp
+(use-package vundo
+  :commands (vundo)
+  :config
+  (setq vundo-compact-display t))
+#+end_src
+
 *** Move where I mean
 :PROPERTIES:
 :ID:       264bf804-2c85-4f31-ba01-8881e0f3b033
