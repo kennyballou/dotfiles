@@ -1531,7 +1531,7 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 :ID:       a86b1a05-5518-4b80-9bca-94060959b49b
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package synosaurus
   :delight
   :hook text-mode
