@@ -2753,7 +2753,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
   :delight subword-mode)
 #+end_src
 
-
 **** Semantic Mode
 :PROPERTIES:
 :ID:       9c4fdc58-6a6f-415f-a30e-eea3bcfffd6a
@@ -4195,13 +4194,6 @@ http://doc.norang.ca/org-mode.htm
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
          (file "~/.config/emacs/org-captures/JOURNAL")
          :clock-in t
-         :clock-resume t)
-        ("w" "Work Log" entry (file+olp+datetree kb/org-work-journal-file)
-         (file "~/.config/emacs/org-captures/JOURNAL")
-         :clock-in t
-         :clock-resume t)
-        ("d" "Daily Schedule" entry (file+olp+datetree kb/org-daily-file)
-         (file "~/.config/emacs/org-captures/JOURNAL")
          :clock-resume t)
         ("o" "org-protocol" entry (file kb/org-refile)
          (file "~/.config/emacs/org-captures/ORG-PROTOCOL")
