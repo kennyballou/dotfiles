@@ -143,7 +143,7 @@
                            (service openssh-service-type
                                     (openssh-configuration
                                      (x11-forwarding? #f)
-                                     (password-authentication? #t)
+                                     (password-authentication? #f)
                                      (permit-root-login 'prohibit-password)))
                            (nftables-service "yak")
                            (service singularity-service-type)
