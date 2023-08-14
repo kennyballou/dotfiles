@@ -80,7 +80,7 @@
         aspell-dict-en
         borg
         bash-completion
-        calibre
+        ;; calibre
         enchant
         entr
         exiv2

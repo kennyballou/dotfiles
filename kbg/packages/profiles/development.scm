@@ -54,7 +54,7 @@
    mg
    patch
    patchutils
-   perf
+   ;; perf
    podman
    python-wrapper
    racket
