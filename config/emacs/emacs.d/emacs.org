@@ -17,6 +17,12 @@ Tangle all the things from orgmode!
 ;;; edit this file directly!
 #+end_src
 
+Early require of ~cl-lib~.
+
+#+begin_src elisp
+(require 'cl-lib)
+#+end_src
+
 #+begin_src elisp
 (setq package-enable-at-startup nil)
 (setq frame-inhibit-implied-resize t)
