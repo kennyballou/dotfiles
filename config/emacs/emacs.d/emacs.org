@@ -5039,7 +5039,10 @@ Configuration taken from the tutorial found here:
 (defun kb/msg-to-devnulllabs-p (msg)
   "Is MSG addressed to personal."
   (when msg
-    (mu4e-message-contact-field-matches msg :to "\.*@devnulllabs.io\'")))
+    (mu4e-message-contact-field-matches
+     msg '(:from :to :cc :bcc) (list (rx (seq (* nonl) "@devnulllabs.io"))
+                                     (rx (seq "kennyballou" (* nonl) "@duck.com"))
+                                     (rx (seq "kennethmgballou" (* nonl) "@gmail.com"))))))
 
 (defun kb/devnulllabs-maildir ()
   "Return base maildir for devnulllabs."
@@ -5048,7 +5051,8 @@ Configuration taken from the tutorial found here:
 (defun kb/msg-to-boisestate-p (msg)
   "Is MSG addressed to BSU account."
   (when msg
-    (mu4e-message-contact-field-matches msg :to "kennyballou\.*@(u.)?boisestate.edu\'")))
+    (mu4e-message-contact-field-matches
+     msg '(:from :to :cc :bcc) (rx (seq "kennyballou" (* nonl) "@" (32 (submatch "u.")) "boisestate.edu")))))
 
 (defun kb/boisestate-maildir ()
   "Return base maildir for uboisestate."
@@ -5077,7 +5081,7 @@ Configuration taken from the tutorial found here:
 (setq mu4e-contexts
       `(,(make-mu4e-context
           :name "devnulllabs"
-          :match-func (lambda (msg) (kb/msg-to-devnulllabs-p msg))
+          :match-func #'kb/msg-to-devnulllabs-p
           :vars `((mu4e-root-maildir . ,(kb/devnulllabs-maildir))
                   (user-mail-address . "kb@devnulllabs.io")
                   (user-full-name . "Kenny Ballou")
@@ -5098,7 +5102,7 @@ Configuration taken from the tutorial found here:
                   (mu4e-sent-messages-behavior . delete)))
         ,(make-mu4e-context
           :name "bsu"
-          :match-func (lambda (msg) (kb/msg-to-boisestate-p msg))
+          :match-func #'kb/msg-to-boisestate-p
           :vars `((mu4e-root-maildir . ,(kb/boisestate-maildir))
                   (user-mail-address . "kennyballou@u.boisestate.edu")
                   (user-full-name . "Kenny Ballou")
