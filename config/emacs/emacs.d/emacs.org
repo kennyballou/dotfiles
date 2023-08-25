@@ -2067,6 +2067,10 @@ https://blog.jmthornton.net/p/emacs-project-override"
 #+end_src
 
 #+begin_src elisp
+(use-package rx)
+#+end_src
+
+#+begin_src elisp
 (use-package xr)
 #+end_src
 
