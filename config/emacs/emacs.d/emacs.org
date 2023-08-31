@@ -5157,8 +5157,6 @@ Configuration taken from the tutorial found here:
 ;; http://pragmaticemacs.com/emacs/some-useful-mu4e-shortcuts/
 ;; Add CC line
 (define-key mu4e-compose-mode-map (kbd "C-1 c") #'message-goto-cc)
-
-(setq mu4e-get-mail-command "mbsync -a")
 #+end_src
 
 **** gnus -- Disabled
