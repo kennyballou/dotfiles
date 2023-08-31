@@ -1971,6 +1971,27 @@ https://blog.jmthornton.net/p/emacs-project-override"
   (add-hook 'project-find-functions #'project-root-override))
 #+end_src
 
+*** tabspaces
+:PROPERTIES:
+:ID:       ff24ed0e-ace1-4599-82e9-d6ef146ce3c8
+:END:
+
+#+begin_src elisp
+(use-package tabspaces
+  :hook (after-init . tabspaces-mode)
+  :commands (tabspaces-switch-or-create-workspace
+             tabspaces-open-or-create-project-and-workspace)
+  :custom
+  (tabspaces-keymap-prefix "C-c p")
+  (tabspaces-use-filtered-buffers-as-default t)
+  (tabspaces-default-tab "Default")
+  (tabspaces-remove-to-default t)
+  (tabspaces-include-buffers '("*scratch*"))
+  ;; sessions
+  (tabspaces-session t)
+  (tabspaces-session-auto-restore t))
+#+end_src
+
 *** Grand Unified Debugger
 :PROPERTIES:
 :ID:       f71600a2-9e68-4450-9f38-180d1138274a

@@ -281,6 +281,7 @@
         ;; emacs-swiper-helm
         emacs-switch-window
         emacs-synosaurus
+        emacs-tabspaces
         emacs-tagedit
         emacs-toml-mode
         emacs-transmission
