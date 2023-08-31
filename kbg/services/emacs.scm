@@ -62,6 +62,7 @@
         emacs-coverlay
         ;; emacs-css-eldoc
         emacs-xyz:emacs-csv-mode
+        emacs-cwl-mode
         emacs-d-mode
         emacs-daemons
         emacs-dap-mode
@@ -198,6 +199,10 @@
         emacs-mmm-mode
         emacs-xyz:emacs-modus-themes
         emacs-mpdel
+        emacs-mu4e-maildirs-extension
+        emacs-mu4e-marker-icons
+        emacs-mu4e-overview
+        emacs-mu4e-query-fragments
         emacs-multiple-cursors
         emacs-mwim
         emacs-native-complete
@@ -217,6 +222,7 @@
         emacs-xyz:emacs-org-contrib
         emacs-org-dblock-gantt
         emacs-org-gcal
+        emacs-org-inline-pdf
         emacs-org-mime
         emacs-xyz:emacs-org-pandoc-import
         emacs-org-pomodoro
@@ -301,6 +307,7 @@
         emacs-whole-line-or-region
         emacs-with-editor
         emacs-wordnut
+        emacs-xyz:emacs-x509-mode
         emacs-xyz:emacs-xr
         emacs-xref-js2
         emacs-yasnippet
