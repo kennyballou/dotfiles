@@ -4995,6 +4995,21 @@ Configuration borrowed from the tutorial found here:
 (add-to-list 'mm-body-charset-encoding-alist '(utf-8 . base64))
 #+end_src
 
+***** supercite
+:PROPERTIES:
+:ID:       23adc7c7-1dba-493e-afb6-56f86c7b60a7
+:END:
+
+#+begin_src elisp
+(use-package supercite
+  :config
+  (setq sc-preferred-attribution-list '("x-attribution" "firstname" "initials" "emailname"))
+  (setq sc-citation-leader "")
+  (setq sc-confirm-always-p nil)
+  (setq sc-preferred-header-style 0)
+  (setq sc-auto-fill-region-p nil))
+#+end_src
+
 **** mu4e
 :PROPERTIES:
 :ID:       5a1f2181-6b0f-4b78-a648-54ced20d028b
