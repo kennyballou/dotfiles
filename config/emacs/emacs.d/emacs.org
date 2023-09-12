@@ -5078,10 +5078,11 @@ Configuration taken from the tutorial found here:
 (defun kb/msg-to-devnulllabs-p (msg)
   "Is MSG addressed to personal."
   (when msg
-    (mu4e-message-contact-field-matches
-     msg '(:from :to :cc :bcc) (list (rx (seq (* nonl) "@devnulllabs.io"))
-                                     (rx (seq "kennyballou" (* nonl) "@duck.com"))
-                                     (rx (seq "kennethmgballou" (* nonl) "@gmail.com"))))))
+    (or (mu4e-message-contact-field-matches
+         msg '(:from :to :cc :bcc) (list (rx (seq (* nonl) "@devnulllabs.io"))
+                                         (rx (seq "kennyballou" (* nonl) "@duck.com"))
+                                         (rx (seq "kennethmgballou" (* nonl) "@gmail.com"))))
+        (string-match-p "^/devnulllabs.io" (mu4e-message-field msg :maildir)))))
 
 (defun kb/devnulllabs-maildir ()
   "Return base maildir for devnulllabs."
@@ -5090,8 +5091,13 @@ Configuration taken from the tutorial found here:
 (defun kb/msg-to-boisestate-p (msg)
   "Is MSG addressed to BSU account."
   (when msg
-    (mu4e-message-contact-field-matches
-     msg '(:from :to :cc :bcc) (rx (seq "kennyballou" (* nonl) "@" (32 (submatch "u.")) "boisestate.edu")))))
+    (or (mu4e-message-contact-field-matches
+         msg '(:from :to :cc :bcc) (rx (seq "kennyballou"
+                                            (* nonl)
+                                            "@"
+                                            (32 (submatch "u."))
+                                            "boisestate.edu")))
+        (string-match-p "^/u.boisestate.edu" (mu4e-message-field msg :maildir)))))
 
 (defun kb/boisestate-maildir ()
   "Return base maildir for uboisestate."
