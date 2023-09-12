@@ -799,12 +799,12 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (require 'init-preload-local nil t)
 #+end_src
 
-*** wgrep -- Disabled
+*** wgrep
 :PROPERTIES:
 :ID:       bd064283-ecbc-42e8-8c81-1cd8a3ae3a66
 :END:
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package wgrep)
 #+end_src
 
