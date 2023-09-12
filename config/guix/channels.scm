@@ -2,7 +2,7 @@
 
 (list (channel
        (name 'guix)
-       (url "https://git.savannah.gnu.org/git/guix.git")
+       (url "https://git.sr.ht/~kennyballou/guix.git")
        (branch "master")
        (commit
         "d010fc6597731a663473b79736766c85d9f7c381")
