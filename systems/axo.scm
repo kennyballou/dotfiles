@@ -70,7 +70,6 @@
                           "vg0-root"
                           "vg0-swap"
                           "vg0-tmp"
-                          "vg0-var"
                           "vg0-var"))
            (type lvm-device-mapping))))
 
