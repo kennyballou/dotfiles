@@ -2912,6 +2912,11 @@ Most shell applications accept Perl Compatible Regular Expressions."
          ("C-c e g d" . #'eglot-find-declaration)
          ("C-c e g r" . #'eglot-find-implementation)
          ("C-c e g t" . #'eglot-find-typeDefinition)
+         ("C-c e x r" . #'xref-find-references)
+         ("C-c e x d" . #'xref-find-definitions)
+         ("C-c e x 4 d" . #'xref-find-definitions-other-window)
+         ("C-c e x b" . #'xref-go-back)
+         ("C-c e x f" . #'xref-go-forward)
          ("C-c e r" . #'eglot-rename))
   :config
   (setq eglot-report-progress t)
