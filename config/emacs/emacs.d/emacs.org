@@ -37,6 +37,22 @@ since it can be exceedingly easy to confuse it.
 (message (emacs-version))
 #+end_src
 
+Logging types
+
+#+begin_src elisp
+(setq byte-compile-warnings '(not obsolete))
+(setq warning-suppress-types '((comp) (bytecomp)))
+#+end_src
+
+Early Frame Settings
+
+https://git.sr.ht/~ashton314/emacs-bedrock/tree/main/item/early-init.el
+
+#+begin_src elisp
+(setq frame-resize-pixelwise t)
+(tool-bar-mode -1)
+#+end_src
+
 Early Theme configuration
 
 #+begin_src elisp
