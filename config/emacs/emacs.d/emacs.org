@@ -3280,6 +3280,8 @@ Most shell applications accept Perl Compatible Regular Expressions."
                                           "-XX:+UseStringDeduplication"
                                           "-XX:AdaptiveSizePolicyWeight=90"
                                           "-Dsun.zip.disableMemoryMapping=true"))
+  (setq eglot-java-junit-platform-console-standalone-jar
+        (concat user-emacs-directory "share/junit-platform-console-standalone.jar"))
   :init
   (defun kb/java-mode ()
     "Configure java mode settings."

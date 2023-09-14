@@ -344,6 +344,8 @@
                                         #:recursive? #t))
                           (,(emacs-file "language-tool") ,languagetool)
                           (,(emacs-file "share/eclipse.jdt.ls") ,jdtls)
+                          (,(emacs-file "share/junit-platform-console-standalone.jar")
+                           ,(file-append java-junit-platform-console-standalone "/junit-platform-console-standalone-1.10.0.jar"))
                           (,(emacs-file "snippets")
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/snippets")
                                         #:recursive? #t))
