@@ -5519,6 +5519,12 @@ _dR_:   Disable repeat
   (async-bytecomp-package-mode t))
 #+end_src
 
+#+begin_src elisp
+(use-package async-status
+  :after async
+  :diminish)
+#+end_src
+
 *** Init Local
 :PROPERTIES:
 :ID:       3bb4b7cf-7889-4add-bb21-e47ab9ad6df2

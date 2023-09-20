@@ -31,6 +31,7 @@
         emacs-anzu
         emacs-awqat
         emacs-async
+        emacs-async-status
         emacs-xyz:emacs-auctex
         emacs-auctex-latexmk
         emacs-autodisass-java-bytecode
