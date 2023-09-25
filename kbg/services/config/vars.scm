@@ -10,7 +10,9 @@
   (list (simple-service 'home-vars
                         home-environment-variables-service-type
                         `(("_JAVA_OPTIONS" . "-Dawt.useSystemAAFontSettings=on")
-                          ("ASPELL_CONF" . "per-conf ${XDG_CONFIG_HOME}/aspell/aspell.conf; personal ${XDG_CONFIG_HOME}/aspell/en.pws; repl ${XDG_CONFIG_HOME}/aspell/en.prepl")
+                          ("ASPELL_CONF" . ,(string-append "per-conf ${XDG_CONFIG_HOME}/aspell/aspell.conf;"
+                                                           "personal ${XDG_CONFIG_HOME}/aspell/en.pws;"
+                                                           "repl ${XDG_CONFIG_HOME}/aspell/en.prepl"))
                           ("CALIBRE_USE_DARK_PALETTE" . "1")
                           ("EDITOR" . "emacsclient")
                           ("GUILE_DRMAA_LIBRARY" . ,(file-append slurm-drmaa "/lib/libdrmaa.so"))
