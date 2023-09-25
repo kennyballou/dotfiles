@@ -7,7 +7,6 @@
   #:use-module (kbg services config chktex)
   #:use-module (kbg services config direnv)
   #:use-module (kbg services config email)
-  #:use-module (kbg services config flatpak)
   #:use-module (kbg services config git)
   #:use-module (kbg services config global)
   #:use-module (kbg services config gnupg)
@@ -35,7 +34,6 @@
           chktex-config-service
           direnv-config-service
           email-config-service
-          flatpak-config-service
           git-config-service
           ;; global-config-service
           gnupg-config-service
@@ -58,7 +56,6 @@
           chktex-config-service
           direnv-config-service
           email-config-service
-          flatpak-config-service
           git-config-service
           ;; global-config-service
           gnupg-config-service
@@ -107,7 +104,6 @@
 (define koi-configs
   (append direnv-config-service
           email-config-service
-          flatpak-config-service
           git-config-service
           ;; global-config-service
           gnupg-config-service
