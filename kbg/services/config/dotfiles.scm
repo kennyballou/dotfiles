@@ -12,6 +12,7 @@
   #:use-module (kbg services config gnupg)
   #:use-module (kbg services config gnuplot)
   #:use-module (kbg services config guix)
+  #:use-module (kbg services config guile)
   #:use-module (kbg services config haskell)
   #:use-module (kbg services config kitty)
   #:use-module (kbg services config ledger)
@@ -61,6 +62,7 @@
           gnupg-config-service
           gnuplot-config-service
           guix-config-service
+          guile-config-service
           haskell-config-service
           home-vars-service
           kitty-config-service
