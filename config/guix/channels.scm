@@ -5,7 +5,7 @@
        (url "https://git.sr.ht/~kennyballou/guix.git")
        (branch "master")
        (commit
-        "4cb2e08b8eb1acc824b72ec17b483d7d85b5af68")
+        "4f35ff1275e05be31f5d41464ccf147e9dbfd016")
        (introduction
         (make-channel-introduction
          "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -16,7 +16,7 @@
        (url "https://gitlab.com/nonguix/nonguix")
        (branch "master")
        (commit
-        "6f31422f84965788311cad8cf98538cddafc6ac8")
+        "bb184bd0a8f91beec3a00718759e96c7828853de")
        (introduction
         (make-channel-introduction
          "ca0837cc70d5b4d3fce83b34c31b3378f60f4498"
