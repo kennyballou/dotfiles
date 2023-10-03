@@ -1004,6 +1004,7 @@ Disable mouse open files.
                                      ("\\.xlsx\\'" "libreoffice")
                                      ("\\.csv\\'" "libreoffice")
                                      ("\\.tsv\\'" "libreoffice")
+                                     ("\\.odt\\'" "libreoffice")
                                      ("\\.jpg\\'" "eog")
                                      ("\\.png\\'" "eog")
                                      ("\\.svg\\'" "eog")))
