@@ -4374,6 +4374,9 @@ Update project status when updating the cookie statistics.
                          (org-tags-match-list-sublevels nil))))
                ((org-agenda-tag-filter '("-CLIENT")))
                ("/home/kb/.cache/agenda.html"))
+              ("u" "Unscored Tasks" tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE"
+               ((search "Effort=0")
+                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
               ("P" . "Projects")
               ("Po" "Open Projects" search "+PROJECT_STATUS {open}")
               ("Pc" "Cancelled Projects" search "+PROJECT_STATUS {cancelled}")
