@@ -4345,6 +4345,8 @@ Update project status when updating the cookie statistics.
 (setq org-agenda-custom-commands
       (quote (("M" "3 Month" agenda "3 month view"
                ((org-agenda-span 90)))
+              ("t" "Todo" tags-todo "-CANCELLED-INACTIVE"
+               ((org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
               ("D" "Deadlines" agenda "Upcoming Deadlines over the next 3 months"
                ((org-agenda-span 90)
                 (org-deadline-warning-days 90)
@@ -4372,7 +4374,8 @@ Update project status when updating the cookie statistics.
                 (search "+PROJECT_STATUS {open}"
                         ((org-agenda-overriding-header "Open Projects:")
                          (org-tags-match-list-sublevels nil))))
-               ((org-agenda-tag-filter '("-CLIENT")))
+               ((org-agenda-tag-filter '("-CLIENT"))
+                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM"))
                ("/home/kb/.cache/agenda.html"))
               ("u" "Unscored Tasks" tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE"
                ((search "Effort=0")
