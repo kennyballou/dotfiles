@@ -262,7 +262,6 @@
         ;; emacs-realgud-jdb
         emacs-reformatter
         emacs-regex-tool
-        emacs-repl-toggle
         emacs-restclient
         emacs-robe
         ;; emacs-rspec-mode
