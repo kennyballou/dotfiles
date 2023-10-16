@@ -473,7 +473,18 @@ $ emacsclient -c"
 (setq-default flyspell-incorrect-hook nil)
 (setq-default flyspell-issue-welcome-flag nil)
 (setq-default global-auto-revert-non-file-buffers t)
-(setq-default grep-template "ugrep --color=always -0Iinr -e <R>")
+;; I think these are equivalent, but spell them out anyways.
+;; https://manueluberti.eu/2022/08/07/emacs-ugrep.html
+(setq-default grep-template (string-join '("ugrep"
+                                           "--color=always"
+                                           "--ignore-binary"
+                                           "--ignore-case"
+                                           "--include=<F>"
+                                           "--line-number"
+                                           "--null"
+                                           "--recursive"
+                                           "--regexp=<R>")
+                                         " "))
 (setq-default highlight-nonselected-windows nil)
 (setq-default hippie-expand-verbose nil)
 (setq-default history-delete-duplicates t)
