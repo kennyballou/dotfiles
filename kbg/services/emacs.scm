@@ -201,7 +201,6 @@
         emacs-mmm-mode
         emacs-xyz:emacs-modus-themes
         emacs-mpdel
-        emacs-mu4e-maildirs-extension
         emacs-mu4e-marker-icons
         emacs-mu4e-overview
         emacs-mu4e-query-fragments
