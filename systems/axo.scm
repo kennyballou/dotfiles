@@ -165,7 +165,10 @@
                             (xorg-configuration
                              (keyboard-layout keyboard-layout)
                              (extra-config (list %xorg-libinput-config))))
-                           (service nix-service-type)
+                           (service nix-service-type
+                                    (nix-configuration
+                                     (sandbox #t)
+                                     (extra-config '("trusted-users = root kb"))))
                            (service pcscd-service-type)
                            (service earlyoom-service-type)
                            (service tlp-service-type
