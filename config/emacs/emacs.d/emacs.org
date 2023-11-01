@@ -2688,6 +2688,9 @@ left to try and get the PATH down to, at most, MAX-LEN."
 
 (setenv "PAGER" "")
 
+;; Add eshell fringe
+(add-hook 'eshell-mode-hook #'eshell-fringe-status-mode)
+
 ;; disable slime in eshell
 (add-hook 'eshell-mode-hook
           (lambda () (setq slime-mode nil)))

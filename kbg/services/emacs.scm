@@ -98,6 +98,7 @@
         emacs-envrc
         emacs-epkg
         ;; emacs-erlang
+        emacs-eshell-fringe-status
         emacs-eshell-syntax-highlighting
         ;; emacs-eshell-vterm
         emacs-ess
