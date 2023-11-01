@@ -4873,6 +4873,20 @@ not strictly necessary.
 (use-package org-web-tools)
 #+end_src
 
+**** Org Export
+:PROPERTIES:
+:ID:       f1266b5f-ec8c-4e00-9b3f-0f8f608fd892
+:END:
+
+#+begin_src elisp
+(add-to-list 'org-latex-classes
+             '("moderncv" "\\documentclass[11pt]{moderncv}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph{%s}")))
+#+end_src
+
 *** Citar
 :PROPERTIES:
 :ID:       52d5f4a2-8c77-499a-bb76-79181eb274e2
