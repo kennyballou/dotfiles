@@ -3046,6 +3046,26 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (flycheck-clojure-setup))
 #+end_src
 
+**** Coq
+:PROPERTIES:
+:ID:       ada554a8-84e6-4a45-bd97-39350d901315
+:END:
+
+https://emacs.stackexchange.com/a/36156/17096
+
+Add some extra symbols to prettify for Coq.
+
+#+begin_src elisp
+(defun kb/push-coq-pretty-symbols-list ()
+  (mapc (lambda (pair) (push pair prettify-symbols-alist))
+        '(("~" . ?¬)
+          ("nat" . ?ℕ)
+          ("*" . ?×))))
+
+(add-hook 'coq-mode-hook #'kb/push-coq-pretty-symbols-list)
+(add-hook 'coq-goals-mode-hook #'kb/push-coq-pretty-symbols-list)
+#+end_src
+
 **** CSV
 :PROPERTIES:
 :ID:       a53fd8b3-53ce-4409-8a0c-30ad0a9d7f79
