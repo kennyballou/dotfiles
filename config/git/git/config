@@ -51,3 +51,6 @@
 	templatedir = /home/kb/.config/git/template.d
 [github]
 	user = kennyballou
+[diff "sqlite"]
+	binary = true
+	textconv = "echo .dump | sqlite3"
