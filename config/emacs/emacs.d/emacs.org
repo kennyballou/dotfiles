@@ -5130,6 +5130,7 @@ Configuration taken from the tutorial found here:
 ;; so set to epg and all was good!
 ;; to sign a mail: M-x mml-secure-sign-pgpmime
 (setq mml2014-use 'epg)
+(add-hook 'dired-mode-hook #'turn-on-gnus-dired-mode)
 #+end_src
 
 #+begin_src elisp
