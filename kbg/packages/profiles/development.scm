@@ -66,5 +66,4 @@
    strace
    subversion
    tokei
-   ugrep
    vim))

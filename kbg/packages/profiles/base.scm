@@ -37,6 +37,7 @@
   #:use-module (gnu packages rsync)
   #:use-module (gnu packages rust-apps)
   #:use-module (gnu packages screen)
+  #:use-module (gnu packages search)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages shells)
   #:use-module (gnu packages shellutils)
@@ -117,6 +118,7 @@
         time
         tmux
         tree
+        ugrep
         unzip
         util-linux
         w3m
