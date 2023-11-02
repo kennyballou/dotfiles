@@ -182,7 +182,11 @@
                                      (energy-perf-policy-on-ac "performance")
                                      (energy-perf-policy-on-bat "powersave")
                                      (pcie-aspm-on-ac "performance")
-                                     (pcie-aspm-on-bat "powersupersave")))
+                                     (pcie-aspm-on-bat "powersupersave")
+                                     (start-charge-thresh-bat0 70)
+                                     (start-charge-thresh-bat1 70)
+                                     (stop-charge-thresh-bat0 95)
+                                     (stop-charge-thresh-bat1 95)))
                            (nftables-service "axo")
                            (simple-service 'my-cron-jobs
                                            mcron-service-type
