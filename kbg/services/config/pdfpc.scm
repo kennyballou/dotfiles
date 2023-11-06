@@ -9,4 +9,4 @@
   (list (simple-service 'pdfpc-config
                         home-files-service-type
                         `((".config/pdfpc/pdfpcrc"
-                           ,(mixed-text-file "pdfprc" "option pointer-color #268bd2\n"))))))
+                           ,(mixed-text-file "pdfprc" (string-join (list "option pointer-color #268bd2") "\n")))))))
