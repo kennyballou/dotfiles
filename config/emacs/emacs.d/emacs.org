@@ -3757,9 +3757,10 @@ indentation rules."
 :END:
 
 #+begin_src elisp
-(setq geiser-active-implementations '(guile racket))
-
-(use-package geiser)
+(use-package geiser
+  :custom
+  (geiser-active-implementations '(guile racket))
+  (geiser-default-implementation 'guile))
 #+end_src
 
 **** Slurm
