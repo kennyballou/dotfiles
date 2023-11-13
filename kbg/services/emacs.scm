@@ -37,8 +37,6 @@
         emacs-autodisass-java-bytecode
         emacs-avy
         emacs-bash-completion
-        ;; emacs-bbdb
-        ;; emacs-bbdb-vcard
         ;; emacs-bind-key
         emacs-bibtex-to-plain-text
         emacs-bnf-mode
