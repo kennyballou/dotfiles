@@ -1,0 +1,118 @@
+* TODO Weekly Review
+SCHEDULED: %T
+:PROPERTIES:
+:header-args:elisp: :results none
+:Effort:   1h
+:END:
+
+** Get Clear [0/4]
+:PROPERTIES:
+:END:
+
+- [-] Collect Loose Papers and Materials
+
+- [-] Get "IN" to Zero
+
+  - [ ] Papers
+
+  - [ ] Physical Notebook
+
+  - [ ] Physical Objects
+
+  - [ ] Text Messages
+
+  - [X] Voice Mail
+
+  - [ ] Email Inboxes
+
+  #+begin_src elisp
+  (mu4e)
+  #+end_src
+
+  - [ ] Google Keep Inbox
+
+  #+begin_src elisp
+  (browse-url "https://keep.google.com/u/0/?")
+  #+end_src
+
+  - [ ] Browser Tabs
+
+  - [ ] Downloads Folder
+
+  #+begin_src elisp
+  (dired "~/downloads" "-lht")
+  #+end_src
+
+  - [ ] Desktop
+
+  #+begin_src elisp
+  (dired "~/desktop" "-lht")
+  #+end_src
+
+- [ ] Empty Your Head: New projects, tasks, waiting-for, someday/maybes?
+
+- [ ] [[file:~/.org/refile.org][Refile]]
+
+** Get Current [0/10]
+:PROPERTIES:
+:END:
+
+- [ ] Review Previous and Upcoming Calendar Data:
+
+- [ ] Review Previous Weekly Notes
+
+  #+begin_src elisp
+  (kb/org-prev-weekly-notes)
+  #+end_src
+
+- [ ] Create New Weekly Notes
+
+  #+begin_src elisp
+  (kb/org-weekly-notes)
+  #+end_src
+
+- [ ] Review Action List:
+
+  #+begin_src elisp
+  (org-agenda "TODO" "T")
+  #+end_src
+
+- [ ] Review Waiting For List:
+
+  #+begin_src elisp
+  (org-agenda "WAITING" "T")
+  #+end_src
+
+- [ ] Review Project Lists:
+
+- [ ] Review Stuck Projects
+
+- [ ] Archive completed or inactive projects
+
+- [ ] Update Budget
+
+  - [ ] [[file:~/.org/ledger/journal.ledger][Personal Ledger]]
+
+  - [ ] [[file:~/.org/ledger/devnulllabs.ledger][/DEV/NULL LABS Ledger]]
+
+- [ ] Review Any Relevant Checklists
+
+** Get Creative [0/4]
+:PROPERTIES:
+:END:
+
+- [ ] Review [[file:~/.org/icebox.org][Icebox]]
+
+- [ ] Browse Random Org Node
+
+  #+begin_src elisp
+  (org-roam-node-random)
+  #+end_src
+
+- [ ] Be creative and courageous:
+
+  Are there any new wonderful, harebrained, creative, thought-provoking,
+  risk-taking ideas you can capture and add into your system or "external
+  brain"?
+
+- [ ] Clock out.

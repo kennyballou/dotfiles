@@ -4299,6 +4299,9 @@ http://doc.norang.ca/org-mode.htm
          (file "~/.config/emacs/org-captures/PROJECT")
          :clock-in t
          :clock-resume t)
+        ("w" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
+         :immediate-finish t)
         ("a" "Contact" entry (file+olp kb/org-contacts "unsorted")
          (file "~/.config/emacs/org-captures/CONTACT")
          :clock-resume t)
