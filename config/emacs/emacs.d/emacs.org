@@ -4835,20 +4835,21 @@ not strictly necessary.
          ("C-c n I" . org-roam-node-insert-immediate)
          ("C-c n c a" . org-roam-alias-add)
          ("C-c n c r" . org-roam-ref-add))
+  :custom
+  (org-roam-capture-templates
+   '(("d" "default" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org" "")
+      :unnarrowed t)
+     ("b" "bibliographic" plain (file "~/.config/emacs/org-roam-templates/BIB-ENTRY")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org" "")
+      :unnarrowed t)
+     ("c" "crypt" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org.gpg" "")
+      :unnarrowed t)
+     ("l" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-logbook-${slug}.org" "")
+      :unnarrowed t)))
   :config
-  (setq org-roam-capture-templates
-        '(("d" "default" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
-           :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org" "")
-           :unnarrowed t)
-          ("b" "bibliographic" plain (file "~/.config/emacs/org-roam-templates/BIB-ENTRY")
-           :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org" "")
-           :unnarrowed t)
-          ("c" "crypt" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
-           :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-${slug}.org.gpg" "")
-           :unnarrowed t)
-          ("l" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
-           :if-new (file+head "%<%Y>/%<%Y%m>/%<%y%m%d%H%M%S>-logbook-${slug}.org" "")
-           :unnarrowed t)))
   (org-roam-setup))
 #+end_src
 
