@@ -54,3 +54,5 @@
 [diff "sqlite"]
 	binary = true
 	textconv = "echo .dump | sqlite3"
+[diff "gpg"]
+	textconv = "gpg --no-tty --quiet --decrypt"
