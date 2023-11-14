@@ -314,6 +314,57 @@ $ emacsclient -c"
                                     #'kb/dbus-handle-gnome-session-manager-ext))
 #+end_src
 
+*** Desktop
+:PROPERTIES:
+:ID:       09057ba9-5736-453f-b840-344ecd3ab64e
+:END:
+
+#+begin_src elisp
+(use-package desktop
+  :custom
+  (desktop-path (list user-emacs-directory))
+  (desktop-restore-frames nil)
+  (desktop-auto-save-timeout 30)
+  (desktop-restore-eager 10)
+  (desktop-files-not-to-save
+   "\\(^/[^/:]*:\\|(ftp)$\\)|\\(^*.pdf$\\)\\|\\(^*.jpg$\\)\\|\\(^*.png$\\)")
+  (desktop-globals-to-save
+   '((comint-input-ring . 50)
+     (compile-history . 30)
+     desktop-missing-file-warning
+     (dired-regexp-history . 20)
+     (extended-command-history . 30)
+     (face-name-history . 20)
+     (file-name-history . 100)
+     (grep-find-history . 30)
+     (grep-history . 30)
+     (ido-buffer-history . 100)
+     (ido-last-directory-list . 100)
+     (ido-work-directory-list . 100)
+     (ido-work-file-list . 100)
+     (ivy-history . 100)
+     (magit-read-rev-history . 50)
+     (minibuffer-history . 50)
+     (org-clock-history . 50)
+     (org-refile-history . 50)
+     (org-tags-history . 50)
+     (query-replace-history . 60)
+     (read-expression-history . 60)
+     (regexp-history . 60)
+     (regexp-search-ring . 20)
+     register-alist
+     (search-ring . 20)
+     (shell-command-history . 50)
+     tags-file-name
+     tags-table-list))
+  :init
+  (desktop-save-mode 1))
+#+end_src
+
+#+begin_src elisp
+(add-hook 'after-init-hook (lambda () (savehist-mode t)))
+#+end_src
+
 *** Emacs Defaults
 :PROPERTIES:
 :ID:       51b73308-55a1-4d0d-9c9f-615d067cddc0
@@ -1999,12 +2050,12 @@ https://blog.jmthornton.net/p/emacs-project-override"
   (add-hook 'project-find-functions #'project-root-override))
 #+end_src
 
-*** tabspaces
+*** tabspaces (disabled!)
 :PROPERTIES:
 :ID:       ff24ed0e-ace1-4599-82e9-d6ef146ce3c8
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package tabspaces
   :hook (after-init . tabspaces-mode)
   :commands (tabspaces-switch-or-create-workspace

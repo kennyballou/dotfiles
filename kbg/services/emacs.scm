@@ -269,7 +269,6 @@
         emacs-rustic
         ;; emacs-sass-mode
         ;; emacs-scss-mode
-        ;; emacs-session
         emacs-shroud
         emacs-shx
         emacs-simple-httpd
