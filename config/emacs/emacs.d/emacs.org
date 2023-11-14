@@ -1927,7 +1927,7 @@ https://matthewbauer.us/blog/bauer.html
   (git-commit-summary-max-length 50))
 #+end_src
 
-*** Projectile
+*** Projectile (disabled!)
 :PROPERTIES:
 :ID:       ef251479-852f-429a-80be-556cafaefe76
 :END:
