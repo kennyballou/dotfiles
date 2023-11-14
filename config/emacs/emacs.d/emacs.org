@@ -4302,9 +4302,6 @@ http://doc.norang.ca/org-mode.htm
         ("w" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
          :immediate-finish t)
-        ("a" "Contact" entry (file+olp kb/org-contacts "unsorted")
-         (file "~/.config/emacs/org-captures/CONTACT")
-         :clock-resume t)
         ))
 
 (setq org-capture-templates-contexts
@@ -5003,14 +5000,14 @@ Remove unencrypted files from the list of [[help:auth-sources][auth-sources]]:
 :ID:       49e301c9-cdaa-4890-a3be-34b17d050b05
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package org-contacts
   :after org
   :config
   (setq org-contacts-files (list kb/org-contacts)))
 #+end_src
 
-**** BBDB
+**** E(BBDB)
 :PROPERTIES:
 :ID:       2c9fbc3f-9a6d-478b-b70e-3b21f0084d59
 :END:
@@ -5035,6 +5032,22 @@ https://emacs-fu.blogspot.com/2009/08/managing-e-mail-addresses-with-bbdb.html
   (setq bbdb/mail-auto-create-p #'bbdb-ignore-some-messages-hook)
   (setq bbdb-ignore-some-messages-alist
         (quote (("From" . "no.?reply\\|DAEMON\\|daemon\\|")))))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb
+  :custom
+  (ebdb-sources "~/.org/ebdb"))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb-mu4e
+  :after (ebdb mu4e))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb-message
+  :after (ebdb-mu4e))
 #+end_src
 
 **** Email
@@ -5144,10 +5157,6 @@ Configuration taken from the tutorial found here:
 (setq mu4e-view-use-old nil)
 (setq mu4e-headers-include-releated t)
 (setq mu4e-headers-skip-duplicates t)
-(add-to-list 'mu4e-headers-actions
-             '("org-contact-add" . mu4e-action-add-org-contact) t)
-(add-to-list 'mu4e-view-actions
-             '("org-contact-add" . mu4e-action-add-org-contact) t)
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
 ;; so set to epg and all was good!
