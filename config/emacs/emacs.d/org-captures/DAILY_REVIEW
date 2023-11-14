@@ -1,0 +1,72 @@
+* TODO Daily Review
+SCHEDULED: %T
+:PROPERTIES:
+:header-args:elisp: :results none
+:Effort:   0h 30min
+:END:
+
+** Get Clear [0/2]
+:PROPERTIES:
+:END:
+
+- [-] Get "IN" to Zero
+
+  - [ ] Text Messages
+
+  - [X] Voice Mail
+
+  - [ ] Email Inboxes
+
+  #+begin_src elisp
+  (mu4e)
+  #+end_src
+
+  - [ ] Google Keep Inbox
+
+  #+begin_src elisp
+  (browse-url "https://keep.google.com/u/0/?")
+  #+end_src
+
+  - [ ] Browser Tabs
+
+- [ ] [[file:~/.org/refile.org][Refile]]
+
+** Get Current [0/4]
+:PROPERTIES:
+:END:
+
+- [ ] Review upcoming calendar entries
+
+  - [ ] Add entries for upcoming meetings
+
+- [ ] Review Weekly Notes
+
+  #+begin_src elisp
+  (kb/org-weekly-notes)
+  #+end_src
+
+- [ ] Review Yesterdays's Daily Notes
+
+  [[file:~/.org/logbook.org][Logbook]]
+
+- [ ] Schedule Tasks
+
+- [ ] Review Any Relevant Checklists
+
+** Get Creative [0/3]
+:PROPERTIES:
+:END:
+
+- [ ] Browse Random Org Node
+
+  #+begin_src elisp
+  (org-roam-node-random)
+  #+end_src
+
+- [ ] Be creative and courageous:
+
+  Are there any new wonderful, harebrained, creative, thought-provoking,
+  risk-taking ideas you can capture and add into your system or "external
+  brain"?
+
+- [ ] Clock out.
