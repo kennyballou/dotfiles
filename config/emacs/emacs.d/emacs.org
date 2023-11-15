@@ -1575,12 +1575,7 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 #+end_src
 
 #+begin_src elisp
-
-
 (diminish 'abbrev-mode)
-(diminish 'eldoc-mode)
-
-
 #+end_src
 
 **** Dictionary
@@ -2880,6 +2875,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package eldoc
+  :diminish
   :config
   (setq eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit))
 #+end_src
