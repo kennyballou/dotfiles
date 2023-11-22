@@ -756,9 +756,10 @@ Do not make me type ~C-q SPC~ to insert spaces!
 
 #+begin_src elisp
 (use-package circadian
-  :config
-  (setq circadian-themes '(("08:00" . modus-operandi)
-                           ("19:00" . modus-vivendi)))
+  :custom
+  (circadian-themes '(("07:00" . modus-operandi)
+                      ("19:00" . modus-vivendi)))
+  :init
   (circadian-setup))
 #+end_src
 
