@@ -3886,14 +3886,17 @@ indentation rules."
 #+begin_src elisp
 (use-package reftex
   :commands turn-on-reftex
+  :custom
+  (reftex-enable-partial-scans t)
+  (reftex-save-parse-info t)
+  (reftex-use-multiple-selection-buffers t)
+  (bibtex-entry-format '(opts-or-alts required-fields numerical-fields realign braces))
+  (bibtex-align-at-equal-sign t)
   :config
-  (setq reftex-plugin-into-AUCTeX t)
-  (setq reftex-enable-partial-scans t)
-  (setq reftex-save-parse-info t)
-  (setq reftex-use-multiple-selection-buffers t)
-  (setq bibtex-entry-format '(opts-or-alts required-fields numerical-fields realign braces))
-  (setq bibtex-align-at-equal-sign t))
+  (setq reftex-plugin-into-AUCTeX t))
+#+end_src
 
+#+begin_src elisp
 (use-package tex
   :mode ("\\.tex\\'" . LaTeX-mode)
   :init
@@ -3902,78 +3905,44 @@ indentation rules."
     (turn-on-reftex)
     (LaTeX-math-mode t)
     (reftex-isearch-minor-mode t)
-    (flycheck-select-checker 'tex-chktex)
-    (setq TeX-PDF-mode t)
-    (setq TeX-source-correlate-start-server t))
+    (flycheck-select-checker 'tex-chktex))
   ;; temporary fix for auctex-latexmk tex-buf issue.
   ;; https://github.com/tom-tan/auctex-latexmk/issues/44
   (provide 'tex-buf)
+  :custom
+  (TeX-PDF-mode t)
+  (TeX-source-correlate-start-server t)
+  (TeX-parse-self t)
+  (TeX-auto-save t)
+  (TeX-save-query nil)
+  (LaTeX-eqnarray-label "eq")
+  (LaTeX-equation-label "eq")
+  (LaTeX-figure-label "fig")
+  (LaTeX-table-label "tab")
+  (LaTeX-myChapter-label "chap")
+  (TeX-newline-function #'reindent-then-newline-and-indent)
+  (LaTeX-section-hook '(LaTeX-section-heading
+                        LaTeX-section-title
+                        LaTeX-section-toc
+                        LaTeX-section-section
+                        LaTeX-section-label))
+  (TeX-view-program-selection '(((output-dvi has-no-display-manager)
+                                 "dvi2tty")
+                                ((output-dvi style-pstricks)
+                                 "dvips and gv")
+                                (output-dvi "xdvi")
+                                (output-pdf "evince" "pdf-tools")
+                                (output-html "xdg-open")))
+  (TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
+  (TeX-source-correlate-method '((dvi . source-specials)
+                                 (pdf . synctex)))
+  (TeX-source-correlate-start-server t)
+  (TeX-master nil)
+  (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  (bibtex-dialect 'biblatex)
   :config
-  (setq TeX-parse-self t)
-  (setq TeX-auto-save t)
-  (setq TeX-save-query nil)
-  (setq LaTeX-eqnarray-label "eq")
-  (setq LaTeX-equation-label "eq")
-  (setq LaTeX-figure-label "fig")
-  (setq LaTeX-table-label "tab")
-  (setq LaTeX-myChapter-label "chap")
-  (setq TeX-newline-function #'reindent-then-newline-and-indent)
-  (setq LaTeX-section-hook '(LaTeX-section-heading
-                             LaTeX-section-title
-                             LaTeX-section-toc
-                             LaTeX-section-section
-                             LaTeX-section-label))
-  (setq TeX-view-program-selection '(((output-dvi has-no-display-manager)
-                                      "dvi2tty")
-                                     ((output-dvi style-pstricks)
-                                      "dvips and gv")
-                                     (output-dvi "xdvi")
-                                     (output-pdf "evince" "pdf-tools")
-                                     (output-html "xdg-open")))
-  (setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
-  (setq TeX-source-correlate-method '((dvi . source-specials)
-                                      (pdf . synctex)))
-  (setq TeX-source-correlate-start-server t)
-  (setq-default TeX-master nil)
-  (setq TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-  (setq bibtex-dialect 'biblatex)
   :hook ((LaTeX-mode . kb/tex-mode)
          (TeX-mode . kb/tex-mode)))
-
-(setq bibtex-field-delimiters 'braces)
-(setq bibtex-autokey-name-separator "-")
-(setq bibtex-autokey-year-length 4)
-(setq bibtex-autokey-year-title-separator "-")
-(setq bibtex-autokey-titleword-separator "-")
-(setq bibtex-autokey-titleword-ignore '("A" "An" "On" "The" "Eine?" "Der" "Die" "Das" "[^[:upper:]].*" ".*[^[:upper:][:lower:]0-9].*"))
-
-;; These values are set in `init-local.el'
-;; (setq bibtex-completion-bibliography nil)
-;; (setq bibtex-completion-notes-path nil)
-;; (setq bibtex-completion-library-path nil)
-(setq bibtex-completion-additional-search-fields '(journal booktitle))
-(setq bibtex-completion-display-formats
-      '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
-        (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-        (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-        (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-        (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
-(setq bibtex-completion-pdf-symbol "⌘")
-(setq bibtex-completion-notes-symbol "✎")
-(setq bibtex-completion-pdf-field nil)
-(setq bibtex-completion-pdf-extension '(".pdf" ".djvu"))
-(setq bibtex-completion-format-citation-functions
-      '((org-mode      . bibtex-completion-format-org-link-to-PDF)
-        (latex-mode    . bibtex-completion-format-citation-cite)
-        (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-        (default       . bibtex-completion-format-citation-default)))
-#+end_src
-
-Functionality to generate plain text references to the current bibliographic
-entry.
-
-#+begin_src elisp
-(require 'bibtex-to-plain-text)
 #+end_src
 
 After some digging, I discovered =bibtex-autokey= and friends.  Instead of
@@ -3987,14 +3956,60 @@ Some references used for this:
 - https://jblevins.org/log/bibtex
 
 #+begin_src elisp
-(setq bibtex-autokey-year-length 4)
-(setq bibtex-autokey-name-year-separator "-")
-(setq bibtex-autokey-year-title-separator "-")
-(setq bibtex-autokey-titleword-separator "-")
-(setq bibtex-autokey-titleword-ignore (list "the" "a" "if" "and" "an"))
-(setq bibtex-autokey-titlewords 2)
-(setq bibtex-autokey-titlewords-stretch 1)
-(setq bibtex-autokey-titleword-length 5)
+(use-package bibtex
+  :custom
+  (bibtex-field-delimiters 'braces)
+  (bibtex-autokey-name-separator "-")
+  (bibtex-autokey-year-length 4)
+  (bibtex-autokey-year-title-separator "-")
+  (bibtex-autokey-titleword-separator "-")
+  (bibtex-autokey-titleword-ignore '("A" "An" "On" "The" "Eine?" "Der" "Die" "Das" "[^[:upper:]].*" ".*[^[:upper:][:lower:]0-9].*"))
+
+  ;; These values are set in `init-local.el'
+  ;; (setq bibtex-completion-bibliography nil)
+  ;; (setq bibtex-completion-notes-path nil)
+  ;; (setq bibtex-completion-library-path nil)
+  (bibtex-files (list (expand-file-name "~/.org/references.bib")))
+  (bibtex-completion-bibliography (expand-file-name "~/.org/references.bib"))
+  (bibtex-completion-library-path (expand-file-name "~/.org/data/"))
+  (bibtex-completion-additional-search-fields '(journal booktitle))
+  (bibtex-completion-display-formats
+   '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
+     (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+     (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+     (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+     (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
+  (bibtex-completion-pdf-symbol "⌘")
+  (bibtex-completion-notes-symbol "✎")
+  (bibtex-completion-pdf-field nil)
+  (bibtex-completion-pdf-extension '(".pdf" ".djvu"))
+  (bibtex-completion-format-citation-functions
+   '((org-mode      . bibtex-completion-format-org-link-to-PDF)
+     (latex-mode    . bibtex-completion-format-citation-cite)
+     (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+     (default       . bibtex-completion-format-citation-default)))
+  (bibtex-autokey-year-length 4)
+  (bibtex-autokey-name-year-separator "-")
+  (bibtex-autokey-year-title-separator "-")
+  (bibtex-autokey-titleword-separator "-")
+  (bibtex-autokey-titleword-ignore (list "A" "An" "On" "The"
+                                         "Eine?" "Der" "Die" "Das" "[^[:upper:]].*"
+                                         ".*[^[:upper:][:lower:]0-9].*"))
+  (bibtex-autokey-titlewords 2)
+  (bibtex-autokey-titlewords-stretch 2)
+  (bibtex-autokey-titleword-length 5))
+#+end_src
+
+#+begin_src elisp
+(use-package helm-bibtex
+  :after (helm bibtex))
+#+end_src
+
+Functionality to generate plain text references to the current bibliographic
+entry.
+
+#+begin_src elisp
+(require 'bibtex-to-plain-text)
 #+end_src
 
 #+begin_src elisp
@@ -4969,8 +4984,8 @@ not strictly necessary.
 #+begin_src elisp
 (use-package citar
   :custom
-  (org-cite-global-bibliography (list bibtex-files))
-  (citar-bibliography (list bibtex-files))
+  (org-cite-global-bibliography bibtex-files)
+  (citar-bibliography bibtex-files)
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
