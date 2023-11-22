@@ -16,6 +16,8 @@
                            ,(local-file (string-append %dotfiles-root "config/git/git/global-ignore")))
                           (,(git-file "gitk")
                            ,(local-file (string-append %dotfiles-root "config/git/git/gitk")))
+                          (,(git-file "attributes")
+                           ,(local-file (string-append %dotfiles-root "config/git/git/attributes")))
                           (,(git-file "template.d")
                            ,(local-file (string-append %dotfiles-root "config/git/git/template.d")
                                         #:recursive? #t))))))
