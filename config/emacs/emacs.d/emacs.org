@@ -1019,10 +1019,12 @@ Golden Ratio frame resizing
 #+begin_src elisp
 (use-package golden-ratio
   :diminish
-  :config
-  (setq golden-ratio-auto-scale nil)
-  (setq golden-ratio-adjust-factor 1.0)
-  (setq golden-ratio-wide-adjust-factor 0.8)
+  :custom
+  (golden-ratio-auto-scale nil)
+  (golden-ratio-adjust-factor 1.0)
+  (golden-ratio-wide-adjust-factor 0.8)
+  (golden-ratio-exclude-modes '(helm-mode))
+  :init
   (golden-ratio-mode 1))
 #+end_src
 
@@ -1163,96 +1165,95 @@ Nicer naming of buffers for files with identitcal names.
 (setq-default recentf-exclude '("/tmp/", "/ssh:"))
 #+end_src
 
-*** helm -- Disabled
+*** helm -- Disabled?
 :PROPERTIES:
 :ID:       453f4b85-ed7d-420b-8f40-38b40a6883b8
 :END:
 
 https://tuhdo.github.io/helm-intro.html
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package helm
-  :diminish)
+  :delight
+  :bind (("C-c h" . helm-command-prefix)
+         ("M-x" . helm-M-x)
+         ("M-y" . helm-show-kill-ring)
+         ("C-x b" . helm-mini)
+         ("C-x C-f" . helm-find-files)
+         ("C-h SPC" . helm-all-mark-rings)
+         ;; ("C-c h o" . helm-occur)
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action)
+         ("C-i" . helm-execute-persistent-action)
+         ("C-z" . helm-select-action)
+         :map minibuffer-local-map
+         ("C-c C-l" . helm-minibuffer-history))
+  :custom
+  (helm-autoresize-max-height 30)
+  (helm-autoresize-min-height 20)
+  (helm-apropos-fuzzy-match t)
+  (helm-M-x-fuzzy-match t)
+  (helm-buffers-fuzzy-matching t)
+  (helm-recentf-fuzzy-match t)
+  (helm-lisp-fuzzy-completion t)
+  (helm-semantic-fuzzy-match t)
+  (helm-imenu-fuzzy-match t)
+  (helm-ff-search-library-in-sexp nil)
+  (helm-ff-file-name-history-use-recentf nil)
+  (helm-ff-keep-cached-candidates nil)
+  (helm-split-window-inside-p nil)
+  (helm-grep-default-command (string-join '("ugrep"
+                                            "--color=never"
+                                            "--ignore-binary"
+                                            "--ignore-case"
+                                            "--include=<F>"
+                                            "--line-number"
+                                            "--null"
+                                            "--recursive"
+                                            "--regexp=<R>"
+                                            "%p"
+                                            "%f")
+                                          " "))
+  (helm-grep-default-recurse-command (string-join '("ugrep"
+                                                    "--color=never"
+                                                    "--ignore-binary"
+                                                    "--ignore-case"
+                                                    "--include=<F>"
+                                                    "--line-number"
+                                                    "--null"
+                                                    "--recursive"
+                                                    "--regexp=<R>"
+                                                    "%p"
+                                                    "%f")
+                                                  " "))
+  :config
+  (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+  (defun spacemacs//helm-hide-minibuffer-maybe ()
+    "Hide minibuffer in Helm session if we use the header line as input field."
+    (when (with-helm-buffer helm-echo-input-in-header-line)
+      (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+        (overlay-put ov 'window (selected-window))
+        (overlay-put ov 'face
+                     (let ((bg-color (face-background 'default nil)))
+                       `(:background ,bg-color :foreground ,bg-color)))
+        (setq-local cursor-type nil))))
+  :hook (helm-minibuffer-set-up-hook . spacemacs//helm-hide-minibuffer-maybe)
+  :init
+  (helm-mode t)
+  (helm-autoresize-mode t))
+#+end_src
 
-(use-package helm-config
-  :diminish)
-
+#+begin_src elisp
 (use-package helm-descbinds
-  :after (helm helm-config)
+  :after (helm)
   :config
   (helm-descbinds-mode))
+#+end_src
 
+#+begin_src elisp
 (use-package swiper-helm
-  :after helm
+  :after (helm)
   :bind (("C-s" . swiper-helm)))
-
-;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;; Changed to "C-c h".  Note: We must set "C-c h" globally, because we
-;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
-
-;; rebind tab to run persistent action
-(define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
-;; make TAB work in terminal
-(define-key helm-map (kbd "C-i") #'helm-execute-persistent-action)
-;; list actions using C-z
-(define-key helm-map (kbd "C-z") #'helm-select-action)
-;; Default to helm-M-x
-(global-set-key (kbd "M-x") #'helm-M-x)
-;; helm show kill ring
-(global-set-key (kbd "M-y") #'helm-show-kill-ring)
-;; use helm-mini
-(global-set-key (kbd "C-x b") #'helm-mini)
-;; use helm-find-files
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-;; "better" binding for all mark rings
-(global-set-key (kbd "C-h SPC") #'helm-all-mark-rings)
-;; more "convenient" keybinding for helm-occur
-(global-set-key (kbd "C-c h o") #'helm-occur)
-;; helm mini buffer history
-(define-key minibuffer-local-map (kbd "C-c C-l") #'helm-minibuffer-history)
-
-
-(defun spacemacs//helm-hide-minibuffer-maybe ()
-  "Hide minibuffer in Helm session if we use the header line as input field."
-  (when (with-helm-buffer helm-echo-input-in-header-line)
-    (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
-      (overlay-put ov 'window (selected-window))
-      (overlay-put ov 'face
-                   (let ((bg-color (face-background 'default nil)))
-                     `(:background ,bg-color :foreground ,bg-color)))
-      (setq-local cursor-type nil))))
-
-(add-hook 'helm-minibuffer-set-up-hook
-          #'spacemacs//helm-hide-minibuffer-maybe)
-
-(setq helm-autoresize-max-height 30)
-(setq helm-autoresize-min-height 20)
-(setq helm-apropos-fuzzy-match t)
-(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-recentf-fuzzy-match t)
-(setq helm-lisp-fuzzy-completion t)
-(setq helm-locate-fuzzy-match t)
-(setq helm-semantic-fuzzy-match t)
-(setq helm-imenu-fuzzy-match t)
-(setq helm-ff-search-library-in-sexp nil)
-(setq helm-ff-file-name-history-use-recentf nil)
-(setq helm-ff-keep-cached-candidates nil)
-(setq helm-split-window-inside-p t)
-(helm-autoresize-mode t)
-
-(add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-
-(helm-mode t)
-
-(when (executable-find "ack-grep")
-  (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
-        helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
-
-(when (executable-find "rg")
-  (use-package helm-rg))
 #+end_src
 
 *** mct -- Disabled
@@ -1312,12 +1313,12 @@ https://tuhdo.github.io/helm-intro.html
 (add-hook 'after-init-hook #'savehist-mode)
 #+end_src
 
-*** ido
+*** ido -- disabled
 :PROPERTIES:
 :ID:       bfe3ad2a-292d-421b-a93e-72149b0197fa
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (require 'ido)
 (setq ido-create-new-buffer 'always)
 (setq ido-enable-flex-matching t)
@@ -1592,9 +1593,8 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 #+end_src
 
 #+begin_src elisp
-(use-package define-word)
-
-(bind-key (kbd "C-c h d") #'define-word-at-point)
+(use-package define-word
+  :bind (("C-c h d" . define-word-at-point)))
 #+end_src
 
 **** WordNet
@@ -2372,7 +2372,7 @@ buffers.
   :hook (prog-mode . ggtags-mode))
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package helm-gtags
   :diminish
   :after (helm)
@@ -2384,17 +2384,17 @@ buffers.
              helm-gtags-next-history
              helm-gtags-pop-stack)
   :hook (prog-mode . helm-gtags-mode)
-  :init
-  (setq helm-gtags-path-style 'relative
-        helm-gtags-ignore-case t
-        helm-gtags-auto-update nil)
-  :config
-  (define-key helm-gtags-mode-map (kbd "M-t") #'helm-gtags-find-tag)
-  (define-key helm-gtags-mode-map (kbd "M-r") #'helm-gtags-find-rtag)
-  (define-key helm-gtags-mode-map (kbd "M-s") #'helm-gtags-find-symbol)
-  (define-key helm-gtags-mode-map (kbd "M-g M-p") #'helm-gtags-parse-file)
-  (define-key helm-gtags-mode-map (kbd "C-c <") #'helm-gtags-previous-history)
-  (define-key helm-gtags-mode-map (kbd "C-c >") #'helm-gtags-next-history))
+  :custom
+  (helm-gtags-path-style 'relative)
+  (helm-gtags-ignore-case t)
+  (helm-gtags-auto-update nil)
+  :bind (:map helm-gtags-mode-map
+         ("M-t" . helm-gtags-find-tag)
+         ("M-r" . helm-gtags-find-rtag)
+         ("M-s" . helm-gtags-find-symbol)
+         ("M-g M-p" . helm-gtags-parse-file)
+         ("C-c <" . helm-gtags-previous-history)
+         ("C-c >" . helm-gtags-next-history)))
 #+end_src
 
 *** Flycheck
@@ -2465,7 +2465,7 @@ buffers.
   :init (flycheck-color-mode-line-mode))
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package helm-flycheck
   :after (helm flycheck))
 #+end_src
@@ -2475,11 +2475,10 @@ buffers.
 :ID:       6b79c1d2-ab14-4bee-a9e5-b676c98c695e
 :END:
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package helm-tramp
-  :after helm)
-
-(define-key global-map (kbd "C-c s") #'helm-tramp)
+  :after helm
+  :bind (("C-c s". helm-tramp)))
 #+end_src
 
 #+begin_src elisp
@@ -2523,12 +2522,12 @@ buffers.
   :bind ("C-c h d" . #'zeal-at-point))
 #+end_src
 
-*** Help ((wo)man/info)
+*** Help ((wo)man/info) -- disabled
 :PROPERTIES:
 :ID:       3c59a4db-1f1b-4681-b488-5c2d89e5276f
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (bind-key (kbd "C-c h m") #'man)
 (bind-key (kbd "C-c h w") #'woman)
 #+end_src
@@ -5029,7 +5028,7 @@ not strictly necessary.
 (use-package pass)
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package helm-pass
   :after helm)
 #+end_src

@@ -17,6 +17,7 @@
    `((,emacs-xyz:emacs-async . ,emacs-async)
      (,emacs-xyz:emacs-cider . ,emacs-cider)
      (,emacs-xyz:emacs-dash . ,emacs-dash)
+     (,emacs-xyz:emacs-helm . ,emacs-helm)
      (,emacs-xyz:emacs-tablist . ,emacs-tablist))))
 
 (define emacs-packages
@@ -148,22 +149,29 @@
         emacs-gxref
         emacs-haml-mode
         emacs-haskell-mode
-        ;; emacs-helm
-        ;; emacs-helm-bbdb
-        ;; emacs-helm-bibtex
-        ;; emacs-helm-descbinds
-        ;; emacs-helm-flycheck
-        ;; emacs-helm-flyspell
-        ;; emacs-helm-gtags
-        ;; emacs-helm-lsp
-        ;; emacs-helm-mu
-        ;; emacs-helm-pass
-        ;; emacs-helm-projectile
-        ;; emacs-helm-rg
-        ;; emacs-helm-sql-connect
-        ;; emacs-helm-tramp
-        ;; emacs-helm-wordnet
-        ;; emacs-helm-xref
+        emacs-helm
+        emacs-helm-bibtex
+        emacs-helm-bibtexkey
+        emacs-helm-descbinds
+        emacs-helm-flycheck
+        emacs-helm-flyspell
+        emacs-helm-git-grep
+        emacs-helm-gtags
+        emacs-helm-make
+        emacs-helm-mu
+        emacs-helm-org
+        emacs-helm-org-ql
+        emacs-helm-pass
+        emacs-helm-proc
+        emacs-helm-project
+        emacs-helm-shell-history
+        emacs-helm-sql-connect
+        emacs-helm-tramp
+        emacs-helm-tree-sitter
+        emacs-helm-unicode
+        emacs-helm-wordnet
+        emacs-xyz:emacs-helm-wordnut
+        emacs-helm-xref
         emacs-helpful
         emacs-hg-histedit
         emacs-hgignore-mode
@@ -281,7 +289,7 @@
         emacs-spaceline
         emacs-xyz:emacs-spinner
         emacs-swiper
-        ;; emacs-swiper-helm
+        emacs-swiper-helm
         emacs-switch-window
         emacs-synosaurus
         emacs-tabspaces
