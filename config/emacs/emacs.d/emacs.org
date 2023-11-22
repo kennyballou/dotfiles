@@ -322,7 +322,9 @@ $ emacsclient -c"
 #+begin_src elisp
 (use-package desktop
   :custom
+  (desktop-save mode t)
   (desktop-path (list user-emacs-directory))
+  (desktop-load-locked-desktop 'check-pid)
   (desktop-restore-frames nil)
   (desktop-auto-save-timeout 30)
   (desktop-restore-eager 10)
@@ -356,9 +358,7 @@ $ emacsclient -c"
      (search-ring . 20)
      (shell-command-history . 50)
      tags-file-name
-     tags-table-list))
-  :init
-  (desktop-save-mode 1))
+     tags-table-list)))
 #+end_src
 
 #+begin_src elisp
