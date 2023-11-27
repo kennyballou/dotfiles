@@ -4938,9 +4938,11 @@ not strictly necessary.
 
 #+begin_src elisp
 (use-package org-roam-bibtex
-  :after org-roam
+  :after (org-roam helm-bibtex)
   :config
-  (require 'org-ref))
+  (require 'org-ref)
+  :init
+  (org-roam-bibtex-mode t))
 #+end_src
 
 **** Org Transclusion
