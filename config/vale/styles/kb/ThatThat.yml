@@ -1,0 +1,9 @@
+---
+extends: existence
+message: "Remove or reword '%s'."
+ignorecase: true
+level: warning
+tokens:
+  - (?i)that that
+  - (?i)has has
+  - (?i)had had
