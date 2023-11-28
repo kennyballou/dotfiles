@@ -6,6 +6,7 @@
   #:use-module (gnu home services)
   #:use-module (gnu home-services emacs)
   #:use-module (gnu packages emacs)
+  #:use-module (gnu packages tree-sitter)
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
   #:use-module (emacs packages melpa)
   #:use-module (kbg packages emacs-xyz)
@@ -324,6 +325,38 @@
 (define (emacs-file fname)
   (string-append ".config/emacs/" fname))
 
+(define tree-sitter-langs
+  (directory-union "tree-sitter-union"
+                   (list tree-sitter
+                         tree-sitter-bash
+                         tree-sitter-bibtex
+                         tree-sitter-c
+                         tree-sitter-clojure
+                         tree-sitter-cmake
+                         tree-sitter-cpp
+                         tree-sitter-css
+                         tree-sitter-dockerfile
+                         tree-sitter-elixir
+                         tree-sitter-elm
+                         tree-sitter-go
+                         tree-sitter-gomod
+                         tree-sitter-haskell
+                         tree-sitter-html
+                         tree-sitter-java
+                         tree-sitter-javascript
+                         tree-sitter-json
+                         tree-sitter-markdown
+                         tree-sitter-markdown-gfm
+                         tree-sitter-ocaml
+                         tree-sitter-org
+                         tree-sitter-python
+                         tree-sitter-r
+                         tree-sitter-racket
+                         tree-sitter-ruby
+                         tree-sitter-rust
+                         tree-sitter-scheme
+                         tree-sitter-typescript)))
+
 (define-public emacs-service
   (list (simple-service 'emacs-config
                         home-files-service-type
@@ -357,7 +390,8 @@
                           (,(emacs-file "transient/levels.el")
                            ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/transient/levels.el")))
                           (,(emacs-file "schemas.xml")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/schemas.xml")))))
+                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/schemas.xml")))
+                          (,(emacs-file "tree-sitter") ,(file-append tree-sitter-langs "/lib/tree-sitter/"))))
         (service home-emacs-service-type
                  (home-emacs-configuration
                   (package emacs-next-pgtk)
