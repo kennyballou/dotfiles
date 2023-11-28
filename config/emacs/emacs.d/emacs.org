@@ -2824,6 +2824,21 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       436be882-9c6b-462b-9b1c-9219031e33d3
 :END:
 
+**** Tree-Sitter 🌳
+:PROPERTIES:
+:ID:       290ac380-e053-4faf-8193-2260f561990b
+:END:
+
+#+begin_src elisp
+(setq major-mode-remap-alist
+      '((bash-mode . bash-ts-mode)
+        (bibtex-mode . bibtex-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (c-mode . c-ts-mode)
+        (java-mode . java-ts-mode)
+        (python-mode . python-ts-mode)))
+#+end_src
+
 **** Direnv (disabled)
 :PROPERTIES:
 :ID:       3a4cfdc1-82bf-41e8-bd17-e016ba0a1d59
