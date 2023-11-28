@@ -130,12 +130,21 @@ https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L2
 Font Config
 
 #+begin_src elisp :tangle no
+(setq fontset-alias-alist '(("-PfEd-DejaVu Sans Mono-regular-normal-normal-*-15-*-*-*-m-0-fontset-startup"
+                             . "-pfed-dejavu sans mono-regular-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+                            ("-*-fixed-medium-r-normal-*-16-*-*-*-*-*-fontset-standard" . "fontset-standard")
+                            ("-*-*-*-*-*-*-*-*-*-*-*-*-fontset-default" . "fontset-default")))
+#+end_src
+
+#+begin_src elisp  :tangle no
 (set-face-attribute 'default nil
-                    :family "DejaVuSansMono Nerd Font Mono"
+                    :family "DejaVuSansMono"
                     :height 110
                     :weight 'normal
                     :width 'normal)
+#+end_src
 
+#+begin_src elisp :tangle no
 (defconst font-height 110
   "Default font-height to use.")
 (defconst font-family-mono "DejaVu Mono"
@@ -146,7 +155,7 @@ Font Config
 (when (member "Noto Sans Arabic" (font-family-list))
   (set-fontset-font t 'arabic "Noto Sans Arabic"))
 (when (member "Noto Sans Hebrew" (font-family-list))
-  (set-fontset-font t 'arabic "Noto Sans Hewbrew"))
+  (set-fontset-font t 'arabic "Noto Sans Hebrew"))
 ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
 ;;
 ;; Make sure you use the right font. See
@@ -206,12 +215,17 @@ Font Config
   (set-face-attribute 'variable-pitch nil
                       :family font-family-sans
                       :weight 'regular))
+#+end_src
 
-(set-fontset-font t 'symbol "Noto Emoji")
-(set-fontset-font t 'symbol "all-the-icons" nil 'append)
-(set-fontset-font t '(#xF0000 . #xF14FF) "Material Design Icons" nil 'append)
+#+begin_src elisp :tangle no
+(set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "Noto Emoji") nil 'append)
 (set-fontset-font t 'symbol "Symbola" nil 'append)
-
 #+end_src
 
 #+begin_src elisp
