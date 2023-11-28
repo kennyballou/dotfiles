@@ -4939,11 +4939,12 @@ not strictly necessary.
   :bind (("C-c n o a" . org-roam-ui-add-to-local-graph)
          ("C-c n o l" . org-roam-ui-node-local)
          ("C-c n o z" . org-roam-ui-node-zoom))
-  :config
-  (setq org-roam-ui-sync-theme t)
-  (setq org-roam-ui-follow nil)
-  (setq org-roam-ui-update-on-save t)
-  (setq org-roam-ui-open-on-start t))
+  :custom
+  (org-roam-ui-sync-theme t)
+  (org-roam-ui-follow nil)
+  (org-roam-ui-update-on-save t)
+  (org-roam-ui-open-on-start t)
+  :config)
 #+end_src
 
 **** Org Roam Bibtex
