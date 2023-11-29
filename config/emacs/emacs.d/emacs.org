@@ -4969,6 +4969,7 @@ not strictly necessary.
 #+begin_src elisp
 (use-package org-roam-bibtex
   :after (org-roam helm-bibtex)
+  :diminish
   :config
   (require 'org-ref)
   :init
