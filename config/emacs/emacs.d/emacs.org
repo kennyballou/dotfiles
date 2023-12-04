@@ -1856,6 +1856,15 @@ https://matthewbauer.us/blog/bauer.html
 (use-package whitespace
   :delight
   :delight global-whitespace-mode
+  :custom
+  (whitespace-display-mappings
+   '((newline-mark ?\n  [8617 ?\n] [?$ ?\n])
+     (tab-mark ?\t [8677 ?\t] [92 ?\t])))
+  (whitespace-style
+   '(face
+     trailing-mark
+     tab-mark
+     newline))
   :config
   (global-whitespace-mode t))
 (use-package whitespace-cleanup-mode
@@ -1878,20 +1887,6 @@ https://matthewbauer.us/blog/bauer.html
   (add-hook hook #'sanityinc/show-trailing-whitespace))
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
-
-(defvar whitespace-display-mappings)
-(setq whitespace-display-mappings
-      '(
-        (newline-mark ?\n  [8617 ?\n] [?$ ?\n])
-        (tab-mark ?\t [8677 ?\t] [92 ?\t])
-        ))
-
-(defvar whitespace-style)
-(setq whitespace-style
-      (quote (face
-              trailing-mark
-              tab-mark
-              newline)))
 
 (defun kb/text-mode-setup ()
   "text-mode setup hook."
