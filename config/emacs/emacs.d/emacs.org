@@ -4208,7 +4208,7 @@ http://doc.norang.ca/org-mode.htm
 (setq org-directory "~/.org/")
 (setq org-id-locations-file (expand-file-name (concat user-emacs-directory ".org-id-locations")))
 (setq org-id-link-to-org-use-id 'use-existing)
-(setq org-ellipsis "⤵")
+(setq org-ellipsis nil)
 (setq org-special-ctrl-a/e t)
 (setq org-edit-timestamp-down-means-later t)
 (setq org-archive-location "%s_archive::datetree/")
