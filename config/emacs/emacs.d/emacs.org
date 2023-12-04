@@ -5747,6 +5747,8 @@ _dR_:   Disable repeat
 :END:
 
 # Local Variables:
+# mode: org
+# coding: utf-8
 # flycheck-disabled-checkers: '(languagetool vale)
 # enable-local-eval: t
 # eval: (flycheck-disable-checker 'languagetool)
