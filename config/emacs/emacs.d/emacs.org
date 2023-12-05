@@ -5000,7 +5000,10 @@ not strictly necessary.
 :END:
 
 #+begin_src elisp
-(use-package org-web-tools)
+(use-package org-web-tools
+  :bind (:map org-mode-map
+              ("C-c w a" . org-web-tools-archive-attach)
+              ("C-c w v" . org-web-tools-archive-view)))
 #+end_src
 
 **** Org Export
