@@ -22,6 +22,7 @@
   #:use-module (gnu packages search)
   #:use-module (gnu packages shellutils)
   #:use-module (gnu packages sqlite)
+  #:use-module (gnu packages tex)
   #:use-module (gnu packages text-editors)
   #:use-module (gnu packages textutils)
   #:use-module (gnu packages version-control)
@@ -65,5 +66,6 @@
    sqlite
    strace
    subversion
+   texlive-scheme-basic
    tokei
    vim))
