@@ -2486,14 +2486,16 @@ buffers.
 :END:
 
 #+begin_src elisp
-(use-package helm-tramp
-  :after helm
-  :bind (("C-c s". helm-tramp)))
+(use-package tramp
+  :custom
+  (tramp-default-method "ssh")
+  (tramp-verbose 1)
 #+end_src
 
 #+begin_src elisp
-(setq tramp-default-method "ssh")
-(setq tramp-verbose 1)
+(use-package helm-tramp
+  :after (helm tramp)
+  :bind (("C-c s". helm-tramp)))
 #+end_src
 
 #+begin_src elisp :tangle no
