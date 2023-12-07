@@ -5054,10 +5054,10 @@ not strictly necessary.
   :commands (deft deft-find-file)
   :bind (("C-c d d" . deft)
          ("C-c d f" . deft-find-file))
-  :config
-  (setq deft-extensions '("txt" "tex" "org" "md"))
-  (setq deft-recursive t)
-  (setq deft-directory org-directory))
+  :custom
+  (deft-extensions '("org" "text" "tex" "txt" "md" "markdwon"))
+  (deft-recursive t)
+  (deft-directory org-directory))
 #+end_src
 
 *** elgantt
