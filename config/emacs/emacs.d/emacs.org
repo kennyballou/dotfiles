@@ -389,9 +389,9 @@ $ emacsclient -c"
 :ID:       99fb653d-9fcd-402c-9eee-540e0ea04ba1
 :END:
 
+https://matthewbauer.us/blog/bauer.html
 #+begin_src elisp
-;; https://matthewbauer.us/blog/bauer.html
-
+(setq-default remote-file-name-inhibit-delete-by-moving-to-trash t)
 (setq-default mouse-yank-at-point t)
 (setq-default next-error-recenter t)
 (setq-default notmuch-show-logo nil)
