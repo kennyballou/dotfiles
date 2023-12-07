@@ -47,7 +47,9 @@ SCHEDULED: %T
 
 - [ ] Review Yesterdays's Daily Notes
 
-  [[file:~/.org/logbook.org][Logbook]]
+  #+begin_src elisp
+  (org-roam-dailies-goto-yesterday 1)
+  #+end_src
 
 - [ ] Schedule Tasks
 
