@@ -4954,6 +4954,25 @@ not strictly necessary.
 #+end_src
 
 #+begin_src elisp
+(use-package org-roam-dailies
+  :after org-roam
+  :bind (("C-c n g d t" . org-roam-dailies-goto-today)
+         ("C-c n g d y" . org-roam-dailies-goto-yesterday)
+         ("C-c n g d d" . org-roam-dailies-goto-date)
+         ("C-c n c d t" . org-roam-dailies-capture-today)
+         ("C-c n c d y" . org-roam-dailies-capture-yesterday)
+         ("C-c n c d T" . org-roam-dailies-capture-tomorrow))
+  :custom
+  (org-roam-dailies-directory "./")
+  (org-roam-dailies-capture-templates
+   '(("d" "default" entry (file "~/.config/emacs/org-roam-templates/DAILY")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :empty-lines 1)))
+  )
+#+end_src
+
+#+begin_src elisp
 (use-package org-roam-ui
   :delight
   :after org-roam

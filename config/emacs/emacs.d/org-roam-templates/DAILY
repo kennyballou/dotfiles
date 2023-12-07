@@ -1,0 +1,6 @@
+* <%<%Y-%m-%d %a %H:%M:%S>>: %?
+:PROPERTIES:
+:ID:   %(org-id-uuid)
+:TASK: %K
+:FILE: [[file:%F][%f]]
+:END:
