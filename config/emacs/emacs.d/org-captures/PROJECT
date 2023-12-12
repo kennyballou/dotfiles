@@ -7,3 +7,13 @@
 
 #+BEGIN: gantt :tstart "<today>" :tend "<+3m>" :tunit "month"
 #+END:
+
+- [ ] *Capture* current thoughts on the project.
+
+- [ ] *Review* folders (or tags) that might contain relevant notes.
+
+- [ ] *Search* for related terms across all folders.
+
+- [ ] *Move* (or tag) relevant notes to the project folder.
+
+- [ ] *Create* an outline of the collected notes and plan the project.
