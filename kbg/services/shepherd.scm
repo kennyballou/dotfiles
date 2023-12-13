@@ -10,7 +10,6 @@
   #:use-module (system repl server)
   #:use-module (kbg services gnupg)
   #:use-module (kbg services languagetool)
-  #:use-module (kbg services mcron)
   #:use-module (kbg services mpd)
   #:use-module (kbg services parallel)
   #:use-module (kbg services syncthing)

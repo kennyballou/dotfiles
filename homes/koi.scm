@@ -38,7 +38,7 @@
   (append bash-service
           (configs-for-host 'koi)
           emacs-service
-          mcron-service
+          (list (service home-mcron-service-type))
           (list (service home-dbus-service-type)
                 (service home-pipewire-service-type))
           (services-for-host 'koi))))
