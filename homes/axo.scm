@@ -43,4 +43,3 @@
           (list (service home-dbus-service-type)
                 (service home-pipewire-service-type))
           (services-for-host 'axo))))
-          ;; shepherd-user-services
