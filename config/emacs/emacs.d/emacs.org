@@ -1958,6 +1958,7 @@ https://matthewbauer.us/blog/bauer.html
   :custom
   (magit-diff-refine-hunk t)
   (magit-openpgp-default-signing-key "B74CC4B41148C3DB364BC21182D94B35744E1B34")
+  (magit-log-margin '(t age magit-log-margin-width t 18))
   )
 
 (use-package magit-extras
