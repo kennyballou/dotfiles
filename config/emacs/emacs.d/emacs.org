@@ -1952,11 +1952,12 @@ https://matthewbauer.us/blog/bauer.html
          :map magit-mode-map
          ("C-o" . magit-dired-other-window))
   :init
-  (setq-default magit-diff-refine-hunk t)
   (defvar magit-last-seen-setup-instructions "1.4.0")
   :config
   (fullframe magit-status magit-mode-quit-window)
-  (setq magit-openpgp-default-signing-key "B74CC4B41148C3DB364BC21182D94B35744E1B34")
+  :custom
+  (magit-diff-refine-hunk t)
+  (magit-openpgp-default-signing-key "B74CC4B41148C3DB364BC21182D94B35744E1B34")
   )
 
 (use-package magit-extras
