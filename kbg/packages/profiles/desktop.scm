@@ -85,7 +85,6 @@
         entr
         exiv2
         ffmpeg
-        firefox/wayland
         flatpak
         fontconfig
         freecad
