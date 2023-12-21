@@ -59,6 +59,7 @@
    podman
    python-wrapper
    racket
+   recoll
    rtags
    shellcheck
    socat
