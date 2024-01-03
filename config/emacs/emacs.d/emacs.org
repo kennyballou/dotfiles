@@ -3020,7 +3020,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
   :commands (eglot eglot-ensure)
   :demand t
   :bind (("C-c e w r" . #'eglot-reconnect)
-         ("C-c e w s" . #'eglot-shutdown)
+         ("C-c e w S" . #'eglot-shutdown)
          ("C-c e g d" . #'eglot-find-declaration)
          ("C-c e g r" . #'eglot-find-implementation)
          ("C-c e g t" . #'eglot-find-typeDefinition)
