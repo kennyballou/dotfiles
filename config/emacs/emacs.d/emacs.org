@@ -3035,20 +3035,22 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (eglot-report-progress t)
   (eglot-confirm-server-initiated-edits 'confirm)
   :config
-  (setq eglot-server-programs (list (cons 'java-mode (list "guix"
-                                                           "shell"
-                                                           "--pure"
-                                                           "openjdk@18:jdk"
-                                                           "--"
-                                                           (expand-file-name (concat user-emacs-directory
-                                                                                     "share/eclipse.jdt.ls/bin/jdtls"))))
-                                    (cons 'python-mode (list
-                                                        "nix-shell"
-                                                        "--packages"
-                                                        "python310Packages.jedi-language-server"
-                                                        "--run"
-                                                        "jedi-language-server")))))
   (setq eglot-stay-out-of '(flymake))
+  (setq eglot-server-programs (list (cons '(java-mode java-ts-mode)
+                                          (list "guix"
+                                                "shell"
+                                                "--pure"
+                                                "openjdk@21:jdk"
+                                                "--"
+                                                (expand-file-name (concat user-emacs-directory
+                                                                          "share/eclipse.jdt.ls/bin/jdtls"))))
+                                    (cons '(python-mode python-ts-mode) (list
+                                                        "guix"
+                                                        "shell"
+                                                        "--pure"
+                                                        "python-lsp-server"
+                                                        "--"
+                                                        "pylsp")))))
 #+end_src
 
 **** Debug Adapter Protocol
