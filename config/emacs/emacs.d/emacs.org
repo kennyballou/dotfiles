@@ -3031,9 +3031,10 @@ Most shell applications accept Perl Compatible Regular Expressions."
          ("C-c e x b" . #'xref-go-back)
          ("C-c e x f" . #'xref-go-forward)
          ("C-c e r" . #'eglot-rename))
+  :custom
+  (eglot-report-progress t)
+  (eglot-confirm-server-initiated-edits 'confirm)
   :config
-  (setq eglot-report-progress t)
-  (setq eglot-confirm-server-initiated-edits 'confirm)
   (add-to-list 'eglot-stay-out-of 'flymake)
   (setq eglot-server-programs (list (cons 'java-mode (list "guix"
                                                            "shell"
