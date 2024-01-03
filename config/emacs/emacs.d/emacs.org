@@ -3035,7 +3035,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (eglot-report-progress t)
   (eglot-confirm-server-initiated-edits 'confirm)
   :config
-  (add-to-list 'eglot-stay-out-of 'flymake)
   (setq eglot-server-programs (list (cons 'java-mode (list "guix"
                                                            "shell"
                                                            "--pure"
@@ -3049,6 +3048,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
                                                         "python310Packages.jedi-language-server"
                                                         "--run"
                                                         "jedi-language-server")))))
+  (setq eglot-stay-out-of '(flymake))
 #+end_src
 
 **** Debug Adapter Protocol
