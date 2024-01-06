@@ -133,8 +133,10 @@
                            ;; (service xfce-desktop-service-type)
                            ;; (service mate-desktop-service-type)
                            ;; (service enlightenment-desktop-service-type)
-                           (bluetooth-service #:auto-enable? #t)
-                           (lirc-service)
+                           (service bluetooth-service-type
+                                    (bluetooth-configuration
+                                     (name "bard")))
+                           (service lirc-service-type)
                            (set-xorg-configuration
                             (xorg-configuration
                              (keyboard-layout keyboard-layout)
