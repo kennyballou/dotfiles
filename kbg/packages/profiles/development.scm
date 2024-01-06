@@ -44,6 +44,7 @@
    `(,git "send-email")
    `(,git "svn")
    `(,git "subtree")
+   git-annex
    global
    groff
    guile-3.0
