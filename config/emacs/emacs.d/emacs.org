@@ -1975,15 +1975,15 @@ https://matthewbauer.us/blog/bauer.html
 (use-package with-editor)
 #+end_src
 
+Some added additions from
+https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
+
 #+begin_src elisp
-;; Some added additions from
-;; https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
 (use-package git-commit
   :after with-editor magit
-  :hook
-  (git-commit-mode . my/git-commit-config-setup)
+  :hook (git-commit-mode . kb/git-commit-config-setup)
   :preface
-  (defun my/git-commit-config-setup ()
+  (defun kb/git-commit-config-setup ()
     "Configures several commit message settings."
     (goto-address-mode)
     (set-fill-column 72)
