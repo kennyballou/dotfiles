@@ -1,6 +1,6 @@
 (define-module (kbg packages profiles games)
   #:use-module (gnu packages emulators)
-  #:use-module (nongnu packages steam-client)
+  #:use-module (nongnu packages game-client)
   #:export (%kbg-games-packages
             %kbg-emulator-packages))
 
