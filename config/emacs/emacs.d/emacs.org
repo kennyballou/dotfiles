@@ -1993,6 +1993,10 @@ https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
   (git-commit-summary-max-length 50))
 #+end_src
 
+#+begin_src elisp
+(use-package magit-annex)
+#+end_src
+
 *** Projectile (disabled!)
 :PROPERTIES:
 :ID:       ef251479-852f-429a-80be-556cafaefe76

@@ -202,6 +202,7 @@
         emacs-lsp-ui
         emacs-lua-mode
         emacs-magit
+        emacs-magit-annex
         emacs-marginalia
         emacs-markdown-mode
         emacs-mbsync
