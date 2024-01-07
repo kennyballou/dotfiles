@@ -76,7 +76,7 @@
                           (type "vfat"))
                         (file-system
                           (mount-point "/media/kb/music")
-                          (device "baal:/srv/music")
+                          (device "cow01:/music")
                           (type "nfs4")
                           (mount-may-fail? #t)
                           (mount? #f)
@@ -85,7 +85,7 @@
                           (dependencies '()))
                         (file-system
                           (mount-point "/media/kb/videos")
-                          (device "baal:/srv/videos")
+                          (device "cow01:/videos")
                           (type "nfs4")
                           (mount-may-fail? #t)
                           (mount? #f)
