@@ -49,7 +49,7 @@
 
 (define bard-system
   (operating-system
-   (kernel linux-lts)
+   (kernel linux)
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
    (host-name "bard")
