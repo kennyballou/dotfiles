@@ -4974,12 +4974,7 @@ not strictly necessary.
 #+begin_src elisp
 (use-package org-roam-dailies
   :after org-roam
-  :bind (("C-c n g d t" . org-roam-dailies-goto-today)
-         ("C-c n g d y" . org-roam-dailies-goto-yesterday)
-         ("C-c n g d d" . org-roam-dailies-goto-date)
-         ("C-c n c d t" . org-roam-dailies-capture-today)
-         ("C-c n c d y" . org-roam-dailies-capture-yesterday)
-         ("C-c n c d T" . org-roam-dailies-capture-tomorrow))
+  :bind-keymap ("C-c n d" . org-roam-dailies-map)
   :custom
   (org-roam-dailies-directory "./")
   (org-roam-dailies-capture-templates
