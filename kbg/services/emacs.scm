@@ -18,6 +18,7 @@
    `((,emacs-xyz:emacs-async . ,emacs-async)
      (,emacs-xyz:emacs-cider . ,emacs-cider)
      (,emacs-xyz:emacs-dash . ,emacs-dash)
+     (,emacs-xyz:emacs-esxml . ,emacs-esxml)
      (,emacs-xyz:emacs-helm . ,emacs-helm)
      (,emacs-xyz:emacs-tablist . ,emacs-tablist))))
 
@@ -45,6 +46,7 @@
         emacs-browse-kill-ring
         emacs-buffer-move
         ;; emacs-bundler
+        emacs-calibredb
         emacs-cider
         emacs-circadian
         emacs-citar
@@ -217,6 +219,7 @@
         emacs-native-complete
         emacs-nginx-mode
         emacs-nix-mode
+        emacs-xyz:emacs-nov-el
         ;; emacs-ob-ipython
         emacs-olivetti
         emacs-orderless
