@@ -3435,8 +3435,9 @@ Add some extra symbols to prettify for Coq.
     (subword-mode)
     (setq-local tab-width 4)
     (setq-local c-basic-offset 4)
-    (eglot-ensure))
-  :hook (java-mode . kb/java-mode))
+    (eglot))
+  :hook ((java-mode . kb/java-mode)
+         (java-ts-mode . kb/java-mode)))
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -3715,7 +3716,8 @@ indentation rules."
   :init
   (defun kb/python-mode ()
     (eglot-ensure))
-  :hook (python-mode . kb/python-mode))
+  :hook ((python-mode . kb/python-mode)
+         (python-ts-mode . kb/python-mode)))
 #+end_src
 
 #+begin_src elisp
