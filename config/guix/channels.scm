@@ -27,7 +27,7 @@
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
        (branch "master")
        (commit
-        "5dbe9f1b954e3c406d40980d7d46d1364fbc36e1")
+        "c54bea6732de15559f00f04a3e13302fa1c2ce4c")
        (introduction
         (make-channel-introduction
          "b9d0b8041d28ebd9f85cb041aa3f2235c8b39417"

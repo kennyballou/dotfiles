@@ -16,6 +16,7 @@
   #:use-module (kbg packages profiles base)
   #:use-module (kbg packages profiles development)
   #:use-module (kbg packages profiles desktop)
+  #:use-module (kbg packages profiles laptop)
   #:use-module (kbg packages profiles fonts)
   #:use-module (kbg packages profiles games)
   #:use-module (kbg packages profiles science)
@@ -30,6 +31,7 @@
 (home-environment
  (packages
   (append %kbg-base-development-packages
+          %kbg-laptop-packages
           (filter-packages (list) %kbg-desktop-packages)
           %kbg-science-packages
           %kbg-statistics-packages
