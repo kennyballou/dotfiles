@@ -185,6 +185,7 @@
         emacs-ibuffer-vc
         emacs-iedit
         ;; emacs-import-js
+        emacs-xyz:emacs-info-plus
         emacs-inf-ruby
         emacs-ivy
         emacs-jedi
