@@ -2867,7 +2867,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (setq major-mode-remap-alist
       '((bash-mode . bash-ts-mode)
-        (bibtex-mode . bibtex-ts-mode)
         (typescript-mode . typescript-ts-mode)
         (c-mode . c-ts-mode)
         (java-mode . java-ts-mode)
