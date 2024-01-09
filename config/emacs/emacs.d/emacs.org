@@ -4382,18 +4382,6 @@ http://doc.norang.ca/org-mode.htm
         ("r" "respond" entry (file kb/org-refile)
          (file "~/.config/emacs/org-captures/RESPOND")
          :clock-in t :clock-resume t :immediate-finish t)
-        ("tn" "note on task" entry (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/TASK_NOTE") :empty-lines 1)
-        ("n" "logbook entry" entry (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/TASK_LOG_NOTE") :empty-lines 1)
-        ("e" "Contents to Notebook" entry
-         (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
-         :immediate-finish t :empty-lines 1)
-        ("tr" "related task" entry (clock)
-         (file "~/.config/emacs/org-captures/RELATED_TODO"))
-        ("tm" "todo from mail" entry (file kb/org-refile)
-         (file "~/.config/emacs/org-captures/TODO_MAIL") :clock-in t :clock-resume t)
         ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
          (file "~/.config/emacs/org-captures/JOURNAL")
          :clock-in t
@@ -4425,12 +4413,7 @@ http://doc.norang.ca/org-mode.htm
         ))
 
 (setq org-capture-templates-contexts
-      '(("n" "tn" (kb/org-clocking-p))
-        ("r" "tr" (kb/org-clocking-p))
-        ("n" "n" (kb/org-not-clocking-p))
-        ("t" "tm" ((in-mode . "mu4e-view")
-                   (in-mode . "mu4e-headers")))
-        ("T" "t" ((in-mode . "mu4e-view")
+      '(("T" "t" ((in-mode . "mu4e-view")
                   (in-mode . "mu4e-headers")))
         ("t" "t" ((not-in-mode . "mu4e-view")
                   (not-in-mode . "mu4e-headers")))
@@ -4982,8 +4965,13 @@ not strictly necessary.
    '(("d" "default" entry (file "~/.config/emacs/org-roam-templates/DAILY")
       :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
                          "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
-      :empty-lines 1)))
-  )
+      :empty-lines 1)
+     ("e" "Contents to Notebook" entry
+      (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :immediate-finish t :empty-lines 1)))
+     )
 #+end_src
 
 #+begin_src elisp
