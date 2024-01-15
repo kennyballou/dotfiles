@@ -4404,10 +4404,10 @@ http://doc.norang.ca/org-mode.htm
          (file "~/.config/emacs/org-captures/PROJECT")
          :clock-in t
          :clock-resume t)
-        ("w" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
+        ("W" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
          :immediate-finish t)
-        ("d" "Daily Review" entry (file+olp+datetree kb/org-logbook-file)
+        ("D" "Daily Review" entry (file+olp+datetree kb/org-logbook-file)
          (file "~/.config/emacs/org-captures/DAILY_REVIEW")
          :immediate-finish t)
         ))
