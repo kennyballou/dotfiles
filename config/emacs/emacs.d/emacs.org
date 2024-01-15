@@ -5705,6 +5705,19 @@ _dR_:   Disable repeat
   :magic ("%PDF" . pdf-view-mdoe))
 #+end_src
 
+**** Ebooks!
+:PROPERTIES:
+:ID:       53283320-9016-4c08-a76f-663abbf84caf
+:END:
+
+#+begin_src elisp
+(use-package nov)
+#+end_src
+
+#+begin_src elisp
+(use-package calibredb)
+#+end_src
+
 *** Async
 :PROPERTIES:
 :ID:       b46b0f43-ef4d-49fc-9818-6b5fd34d72af
