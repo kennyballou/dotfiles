@@ -87,7 +87,7 @@
         emacs-editorconfig
         ;; emacs-edts
         emacs-xyz:emacs-eglot
-        emacs-eglot-java
+        ;; emacs-eglot-java
         emacs-ein
         emacs-elein
         emacs-elfeed

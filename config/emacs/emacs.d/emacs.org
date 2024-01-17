@@ -3464,6 +3464,15 @@ Add some extra symbols to prettify for Coq.
 #+end_src
 
 #+begin_src elisp
+(defun kb/java-mode ()
+  "Configure java mode settings."
+  (subword-mode)
+  (setq-local tab-width 4)
+  (setq-local c-basic-offset 4)
+  (eglot-ensure))
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package eglot-java
   :after eglot
   :config
@@ -3477,13 +3486,6 @@ Add some extra symbols to prettify for Coq.
                                           "-Dsun.zip.disableMemoryMapping=true"))
   (setq eglot-java-junit-platform-console-standalone-jar
         (concat user-emacs-directory "share/junit-platform-console-standalone.jar"))
-  :init
-  (defun kb/java-mode ()
-    "Configure java mode settings."
-    (subword-mode)
-    (setq-local tab-width 4)
-    (setq-local c-basic-offset 4)
-    (eglot))
   :hook ((java-mode . kb/java-mode)
          (java-ts-mode . kb/java-mode)))
 #+end_src
