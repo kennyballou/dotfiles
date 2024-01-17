@@ -2945,6 +2945,10 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       f8dcd5bb-073f-4f38-b359-1e23fce6f40d
 :END:
 
+***** LSP-Mode
+:PROPERTIES:
+:ID:       d8bf903f-05c9-4a4b-997e-accfc2f1ad8e
+:END:
 #+begin_src elisp :tangle no
 (use-package lsp-mode
   :init
@@ -3025,6 +3029,11 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 #+end_src
+
+***** Eglot
+:PROPERTIES:
+:ID:       7946a063-78e7-4c72-8290-b7840cc5fbf4
+:END:
 
 #+begin_src elisp
 (use-package eglot
