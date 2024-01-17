@@ -3156,7 +3156,9 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (eglot-ensure))
 
 (add-hook 'c-mode-hook #'kb/c-mode)
+(add-hook 'c-ts-mode-hook #'kb/c-mode)
 (add-hook 'c++-mode-hook #'kb/c-mode)
+(add-hook 'c++-ts-mode-hook #'kb/c-mode)
 #+end_src
 
 **** Clojure
