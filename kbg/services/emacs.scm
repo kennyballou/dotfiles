@@ -188,6 +188,7 @@
         emacs-xyz:emacs-info-plus
         emacs-inf-ruby
         emacs-ivy
+        emacs-xyz:emacs-jarchive
         emacs-jedi
         emacs-js-comint
         emacs-js2-mode
