@@ -3036,6 +3036,51 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :END:
 
 #+begin_src elisp
+(defun kb/c*-eglot-server (interactive?)
+  "Return the eglot server for C/C++."
+  (list "guix"
+        "shell"
+        "--pure"
+        "ccls"
+        "--"
+        "ccls"))
+#+end_src
+
+#+begin_src elisp
+(defun kb/java-eglot-server (interactive?)
+  "Return the eglot server for Java."
+  (list "guix"
+        "shell"
+        "--pure"
+        "openjdk@21:jdk"
+        "--"
+        (expand-file-name (concat user-emacs-directory
+                                  "share/eclipse.jdt.ls/bin/jdtls"))
+        :initializationOptions
+        '(:settings
+          (:java
+           (:format
+            (:enabled "true"
+                      :settings
+                      (:url (concat "file:/" user-emacs-directory "/lsp-java/GoogleStyles.xml")
+                            :profile "GoogleStyle"))
+            :completion (:guessMethodArguments t)))
+           :extendClientCapabilities (:classFileContentSupport t))
+        ))
+#+end_src
+
+#+begin_src elisp
+(defun kb/python-eglot-server (interactive?)
+  "Return the eglot server for Python."
+  (list "guix"
+        "shell"
+        "--pure"
+        "python-lsp-server"
+        "--"
+        "pylsp"))
+#+end_src
+
+#+begin_src elisp
 (use-package eglot
   :commands (eglot eglot-ensure)
   :demand t
@@ -3054,23 +3099,15 @@ Most shell applications accept Perl Compatible Regular Expressions."
   :custom
   (eglot-report-progress t)
   (eglot-confirm-server-initiated-edits 'confirm)
-  :config
-  (setq eglot-stay-out-of '(flymake))
-  (setq eglot-server-programs (list (cons '(java-mode java-ts-mode)
-                                          (list "guix"
-                                                "shell"
-                                                "--pure"
-                                                "openjdk@21:jdk"
-                                                "--"
-                                                (expand-file-name (concat user-emacs-directory
-                                                                          "share/eclipse.jdt.ls/bin/jdtls"))))
-                                    (cons '(python-mode python-ts-mode) (list
-                                                        "guix"
-                                                        "shell"
-                                                        "--pure"
-                                                        "python-lsp-server"
-                                                        "--"
-                                                        "pylsp")))))
+  (eglot-autoshutdown t)
+  (eglot-extend-to-xref t)
+  (eglot-stay-out-of '(flymake))
+  (eglot-server-programs (list (cons '(c-mode c-ts-mode c++-mode c++-ts-mode)
+                                     #'kb/c*-eglot-server)
+                               (cons '(java-mode java-ts-mode)
+                                     #'kb/java-eglot-server)
+                               (cons '(python-mode python-ts-mode)
+                                     #'kb/python-eglot-server))))
 #+end_src
 
 **** Debug Adapter Protocol
