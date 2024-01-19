@@ -3064,7 +3064,8 @@ Most shell applications accept Perl Compatible Regular Expressions."
                       :settings
                       (:url (concat "file:/" user-emacs-directory "/lsp-java/GoogleStyles.xml")
                             :profile "GoogleStyle"))
-            :completion (:guessMethodArguments t)))
+            :completion (:guessMethodArguments t)
+            :autobuild (:enabled "false")))
            :extendClientCapabilities (:classFileContentSupport t))
         ))
 #+end_src
