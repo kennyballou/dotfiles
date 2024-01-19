@@ -1073,20 +1073,21 @@ Disable mouse open files.
 #+end_src
 
 #+begin_src elisp
-(require 'dired-x)
-(setq dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
-                                     ("\\.doc\\'" "libreoffice")
-                                     ("\\.docx\\'" "libreoffice")
-                                     ("\\.ppt\\'" "libreoffice")
-                                     ("\\.pptx\\'" "libreoffice")
-                                     ("\\.xls\\'" "libreoffice")
-                                     ("\\.xlsx\\'" "libreoffice")
-                                     ("\\.csv\\'" "libreoffice")
-                                     ("\\.tsv\\'" "libreoffice")
-                                     ("\\.odt\\'" "libreoffice")
-                                     ("\\.jpg\\'" "eog")
-                                     ("\\.png\\'" "eog")
-                                     ("\\.svg\\'" "eog")))
+(use-package dired-x
+  :custom
+  (dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
+                                  ("\\.doc\\'" "libreoffice")
+                                  ("\\.docx\\'" "libreoffice")
+                                  ("\\.ppt\\'" "libreoffice")
+                                  ("\\.pptx\\'" "libreoffice")
+                                  ("\\.xls\\'" "libreoffice")
+                                  ("\\.xlsx\\'" "libreoffice")
+                                  ("\\.csv\\'" "libreoffice")
+                                  ("\\.tsv\\'" "libreoffice")
+                                  ("\\.odt\\'" "libreoffice")
+                                  ("\\.jpg\\'" "eog")
+                                  ("\\.png\\'" "eog")
+                                  ("\\.svg\\'" "eog"))))
 #+end_src
 
 *** isearch
