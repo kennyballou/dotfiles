@@ -2391,13 +2391,13 @@ buffers.
 :ID:       7a081f26-4bef-4cb7-a09c-b0f6800c4120
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package ggtags
   :delight
   :hook (prog-mode . ggtags-mode))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package helm-gtags
   :diminish
   :after (helm)
