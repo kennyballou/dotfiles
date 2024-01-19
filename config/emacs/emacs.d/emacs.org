@@ -3063,6 +3063,10 @@ Most shell applications accept Perl Compatible Regular Expressions."
         "--jvm-arg=-XX:+UseStringDeduplication"
         "--jvm-arg=-XX:AdaptiveSizePolicyWeight=90"
         "--jvm-arg=-Dsun.zip.disableMemoryMapping=true"
+        "-data"
+        (expand-file-name (sha1 (project-root (project-current t)))
+                          (concat user-emacs-directory
+                                  ".cache/lsp/jdtls/"))
         :initializationOptions
         '(:settings
           (:java
