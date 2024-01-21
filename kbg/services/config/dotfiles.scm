@@ -60,7 +60,7 @@
           email-config-service
           font-config-service
           git-config-service
-          ;; global-config-service
+          global-config-service
           gnupg-config-service
           gnuplot-config-service
           guix-config-service
