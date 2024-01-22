@@ -3474,6 +3474,7 @@ Add some extra symbols to prettify for Coq.
 
 #+begin_src elisp
 (use-package jarchive
+  :diminish
   :after eglot
   :config
   (jarchive-setup))
