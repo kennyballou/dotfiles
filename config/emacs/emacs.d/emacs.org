@@ -5146,8 +5146,10 @@ not strictly necessary.
   :bind (("C-c d d" . deft)
          ("C-c d f" . deft-find-file))
   :custom
+  (deft-use-filename-as-title t)
   (deft-extensions '("org" "text" "tex" "txt" "md" "markdwon"))
   (deft-recursive t)
+  (deft-strip-summary-regexp "\\([\n	]\\|^#\\+.+:.*$\\|^:[[:upper:]_]+:.*$\\)")
   (deft-directory org-directory))
 #+end_src
 
