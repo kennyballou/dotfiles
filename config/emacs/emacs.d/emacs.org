@@ -4096,8 +4096,8 @@ Some references used for this:
   ;; (setq bibtex-completion-bibliography nil)
   ;; (setq bibtex-completion-notes-path nil)
   ;; (setq bibtex-completion-library-path nil)
-  (bibtex-files (list (expand-file-name "~/.org/references.bib")))
-  (bibtex-completion-bibliography (expand-file-name "~/.org/references.bib"))
+  (bibtex-files (list (expand-file-name "~/.org/data/25/057265-31e9-485c-bed5-315b97840ba1/references.bib")))
+  (bibtex-completion-bibliography (expand-file-name "~/.org/data/25/057265-31e9-485c-bed5-315b97840ba1/references.bib"))
   (bibtex-completion-library-path (expand-file-name "~/.org/data/"))
   (bibtex-completion-additional-search-fields '(journal booktitle))
   (bibtex-completion-display-formats
