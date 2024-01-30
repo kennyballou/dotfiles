@@ -336,7 +336,7 @@ $ emacsclient -c"
 #+begin_src elisp
 (use-package desktop
   :custom
-  (desktop-save mode t)
+  (desktop-save-mode t)
   (desktop-path (list user-emacs-directory))
   (desktop-load-locked-desktop 'check-pid)
   (desktop-restore-frames nil)
