@@ -4346,6 +4346,8 @@ http://doc.norang.ca/org-mode.htm
                  (file-expand-wildcards (concat org-directory "*/*.org"))
                  (file-expand-wildcards (concat org-directory "*/*/*.org"))))
 (setq org-log-state-notes-into-drawer t)
+(setq org-log-reschedule 'time)
+(setq org-log-redeadline 'time)
 (setq org-clock-persistence-insinuate t)
 (setq org-clock-out-remove-zero-time-clocks t)
 (setq org-clock-persist t)
