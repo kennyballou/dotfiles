@@ -5727,7 +5727,7 @@ Configuration borrowed from the tutorial found here:
 #+begin_src elisp
 (setq zoneinfo-style-world-list
       '(("Etc/UTC" "UTC")
-        ("Etc/GMT-12" "AoE")))
+        ("Etc/GMT+12" "AoE")))
 #+end_src
 
 *** MultiMedia
