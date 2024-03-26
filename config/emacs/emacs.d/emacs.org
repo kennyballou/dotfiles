@@ -3108,7 +3108,8 @@ Most shell applications accept Perl Compatible Regular Expressions."
          ("C-c e x 4 d" . #'xref-find-definitions-other-window)
          ("C-c e x b" . #'xref-go-back)
          ("C-c e x f" . #'xref-go-forward)
-         ("C-c e r" . #'eglot-rename))
+         ("C-c e r" . #'eglot-rename)
+         ("C-c e F" . #'eglot-format-buffer))
   :config
   (setq eglot-server-programs (list (cons '(c-mode c-ts-mode c++-mode c++-ts-mode)
                                           #'kb/c*-eglot-server)
