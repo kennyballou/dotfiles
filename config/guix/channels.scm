@@ -38,7 +38,7 @@
        (url "https://github.com/babariviere/guix-emacs.git")
        (branch "master")
        (commit
-        "dab364eaa78c827cba43b99c4e770d3000d8d44a")
+        "31dda880da2ac465935a9daf068abc22a7bcb745")
        (introduction
         (make-channel-introduction
          "8d45521e2aeac063fba926d375b1a202c5487275"
