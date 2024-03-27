@@ -1906,6 +1906,17 @@ https://matthewbauer.us/blog/bauer.html
 (setq require-final-newline t)
 #+end_src
 
+*** Calc
+:PROPERTIES:
+:ID:       d01ff705-1c4d-4288-a986-f89129926a51
+:END:
+
+#+begin_src elisp
+(use-package casual
+  :bind (:map calc-mode-map
+              ("C-o" . casual-main-menu)))
+#+end_src
+
 *** Version Control
 :PROPERTIES:
 :ID:       3fc70c47-fb7a-4b4f-94e7-d59b1a87d89d
