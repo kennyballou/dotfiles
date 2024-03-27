@@ -2570,6 +2570,20 @@ buffers.
   :bind ("C-c h d" . #'zeal-at-point))
 #+end_src
 
+
+*** DevDocs
+:PROPERTIES:
+:ID:       3dd1b8ee-0e4d-4f9c-9770-8fcff44c63b1
+:END:
+
+#+begin_src elisp
+(use-package devdocs
+  :commands devdocs-lookup
+  :bind ("C-h D" . devdocs-lookup)
+  :custom
+  (devdocs-data-dir (string-join (list (xdg-cache-home) "/devdocs"))))
+#+end_src
+
 *** Help ((wo)man/info) -- disabled
 :PROPERTIES:
 :ID:       3c59a4db-1f1b-4681-b488-5c2d89e5276f
