@@ -3123,6 +3123,22 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+end_src
 
 #+begin_src elisp
+(defun kb/latex-eglot-server (interactive?)
+  "Return the eglot server for LaTeX."
+  (list "guix"
+        "time-machine"
+        (string-join `("--channels=" ,(getenv "HOME") "/.config/guix/channels.scm"))
+        "--"
+        "shell"
+        "--pure"
+        "rust-texlab"
+        "texlive"
+        "texlive-biber"
+        "python-pygments"
+        "--"
+        "texlab"))
+#+end_src
+#+begin_src elisp
 (use-package eglot
   :commands (eglot eglot-ensure)
   :demand t
@@ -3145,7 +3161,9 @@ Most shell applications accept Perl Compatible Regular Expressions."
                                     (cons '(java-mode java-ts-mode)
                                           #'kb/java-eglot-server)
                                     (cons '(python-mode python-ts-mode)
-                                          #'kb/python-eglot-server)))
+                                          #'kb/python-eglot-server)
+                                    (cons '(latex-mode bibtex-mode)
+                                          #'kb/latex-eglot-server)))
   :custom
   (eglot-report-progress t)
   (eglot-confirm-server-initiated-edits 'confirm)
