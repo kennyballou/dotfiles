@@ -2050,7 +2050,9 @@ https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
 #+end_src
 
 #+begin_src elisp
-(projectile-mode -1)
+(with-eval-after-load 'projectile
+  (projectile-mode -1)
+  )
 #+end_src
 
 *** Project.el
