@@ -3064,6 +3064,16 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       7946a063-78e7-4c72-8290-b7840cc5fbf4
 :END:
 
+****** Server Functions
+:PROPERTIES:
+:ID:       377c23eb-0ac8-4fb4-96e6-afe3acb0cd08
+:END:
+
+******* C/C++
+:PROPERTIES:
+:ID:       21998014-6ebf-48b5-a06e-1acc88a9096e
+:END:
+
 #+begin_src elisp
 (defun kb/c*-eglot-server (interactive?)
   "Return the eglot server for C/C++."
@@ -3074,6 +3084,11 @@ Most shell applications accept Perl Compatible Regular Expressions."
         "--"
         "ccls"))
 #+end_src
+
+******* Java
+:PROPERTIES:
+:ID:       b83c7628-aa3c-4fd6-b572-f8125061c875
+:END:
 
 #+begin_src elisp
 (defun kb/java-eglot-server (interactive?)
@@ -3107,9 +3122,14 @@ Most shell applications accept Perl Compatible Regular Expressions."
                             :profile "GoogleStyle"))
             :completion (:guessMethodArguments t)
             :autobuild (:enabled "false")))
-           :extendClientCapabilities (:classFileContentSupport t))
+          :extendClientCapabilities (:classFileContentSupport t))
         ))
 #+end_src
+
+******* Python
+:PROPERTIES:
+:ID:       bcacda85-83d9-45ae-96d3-ca79c7fd18e4
+:END:
 
 #+begin_src elisp
 (defun kb/python-eglot-server (interactive?)
@@ -3121,6 +3141,11 @@ Most shell applications accept Perl Compatible Regular Expressions."
         "--"
         "pylsp"))
 #+end_src
+
+******* LaTeX/BibTex
+:PROPERTIES:
+:ID:       b2819741-9865-4088-b1ca-1c24e0f96b2e
+:END:
 
 #+begin_src elisp
 (defun kb/latex-eglot-server (interactive?)
@@ -3138,6 +3163,12 @@ Most shell applications accept Perl Compatible Regular Expressions."
         "--"
         "texlab"))
 #+end_src
+
+****** Eglot Configuration
+:PROPERTIES:
+:ID:       a184b310-86c8-4950-8b10-8b65bb0e7c8b
+:END:
+
 #+begin_src elisp
 (use-package eglot
   :commands (eglot eglot-ensure)
