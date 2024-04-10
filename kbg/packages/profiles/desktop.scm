@@ -41,6 +41,7 @@
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages password-utils)
   #:use-module (gnu packages pdf)
+  #:use-module (gnu packages scanner)
   #:use-module (gnu packages security-token)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages textutils)
@@ -127,6 +128,7 @@
         poppler
         qpdf
         qrencode
+        sane-backends
         ublock-origin/chromium
         ungoogled-chromium
         vlc
