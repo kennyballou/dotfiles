@@ -36,6 +36,7 @@
   #:use-module (gnu packages pv)
   #:use-module (gnu packages rsync)
   #:use-module (gnu packages rust-apps)
+  #:use-module (gnu packages samba)
   #:use-module (gnu packages screen)
   #:use-module (gnu packages search)
   #:use-module (gnu packages ssh)
@@ -61,6 +62,7 @@
 (define %kbg-base-packages
   (list bash-completion
         bindfs
+        cifs-utils
         cpufrequtils
         cryptsetup
         curl
@@ -107,6 +109,7 @@
         renameutils
         ripgrep
         rsync
+        samba
         screen
         sed
         smartmontools
