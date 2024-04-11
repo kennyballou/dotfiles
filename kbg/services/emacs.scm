@@ -212,6 +212,7 @@
         emacs-marginalia
         emacs-markdown-mode
         emacs-mbsync
+        emacs-xyz:emacs-memory-usage
         emacs-mmm-mode
         emacs-xyz:emacs-modus-themes
         emacs-mpdel
