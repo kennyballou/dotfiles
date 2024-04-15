@@ -770,6 +770,7 @@ Do not make me type ~C-q SPC~ to insert spaces!
 
 #+begin_src elisp
 (use-package circadian
+  :commands circadian-setup
   :custom
   (circadian-themes '(("07:00" . modus-operandi-tinted)
                       ("19:00" . modus-vivendi-tinted)))
@@ -952,6 +953,7 @@ Do not make me type ~C-q SPC~ to insert spaces!
 
 #+begin_src elisp
 (use-package powerline
+  :commands powerline-default-theme
   :init
   (powerline-default-theme))
 #+end_src
@@ -1033,6 +1035,7 @@ Golden Ratio frame resizing
 
 #+begin_src elisp
 (use-package golden-ratio
+  :commands golden-ratio-mode
   :diminish
   :custom
   (golden-ratio-auto-scale nil)
@@ -1098,6 +1101,7 @@ Disable mouse open files.
 #+begin_src elisp
 ;; show number of matches while searching
 (use-package anzu
+  :commands global-anzu-mode
   :init
   (global-anzu-mode t)
   (setq anzu-mode-lighter "")
@@ -1190,6 +1194,13 @@ https://tuhdo.github.io/helm-intro.html
 
 #+begin_src elisp
 (use-package helm
+  :preface (progn
+             (require 'helm-core)
+             (require 'helm)
+             (require 'helm-command)
+             (require 'helm-imenu))
+  :commands (helm-show-kill-ring helm-all-mark-rings)
+  :after async
   :delight
   :bind (("C-c h" . helm-command-prefix)
          ("M-x" . helm-M-x)
@@ -1261,6 +1272,7 @@ https://tuhdo.github.io/helm-intro.html
 
 #+begin_src elisp
 (use-package helm-descbinds
+  :commands helm-descbinds-mode
   :after (helm)
   :config
   (helm-descbinds-mode))
@@ -1944,6 +1956,7 @@ https://matthewbauer.us/blog/bauer.html
 (use-package git-timemachine
   :defer 1
   :diminish)
+(use-package git-auto-commit-mode)
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -2500,6 +2513,7 @@ buffers.
     (flycheck-add-mode 'vale mode)))
 
 (use-package flycheck-color-mode-line
+  :commands flycheck-color-mode-line-mode
   :after flycheck
   :init (flycheck-color-mode-line-mode))
 #+end_src
@@ -2794,8 +2808,15 @@ left to try and get the PATH down to, at most, MAX-LEN."
 
 (setenv "PAGER" "")
 
-;; Add eshell fringe
-(add-hook 'eshell-mode-hook #'eshell-fringe-status-mode)
+#+end_src
+
+Add eshell fringe
+
+#+begin_src elisp
+(use-package eshell-fringe-status
+  :autoload eshell-fringe-status-mode
+  :hook (eshell-mode-hook . eshell-fringe-status-mode))
+#+end_src
 
 ;; disable slime in eshell
 (add-hook 'eshell-mode-hook
@@ -2920,6 +2941,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package envrc
+  :commands envrc-global-mode
   :diminish
   :init
   (envrc-global-mode))
@@ -3682,7 +3704,9 @@ Add some extra symbols to prettify for Coq.
 (defconst preferred-javascript-indent-level 4)
 
 (add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
+#+end_src
 
+#+begin_src elisp :tangle no
 ;; js-2 mode
 ;; change some defaults
 
@@ -3702,7 +3726,9 @@ Add some extra symbols to prettify for Coq.
 
   (with-eval-after-load 'js2-mode
     (js2-imenu-extras-setup)))
+#+end_src
 
+#+begin_src elisp
 ;; js-mode
 (setq-default js-indent-level preferred-javascript-indent-level)
 
@@ -4221,6 +4247,7 @@ entry.
 
 #+begin_src elisp
 (use-package auctex-latexmk
+  :commands auctex-latexmk-setup
   :after tex
   :config
   (setq auctex-latexmk-inherit-TeX-PDF-mode t)
@@ -4321,6 +4348,7 @@ http://doc.norang.ca/org-mode.htm
 (require 'org-id)
 (require 'holidays)
 (require 'ox-md)
+(require 'org-attach)
 #+end_src
 
 **** Graphics and Export
@@ -5129,6 +5157,7 @@ not strictly necessary.
 
 #+begin_src elisp
 (use-package org-roam-ui
+  :commands org-roam-ui-mode
   :delight
   :after org-roam
   :bind (("C-c n o a" . org-roam-ui-add-to-local-graph)
@@ -5138,8 +5167,7 @@ not strictly necessary.
   (org-roam-ui-sync-theme t)
   (org-roam-ui-follow nil)
   (org-roam-ui-update-on-save t)
-  (org-roam-ui-open-on-start nil)
-  :config)
+  (org-roam-ui-open-on-start nil))
 #+end_src
 
 **** Org Roam Bibtex
@@ -5149,6 +5177,7 @@ not strictly necessary.
 
 #+begin_src elisp
 (use-package org-roam-bibtex
+  :autoload org-roam-bibtex-mode
   :after (org-roam helm-bibtex)
   :diminish
   :config
@@ -5793,6 +5822,7 @@ Configuration borrowed from the tutorial found here:
   (elfeed-org))
 
 (use-package elfeed-score
+  :commands elfeed-score-enable
   :after elfeed
   :init
   (elfeed-score-enable)
@@ -5880,10 +5910,17 @@ _dR_:   Disable repeat
 
 #+begin_src elisp
 (use-package async
-  :diminish
-  :init
-  (dired-async-mode t)
-  (async-bytecomp-package-mode t))
+  :diminish)
+#+end_src
+
+#+begin_src elisp
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode t)
+#+end_src
+
+#+begin_src elisp
+(autoload 'async-bytecomp-package-mode "async-bytecomp.el" nil t)
+(async-bytecomp-package-mode t)
 #+end_src
 
 #+begin_src elisp
