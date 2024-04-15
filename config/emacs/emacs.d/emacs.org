@@ -1296,10 +1296,10 @@ https://tuhdo.github.io/helm-intro.html
   (setq mct-apply-completion-stripes t)
   (setq mct-completion-blocklist nil)
   (setq mct-completion-passlist
-	    '(imenu
-	      Info-goto-node
-	      Info-index
-	      Info-menu))
+        '(imenu
+          Info-goto-node
+          Info-index
+          Info-menu))
   (setq mct-completions-format 'one-column)
   (setq mct-hide-completion-mode-line nil)
   (setq mct-live-update-delay 0.6)
@@ -1552,49 +1552,49 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
           ((backward-up-list arg)))))
 
 (global-set-key [remap backward-up-list] 'backward-up-sexp) ; C-M-u, C-M-up
+#+end_src
 
+Cut/copy the current line if no region is active.
 
-;;----------------------------------------------------------------------------
-;; Cut/copy the current line if no region is active
-;;----------------------------------------------------------------------------
+#+begin_src elisp
 (use-package whole-line-or-region
   :diminish whole-line-or-region-local-mode
   :commands whole-line-or-region-global-mode
   :config
   (whole-line-or-region-global-mode t))
+#+end_src
 
-;; (use-package highlight-escape-sequences
-;;   :init
-;;   (hes-mode))
+#+begin_src elisp :tangle no
+(use-package highlight-escape-sequences
+  :init
+  (hes-mode))
 
-;; (global-hl-line-mode t)
+(global-hl-line-mode t)
+#+end_src
 
+#+begin_src elisp
 (use-package olivetti
   :config
   (setq olivetti-minimum-body-width 100))
+#+end_src
 
-
-
-
+#+begin_src elisp
 (use-package page-break-lines
   :diminish
   :config
   (global-page-break-lines-mode t))
+#+end_src
 
-
-
+#+begin_src elisp
 (use-package editorconfig
   :diminish
   :config
   (editorconfig-mode t))
+#+end_src
 
-
-
+#+begin_src elisp
 (use-package smartparens
   :diminish)
-
-
-
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -1814,7 +1814,7 @@ Wrap [[help:recenter-top-bottom][recenter-top-bottom]] so that it pulses as well
 
 #+begin_src elisp
 (defun kb/recenter-top-bottom (&optional ARG)
-    "Recenter-top-bottom with pulse effect."
+  "Recenter-top-bottom with pulse effect."
   (interactive)
   (pulsar-pulse-line)
   (recenter-top-bottom ARG))
@@ -2440,12 +2440,12 @@ buffers.
   (helm-gtags-ignore-case t)
   (helm-gtags-auto-update nil)
   :bind (:map helm-gtags-mode-map
-         ("M-t" . helm-gtags-find-tag)
-         ("M-r" . helm-gtags-find-rtag)
-         ("M-s" . helm-gtags-find-symbol)
-         ("M-g M-p" . helm-gtags-parse-file)
-         ("C-c <" . helm-gtags-previous-history)
-         ("C-c >" . helm-gtags-next-history)))
+              ("M-t" . helm-gtags-find-tag)
+              ("M-r" . helm-gtags-find-rtag)
+              ("M-s" . helm-gtags-find-symbol)
+              ("M-g M-p" . helm-gtags-parse-file)
+              ("C-c <" . helm-gtags-previous-history)
+              ("C-c >" . helm-gtags-next-history)))
 #+end_src
 
 *** Flycheck
@@ -3767,7 +3767,7 @@ Add some extra symbols to prettify for Coq.
 (use-package skewer-mode
   :init
   (add-hook 'skewer-mode-hook
-	        (lambda () (inferior-js-keys-mode -1))))
+            (lambda () (inferior-js-keys-mode -1))))
 
 (use-package add-node-modules-path
   :after (typescript-mode js2-mode)
@@ -3825,15 +3825,15 @@ Add some extra symbols to prettify for Coq.
 
 #+begin_src elisp
 (dolist (mode (list '("\\.xml\\'" . nxml-mode)
-                         '("\\.xsd\\'" . nxml-mode)
-                         '("\\.sch\\'" . nxml-mode)
-                         '("\\.rng\\'" . nxml-mode)
-                         '("\\.xlst\\'" . nxml-mode)
-                         '("\\.svg\\'" . nxml-mode)
-                         '("\\.rss\\'" . nxml-mode)
-                         '("\\.gpx\\'" . nxml-mode)
-                         '("\\.tcx\\'" . nxml-mode)
-                         '("\\.plist\\'" . nxml-mode)))
+                    '("\\.xsd\\'" . nxml-mode)
+                    '("\\.sch\\'" . nxml-mode)
+                    '("\\.rng\\'" . nxml-mode)
+                    '("\\.xlst\\'" . nxml-mode)
+                    '("\\.svg\\'" . nxml-mode)
+                    '("\\.rss\\'" . nxml-mode)
+                    '("\\.gpx\\'" . nxml-mode)
+                    '("\\.tcx\\'" . nxml-mode)
+                    '("\\.plist\\'" . nxml-mode)))
   (add-to-list 'auto-mode-alist mode))
 
 (add-to-list 'magic-mode-alist '("<\\?xml " . nxml-mode))
@@ -4248,8 +4248,8 @@ entry.
 (use-package auctex-latexmk
   :commands auctex-latexmk-setup
   :after tex
-  :config
-  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+  :custom
+  (auctex-latexmk-inherit-TeX-PDF-mode t)
   :init
   (auctex-latexmk-setup))
 #+end_src
@@ -4433,6 +4433,7 @@ http://doc.norang.ca/org-mode.htm
                                  (org-agenda-files :maxlevel . 9))))
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-use-outline-path t)
+(setq org-imenu-depth 4)
 (setq org-indirect-buffer-display 'current-window)
 (setq org-enforce-todo-dependencies t)
 (setq org-fast-tag-selection-include-todo t)
@@ -4973,9 +4974,9 @@ Except where they probably shouldn't be added.
 (use-package org-mime
   :config
   (setq org-mime-export-options '(:with-latex dvipng
-                                  :section-numbers nil
-                                  :with-author nil
-                                  :with-toc nil))
+                                              :section-numbers nil
+                                              :with-author nil
+                                              :with-toc nil))
   (setq org-mime-ascii 'utf-8))
 #+end_src
 
@@ -5151,7 +5152,7 @@ not strictly necessary.
       :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
                          "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
       :immediate-finish t :empty-lines 1)))
-     )
+  )
 #+end_src
 
 #+begin_src elisp
@@ -5540,7 +5541,7 @@ Configuration taken from the tutorial found here:
                                                             "  (:name Kenny Ballou)"
                                                             "  (:email kb@devnulllabs.io)"
                                                             "  (:pgp 0xB0CAA28A02958308))")
-                                                            "\n"))
+                                                          "\n"))
                   (mu4e-maildir-shortcuts . ((:maildir "/devnulllabs.io/INBOX" :key ?i)
                                              (:maildir "/devnulllabs.io/archive" :key ?a)
                                              (:maildir "/devnulllabs.io/trash" :key ?t)
@@ -5575,22 +5576,22 @@ Configuration taken from the tutorial found here:
 
 (setq mu4e-bookmarks
       '((:name "All Inboxes"
-         :query "maildir:/devnulllabs.io/INBOX OR maildir:/u.boisestate.edu/INBOX"
-         :key ?i)
+               :query "maildir:/devnulllabs.io/INBOX OR maildir:/u.boisestate.edu/INBOX"
+               :key ?i)
         (:name "Unread Messages"
-         :query "flag:unread AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
-         :key ?u)
+               :query "flag:unread AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :key ?u)
         (:name "Today's Messages"
-         :query "date:today..now AND NOT flag:trashed and NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
-         :key ?t)
+               :query "date:today..now AND NOT flag:trashed and NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :key ?t)
         (:name "Last 7 Days"
-         :query "date:7d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
-         :hide-unread t
-         :key ?w)
+               :query "date:7d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :hide-unread t
+               :key ?w)
         (:name "Last Month"
-         :query "date:30d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
-         :hide-unread t
-         :key ?m)))
+               :query "date:30d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :hide-unread t
+               :key ?m)))
 
 (add-hook 'mu4e-compose-mode-hook
           (lambda ()
@@ -5793,7 +5794,7 @@ Configuration borrowed from the tutorial found here:
 (setq erc-nick "kennyballou")
 (setq erc-user-full-name "Kenny Ballou")
 (setq erc-track-shorten-start 8)
-(setq erc-autojoin-channels-alist '(("irc.libera-chat" "#emacs" "#guix")))
+(setq erc-autojoin-channels-alist '(("irc.libera.chat" "#emacs" "#guix")))
 (setq erc-kill-buffer-on-part t)
 (setq erc-auto-query 'bury)
 #+end_src
