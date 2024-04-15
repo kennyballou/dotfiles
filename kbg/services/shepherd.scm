@@ -15,13 +15,6 @@
   #:use-module (kbg services syncthing)
   #:export (services-for-host))
 
-(define daeva-shepherd-services
-  (list (service home-shepherd-service-type
-                 (home-shepherd-configuration
-                  (services (append gnupg-service
-                                    languagetool-service
-                                    mpd-service
-                                    syncthing-service))))))
 (define axo-shepherd-services
   (list (service home-shepherd-service-type
                  (home-shepherd-configuration
@@ -50,9 +43,7 @@
                                     syncthing-service))))))
 
 (define (services-for-host hostname)
-  (cond ((eq? hostname 'daeva)
-         daeva-shepherd-services)
-        ((eq? hostname 'axo)
+  (cond ((eq? hostname 'axo)
          axo-shepherd-services)
         ((eq? hostname 'yak)
          yak-shepherd-services)
