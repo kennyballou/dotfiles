@@ -1573,7 +1573,6 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
   :config
   (setq olivetti-minimum-body-width 100))
 
-(setq backward-delete-char-untabify-method 'hungry)
 
 
 
