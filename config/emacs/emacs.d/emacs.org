@@ -1185,7 +1185,7 @@ Nicer naming of buffers for files with identitcal names.
 (setq-default recentf-exclude '("/tmp/", "/ssh:"))
 #+end_src
 
-*** helm -- Disabled?
+*** helm
 :PROPERTIES:
 :ID:       453f4b85-ed7d-420b-8f40-38b40a6883b8
 :END:
