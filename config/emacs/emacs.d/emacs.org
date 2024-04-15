@@ -1255,7 +1255,7 @@ https://tuhdo.github.io/helm-intro.html
                                                   " "))
   :config
   (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-  (defun spacemacs//helm-hide-minibuffer-maybe ()
+  (defun spacemacs/helm-hide-minibuffer-maybe ()
     "Hide minibuffer in Helm session if we use the header line as input field."
     (when (with-helm-buffer helm-echo-input-in-header-line)
       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
@@ -1264,7 +1264,7 @@ https://tuhdo.github.io/helm-intro.html
                      (let ((bg-color (face-background 'default nil)))
                        `(:background ,bg-color :foreground ,bg-color)))
         (setq-local cursor-type nil))))
-  :hook (helm-minibuffer-set-up-hook . spacemacs//helm-hide-minibuffer-maybe)
+  :hook (helm-minibuffer-set-up-hook . spacemacs/helm-hide-minibuffer-maybe)
   :init
   (helm-mode t)
   (helm-autoresize-mode t))
