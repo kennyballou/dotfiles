@@ -73,55 +73,55 @@
                           "vg0-var"))
            (type lvm-device-mapping))))
 
-   (file-systems (append
-                  (list (file-system
-                         (device "/dev/mapper/vg0-root")
-                         (mount-point "/")
-                         (type "ext4")
-                         (needed-for-boot? #t)
-                         (dependencies mapped-devices))
-                        (file-system
-                         (device "/dev/mapper/vg0-guix")
-                         (mount-point "/gnu")
-                         (type "xfs")
-                         (needed-for-boot? #t)
-                         (dependencies mapped-devices))
-                        (file-system
-                         (device "/dev/mapper/vg0-nix")
-                         (mount-point "/nix")
-                         (type "xfs")
-                         (needed-for-boot? #f)
-                         (dependencies mapped-devices))
-                        (file-system
-                         (device "/dev/mapper/vg0-var")
-                         (mount-point "/var")
-                         (type "ext4")
-                         (needed-for-boot? #t)
-                         (dependencies mapped-devices))
-                        (file-system
-                         (device "/dev/mapper/vg0-tmp")
-                         (mount-point "/tmp")
-                         (type "ext4")
-                         (needed-for-boot? #t)
-                         (dependencies mapped-devices))
-                        (file-system
-                         (device "/dev/mapper/vg0-opt")
-                         (mount-point "/opt")
-                         (type "ext4")
-                         (needed-for-boot? #f)
-                         (dependencies mapped-devices))
-                        (file-system
-                         (device "/dev/mapper/vg0-home")
-                         (mount-point "/home")
-                         (type "xfs")
-                         (needed-for-boot? #t)
-                         (dependencies mapped-devices))
-                        (file-system
-                         (device (uuid "5A5D-20AF" 'fat))
-                         (mount-point "/boot/efi")
-                         (type "vfat")
-                         (dependencies mapped-devices)))
-                  %base-file-systems))
+    (file-systems
+     (let* ((root (file-system
+                    (device "/dev/mapper/vg0-root")
+                    (mount-point "/")
+                    (type "ext4")
+                    (needed-for-boot? #t)
+                    (dependencies mapped-devices)))
+            (guix (file-system
+                    (device "/dev/mapper/vg0-guix")
+                    (mount-point "/gnu")
+                    (type "xfs")
+                    (needed-for-boot? #t)
+                    (dependencies mapped-devices)))
+            (nix (file-system
+                   (device "/dev/mapper/vg0-nix")
+                   (mount-point "/nix")
+                   (type "xfs")
+                   (needed-for-boot? #f)
+                   (dependencies mapped-devices)))
+            (var (file-system
+                   (device "/dev/mapper/vg0-var")
+                   (mount-point "/var")
+                   (type "ext4")
+                   (needed-for-boot? #t)
+                   (dependencies mapped-devices)))
+            (tmp (file-system
+                   (device "/dev/mapper/vg0-tmp")
+                   (mount-point "/tmp")
+                   (type "ext4")
+                   (needed-for-boot? #t)
+                   (dependencies mapped-devices)))
+            (opt (file-system
+                   (device "/dev/mapper/vg0-opt")
+                   (mount-point "/opt")
+                   (type "ext4")
+                   (needed-for-boot? #f)
+                   (dependencies mapped-devices)))
+            (home (file-system
+                    (device "/dev/mapper/vg0-home")
+                    (mount-point "/home")
+                    (type "xfs")
+                    (needed-for-boot? #t)
+                    (dependencies mapped-devices)))
+            (efi (file-system
+                   (device (uuid "5A5D-20AF" 'fat))
+                   (mount-point "/boot/efi")
+                   (type "vfat")
+                   (dependencies mapped-devices))))
+       (cons* root guix nix var opt home efi tmp %base-file-systems)))
 
    (swap-devices (list (swap-space (target "/dev/mapper/vg0-swap")
                                    (discard? #f)
