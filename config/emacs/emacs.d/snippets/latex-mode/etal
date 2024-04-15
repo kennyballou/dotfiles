@@ -1,8 +1,5 @@
 # -*- mode: snippet -*-
 # name: et al.
 # key: etal
-# Local Variables:
-# require-final-newline: nil
-# End:
 # --
 et~al. $0
