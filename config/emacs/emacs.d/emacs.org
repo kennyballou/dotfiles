@@ -2955,7 +2955,9 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package subword
-  :delight subword-mode)
+  :autoload subword-mode
+  :delight subword-mode
+  :hook (prog-mode-hook . subword-mode))
 #+end_src
 
 **** Semantic Mode
