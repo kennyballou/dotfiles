@@ -2817,14 +2817,17 @@ Add eshell fringe
   :hook (eshell-mode-hook . eshell-fringe-status-mode))
 #+end_src
 
-;; disable slime in eshell
+Disable slime in eshell
+
+#+begin_src elisp
 (add-hook 'eshell-mode-hook
           (lambda () (setq slime-mode nil)))
 
 #+end_src
 
-#+begin_src elisp
-;; https://github.com/szermatt/emacs-bash-completion
+https://github.com/szermatt/emacs-bash-completion
+
+#+begin_src elisp :tangle no
 (defun bash-completion-from-eshell ()
   (interactive)
   (let ((completion-at-point-functions
@@ -2835,10 +2838,9 @@ Add eshell fringe
   (bash-completion-dynamic-complete-nocomint
    (save-excursion (eshell-bol) (point))
    (point) t))
-
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (add-hook 'eshell-mode-hook
           #'(lambda ()
               (define-key eshell-mode-map (kbd "TAB") #'bash-completion-from-eshell)))
