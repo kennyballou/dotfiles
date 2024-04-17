@@ -2905,6 +2905,27 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (use-package daemons)
 #+end_src
 
+*** Detached
+:PROPERTIES:
+:ID:       168cd9d3-dcf5-4215-99c0-89a8c9e22b36
+:END:
+
+#+begin_src elisp
+(use-package detached
+  :autoload detached-init
+  :commands (detached-shell-command
+             detached-compile
+             detached-compile-recompile)
+  :init
+  (detached-init)
+  :bind (([remap async-shell-command] . detached-shell-command)
+         ([remap compile] . detached-compile)
+         ([remap recompile] . detached-compile-recompile))
+  :custom
+  (detached-show-output-on-attach t)
+  (detached-terminal-data-command system-type))
+#+end_src
+
 *** Languages and Language Modes
 :PROPERTIES:
 :ID:       436be882-9c6b-462b-9b1c-9219031e33d3

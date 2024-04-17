@@ -75,6 +75,7 @@
         emacs-define-word
         emacs-deft
         emacs-xyz:emacs-delight
+        emacs-xyz:emacs-detached
         emacs-devdocs
         emacs-diff-hl
         emacs-diminish

@@ -66,6 +66,7 @@
         cpufrequtils
         cryptsetup
         curl
+        dtach
         entr
         ethtool
         fd
