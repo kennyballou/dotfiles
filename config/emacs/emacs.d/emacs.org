@@ -1093,6 +1093,15 @@ Disable mouse open files.
                                   ("\\.svg\\'" "eog"))))
 #+end_src
 
+Asynchronous rsync from [[help:dired][dired]].
+
+#+begin_src elisp
+(use-package dired-rsync
+  :commands dired-rsync
+  :bind (:map dired-mode-map
+              ("C-c C-r" . dired-rsync)))
+#+end_src
+
 *** isearch
 :PROPERTIES:
 :ID:       85846a98-5932-49de-8f88-abbc558dfecb

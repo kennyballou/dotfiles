@@ -79,6 +79,7 @@
         emacs-devdocs
         emacs-diff-hl
         emacs-diminish
+        emacs-dired-rsync
         emacs-direnv
         emacs-disable-mouse
         ;; emacs-djvu
