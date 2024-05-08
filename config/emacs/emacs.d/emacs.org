@@ -2931,6 +2931,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
          ([remap compile] . detached-compile)
          ([remap recompile] . detached-compile-recompile))
   :custom
+  (detached-notification-function #'detached-state-transitionion-echo-message)
   (detached-show-output-on-attach t)
   (detached-terminal-data-command system-type))
 #+end_src
