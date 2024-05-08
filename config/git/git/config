@@ -1,3 +1,5 @@
+[init]
+	defaultBranch = trunk
 [user]
 	name = Kenny Ballou
 	email = kb@devnulllabs.io
