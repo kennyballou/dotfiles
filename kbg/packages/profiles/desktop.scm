@@ -93,6 +93,7 @@
         gawk
         getmail
         gimp
+        gnome-boxes
         gnome-shell-extension-gsconnect
         gnome-tweaks
         gnupg
