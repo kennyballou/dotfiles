@@ -97,7 +97,6 @@
         nethogs
         net-tools
         nmap
-        nss-certs
         openssh
         openssl
         parallel
