@@ -25,4 +25,6 @@ else
     export VISUAL='emacsclient'
 fi
 
-eval "$(direnv hook bash)"
+if [[ -n "$(type direnv 2> /dev/null)" ]]; then
+   eval "$(direnv hook bash)"
+fi
