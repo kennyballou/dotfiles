@@ -2389,9 +2389,10 @@ buffers.
 #+begin_src elisp
 (use-package switch-window
   :commands switch-window
-  :customize
+  :custom
   (switch-window-shortcut-style 'alphabet)
   (switch-window-timeout nil)
+  (switch-window-multiple-frames t)
   :init
   (global-set-key (kbd "C-x o") #'switch-window))
 #+end_src
