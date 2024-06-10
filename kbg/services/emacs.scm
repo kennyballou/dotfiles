@@ -20,6 +20,7 @@
      (,emacs-xyz:emacs-dash . ,emacs-dash)
      (,emacs-xyz:emacs-esxml . ,emacs-esxml)
      (,emacs-xyz:emacs-helm . ,emacs-helm)
+     (,emacs-xyz:emacs-magit . ,emacs-magit)
      (,emacs-xyz:emacs-tablist . ,emacs-tablist))))
 
 (define emacs-packages
@@ -211,6 +212,7 @@
         emacs-lua-mode
         emacs-magit
         emacs-magit-annex
+        emacs-xyz:emacs-magit-org-todos-el
         emacs-marginalia
         emacs-markdown-mode
         emacs-mbsync
