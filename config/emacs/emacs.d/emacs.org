@@ -2027,7 +2027,9 @@ https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
 #+end_src
 
 #+begin_src elisp
-(use-package magit-annex)
+(use-package magit-annex
+  :after magit)
+#+end_src
 #+end_src
 
 *** Projectile (disabled!)
