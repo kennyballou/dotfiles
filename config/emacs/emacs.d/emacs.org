@@ -1502,15 +1502,19 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
+#+end_src
 
-(use-package browse-kill-ring)
-(defvar browse-kill-ring-separator)
-(defvar browse-kill-ring-mode-map)
-(setq browse-kill-ring-separator "\f")
-(global-set-key (kbd "M-Y") 'browse-kill-ring)
-(with-eval-after-load 'browse-kill-ring
-  (define-key browse-kill-ring-mode-map (kbd "C-g") 'browse-kill-ring-quit))
+#+begin_src elisp
+(use-package browse-kill-ring
+  :commands browse-kill-ring
+  :custom
+  (browse-kill-ring-separator "\f")
+  :bind (("M-Y" . browse-kill-ring)
+         :map browse-kill-ring-mode-map
+         ("C-g" . browse-kill-ring-quit)))
+#+end_src
 
+#+begin_src elisp
 
 ;; Don't disable narrowing commands
 (put 'narrow-to-region 'disabled nil)
