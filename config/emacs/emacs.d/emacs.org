@@ -1594,6 +1594,15 @@ Cut/copy the current line if no region is active.
 #+begin_src elisp
 (use-package page-break-lines
   :diminish
+  :custom
+  (page-break-lines-modes '(emacs-lisp-mode
+                            lisp-mode
+                            scheme-mode
+                            compilation-mode
+                            outline-mode
+                            help-mode
+                            browse-kill-ring-mode
+                            ledger-mode))
   :config
   (global-page-break-lines-mode t))
 #+end_src
