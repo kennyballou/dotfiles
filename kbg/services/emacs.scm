@@ -172,6 +172,7 @@
         emacs-helm-pass
         emacs-helm-proc
         emacs-helm-project
+        emacs-helm-recoll
         emacs-helm-shell-history
         emacs-helm-sql-connect
         emacs-helm-tramp

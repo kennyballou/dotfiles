@@ -5321,6 +5321,18 @@ not strictly necessary.
   (deft-directory org-directory))
 #+end_src
 
+*** recoll
+:PROPERTIES:
+:ID:       a01ffd72-b7ae-409e-848d-7f9d89753e66
+:END:
+
+#+begin_src elisp :tangle no
+(use-package helm-recoll
+  :commands helm-recoll
+  :custom
+  (helm-recoll-directories nil))
+#+end_src
+
 *** elgantt
 :PROPERTIES:
 :ID:       270cff5d-0d98-4bad-819c-629a6fe9d37c
