@@ -260,7 +260,6 @@
         emacs-password-store
         emacs-password-store-otp
         emacs-pcmpl-args
-        emacs-pcmpl-git
         emacs-pcmpl-pip
         emacs-pcomplete-extension
         emacs-xyz:emacs-pcre2el
