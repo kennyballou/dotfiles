@@ -1945,7 +1945,7 @@ https://matthewbauer.us/blog/bauer.html
 :END:
 
 #+begin_src elisp
-(use-package casual
+(use-package casual-calc
   :bind (:map calc-mode-map
               ("C-o" . casual-main-menu)))
 #+end_src

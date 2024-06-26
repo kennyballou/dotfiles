@@ -48,7 +48,7 @@
         emacs-buffer-move
         ;; emacs-bundler
         emacs-calibredb
-        emacs-casual
+        emacs-casual-calc
         emacs-cider
         emacs-circadian
         emacs-citar
