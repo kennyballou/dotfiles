@@ -49,6 +49,7 @@
         ;; emacs-bundler
         emacs-calibredb
         emacs-casual-calc
+        emacs-casual-dired
         emacs-cider
         emacs-circadian
         emacs-citar

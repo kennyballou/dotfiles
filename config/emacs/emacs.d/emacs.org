@@ -1102,6 +1102,12 @@ Asynchronous rsync from [[help:dired][dired]].
               ("C-c C-r" . dired-rsync)))
 #+end_src
 
+#+begin_src elisp
+(use-package casual-dired
+  :commands casual-dired-tmenu
+  :bind (:map dired-mode-map ("C-o" . #'casual-dired-tmenu)))
+#+end_src
+
 *** isearch
 :PROPERTIES:
 :ID:       85846a98-5932-49de-8f88-abbc558dfecb
