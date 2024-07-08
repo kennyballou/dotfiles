@@ -45,6 +45,7 @@
    `(,git "svn")
    `(,git "subtree")
    git-annex
+   git-filter-repo
    global
    groff
    guile-3.0
