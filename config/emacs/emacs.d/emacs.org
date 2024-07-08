@@ -1732,14 +1732,14 @@ Simple function which returns buffer contents untexified.
 
 #+begin_src elisp
 (use-package flycheck-languagetool
-  :after flycheck
+  :after (flycheck flycheck-vale)
   :hook (text-mode . flycheck-languagetool-setup)
-  :init
-  (setq flycheck-languagetool-language "en-US")
-  (setq flycheck-languagetool-server-port 9092)
-  (setq flycheck-languagetool-url (format "http://localhost:%s"
-                                          flycheck-languagetool-server-port))
-  (setq flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
+  :custom
+  (flycheck-languagetool-language "en-US")
+  (flycheck-languagetool-server-port 9092)
+  (flycheck-languagetool-url (format "http://localhost:%s"
+                                     flycheck-languagetool-server-port))
+  (flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
   :config
   (flycheck-add-next-checker 'languagetool 'vale)
   (flycheck-remove-next-checker 'languagetool 'proselint))
