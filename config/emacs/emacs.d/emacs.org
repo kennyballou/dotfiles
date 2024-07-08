@@ -725,6 +725,7 @@ Do not make me type ~C-q SPC~ to insert spaces!
   (require 'use-package))
 
 (setq use-package-always-ensure nil)
+(setq use-package-always-demand t)
 
 (use-package bind-key)
 (use-package diminish)
