@@ -3450,19 +3450,24 @@ Add some extra symbols to prettify for Coq.
 #+begin_src elisp
 ;;; LESS
 (use-package less-css-mode)
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package skewer-less
   :after less-css-mode
   :hook (less-css-mode-hook . skewer-less-mode))
+#+end_src
 
+#+begin_src elisp
 ;; Skewer CSS
 (use-package skewer-mode
   :hook css-mode-hook)
+#+end_src
 
+#+begin_src elisp :tangle no
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
-  :hook (css-mode-hook . turn-on-css-eldoc)
-  :init
-  (autoload 'turn-on-css-eldoc "css-eldoc"))
+  :hook (css-mode-hook . turn-on-css-eldoc))
 #+end_src
 
 **** Docker
