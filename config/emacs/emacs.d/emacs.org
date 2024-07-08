@@ -5901,20 +5901,25 @@ Configuration borrowed from the tutorial found here:
 (use-package elfeed
   :config
   (run-at-time t (* 8 3600) #'elfeed-update))
+#+end_src
 
+#+begin_src elisp
 (use-package elfeed-org
   :after elfeed
   :config
   (setq rmh-elfeed-org-files (list "~/.org/elfeed.org"))
   (setq elfeed-search-filter "@12-hours-ago +unread")
   (elfeed-org))
+#+end_src
 
+#+begin_src elisp
 (use-package elfeed-score
   :commands elfeed-score-enable
   :after elfeed
-  :init
-  (elfeed-score-enable)
-  (define-key elfeed-search-mode-map "=" elfeed-score-map))
+  :bind (:map elfeed-search-mode-map
+              ("=" . elfeed-score-map))
+  :config
+  (elfeed-score-enable))
 #+end_src
 **** World-Clock
 :PROPERTIES:
