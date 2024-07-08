@@ -3843,6 +3843,15 @@ Add some extra symbols to prettify for Coq.
          (js2-mode . add-node-modules-path)))
 #+end_src
 
+**** Ledger
+:PROPERTIES:
+:ID:       f41ce24b-4fc8-47ac-81a9-675b6dd0d854
+:END:
+
+#+begin_src elisp
+(use-package ledger-mode)
+#+end_src
+
 **** Lua
 :PROPERTIES:
 :ID:       ae884fcc-b5fd-4dd1-ba9d-cf468c599eec
