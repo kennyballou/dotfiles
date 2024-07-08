@@ -68,6 +68,9 @@ all-systems: $(SYSTEMS)
 .PHONY: all-homes
 all-homes: $(HOMES)
 
+.PHONY: emacs-init
+emacs-init: config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el
+
 $(HOMES):
 	guix time-machine -C $(CHANNEL_FILE) -- home build $(LOAD_PATH) --cores=$(CORES) $@.scm
 
