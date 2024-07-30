@@ -16,6 +16,7 @@
   #:use-module (kbg services config guile)
   #:use-module (kbg services config haskell)
   #:use-module (kbg services config kitty)
+  #:use-module (kbg services config languagetool)
   #:use-module (kbg services config ledger)
   #:use-module (kbg services config maven)
   #:use-module (kbg services config mpd)
@@ -46,6 +47,7 @@
           haskell-config-service
           home-vars-service
           kitty-config-service
+          languagetool-systemd
           ledger-config-service
           maven-config-service
           mpd-config-service
