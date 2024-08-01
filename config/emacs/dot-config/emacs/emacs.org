@@ -28,6 +28,7 @@ Early require of ~cl-lib~.
 (setq frame-inhibit-implied-resize t)
 (setq gc-cons-threshold 402653184)
 (setq gc-cons-percentage 0.6)
+(setq file-name-handler-alist-original file-name-handler-alist)
 #+end_src
 
 Log the current version Emacs.  It's helpful to know what exactly is running
@@ -51,80 +52,6 @@ https://git.sr.ht/~ashton314/emacs-bedrock/tree/main/item/early-init.el
 #+begin_src elisp
 (setq frame-resize-pixelwise t)
 (tool-bar-mode -1)
-#+end_src
-
-Early Theme configuration
-
-#+begin_src elisp
-(defvar file-name-handler-alist-original file-name-handler-alist)
-(setq file-name-handler-alist nil)
-(defvar contrib/after-load-theme-hook nil
-  "Hook run after a color theme is loaded using `load-theme'.")
-(defun contrib/run-after-load-theme-hook (&rest _)
-  "Run `contrib/after/load-theme-hook'"
-  (run-hooks 'contrib/after-load-theme-hook))
-
-(advice-add #'load-theme :after #'contrib/run-after-load-theme-hook)
-(require 'modus-operandi-theme)
-
-(defun kb/modus-operandi ()
-  "Enable some Modus Operandi variables and load the theme.
-
-This is used internally by `vde/modus-themes-toggle'.
-https://git.sr.ht/~vdemeester/home/tree/master/item/tools/emacs/early-init.el#L26"
-  (setq modus-themes-slanted-constructs t)
-  (setq modus-themes-bold-constructs nil)
-  (setq modus-themes-no-mixed-fonts nil)
-  (setq modus-themes-subtle-line-numbers nil)
-  (setq modus-themes-success-deuteranopia t)
-
-  (setq modus-themes-fringes nil)
-  (setq modus-themes-lang-checkers '())
-  (setq modus-themes-mode-line '(3d))
-  (setq modus-themes-syntax '())
-  (setq modus-themes-hl-line '(underline))
-  (setq modus-themes-paren-match '(subtle bold))
-  (setq modus-themes-links '(neutral-underline))
-  (setq modus-themes-prompts '(subtle gray))
-  (setq modus-themes-completions '(opinionated))
-  (setq modus-themes-region '(bg-only no-extend))
-  (setq modus-themes-diffs 'desaturated)
-  (setq modus-themes-org-blocks 'grayscale)
-  (setq modus-themes-org-habit nil)
-
-  (setq modus-themes-headings ; this is an alist: read the manual or its doc string
-        (quote ((1 . (background overline variable-pitch 1.5))
-                (2 . (overline rainbow 1.3))
-                (3 . (overline 1.1))
-                (t . (monochrome)))))
-
-  (setq modus-themes-variable-pitch-ui nil)
-  (setq modus-themes-variable-pitch-headings nil)
-  (setq modus-themes-scale-headings t)
-  (setq modus-themes-scale-1 1.1)
-  (setq modus-themes-scale-2 1.15)
-  (setq modus-themes-scale-3 1.21)
-  (setq modus-themes-scale-4 1.27)
-  (setq modus-themes-scale-5 1.33)
-  (load-theme 'modus-operandi t))
-
-(defun vde/modus-operandi-custom ()
-  "Customize modus-operandi theme"
-  ;; (if (member 'modus-operandi custom-enabled-themes)
-  ;;     (modus-operandi-theme-with-color-variables ; this macro allows us to access the colour palette
-  ;;      (custom-theme-set-faces
-  ;;       'modus-operandi
-  ;;       `(whitespace-tab ((,class (:background "#ffffff" :foreground "#cccccc"))))
-  ;;       `(whitespace-space ((,class (:background "#ffffff" :foreground "#cccccc"))))
-  ;;       `(whitespace-hspace ((,class (:background "#ffffff" :foreground "#cccccc"))))
-  ;;       `(whitespace-newline ((,class (:background "#ffffff" :foreground "#cccccc"))))
-  ;;       `(whitespace-indentation ((,class (:background "#ffffff" :foreground "#cccccc"))))
-  ;;       )))
-  )
-
-(add-hook 'contrib/after-load-theme-hook 'vde/modus-operandi-custom)
-(kb/modus-operandi)
-
 #+end_src
 
 Font Config
@@ -299,6 +226,17 @@ $ emacsclient -c"
   (server-start))
 
 (define-key special-event-map [sigusr1] 'signal-restart-server)
+#+end_src
+
+#+begin_src elisp
+(use-package server
+  :ensure nil
+  :defer 1
+  :custom
+  (server-client-instructions nil)
+  :config
+  (unless (server-running-p)
+    (server-start)))
 #+end_src
 
 *** DBus Configuration
@@ -715,6 +653,28 @@ Do not make me type ~C-q SPC~ to insert spaces!
   (package-refresh-contents))
 #+end_src
 
+**** =straight.el=
+:PROPERTIES:
+:ID:       ee258d19-165a-442b-9a9b-d69c1cc4fc47
+:END:
+
+#+begin_src elisp
+(setq straight-vc-git-default-protocol 'https)
+(setq straight-use-package-by-default t)
+(defvar boostrap-version)
+(let ((bootstrap-file
+      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+#+end_src
+
 **** =use-package=
 :PROPERTIES:
 :ID:       06e19deb-b0e4-46d1-a322-202e3f303bad
@@ -724,11 +684,926 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (eval-when-compile
   (require 'use-package))
 
-(setq use-package-always-ensure nil)
 (setq use-package-always-demand t)
 
 (use-package bind-key)
 (use-package diminish)
+#+end_src
+*** Org Mode
+:PROPERTIES:
+:ID:       4f622896-6d42-4913-bb17-297a038f9c94
+:END:
+
+Started from purcell:
+https://github.com/purcell/emacs.d/blob/master/lisp/init-org.el
+Various inclusions from glynnforrest:
+https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el
+Various inclusions from jcf:
+https://github.com/jcf/emacs.d/blob/master/init-org.org
+Reworked with offerings from
+http://cachestocaches.com/2016/9/my-workflow-org-agenda/
+And
+http://doc.norang.ca/org-mode.htm
+
+**** Initial Requires
+:PROPERTIES:
+:ID:       fb12c868-6eea-4ada-aced-f85f1ca5df23
+:END:
+
+#+begin_src elisp
+(use-package org)
+(use-package org-contrib)
+(use-package org-id
+  :straight nil)
+(use-package holidays
+  :straight nil)
+(use-package ox-md
+  :straight nil)
+(use-package org-attach
+  :straight nil)
+#+end_src
+
+**** Graphics and Export
+:PROPERTIES:
+:ID:       6356ad16-3099-443d-8073-043bc9a84c1b
+:END:
+
+#+begin_src elisp :tangle no
+(use-package ob-ditaa
+  :config
+  (setq org-ditaa-jar-path (expand-file-name "~/.nix-profile/lib/ditaa.jar")))
+#+end_src
+
+#+begin_src elisp
+(use-package graphviz-dot-mode)
+;; (use-package org-cliplink)
+(use-package ess)
+(use-package ox-gfm)
+;; (use-package org-babel-eval-in-repl)
+(use-package org-ref
+  :config
+  (setq bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"))
+;; https://www.reddit.com/r/emacs/comments/57gteu/org_export_html_source_code_blocks_adds_trailing/
+;; https://github.com/kaushalmodi/.emacs.d/blob/15df5b075a4cd4a8ed7332237c0e33e75b430a36/setup-files/setup-htmlize.el#L10-L28
+(use-package htmlize
+  :config
+  (progn
+
+    ;; `flyspell-mode' also has to be disabled because depending on the
+    ;; theme, the squiggly underlines can either show up in the html file
+    ;; or cause elisp errors like:
+    ;; (wrong-type-argument number-or-marker-p (nil . 100))
+    (with-eval-after-load 'flyspell
+      (defvar modi/htmlize-initial-flyspell-mode nil
+        "Variable to store state of `flyspell-mode' when
+  `htmlize-buffer` is called.")
+
+      (defun modi/htmlize-before-hook-flyspell-disable ()
+        (setq modi/htmlize-initial-flyspell-mode flyspell-mode)
+        (when flyspell-mode
+          (setq flyspell-mode -1)))
+
+      (defun modi/htmlize-after-hook-flyspell-enable-maybe ()
+        (when modi/htmlize-initial-flyspell-mode
+          (setq flyspell-mode 1)))
+
+      (add-hook 'htmlize-before-hook
+                #'modi/htmlize-before-hook-flyspell-disable)
+      (add-hook 'htmlize-after-hook
+                #'modi/htmlize-after-hook-flyspell-enable-maybe))))
+
+(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-c a") 'org-agenda)
+(define-key global-map (kbd "C-c c") 'org-capture)
+(unbind-key "<M-S-left>" org-mode-map)
+(unbind-key "<M-S-right>" org-mode-map)
+#+end_src
+
+**** Various Preferences
+:PROPERTIES:
+:ID:       1de54eab-8be0-44d6-a277-ba9d0aa781df
+:END:
+
+#+begin_src elisp
+;; Various preferences
+(setq org-log-done 'time)
+(setq org-directory "~/.org/")
+(setq org-id-locations-file (expand-file-name (concat user-emacs-directory ".org-id-locations")))
+(setq org-id-link-to-org-use-id 'use-existing)
+(setq org-ellipsis nil)
+(setq org-special-ctrl-a/e t)
+(setq org-edit-timestamp-down-means-later t)
+(setq org-archive-location "%s_archive::datetree/")
+(setq org-archive-mark-done nil)
+(setq org-hide-emphasis-markers t)
+(setq org-catch-invisible-edits 'show-and-error)
+(setq org-export-coding-system 'utf-8)
+(setq org-html-validation-link nil)
+(setq org-export-kill-product-buffer-when-displayed t)
+(setq org-tags-column 75)
+(setq org-search-view-always-boolean t)
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-outline-path t)
+(setq org-imenu-depth 4)
+(setq org-indirect-buffer-display 'current-window)
+(setq org-enforce-todo-dependencies t)
+(setq org-fast-tag-selection-include-todo t)
+(setq org-use-fast-todo-selection t)
+(setq org-treat-S-cursor-todo-selection-as-state-change nil)
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
+(setq org-agenda-dim-blocked-tasks nil)
+(setq org-agenda-compact-blocks t)
+(setq org-agenda-show-future-repeats t)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-include-diary t)
+(setq org-todo-repeat-to-state "TODO")
+(setq org-files (append
+                 (file-expand-wildcards (concat org-directory "*.org"))
+                 (file-expand-wildcards (concat org-directory "*/*.org"))
+                 (file-expand-wildcards (concat org-directory "*/*/*.org"))))
+(setq org-log-state-notes-into-drawer t)
+(setq org-log-reschedule 'time)
+(setq org-log-redeadline 'time)
+(setq org-clock-persistence-insinuate t)
+(setq org-clock-out-remove-zero-time-clocks t)
+(setq org-clock-persist t)
+(setq org-clock-in-resume t)
+(setq org-clock-into-drawer "CLOCK")
+(setq org-duration-format (quote (("d" . nil) ("h" . t) ("min" . t))))
+(setq org-babel-clojure-backend 'cider)
+(setq org-src-preserve-indentation nil)
+(setq org-edit-src-content-indentation 0)
+;; Agenda log mode items to display (closed and state changes by default)
+(setq org-agenda-log-mode-items (quote (closed clock state)))
+(setq org-attach-id-dir (expand-file-name "~/.org/data"))
+(setq org-startup-folded t)
+(setq calendar-time-display-form '(24-hours
+                                   ":"
+                                   minutes
+                                   (if time-zone " (")
+                                   time-zone
+                                   (if time-zone ")")))
+#+end_src
+
+**** \LaTeX Integration
+:PROPERTIES:
+:ID:       02d24593-c78c-4edb-a9d4-caa6ce6f12c7
+:END:
+
+#+begin_src elisp
+(setq org-latex-prefer-user-labels t)
+(setq org-latex-listings t)
+(setq org-latex-listings-options
+      '(("breaklines" "true")
+        ("firstnumber" "auto")
+        ("frame" "single")
+        ("mathescape" "true")
+        ("numbers" "left")
+        ("numbersep" "5pt")
+        ("numberstyle" "\\tiny")
+        ("showspaces" "false")
+        ("showstringspaces" "false")
+        ("stepnumber" "1")
+        ("title" "\\lstname")))
+
+(add-to-list 'org-latex-listings-langs '(scheme "Lisp"))
+#+end_src
+
+#+begin_src elisp
+(setq org-latex-default-packages-alist
+      '(("" "listings" t nil)
+        ("AUTO" "inputenc" t
+         ("pdflatex"))
+        ("T1" "fontenc" t
+         ("pdflatex"))
+        ("" "graphicx" t nil)
+        ("" "longtable" nil nil)
+        ("" "wrapfig" nil nil)
+        ("" "rotating" nil nil)
+        ("normalem" "ulem" t nil)
+        ("" "amsmath" t nil)
+        ("" "amssymb" t nil)
+        ("" "capt-of" nil nil)
+        ("hidelinks" "hyperref" nil nil)))
+#+end_src
+
+#+begin_src elisp
+(setq org-latex-pdf-process
+      '("latexmk -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
+
+#+end_src
+
+**** Incoming Notes: Capture/Refile
+:PROPERTIES:
+:ID:       53cb62b3-16b3-464b-aecf-bfb63a32d5c0
+:END:
+
+#+begin_src elisp
+;;;; Refile settings
+(defun bh/verify-refile-target ()
+  "Exclude todo keywords with a done state from refile targets."
+  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
+
+(setq org-refile-target-verify-function #'bh/verify-refile-target)
+
+(defvar org-projects-dir (expand-file-name (concat org-directory "projects")))
+(defvar kb/org-refile (concat org-directory "refile.org"))
+(defvar kb/org-notes-file (concat org-directory "notes.org"))
+(defvar kb/org-daily-file (concat org-directory "daily.org"))
+(defvar kb/org-journal-file (concat org-directory "journal.org"))
+(defvar kb/org-work-journal-file (concat org-directory "work.org"))
+(defvar kb/org-bookmarks-file (concat org-directory "bookmarks.org"))
+(defvar kb/org-logbook-file (concat org-directory "logbook.org"))
+(defvar kb/org-contacts (concat org-directory "contacts.org"))
+(setq org-default-notes-file kb/org-refile)
+
+(defun kb/org-clocking-p ()
+  "Return non-nil if currently tracking time, otherwise, nil."
+  (not (eq nil (org-clock-is-active))))
+
+(defun kb/org-not-clocking-p ()
+  "Return nil if not tracking time, otherwise, non-nil."
+  (eq nil (org-clock-is-active)))
+
+(setq org-capture-templates
+      '(("t" "todo" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/TODO") :clock-in t :clock-resume t)
+        ("r" "respond" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/RESPOND")
+         :clock-in t :clock-resume t :immediate-finish t)
+        ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
+         (file "~/.config/emacs/org-captures/JOURNAL")
+         :clock-in t
+         :clock-resume t)
+        ("o" "org-protocol" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/ORG-PROTOCOL")
+         :immediate-finish t)
+        ("m" "Meeting" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/MEETING")
+         :clock-in t
+         :clock-resume t)
+        ("b" "Bookmark" entry (file kb/org-bookmarks-file)
+         (file "~/.config/emacs/org-captures/BOOKMARK")
+         :clock-resume t)
+        ("p" "Phone call" entry (file+olp+datetree kb/org-journal-file)
+         (file "~/.config/emacs/org-captures/PHONE")
+         :clock-in t
+         :clock-resume t)
+        ("P" "Project" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/PROJECT")
+         :clock-in t
+         :clock-resume t)
+        ("W" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
+         :immediate-finish t)
+        ("D" "Daily Review" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/DAILY_REVIEW")
+         :immediate-finish t)
+        ))
+
+(setq org-capture-templates-contexts
+      '(("T" "t" ((in-mode . "mu4e-view")
+                  (in-mode . "mu4e-headers")))
+        ("t" "t" ((not-in-mode . "mu4e-view")
+                  (not-in-mode . "mu4e-headers")))
+        ("r" ((in-mode . "mu4e-view")
+              (in-mode . "mu4e-headers")))))
+
+(add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
+;; https://stackoverflow.com/a/16247032/7492588
+(add-hook 'org-capture-prepare-finalize-hook #'org-id-get-create)
+
+   ;;; https://emacs.stackexchange.com/q/51631/17096
+(add-hook 'org-log-buffer-setup-hook (lambda () (setq-local fill-column 72)))
+#+end_src
+
+Update project status when updating the cookie statistics.
+
+#+begin_src elisp
+(defun kb/org-update-project-status (n-done n-incomplete)
+  "Update PROJECT_STATUS property if project cookie complete."
+  (let ((current-tags (org-get-tags)))
+    (if (member "project" (org-get-tags))
+        (cond ((and (= n-done 0)
+                    (= n-incomplete 0))
+               (org-set-property "PROJECT_STATUS" "idea"))
+              ((= n-incomplete 0)
+               (org-set-property "PROJECT_STATUS" "closed"))
+              ((> n-incomplete 0)
+               (org-set-property "PROJECT_STATUS" "open"))
+              (t
+               nil)))))
+
+(add-hook 'org-after-todo-statistics-hook #'kb/org-update-project-status)
+#+end_src
+
+#+begin_src elisp
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+              (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
+
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "#9C6363" :weight bold)
+              ("NEXT" :foreground "#8CD0D3" :weight bold)
+              ("DONE" :foreground "#8FB28F" :weight bold)
+              ("WAITING" :foreground "#DFAF8F" :weight bold)
+              ("HOLD" :foreground "#DC8CC3" :weight bold)
+              ("INACTIVE" :foreground "#DC8CC3" :weight bold)
+              ("CANCELLED" :foreground "#8FB28F" :weight bold)
+              ("PHONE" :foreground "#8FB28F" :weight bold))))
+
+(setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+#+end_src
+
+**** Agenda
+:PROPERTIES:
+:ID:       53b94099-6930-4d85-9acf-077acda74238
+:END:
+
+#+begin_src elisp
+(setq org-agenda-custom-commands
+      (quote (("M" "3 Month" agenda "3 month view"
+               ((org-agenda-span 90)))
+              ("t" "Todo" tags-todo "-CANCELLED-INACTIVE"
+               ((org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
+              ("D" "Deadlines" agenda "Upcoming Deadlines over the next 3 months"
+               ((org-agenda-span 90)
+                (org-deadline-warning-days 90)
+                (org-agenda-entry-types '(:deadline))))
+              ("Y" "Holidays" agenda "Year view"
+               ((org-agenda-category-filter-preset (quote ("+Holiday")))
+                (org-agenda-span 'year)
+                (org-agenda-time-grid nil)
+                ))
+              ("l" "Logbook" tags "LOGENTRY"
+               ((org-agenda--insert-overriding-header "Logbook")
+                (org-tags-match-list-sublevels t)
+                (org-agenda-filter-by-category (quote ("+logbook")))
+                (org-agenda-span 'day)))
+              ("d" "Today"
+               ((agenda "" ((org-agenda-span 'day)
+                            (org-deadline-warning-days 14)
+                            (org-agenda-log-mode t)))
+                (tags "REFILE"
+                      ((org-agenda-overriding-header "Tasks to Refile:")
+                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
+                           ((org-agenda-overriding-header "Next Tasks:")
+                            (org-agenda-sorting-strategy '(priority-up effort-down))))
+                (search "+PROJECT_STATUS {open}"
+                        ((org-agenda-overriding-header "Open Projects:")
+                         (org-tags-match-list-sublevels nil))))
+               ((org-agenda-tag-filter '("-CLIENT"))
+                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM"))
+               ("/home/kb/.cache/agenda.html"))
+              ("u" "Unscored Tasks" tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE"
+               ((search "Effort=0")
+                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
+              ("P" . "Projects")
+              ("Po" "Open Projects" search "+PROJECT_STATUS {open}")
+              ("Pc" "Cancelled Projects" search "+PROJECT_STATUS {cancelled}")
+              ("Pd" "Completed Projects" search "+PROJECT_STATUS {closed}")
+              ("Ph" "Stuck/Held Projects" search "+PROJECT_STATUS {hold}")
+              ("Pi" "Project Ideas" search "+PROJECT_STATUS {idea}")
+              )))
+
+
+(setq org-agenda-exporter-settings
+      '((ps-number-of-columns 2)
+        (ps-landscape-mode t)
+        (org-agenda-add-entry-text-maxlines 5)
+        (htmlize-output-type 'css)))
+
+#+end_src
+
+***** Diary and Org Agenda Extras
+:PROPERTIES:
+:ID:       9e4a8207-5798-4dd8-b7c3-71c8f5db6f33
+:END:
+
+https://orgmode.org/worg/org-hacks.html#org790bd5a
+https://orgmode.org/worg/org-hacks.html#orgf1fe951
+
+#+begin_src elisp
+(require 'cl-lib)
+(require 'lunar)
+(require 'solar)
+
+(autoload 'solar-sunrise-sunset "solar.el")
+(autoload 'solar-time-string "solar.el")
+
+(setq lunar-phase-names
+      '("🌑 New Moon"
+        "🌓 First Quarter Moon"
+        "🌕 Full Moon"
+        "🌗 Last Quarter Moon"))
+
+(with-suppressed-warnings ((lexical date))
+  (defvar date))
+(defun kb/diary-lunar-phases ()
+  "Show lunar phase in Agenda Buffer."
+  (let* ((phase-list (lunar-phase-list (nth 0 date) (nth 2 date)))
+         (phase (cl-find-if (lambda (phase) (equal (car phase) date))
+                            phase-list)))
+    (when phase
+      (concat (lunar-phase-name (nth 2 phase)) " "
+              (substring (nth 1 phase) 0 5)))))
+
+(defun kb/diary-solar-sunrise ()
+  "Show sunrise in Agenda Buffer."
+  (let ((sunrise (car (car (solar-sunrise-sunset date)))))
+    (concat "Sunrise " (solar-time-string sunrise nil))))
+
+(defun kb/diary-solar-sunset ()
+  "Show sunset in agenda buffer."
+  (let ((sunset (car (cadr (solar-sunrise-sunset date)))))
+    (concat "Sunset " (solar-time-string sunset nil))))
+#+end_src
+
+***** Daily Prayers
+:PROPERTIES:
+:ID:       5b7bda68-43f4-4cc9-a89f-b40cda3a622e
+:END:
+
+#+begin_src elisp
+(use-package awqat
+  :straight (awqat
+             :type git
+             :host github
+             :repo "zkry/awqat")
+  :custom
+  (awqat-asr-hanafi nil)
+  :config
+  (awqat-set-preset-isna))
+#+end_src
+
+**** Navigating (obsolete?)
+:PROPERTIES:
+:ID:       d05a3ea3-e254-4e74-80a2-86aa598c34d5
+:END:
+
+#+begin_src elisp
+(defun kb/org-switch-to-current-notes-file ()
+  "Open current notes file."
+  (interactive)
+  (find-file (concat org-directory "notes.org")))
+
+(defun gf/create-org-path (path)
+  "Create a name suitable for an org file from the last part of the file PATH."
+  (let ((last (car (last (split-string (if (equal (substring path -1) "/")
+                                           (substring path 0 -1) path) "/")))))
+    (concat org-projects-dir "/"
+            (downcase
+             (replace-regexp-in-string
+              "\\." "-" (if (equal (substring last 0 1) ".")
+                            (substring last 1) last)))
+            ".org")))
+
+(defun kb/create-org-path (path)
+  "Transform path name into suitable org file name from last part(s) of PATH.
+   A new version of `gf/create-org-path'."
+  (defun suitable-name (name)
+    "Transform NAME into suitable name."
+    (downcase
+     (replace-regexp-in-string
+      "\\." "-" (if (equal (substring name 0 1) ".")
+                    (substring name 1) name))))
+  (let* ((path-components (kb/get-qualified-project-pair path))
+         (org-name (car path-components))
+         (project-name (car (cdr path-components))))
+    (concat org-projects-dir "/"
+            (suitable-name org-name) "/"
+            (suitable-name project-name) ".org")))
+
+(defun kb/get-qualified-project-pair (project-folder)
+  "Return tuple of parent and project directory for PROJECT-FOLDER."
+  (let* ((path-components (split-string
+                           (directory-file-name project-folder)
+                           (f-path-separator)))
+         (org-name (car (last path-components 2)))
+         (project-name (car (last path-components))))
+    (list org-name project-name)))
+
+#+end_src
+
+I do not use these navigation tricks anymore.
+
+#+begin_src elisp :tangle no
+(defvar gf/org-project-file-override-alist '()
+  "An association list of projectile directories and the project org file.
+   This enables overriding the default behaviour of
+   `gf/org-resolve-project-org-file'.  CAR must be an absolute path
+   to a project, including a trailing slash.  CDR must be a path to
+   an org file, relative to `org-directory'.
+   Example:
+   \'((\"/home/emacs/some-company/some-project\"
+   \"projects/some-company.org\")
+   \(\"/home/emacs/some-company/different-project\" \"projects/some-company.org\"))")
+
+(defun gf/org-resolve-project-org-file ()
+  "Get the path of the org file for the current project.
+   This version uses Glynn Forrest's assoc list, but uses a different version of
+   `create-org-path'.
+   \(https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el\)"
+  (if (assoc (projectile-project-root) gf/org-project-file-override-alist)
+      (concat org-directory (cadr (assoc (projectile-project-root)
+                                         gf/org-project-file-override-alist)))
+    (kb/create-org-path (projectile-project-root))))
+
+
+(defun gf/org-switch-to-project-org-file ()
+  "Switch to the org file for the current project."
+  (interactive)
+  (find-file (gf/org-resolve-project-org-file)))
+
+#+end_src
+
+#+begin_src elisp :tangle no
+(defun kb/org-switch-to-notes ()
+  "Switch to notes.
+   Open either current project notes, or default notes file"
+  (interactive)
+  (if (and (projectile-project-p)
+           (not (equal (projectile-project-name) ".org")))
+      (gf/org-switch-to-project-org-file)
+    (kb/org-switch-to-current-notes-file)))
+#+end_src
+
+**** Editing Utilities: Quick Inserts and Friends
+:PROPERTIES:
+:ID:       135e8764-780e-42de-af34-ec41ae923774
+:END:
+
+#+begin_src elisp
+(defhydra help/hydra/timestamp (:hint nil :exit t)
+  "
+   _t_s:  Inactive timestamp with seconds
+   _u_tc: Ianctive timestamp with seconds in UTC
+   _d_:   Inactive date Local time
+   "
+  ("q" exit)
+  ("t" help/org-time-stamp-with-seconds-now)
+  ("u" help/org-time-stamp-with-seconds-now-utc)
+  ("d" help/org-date))
+
+(defun help/org-time-stamp-with-seconds-now ()
+  "Insert inactive Org timestamp with seconds."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]")))
+
+(defun help/org-time-stamp-with-seconds-now-utc ()
+  "Insert inactive Org timestamp with seconds in UTC."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]" nil t)))
+
+(defun help/org-date ()
+  "Insert inactive Org date."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a]")))
+
+(define-key org-mode-map (kbd "C-c t") #'help/hydra/timestamp/body)
+#+end_src
+
+#+begin_src elisp
+(defun kb/org-insert-ts-list-item ()
+  "Insert new list item with inactive timestamp at point."
+  (interactive)
+  (insert "- ")
+  (help/org-time-stamp-with-seconds-now)
+  (insert ": "))
+
+(bind-key (kbd "C-c i") #'kb/org-insert-ts-list-item org-mode-map)
+#+end_src
+
+**** UUIDs everywhere
+:PROPERTIES:
+:ID:       42269ad6-0b7d-426c-875f-79d461be323d
+:END:
+
+Except where they probably shouldn't be added.
+
+#+begin_src elisp
+(defvar kb/org-id-ignored-filenames (list "README"
+                                          "outline")
+  "Base filenames to ignore when saving org files.")
+
+(defun kb/org-id-get-create-all-items ()
+  "Add ORG ID attributes to all tasks/items in the current buffer.
+   https://stackoverflow.com/a/13349772/7492588
+   https://stackoverflow.com/a/16247032/7492588"
+  (interactive)
+  (if (and (eq major-mode 'org-mode)
+           (not (member (file-name-base (buffer-file-name)) kb/org-id-ignored-filenames)))
+      (org-map-entries #'org-id-get-create)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'kb/org-id-get-create-all-items)))
+#+end_src
+
+**** Pomodoro
+:PROPERTIES:
+:ID:       221ce9dc-4c2b-4d69-a746-e1ea2188a75d
+:END:
+
+#+begin_src elisp
+(use-package org-pomodoro
+  :config
+  (setq org-pomodoro-long-break-frequency 2)
+  (setq org-pomodoro-ticking-sound-p nil))
+#+end_src
+
+**** Better Task Dependencies
+:PROPERTIES:
+:ID:       c19300ed-d4e9-4585-b455-2c84c12b74ef
+:END:
+
+#+begin_src elisp
+(use-package org-depend
+  :straight nil)
+#+end_src
+
+**** Gantt Charts
+:PROPERTIES:
+:ID:       930284fe-4fe2-43a1-89e7-da26650164df
+:END:
+
+#+begin_src elisp
+(use-package org-dblock-gantt
+  :straight (org-dblock-gantt
+             :type git
+             :host github
+             :repo "kennyballou/org-dblock-gantt"))
+#+end_src
+
+**** Org Mime
+:PROPERTIES:
+:ID:       44e6e5a4-d7e7-4089-8406-3472e11820e5
+:END:
+
+#+begin_src elisp
+(use-package org-mime
+  :config
+  (setq org-mime-export-options '(:with-latex dvipng
+                                              :section-numbers nil
+                                              :with-author nil
+                                              :with-toc nil))
+  (setq org-mime-ascii 'utf-8))
+#+end_src
+
+**** Org Babel
+:PROPERTIES:
+:ID:       41d5ffaf-4b44-4436-b3ae-c4e9f9fc0cf6
+:END:
+
+#+begin_src elisp
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   `((clojure . t)
+     (dot . t)
+     (emacs-lisp . t)
+     (gnuplot . t)
+     (java . t)
+     (js . t)
+     (latex . t)
+     (ledger . nil)
+     (octave . t)
+     (perl . t)
+     (python . t)
+     (R . t)
+     (restclient . nil)
+     (scheme . t)
+     (screen . nil)
+     (,(if (locate-library "ob-sh") 'sh 'shell) . t)
+     (ocaml . t)
+     (sql . t)
+     (sqlite . t))))
+
+;; (setq org-babel-python-command (expand-file-name "~/.guix-profile/bin/python"))
+
+(defun org-babel-scheme-session-buffer (session)
+  "Return the current session of SESSION otherwise nil."
+  (org-babel-scheme-get-session-buffer session))
+
+(defun org-babel-scheme-initiate-session (&optional session params)
+  "Create a session named SESSION according to PARAMS."
+  (let ((name (org-babel-scheme-make-session-name "" session 'guile)))
+    (org-babel-scheme-set-session-buffer name (org-babel-scheme-get-repl
+                                               'guile session))))
+
+(defun org-babel-bash-initiate-session (&optional session _params)
+  "Initiate a session named SESSION according to PARAMS."
+  (org-babel-sh-initiate-session session _params))
+#+end_src
+
+#+begin_src elisp
+(defun org-babel-execute:z3 (body params)
+  "Execute Z3 on BODY formula.  Currently, we ignore PARAMS."
+  (with-temp-buffer
+    (insert body)
+    (shell-command-on-region (point-min) (point-max) "z3 -in")))
+#+end_src
+
+#+begin_src elisp
+(use-package ob-async)
+#+end_src
+
+
+Loosely borrowed from:
+https://kitchingroup.cheme.cmu.edu/blog/2015/11/20/Asynchronously-running-python-blocks-in-org-mode/.
+
+A more versatile approach may be feasible, but for my current needs, something
+that simply spawns the tangled script is sufficient.  It would be nice to be
+able to see the error and output stream in some temporary buffer, but that's
+not strictly necessary.
+
+#+begin_src elisp
+(defun org-babel-async-execute:bash ()
+  "Run a BASH block at point asynchronously."
+  (interactive)
+
+  (let ((current-file (buffer-file-name))
+        (uuid (org-id-uuid))
+        (temporary-file-directory "./")
+        (tempfile (make-temp-file "sh-"))
+        (context (org-element-property :name (org-element-context))))
+    (org-babel-tangle '(4) tempfile)
+    (org-babel-remove-result)
+
+    (async-start
+     `(lambda ()
+        (prog1
+            (shell-command-to-string (format "bash %s" ,tempfile))
+          (delete-file ,tempfile)))
+     `(lambda (_results)
+        "Code that runs when the async function finishes."
+        (message (format "%s job has finished" ,(or context uuid)))))))
+#+end_src
+
+**** Org Brain
+:PROPERTIES:
+:ID:       094c4fc2-8596-498a-bb4b-d1772e318ce1
+:END:
+
+#+begin_src elisp :tangle no
+(use-package org-brain
+  :init
+  (setq org-brain-path (concat org-directory "/brain"))
+  :config
+  (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
+  (push '("b" "Brain" plain (function org-brain-goto-end)
+          "* %i%?" :empty-lines 1)
+        org-capture-templates)
+  (setq org-brain-visualize-default-choices 'all)
+  (setq org-brain-title-max-length 12)
+  (setq org-brain-include-file-entries nil)
+  (setq org-brain-file-entries-use-title nil))
+#+end_src
+
+**** Org Roam
+:PROPERTIES:
+:ID:       65c42d7e-8d9c-42d9-b810-d93fc5c7f4cb
+:END:
+
+#+begin_src elisp
+;;; https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+;;; Bind this to C-c n I
+(defun org-roam-node-insert-immediate (arg &rest args)
+  (interactive "P")
+  (let ((args (cons arg args))
+        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                  '(:immediate-finish t)))))
+    (apply #'org-roam-node-insert args)))
+#+end_src
+
+#+begin_src elisp
+(use-package org-roam
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (concat org-directory "/brain"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n I" . org-roam-node-insert-immediate)
+         ("C-c n c a" . org-roam-alias-add)
+         ("C-c n c r" . org-roam-ref-add))
+  :custom
+  (org-roam-capture-templates
+   '(("d" "default" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org" "")
+      :unnarrowed t)
+     ("b" "bibliographic" plain (file "~/.config/emacs/org-roam-templates/BIB-ENTRY")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org" "")
+      :unnarrowed t)
+     ("c" "crypt" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org.gpg" "")
+      :unnarrowed t)
+     ("l" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-logbook-${slug}.org" "")
+      :unnarrowed t)))
+  :config
+  (org-roam-setup))
+#+end_src
+
+#+begin_src elisp
+(use-package org-roam-dailies
+  :straight nil
+  :after org-roam
+  :bind-keymap ("C-c n d" . org-roam-dailies-map)
+  :custom
+  (org-roam-dailies-directory "./")
+  (org-roam-dailies-capture-templates
+   '(("d" "default" entry (file "~/.config/emacs/org-roam-templates/DAILY")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :empty-lines 1)
+     ("e" "Contents to Notebook" entry
+      (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :immediate-finish t :empty-lines 1)))
+  )
+#+end_src
+
+#+begin_src elisp
+(use-package org-roam-ui
+  :commands org-roam-ui-mode
+  :diminish
+  :after org-roam
+  :bind (("C-c n o a" . org-roam-ui-add-to-local-graph)
+         ("C-c n o l" . org-roam-ui-node-local)
+         ("C-c n o z" . org-roam-ui-node-zoom))
+  :custom
+  (org-roam-ui-sync-theme t)
+  (org-roam-ui-follow nil)
+  (org-roam-ui-update-on-save t)
+  (org-roam-ui-open-on-start nil))
+#+end_src
+
+**** Org Roam Bibtex
+:PROPERTIES:
+:ID:       de45e883-1889-4dec-982e-fade7c9c1968
+:END:
+
+#+begin_src elisp
+(use-package org-roam-bibtex
+  :autoload org-roam-bibtex-mode
+  :after (org-roam helm-bibtex)
+  :diminish
+  :config
+  (require 'org-ref)
+  (org-roam-bibtex-mode t))
+#+end_src
+
+**** Org Transclusion
+:PROPERTIES:
+:ID:       99301a23-6d1a-4ed2-bca6-e8444d57dbb6
+:END:
+
+#+begin_src elisp
+(use-package org-transclusion
+  :after org
+  :bind-keymap ("C-c n t" . org-transclusion-map))
+#+end_src
+
+**** Org Web-Tools
+:PROPERTIES:
+:ID:       e8479be2-8f4e-4b89-a623-4008512ce610
+:END:
+
+#+begin_src elisp
+(use-package org-web-tools
+  :bind (:map org-mode-map
+              ("C-c w a" . org-web-tools-archive-attach)
+              ("C-c w v" . org-web-tools-archive-view)))
+#+end_src
+
+**** Org Export
+:PROPERTIES:
+:ID:       f1266b5f-ec8c-4e00-9b3f-0f8f608fd892
+:END:
+
+#+begin_src elisp
+(add-to-list 'org-latex-classes
+             '("moderncv" "\\documentclass[11pt]{moderncv}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph{%s}")))
 #+end_src
 
 *** GC Statistics
@@ -761,7 +1636,13 @@ Do not make me type ~C-q SPC~ to insert spaces!
 :END:
 
 #+begin_src elisp
-(use-package modus-themes)
+(use-package modus-themes
+  :demand t)
+#+end_src
+
+#+begin_src elisp
+(use-package ef-themes
+  :demand t)
 #+end_src
 
 *** Circadian
@@ -773,8 +1654,10 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (use-package circadian
   :commands circadian-setup
   :custom
-  (circadian-themes '(("07:00" . modus-operandi-tinted)
-                      ("19:00" . modus-vivendi-tinted)))
+  ;; (circadian-themes '(("07:00" . ef-deuteranopia-light)
+  ;;                     ("19:00" . ef-autumn)))
+  (circadian-themes '(("07:00" . ef-light)
+                      ("19:00" . ef-dark)))
   :config
   (circadian-setup))
 #+end_src
@@ -805,8 +1688,9 @@ Do not make me type ~C-q SPC~ to insert spaces!
 :ID:       e9e68a37-0d3e-4d72-89e4-b33d104d5dd8
 :END:
 
+Snippet taken from https://stackoverflow.com/a/18330742/7492588
+
 #+begin_src elisp
-;; Snippet taken from https://stackoverflow.com/a/18330742/7492588
 (defconst --backup-directory (concat user-emacs-directory "backups/"))
 (defconst --lockfile-directory (concat user-emacs-directory "lockfiles/")
   "Lockfiles and Autosave files directory.")
@@ -1055,19 +1939,20 @@ Golden Ratio frame resizing
 https://matthewbauer.us/blog/bauer.html
 
 #+begin_src elisp
-(use-package dired
-  :init (require 'dired)
-  :bind (:map dired-mode-map
-              ("C-c C-c" . compile)
-              ("r" . browse-url-of-dired-file))
-  :config
-  (setq dired-listing-switches "-lh"))
+  (use-package dired
+    :straight nil
+    :init (require 'dired)
+    :bind (:map dired-mode-map
+        ("C-c C-c" . compile)
+        ("r" . browse-url-of-dired-file))
+    :config
+    (setq dired-listing-switches "-lh"))
 
-;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
-;; preview files in dired
-(use-package peep-dired
-  :bind (:map dired-mode-map
-              ("P" . peep-dired)))
+  ;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
+  ;; preview files in dired
+  (use-package peep-dired
+    :bind (:map dired-mode-map
+        ("P" . peep-dired)))
 #+end_src
 
 Disable mouse open files.
@@ -1076,7 +1961,7 @@ Disable mouse open files.
 (define-key dired-mode-map [mouse-2] nil)
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package dired-x
   :custom
   (dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
@@ -1217,7 +2102,7 @@ https://tuhdo.github.io/helm-intro.html
              (require 'helm-imenu))
   :commands (helm-show-kill-ring helm-all-mark-rings)
   :after async
-  :delight
+  :diminish
   :bind (("C-c h" . helm-command-prefix)
          ("M-x" . helm-M-x)
          ("M-y" . helm-show-kill-ring)
@@ -1431,11 +2316,9 @@ https://matthewbauer.us/blog/bauer.html
 #+begin_src elisp
 (use-package mmm-mode
   :commands mmm-mode
-  :config
-  (setq mmm-global-mode 'buffers-with-submode-classes)
-  (setq mmm-submode-decoration-level 2)
-  (use-package mmm-auto
-    :demand))
+  :custom
+  (mmm-global-mode 'buffers-with-submode-classes)
+  (mmm-submode-decoration-level 2))
 #+end_src
 
 *** PolyMode
@@ -1669,7 +2552,7 @@ Cut/copy the current line if no region is active.
 
 #+begin_src elisp :tangle no
 (use-package synosaurus
-  :delight
+  :diminish
   :hook text-mode
   :config
   (unbind-key (kbd "C-c C-s l"))
@@ -1734,7 +2617,15 @@ Simple function which returns buffer contents untexified.
 (use-package flycheck-languagetool
   :after (flycheck flycheck-vale)
   :hook (text-mode . flycheck-languagetool-setup)
+  :init
+  (setq flycheck-languagetool-server-port 9092)
   :custom
+  (flycheck-languagetool-active-modes '(text-mode
+                                        latex-mode
+                                        LaTeX-mode
+                                        org-mode
+                                        markdown-mode
+                                        message-mode))
   (flycheck-languagetool-language "en-US")
   (flycheck-languagetool-server-port 9092)
   (flycheck-languagetool-url (format "http://localhost:%s"
@@ -1797,46 +2688,13 @@ Simple function which returns buffer contents untexified.
 Replace global hl-mode with pulsar package.
 
 #+begin_src elisp
-(require 'pulsar)
-
-(customize-set-variable
- 'pulsar-pulse-functions
- '(recenter-top-bottom
-   move-to-window-line-top-bottom
-   reposition-window
-   bookmark-jump
-   other-window
-   delete-window
-   delete-other-windows
-   forward-page
-   backward-page
-   scroll-up-command
-   scroll-down-command
-   windmove-right
-   windmove-left
-   windmove-up
-   windmove-down
-   windmove-swap-states-right
-   windmove-swap-states-left
-   windmove-swap-states-up
-   windmove-swap-states-down
-   tab-new
-   tab-close
-   tab-next
-   org-next-visible-heading
-   org-previous-visible-heading
-   org-forward-heading-same-level
-   org-backward-heading-same-level
-   outline-backward-same-level
-   outline-forward-same-level
-   outline-next-visible-heading
-   outline-previous-visible-heading
-   outline-up-heading))
-
-(setq pulsar-face 'pulsar-magenta)
-(setq pulsar-delay 0.05)
-(setq pulsar-pulse t)
-(pulsar-global-mode 1)
+  (use-package pulsar
+    :custom
+    (pulsar-face 'pulsar-magenta)
+    (pulsar-delay 0.05)
+    (pulsar-pulse t)
+    :config
+    (pulsar-global-mode 1))
 #+end_src
 
 Wrap [[help:recenter-top-bottom][recenter-top-bottom]] so that it pulses as well.
@@ -1895,8 +2753,8 @@ https://matthewbauer.us/blog/bauer.html
 
 #+begin_src elisp
 (use-package whitespace
-  :delight
-  :delight global-whitespace-mode
+  :diminish global-whitespace-mode
+  :diminish
   :custom
   (whitespace-display-mappings
    '((newline-mark ?\n  [8617 ?\n] [?$ ?\n])
@@ -1909,12 +2767,12 @@ https://matthewbauer.us/blog/bauer.html
   :config
   (global-whitespace-mode t))
 (use-package whitespace-cleanup-mode
-  :delight
+  :diminish
   :config
   (global-whitespace-cleanup-mode t))
 
 (use-package unicode-whitespace
-  :delight
+  :diminish
   :after (whitespace))
 
 ;;; Whitespace
@@ -1979,10 +2837,11 @@ https://matthewbauer.us/blog/bauer.html
 :END:
 
 #+begin_src elisp
-(use-package gitignore-mode)
-(use-package gitconfig-mode)
+(use-package git-modes)
+#+end_src
+
+#+begin_src elisp
 (use-package git-timemachine
-  :defer 1
   :diminish)
 (use-package git-auto-commit-mode)
 #+end_src
@@ -2019,6 +2878,7 @@ https://matthewbauer.us/blog/bauer.html
   )
 
 (use-package magit-extras
+  :straight nil
   :after magit
   :init
   (setq magit-pop-revision-stack-format '("%h (\"%s\", %ad)")))
@@ -2457,7 +3317,7 @@ buffers.
 
 #+begin_src elisp :tangle no
 (use-package ggtags
-  :delight
+  :diminish
   :hook (prog-mode . ggtags-mode))
 #+end_src
 
@@ -3015,7 +3875,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (use-package subword
   :autoload subword-mode
-  :delight subword-mode
+  :diminish
   :hook (prog-mode-hook . subword-mode))
 #+end_src
 
@@ -3255,6 +4115,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package eglot
+  :straight nil
   :commands (eglot eglot-ensure)
   :demand t
   :bind (("C-c e w r" . #'eglot-reconnect)
@@ -3406,38 +4267,38 @@ Add some extra symbols to prettify for Coq.
 :END:
 
 #+begin_src elisp
-;;; Colourise CSS colour literals
-(require 'rainbow-mode)
+  ;;; Colourise CSS colour literals
+  (require 'rainbow-mode)
 
-(dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
-  (add-hook hook 'rainbow-mode))
+  (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
+    (add-hook hook 'rainbow-mode))
 
-;;; Embedding in HTML
-(require 'mmm-mode)
-(with-eval-after-load 'mmm-vars
-  (mmm-add-group
-   'html-css
-   '((css-cdata
-      :submode css-mode
-      :face mmm-code-submode-face
-      :front "<style[^>]*>[ \t\n]*\\(//\\)?<\\[CDATA\\[[ \t]*\n?"
-      :back "[ \t]*\\(//\\)?]]>[ \t\n]*</style>"
-      :insert ((?j js-tag nil @ "<style type=\"text/css\">"
-                   @ "\n" _ "\n" @ "</style>" @)))
-     (css
-      :submode css-mode
-      :face mmm-code-submode-face
-      :front "<style[^>]*>[ \t]*\n?"
-      :back "[ \t]*</style>"
-      :insert ((?j js-tag nil @ "<style type=\"text/css\">"
-                   @ "\n" _ "\n" @ "</style>" @)))
-     (css-inline
-      :submode css-mode
-      :face mmm-code-submode-face
-      :front "style=\""
-      :back "\"")))
-  (dolist (mode (list 'html-mode 'nxml-mode))
-    (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
+  ;;; Embedding in HTML
+  (require 'mmm-mode)
+  (with-eval-after-load 'mmm-vars
+    (mmm-add-group
+     'html-css
+     '((css-cdata
+    :submode css-mode
+    :face mmm-code-submode-face
+    :front "<style[^>]*>[ \t\n]*\\(//\\)?<\\[CDATA\\[[ \t]*\n?"
+    :back "[ \t]*\\(//\\)?]]>[ \t\n]*</style>"
+    :insert ((?j js-tag nil @ "<style type=\"text/css\">"
+             @ "\n" _ "\n" @ "</style>" @)))
+       (css
+    :submode css-mode
+    :face mmm-code-submode-face
+    :front "<style[^>]*>[ \t]*\n?"
+    :back "[ \t]*</style>"
+    :insert ((?j js-tag nil @ "<style type=\"text/css\">"
+             @ "\n" _ "\n" @ "</style>" @)))
+       (css-inline
+    :submode css-mode
+    :face mmm-code-submode-face
+    :front "style=\""
+    :back "\"")))
+    (dolist (mode (list 'html-mode 'nxml-mode))
+      (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -3476,13 +4337,15 @@ Add some extra symbols to prettify for Coq.
 :END:
 
 #+begin_src elisp
-(use-package docker)
-(use-package dockerfile-mode)
-(use-package docker-compose-mode)
+(use-package tramp-container
+  :straight nil
+  :ensure nil)
 #+end_src
 
 #+begin_src elisp
-(use-package tramp-container)
+(use-package docker)
+(use-package dockerfile-mode)
+(use-package docker-compose-mode)
 #+end_src
 
 **** Elixir/Erlang
@@ -3599,12 +4462,14 @@ Add some extra symbols to prettify for Coq.
 :ID:       9092b182-d559-401d-80ac-ec35a7eb6c4e
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package lsp-haskell
   :config
   (setq lsp-haskell-process-path-hie "ghcide")
   (setq lsp-haskell-process-args-hie '()))
+#+end_src
 
+#+begin_src elisp :tangle no
 (use-package haskell-mode
   :after (flycheck lsp-haskell)
   :init
@@ -4126,7 +4991,19 @@ indentation rules."
 #+begin_src elisp
 (use-package slurm-mode)
 (use-package slurm-script-mode
+  :after slurm-mode
+  :straight nil
+  :ensure nil
   :diminish)
+#+end_src
+
+**** SystemD
+:PROPERTIES:
+:ID:       e6d12b90-e0f9-4035-8989-25aa8f890f89
+:END:
+
+#+begin_src elisp :tangle no
+(use-package systemd-mode)
 #+end_src
 
 **** SQL
@@ -4206,18 +5083,26 @@ indentation rules."
 #+end_src
 
 #+begin_src elisp
-(use-package tex
-  :mode ("\\.tex\\'" . LaTeX-mode)
-  :init
-  (defun kb/tex-mode ()
-    "Configure TeX/LaTeX mode settings."
-    (turn-on-reftex)
-    (LaTeX-math-mode t)
-    (reftex-isearch-minor-mode t)
-    (flycheck-select-checker 'tex-chktex))
-  ;; temporary fix for auctex-latexmk tex-buf issue.
-  ;; https://github.com/tom-tan/auctex-latexmk/issues/44
-  (provide 'tex-buf)
+(defun kb/tex-mode ()
+  "Configure TeX/LaTeX mode settings."
+  (turn-on-reftex)
+  (LaTeX-math-mode t)
+  (reftex-isearch-minor-mode t)
+  (flycheck-select-checker 'tex-chktex))
+#+end_src
+
+#+begin_src elisp
+(use-package auctex
+  :if (eq system-type 'gnu/linux)
+  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
+  :straight nil)
+#+end_src
+
+#+begin_src elisp
+(use-package latex
+  :if (eq system-type 'gnu/linux)
+  :straight nil
+  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
   :custom
   (TeX-PDF-mode t)
   (TeX-source-correlate-start-server t)
@@ -4249,7 +5134,6 @@ indentation rules."
   (TeX-master nil)
   (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (bibtex-dialect 'biblatex)
-  :config
   :hook ((LaTeX-mode . kb/tex-mode)
          (TeX-mode . kb/tex-mode)))
 #+end_src
@@ -4318,7 +5202,11 @@ Functionality to generate plain text references to the current bibliographic
 entry.
 
 #+begin_src elisp
-(require 'bibtex-to-plain-text)
+(use-package bibtex-to-plain-text
+  :straight (bibtex-to-plain-text
+             :type git
+             :host github
+             :repo "kennyballou/bibtex-to-plain-text.el"))
 #+end_src
 
 #+begin_src elisp
@@ -4396,907 +5284,7 @@ Add =languagetool= to =tex-chktex= checker chain.
 
 #+begin_src elisp
 (use-package ob-restclient)
-#+end_src
-
-*** Org Mode
-:PROPERTIES:
-:ID:       4f622896-6d42-4913-bb17-297a038f9c94
-:END:
-
-Started from purcell:
-https://github.com/purcell/emacs.d/blob/master/lisp/init-org.el
-Various inclusions from glynnforrest:
-https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el
-Various inclusions from jcf:
-https://github.com/jcf/emacs.d/blob/master/init-org.org
-Reworked with offerings from
-http://cachestocaches.com/2016/9/my-workflow-org-agenda/
-And
-http://doc.norang.ca/org-mode.htm
-
-**** Initial Requires
-:PROPERTIES:
-:ID:       fb12c868-6eea-4ada-aced-f85f1ca5df23
-:END:
-
-#+begin_src elisp
-(require 'org)
-(require 'org-id)
-(require 'holidays)
-(require 'ox-md)
-(require 'org-attach)
-#+end_src
-
-**** Graphics and Export
-:PROPERTIES:
-:ID:       6356ad16-3099-443d-8073-043bc9a84c1b
-:END:
-
-#+begin_src elisp :tangle no
-(use-package ob-ditaa
-  :config
-  (setq org-ditaa-jar-path (expand-file-name "~/.nix-profile/lib/ditaa.jar")))
-#+end_src
-
-#+begin_src elisp
-(use-package graphviz-dot-mode)
-;; (use-package org-cliplink)
-(use-package ess)
-(use-package ox-gfm)
-;; (use-package org-babel-eval-in-repl)
-(use-package org-ref
-  :config
-  (setq bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"))
-;; https://www.reddit.com/r/emacs/comments/57gteu/org_export_html_source_code_blocks_adds_trailing/
-;; https://github.com/kaushalmodi/.emacs.d/blob/15df5b075a4cd4a8ed7332237c0e33e75b430a36/setup-files/setup-htmlize.el#L10-L28
-(use-package htmlize
-  :config
-  (progn
-
-    ;; `flyspell-mode' also has to be disabled because depending on the
-    ;; theme, the squiggly underlines can either show up in the html file
-    ;; or cause elisp errors like:
-    ;; (wrong-type-argument number-or-marker-p (nil . 100))
-    (with-eval-after-load 'flyspell
-      (defvar modi/htmlize-initial-flyspell-mode nil
-        "Variable to store state of `flyspell-mode' when
-  `htmlize-buffer` is called.")
-
-      (defun modi/htmlize-before-hook-flyspell-disable ()
-        (setq modi/htmlize-initial-flyspell-mode flyspell-mode)
-        (when flyspell-mode
-          (setq flyspell-mode -1)))
-
-      (defun modi/htmlize-after-hook-flyspell-enable-maybe ()
-        (when modi/htmlize-initial-flyspell-mode
-          (setq flyspell-mode 1)))
-
-      (add-hook 'htmlize-before-hook
-                #'modi/htmlize-before-hook-flyspell-disable)
-      (add-hook 'htmlize-after-hook
-                #'modi/htmlize-after-hook-flyspell-enable-maybe))))
-
-(define-key global-map (kbd "C-c l") 'org-store-link)
-(define-key global-map (kbd "C-c a") 'org-agenda)
-(define-key global-map (kbd "C-c c") 'org-capture)
-(unbind-key "<M-S-left>" org-mode-map)
-(unbind-key "<M-S-right>" org-mode-map)
-#+end_src
-
-**** Various Preferences
-:PROPERTIES:
-:ID:       1de54eab-8be0-44d6-a277-ba9d0aa781df
-:END:
-
-#+begin_src elisp
-;; Various preferences
-(setq org-log-done 'time)
-(setq org-directory "~/.org/")
-(setq org-id-locations-file (expand-file-name (concat user-emacs-directory ".org-id-locations")))
-(setq org-id-link-to-org-use-id 'use-existing)
-(setq org-ellipsis nil)
-(setq org-special-ctrl-a/e t)
-(setq org-edit-timestamp-down-means-later t)
-(setq org-archive-location "%s_archive::datetree/")
-(setq org-archive-mark-done nil)
-(setq org-hide-emphasis-markers t)
-(setq org-catch-invisible-edits 'show-and-error)
-(setq org-export-coding-system 'utf-8)
-(setq org-html-validation-link nil)
-(setq org-export-kill-product-buffer-when-displayed t)
-(setq org-tags-column 75)
-(setq org-search-view-always-boolean t)
-(setq org-refile-targets (quote ((nil :maxlevel . 9)
-                                 (org-agenda-files :maxlevel . 9))))
-(setq org-outline-path-complete-in-steps nil)
-(setq org-refile-use-outline-path t)
-(setq org-imenu-depth 4)
-(setq org-indirect-buffer-display 'current-window)
-(setq org-enforce-todo-dependencies t)
-(setq org-fast-tag-selection-include-todo t)
-(setq org-use-fast-todo-selection t)
-(setq org-treat-S-cursor-todo-selection-as-state-change nil)
-(setq org-confirm-babel-evaluate nil)
-(setq org-src-fontify-natively t)
-(setq org-src-tab-acts-natively t)
-(setq org-agenda-dim-blocked-tasks nil)
-(setq org-agenda-compact-blocks t)
-(setq org-agenda-show-future-repeats t)
-(setq org-agenda-skip-deadline-if-done t)
-(setq org-agenda-skip-scheduled-if-done t)
-(setq org-agenda-include-diary t)
-(setq org-todo-repeat-to-state "TODO")
-(setq org-files (append
-                 (file-expand-wildcards (concat org-directory "*.org"))
-                 (file-expand-wildcards (concat org-directory "*/*.org"))
-                 (file-expand-wildcards (concat org-directory "*/*/*.org"))))
-(setq org-log-state-notes-into-drawer t)
-(setq org-log-reschedule 'time)
-(setq org-log-redeadline 'time)
-(setq org-clock-persistence-insinuate t)
-(setq org-clock-out-remove-zero-time-clocks t)
-(setq org-clock-persist t)
-(setq org-clock-in-resume t)
-(setq org-clock-into-drawer "CLOCK")
-(setq org-duration-format (quote (("d" . nil) ("h" . t) ("min" . t))))
-(setq org-babel-clojure-backend 'cider)
-(setq org-src-preserve-indentation nil)
-(setq org-edit-src-content-indentation 0)
-;; Agenda log mode items to display (closed and state changes by default)
-(setq org-agenda-log-mode-items (quote (closed clock state)))
-(setq org-attach-id-dir (expand-file-name "~/.org/data"))
-(setq org-startup-folded t)
-(setq calendar-time-display-form '(24-hours
-                                   ":"
-                                   minutes
-                                   (if time-zone " (")
-                                   time-zone
-                                   (if time-zone ")")))
-#+end_src
-
-**** \LaTeX Integration
-:PROPERTIES:
-:ID:       02d24593-c78c-4edb-a9d4-caa6ce6f12c7
-:END:
-
-#+begin_src elisp
-(setq org-latex-prefer-user-labels t)
-(setq org-latex-listings t)
-(setq org-latex-listings-options
-      '(("breaklines" "true")
-        ("firstnumber" "auto")
-        ("frame" "single")
-        ("mathescape" "true")
-        ("numbers" "left")
-        ("numbersep" "5pt")
-        ("numberstyle" "\\tiny")
-        ("showspaces" "false")
-        ("showstringspaces" "false")
-        ("stepnumber" "1")
-        ("title" "\\lstname")))
-
-(add-to-list 'org-latex-listings-langs '(scheme "Lisp"))
-#+end_src
-
-#+begin_src elisp
-(setq org-latex-default-packages-alist
-      '(("" "listings" t nil)
-        ("AUTO" "inputenc" t
-         ("pdflatex"))
-        ("T1" "fontenc" t
-         ("pdflatex"))
-        ("" "graphicx" t nil)
-        ("" "longtable" nil nil)
-        ("" "wrapfig" nil nil)
-        ("" "rotating" nil nil)
-        ("normalem" "ulem" t nil)
-        ("" "amsmath" t nil)
-        ("" "amssymb" t nil)
-        ("" "capt-of" nil nil)
-        ("hidelinks" "hyperref" nil nil)))
-#+end_src
-
-#+begin_src elisp
-(setq org-latex-pdf-process
-      '("latexmk -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
-
-#+end_src
-
-**** Incoming Notes: Capture/Refile
-:PROPERTIES:
-:ID:       53cb62b3-16b3-464b-aecf-bfb63a32d5c0
-:END:
-
-#+begin_src elisp
-;;;; Refile settings
-(defun bh/verify-refile-target ()
-  "Exclude todo keywords with a done state from refile targets."
-  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
-
-(setq org-refile-target-verify-function #'bh/verify-refile-target)
-
-(defvar org-projects-dir (expand-file-name (concat org-directory "projects")))
-(defvar kb/org-refile (concat org-directory "refile.org"))
-(defvar kb/org-notes-file (concat org-directory "notes.org"))
-(defvar kb/org-daily-file (concat org-directory "daily.org"))
-(defvar kb/org-journal-file (concat org-directory "journal.org"))
-(defvar kb/org-work-journal-file (concat org-directory "work.org"))
-(defvar kb/org-bookmarks-file (concat org-directory "bookmarks.org"))
-(defvar kb/org-logbook-file (concat org-directory "logbook.org"))
-(defvar kb/org-contacts (concat org-directory "contacts.org"))
-(setq org-default-notes-file kb/org-refile)
-
-(defun kb/org-clocking-p ()
-  "Return non-nil if currently tracking time, otherwise, nil."
-  (not (eq nil (org-clock-is-active))))
-
-(defun kb/org-not-clocking-p ()
-  "Return nil if not tracking time, otherwise, non-nil."
-  (eq nil (org-clock-is-active)))
-
-(setq org-capture-templates
-      '(("t" "todo" entry (file kb/org-refile)
-         (file "~/.config/emacs/org-captures/TODO") :clock-in t :clock-resume t)
-        ("r" "respond" entry (file kb/org-refile)
-         (file "~/.config/emacs/org-captures/RESPOND")
-         :clock-in t :clock-resume t :immediate-finish t)
-        ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
-         (file "~/.config/emacs/org-captures/JOURNAL")
-         :clock-in t
-         :clock-resume t)
-        ("o" "org-protocol" entry (file kb/org-refile)
-         (file "~/.config/emacs/org-captures/ORG-PROTOCOL")
-         :immediate-finish t)
-        ("m" "Meeting" entry (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/MEETING")
-         :clock-in t
-         :clock-resume t)
-        ("b" "Bookmark" entry (file kb/org-bookmarks-file)
-         (file "~/.config/emacs/org-captures/BOOKMARK")
-         :clock-resume t)
-        ("p" "Phone call" entry (file+olp+datetree kb/org-journal-file)
-         (file "~/.config/emacs/org-captures/PHONE")
-         :clock-in t
-         :clock-resume t)
-        ("P" "Project" entry (file kb/org-refile)
-         (file "~/.config/emacs/org-captures/PROJECT")
-         :clock-in t
-         :clock-resume t)
-        ("W" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
-         :immediate-finish t)
-        ("D" "Daily Review" entry (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/DAILY_REVIEW")
-         :immediate-finish t)
-        ))
-
-(setq org-capture-templates-contexts
-      '(("T" "t" ((in-mode . "mu4e-view")
-                  (in-mode . "mu4e-headers")))
-        ("t" "t" ((not-in-mode . "mu4e-view")
-                  (not-in-mode . "mu4e-headers")))
-        ("r" ((in-mode . "mu4e-view")
-              (in-mode . "mu4e-headers")))))
-
-(add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
-;; https://stackoverflow.com/a/16247032/7492588
-(add-hook 'org-capture-prepare-finalize-hook #'org-id-get-create)
-
-   ;;; https://emacs.stackexchange.com/q/51631/17096
-(add-hook 'org-log-buffer-setup-hook (lambda () (setq-local fill-column 72)))
-#+end_src
-
-Update project status when updating the cookie statistics.
-
-#+begin_src elisp
-(defun kb/org-update-project-status (n-done n-incomplete)
-  "Update PROJECT_STATUS property if project cookie complete."
-  (let ((current-tags (org-get-tags)))
-    (if (member "project" (org-get-tags))
-        (cond ((and (= n-done 0)
-                    (= n-incomplete 0))
-               (org-set-property "PROJECT_STATUS" "idea"))
-              ((= n-incomplete 0)
-               (org-set-property "PROJECT_STATUS" "closed"))
-              ((> n-incomplete 0)
-               (org-set-property "PROJECT_STATUS" "open"))
-              (t
-               nil)))))
-
-(add-hook 'org-after-todo-statistics-hook #'kb/org-update-project-status)
-#+end_src
-
-#+begin_src elisp
-(setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-              (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
-
-(setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "#9C6363" :weight bold)
-              ("NEXT" :foreground "#8CD0D3" :weight bold)
-              ("DONE" :foreground "#8FB28F" :weight bold)
-              ("WAITING" :foreground "#DFAF8F" :weight bold)
-              ("HOLD" :foreground "#DC8CC3" :weight bold)
-              ("INACTIVE" :foreground "#DC8CC3" :weight bold)
-              ("CANCELLED" :foreground "#8FB28F" :weight bold)
-              ("PHONE" :foreground "#8FB28F" :weight bold))))
-
-(setq org-todo-state-tags-triggers
-      (quote (("CANCELLED" ("CANCELLED" . t))
-              ("WAITING" ("WAITING" . t))
-              ("HOLD" ("WAITING") ("HOLD" . t))
-              (done ("WAITING") ("HOLD"))
-              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
-#+end_src
-
-**** Agenda
-:PROPERTIES:
-:ID:       53b94099-6930-4d85-9acf-077acda74238
-:END:
-
-#+begin_src elisp
-(setq org-agenda-custom-commands
-      (quote (("M" "3 Month" agenda "3 month view"
-               ((org-agenda-span 90)))
-              ("t" "Todo" tags-todo "-CANCELLED-INACTIVE"
-               ((org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
-              ("D" "Deadlines" agenda "Upcoming Deadlines over the next 3 months"
-               ((org-agenda-span 90)
-                (org-deadline-warning-days 90)
-                (org-agenda-entry-types '(:deadline))))
-              ("Y" "Holidays" agenda "Year view"
-               ((org-agenda-category-filter-preset (quote ("+Holiday")))
-                (org-agenda-span 'year)
-                (org-agenda-time-grid nil)
-                ))
-              ("l" "Logbook" tags "LOGENTRY"
-               ((org-agenda--insert-overriding-header "Logbook")
-                (org-tags-match-list-sublevels t)
-                (org-agenda-filter-by-category (quote ("+logbook")))
-                (org-agenda-span 'day)))
-              ("d" "Today"
-               ((agenda "" ((org-agenda-span 'day)
-                            (org-deadline-warning-days 14)
-                            (org-agenda-log-mode t)))
-                (tags "REFILE"
-                      ((org-agenda-overriding-header "Tasks to Refile:")
-                       (org-tags-match-list-sublevels nil)))
-                (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
-                           ((org-agenda-overriding-header "Next Tasks:")
-                            (org-agenda-sorting-strategy '(priority-up effort-down))))
-                (search "+PROJECT_STATUS {open}"
-                        ((org-agenda-overriding-header "Open Projects:")
-                         (org-tags-match-list-sublevels nil))))
-               ((org-agenda-tag-filter '("-CLIENT"))
-                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM"))
-               ("/home/kb/.cache/agenda.html"))
-              ("u" "Unscored Tasks" tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE"
-               ((search "Effort=0")
-                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
-              ("P" . "Projects")
-              ("Po" "Open Projects" search "+PROJECT_STATUS {open}")
-              ("Pc" "Cancelled Projects" search "+PROJECT_STATUS {cancelled}")
-              ("Pd" "Completed Projects" search "+PROJECT_STATUS {closed}")
-              ("Ph" "Stuck/Held Projects" search "+PROJECT_STATUS {hold}")
-              ("Pi" "Project Ideas" search "+PROJECT_STATUS {idea}")
-              )))
-
-
-(setq org-agenda-exporter-settings
-      '((ps-number-of-columns 2)
-        (ps-landscape-mode t)
-        (org-agenda-add-entry-text-maxlines 5)
-        (htmlize-output-type 'css)))
-
-#+end_src
-
-***** Diary and Org Agenda Extras
-:PROPERTIES:
-:ID:       9e4a8207-5798-4dd8-b7c3-71c8f5db6f33
-:END:
-
-https://orgmode.org/worg/org-hacks.html#org790bd5a
-https://orgmode.org/worg/org-hacks.html#orgf1fe951
-
-#+begin_src elisp
-(require 'cl-lib)
-(require 'lunar)
-(require 'solar)
-
-(autoload 'solar-sunrise-sunset "solar.el")
-(autoload 'solar-time-string "solar.el")
-
-(setq lunar-phase-names
-      '("🌑 New Moon"
-        "🌓 First Quarter Moon"
-        "🌕 Full Moon"
-        "🌗 Last Quarter Moon"))
-
-(with-suppressed-warnings ((lexical date))
-  (defvar date))
-(defun kb/diary-lunar-phases ()
-  "Show lunar phase in Agenda Buffer."
-  (let* ((phase-list (lunar-phase-list (nth 0 date) (nth 2 date)))
-         (phase (cl-find-if (lambda (phase) (equal (car phase) date))
-                            phase-list)))
-    (when phase
-      (concat (lunar-phase-name (nth 2 phase)) " "
-              (substring (nth 1 phase) 0 5)))))
-
-(defun kb/diary-solar-sunrise ()
-  "Show sunrise in Agenda Buffer."
-  (let ((sunrise (car (car (solar-sunrise-sunset date)))))
-    (concat "Sunrise " (solar-time-string sunrise nil))))
-
-(defun kb/diary-solar-sunset ()
-  "Show sunset in agenda buffer."
-  (let ((sunset (car (cadr (solar-sunrise-sunset date)))))
-    (concat "Sunset " (solar-time-string sunset nil))))
-#+end_src
-
-***** Daily Prayers
-:PROPERTIES:
-:ID:       5b7bda68-43f4-4cc9-a89f-b40cda3a622e
-:END:
-
-#+begin_src elisp
-(use-package awqat
-  :config
-  (setq awqat-asr-hanafi nil)
-  (awqat-set-preset-isna))
-#+end_src
-
-**** Navigating (obsolete?)
-:PROPERTIES:
-:ID:       d05a3ea3-e254-4e74-80a2-86aa598c34d5
-:END:
-
-#+begin_src elisp
-(defun kb/org-switch-to-current-notes-file ()
-  "Open current notes file."
-  (interactive)
-  (find-file (concat org-directory "notes.org")))
-
-(defun gf/create-org-path (path)
-  "Create a name suitable for an org file from the last part of the file PATH."
-  (let ((last (car (last (split-string (if (equal (substring path -1) "/")
-                                           (substring path 0 -1) path) "/")))))
-    (concat org-projects-dir "/"
-            (downcase
-             (replace-regexp-in-string
-              "\\." "-" (if (equal (substring last 0 1) ".")
-                            (substring last 1) last)))
-            ".org")))
-
-(defun kb/create-org-path (path)
-  "Transform path name into suitable org file name from last part(s) of PATH.
-   A new version of `gf/create-org-path'."
-  (defun suitable-name (name)
-    "Transform NAME into suitable name."
-    (downcase
-     (replace-regexp-in-string
-      "\\." "-" (if (equal (substring name 0 1) ".")
-                    (substring name 1) name))))
-  (let* ((path-components (kb/get-qualified-project-pair path))
-         (org-name (car path-components))
-         (project-name (car (cdr path-components))))
-    (concat org-projects-dir "/"
-            (suitable-name org-name) "/"
-            (suitable-name project-name) ".org")))
-
-(defun kb/get-qualified-project-pair (project-folder)
-  "Return tuple of parent and project directory for PROJECT-FOLDER."
-  (let* ((path-components (split-string
-                           (directory-file-name project-folder)
-                           (f-path-separator)))
-         (org-name (car (last path-components 2)))
-         (project-name (car (last path-components))))
-    (list org-name project-name)))
-
-#+end_src
-
-I do not use these navigation tricks anymore.
-
-#+begin_src elisp :tangle no
-(defvar gf/org-project-file-override-alist '()
-  "An association list of projectile directories and the project org file.
-   This enables overriding the default behaviour of
-   `gf/org-resolve-project-org-file'.  CAR must be an absolute path
-   to a project, including a trailing slash.  CDR must be a path to
-   an org file, relative to `org-directory'.
-   Example:
-   \'((\"/home/emacs/some-company/some-project\"
-   \"projects/some-company.org\")
-   \(\"/home/emacs/some-company/different-project\" \"projects/some-company.org\"))")
-
-(defun gf/org-resolve-project-org-file ()
-  "Get the path of the org file for the current project.
-   This version uses Glynn Forrest's assoc list, but uses a different version of
-   `create-org-path'.
-   \(https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el\)"
-  (if (assoc (projectile-project-root) gf/org-project-file-override-alist)
-      (concat org-directory (cadr (assoc (projectile-project-root)
-                                         gf/org-project-file-override-alist)))
-    (kb/create-org-path (projectile-project-root))))
-
-
-(defun gf/org-switch-to-project-org-file ()
-  "Switch to the org file for the current project."
-  (interactive)
-  (find-file (gf/org-resolve-project-org-file)))
-
-#+end_src
-
-#+begin_src elisp :tangle no
-(defun kb/org-switch-to-notes ()
-  "Switch to notes.
-   Open either current project notes, or default notes file"
-  (interactive)
-  (if (and (projectile-project-p)
-           (not (equal (projectile-project-name) ".org")))
-      (gf/org-switch-to-project-org-file)
-    (kb/org-switch-to-current-notes-file)))
-#+end_src
-
-**** Editing Utilities: Quick Inserts and Friends
-:PROPERTIES:
-:ID:       135e8764-780e-42de-af34-ec41ae923774
-:END:
-
-#+begin_src elisp
-(defhydra help/hydra/timestamp (:hint nil :exit t)
-  "
-   _t_s:  Inactive timestamp with seconds
-   _u_tc: Ianctive timestamp with seconds in UTC
-   _d_:   Inactive date Local time
-   "
-  ("q" exit)
-  ("t" help/org-time-stamp-with-seconds-now)
-  ("u" help/org-time-stamp-with-seconds-now-utc)
-  ("d" help/org-date))
-
-(defun help/org-time-stamp-with-seconds-now ()
-  "Insert inactive Org timestamp with seconds."
-  (interactive)
-  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]")))
-
-(defun help/org-time-stamp-with-seconds-now-utc ()
-  "Insert inactive Org timestamp with seconds in UTC."
-  (interactive)
-  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]" nil t)))
-
-(defun help/org-date ()
-  "Insert inactive Org date."
-  (interactive)
-  (insert (format-time-string "[%Y-%m-%d %a]")))
-
-(define-key org-mode-map (kbd "C-c t") #'help/hydra/timestamp/body)
-#+end_src
-
-#+begin_src elisp
-(defun kb/org-insert-ts-list-item ()
-  "Insert new list item with inactive timestamp at point."
-  (interactive)
-  (insert "- ")
-  (help/org-time-stamp-with-seconds-now)
-  (insert ": "))
-
-(bind-key (kbd "C-c i") #'kb/org-insert-ts-list-item org-mode-map)
-#+end_src
-
-**** UUIDs everywhere
-:PROPERTIES:
-:ID:       42269ad6-0b7d-426c-875f-79d461be323d
-:END:
-
-Except where they probably shouldn't be added.
-
-#+begin_src elisp
-(defvar kb/org-id-ignored-filenames (list "README"
-                                          "outline")
-  "Base filenames to ignore when saving org files.")
-
-(defun kb/org-id-get-create-all-items ()
-  "Add ORG ID attributes to all tasks/items in the current buffer.
-   https://stackoverflow.com/a/13349772/7492588
-   https://stackoverflow.com/a/16247032/7492588"
-  (interactive)
-  (if (and (eq major-mode 'org-mode)
-           (not (member (file-name-base (buffer-file-name)) kb/org-id-ignored-filenames)))
-      (org-map-entries #'org-id-get-create)))
-
-(add-hook 'org-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook #'kb/org-id-get-create-all-items)))
-#+end_src
-
-**** Pomodoro
-:PROPERTIES:
-:ID:       221ce9dc-4c2b-4d69-a746-e1ea2188a75d
-:END:
-
-#+begin_src elisp
-(use-package org-pomodoro
-  :config
-  (setq org-pomodoro-long-break-frequency 2)
-  (setq org-pomodoro-ticking-sound-p nil))
-#+end_src
-
-**** Better Task Dependencies
-:PROPERTIES:
-:ID:       c19300ed-d4e9-4585-b455-2c84c12b74ef
-:END:
-
-#+begin_src elisp
-(require 'org-depend)
-#+end_src
-
-**** Gantt Charts
-:PROPERTIES:
-:ID:       930284fe-4fe2-43a1-89e7-da26650164df
-:END:
-
-#+begin_src elisp
-(require 'org-dblock-gantt)
-#+end_src
-
-**** Org Mime
-:PROPERTIES:
-:ID:       44e6e5a4-d7e7-4089-8406-3472e11820e5
-:END:
-
-#+begin_src elisp
-(use-package org-mime
-  :config
-  (setq org-mime-export-options '(:with-latex dvipng
-                                              :section-numbers nil
-                                              :with-author nil
-                                              :with-toc nil))
-  (setq org-mime-ascii 'utf-8))
-#+end_src
-
-**** Org Babel
-:PROPERTIES:
-:ID:       41d5ffaf-4b44-4436-b3ae-c4e9f9fc0cf6
-:END:
-
-#+begin_src elisp
-(with-eval-after-load 'org
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   `((clojure . t)
-     (dot . t)
-     (emacs-lisp . t)
-     (gnuplot . t)
-     (java . t)
-     (js . t)
-     (latex . t)
-     (ledger . nil)
-     (octave . t)
-     (perl . t)
-     (python . t)
-     (R . t)
-     (restclient . t)
-     (scheme . t)
-     (screen . nil)
-     (,(if (locate-library "ob-sh") 'sh 'shell) . t)
-     (ocaml . t)
-     (sql . t)
-     (sqlite . t))))
-
-;; (setq org-babel-python-command (expand-file-name "~/.guix-profile/bin/python"))
-
-(defun org-babel-scheme-session-buffer (session)
-  "Return the current session of SESSION otherwise nil."
-  (org-babel-scheme-get-session-buffer session))
-
-(defun org-babel-scheme-initiate-session (&optional session params)
-  "Create a session named SESSION according to PARAMS."
-  (let ((name (org-babel-scheme-make-session-name "" session 'guile)))
-    (org-babel-scheme-set-session-buffer name (org-babel-scheme-get-repl
-                                               'guile session))))
-
-(defun org-babel-bash-initiate-session (&optional session _params)
-  "Initiate a session named SESSION according to PARAMS."
-  (org-babel-sh-initiate-session session _params))
-#+end_src
-
-#+begin_src elisp
-(defun org-babel-execute:z3 (body params)
-  "Execute Z3 on BODY formula.  Currently, we ignore PARAMS."
-  (with-temp-buffer
-    (insert body)
-    (shell-command-on-region (point-min) (point-max) "z3 -in")))
-#+end_src
-
-#+begin_src elisp
-(use-package ob-async)
-#+end_src
-
-
-Loosely borrowed from:
-https://kitchingroup.cheme.cmu.edu/blog/2015/11/20/Asynchronously-running-python-blocks-in-org-mode/.
-
-A more versatile approach may be feasible, but for my current needs, something
-that simply spawns the tangled script is sufficient.  It would be nice to be
-able to see the error and output stream in some temporary buffer, but that's
-not strictly necessary.
-
-#+begin_src elisp
-(defun org-babel-async-execute:bash ()
-  "Run a BASH block at point asynchronously."
-  (interactive)
-
-  (let ((current-file (buffer-file-name))
-        (uuid (org-id-uuid))
-        (temporary-file-directory "./")
-        (tempfile (make-temp-file "sh-"))
-        (context (org-element-property :name (org-element-context))))
-    (org-babel-tangle '(4) tempfile)
-    (org-babel-remove-result)
-
-    (async-start
-     `(lambda ()
-        (prog1
-            (shell-command-to-string (format "bash %s" ,tempfile))
-          (delete-file ,tempfile)))
-     `(lambda (_results)
-        "Code that runs when the async function finishes."
-        (message (format "%s job has finished" ,(or context uuid)))))))
-#+end_src
-
-**** Org Brain
-:PROPERTIES:
-:ID:       094c4fc2-8596-498a-bb4b-d1772e318ce1
-:END:
-
-#+begin_src elisp :tangle no
-(use-package org-brain
-  :init
-  (setq org-brain-path (concat org-directory "/brain"))
-  :config
-  (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
-  (push '("b" "Brain" plain (function org-brain-goto-end)
-          "* %i%?" :empty-lines 1)
-        org-capture-templates)
-  (setq org-brain-visualize-default-choices 'all)
-  (setq org-brain-title-max-length 12)
-  (setq org-brain-include-file-entries nil)
-  (setq org-brain-file-entries-use-title nil))
-#+end_src
-
-**** Org Roam
-:PROPERTIES:
-:ID:       65c42d7e-8d9c-42d9-b810-d93fc5c7f4cb
-:END:
-
-#+begin_src elisp
-;;; https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
-;;; Bind this to C-c n I
-(defun org-roam-node-insert-immediate (arg &rest args)
-  (interactive "P")
-  (let ((args (cons arg args))
-        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
-                                                  '(:immediate-finish t)))))
-    (apply #'org-roam-node-insert args)))
-#+end_src
-
-#+begin_src elisp
-(use-package org-roam
-  :init
-  (setq org-roam-v2-ack t)
-  :custom
-  (org-roam-directory (concat org-directory "/brain"))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n I" . org-roam-node-insert-immediate)
-         ("C-c n c a" . org-roam-alias-add)
-         ("C-c n c r" . org-roam-ref-add))
-  :custom
-  (org-roam-capture-templates
-   '(("d" "default" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
-      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org" "")
-      :unnarrowed t)
-     ("b" "bibliographic" plain (file "~/.config/emacs/org-roam-templates/BIB-ENTRY")
-      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org" "")
-      :unnarrowed t)
-     ("c" "crypt" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
-      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org.gpg" "")
-      :unnarrowed t)
-     ("l" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
-      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-logbook-${slug}.org" "")
-      :unnarrowed t)))
-  :config
-  (org-roam-setup))
-#+end_src
-
-#+begin_src elisp
-(use-package org-roam-dailies
-  :after org-roam
-  :bind-keymap ("C-c n d" . org-roam-dailies-map)
-  :custom
-  (org-roam-dailies-directory "./")
-  (org-roam-dailies-capture-templates
-   '(("d" "default" entry (file "~/.config/emacs/org-roam-templates/DAILY")
-      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
-                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
-      :empty-lines 1)
-     ("e" "Contents to Notebook" entry
-      (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
-      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
-                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
-      :immediate-finish t :empty-lines 1)))
-  )
-#+end_src
-
-#+begin_src elisp
-(use-package org-roam-ui
-  :commands org-roam-ui-mode
-  :delight
-  :after org-roam
-  :bind (("C-c n o a" . org-roam-ui-add-to-local-graph)
-         ("C-c n o l" . org-roam-ui-node-local)
-         ("C-c n o z" . org-roam-ui-node-zoom))
-  :custom
-  (org-roam-ui-sync-theme t)
-  (org-roam-ui-follow nil)
-  (org-roam-ui-update-on-save t)
-  (org-roam-ui-open-on-start nil))
-#+end_src
-
-**** Org Roam Bibtex
-:PROPERTIES:
-:ID:       de45e883-1889-4dec-982e-fade7c9c1968
-:END:
-
-#+begin_src elisp
-(use-package org-roam-bibtex
-  :autoload org-roam-bibtex-mode
-  :after (org-roam helm-bibtex)
-  :diminish
-  :config
-  (require 'org-ref)
-  (org-roam-bibtex-mode t))
-#+end_src
-
-**** Org Transclusion
-:PROPERTIES:
-:ID:       99301a23-6d1a-4ed2-bca6-e8444d57dbb6
-:END:
-
-#+begin_src elisp
-(use-package org-transclusion
-  :after org
-  :bind-keymap ("C-c n t" . org-transclusion-map))
-#+end_src
-
-**** Org Web-Tools
-:PROPERTIES:
-:ID:       e8479be2-8f4e-4b89-a623-4008512ce610
-:END:
-
-#+begin_src elisp
-(use-package org-web-tools
-  :bind (:map org-mode-map
-              ("C-c w a" . org-web-tools-archive-attach)
-              ("C-c w v" . org-web-tools-archive-view)))
-#+end_src
-
-**** Org Export
-:PROPERTIES:
-:ID:       f1266b5f-ec8c-4e00-9b3f-0f8f608fd892
-:END:
-
-#+begin_src elisp
-(add-to-list 'org-latex-classes
-             '("moderncv" "\\documentclass[11pt]{moderncv}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph{%s}")))
+  ;; :straight (ob-resetclient :type git :host github :repo "alf/ob-restclient.el"))
 #+end_src
 
 *** Citar
@@ -5410,49 +5398,6 @@ Remove unencrypted files from the list of [[help:auth-sources][auth-sources]]:
   (setq org-contacts-files (list kb/org-contacts)))
 #+end_src
 
-**** E(BBDB)
-:PROPERTIES:
-:ID:       2c9fbc3f-9a6d-478b-b70e-3b21f0084d59
-:END:
-
-https://emacs-fu.blogspot.com/2009/08/managing-e-mail-addresses-with-bbdb.html
-
-#+begin_src elisp :tangle no
-(use-package bbdb
-  :init
-  (setq bbdb-file "~/.org/bbdb")
-  (setq bbdb-offer-save 1)
-  (setq bbdb-use-pop-up t)
-  (setq bbdb-electric-p t)
-  (setq bbdb-popup-target-lines 1)
-  (setq bbdb-dwim-net-address-allow-redundancy t)
-  (setq bbdb-quiet-about-name-mismatches t)
-  (setq bbdb-always-add-address t)
-  (setq bbdb-canonicalize-redundent-nets-p t)
-  (setq bbdb-use-alternate-names t)
-  (setq bbdb-completion-type nil)
-  (setq bbdb-elided-display t)
-  (setq bbdb/mail-auto-create-p #'bbdb-ignore-some-messages-hook)
-  (setq bbdb-ignore-some-messages-alist
-        (quote (("From" . "no.?reply\\|DAEMON\\|daemon\\|")))))
-#+end_src
-
-#+begin_src elisp
-(use-package ebdb
-  :custom
-  (ebdb-sources "~/.org/ebdb"))
-#+end_src
-
-#+begin_src elisp
-(use-package ebdb-mu4e
-  :after (ebdb mu4e))
-#+end_src
-
-#+begin_src elisp
-(use-package ebdb-message
-  :after (ebdb-mu4e))
-#+end_src
-
 **** Email
 :PROPERTIES:
 :ID:       9e5814f8-b058-4f64-a6c1-3d2358cab29a
@@ -5521,8 +5466,13 @@ Configuration taken from the tutorial found here:
 - http://www.cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/
 
 #+begin_src elisp
-(require 'mu4e)
-(require 'mu4e-vars)
+(use-package mu4e
+  :if (eq system-type 'gnu/linux)
+  :straight (:type nil
+             :local-repo "~/.guix-home/profile/share/emacs/site-lisp/mu4e/"
+             :pre-build ()))
+(use-package mu4e-vars
+  :straight nil)
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -5892,6 +5842,51 @@ Configuration borrowed from the tutorial found here:
 (setq erc-echo-notices-in-minibuffer-flag t)
 (setq erc-keywords '("kennyballou"))
 #+end_src
+**** E(BBDB)
+:PROPERTIES:
+:ID:       2c9fbc3f-9a6d-478b-b70e-3b21f0084d59
+:END:
+
+https://emacs-fu.blogspot.com/2009/08/managing-e-mail-addresses-with-bbdb.html
+
+#+begin_src elisp :tangle no
+(use-package bbdb
+  :init
+  (setq bbdb-file "~/.org/bbdb")
+  (setq bbdb-offer-save 1)
+  (setq bbdb-use-pop-up t)
+  (setq bbdb-electric-p t)
+  (setq bbdb-popup-target-lines 1)
+  (setq bbdb-dwim-net-address-allow-redundancy t)
+  (setq bbdb-quiet-about-name-mismatches t)
+  (setq bbdb-always-add-address t)
+  (setq bbdb-canonicalize-redundent-nets-p t)
+  (setq bbdb-use-alternate-names t)
+  (setq bbdb-completion-type nil)
+  (setq bbdb-elided-display t)
+  (setq bbdb/mail-auto-create-p #'bbdb-ignore-some-messages-hook)
+  (setq bbdb-ignore-some-messages-alist
+        (quote (("From" . "no.?reply\\|DAEMON\\|daemon\\|")))))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb
+  :custom
+  (ebdb-sources "~/.org/ebdb"))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb-mu4e
+  :straight nil
+  :after (ebdb mu4e))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb-message
+  :straight nil
+  :after (ebdb-mu4e))
+#+end_src
+
 **** elfeed
 :PROPERTIES:
 :ID:       5f76c0d2-17a2-4752-b158-74695b1e0f04
