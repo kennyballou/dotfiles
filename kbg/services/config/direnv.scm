@@ -9,7 +9,7 @@
   (mixed-text-file "direnvrc"
                    "source " nix-direnv "/share/direnvrc"
                    "\n"
-                   "source " (local-file (string-append %dotfiles-root "config/direnv/direnvrc"))
+                   "source " (local-file (string-append %dotfiles-root "config/direnv/dot-config/direnv/direnvrc"))
                    "\n"))
 
 (define-public direnv-config-service
