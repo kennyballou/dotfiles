@@ -1,0 +1,10 @@
+[Unit]
+Description=Media Keys and Gnome Notifications for MPD
+Requires=mpd.service
+
+[Service]
+Type=simple
+ExecStart=%h/.guix-home/profile/bin/mpDris2
+
+[Install]
+WantedBy=default.target
