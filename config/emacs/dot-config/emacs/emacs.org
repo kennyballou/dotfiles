@@ -1606,6 +1606,17 @@ not strictly necessary.
                ("\\paragraph{%s}" . "\\paragraph{%s}")))
 #+end_src
 
+**** Org Teach
+:PROPERTIES:
+:ID:       ac4157fe-6003-4ce3-822b-cdbeb829909e
+:END:
+
+#+begin_src elisp
+(use-package org-teach
+  :straight '(:package org-teach :type git :host sourcehut :repo "jamesendreshowell/org-teach"
+                       :fork (:host sourcehut :repo "kennyballou/org-teach")))
+#+end_src
+
 *** GC Statistics
 :PROPERTIES:
 :ID:       a65cc73e-bffc-4f7b-a6b8-4829ec71608b
