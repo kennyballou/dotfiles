@@ -14,7 +14,7 @@ set expandtab
 set number
 set relativenumber
 syntax enable
-color zenburn
+color gruvbox
 set wrap
 set textwidth=75
 set colorcolumn=76

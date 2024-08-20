@@ -1,0 +1,10 @@
+[Unit]
+Description=Music Player Daemon
+Requires=mpd-mk-socket-dir.service
+
+[Service]
+Type=simple
+ExecStart=%h/.guix-home/profile/bin/mpd --no-daemon %E/mpd/mpd.conf
+
+[Install]
+WantedBy=default.target

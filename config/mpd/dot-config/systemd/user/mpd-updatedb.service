@@ -1,0 +1,7 @@
+[Unit]
+Description=MPD Trigger Database Update
+Requires=mpd.service
+
+[Service]
+Type=oneshot
+ExecStart=mpc update

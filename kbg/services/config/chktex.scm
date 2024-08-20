@@ -8,4 +8,4 @@
   (list (simple-service 'chktex-config
                         home-files-service-type
                         `((".chktexrc"
-                          ,(local-file (string-append %dotfiles-root "config/chktex/chktexrc")))))))
+                          ,(local-file (string-append %dotfiles-root "config/chktex/dot-chktexrc")))))))

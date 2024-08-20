@@ -11,6 +11,6 @@
   (list (simple-service 'mpd-config
                         home-files-service-type
                         `((,(mpd-file "mpd.conf")
-                           ,(local-file (string-append %dotfiles-root "config/mpd/mpd.conf")))
-                          (".config/mpDris2/mpDris2.conf"
+                           ,(local-file (string-append %dotfiles-root "config/mpd/dot-config/mpd/mpd.conf")))
+                          (".config/mpDris2/dot-config/mpdris2/mpDris2.conf"
                            ,(local-file (string-append %dotfiles-root "config/mpdris2/mpDris2.conf")))))))

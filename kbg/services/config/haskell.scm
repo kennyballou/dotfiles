@@ -8,4 +8,4 @@
   (list (simple-service 'haskell-config
                         home-files-service-type
                         `((".ghci"
-                           ,(local-file (string-append %dotfiles-root "config/ghci/ghci")))))))
+                           ,(local-file (string-append %dotfiles-root "config/ghci/dot-ghci")))))))

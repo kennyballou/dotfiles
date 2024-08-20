@@ -1,0 +1,6 @@
+[Unit]
+Description=MPD Create Socket Directory
+
+[Service]
+Type=oneshot
+ExecStart=mkdir -p /run/user/%U/mpd

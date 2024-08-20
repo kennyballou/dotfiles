@@ -1,0 +1,6096 @@
+* =~/.config/emacs.d/=
+:PROPERTIES:
+:ID:       defa5909-a6c9-4310-9237-b01c8db940ee
+:header-args: elisp: :results none
+:END:
+
+Tangle all the things from orgmode!
+
+** =early-init.el=
+:PROPERTIES:
+:ID:       7ba2781f-2040-4345-a188-f610f1e798b4
+:header-args:elisp: :tangle ./early-init.el :tangle-mode (identity #o444)
+:END:
+
+#+begin_src elisp
+;;; This file is generated from tangled output of emacs.org.  Do NOT
+;;; edit this file directly!
+#+end_src
+
+Early require of ~cl-lib~.
+
+#+begin_src elisp
+(require 'cl-lib)
+#+end_src
+
+#+begin_src elisp
+(setq package-enable-at-startup nil)
+(setq frame-inhibit-implied-resize t)
+(setq gc-cons-threshold 402653184)
+(setq gc-cons-percentage 0.6)
+(setq file-name-handler-alist-original file-name-handler-alist)
+#+end_src
+
+Log the current version Emacs.  It's helpful to know what exactly is running
+since it can be exceedingly easy to confuse it.
+
+#+begin_src elisp
+(message (emacs-version))
+#+end_src
+
+Logging types
+
+#+begin_src elisp
+(setq byte-compile-warnings '(not obsolete))
+(setq warning-suppress-types '((comp) (bytecomp)))
+#+end_src
+
+Early Frame Settings
+
+https://git.sr.ht/~ashton314/emacs-bedrock/tree/main/item/early-init.el
+
+#+begin_src elisp
+(setq frame-resize-pixelwise t)
+(tool-bar-mode -1)
+#+end_src
+
+Font Config
+
+#+begin_src elisp :tangle no
+(setq fontset-alias-alist '(("-PfEd-DejaVu Sans Mono-regular-normal-normal-*-15-*-*-*-m-0-fontset-startup"
+                             . "-pfed-dejavu sans mono-regular-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+                            ("-*-fixed-medium-r-normal-*-16-*-*-*-*-*-fontset-standard" . "fontset-standard")
+                            ("-*-*-*-*-*-*-*-*-*-*-*-*-fontset-default" . "fontset-default")))
+#+end_src
+
+#+begin_src elisp  :tangle no
+(set-face-attribute 'default nil
+                    :family "DejaVuSansMono"
+                    :height 110
+                    :weight 'normal
+                    :width 'normal)
+#+end_src
+
+#+begin_src elisp :tangle no
+(defconst font-height 110
+  "Default font-height to use.")
+(defconst font-family-mono "DejaVu Mono"
+  "Default monospace font-family to use.")
+(defconst font-family-sans "DejaVu Sans Mono"
+  "Default sans font-family to use")
+;; Middle/Near East: שלום, السّلام عليكم
+(when (member "Noto Sans Arabic" (font-family-list))
+  (set-fontset-font t 'arabic "Noto Sans Arabic"))
+(when (member "Noto Sans Hebrew" (font-family-list))
+  (set-fontset-font t 'arabic "Noto Sans Hebrew"))
+;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
+;;
+;; Make sure you use the right font. See
+;; https://www.google.com/get/noto/help/cjk/.
+;;
+;; This font requires "Regular". Other Noto fonts dont.
+;; ¯\_(ツ)_/¯
+(when (member "Noto Sans CJK" (font-family-list))
+  (set-fontset-font t 'han "Noto Sans CJK SC Regular")
+  (set-fontset-font t 'kana "Noto Sans CJK JP Regular")
+  (set-fontset-font t 'hangul "Noto Sans CJK KR Regular")
+  (set-fontset-font t 'cjk-misc "Noto Sans CJK KR Regular"))
+;; South East Asia: ជំរាបសួរ, ສະບາຍດີ, မင်္ဂလာပါ, สวัสดีครับ
+(when (member "Noto Sans Khmer" (font-family-list))
+  (set-fontset-font t 'khmer "Noto Sans Khmer"))
+(when (member "Noto Sans Lao" (font-family-list))
+  (set-fontset-font t 'lao "Noto Sans Lao"))
+(when (member "Noto Sans Myanmar" (font-family-list))
+  (set-fontset-font t 'burmese "Noto Sans Myanmar"))
+(when (member "Noto Sans Thai" (font-family-list))
+  (set-fontset-font t 'thai "Noto Sans Thai"))
+
+;; Africa: ሠላም
+(when (member "Noto Sans Ethiopic" (font-family-list))
+  (set-fontset-font t 'ethiopic "Noto Sans Ethiopic"))
+
+;;  South Asia: નમસ્તે, नमस्ते, ನಮಸ್ಕಾರ, നമസ്കാരം, ଶୁଣିବେ,
+;;              ආයුබෝවන්, வணக்கம், నమస్కారం, བཀྲ་ཤིས་བདེ་ལེགས༎
+(when (member "Noto Sans Gujarati" (font-family-list))
+  (set-fontset-font t 'gujarati "Noto Sans Gujarati"))
+(when (member "Noto Sans Devanagari" (font-family-list))
+  (set-fontset-font t 'devanagari "Noto Sans Devanagari"))
+(when (member "Noto Sans Kannada" (font-family-list))
+  (set-fontset-font t 'kannada "Noto Sans Kannada"))
+(when (member "Noto Sans Malayalam" (font-family-list))
+  (set-fontset-font t 'malayalam "Noto Sans Malayalam"))
+(when (member "Noto Sans Oriya" (font-family-list))
+  (set-fontset-font t 'oriya "Noto Sans Oriya"))
+(when (member "Noto Sans Sinhala" (font-family-list))
+  (set-fontset-font t 'sinhala "Noto Sans Sinhala"))
+(when (member "Noto Sans Tamil" (font-family-list))
+  (set-fontset-font t 'tamil "Noto Sans Tamil"))
+(when (member "Noto Sans Telugu" (font-family-list))
+  (set-fontset-font t 'telugu "Noto Sans Telugu"))
+(when (member "Noto Sans Tibetan" (font-family-list))
+  (set-fontset-font t 'tibetan "Noto Sans Tibetan"))
+
+
+;; If font-family-mono or font-family-sans are not available, use the default Emacs face
+(when (member font-family-mono (font-family-list))
+  (set-face-attribute 'default nil
+                      :family font-family-mono
+                      :height font-height)
+  (set-face-attribute 'fixed-pitch nil
+                      :family font-family-mono))
+(when (member font-family-sans (font-family-list))
+  (set-face-attribute 'variable-pitch nil
+                      :family font-family-sans
+                      :weight 'regular))
+#+end_src
+
+#+begin_src elisp :tangle no
+(set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'append)
+(set-fontset-font t 'unicode (font-spec :family "Noto Emoji") nil 'append)
+(set-fontset-font t 'symbol "Symbola" nil 'append)
+#+end_src
+
+#+begin_src elisp
+;; Ignore X resources; its settings would be redundant with the other settings
+;; in this file and can conflict with later config (particularly where the
+;; cursor color is concerned).
+(advice-add #'x-apply-session-resources :override #'ignore)
+
+;; - Resetting Garbage Collection and file-name-handler values.
+(add-hook 'after-init-hook
+          (lambda ()
+            (setq gc-cons-threshold 100000000)
+            (setq gc-cons-percentage 0.1)
+            (setq file-name-handler-alist file-name-handler-alist-original)
+            (garbage-collect)) t)
+#+end_src
+
+#+begin_src elisp
+(provide 'early-init)
+;;; early-init.el ends here
+#+end_src
+
+** =init.el=
+:PROPERTIES:
+:ID:       828c7a64-b5e4-4314-a146-9f4cd1813543
+:header-args:elisp: :tangle init.el :tangle-mode (identity #o444)
+:END:
+
+#+begin_src elisp
+;;; This file is generated from tangled output of emacs.org.  Do NOT
+;;; edit this file directly!
+#+end_src
+
+*** Custom
+:PROPERTIES:
+:ID:       75a69bbb-23be-49c5-a79d-12b3b9209b07
+:END:
+
+#+begin_src elisp
+(setq byte-complile-warnings '(not cl-functions))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+(defconst *spell-check-support-enabled* t)
+
+(setq read-process-output-max (* 4096 1024))
+
+;; customize interface configuration
+(when (file-exists-p custom-file)
+  (load custom-file))
+#+end_src
+
+*** Server Configuration
+:PROPERTIES:
+:ID:       bf099ae8-4a4e-4348-aa7f-89ff3baeabbd
+:END:
+
+#+begin_src elisp
+;; https://www.emacswiki.org/emacs/EmacsAsDaemon
+(defun signal-restart-server ()
+  "Handler for SIGUSR1 signal, to (re)start an Emacs server.
+
+Can be tested from within Emacs with:
+  (signal-process (emacs-pid) 'sigusr1)
+
+or from the command line with:
+$ kill -USR1 <emacs-pid>
+$ emacsclient -c"
+  (interactive)
+  (server-force-delete)
+  (server-start))
+
+(define-key special-event-map [sigusr1] 'signal-restart-server)
+#+end_src
+
+#+begin_src elisp
+(use-package server
+  :ensure nil
+  :defer 1
+  :custom
+  (server-client-instructions nil)
+  :config
+  (unless (server-running-p)
+    (server-start)))
+#+end_src
+
+*** DBus Configuration
+:PROPERTIES:
+:ID:       957c50a7-cf5f-4f44-8548-bed26b132cd5
+:END:
+
+#+begin_src elisp
+(require 'desktop)
+(require 'dbus)
+
+;; Loosely borrowed from https://github.com/jmibanez/jmi-dotemacs/blob/master/linux/000.init.el
+;; Session handling -- Exit Emacs on D-BUS signal from session manager
+(defun kb/dbus-handle-gnome-session-manager-exit ()
+  "Perform some cleanup than shutdown Emacs server."
+  (message "Closing session at request of DBus")
+  (desktop-save (concat desktop-path desktop-base-file-name) t)
+  (save-buffers-kill-emacs t))
+
+(defvar kb/dbus-session-exit-handler "DBus Handler for Session Exits.")
+(setq kb/dbus-session-exit-handler (dbus-register-signal
+                                    :session
+                                    "org.gnome.SessionManager"
+                                    "/org/gnome/SessionManager"
+                                    "org.gnome.SessionManager"
+                                    "SessionOver"
+                                    #'kb/dbus-handle-gnome-session-manager-ext))
+#+end_src
+
+*** Desktop
+:PROPERTIES:
+:ID:       09057ba9-5736-453f-b840-344ecd3ab64e
+:END:
+
+#+begin_src elisp
+(use-package desktop
+  :custom
+  (desktop-save-mode t)
+  (desktop-path (list user-emacs-directory))
+  (desktop-load-locked-desktop 'check-pid)
+  (desktop-restore-frames nil)
+  (desktop-auto-save-timeout 30)
+  (desktop-restore-eager 10)
+  (desktop-files-not-to-save
+   "\\(^/[^/:]*:\\|(ftp)$\\)|\\(^*.pdf$\\)\\|\\(^*.jpg$\\)\\|\\(^*.png$\\)")
+  (desktop-globals-to-save
+   '((comint-input-ring . 50)
+     (compile-history . 30)
+     desktop-missing-file-warning
+     (dired-regexp-history . 20)
+     (extended-command-history . 30)
+     (face-name-history . 20)
+     (file-name-history . 100)
+     (grep-find-history . 30)
+     (grep-history . 30)
+     (ido-buffer-history . 100)
+     (ido-last-directory-list . 100)
+     (ido-work-directory-list . 100)
+     (ido-work-file-list . 100)
+     (ivy-history . 100)
+     (magit-read-rev-history . 50)
+     (minibuffer-history . 50)
+     (org-clock-history . 50)
+     (org-refile-history . 50)
+     (org-tags-history . 50)
+     (query-replace-history . 60)
+     (read-expression-history . 60)
+     (regexp-history . 60)
+     (regexp-search-ring . 20)
+     register-alist
+     (search-ring . 20)
+     (shell-command-history . 50)
+     tags-file-name
+     tags-table-list)))
+#+end_src
+
+#+begin_src elisp
+(add-hook 'after-init-hook (lambda () (savehist-mode t)))
+#+end_src
+
+*** Emacs Defaults
+:PROPERTIES:
+:ID:       51b73308-55a1-4d0d-9c9f-615d067cddc0
+:END:
+
+**** Default Variables
+:PROPERTIES:
+:ID:       99fb653d-9fcd-402c-9eee-540e0ea04ba1
+:END:
+
+https://matthewbauer.us/blog/bauer.html
+#+begin_src elisp
+(setq-default remote-file-name-inhibit-delete-by-moving-to-trash t)
+(setq-default mouse-yank-at-point t)
+(setq-default next-error-recenter t)
+(setq-default notmuch-show-logo nil)
+(setq-default nrepl-log-messages t)
+(setq-default ns-function-modifier 'hyper)
+(setq-default ns-pop-up-frames nil)
+(setq-default nsm-save-host-names t)
+(setq-default org-deadline-warning-days 30)
+(setq-default org-export-in-background nil)
+(setq-default org-log-done 'time)
+(setq-default org-log-done-with-time t)
+(setq-default org-return-follows-links t)
+(setq-default org-special-ctrl-a/e t)
+(setq-default org-src-fontify-natively t)
+(setq-default org-src-preserve-indentation t)
+(setq-default org-src-tab-acts-natively t)
+(setq-default org-startup-folded 'fold)
+(setq-default parens-require-spaces t)
+(setq-default TeX-auto-save t)
+(setq-default TeX-engine 'xetex)
+(setq-default ad-redefinition-action 'accept)
+(setq-default apropros-do-all t)
+(setq-default async-shell-command-buffer 'new-buffer)
+(setq-default auth-source-save-behavior t)
+(setq-default auto-revert-check-vc-info nil)
+(setq-default auto-revert-remote-files nil)
+(setq-default auto-revert-verbose nil)
+(setq-default auto-window-vscroll nil)
+(setq-default backward-delete-char-untabify-method 'hungry)
+(setq-default blink-cursor-interval 0.4)
+(setq-default bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory))
+(setq-default bookmark-save-flag t)
+(setq-default buffers-menu-max-size 30)
+(setq-default c-syntactic-indentation t)
+(setq-default case-fold-search t)
+(setq-default checkdoc-spellcheck-documentation-flag t)
+(setq-default column-number-mode t)
+(setq-default comint-input-ignoredups t)
+(setq-default comint-process-echoes t)
+(setq-default comint-prompt-read-only t)
+(setq-default comint-scroll-show-maximum-output nil)
+(setq-default company-auto-complete
+              (lambda () (and (company-tooltip-visible-p) (company-explicit-action-p))))
+(setq-default company-continue-commands
+              '(not save-buffer
+                    save-some-buffers
+                    save-buffers-kill-terminal
+                    save-buffers-kill-emacs
+                    comint-previous-matching-input-from-input
+                    comint-next-matching-input-from-input))
+(setq-default company-frontends
+              '(company-pseudo-tooltip-unless-just-one-frontend
+                company-preview-frontend
+                company-echo-metadata-frontend))
+(setq-default company-require-match nil)
+(setq-default company-selection-wrap-around t)
+(setq-default compilation-always-kill nil)
+(setq-default compilation-ask-about-save nil)
+(setq-default compilation-auto-jump-to-first-error nil)
+(setq-default compilation-environment '("TERM=xterm-256color"))
+(setq-default compilation-scroll-output nil)
+(setq-default completion-cycle-threshold 5)
+(setq-default completion-ignore-case t)
+(setq-default completions-format 'vertical)
+(setq-default counsel-find-file-at-point t)
+(setq-default counsel-mode-override-describe-bindings t)
+(setq-default create-lockfiles t)
+(setq-default default-tab-width 4)
+(setq-default delete-by-moving-to-trash t)
+(setq-default delete-old-versions t)
+(setq-default delete-selection-mode t)
+(setq-default dired-auto-revert-buffer t)
+(setq-default dired-dwim-target t)
+(setq-default dired-hide-details-hide-symlink-targets nil)
+(setq-default dired-listing-switches "-alhv")
+(setq-default dired-omit-files "^\\.")
+(setq-default dired-omit-verbose nil)
+(setq-default dired-recursive-copies 'always)
+(setq-default dired-recursive-deletes 'always)
+(setq-default disabled-command-function nil)
+(setq-default display-time-24hr-format t)
+(setq-default dtrt-indent-verbosity 0)
+(setq-default echo-keystrokes 1)
+(setq-default ediff-split-window-function 'split-window-horizontally)
+(setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq-default enable-recursive-minibuffers nil)
+(setq-default erc-autoaway-idle-seconds 600)
+(setq-default erc-autojoin-timing 'ident erc-fill-prefix " ")
+(setq-default erc-insert-timestamp-function 'erc-insert-timestamp-left)
+(setq-default erc-interpret-mirc-color t)
+(setq-default erc-kill-buffer-on-part t)
+(setq-default erc-kill-queries-on-quit t)
+(setq-default erc-kill-server-buffer-on-quit t)
+(setq-default erc-prompt (lambda () (concat "[" (buffer-name) "]")))
+(setq-default erc-prompt-for-password nil)
+(setq-default erc-query-display 'buffer)
+(setq-default erc-server-coding-system '(utf-8 . utf-8))
+(setq-default erc-timestamp-format "%H:%M:%S ")
+(setq-default erc-timestamp-only-if-changed-flag nil)
+(setq-default erc-try-new-nick-p nil)
+(setq-default eshell-banner-message "")
+(setq-default eshell-buffer-maximum-lines 100000)
+(setq-default eshell-cd-on-directory t)
+(setq-default eshell-cmpl-autolist t)
+(setq-default eshell-cmpl-cycle-completions t)
+(setq-default eshell-cmpl-cycle-cutoff-length 2)
+(setq-default eshell-cp-interactive-query t)
+(setq-default eshell-cp-overwrite-files nil)
+(setq-default eshell-default-target-is-dot t)
+(setq-default eshell-destroy-buffer-when-process-dies t)
+(setq-default eshell-highlight-prompt t)
+(setq-default eshell-hist-ignoredups t)
+(setq-default eshell-history-size 10000)
+(setq-default eshell-list-files-after-cd nil)
+(setq-default eshell-ln-interactive-query t)
+(setq-default eshell-mv-interactive-query t)
+(setq-default eshell-plain-echo-behavior nil)
+(setq-default eshell-review-quick-commands t)
+(setq-default eshell-rm-interactive-query nil)
+(setq-default eval-expression-print-length 20)
+(setq-default eval-expression-print-level nil)
+(setq-default expand-region-contract-fast-key "j")
+(setq-default explicit-shell-args
+              '("-c" "export EMACS= INSIDE_EMACS=; stty echo; shell"))
+(setq-default fill-column 79)
+(setq-default flycheck-check-syntax-automatically
+              '(save idle-change mode-enabled new-line))
+(setq-default flycheck-display-errors-function
+              'flycheck-display-error-messages-unless-error-list)
+(setq-default flycheck-global-modes
+              '(not
+                erc-mode
+                message-mode
+                git-commit-mode
+                view-mode
+                outline-mode
+                text-mode
+                org-mode))
+(setq-default flycheck-idle-change-delay 0.5)
+(setq-default flycheck-standard-error-navigation nil)
+(setq-default flyspell-abbrev-p nil)
+(setq-default flyspell-auto-correct nil)
+(setq-default flyspell-highlight-properties t)
+(setq-default flyspell-incorrect-hook nil)
+(setq-default flyspell-issue-welcome-flag nil)
+(setq-default global-auto-revert-non-file-buffers t)
+;; I think these are equivalent, but spell them out anyways.
+;; https://manueluberti.eu/2022/08/07/emacs-ugrep.html
+(setq-default grep-template (string-join '("ugrep"
+                                           "--color=always"
+                                           "--ignore-binary"
+                                           "--ignore-case"
+                                           "--include=<F>"
+                                           "--line-number"
+                                           "--null"
+                                           "--recursive"
+                                           "--regexp=<R>")
+                                         " "))
+(setq-default highlight-nonselected-windows nil)
+(setq-default hippie-expand-verbose nil)
+(setq-default history-delete-duplicates t)
+(setq-default history-length 20000)
+(setq-default hscroll-margin 5)
+(setq-default hscroll-step 5)
+(setq-default iedit-toggle-key-default nil)
+(setq-default imenu-auto-rescan t)
+(setq-default indent-tabs-mode nil)
+(setq-default indicate-empty-lines t)
+(setq-default inhibit-startup-echo-area-message t)
+(setq-default inhibit-startup-screen t)
+(setq-default ispell-extra-args '("--sug-mode=ultra"))
+(setq-default ispell-quietly t)
+(setq-default ispell-silently-savep t)
+(setq-default jit-lock-defer-time 0)
+(setq-default js2-mode-show-parse-errors nil)
+(setq-default js2-mode-show-strict-warnings nil)
+(setq-default kill-do-not-save-duplicates t)
+(setq-default kill-whole-line nil)
+(setq-default load-prefer-newer t)
+(setq-default magit-clone-set-remote.pushDefault t)
+(setq-default magit-ediff-dwim-show-on-hunks t)
+(setq-default magit-fetch-arguments nil)
+(setq-default magit-log-auto-more t)
+(setq-default magit-process-popup-time 15)
+(setq-default magit-stage-all-confirm nil)
+(setq-default magit-unstage-all-confirm nil)
+(setq-default minibuffer-prompt-properties
+              '(read-only t cursor-intangible t face minibuffer-prompt))
+(setq-default mmm-global-mode 'buffers-with-submode-classes)
+(setq-default mmm-submode-decoration-level 2)
+(setq-default reb-re-syntax 'string)
+(setq-default require-final-newline t)
+(setq-default resize-mini-windows t)
+(setq-default ring-bell-function 'ignore)
+(setq-default rtags-completions-enabled t)
+(setq-default rtags-imenu-syntax-highlighting 10)
+(setq-default ruby-insert-encoding-magic-comment nil)
+(setq-default same-window-buffer-names
+              '("*eshell*"
+                "*shell*"
+                "*mail*"
+                "*inferior-lisp*"
+                "*ielm*"
+                "*scheme"))
+(setq-default save-abbrevs 'silently)
+(setq-default save-interprogram-paste-before-kill t)
+(setq-default savehist-additional-variables
+              '(search-ring
+                regexp-search-ring
+                kill-ring
+                comint-input-ring))
+(setq-default savehist-autosave-interval 60)
+(setq-default scroll-preserve-screen-position 'always)
+(setq-default scroll-preserve-screen-position 'always)
+(setq-default send-mail-function 'smtpmail-send-it)
+(setq-default sentence-end-double-space t)
+(setq-default set-mark-command-repeat-pop t)
+(setq-default set-mark-command-repeat-pop t)
+(setq-default sh-guess-basic-offset t)
+(setq-default shell-completion-execonly nil)
+(setq-default shell-input-autoexpand nil)
+(setq-default show-trailing-whitespace nil)
+(setq-default sp-autoskip-closing-pair 'always)
+(setq-default tab-always-indent 'complete)
+(setq-default tab-width 4)
+(setq-default term-input-autoexpand t)
+(setq-default term-input-ignoredups t)
+(setq-default term-input-ring-file-name t)
+(setq-default text-quoting-style 'grave)
+(setq-default tls-checktrust t)
+(setq-default tooltip-delay 1.5)
+(setq-default tramp-default-proxies-alist
+              '(((regexp-quote (system-name)) nil nil)
+                (nil "\\`root\\'" "/ssh:%h:")
+                (".*" "\\`root\\'" "/ssh:%h:")))
+(setq-default tramp-default-user nil)
+(setq-default truncate-lines nil)
+(setq-default truncate-partial-width-windows nil)
+(setq-default undo-limit 80000)
+(setq-default uniquify-after-kill-buffer-p t)
+(setq-default use-dialog-box nil)
+(setq-default use-file-dialog nil)
+(setq-default use-package-enable-imenu-support t)
+(setq-default use-package-expand-minimally nil)
+(setq-default vc-handled-backends '(Git))
+(setq-default version-control t)
+(setq-default view-inhibit-help-message t)
+(setq-default view-read-only t)
+(setq-default visiable-bell nil)
+(setq-default visible-cursor t)
+(setq-default whitespace-auto-cleanup t)
+(setq-default whitespace-line-column 80)
+(setq-default whitespace-rescan-timer-time nil)
+(setq-default whitespace-silent t)
+(setq-default woman-imenu t)
+(setq-default xref-search-program 'ugrep)
+(setq-default next-error-message-highlight t)
+(setq-default read-minibuffer-restore-windows nil)
+#+end_src
+
+**** Default Keybindings
+:PROPERTIES:
+:ID:       68e29e76-cba3-44fc-abc2-68cc607af115
+:END:
+
+#+begin_src elisp
+(dolist (key (list (kbd "C-x C-n") ;; unset goal column
+                   (kbd "C-z") ;; unset suspend-frame
+                   (kbd "C-x C-z") ;; unset suspend-frame
+                   ))
+  (global-unset-key key))
+
+#+end_src
+
+*** minibuffer
+:PROPERTIES:
+:ID:       81f4c60c-5adc-4403-b460-2116da44d46b
+:END:
+
+Do not make me type ~C-q SPC~ to insert spaces!
+
+#+begin_src elisp
+(define-key minibuffer-local-completion-map (kbd "SPC") #'self-insert-command)
+#+end_src
+
+*** Password Caching
+:PROPERTIES:
+:ID:       1da63c25-419a-449e-8e20-3432a3a0c5ad
+:END:
+
+#+begin_src elisp
+(setq password-cache-expiry 1800)
+#+end_src
+
+*** Package Configuration
+:PROPERTIES:
+:ID:       4931bd29-9293-47b5-810b-5103cf3cbfa6
+:END:
+
+**** Elpa
+:PROPERTIES:
+:ID:       f6d0347d-0517-454a-9ee9-cdcdbc3dd133
+:END:
+
+#+begin_src elisp
+(require 'package)
+
+(setq package-archives nil)
+
+(let ((local-package-el (locate-library "package")))
+  (when (string-match-p (concat "^" (regexp-quote user-emacs-directory))
+                        local-package-el)
+    (warn "Please remove the local package.el, which is no longer supported (%s)."
+          (local-package-el))))
+
+;;; Fire up package.el
+(setq package-enable-at-startup nil)
+(package-initialize)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
+#+end_src
+
+**** =straight.el=
+:PROPERTIES:
+:ID:       ee258d19-165a-442b-9a9b-d69c1cc4fc47
+:END:
+
+#+begin_src elisp
+(setq straight-vc-git-default-protocol 'https)
+(setq straight-use-package-by-default t)
+(defvar boostrap-version)
+(let ((bootstrap-file
+      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+#+end_src
+
+**** =use-package=
+:PROPERTIES:
+:ID:       06e19deb-b0e4-46d1-a322-202e3f303bad
+:END:
+
+#+begin_src elisp
+(eval-when-compile
+  (require 'use-package))
+
+(setq use-package-always-demand t)
+
+(use-package bind-key)
+(use-package diminish)
+#+end_src
+*** Org Mode
+:PROPERTIES:
+:ID:       4f622896-6d42-4913-bb17-297a038f9c94
+:END:
+
+Started from purcell:
+https://github.com/purcell/emacs.d/blob/master/lisp/init-org.el
+Various inclusions from glynnforrest:
+https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el
+Various inclusions from jcf:
+https://github.com/jcf/emacs.d/blob/master/init-org.org
+Reworked with offerings from
+http://cachestocaches.com/2016/9/my-workflow-org-agenda/
+And
+http://doc.norang.ca/org-mode.htm
+
+**** Initial Requires
+:PROPERTIES:
+:ID:       fb12c868-6eea-4ada-aced-f85f1ca5df23
+:END:
+
+#+begin_src elisp
+(use-package org)
+(use-package org-contrib)
+(use-package org-id
+  :straight nil)
+(use-package holidays
+  :straight nil)
+(use-package ox-md
+  :straight nil)
+(use-package org-attach
+  :straight nil)
+#+end_src
+
+**** Graphics and Export
+:PROPERTIES:
+:ID:       6356ad16-3099-443d-8073-043bc9a84c1b
+:END:
+
+#+begin_src elisp :tangle no
+(use-package ob-ditaa
+  :config
+  (setq org-ditaa-jar-path (expand-file-name "~/.nix-profile/lib/ditaa.jar")))
+#+end_src
+
+#+begin_src elisp
+(use-package graphviz-dot-mode)
+;; (use-package org-cliplink)
+(use-package ess)
+(use-package ox-gfm)
+;; (use-package org-babel-eval-in-repl)
+(use-package org-ref
+  :config
+  (setq bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"))
+;; https://www.reddit.com/r/emacs/comments/57gteu/org_export_html_source_code_blocks_adds_trailing/
+;; https://github.com/kaushalmodi/.emacs.d/blob/15df5b075a4cd4a8ed7332237c0e33e75b430a36/setup-files/setup-htmlize.el#L10-L28
+(use-package htmlize
+  :config
+  (progn
+
+    ;; `flyspell-mode' also has to be disabled because depending on the
+    ;; theme, the squiggly underlines can either show up in the html file
+    ;; or cause elisp errors like:
+    ;; (wrong-type-argument number-or-marker-p (nil . 100))
+    (with-eval-after-load 'flyspell
+      (defvar modi/htmlize-initial-flyspell-mode nil
+        "Variable to store state of `flyspell-mode' when
+  `htmlize-buffer` is called.")
+
+      (defun modi/htmlize-before-hook-flyspell-disable ()
+        (setq modi/htmlize-initial-flyspell-mode flyspell-mode)
+        (when flyspell-mode
+          (setq flyspell-mode -1)))
+
+      (defun modi/htmlize-after-hook-flyspell-enable-maybe ()
+        (when modi/htmlize-initial-flyspell-mode
+          (setq flyspell-mode 1)))
+
+      (add-hook 'htmlize-before-hook
+                #'modi/htmlize-before-hook-flyspell-disable)
+      (add-hook 'htmlize-after-hook
+                #'modi/htmlize-after-hook-flyspell-enable-maybe))))
+
+(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-c a") 'org-agenda)
+(define-key global-map (kbd "C-c c") 'org-capture)
+(unbind-key "<M-S-left>" org-mode-map)
+(unbind-key "<M-S-right>" org-mode-map)
+#+end_src
+
+**** Various Preferences
+:PROPERTIES:
+:ID:       1de54eab-8be0-44d6-a277-ba9d0aa781df
+:END:
+
+#+begin_src elisp
+;; Various preferences
+(setq org-log-done 'time)
+(setq org-directory "~/.org/")
+(setq org-id-locations-file (expand-file-name (concat user-emacs-directory ".org-id-locations")))
+(setq org-id-link-to-org-use-id 'use-existing)
+(setq org-ellipsis nil)
+(setq org-special-ctrl-a/e t)
+(setq org-edit-timestamp-down-means-later t)
+(setq org-archive-location "%s_archive::datetree/")
+(setq org-archive-mark-done nil)
+(setq org-hide-emphasis-markers t)
+(setq org-catch-invisible-edits 'show-and-error)
+(setq org-export-coding-system 'utf-8)
+(setq org-html-validation-link nil)
+(setq org-export-kill-product-buffer-when-displayed t)
+(setq org-tags-column 75)
+(setq org-search-view-always-boolean t)
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-outline-path t)
+(setq org-imenu-depth 4)
+(setq org-indirect-buffer-display 'current-window)
+(setq org-enforce-todo-dependencies t)
+(setq org-fast-tag-selection-include-todo t)
+(setq org-use-fast-todo-selection t)
+(setq org-treat-S-cursor-todo-selection-as-state-change nil)
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
+(setq org-agenda-dim-blocked-tasks nil)
+(setq org-agenda-compact-blocks t)
+(setq org-agenda-show-future-repeats t)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-include-diary t)
+(setq org-todo-repeat-to-state "TODO")
+(setq org-files (append
+                 (file-expand-wildcards (concat org-directory "*.org"))
+                 (file-expand-wildcards (concat org-directory "*/*.org"))
+                 (file-expand-wildcards (concat org-directory "*/*/*.org"))))
+(setq org-log-state-notes-into-drawer t)
+(setq org-log-reschedule 'time)
+(setq org-log-redeadline 'time)
+(setq org-clock-persistence-insinuate t)
+(setq org-clock-out-remove-zero-time-clocks t)
+(setq org-clock-persist t)
+(setq org-clock-in-resume t)
+(setq org-clock-into-drawer "CLOCK")
+(setq org-duration-format (quote (("d" . nil) ("h" . t) ("min" . t))))
+(setq org-babel-clojure-backend 'cider)
+(setq org-src-preserve-indentation nil)
+(setq org-edit-src-content-indentation 0)
+;; Agenda log mode items to display (closed and state changes by default)
+(setq org-agenda-log-mode-items (quote (closed clock state)))
+(setq org-attach-id-dir (expand-file-name "~/.org/data"))
+(setq org-startup-folded t)
+(setq calendar-time-display-form '(24-hours
+                                   ":"
+                                   minutes
+                                   (if time-zone " (")
+                                   time-zone
+                                   (if time-zone ")")))
+#+end_src
+
+**** \LaTeX Integration
+:PROPERTIES:
+:ID:       02d24593-c78c-4edb-a9d4-caa6ce6f12c7
+:END:
+
+#+begin_src elisp
+(setq org-latex-prefer-user-labels t)
+(setq org-latex-listings t)
+(setq org-latex-listings-options
+      '(("breaklines" "true")
+        ("firstnumber" "auto")
+        ("frame" "single")
+        ("mathescape" "true")
+        ("numbers" "left")
+        ("numbersep" "5pt")
+        ("numberstyle" "\\tiny")
+        ("showspaces" "false")
+        ("showstringspaces" "false")
+        ("stepnumber" "1")
+        ("title" "\\lstname")))
+
+(add-to-list 'org-latex-listings-langs '(scheme "Lisp"))
+#+end_src
+
+#+begin_src elisp
+(setq org-latex-default-packages-alist
+      '(("" "listings" t nil)
+        ("AUTO" "inputenc" t
+         ("pdflatex"))
+        ("T1" "fontenc" t
+         ("pdflatex"))
+        ("" "graphicx" t nil)
+        ("" "longtable" nil nil)
+        ("" "wrapfig" nil nil)
+        ("" "rotating" nil nil)
+        ("normalem" "ulem" t nil)
+        ("" "amsmath" t nil)
+        ("" "amssymb" t nil)
+        ("" "capt-of" nil nil)
+        ("hidelinks" "hyperref" nil nil)))
+#+end_src
+
+#+begin_src elisp
+(setq org-latex-pdf-process
+      '("latexmk -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
+
+#+end_src
+
+**** Incoming Notes: Capture/Refile
+:PROPERTIES:
+:ID:       53cb62b3-16b3-464b-aecf-bfb63a32d5c0
+:END:
+
+#+begin_src elisp
+;;;; Refile settings
+(defun bh/verify-refile-target ()
+  "Exclude todo keywords with a done state from refile targets."
+  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
+
+(setq org-refile-target-verify-function #'bh/verify-refile-target)
+
+(defvar org-projects-dir (expand-file-name (concat org-directory "projects")))
+(defvar kb/org-refile (concat org-directory "refile.org"))
+(defvar kb/org-notes-file (concat org-directory "notes.org"))
+(defvar kb/org-daily-file (concat org-directory "daily.org"))
+(defvar kb/org-journal-file (concat org-directory "journal.org"))
+(defvar kb/org-work-journal-file (concat org-directory "work.org"))
+(defvar kb/org-bookmarks-file (concat org-directory "bookmarks.org"))
+(defvar kb/org-logbook-file (concat org-directory "logbook.org"))
+(defvar kb/org-contacts (concat org-directory "contacts.org"))
+(setq org-default-notes-file kb/org-refile)
+
+(defun kb/org-clocking-p ()
+  "Return non-nil if currently tracking time, otherwise, nil."
+  (not (eq nil (org-clock-is-active))))
+
+(defun kb/org-not-clocking-p ()
+  "Return nil if not tracking time, otherwise, non-nil."
+  (eq nil (org-clock-is-active)))
+
+(setq org-capture-templates
+      '(("t" "todo" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/TODO") :clock-in t :clock-resume t)
+        ("r" "respond" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/RESPOND")
+         :clock-in t :clock-resume t :immediate-finish t)
+        ("j" "Journal" entry (file+olp+datetree kb/org-journal-file)
+         (file "~/.config/emacs/org-captures/JOURNAL")
+         :clock-in t
+         :clock-resume t)
+        ("o" "org-protocol" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/ORG-PROTOCOL")
+         :immediate-finish t)
+        ("m" "Meeting" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/MEETING")
+         :clock-in t
+         :clock-resume t)
+        ("b" "Bookmark" entry (file kb/org-bookmarks-file)
+         (file "~/.config/emacs/org-captures/BOOKMARK")
+         :clock-resume t)
+        ("p" "Phone call" entry (file+olp+datetree kb/org-journal-file)
+         (file "~/.config/emacs/org-captures/PHONE")
+         :clock-in t
+         :clock-resume t)
+        ("P" "Project" entry (file kb/org-refile)
+         (file "~/.config/emacs/org-captures/PROJECT")
+         :clock-in t
+         :clock-resume t)
+        ("W" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
+         :immediate-finish t)
+        ("D" "Daily Review" entry (file+olp+datetree kb/org-logbook-file)
+         (file "~/.config/emacs/org-captures/DAILY_REVIEW")
+         :immediate-finish t)
+        ))
+
+(setq org-capture-templates-contexts
+      '(("T" "t" ((in-mode . "mu4e-view")
+                  (in-mode . "mu4e-headers")))
+        ("t" "t" ((not-in-mode . "mu4e-view")
+                  (not-in-mode . "mu4e-headers")))
+        ("r" ((in-mode . "mu4e-view")
+              (in-mode . "mu4e-headers")))))
+
+(add-hook 'org-capture-mode-hook (lambda () (setq fill-column 72)))
+;; https://stackoverflow.com/a/16247032/7492588
+(add-hook 'org-capture-prepare-finalize-hook #'org-id-get-create)
+
+   ;;; https://emacs.stackexchange.com/q/51631/17096
+(add-hook 'org-log-buffer-setup-hook (lambda () (setq-local fill-column 72)))
+#+end_src
+
+Update project status when updating the cookie statistics.
+
+#+begin_src elisp
+(defun kb/org-update-project-status (n-done n-incomplete)
+  "Update PROJECT_STATUS property if project cookie complete."
+  (let ((current-tags (org-get-tags)))
+    (if (member "project" (org-get-tags))
+        (cond ((and (= n-done 0)
+                    (= n-incomplete 0))
+               (org-set-property "PROJECT_STATUS" "idea"))
+              ((= n-incomplete 0)
+               (org-set-property "PROJECT_STATUS" "closed"))
+              ((> n-incomplete 0)
+               (org-set-property "PROJECT_STATUS" "open"))
+              (t
+               nil)))))
+
+(add-hook 'org-after-todo-statistics-hook #'kb/org-update-project-status)
+#+end_src
+
+#+begin_src elisp
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+              (sequence "WAITING(w@/!)" "HOLD(h)" "INACTIVE(i)" "|" "CANCELLED(c@/!)"))))
+
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "#9C6363" :weight bold)
+              ("NEXT" :foreground "#8CD0D3" :weight bold)
+              ("DONE" :foreground "#8FB28F" :weight bold)
+              ("WAITING" :foreground "#DFAF8F" :weight bold)
+              ("HOLD" :foreground "#DC8CC3" :weight bold)
+              ("INACTIVE" :foreground "#DC8CC3" :weight bold)
+              ("CANCELLED" :foreground "#8FB28F" :weight bold)
+              ("PHONE" :foreground "#8FB28F" :weight bold))))
+
+(setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+#+end_src
+
+**** Agenda
+:PROPERTIES:
+:ID:       53b94099-6930-4d85-9acf-077acda74238
+:END:
+
+#+begin_src elisp
+(setq org-agenda-custom-commands
+      (quote (("M" "3 Month" agenda "3 month view"
+               ((org-agenda-span 90)))
+              ("t" "Todo" tags-todo "-CANCELLED-INACTIVE"
+               ((org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
+              ("D" "Deadlines" agenda "Upcoming Deadlines over the next 3 months"
+               ((org-agenda-span 90)
+                (org-deadline-warning-days 90)
+                (org-agenda-entry-types '(:deadline))))
+              ("Y" "Holidays" agenda "Year view"
+               ((org-agenda-category-filter-preset (quote ("+Holiday")))
+                (org-agenda-span 'year)
+                (org-agenda-time-grid nil)
+                ))
+              ("l" "Logbook" tags "LOGENTRY"
+               ((org-agenda--insert-overriding-header "Logbook")
+                (org-tags-match-list-sublevels t)
+                (org-agenda-filter-by-category (quote ("+logbook")))
+                (org-agenda-span 'day)))
+              ("d" "Today"
+               ((agenda "" ((org-agenda-span 'day)
+                            (org-deadline-warning-days 14)
+                            (org-agenda-log-mode t)))
+                (tags "REFILE"
+                      ((org-agenda-overriding-header "Tasks to Refile:")
+                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE/!NEXT"
+                           ((org-agenda-overriding-header "Next Tasks:")
+                            (org-agenda-sorting-strategy '(priority-up effort-down))))
+                (search "+PROJECT_STATUS {open}"
+                        ((org-agenda-overriding-header "Open Projects:")
+                         (org-tags-match-list-sublevels nil))))
+               ((org-agenda-tag-filter '("-CLIENT"))
+                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM"))
+               ("/home/kb/.cache/agenda.html"))
+              ("u" "Unscored Tasks" tags-todo "-INACTIVE-HOLD-CANCELLED-ARCHIVE"
+               ((search "Effort=0")
+                (org-overriding-columns-format "%5TODO(TODO) %50ITEM(Task) %7Effort %10CLOCKSUM")))
+              ("P" . "Projects")
+              ("Po" "Open Projects" search "+PROJECT_STATUS {open}")
+              ("Pc" "Cancelled Projects" search "+PROJECT_STATUS {cancelled}")
+              ("Pd" "Completed Projects" search "+PROJECT_STATUS {closed}")
+              ("Ph" "Stuck/Held Projects" search "+PROJECT_STATUS {hold}")
+              ("Pi" "Project Ideas" search "+PROJECT_STATUS {idea}")
+              )))
+
+
+(setq org-agenda-exporter-settings
+      '((ps-number-of-columns 2)
+        (ps-landscape-mode t)
+        (org-agenda-add-entry-text-maxlines 5)
+        (htmlize-output-type 'css)))
+
+#+end_src
+
+***** Diary and Org Agenda Extras
+:PROPERTIES:
+:ID:       9e4a8207-5798-4dd8-b7c3-71c8f5db6f33
+:END:
+
+https://orgmode.org/worg/org-hacks.html#org790bd5a
+https://orgmode.org/worg/org-hacks.html#orgf1fe951
+
+#+begin_src elisp
+(require 'cl-lib)
+(require 'lunar)
+(require 'solar)
+
+(autoload 'solar-sunrise-sunset "solar.el")
+(autoload 'solar-time-string "solar.el")
+
+(setq lunar-phase-names
+      '("🌑 New Moon"
+        "🌓 First Quarter Moon"
+        "🌕 Full Moon"
+        "🌗 Last Quarter Moon"))
+
+(with-suppressed-warnings ((lexical date))
+  (defvar date))
+(defun kb/diary-lunar-phases ()
+  "Show lunar phase in Agenda Buffer."
+  (let* ((phase-list (lunar-phase-list (nth 0 date) (nth 2 date)))
+         (phase (cl-find-if (lambda (phase) (equal (car phase) date))
+                            phase-list)))
+    (when phase
+      (concat (lunar-phase-name (nth 2 phase)) " "
+              (substring (nth 1 phase) 0 5)))))
+
+(defun kb/diary-solar-sunrise ()
+  "Show sunrise in Agenda Buffer."
+  (let ((sunrise (car (car (solar-sunrise-sunset date)))))
+    (concat "Sunrise " (solar-time-string sunrise nil))))
+
+(defun kb/diary-solar-sunset ()
+  "Show sunset in agenda buffer."
+  (let ((sunset (car (cadr (solar-sunrise-sunset date)))))
+    (concat "Sunset " (solar-time-string sunset nil))))
+#+end_src
+
+***** Daily Prayers
+:PROPERTIES:
+:ID:       5b7bda68-43f4-4cc9-a89f-b40cda3a622e
+:END:
+
+#+begin_src elisp
+(use-package awqat
+  :straight (awqat
+             :type git
+             :host github
+             :repo "zkry/awqat")
+  :custom
+  (awqat-asr-hanafi nil)
+  :config
+  (awqat-set-preset-isna))
+#+end_src
+
+**** Navigating (obsolete?)
+:PROPERTIES:
+:ID:       d05a3ea3-e254-4e74-80a2-86aa598c34d5
+:END:
+
+#+begin_src elisp
+(defun kb/org-switch-to-current-notes-file ()
+  "Open current notes file."
+  (interactive)
+  (find-file (concat org-directory "notes.org")))
+
+(defun gf/create-org-path (path)
+  "Create a name suitable for an org file from the last part of the file PATH."
+  (let ((last (car (last (split-string (if (equal (substring path -1) "/")
+                                           (substring path 0 -1) path) "/")))))
+    (concat org-projects-dir "/"
+            (downcase
+             (replace-regexp-in-string
+              "\\." "-" (if (equal (substring last 0 1) ".")
+                            (substring last 1) last)))
+            ".org")))
+
+(defun kb/create-org-path (path)
+  "Transform path name into suitable org file name from last part(s) of PATH.
+   A new version of `gf/create-org-path'."
+  (defun suitable-name (name)
+    "Transform NAME into suitable name."
+    (downcase
+     (replace-regexp-in-string
+      "\\." "-" (if (equal (substring name 0 1) ".")
+                    (substring name 1) name))))
+  (let* ((path-components (kb/get-qualified-project-pair path))
+         (org-name (car path-components))
+         (project-name (car (cdr path-components))))
+    (concat org-projects-dir "/"
+            (suitable-name org-name) "/"
+            (suitable-name project-name) ".org")))
+
+(defun kb/get-qualified-project-pair (project-folder)
+  "Return tuple of parent and project directory for PROJECT-FOLDER."
+  (let* ((path-components (split-string
+                           (directory-file-name project-folder)
+                           (f-path-separator)))
+         (org-name (car (last path-components 2)))
+         (project-name (car (last path-components))))
+    (list org-name project-name)))
+
+#+end_src
+
+I do not use these navigation tricks anymore.
+
+#+begin_src elisp :tangle no
+(defvar gf/org-project-file-override-alist '()
+  "An association list of projectile directories and the project org file.
+   This enables overriding the default behaviour of
+   `gf/org-resolve-project-org-file'.  CAR must be an absolute path
+   to a project, including a trailing slash.  CDR must be a path to
+   an org file, relative to `org-directory'.
+   Example:
+   \'((\"/home/emacs/some-company/some-project\"
+   \"projects/some-company.org\")
+   \(\"/home/emacs/some-company/different-project\" \"projects/some-company.org\"))")
+
+(defun gf/org-resolve-project-org-file ()
+  "Get the path of the org file for the current project.
+   This version uses Glynn Forrest's assoc list, but uses a different version of
+   `create-org-path'.
+   \(https://github.com/glynnforrest/emacs.d/blob/master/site-lisp/setup-org.el\)"
+  (if (assoc (projectile-project-root) gf/org-project-file-override-alist)
+      (concat org-directory (cadr (assoc (projectile-project-root)
+                                         gf/org-project-file-override-alist)))
+    (kb/create-org-path (projectile-project-root))))
+
+
+(defun gf/org-switch-to-project-org-file ()
+  "Switch to the org file for the current project."
+  (interactive)
+  (find-file (gf/org-resolve-project-org-file)))
+
+#+end_src
+
+#+begin_src elisp :tangle no
+(defun kb/org-switch-to-notes ()
+  "Switch to notes.
+   Open either current project notes, or default notes file"
+  (interactive)
+  (if (and (projectile-project-p)
+           (not (equal (projectile-project-name) ".org")))
+      (gf/org-switch-to-project-org-file)
+    (kb/org-switch-to-current-notes-file)))
+#+end_src
+
+**** Editing Utilities: Quick Inserts and Friends
+:PROPERTIES:
+:ID:       135e8764-780e-42de-af34-ec41ae923774
+:END:
+
+#+begin_src elisp
+(defhydra help/hydra/timestamp (:hint nil :exit t)
+  "
+   _t_s:  Inactive timestamp with seconds
+   _u_tc: Ianctive timestamp with seconds in UTC
+   _d_:   Inactive date Local time
+   "
+  ("q" exit)
+  ("t" help/org-time-stamp-with-seconds-now)
+  ("u" help/org-time-stamp-with-seconds-now-utc)
+  ("d" help/org-date))
+
+(defun help/org-time-stamp-with-seconds-now ()
+  "Insert inactive Org timestamp with seconds."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]")))
+
+(defun help/org-time-stamp-with-seconds-now-utc ()
+  "Insert inactive Org timestamp with seconds in UTC."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a %H:%M:%S]" nil t)))
+
+(defun help/org-date ()
+  "Insert inactive Org date."
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d %a]")))
+
+(define-key org-mode-map (kbd "C-c t") #'help/hydra/timestamp/body)
+#+end_src
+
+#+begin_src elisp
+(defun kb/org-insert-ts-list-item ()
+  "Insert new list item with inactive timestamp at point."
+  (interactive)
+  (insert "- ")
+  (help/org-time-stamp-with-seconds-now)
+  (insert ": "))
+
+(bind-key (kbd "C-c i") #'kb/org-insert-ts-list-item org-mode-map)
+#+end_src
+
+**** UUIDs everywhere
+:PROPERTIES:
+:ID:       42269ad6-0b7d-426c-875f-79d461be323d
+:END:
+
+Except where they probably shouldn't be added.
+
+#+begin_src elisp
+(defvar kb/org-id-ignored-filenames (list "README"
+                                          "outline")
+  "Base filenames to ignore when saving org files.")
+
+(defun kb/org-id-get-create-all-items ()
+  "Add ORG ID attributes to all tasks/items in the current buffer.
+   https://stackoverflow.com/a/13349772/7492588
+   https://stackoverflow.com/a/16247032/7492588"
+  (interactive)
+  (if (and (eq major-mode 'org-mode)
+           (not (member (file-name-base (buffer-file-name)) kb/org-id-ignored-filenames)))
+      (org-map-entries #'org-id-get-create)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'kb/org-id-get-create-all-items)))
+#+end_src
+
+**** Pomodoro
+:PROPERTIES:
+:ID:       221ce9dc-4c2b-4d69-a746-e1ea2188a75d
+:END:
+
+#+begin_src elisp
+(use-package org-pomodoro
+  :config
+  (setq org-pomodoro-long-break-frequency 2)
+  (setq org-pomodoro-ticking-sound-p nil))
+#+end_src
+
+**** Better Task Dependencies
+:PROPERTIES:
+:ID:       c19300ed-d4e9-4585-b455-2c84c12b74ef
+:END:
+
+#+begin_src elisp
+(use-package org-depend
+  :straight nil)
+#+end_src
+
+**** Gantt Charts
+:PROPERTIES:
+:ID:       930284fe-4fe2-43a1-89e7-da26650164df
+:END:
+
+#+begin_src elisp
+(use-package org-dblock-gantt
+  :straight (org-dblock-gantt
+             :type git
+             :host github
+             :repo "kennyballou/org-dblock-gantt"))
+#+end_src
+
+**** Org Mime
+:PROPERTIES:
+:ID:       44e6e5a4-d7e7-4089-8406-3472e11820e5
+:END:
+
+#+begin_src elisp
+(use-package org-mime
+  :config
+  (setq org-mime-export-options '(:with-latex dvipng
+                                              :section-numbers nil
+                                              :with-author nil
+                                              :with-toc nil))
+  (setq org-mime-ascii 'utf-8))
+#+end_src
+
+**** Org Babel
+:PROPERTIES:
+:ID:       41d5ffaf-4b44-4436-b3ae-c4e9f9fc0cf6
+:END:
+
+#+begin_src elisp
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   `((clojure . t)
+     (dot . t)
+     (emacs-lisp . t)
+     (gnuplot . t)
+     (java . t)
+     (js . t)
+     (latex . t)
+     (ledger . nil)
+     (octave . t)
+     (perl . t)
+     (python . t)
+     (R . t)
+     (restclient . nil)
+     (scheme . t)
+     (screen . nil)
+     (,(if (locate-library "ob-sh") 'sh 'shell) . t)
+     (ocaml . t)
+     (sql . t)
+     (sqlite . t))))
+
+;; (setq org-babel-python-command (expand-file-name "~/.guix-profile/bin/python"))
+
+(defun org-babel-scheme-session-buffer (session)
+  "Return the current session of SESSION otherwise nil."
+  (org-babel-scheme-get-session-buffer session))
+
+(defun org-babel-scheme-initiate-session (&optional session params)
+  "Create a session named SESSION according to PARAMS."
+  (let ((name (org-babel-scheme-make-session-name "" session 'guile)))
+    (org-babel-scheme-set-session-buffer name (org-babel-scheme-get-repl
+                                               'guile session))))
+
+(defun org-babel-bash-initiate-session (&optional session _params)
+  "Initiate a session named SESSION according to PARAMS."
+  (org-babel-sh-initiate-session session _params))
+#+end_src
+
+#+begin_src elisp
+(defun org-babel-execute:z3 (body params)
+  "Execute Z3 on BODY formula.  Currently, we ignore PARAMS."
+  (with-temp-buffer
+    (insert body)
+    (shell-command-on-region (point-min) (point-max) "z3 -in")))
+#+end_src
+
+#+begin_src elisp
+(use-package ob-async)
+#+end_src
+
+
+Loosely borrowed from:
+https://kitchingroup.cheme.cmu.edu/blog/2015/11/20/Asynchronously-running-python-blocks-in-org-mode/.
+
+A more versatile approach may be feasible, but for my current needs, something
+that simply spawns the tangled script is sufficient.  It would be nice to be
+able to see the error and output stream in some temporary buffer, but that's
+not strictly necessary.
+
+#+begin_src elisp
+(defun org-babel-async-execute:bash ()
+  "Run a BASH block at point asynchronously."
+  (interactive)
+
+  (let ((current-file (buffer-file-name))
+        (uuid (org-id-uuid))
+        (temporary-file-directory "./")
+        (tempfile (make-temp-file "sh-"))
+        (context (org-element-property :name (org-element-context))))
+    (org-babel-tangle '(4) tempfile)
+    (org-babel-remove-result)
+
+    (async-start
+     `(lambda ()
+        (prog1
+            (shell-command-to-string (format "bash %s" ,tempfile))
+          (delete-file ,tempfile)))
+     `(lambda (_results)
+        "Code that runs when the async function finishes."
+        (message (format "%s job has finished" ,(or context uuid)))))))
+#+end_src
+
+**** Org Brain
+:PROPERTIES:
+:ID:       094c4fc2-8596-498a-bb4b-d1772e318ce1
+:END:
+
+#+begin_src elisp :tangle no
+(use-package org-brain
+  :init
+  (setq org-brain-path (concat org-directory "/brain"))
+  :config
+  (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
+  (push '("b" "Brain" plain (function org-brain-goto-end)
+          "* %i%?" :empty-lines 1)
+        org-capture-templates)
+  (setq org-brain-visualize-default-choices 'all)
+  (setq org-brain-title-max-length 12)
+  (setq org-brain-include-file-entries nil)
+  (setq org-brain-file-entries-use-title nil))
+#+end_src
+
+**** Org Roam
+:PROPERTIES:
+:ID:       65c42d7e-8d9c-42d9-b810-d93fc5c7f4cb
+:END:
+
+#+begin_src elisp
+;;; https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+;;; Bind this to C-c n I
+(defun org-roam-node-insert-immediate (arg &rest args)
+  (interactive "P")
+  (let ((args (cons arg args))
+        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                  '(:immediate-finish t)))))
+    (apply #'org-roam-node-insert args)))
+#+end_src
+
+#+begin_src elisp
+(use-package org-roam
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (concat org-directory "/brain"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n I" . org-roam-node-insert-immediate)
+         ("C-c n c a" . org-roam-alias-add)
+         ("C-c n c r" . org-roam-ref-add))
+  :custom
+  (org-roam-capture-templates
+   '(("d" "default" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org" "")
+      :unnarrowed t)
+     ("b" "bibliographic" plain (file "~/.config/emacs/org-roam-templates/BIB-ENTRY")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org" "")
+      :unnarrowed t)
+     ("c" "crypt" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org.gpg" "")
+      :unnarrowed t)
+     ("l" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
+      :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-logbook-${slug}.org" "")
+      :unnarrowed t)))
+  :config
+  (org-roam-setup))
+#+end_src
+
+#+begin_src elisp
+(use-package org-roam-dailies
+  :straight nil
+  :after org-roam
+  :bind-keymap ("C-c n d" . org-roam-dailies-map)
+  :custom
+  (org-roam-dailies-directory "./")
+  (org-roam-dailies-capture-templates
+   '(("d" "default" entry (file "~/.config/emacs/org-roam-templates/DAILY")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :empty-lines 1)
+     ("e" "Contents to Notebook" entry
+      (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :immediate-finish t :empty-lines 1)))
+  )
+#+end_src
+
+#+begin_src elisp
+(use-package org-roam-ui
+  :commands org-roam-ui-mode
+  :diminish
+  :after org-roam
+  :bind (("C-c n o a" . org-roam-ui-add-to-local-graph)
+         ("C-c n o l" . org-roam-ui-node-local)
+         ("C-c n o z" . org-roam-ui-node-zoom))
+  :custom
+  (org-roam-ui-sync-theme t)
+  (org-roam-ui-follow nil)
+  (org-roam-ui-update-on-save t)
+  (org-roam-ui-open-on-start nil))
+#+end_src
+
+**** Org Roam Bibtex
+:PROPERTIES:
+:ID:       de45e883-1889-4dec-982e-fade7c9c1968
+:END:
+
+#+begin_src elisp
+(use-package org-roam-bibtex
+  :autoload org-roam-bibtex-mode
+  :after (org-roam helm-bibtex)
+  :diminish
+  :config
+  (require 'org-ref)
+  (org-roam-bibtex-mode t))
+#+end_src
+
+**** Org Transclusion
+:PROPERTIES:
+:ID:       99301a23-6d1a-4ed2-bca6-e8444d57dbb6
+:END:
+
+#+begin_src elisp
+(use-package org-transclusion
+  :after org
+  :bind-keymap ("C-c n t" . org-transclusion-map))
+#+end_src
+
+**** Org Web-Tools
+:PROPERTIES:
+:ID:       e8479be2-8f4e-4b89-a623-4008512ce610
+:END:
+
+#+begin_src elisp
+(use-package org-web-tools
+  :bind (:map org-mode-map
+              ("C-c w a" . org-web-tools-archive-attach)
+              ("C-c w v" . org-web-tools-archive-view)))
+#+end_src
+
+**** Org Export
+:PROPERTIES:
+:ID:       f1266b5f-ec8c-4e00-9b3f-0f8f608fd892
+:END:
+
+#+begin_src elisp
+(add-to-list 'org-latex-classes
+             '("moderncv" "\\documentclass[11pt]{moderncv}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph{%s}")))
+#+end_src
+
+**** Org Teach
+:PROPERTIES:
+:ID:       ac4157fe-6003-4ce3-822b-cdbeb829909e
+:END:
+
+#+begin_src elisp
+(use-package org-teach
+  :straight '(:package org-teach :type git :host sourcehut :repo "jamesendreshowell/org-teach"
+                       :fork (:host sourcehut :repo "kennyballou/org-teach")))
+#+end_src
+
+*** GC Statistics
+:PROPERTIES:
+:ID:       a65cc73e-bffc-4f7b-a6b8-4829ec71608b
+:END:
+
+#+begin_src elisp
+(use-package emacs-gc-stats
+  :init
+  (emacs-gc-stats-mode +1))
+#+end_src
+
+*** helpful
+:PROPERTIES:
+:ID:       de78bcf2-912a-4c25-adb1-db4f197b3bd2
+:END:
+
+#+begin_src elisp
+(use-package helpful
+  :bind (("C-h f" . helpful-callable)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-h x" . helpful-command)))
+#+end_src
+
+*** Themes
+:PROPERTIES:
+:ID:       9d2ea8c1-9fc4-4922-b406-9f7d36b79335
+:END:
+
+#+begin_src elisp
+(use-package modus-themes
+  :demand t)
+#+end_src
+
+#+begin_src elisp
+(use-package ef-themes
+  :demand t)
+#+end_src
+
+*** Circadian
+:PROPERTIES:
+:ID:       6b4f091d-6d76-4880-bb0d-8ce4ab4db252
+:END:
+
+#+begin_src elisp
+(use-package circadian
+  :commands circadian-setup
+  :custom
+  ;; (circadian-themes '(("07:00" . ef-deuteranopia-light)
+  ;;                     ("19:00" . ef-autumn)))
+  (circadian-themes '(("07:00" . ef-light)
+                      ("19:00" . ef-dark)))
+  :config
+  (circadian-setup))
+#+end_src
+
+*** Execution Path
+:PROPERTIES:
+:ID:       0e42516d-f87a-46a4-a62c-774a5f46450d
+:END:
+
+#+begin_src elisp
+(use-package exec-path-from-shell
+  :config
+  (progn
+    (dolist (var '("SSH_AUTH_SOCK"
+                   "SSH_AGENT_PID"
+                   "GPG_AGENT_INFO"
+                   "LANG"
+                   "LC_CTYPE"))
+      (add-to-list 'exec-path-from-shell-variables var))))
+
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+#+end_src
+
+*** Backupfiles
+:PROPERTIES:
+:ID:       e9e68a37-0d3e-4d72-89e4-b33d104d5dd8
+:END:
+
+Snippet taken from https://stackoverflow.com/a/18330742/7492588
+
+#+begin_src elisp
+(defconst --backup-directory (concat user-emacs-directory "backups/"))
+(defconst --lockfile-directory (concat user-emacs-directory "lockfiles/")
+  "Lockfiles and Autosave files directory.")
+(unless (file-exists-p --backup-directory)
+  (make-directory --backup-directory t)
+  (set-file-modes --backup-directory #o700))
+(unless (file-exists-p --lockfile-directory)
+  (make-directory --lockfile-directory)
+  (set-file-modes --lockfile-directory #o700))
+(setq backup-directory-alist `(("." . ,--backup-directory)))
+(setq auto-save-file-name-transforms `((".*" ,--lockfile-directory t)))
+(setq make-backup-files nil)
+(setq backup-by-copying nil)
+(setq version-control t)
+(setq delete-old-versions t)
+(setq delete-by-moving-to-trash nil)
+(setq kept-old-versions 6)
+(setq kept-new-versions 9)
+(setq auto-save-default t)
+(setq auto-save-timeout 20)
+(setq auto-save-interval 200)
+#+end_src
+
+*** Environment Variables
+:PROPERTIES:
+:ID:       492a29c0-56b5-40df-9f4a-a2a3a6dd85af
+:END:
+
+#+begin_src elisp :tangle no
+(require 'eshell)
+(require 'subr-x)
+(require 'dash)
+
+(defun kb/join-paths (paths &optional path-separator)
+  "Join the given PATHS together using the PATH-SEPARATOR."
+  (or path-separator (setq path-separator ":"))
+  ;; Remove duplicate path entries
+  (let* ((paths (-remove (lambda (p) (not p)) paths))
+         (split-paths (lambda (p) (split-string p path-separator)))
+         (paths-to-join (-flatten (mapcar split-paths paths))))
+    (string-join (seq-uniq paths-to-join) path-separator)))
+
+(let* ((user-home (getenv "HOME"))
+       (user-nix-profile (concat user-home "/.nix-profile/"))
+       (python-path (getenv "PYTHONPATH"))
+       (c-include-path (getenv "C_INCLUDE_PATH"))
+       (cpp-include-path (getenv "CPLUS_INCLUDE_PATH"))
+       (library-path (getenv "LIBRARY_PATH"))
+       (ghc-package-path (getenv "GHC_PACKAGE_PATH")))
+  (progn
+    (eshell/addpath (concat user-nix-profile "/bin"))
+    ;; (setenv "PATH" (concat (getenv "PATH")))
+    (setenv "PYTHONPATH" (kb/join-paths
+                          (list (concat user-nix-profile
+                                        "/lib/python3.7/site-packages")
+                                python-path)))
+    (setenv "C_INCLUDE_PATH" (kb/join-paths
+                              (list (concat user-nix-profile "/include")
+                                    c-include-path)))
+    (setenv "CPLUS_INCLUDE_PATH" (kb/join-paths
+                                  (list (concat user-nix-profile "/include")
+                                        cpp-include-path)))))
+#+end_src
+
+#+begin_src elisp
+(let ((ssh-auth-sock (string-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
+  (setenv "SSH_AUTH_SOCK" ssh-auth-sock))
+#+end_src
+
+*** EasyPG
+:PROPERTIES:
+:ID:       d5df41e6-a853-4690-a654-ee04e22f2e5c
+:END:
+
+#+begin_src elisp
+(setq epg-pinentry-mode 'loopback)
+#+end_src
+
+*** Preload Local -- Disabled
+:PROPERTIES:
+:ID:       9f9b83a9-96c2-4d5e-838c-965f9dab90ad
+:END:
+
+#+begin_src elisp :tangle no
+(require 'init-preload-local nil t)
+#+end_src
+
+*** wgrep
+:PROPERTIES:
+:ID:       bd064283-ecbc-42e8-8c81-1cd8a3ae3a66
+:END:
+
+#+begin_src elisp
+(use-package wgrep)
+#+end_src
+
+*** FullFrame
+:PROPERTIES:
+:ID:       a002f934-38fc-4d0b-a9a6-d741d05adaff
+:END:
+
+#+begin_src elisp
+(use-package fullframe)
+
+(fullframe list-packages quit-window)
+#+end_src
+
+*** Icons
+:PROPERTIES:
+:ID:       8a1e42a0-0055-4f91-8a50-cbebf4f6c2a4
+:END:
+
+#+begin_src elisp
+(use-package all-the-icons)
+#+end_src
+
+*** Modeline
+:PROPERTIES:
+:ID:       c878a9ac-2e3d-464e-a481-f95f9309ab18
+:END:
+
+**** Spaceline -- Disabled
+:PROPERTIES:
+:ID:       06593606-1e9f-4b05-8f52-2047fb85fb46
+:END:
+
+#+begin_src elisp :tangle no
+(use-package spaceline
+  :demand t)
+
+(use-package spaceline-config
+  :after spaceline
+  :demand t
+  :config
+  (spaceline-helm-mode 1)
+  (spaceline-emacs-theme)
+  (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-mu4e-alert-segment-off))
+#+end_src
+
+**** Powerline
+:PROPERTIES:
+:ID:       b0f7d023-6c9e-42e1-bfd1-ce4113782673
+:END:
+
+#+begin_src elisp
+(use-package powerline
+  :commands powerline-default-theme
+  :config
+  (powerline-default-theme))
+#+end_src
+
+**** Display Time
+:PROPERTIES:
+:ID:       e3456b0d-0dfa-4b77-a508-b20e863f186a
+:END:
+
+#+begin_src elisp
+(display-time-mode t)
+#+end_src
+
+*** GUI Frame Configurations
+:PROPERTIES:
+:ID:       1274a1b0-b4b0-45af-94bd-9cee35d3dc23
+:END:
+
+#+begin_src elisp
+;; suppress gui features
+(setq use-file-dialog nil)
+(setq use-dialog-box nil)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-echo-area-message t)
+
+;; window size
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
+(when (fboundp 'menu-bar-mode)
+  (menu-bar-mode -1))
+
+(let ((no-border '(internal-border-width . 0)))
+  (add-to-list 'default-frame-alist no-border)
+  (add-to-list 'initial-frame-alist no-border))
+
+(defun sanityinc/adjust-opacity (frame incr)
+  "Adjust the background opacity of FRAME by increment INCR."
+  (unless (display-graphic-p frame)
+    (error "Cannot adjust opacity of this frame"))
+  (let* ((oldalpha (or (frame-parameter frame 'alpha) 100))
+         (oldalpha (if (listp oldalpha) (car oldalpha) oldalpha))
+         (newalpha (+ incr oldalpha)))
+    (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
+      (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
+
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
+
+;; non-zero values for `line-spacing' can mess up ansi-term and co,
+;; so we zero it explicitly in those cases.
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq line-spacing 0)))
+
+(defvar disable-mouse)
+(use-package disable-mouse
+  :diminish)
+
+;;scroll margin
+(defvar smooth-scrolling)
+(defvar smooth-scrolling-margin)
+(use-package smooth-scrolling
+  :init
+  (setq smooth-scrolling-margin 10))
+#+end_src
+
+Set initial frame sizes
+
+#+begin_src elisp
+(add-to-list 'default-frame-alist '(height . 60))
+(add-to-list 'default-frame-alist '(width . 90))
+#+end_src
+
+Golden Ratio frame resizing
+
+#+begin_src elisp
+(use-package golden-ratio
+  :commands golden-ratio-mode
+  :diminish
+  :custom
+  (golden-ratio-auto-scale nil)
+  (golden-ratio-adjust-factor 1.0)
+  (golden-ratio-wide-adjust-factor 0.8)
+  (golden-ratio-exclude-modes '(helm-mode))
+  :config
+  (golden-ratio-mode nil))
+#+end_src
+
+*** dired
+:PROPERTIES:
+:ID:       f67852f8-d563-4fbe-bf98-30afc3239cf8
+:END:
+
+https://matthewbauer.us/blog/bauer.html
+
+#+begin_src elisp
+  (use-package dired
+    :straight nil
+    :init (require 'dired)
+    :bind (:map dired-mode-map
+        ("C-c C-c" . compile)
+        ("r" . browse-url-of-dired-file))
+    :config
+    (setq dired-listing-switches "-lh"))
+
+  ;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
+  ;; preview files in dired
+  (use-package peep-dired
+    :bind (:map dired-mode-map
+        ("P" . peep-dired)))
+#+end_src
+
+Disable mouse open files.
+
+#+begin_src elisp
+(define-key dired-mode-map [mouse-2] nil)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package dired-x
+  :custom
+  (dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
+                                  ("\\.doc\\'" "libreoffice")
+                                  ("\\.docx\\'" "libreoffice")
+                                  ("\\.ppt\\'" "libreoffice")
+                                  ("\\.pptx\\'" "libreoffice")
+                                  ("\\.xls\\'" "libreoffice")
+                                  ("\\.xlsx\\'" "libreoffice")
+                                  ("\\.csv\\'" "libreoffice")
+                                  ("\\.tsv\\'" "libreoffice")
+                                  ("\\.odt\\'" "libreoffice")
+                                  ("\\.jpg\\'" "eog")
+                                  ("\\.png\\'" "eog")
+                                  ("\\.svg\\'" "eog"))))
+#+end_src
+
+Asynchronous rsync from [[help:dired][dired]].
+
+#+begin_src elisp
+(use-package dired-rsync
+  :commands dired-rsync
+  :bind (:map dired-mode-map
+              ("C-c C-r" . dired-rsync)))
+#+end_src
+
+#+begin_src elisp
+(use-package casual-dired
+  :commands casual-dired-tmenu
+  :bind (:map dired-mode-map ("C-o" . #'casual-dired-tmenu)))
+#+end_src
+
+*** isearch
+:PROPERTIES:
+:ID:       85846a98-5932-49de-8f88-abbc558dfecb
+:END:
+
+#+begin_src elisp
+;; show number of matches while searching
+(use-package anzu
+  :commands global-anzu-mode
+  :custom
+  (anzu-mode-lighter "")
+  :config
+  (global-anzu-mode t)
+  (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+  (global-set-key [remap query-replace] 'anzu-query-replace))
+
+;; Activate occur easily inside isearch
+(when (version< emacs-version "24.3")
+  (define-key isearch-mode-map (kbd "C-c C-o") 'isearch-occur))
+
+;; DEL during isearch should edit the search string
+;; not jump back to the previous result
+(define-key isearch-mode-map [remap isearch-delete-char] 'isearch-del-char)
+#+end_src
+
+*** Grep
+:PROPERTIES:
+:ID:       4ee080b9-ae28-45f4-ba10-6e358e9e5ebe
+:END:
+
+#+begin_src elisp
+(setq-default grep-highlight-matches t
+              grep-scroll-output t)
+
+(use-package ag)
+
+(when (and (executable-find "ag")
+           (require 'ag))
+  (use-package wgrep-ag)
+  (setq-default ag-highlight-search t))
+#+end_src
+
+*** uniquify
+:PROPERTIES:
+:ID:       a1fca4d1-46aa-4481-93ec-4b175f7943ba
+:END:
+
+Nicer naming of buffers for files with identitcal names.
+
+#+begin_src elisp
+(require 'uniquify)
+
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator " • ")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
+#+end_src
+
+*** ibuffer
+:PROPERTIES:
+:ID:       46338344-4b74-4a15-8081-bcbf4a1f6d6c
+:END:
+
+#+begin_src elisp
+(use-package ibuffer
+  :config
+  (fullframe ibuffer ibuffer-quit))
+
+(use-package ibuffer-vc
+  :after (ibuffer)
+  :config
+  (defun ibuffer-set-up-preferred-filters ()
+    "Setup ibuffer sorting and filtering."
+    (ibuffer-vc-set-filter-groups-by-vc-root)
+    (unless (eq ibuffer-sorting-mode 'filename/process)
+      (ibuffer-do-sort-by-filename/process)))
+  (add-hook 'ibuffer-hook #'ibuffer-set-up-preferred-filters))
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+#+end_src
+
+*** RecentF
+:PROPERTIES:
+:ID:       834fcbae-7640-45b4-8e0b-0cc96f42ba75
+:END:
+
+#+begin_src elisp
+(add-hook 'after-init-hook (lambda () (recentf-mode 1)))
+(setq-default recentf-max-save-items 1000)
+(setq-default recentf-exclude '("/tmp/", "/ssh:"))
+#+end_src
+
+*** helm
+:PROPERTIES:
+:ID:       453f4b85-ed7d-420b-8f40-38b40a6883b8
+:END:
+
+https://tuhdo.github.io/helm-intro.html
+
+#+begin_src elisp
+(use-package helm
+  :preface (progn
+             (require 'helm-core)
+             (require 'helm)
+             (require 'helm-command)
+             (require 'helm-imenu))
+  :commands (helm-show-kill-ring helm-all-mark-rings)
+  :after async
+  :diminish
+  :bind (("C-c h" . helm-command-prefix)
+         ("M-x" . helm-M-x)
+         ("M-y" . helm-show-kill-ring)
+         ("C-x b" . helm-mini)
+         ("C-x C-f" . helm-find-files)
+         ("C-h SPC" . helm-all-mark-rings)
+         ;; ("C-c h o" . helm-occur)
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action)
+         ("C-i" . helm-execute-persistent-action)
+         ("C-z" . helm-select-action)
+         :map minibuffer-local-map
+         ("C-c C-l" . helm-minibuffer-history))
+  :custom
+  (helm-autoresize-max-height 30)
+  (helm-autoresize-min-height 20)
+  (helm-apropos-fuzzy-match t)
+  (helm-M-x-fuzzy-match t)
+  (helm-buffers-fuzzy-matching t)
+  (helm-recentf-fuzzy-match t)
+  (helm-lisp-fuzzy-completion t)
+  (helm-semantic-fuzzy-match t)
+  (helm-imenu-fuzzy-match t)
+  (helm-ff-search-library-in-sexp nil)
+  (helm-ff-file-name-history-use-recentf nil)
+  (helm-ff-keep-cached-candidates nil)
+  (helm-split-window-inside-p nil)
+  (helm-grep-default-command (string-join '("ugrep"
+                                            "--color=never"
+                                            "--ignore-binary"
+                                            "--ignore-case"
+                                            "--include=<F>"
+                                            "--line-number"
+                                            "--null"
+                                            "--recursive"
+                                            "--regexp=<R>"
+                                            "%p"
+                                            "%f")
+                                          " "))
+  (helm-grep-default-recurse-command (string-join '("ugrep"
+                                                    "--color=never"
+                                                    "--ignore-binary"
+                                                    "--ignore-case"
+                                                    "--include=<F>"
+                                                    "--line-number"
+                                                    "--null"
+                                                    "--recursive"
+                                                    "--regexp=<R>"
+                                                    "%p"
+                                                    "%f")
+                                                  " "))
+  :config
+  (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+  (defun spacemacs/helm-hide-minibuffer-maybe ()
+    "Hide minibuffer in Helm session if we use the header line as input field."
+    (when (with-helm-buffer helm-echo-input-in-header-line)
+      (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+        (overlay-put ov 'window (selected-window))
+        (overlay-put ov 'face
+                     (let ((bg-color (face-background 'default nil)))
+                       `(:background ,bg-color :foreground ,bg-color)))
+        (setq-local cursor-type nil))))
+  :hook (helm-minibuffer-set-up-hook . spacemacs/helm-hide-minibuffer-maybe)
+  :init
+  (helm-mode t)
+  (helm-autoresize-mode t))
+#+end_src
+
+#+begin_src elisp
+(use-package helm-descbinds
+  :commands helm-descbinds-mode
+  :after (helm)
+  :config
+  (helm-descbinds-mode))
+#+end_src
+
+#+begin_src elisp
+(use-package swiper-helm
+  :after (helm)
+  :bind (("C-s" . swiper-helm)))
+#+end_src
+
+*** mct -- Disabled
+:PROPERTIES:
+:ID:       4361a82f-27b4-495c-a80e-a03f5337f26a
+:END:
+
+#+begin_src elisp :tangle no
+(use-package mct
+  :commands mct-mode
+  :config
+  (setq mct-apply-completion-stripes t)
+  (setq mct-completion-blocklist nil)
+  (setq mct-completion-passlist
+        '(imenu
+          Info-goto-node
+          Info-index
+          Info-menu))
+  (setq mct-completions-format 'one-column)
+  (setq mct-hide-completion-mode-line nil)
+  (setq mct-live-update-delay 0.6)
+  (setq mct-minimum-input 3)
+  (setq mct-remove-shadowed-file-names t)
+  (setq mct-show-completion-line-numbers nil)
+  :init
+  (mct-mode 1))
+
+(setq completion-styles
+      '(basic substring initial flex partial-completion))
+(setq completion-category-overrides
+      '((file (styles . (basic partial-completion initials substring)))))
+
+(setq completion-cycle-threshold 2)
+(setq completion-ignore-case t)
+(setq completion-show-inline-help nil)
+
+(setq completions-detailed t)
+
+(setq enable-recursive-minibuffers t)
+(setq minibuffer-eldef-shorten-default t)
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
+(setq resize-mini-windows t)
+(minibuffer-depth-indicate-mode 1)
+(minibuffer-electric-default-mode 1)
+
+(setq minibuffer-prompt-properties
+      '(read-only t cursor-intangible-mode t face minibuffer-prompt))
+
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+(require 'savehist)
+(setq savehist-file (locate-user-emacs-file "savehist"))
+(setq history-length 10000)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history t)
+(add-hook 'after-init-hook #'savehist-mode)
+#+end_src
+
+*** ido -- disabled
+:PROPERTIES:
+:ID:       bfe3ad2a-292d-421b-a93e-72149b0197fa
+:END:
+
+#+begin_src elisp :tangle no
+(require 'ido)
+(setq ido-create-new-buffer 'always)
+(setq ido-enable-flex-matching t)
+(setq ido-ignore-extensions t)
+(ido-everywhere)
+#+end_src
+
+*** vundo
+:PROPERTIES:
+:ID:       35c51bf3-9a5b-46ce-b787-4f6ab9e141f4
+:END:
+
+#+begin_src elisp
+(use-package vundo
+  :commands (vundo)
+  :config
+  (setq vundo-compact-display t))
+#+end_src
+
+*** Move where I mean
+:PROPERTIES:
+:ID:       264bf804-2c85-4f31-ba01-8881e0f3b033
+:END:
+
+https://matthewbauer.us/blog/bauer.html
+
+#+begin_src elisp
+(use-package mwim
+  :bind (([remap move-beginning-of-line] . mwim-beginning-of-code-or-line)
+         ([remap move-end-of-line] . mwim-end-of-code-or-line)))
+#+end_src
+
+*** Company Mode
+:PROPERTIES:
+:ID:       3b06402b-29ad-42a1-8476-fb0664176dea
+:END:
+
+https://github.com/purcell/emacs.d/blob/master/lisp/init-company.el
+
+#+begin_src elisp
+(use-package company
+  :diminish
+  :hook ((prog-mode . company-mode)
+         (comint-mode . company-mode))
+  :bind (("C-M-/" . company-complete)
+         :map company-mode-map
+         ("M-/" . company-complete)
+         :map company-active-map
+         ("M-/" . company-select-next)
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous))
+  :config
+  (defun sanityinc/local-push-company-backend (backend)
+    "Add BACKEND to a buffer-local version of `company-backends'."
+    (make-local-variable 'company-backends)
+    (push backend company-backends)))
+#+end_src
+
+*** Multi-Major Mode
+:PROPERTIES:
+:ID:       5b51870f-8e94-49f8-8244-663cef107085
+:END:
+
+https://matthewbauer.us/blog/bauer.html
+
+#+begin_src elisp
+(use-package mmm-mode
+  :commands mmm-mode
+  :custom
+  (mmm-global-mode 'buffers-with-submode-classes)
+  (mmm-submode-decoration-level 2))
+#+end_src
+
+*** PolyMode
+:PROPERTIES:
+:ID:       2ce1b6ec-dd37-481f-be6a-ee244a322ab1
+:END:
+
+https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-python-in-one-buffer
+
+#+begin_src elisp
+(use-package polymode)
+#+end_src
+
+*** Editing Utilities
+:PROPERTIES:
+:ID:       9f8278b6-6d17-40e1-aff8-42ea08151fe7
+:END:
+
+#+begin_src elisp
+(use-package unfill)
+
+(use-package list-unicode-display)
+
+(use-package autorevert
+  :diminish auto-revert-mode
+  :demand
+  :commands auto-revert-mode
+  :init
+  (add-hook 'dired-mode-hook #'auto-revert-mode)
+  :config
+  (global-auto-revert-mode t))
+
+(transient-mark-mode t)
+
+;;; A simple visible bell which works in all terminal types
+(defun sanityinc/flash-mode-line ()
+  "Flash mode line on bell."
+  (invert-face 'mode-line)
+  (run-with-timer 0.05 nil 'invert-face 'mode-line))
+
+(setq-default
+ ring-bell-function 'sanityinc/flash-mode-line)
+
+
+;;; Newline behaviour
+(global-set-key (kbd "RET") 'newline-and-indent)
+(defun sanityinc/newline-at-end-of-line ()
+  "Move to end of line, enter a newline, and reindent."
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent))
+
+(global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
+
+(defun kb/enable-line-numbers ()
+  "Turn on line number display."
+  (setq-local display-line-numbers t))
+
+;; explicitly enable line numbers modes
+(dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+  (add-hook hook #'kb/enable-line-numbers))
+
+(use-package rainbow-mode)
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(when (fboundp 'global-prettify-symbols-mode)
+  (global-prettify-symbols-mode))
+
+;; Zap *up* to char is a handy pair for zap-to-char
+(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+#+end_src
+
+#+begin_src elisp
+(use-package browse-kill-ring
+  :commands browse-kill-ring
+  :custom
+  (browse-kill-ring-separator "\f")
+  :bind (("M-Y" . browse-kill-ring)
+         :map browse-kill-ring-mode-map
+         ("C-g" . browse-kill-ring-quit)))
+#+end_src
+
+#+begin_src elisp
+
+;; Don't disable narrowing commands
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+
+;; Show matching parens
+(show-paren-mode 1)
+
+;; Expand region
+(use-package expand-region
+  :bind (("C-=" . #'er/expand-region)))
+
+;; Don't disable case-change functions
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+
+;; Handy key bindings
+(global-set-key (kbd "C-.") 'set-mark-command)
+(global-set-key (kbd "C-x C-.") 'pop-global-mark)
+
+(use-package avy
+  :commands avy-goto-char-timer
+  :bind ("C-;" . #'avy-goto-char-timer))
+
+(use-package multiple-cursors
+  :commands (mc/edit-lines mc/edit-ends-of-lines mc/edit-beginnings-of-lines)
+  :bind (("C-c m c" . #'mc/edit-lines)
+         ("C-c m e" . #'mc/edit-ends-of-lines)
+         ("C-c m a" . #'mc/edit-beginnings-of-lines)))
+
+(global-set-key (kbd "C-c m r") 'set-rectangular-region-anchor)
+
+;; Train myself to use M-f and M-b instead
+(global-unset-key [M-left])
+(global-unset-key [M-right])
+
+
+;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
+(defun backward-up-sexp (arg)
+  "Jump up to the start of the ARG'th enclosing sexp."
+  (interactive "p")
+  (let ((ppss (syntax-ppss)))
+    (cond ((elt ppss 3)
+           (goto-char (elt ppss 8))
+           (backward-up-sexp (1- arg)))
+          ((backward-up-list arg)))))
+
+(global-set-key [remap backward-up-list] 'backward-up-sexp) ; C-M-u, C-M-up
+#+end_src
+
+Cut/copy the current line if no region is active.
+
+#+begin_src elisp
+(use-package whole-line-or-region
+  :diminish whole-line-or-region-local-mode
+  :commands whole-line-or-region-global-mode
+  :config
+  (whole-line-or-region-global-mode t))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package highlight-escape-sequences
+  :init
+  (hes-mode))
+
+(global-hl-line-mode t)
+#+end_src
+
+#+begin_src elisp
+(use-package olivetti
+  :config
+  (setq olivetti-minimum-body-width 100))
+#+end_src
+
+#+begin_src elisp
+(use-package page-break-lines
+  :diminish
+  :custom
+  (page-break-lines-modes '(emacs-lisp-mode
+                            lisp-mode
+                            scheme-mode
+                            compilation-mode
+                            outline-mode
+                            help-mode
+                            browse-kill-ring-mode
+                            ledger-mode))
+  :config
+  (global-page-break-lines-mode t))
+#+end_src
+
+#+begin_src elisp
+(use-package editorconfig
+  :diminish
+  :config
+  (editorconfig-mode t))
+#+end_src
+
+#+begin_src elisp
+(use-package smartparens
+  :diminish)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package auto-highlight-symbol
+  :diminish)
+#+end_src
+
+#+begin_src elisp
+(diminish 'abbrev-mode)
+#+end_src
+
+**** Dictionary
+:PROPERTIES:
+:ID:       c17c3bc7-0d74-43c3-92d2-82f8e853783f
+:END:
+
+#+begin_src elisp
+(require 'dictionary)
+
+(setq dictionary-server "localhost")
+
+(bind-key (kbd "M-#") #'dictionary-lookup-definition)
+#+end_src
+
+#+begin_src elisp
+(use-package define-word
+  :bind (("C-c h d" . define-word-at-point)))
+#+end_src
+
+**** WordNet
+:PROPERTIES:
+:ID:       0d64e43d-ed0c-4e41-9e1f-86d2728cff59
+:END:
+
+#+begin_src elisp
+(use-package wordnut)
+#+end_src
+
+**** Thesauri
+:PROPERTIES:
+:ID:       a86b1a05-5518-4b80-9bca-94060959b49b
+:END:
+
+#+begin_src elisp :tangle no
+(use-package synosaurus
+  :diminish
+  :hook text-mode
+  :config
+  (unbind-key (kbd "C-c C-s l"))
+  (unbind-key (kbd "C-c C-s r"))
+  (unbind-key (kbd "C-c C-s i"))
+  (setq synosaurus-backend #'synosaurus-backend-wordnet)
+  (setq synosaurus-choose-method 'ido))
+#+end_src
+
+**** LTEX Language Server
+:PROPERTIES:
+:ID:       b170b85a-3d40-4bb6-973c-a9f6a5862719
+:END:
+
+#+begin_src elisp :tangle no
+(add-to-list 'eglot-server-programs '(text-mode "localhost" 9091))
+#+end_src
+#+begin_src elisp :tangle no
+(use-package lsp-ltex
+  :after lsp
+  :hook (text-mode . kb/enable-ltex)
+  :init
+  (defun kb/enable-ltex ()
+    (require 'lsp-ltex)
+    (lsp-deferred))
+  :config
+  (setq lsp-ltex-ls-path (string-join (list user-emacs-directory "/lsp-ltex/")))
+  (setq lsp-ltex-version "15.2.0"))
+#+end_src
+
+**** detex
+:PROPERTIES:
+:ID:       e9352fe8-02e4-4082-9f90-34460f51c9e7
+:END:
+
+Simple function which returns buffer contents untexified.
+
+#+begin_src elisp :tangle no
+(defun detex-filter (contents)
+  "Return buffer contents without (La)TeX commands via `detex'."
+  (2text-filter "detex" contents "-s"))
+
+(defun ws-filter (contents)
+  "Return buffer contents without extra whitespace via `sed'."
+  (2text-filter "sed" contents "s/^\\s+//g"))
+
+(defun 2text-filter (program contents &rest ARGS)
+  "Return buffer contents after passing `CONTENTS' to `PROGRAM'."
+  (with-temp-buffer
+    (goto-char (point-min))
+    (insert contents)
+    (apply #'call-process-region (point-min) (point-max) program t t nil ARGS)
+    (buffer-substring-no-properties (point-min) (point-max))))
+#+end_src
+
+**** LanguageTool
+:PROPERTIES:
+:ID:       c084445a-9d5c-4a05-8273-f1d6d6cc772d
+:END:
+
+#+begin_src elisp
+(use-package flycheck-languagetool
+  :after (flycheck flycheck-vale)
+  :hook (text-mode . flycheck-languagetool-setup)
+  :init
+  (setq flycheck-languagetool-server-port 9092)
+  :custom
+  (flycheck-languagetool-active-modes '(text-mode
+                                        latex-mode
+                                        LaTeX-mode
+                                        org-mode
+                                        markdown-mode
+                                        message-mode))
+  (flycheck-languagetool-language "en-US")
+  (flycheck-languagetool-server-port 9092)
+  (flycheck-languagetool-url (format "http://localhost:%s"
+                                     flycheck-languagetool-server-port))
+  (flycheck-languagetool-check-params '(("disabledRules" . "WHITESPACE_RULE")))
+  :config
+  (flycheck-add-next-checker 'languagetool 'vale)
+  (flycheck-remove-next-checker 'languagetool 'proselint))
+#+end_src
+
+#+begin_src elisp :tangle no
+(defun flycheck-languagetool--start (_checker callback)
+  "Flycheck start function for _CHECKER `languagetool', invoking CALLBACK."
+  (when (or flycheck-languagetool-server-command
+            flycheck-languagetool-server-jar)
+    (unless flycheck-languagetool--started-server
+      (setq flycheck-languagetool--started-server t)
+      (flycheck-languagetool--start-server)))
+
+  (let* ((url-request-method "POST")
+         (url-request-extra-headers
+          '(("Content-Type" . "application/x-www-form-urlencoded")))
+         (disabled-rules
+          (flatten-tree (list
+                         (cdr (assoc "disabledRules"
+                                     flycheck-languagetool-check-params))
+                         (when (bound-and-true-p flyspell-mode)
+                           flycheck-languagetool--spelling-rules))))
+         (other-params (assoc-delete-all "disabledRules"
+                                         flycheck-languagetool-check-params))
+         (url-request-data
+          (mapconcat
+           (lambda (param)
+             (concat (url-hexify-string (car param)) "="
+                     (url-hexify-string (cdr param))))
+           (append other-params
+                   `(("language" . ,flycheck-languagetool-language)
+                     ("text" . ,(detex-filter (buffer-substring-no-properties
+                                               (point-min)
+                                               (point-max)))))
+                   (when disabled-rules
+                     (list (cons "disabledRules"
+                                 (string-join disabled-rules ",")))))
+           "&")))
+    (url-retrieve
+     (concat (or flycheck-languagetool-url
+                 (format "http://localhost:%s"
+                         flycheck-languagetool-server-port))
+             "/v2/check")
+     #'flycheck-languagetool--read-results
+     (list (current-buffer) callback)
+     t)))
+#+end_src
+
+**** Pulsar
+:PROPERTIES:
+:ID:       207e8513-d6e5-4ee3-a3d8-425ab3c8c6e4
+:END:
+
+Replace global hl-mode with pulsar package.
+
+#+begin_src elisp
+  (use-package pulsar
+    :custom
+    (pulsar-face 'pulsar-magenta)
+    (pulsar-delay 0.05)
+    (pulsar-pulse t)
+    :config
+    (pulsar-global-mode 1))
+#+end_src
+
+Wrap [[help:recenter-top-bottom][recenter-top-bottom]] so that it pulses as well.
+
+#+begin_src elisp
+(defun kb/recenter-top-bottom (&optional ARG)
+  "Recenter-top-bottom with pulse effect."
+  (interactive)
+  (pulsar-pulse-line)
+  (recenter-top-bottom ARG))
+
+(bind-key "C-l" #'kb/recenter-top-bottom)
+#+end_src
+
+*** Buffer Move
+:PROPERTIES:
+:ID:       238e7ac9-7b59-4f88-9adb-32bfcc30ae7a
+:END:
+
+https://matthewbauer.us/blog/bauer.html
+
+#+begin_src elisp
+(use-package buffer-move
+  :commands (buf-move-up buf-move-down buf-move-left buf-move-right)
+  :bind (("C-x w p" . #'buf-move-up)
+         ("C-x w n" . #'buf-move-down)
+         ("C-x w a" . #'buf-move-left)
+         ("C-x w b" . #'buf-move-left)
+         ("C-x w e" . #'buf-move-right)
+         ("C-x w f" . #'buf-move-right)))
+#+end_src
+
+#+begin_src elisp :tangle no
+;; https://nullprogram.com/blog/2013/02/06/
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining-Minor-Modes.html
+(defvar window-resize-mode-delta 5)
+(define-minor-mode kb/window-resize-mode
+  "Resize current window and then exit."
+  :init-value t
+  :lighter " R3S+ZE"
+  :keymap '(([C-n] . (#'shrink-window (* -1 window-resize-mode-delta)))
+            ([C-p] . (#'shrink-window window-resize-mode-delta))
+            ([C-a] . (#'shrink-window-horizontally window-resize-mode-delta))
+            ([C-b] . (#'shrink-window-horizontally window-resize-mode-delta))
+            ([C-e] . (#'shrink-window-horizontally (* -1 window-resize-mode-delta)))
+            ([C-f] . (#'shrink-window-horizontally (* -1 window-resize-mode-delta)))
+            ([q] . (#'kb/window-resize-mode nil))))
+
+(global-set-key [C-x w r] (kb/window-resize-mode 1))
+#+end_src
+
+*** Whitespace
+:PROPERTIES:
+:ID:       ad29e6dd-b48a-49d9-a56c-9aaff64e3798
+:END:
+
+#+begin_src elisp
+(use-package whitespace
+  :diminish global-whitespace-mode
+  :diminish
+  :custom
+  (whitespace-display-mappings
+   '((newline-mark ?\n  [8617 ?\n] [?$ ?\n])
+     (tab-mark ?\t [8677 ?\t] [92 ?\t])))
+  (whitespace-style
+   '(face
+     trailing-mark
+     tab-mark
+     newline))
+  :config
+  (global-whitespace-mode t))
+(use-package whitespace-cleanup-mode
+  :diminish
+  :config
+  (global-whitespace-cleanup-mode t))
+
+(use-package unicode-whitespace
+  :diminish
+  :after (whitespace))
+
+;;; Whitespace
+
+(defun sanityinc/show-trailing-whitespace ()
+  "Enable display of trailing whiteSpace in this buffer."
+  (setq-local show-trailing-whitespace t))
+
+;; Explicitly show trailing whiteSpace in these modes
+(dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+  (add-hook hook #'sanityinc/show-trailing-whitespace))
+
+(global-set-key [remap just-one-space] 'cycle-spacing)
+
+(defun kb/text-mode-setup ()
+  "text-mode setup hook."
+  (whitespace-mode t)
+  (set-fill-column 79)
+  (turn-on-auto-fill))
+
+(add-hook 'text-mode-hook #'kb/text-mode-setup)
+
+(diminish 'auto-fill-function)
+
+;; Indent
+(setq standard-indent 4)
+
+;;newlines
+(setq require-final-newline t)
+#+end_src
+
+*** Calc
+:PROPERTIES:
+:ID:       d01ff705-1c4d-4288-a986-f89129926a51
+:END:
+
+#+begin_src elisp
+(use-package casual-calc
+  :bind (:map calc-mode-map
+              ("C-o" . casual-main-menu)))
+#+end_src
+
+*** Version Control
+:PROPERTIES:
+:ID:       3fc70c47-fb7a-4b4f-94e7-d59b1a87d89d
+:END:
+
+**** VC
+:PROPERTIES:
+:ID:       4c1e42fe-5e91-4317-a00e-34ee83b81473
+:END:
+
+#+begin_src elisp
+(use-package diff-hl
+  :hook ((prog-mode . diff-hl-mode)
+         (vc-dir-mode . diff-hl-mode)))
+#+end_src
+
+**** Git
+:PROPERTIES:
+:ID:       58f3380b-ffa3-475d-bbd7-a33a73f327dd
+:END:
+
+#+begin_src elisp
+(use-package git-modes)
+#+end_src
+
+#+begin_src elisp
+(use-package git-timemachine
+  :diminish)
+(use-package git-auto-commit-mode)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package forge)
+#+end_src
+
+#+begin_src elisp
+(use-package magit
+  :preface
+  (defun magit-dired-other-window ()
+    (interactive)
+    (dired-other-window (magit-toplevel)))
+  :commands (magit-clone
+             magit-toplevel
+             magit-read-string-ns
+             magit-remote-arguments
+             magit-get
+             magit-remote-add
+             magit-define-popup-action)
+  :bind (("C-x g" . magit-status)
+         ("C-x M-G" . magit-dispatch-popup)
+         :map magit-mode-map
+         ("C-o" . magit-dired-other-window))
+  :init
+  (defvar magit-last-seen-setup-instructions "1.4.0")
+  :config
+  (fullframe magit-status magit-mode-quit-window)
+  :custom
+  (magit-diff-refine-hunk t)
+  (magit-openpgp-default-signing-key "B74CC4B41148C3DB364BC21182D94B35744E1B34")
+  (magit-log-margin '(t age magit-log-margin-width t 18))
+  )
+
+(use-package magit-extras
+  :straight nil
+  :after magit
+  :init
+  (setq magit-pop-revision-stack-format '("%h (\"%s\", %ad)")))
+#+end_src
+
+#+begin_src elisp
+(use-package with-editor)
+#+end_src
+
+Some added additions from
+https://www.reddit.com/r/emacs/comments/96r8us/tip_how_to_get_started_with_git/
+
+#+begin_src elisp
+(use-package git-commit
+  :after with-editor magit
+  :hook (git-commit-mode . kb/git-commit-config-setup)
+  :preface
+  (defun kb/git-commit-config-setup ()
+    "Configures several commit message settings."
+    (goto-address-mode)
+    (set-fill-column 72)
+    (setq-local comment-auto-fill-only-comments nil)
+    (global-whitespace-mode nil))
+  :custom
+  (git-commit-summary-max-length 50))
+#+end_src
+
+#+begin_src elisp
+(use-package magit-annex
+  :after magit)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package magit-todos
+  :commands (magit-todos-mode)
+  :after magit
+  :config (magit-todos-mode t))
+#+end_src
+
+*** Projectile (disabled!)
+:PROPERTIES:
+:ID:       ef251479-852f-429a-80be-556cafaefe76
+:END:
+
+#+begin_src elisp :tangle no
+(use-package projectile
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :config
+
+  (setq projectile-switch-project-action 'projectile-dired)
+  (setq projectile-enable-caching t)
+  (setq projectile-per-project-compilation-buffer t)
+
+  (add-to-list 'projectile-globally-ignored-files "node-modules")
+
+  ;; Shorter modeline
+  (setq-default projectile-mode-line-function
+                (lambda ()
+                  (if (file-remote-p default-directory)
+                      "Projectile"
+                    (format " Proj[%s]" (projectile-project-name)))))
+  :init
+  (add-hook 'after-init-hook (lambda () (projectile-mode))))
+
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package helm-projectile
+  :after (projectile helm)
+  :config
+  (helm-projectile-on))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package persp-projectile
+  :after perspective)
+#+end_src
+
+#+begin_src elisp
+(with-eval-after-load 'projectile
+  (projectile-mode -1)
+  )
+#+end_src
+
+*** Project.el
+:PROPERTIES:
+:ID:       a26fa6d9-d2f8-430b-9d4b-f9a41d8ae0f1
+:END:
+
+#+begin_src elisp
+(defun project-root-override (dir)
+  "Find DIR's project root by searching for a '.project.el' file.
+
+If this file exists, it marks the project root.  For convenient
+compatibility with Projectile, '.projectile' is also considered a project root marker.
+
+https://blog.jmthornton.net/p/emacs-project-override"
+  (let ((root (or (locate-dominating-file dir ".project.el")
+                  (locate-dominating-file dir ".projectile")))
+        (backend (ignore-errors (vc-responsible-backend dir))))
+    (when root (if (version<= emacs-version "28")
+                   (cons 'vc root)
+                 (list 'vc backend root)))))
+#+end_src
+
+#+begin_src elisp
+(use-package project
+  :config
+  (setq project-compilation-buffer-name-function #'project-prefixed-buffer-name)
+  (add-hook 'project-find-functions #'project-root-override))
+#+end_src
+
+*** tabspaces (disabled!)
+:PROPERTIES:
+:ID:       ff24ed0e-ace1-4599-82e9-d6ef146ce3c8
+:END:
+
+#+begin_src elisp :tangle no
+(use-package tabspaces
+  :hook (after-init . tabspaces-mode)
+  :commands (tabspaces-switch-or-create-workspace
+             tabspaces-open-or-create-project-and-workspace)
+  :custom
+  (tabspaces-keymap-prefix "C-c p")
+  (tabspaces-use-filtered-buffers-as-default t)
+  (tabspaces-default-tab "Default")
+  (tabspaces-remove-to-default t)
+  (tabspaces-include-buffers '("*scratch*"))
+  ;; sessions
+  (tabspaces-session t)
+  (tabspaces-session-auto-restore t))
+#+end_src
+
+*** Grand Unified Debugger
+:PROPERTIES:
+:ID:       f71600a2-9e68-4450-9f38-180d1138274a
+:END:
+
+#+begin_src elisp :tangle no
+(use-package realgud)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package realgud-jdb
+  :after realgud)
+#+end_src
+
+*** Compilation
+:PROPERTIES:
+:ID:       65a3e1d7-df5e-4aec-8b17-f3e64441a1ca
+:END:
+
+#+begin_src elisp
+(setq-default compilation-scroll-output t)
+
+(use-package alert)
+
+;; Customize `alert-default-style' to get messages after compilation
+
+(defun sanityinc/alert-after-compilation-finish (buf result)
+  "If BUF is hidden, use `alert' to report compilation RESULT."
+  (when (buffer-live-p buf)
+    (unless (catch 'is-visible
+              (walk-windows (lambda (w)
+                              (when (eq (window-buffer w) buf)
+                                (throw 'is-visible t))))
+              nil)
+      (alert (concat "Compilation " result)
+             :buffer buf
+             :category 'compilation))))
+
+(with-eval-after-load 'compile
+  (add-hook 'compilation-finish-functions
+            'sanityinc/alert-after-compilation-finish))
+
+(defvar sanityinc/last-compilation-buffer nil
+  "The last buffer in which compilation took place.")
+
+(with-eval-after-load 'compile
+  (defun sanityinc/save-compilation-buffer (&rest _)
+    "Save the compilation buffer to find it later."
+    (setq sanityinc/last-compilation-buffer next-error-last-buffer))
+  (advice-add 'compilation-start :after #'sanityinc/save-compilation-buffer)
+
+  (defun sanityinc/find-prev-compilation (orig &optional edit-command)
+    "Find the previous compilation buffer, if present, and recompile there."
+    (if (and (null edit-command)
+             (not (derived-mode-p 'compilation-mode))
+             sanityinc/last-compilation-buffer
+             (buffer-live-p (get-buffer sanityinc/last-compilation-buffer)))
+        (with-current-buffer sanityinc/last-compilation-buffer
+          (funcall orig edit-command))
+      (funcall orig edit-command)))
+  (advice-add 'recompile :around #'sanityinc/find-prev-compilation))
+
+(global-set-key [f6] 'recompile)
+
+(defun sanityinc/shell-command-in-view-mode (start end command &optional output-buffer replace &rest other-args)
+  "Put \"*Shell Command Output*\" buffers into view-mode."
+  (unless (or output-buffer replace)
+    (with-current-buffer "*Shell Command Output*"
+      (view-mode 1))))
+(advice-add 'shell-command-on-region :after #'sanityinc/shell-command-in-view-mode)
+
+(with-eval-after-load 'compile
+  (require 'ansi-color)
+  (defun sanityinc/colourise-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  (add-hook 'compilation-filter-hook 'sanityinc/colourise-compilation-buffer))
+#+end_src
+
+*** Regular Expressions
+:PROPERTIES:
+:ID:       c73096db-e04b-40dc-8fb4-b7b3150f9c17
+:END:
+
+#+begin_src elisp
+(use-package regex-tool
+  :init
+  (setq-default regex-tool-backend 'perl))
+
+(use-package re-builder
+  :bind (:map reb-mode-map
+              ;;support a slightly more idomatic quit binding in re-builder
+              ("C-c C-k" . reb-quit)))
+#+end_src
+
+#+begin_src elisp
+(use-package rx)
+#+end_src
+
+#+begin_src elisp
+(use-package xr)
+#+end_src
+
+*** Perspective -- Disabled
+:PROPERTIES:
+:ID:       c10c11ef-f5d6-4716-b828-4b7c8afdca41
+:END:
+
+#+begin_src elisp :tangle no
+(use-package perspective
+  :config
+  (setq persp-state-default-file (concat user-emacs-directory "perspective.state/default"))
+  :init
+  (setq persp-mode-prefix-key (kbd "C-c p"))
+  (add-hook 'kill-emacs-hook #'persp-state-save)
+  (persp-mode))
+#+end_src
+
+*** Spelling
+:PROPERTIES:
+:ID:       15719b4a-9179-4a0a-8005-1e306263cc8f
+:END:
+
+#+begin_src elisp
+(use-package ispell
+  :config
+  (setq ispell-silently-savep t)
+  (setq ispell-program-name "aspell")
+  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--camel-case")))
+
+#+end_src
+
+#+begin_src elisp
+(use-package flyspell
+  :after ispell
+  :diminish
+  :if (executable-find ispell-program-name)
+  :when (executable-find ispell-program-name)
+  :commands (flyspell-mode flyspell-prog-mode)
+  :config
+  (setq flyspell-use-meta-tab nil)
+  (add-to-list 'flyspell-prog-text-faces 'nxml-text-face)
+  :init
+  (add-hook 'text-mode-hook #'flyspell-mode)
+  (add-hook 'prog-mode-hook #'flyspell-prog-mode))
+
+(use-package flyspell-correct
+  :commands flyspell-correct-wrapper
+  :after flyspell
+  :bind (:map flyspell-mode-map
+              ("C-c ." . flyspell-correct-wrapper)))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package flycheck-aspell
+  :after flycheck
+  :config
+  (add-to-list 'flycheck-checkers 'tex-aspell-dynamic)
+  (add-to-list 'flycheck-checkers 'markdown-aspell-dynamic)
+  (add-to-list 'flycheck-checkers 'html-aspell-dynamic)
+  (add-to-list 'flycheck-checkers 'xml-aspell-dynamic)
+  (add-to-list 'flycheck-checkers 'nroff-aspell-dynamic)
+  (add-to-list 'flycheck-checkers 'texinfo-aspell-dynamic)
+  (add-to-list 'flycheck-checkers 'c-aspell-dynamic)
+  (add-to-list 'flycheck-checkers 'mail-aspell-dynaimc))
+#+end_src
+
+#+begin_src elisp :tangle no
+(with-eval-after-load 'flycheck-aspell
+  (flycheck-aspell-define-checker "org"
+                                  "Org" ("--add-filter" "url")
+                                  (org-mode))
+  (add-to-list 'flycheck-checkers 'org-aspell-dynamic))
+#+end_src
+
+*** Miscellaneous Configuration
+:PROPERTIES:
+:ID:       c94fa191-604a-4101-a089-43f626aee32c
+:END:
+
+#+begin_src elisp
+(use-package f)
+
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(add-hook 'prog-mode-hook 'goto-address-prog-mode)
+(setq goto-address-mail-face 'link)
+
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+(add-hook 'after-save-hook 'sanityinc/set-mode-for-new-scripts)
+
+(defun sanityinc/set-mode-for-new-scripts ()
+  "Invoke `normal-mode' if this file is a script and in `fundamental-mode'."
+  (and
+   (eq major-mode 'fundamental-mode)
+   (>= (buffer-size) 2)
+   (save-restriction
+     (widen)
+     (string= "#!" (buffer-substring (point-min) (+ 2 (point-min)))))
+   (normal-mode)))
+
+(add-to-list 'auto-mode-alist '("Procfile" . 'conf-mode))
+
+(use-package multiple-cursors)
+
+(defun kb/init-window-split ()
+  "Initialize automatic split thresholds for X."
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (if (> (x-display-pixel-width) 1080)
+            (setq split-height-threshold 160)
+          (setq split-height-threshold 80)))))
+
+(kb/init-window-split)
+
+;; https://trey-jackson.blogspot.com/2010/04/emacs-tip-36-abort-minibuffer-when.html
+(defun stop-using-minibuffer ()
+  "Kill the minibuffer."
+  (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
+    (abort-recursive-edit)))
+
+(add-hook 'mouse-leave-buffer-hook #'stop-using-minibuffer)
+
+;; advice
+;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el
+;; from simple.el
+(defun kill-line-autoreindent (&rest _)
+  "Kill excess whitespace when joining lines.
+If the next line is joined to the current line, kill the extra indent whitespace in front of the next line."
+  (when (and (eolp) (not (bolp)))
+    (save-excursion
+      (forward-char 1)
+      (just-one-space 1))))
+(advice-add 'kill-line :before #'kill-line-autoreindent)
+#+end_src
+
+**** Hide Async shell command output
+:PROPERTIES:
+:ID:       304c8888-785c-4d03-89b7-fe420fb16a07
+:END:
+
+https://stackoverflow.com/questions/13901955/how-to-avoid-pop-up-of-async-shell-command-buffer-in-emacs
+
+#+begin_src elisp
+(add-to-list 'display-buffer-alist
+             (cons shell-command-buffer-name-async (cons #'display-buffer-no-window nil)))
+#+end_src
+
+*** Emacs Windows
+:PROPERTIES:
+:ID:       c94e750f-1d56-403e-ab36-2e72c3c0e359
+:END:
+
+Partially taken from:
+https://github.com/purcell/emacs.d/blob/b2aea30bff7ca4bbb62f579ca7e3ff0e895a7911/lisp/init-windows.el
+This is not about the "Windows" OS, but rather Emacs's "windows"
+concept: these are the panels within an Emacs frame which contain
+buffers.
+
+
+#+begin_src elisp
+(use-package switch-window
+  :commands switch-window
+  :custom
+  (switch-window-shortcut-style 'alphabet)
+  (switch-window-timeout nil)
+  (switch-window-multiple-frames t)
+  :init
+  (global-set-key (kbd "C-x o") #'switch-window))
+#+end_src
+
+*** Folding
+:PROPERTIES:
+:ID:       030b8515-2f65-4cd4-b660-837595bfbbb6
+:END:
+
+#+begin_src elisp
+(use-package fold-dwim)
+#+end_src
+
+*** Tags and Code Search
+:PROPERTIES:
+:ID:       27c669eb-5d62-4690-ac57-ff00cc953523
+:END:
+
+**** xref
+:PROPERTIES:
+:ID:       6ebf6e4c-f2f2-4d07-ba45-7875afd72eb4
+:END:
+
+#+begin_src elisp
+(use-package gxref
+  :config
+  (add-to-list 'xref-backend-functions 'gxref-xref-backend))
+#+end_src
+
+**** Tags
+:PROPERTIES:
+:ID:       7a081f26-4bef-4cb7-a09c-b0f6800c4120
+:END:
+
+#+begin_src elisp :tangle no
+(use-package ggtags
+  :diminish
+  :hook (prog-mode . ggtags-mode))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package helm-gtags
+  :diminish
+  :after (helm)
+  :commands (helm-gtags-find-tag
+             helm-gtags-find-rtag
+             helm-gtags-find-symbol
+             helm-gtags-parse-file
+             helm-gtags-previous-history
+             helm-gtags-next-history
+             helm-gtags-pop-stack)
+  :hook (prog-mode . helm-gtags-mode)
+  :custom
+  (helm-gtags-path-style 'relative)
+  (helm-gtags-ignore-case t)
+  (helm-gtags-auto-update nil)
+  :bind (:map helm-gtags-mode-map
+              ("M-t" . helm-gtags-find-tag)
+              ("M-r" . helm-gtags-find-rtag)
+              ("M-s" . helm-gtags-find-symbol)
+              ("M-g M-p" . helm-gtags-parse-file)
+              ("C-c <" . helm-gtags-previous-history)
+              ("C-c >" . helm-gtags-next-history)))
+#+end_src
+
+*** Flycheck
+:PROPERTIES:
+:ID:       a670c02f-5b74-4584-ac02-b3a0c43fb1cc
+:END:
+
+#+begin_src elisp
+(use-package flycheck
+  :defer 2
+  :diminish
+  :hook (after-init . global-flycheck-mode)
+  :commands flycheck-add-mode
+  :config
+  (setq flycheck-global-modes
+        '(not outline-mode diff-mode shell-mode eshell-mode term-mode))
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  (setq flycheck-indication-mode (if (display-graphic-p) 'left-fringe 'left-margin))
+  (setq flycheck-display-errors-function
+        #'flycheck-display-error-messages-unless-error-list)
+  (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+  (setq flycheck-display-errors-delay .3))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package flycheck-posframe
+  :after flycheck
+  ;;:if (display-graphic-p)
+  :hook (flycheck-mode . flycheck-posframe-mode)
+  :config
+  (setq flycheck-posframe-border-width 4)
+  (setq flycheck-posframe-inhibit-functions
+        '((lambda (&rest _) (bound-and-true-p company-backend)))))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package flycheck-pos-tip
+  :after flycheck
+  ;;:if (display-graphic-p)
+  :defines flycheck-pos-tip-timeout
+  :hook (flycheck-mode . flycheck-pos-tip-mode)
+  :config
+  (setq flycheck-pos-tip-timeout 30))
+#+end_src
+
+#+begin_src elisp
+(use-package flycheck-popup-tip
+  :after flycheck
+  ;;:if (display-graphic-p)
+  :hook (flycheck-mode . flycheck-popup-tip-mode))
+#+end_src
+
+#+begin_src elisp
+(use-package flycheck-vale
+  :after flycheck
+  :commands flycheck-vale-setup
+  :config
+  (flycheck-vale-setup)
+  (dolist (mode '(text-mode
+                  gfm-mode
+                  latex-mode
+                  message-mode
+                  tex-mode))
+    (flycheck-add-mode 'vale mode)))
+
+(use-package flycheck-color-mode-line
+  :commands flycheck-color-mode-line-mode
+  :after flycheck
+  :config (flycheck-color-mode-line-mode))
+#+end_src
+
+#+begin_src elisp
+(use-package helm-flycheck
+  :after (helm flycheck))
+#+end_src
+
+*** Tramp
+:PROPERTIES:
+:ID:       6b79c1d2-ab14-4bee-a9e5-b676c98c695e
+:END:
+
+#+begin_src elisp
+(use-package tramp
+  :custom
+  (tramp-default-method "ssh")
+  (tramp-verbose 1)
+  (tramp-remote-path '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin"
+                                                 "/usr/local/bin" "/usr/local/sbin" "/local/bin"
+                                                 "/local/freeware/bin" "/local/gnu/bin"
+                                                 "/usr/freeware/bin" "/usr/pkg/bin"
+                                                 "/usr/contrib/bin" "/opt/bin" "/opt/sbin"
+                                                 "/opt/local/bin"
+                                                 "/run/current-system/profile/bin"
+                                                 "/run/current-system/sw/bin"
+                                                 "~/.guix-home/profile/bin"
+                                                 "~/.nix-profile/bin")))
+#+end_src
+
+#+begin_src elisp
+(use-package helm-tramp
+  :after (helm tramp)
+  :bind (("C-c s". helm-tramp)))
+#+end_src
+
+#+begin_src elisp :tangle no
+(add-hook 'helm-tramp-pre-command-hook #'(lambda ()
+                                           (projectile-mode 0)
+                                           (editorconfig-mode 0)))
+
+(add-hook 'helm-tramp-quit-hook #'(lambda ()
+                                    (projectile-mode 1)
+                                    (editorconfig-mode 1)))
+#+end_src
+
+*** Snippets
+:PROPERTIES:
+:ID:       9899a82d-6b93-4118-af10-b943386b2a18
+:END:
+
+#+begin_src elisp
+(use-package yasnippet
+  :diminish (yas-minor-mode)
+  :hook ((prog-mode LaTeX-mode org-mode) . yas-minor-mode)
+  :config
+  (setq yas-snippet-dirs
+        (list (expand-file-name "snippets" user-emacs-directory)))
+  (yas-reload-all))
+#+end_src
+
+*** Zeal
+:PROPERTIES:
+:ID:       6ec32762-7757-4f5b-a74e-25dadbe095ba
+:END:
+
+#+begin_src elisp :tangle no
+(use-package zeal-at-point
+  :commands zeal-at-point
+  :bind ("C-c h d" . #'zeal-at-point))
+#+end_src
+
+*** DevDocs
+:PROPERTIES:
+:ID:       3dd1b8ee-0e4d-4f9c-9770-8fcff44c63b1
+:END:
+
+#+begin_src elisp
+(use-package devdocs
+  :commands devdocs-lookup
+  :bind ("C-h D" . devdocs-lookup)
+  :custom
+  (devdocs-data-dir (string-join (list (xdg-cache-home) "/devdocs"))))
+#+end_src
+
+*** Help ((wo)man/info) -- disabled
+:PROPERTIES:
+:ID:       3c59a4db-1f1b-4681-b488-5c2d89e5276f
+:END:
+
+#+begin_src elisp :tangle no
+(bind-key (kbd "C-c h m") #'man)
+(bind-key (kbd "C-c h w") #'woman)
+#+end_src
+
+*** Shells and Terms
+:PROPERTIES:
+:ID:       989e30d3-f0b8-475c-8fb6-60c2074ea65a
+:END:
+
+#+begin_src elisp
+(require 'shell)
+(require 'sh-script)
+
+;; https://www.masteringemacs.org/article/shell-comint-secrets-history-commands
+(define-key shell-mode-map (kbd "SPC") #'comint-magic-space)
+
+;; helm comint input ring "history"
+(define-key shell-mode-map (kbd "C-c C-l") #'helm-comint-input-ring)
+
+;; execute region
+(define-key sh-mode-map (kbd "C-x C-e") #'sh-send-line-or-region-and-step)
+
+;; https://github.com/szermatt/emacs-bash-completion
+(autoload 'bash-completion-dynamic-complete
+  "bash-completion"
+  "BASH completion hook")
+(add-hook 'shell-dynamic-complete-functions
+          'bash-completion-dynamic-complete)
+
+;; (with-eval-after-load 'shell
+;;   (native-complete-setup-bash))
+
+(defun shell-mode-hook-setup ()
+  "Setup `shell-mode'."
+  (add-hook 'completion-at-point-functions #'native-complete-at-point nil t)
+  (setq-local company-backends '((company-files company-native-complete)))
+  (local-set-key (kbd "TAB") #'company-complete))
+(add-hook 'shell-mode-hook #'shell-mode-hook-setup)
+
+;; (use-package vterm)
+#+end_src
+
+#+begin_src elisp
+(require 'eshell)
+(require 'em-term)
+
+(setq eshell-banner-message "\n\n")
+
+;;; https://www.emacswiki.org/emacs/EshellFunctions#toc2
+(defun eshell/emacs (&rest args)
+  "Open a file or files, ARGS, in Emacs.  Some habits die hard."
+  (if (null args)
+      ;; If I just ran "emacs", I probably expect to be launching
+      ;; Emacs, which is rather silly since I'm already in Emacs.
+      ;; So just pretend to do what I ask.
+      (bury-buffer)
+    ;; We have to expand the file names or else naming a directory in an
+    ;; argument causes later arguments to be looked for in that directory,
+    ;; not the starting directory
+    (mapc #'find-file (mapcar
+                       #'expand-file-name
+                       (eshell-flatten-list (reverse args))))))
+
+(defun eshell/valgrind (&rest args)
+  "Open valgrind with ARGS process into compiling output buffer."
+  (let ((command (concat "valgrind" " " (string-join args " "))))
+    (if (and (eshell-interactive-output-p)
+             (not eshell-in-pipeline-p)
+             (not eshell-in-subcommand-p))
+        (compile command)
+      (compile command t))))
+
+;;; http://howardism.org/Technical/Emacs/eshell-why.html
+(defun eshell-fn-on-files (fn1 fn2 args)
+  "Call `FN1' on the first argument in list, `ARGS'.
+Call `FN2' on all remaining elements in `ARGS'."
+  (unless (null args)
+    (let ((filenames (flatten-list args)))
+      (funcall fn1 (car filenames))
+      (when (cdr filenames)
+        (mapcar fn2 (cdr filenames))))
+    ;; Return an empty string, as the return value from `FN1'
+    ;; probably isn't helpful to display in the `eshell' window.
+    ""))
+
+(defun eshell/less (&rest args)
+  "Essentially an alias to the `view-file' function."
+  (eshell-fn-on-files #'view-file #'view-file-other-window args))
+
+(defalias 'eshell/more #'eshell/less)
+
+;;; https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org#map-over-files
+(defun eshell/do (&rest args)
+  "Execute a command sequence over a collection of file elements.
+Separate the sequence and the elements with a `::' string.
+For instance:
+
+  do chown _ angela :: *.org(u'oscar')
+
+The function substitutes the `_' sequence to a single filename
+element, and if not specified, it appends the file name to the
+command.  So the following works as expected:
+
+  do chmod a+x :: *.org"
+  (seq-let (forms elements) (-split-on "::" args)
+    (dolist (element (-flatten (-concat elements)))
+      (message "Working on %s ... %s" element forms)
+      (let* ((form (if (-contains? forms "_")
+                       (-replace "_" element forms)
+                     (-snoc forms element)))
+             (cmd (car form))
+             (args (cdr form)))
+        (eshell-named-command cmd args)))))
+
+(defun eshell/make (&rest args)
+  "Open make with ARGS process into compilation output Buffer."
+  (let ((command (concat "make" " " (string-join args " "))))
+    (compile command t)))
+
+;;; https://www.emacswiki.org/emacs/EshellPrompt
+(defmacro with-face (str &rest properties)
+  "Add face properties to STR using PROPERTIES list."
+  `(propertize ,str 'face (list ,@properties)))
+
+(defun kb/system-name ()
+  "Return the current system name.
+
+Includes remote system names"
+  (replace-regexp-in-string "\n$"
+                            ""
+                            (shell-command-to-string "hostname")))
+
+(defun shortened-path (path max-len)
+  "Return a modified version of PATH up to MAX-LEN.
+Replace some components with single characters starting from the
+left to try and get the PATH down to, at most, MAX-LEN."
+  (let* ((components (split-string (abbreviate-file-name path)
+                                   (f-path-separator)))
+         (len (+ (1- (length components))
+                 (seq-reduce #'+ (seq-map #'length components) 0)))
+         (str ""))
+    (while (and (> len max-len)
+                (cdr components))
+      (setq str (concat str (if (= 0 (length (car components)))
+                                (f-path-separator)
+                              (string (elt (car components) 0) ?/)))
+            len (- len (1- (length (car components))))
+            components (cdr components)))
+    (concat str (seq-reduce
+                 (lambda (a b) (concat a (f-path-separator) b)) components ""))))
+
+(defun kb-eshell-prompt ()
+  "Modified version of `shk-eshell-prompt-function' from Emacs wiki."
+  (defun git-changes-symbol ()
+    "Return git change symbol if changes."
+    (let ((status (string-to-number
+                   (shell-command-to-string
+                    "git status --porcelain 2> /dev/null | wc -l"))))
+      (if (> status 0)
+          (concat "(" (with-face "ϟ" :foreground "#7F9F7F") ")")
+        "")))
+  (defun git-branch-name ()
+    "Return the current git branch, or 'root' if nil."
+    (let* ((branches (vc-git-branches))
+           (branch (car branches)))
+      (if (eq branch nil)
+          "(root new-repo)"
+        branch)))
+  (concat
+   "(@"
+   (kb/system-name)
+   ")("
+   (shortened-path (eshell/pwd) 20)
+   ")"
+   (if (ignore-errors (vc-responsible-backend default-directory))
+       (concat "["
+               (with-face (git-branch-name) :foreground "#9D6D8E")
+               (git-changes-symbol)
+               "]± ")
+     "% ")
+   ))
+
+(setq eshell-prompt-function #'kb-eshell-prompt)
+(setq eshell-highlight-prompt nil)
+(setq eshell-history-size 4096)
+(setq eshell-history-ignoredups t)
+(setq eshell-prompt-regexp "(.*)(.*)\\(\\[.*\\]\\)?[%±] ")
+(dolist (cmd '("vim"
+               "yarn"
+               "composer"
+               "pip"
+               "qemu-system-x86_64"))
+  (add-to-list 'eshell-visual-commands cmd))
+(dolist (subcmd '(("git" "log" "diff" "show" "help")
+                  ("docker" "build" "run" "exec" "logs")
+                  ("make" "nconfig" "menuconfig" "dev-run" "run")
+                  ("mix" "test")))
+  (add-to-list 'eshell-visual-subcommands subcmd))
+
+(setenv "PAGER" "")
+
+#+end_src
+
+Add eshell fringe
+
+#+begin_src elisp
+(use-package eshell-fringe-status
+  :autoload eshell-fringe-status-mode
+  :hook (eshell-mode-hook . eshell-fringe-status-mode))
+#+end_src
+
+Disable slime in eshell
+
+#+begin_src elisp
+(add-hook 'eshell-mode-hook
+          (lambda () (setq slime-mode nil)))
+
+#+end_src
+
+https://github.com/szermatt/emacs-bash-completion
+
+#+begin_src elisp :tangle no
+(defun bash-completion-from-eshell ()
+  (interactive)
+  (let ((completion-at-point-functions
+         '(bash-completion-eshell-capf)))
+    (completion-at-point)))
+
+(defun bash-completion-eshell-capf ()
+  (bash-completion-dynamic-complete-nocomint
+   (save-excursion (eshell-bol) (point))
+   (point) t))
+#+end_src
+
+#+begin_src elisp :tangle no
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map (kbd "TAB") #'bash-completion-from-eshell)))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package eshell-vterm
+  :after eshell
+  :config
+  (eshell-vterm-mode))
+#+end_src
+
+#+begin_src elisp
+(use-package pcmpl-args)
+(use-package pcmpl-git)
+(use-package pcmpl-pip)
+(use-package pcomplete-extension)
+#+end_src
+
+#+begin_src elisp
+(defun eshell-to-logbook (string)
+  "Write `STRING' to logbook using org-capture."
+  (org-capture-string string "e"))
+
+(add-to-list 'eshell-virtual-targets
+             '("/dev/e" eshell-to-logbook nil))
+#+end_src
+
+*** Regular Expressions and Other Problems
+:PROPERTIES:
+:ID:       bc913a80-fe1f-4abd-9e09-7c795fbeded9
+:END:
+
+
+#+begin_src elisp
+;;; http://howardism.org/Technical/Emacs/eshell-why.html
+(use-package pcre2el
+  :config
+  (defmacro prx (&rest expressions)
+    "Convert the rx-compatiable regular `EXPRESSIONS' to `PCRE'.
+Most shell applications accept Perl Compatible Regular Expressions."
+    `(rx-let ((integer (1+ digit))
+              (float (seq integer "." integer))
+              (b256 (seq (optional (or "1" "2"))
+                         (regexp "[0-9]\\{1,2}\\}")))
+              (ipaddr (seq b256 "." b256 "." b256 "." b256))
+              (time (seq digit (optional digit) ":" (= 2 digit) (optional ":" (= 2 digit))))
+              (email (seq (1+ (regexp "[^,< ]")) "@" (1+ (seq (1+ (any alnum "-"))) ".") (1+ alnum)))
+              (date (seq (= 2 digit) (or "/" "-") (= 2 digit) (or "/" "-") (= 4 digit)))
+              (ymd (seq (= 4 digit) (or "/" "-") (= 2 digit) (or "/" "-") (= 2 digit)))
+              (uuid (seq (= 8 hex) "-" (= 3 (seq (= 4 hex) "-")) (= 12 hex)))
+              (guid (seq uuid)))
+       (rxt-elisp-to-pcre (rx ,@expressions)))))
+#+end_src
+
+*** Daemons
+:PROPERTIES:
+:ID:       a72ec17f-6a12-4889-bfc7-2509004b00ab
+:END:
+
+#+begin_src elisp
+(use-package daemons)
+#+end_src
+
+*** Detached
+:PROPERTIES:
+:ID:       168cd9d3-dcf5-4215-99c0-89a8c9e22b36
+:END:
+
+#+begin_src elisp
+(use-package detached
+  :autoload detached-init
+  :commands (detached-shell-command
+             detached-compile
+             detached-compile-recompile)
+  :init
+  (detached-init)
+  :bind (([remap async-shell-command] . detached-shell-command)
+         ([remap compile] . detached-compile)
+         ([remap recompile] . detached-compile-recompile))
+  :custom
+  (detached-notification-function #'detached-state-transitionion-echo-message)
+  (detached-show-output-on-attach t)
+  (detached-terminal-data-command system-type))
+#+end_src
+
+*** Languages and Language Modes
+:PROPERTIES:
+:ID:       436be882-9c6b-462b-9b1c-9219031e33d3
+:END:
+
+**** Tree-Sitter 🌳
+:PROPERTIES:
+:ID:       290ac380-e053-4faf-8193-2260f561990b
+:END:
+
+#+begin_src elisp
+(setq major-mode-remap-alist
+      '((bash-mode . bash-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (c-mode . c-ts-mode)
+        (java-mode . java-ts-mode)
+        (python-mode . python-ts-mode)))
+#+end_src
+
+**** Direnv (disabled)
+:PROPERTIES:
+:ID:       3a4cfdc1-82bf-41e8-bd17-e016ba0a1d59
+:END:
+
+#+begin_src elisp :tangle no
+(use-package direnv
+  :config
+  (direnv-mode))
+#+end_src
+
+**** envrc
+:PROPERTIES:
+:ID:       24f43f5a-0616-442c-8b9c-4d4c745e0676
+:END:
+
+#+begin_src elisp
+(use-package envrc
+  :commands envrc-global-mode
+  :diminish
+  :config
+  (envrc-global-mode))
+#+end_src
+
+**** Subword Mode
+:PROPERTIES:
+:ID:       9622e07f-300a-4c9b-800d-5070ecb3ac45
+:END:
+
+#+begin_src elisp
+(use-package subword
+  :autoload subword-mode
+  :diminish
+  :hook (prog-mode-hook . subword-mode))
+#+end_src
+
+**** Semantic Mode
+:PROPERTIES:
+:ID:       9c4fdc58-6a6f-415f-a30e-eea3bcfffd6a
+:END:
+
+#+begin_src elisp
+(require 'semantic)
+
+(semantic-mode t)
+#+end_src
+
+**** ElDoc
+:PROPERTIES:
+:ID:       e83e8cbe-4f96-4b92-a4d1-3801f32ba1b3
+:END:
+
+#+begin_src elisp
+(use-package eldoc
+  :diminish
+  :config
+  (setq eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit))
+#+end_src
+
+**** cov
+:PROPERTIES:
+:ID:       190a08fd-eb80-4aba-b96e-952180b305db
+:END:
+
+#+begin_src elisp
+(use-package cov
+  :config
+  (setq cov-coverage-mode t))
+#+end_src
+
+**** Language Server Protocol
+:PROPERTIES:
+:ID:       f8dcd5bb-073f-4f38-b359-1e23fce6f40d
+:END:
+
+***** LSP-Mode
+:PROPERTIES:
+:ID:       d8bf903f-05c9-4a4b-997e-accfc2f1ad8e
+:END:
+#+begin_src elisp :tangle no
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c e")
+  :config
+  (setq lsp-log-io nil)
+  (setq lsp-trace nil)
+  (setq lsp-auto-configure nil)
+  (setq lsp-print-performance nil)
+  (setq lsp-auto-guess-root t)
+  (setq lsp-document-sync-method 'incremental)
+  (setq lsp-diagnostics-provider :flycheck)
+  (setq lsp-response-timeout 10)
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-idle-delay 0.500)
+  (setq lsp-inhibit-message t)
+  (setq lsp-eldoc-render-all t)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-highlight-symbol-at-point nil)
+  (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-modeline-diagnostics-enable nil)
+  (setq lsp-clients-clangd-args '("-j=4"
+                                  "--index"
+                                  "-log=error"))
+  (setq lsp-clients-go-server-args '("--cache-style=always"
+                                     "--diagnostics-style=onsave"))
+  (setq lsp-file-watch-ignored
+        '("[/\\\\]\\.direnv$"
+          "[/\\\\]\\.git$"
+          "[/\\\\]\\.hg$"
+          "[/\\\\]\\.bzr$"
+          "[/\\\\]_darcs$"
+          "[/\\\\]\\.svn$"
+          "[/\\\\]_FOSSIL_$"
+          "[/\\\\]\\.idea$"
+          "[/\\\\]\\.ensime_cache$"
+          "[/\\\\]\\.eunit$"
+          "[/\\\\]node_modules$"
+          "[/\\\\]\\.fslckout$"
+          "[/\\\\]\\.tox$"
+          "[/\\\\]\\.stack-work$"
+          "[/\\\\]\\.bloop$"
+          "[/\\\\]\\.metals$"
+          "[/\\\\]target$"
+          "[/\\\\]\\.deps$"
+          "[/\\\\]\\.build-aux$"
+          "[/\\\\]autom4te.cache$"
+          "[/\\\\]\\.reference$"))
+  (setq lsp-semantic-tokens-enable t)
+  (setq lsp-completion-provider ':capf))
+
+(use-package lsp-ui
+  :after lsp-mode
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-delay 0.3)
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-flycheck-enable t)
+  (setq lsp-ui-imenu-enable t)
+  (setq lsp-ui-imenu-kind-position 'top)
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-fontify 'on-demand)
+  (setq lsp-ui-peek-list-width 50)
+  (setq lsp-ui-peek-list-height 20)
+  (setq lsp-ui-sideline-code-actions-prefix "")
+  (setq lsp-ui-sideline-ignore-duplicate t)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-ui-sideline-show-diagnostics nil)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-symbol nil)
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-position 'top)
+  (setq lsp-ui-doc-alignment 'window))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package helm-lsp :after (lsp-mode helm))
+
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+#+end_src
+
+***** Eglot
+:PROPERTIES:
+:ID:       7946a063-78e7-4c72-8290-b7840cc5fbf4
+:END:
+
+****** Server Functions
+:PROPERTIES:
+:ID:       377c23eb-0ac8-4fb4-96e6-afe3acb0cd08
+:END:
+
+******* C/C++
+:PROPERTIES:
+:ID:       21998014-6ebf-48b5-a06e-1acc88a9096e
+:END:
+
+#+begin_src elisp
+(defun kb/c*-eglot-server (interactive?)
+  "Return the eglot server for C/C++."
+  (list "guix"
+        "shell"
+        "--pure"
+        "ccls"
+        "--"
+        "ccls"))
+#+end_src
+
+******* Java
+:PROPERTIES:
+:ID:       b83c7628-aa3c-4fd6-b572-f8125061c875
+:END:
+
+#+begin_src elisp
+(defun kb/java-eglot-server (interactive?)
+  "Return the eglot server for Java."
+  (list "guix"
+        "shell"
+        "--pure"
+        "openjdk@21:jdk"
+        "--"
+        (expand-file-name (concat user-emacs-directory
+                                  "share/eclipse.jdt.ls/bin/jdtls"))
+        "--jvm-arg=-noverify"
+        "--jvm-arg=-Xmx2G"
+        "--jvm-arg=-XX:+UnlockExperimentalVMOptions"
+        "--jvm-arg=-XX:+UseZGC"
+        "--jvm-arg=-XX:+ZGenerational"
+        "--jvm-arg=-XX:+UseStringDeduplication"
+        "--jvm-arg=-XX:AdaptiveSizePolicyWeight=90"
+        "--jvm-arg=-Dsun.zip.disableMemoryMapping=true"
+        "-data"
+        (expand-file-name (sha1 (project-root (project-current t)))
+                          (concat user-emacs-directory
+                                  ".cache/lsp/jdtls/"))
+        :initializationOptions
+        '(:settings
+          (:java
+           (:format
+            (:enabled "true"
+                      :settings
+                      (:url (concat "file:/" user-emacs-directory "/lsp-java/GoogleStyles.xml")
+                            :profile "GoogleStyle"))
+            :completion (:guessMethodArguments t)
+            :autobuild (:enabled "false")))
+          :extendClientCapabilities (:classFileContentSupport t))
+        ))
+#+end_src
+
+******* Python
+:PROPERTIES:
+:ID:       bcacda85-83d9-45ae-96d3-ca79c7fd18e4
+:END:
+
+#+begin_src elisp
+(defun kb/python-eglot-server (interactive?)
+  "Return the eglot server for Python."
+  (list "guix"
+        "shell"
+        "--pure"
+        "python-lsp-server"
+        "--"
+        "pylsp"))
+#+end_src
+
+******* LaTeX/BibTex
+:PROPERTIES:
+:ID:       b2819741-9865-4088-b1ca-1c24e0f96b2e
+:END:
+
+#+begin_src elisp
+(defun kb/latex-eglot-server (interactive?)
+  "Return the eglot server for LaTeX."
+  (list "guix"
+        "time-machine"
+        (string-join `("--channels=" ,(getenv "HOME") "/.config/guix/channels.scm"))
+        "--"
+        "shell"
+        "--pure"
+        "rust-texlab"
+        "texlive"
+        "texlive-biber"
+        "python-pygments"
+        "--"
+        "texlab"))
+#+end_src
+
+****** Eglot Configuration
+:PROPERTIES:
+:ID:       a184b310-86c8-4950-8b10-8b65bb0e7c8b
+:END:
+
+#+begin_src elisp
+(use-package eglot
+  :straight nil
+  :commands (eglot eglot-ensure)
+  :demand t
+  :bind (("C-c e w r" . #'eglot-reconnect)
+         ("C-c e w S" . #'eglot-shutdown)
+         ("C-c e g d" . #'eglot-find-declaration)
+         ("C-c e g r" . #'eglot-find-implementation)
+         ("C-c e g t" . #'eglot-find-typeDefinition)
+         ("C-c e o i" . #'eglot-code-action-organize-imports)
+         ("C-c e x r" . #'xref-find-references)
+         ("C-c e x d" . #'xref-find-definitions)
+         ("C-c e x 4 d" . #'xref-find-definitions-other-window)
+         ("C-c e x b" . #'xref-go-back)
+         ("C-c e x f" . #'xref-go-forward)
+         ("C-c e r" . #'eglot-rename)
+         ("C-c e F" . #'eglot-format-buffer))
+  :config
+  (setq eglot-server-programs (list (cons '(c-mode c-ts-mode c++-mode c++-ts-mode)
+                                          #'kb/c*-eglot-server)
+                                    (cons '(java-mode java-ts-mode)
+                                          #'kb/java-eglot-server)
+                                    (cons '(python-mode python-ts-mode)
+                                          #'kb/python-eglot-server)
+                                    (cons '(latex-mode bibtex-mode)
+                                          #'kb/latex-eglot-server)))
+  :custom
+  (eglot-report-progress t)
+  (eglot-confirm-server-initiated-edits 'confirm)
+  (eglot-autoshutdown t)
+  (eglot-extend-to-xref t)
+  (eglot-stay-out-of '(flymake)))
+#+end_src
+
+**** Debug Adapter Protocol
+:PROPERTIES:
+:ID:       d4f6107b-d1f1-4448-bfe3-ed207bf44a26
+:END:
+
+#+begin_src elisp :tangle no
+(use-package dap-mode
+  :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-auto-configure-mode)
+  (dap-ui-mode t)
+  (dap-tooltip-mode t)
+  (bind-key (kbd "<f7>") #'dap-step-in dap-mode-map)
+  (bind-key (kbd "<f8>") #'dap-next dap-mode-map)
+  (bind-key (kbd "<f9>") #'dap-continue dap-mode-map))
+
+(use-package dap-hydra
+  :after dap-mode)
+#+end_src
+
+**** Ascii Doc
+:PROPERTIES:
+:ID:       dfacb21e-e11b-4c4a-b6b9-a653a510fc44
+:END:
+
+#+begin_src elisp
+(use-package adoc-mode)
+#+end_src
+
+**** C/C++
+:PROPERTIES:
+:ID:       7ea956bf-01fc-4e39-ad3c-8e491c91ef2a
+:END:
+
+#+begin_src elisp
+(setq c-default-style '((java-mode . "java")
+                        (awk-mode . "awk")
+                        (c-mode . "linux")
+                        (other . "gnu")))
+
+(defun kb/c-mode ()
+  "C minor mode configurations."
+  (eglot-ensure))
+
+(add-hook 'c-mode-hook #'kb/c-mode)
+(add-hook 'c-ts-mode-hook #'kb/c-mode)
+(add-hook 'c++-mode-hook #'kb/c-mode)
+(add-hook 'c++-ts-mode-hook #'kb/c-mode)
+#+end_src
+
+**** Clojure
+:PROPERTIES:
+:ID:       f7801ab7-23ee-43e0-80c8-3f917fc60c67
+:END:
+
+#+begin_src elisp
+(use-package cljsbuild-mode)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package elein)
+#+end_src
+
+#+begin_src elisp
+(use-package clojure-mode
+  :after (cljsbuild-mode elein)
+  :hook ((clojure-mode-hook . subword-mode)))
+#+end_src
+
+#+begin_src elisp
+(use-package cider
+  :init
+  (setq nrepl-popup-stacktraces nil)
+  :hook ((cider-mode-hook . eldoc-mode)
+         (cider-repl-mode-hook . subword-mode)
+         (cider-repl-mode-hook . paredit-mode)))
+
+(use-package flycheck-clojure
+  :after (clojure flycheck)
+  :config
+  (flycheck-clojure-setup))
+#+end_src
+
+**** Coq
+:PROPERTIES:
+:ID:       ada554a8-84e6-4a45-bd97-39350d901315
+:END:
+
+https://emacs.stackexchange.com/a/36156/17096
+
+Add some extra symbols to prettify for Coq.
+
+#+begin_src elisp
+(defun kb/push-coq-pretty-symbols-list ()
+  (mapc (lambda (pair) (push pair prettify-symbols-alist))
+        '(("~" . ?¬)
+          ("nat" . ?ℕ)
+          ("*" . ?×))))
+
+(add-hook 'coq-mode-hook #'kb/push-coq-pretty-symbols-list)
+(add-hook 'coq-goals-mode-hook #'kb/push-coq-pretty-symbols-list)
+#+end_src
+
+**** CSV
+:PROPERTIES:
+:ID:       a53fd8b3-53ce-4409-8a0c-30ad0a9d7f79
+:END:
+
+#+begin_src elisp
+(use-package csv-mode)
+#+end_src
+
+**** CSS
+:PROPERTIES:
+:ID:       26dd375e-8686-4122-95fa-d2c17bcd1670
+:END:
+
+#+begin_src elisp
+  ;;; Colourise CSS colour literals
+  (require 'rainbow-mode)
+
+  (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
+    (add-hook hook 'rainbow-mode))
+
+  ;;; Embedding in HTML
+  (require 'mmm-mode)
+  (with-eval-after-load 'mmm-vars
+    (mmm-add-group
+     'html-css
+     '((css-cdata
+    :submode css-mode
+    :face mmm-code-submode-face
+    :front "<style[^>]*>[ \t\n]*\\(//\\)?<\\[CDATA\\[[ \t]*\n?"
+    :back "[ \t]*\\(//\\)?]]>[ \t\n]*</style>"
+    :insert ((?j js-tag nil @ "<style type=\"text/css\">"
+             @ "\n" _ "\n" @ "</style>" @)))
+       (css
+    :submode css-mode
+    :face mmm-code-submode-face
+    :front "<style[^>]*>[ \t]*\n?"
+    :back "[ \t]*</style>"
+    :insert ((?j js-tag nil @ "<style type=\"text/css\">"
+             @ "\n" _ "\n" @ "</style>" @)))
+       (css-inline
+    :submode css-mode
+    :face mmm-code-submode-face
+    :front "style=\""
+    :back "\"")))
+    (dolist (mode (list 'html-mode 'nxml-mode))
+      (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
+#+end_src
+
+#+begin_src elisp :tangle no
+;;; SASS and SCSS
+(use-package sass-mode)
+(use-package scss-mode)
+(setq-default scss-compile-at-save nil)
+#+end_src
+
+#+begin_src elisp
+;;; LESS
+(use-package less-css-mode)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package skewer-less
+  :after less-css-mode
+  :hook (less-css-mode-hook . skewer-less-mode))
+#+end_src
+
+#+begin_src elisp
+;; Skewer CSS
+(use-package skewer-mode
+  :hook css-mode-hook)
+#+end_src
+
+#+begin_src elisp :tangle no
+;;; Use eldoc for syntax hints
+(use-package css-eldoc
+  :hook (css-mode-hook . turn-on-css-eldoc))
+#+end_src
+
+**** Docker
+:PROPERTIES:
+:ID:       a3c5e3a6-423c-405d-a494-e1077b81881c
+:END:
+
+#+begin_src elisp
+(use-package tramp-container
+  :straight nil
+  :ensure nil)
+#+end_src
+
+#+begin_src elisp
+(use-package docker)
+(use-package dockerfile-mode)
+(use-package docker-compose-mode)
+#+end_src
+
+**** Elixir/Erlang
+:PROPERTIES:
+:ID:       7e98b3e6-0bc8-41ba-8695-1bcf4f9806f4
+:END:
+
+#+begin_src elisp :tangle no
+(use-package alchemist
+  :diminish
+  :config
+  (diminish 'alchemist-phoenix-mode))
+
+(use-package elixir-mode
+  :after eglot
+  :init
+  (defun kb/elixir-mode ()
+    (eglot-ensure))
+  :hook (elixir-mode . kb/elixir-mode))
+
+(use-package flycheck-credo
+  :after elixir-mode
+  :hook (elixir-mode . flycheck-credo-setup))
+(use-package flycheck-elixir
+  :after elixir-mode)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package erlang
+  :init
+  (defun kb/erlang-mode ()
+    (eglot-ensure))
+  :config
+  (require 'erlang-start)
+  :hook (erlang-mode . kb/erlang-mode))
+
+(use-package edts)
+#+end_src
+
+**** Elm Lang
+:PROPERTIES:
+:ID:       2443ea14-efb9-411f-81e0-a9f35315aceb
+:END:
+
+#+begin_src elisp
+(use-package flycheck-elm
+  :after flycheck)
+
+(use-package elm-mode
+  :after (flycheck flycheck-elm)
+  :diminish
+  :config
+  (flycheck-elm-setup)
+  (when (executable-find "elm-oracle")
+    (add-hook 'elm-mode-hook 'elm-oracle-setup-completion))
+  (when (executable-find "elm-format")
+    (setq-default elm-format-on-save t))
+  (setq elm-reactor-arguments nil)
+  (diminish 'elm-indent-mode))
+#+end_src
+
+**** Gnuplot
+:PROPERTIES:
+:ID:       648f8ece-c160-478c-8903-fca52b0a5b88
+:END:
+
+#+begin_src elisp
+(add-to-list 'auto-mode-alist '("\\.plt\\'" . gnuplot-mode))
+#+end_src
+
+**** Go Lang
+:PROPERTIES:
+:ID:       c558816b-0c2b-48af-98ac-6116fd8b64d5
+:END:
+
+#+begin_src elisp
+(use-package go-mode
+  :after eglot
+  :commands (gofmt-before-save)
+  :init
+  (defun kb/golang-mode ()
+    (setq-local indent-tabs-mode t)
+    (setq-local tab-width 4)
+    (eglot-ensure))
+  :config
+  (add-hook 'before-save-hook #'gofmt-before-save)
+  :hook (go-mode . kb/golang-mode))
+
+(use-package go-stacktracer)
+#+end_src
+
+**** Graphviz Mode
+:PROPERTIES:
+:ID:       4c4d9b4b-6d5b-491f-a7c3-18c5ed074c3a
+:END:
+
+#+begin_src elisp
+(use-package graphviz-dot-mode
+  :config
+  (setq graphviz-dot-indent-width 4))
+#+end_src
+
+**** Guix
+:PROPERTIES:
+:ID:       f6828526-1eff-4447-9284-0ffe6139772d
+:END:
+
+#+begin_src elisp
+(use-package guix)
+#+end_src
+
+**** Haskell
+:PROPERTIES:
+:ID:       9092b182-d559-401d-80ac-ec35a7eb6c4e
+:END:
+
+#+begin_src elisp :tangle no
+(use-package lsp-haskell
+  :config
+  (setq lsp-haskell-process-path-hie "ghcide")
+  (setq lsp-haskell-process-args-hie '()))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package haskell-mode
+  :after (flycheck lsp-haskell)
+  :init
+  (setq-default haskell-stylish-on-save t)
+  (defun kb/haskell-mode ()
+    (eldoc-mode)
+    (eglot-ensure))
+  :hook (haskell-mode . kb/haskell-mode)
+  :bind (:map haskell-mode-map
+              ("C-c h" . hoogle)
+              ("C-o" . open-line)))
+
+(use-package flycheck-haskell
+  :after (haskell-mode flycheck))
+#+end_src
+
+**** HTML
+:PROPERTIES:
+:ID:       d0433080-6de5-4568-9e7c-1c5699c46f6e
+:END:
+
+#+begin_src elisp
+(use-package tagedit)
+(with-eval-after-load 'sgml-mode
+  (add-hook 'sgml-mode-hook (lambda () (tagedit-mode 1))))
+
+(add-to-list 'auto-mode-alist '("\\.\\(jsp\\|tpml\\)\\'" . html-mode))
+
+;; Note: ERB is configured in init-ruby-mode
+#+end_src
+
+**** Java
+:PROPERTIES:
+:ID:       c4321042-dcb0-4960-84a1-974dc3c774f7
+:END:
+
+#+begin_src elisp
+(use-package jarchive
+  :diminish
+  :after eglot
+  :config
+  (jarchive-setup))
+#+end_src
+
+#+begin_src elisp
+(use-package autodisass-java-bytecode)
+#+end_src
+
+#+begin_src elisp
+(defun kb/java-mode ()
+  "Configure java mode settings."
+  (subword-mode)
+  (setq-local tab-width 4)
+  (setq-local c-basic-offset 4)
+  (eglot-ensure))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package eglot-java
+  :after eglot
+  :config
+  (setq eglot-java-eclipse-jdt-args (list "-noverify"
+                                          "-Xms1G"
+                                          "-Xmx2G"
+                                          "-XX:+UnlockExperimentalVMOptions"
+                                          "-XX:+UseZGC"
+                                          "-XX:+UseStringDeduplication"
+                                          "-XX:AdaptiveSizePolicyWeight=90"
+                                          "-Dsun.zip.disableMemoryMapping=true"))
+  (setq eglot-java-junit-platform-console-standalone-jar
+        (concat user-emacs-directory "share/junit-platform-console-standalone.jar"))
+  :hook ((java-mode . kb/java-mode)
+         (java-ts-mode . kb/java-mode)))
+#+end_src
+
+#+begin_src elisp :tangle no
+;; Loosely borrowed from
+;; https://github.com/jmibanez/jmi-dotemacs/blob/master/development.init.el#L139
+;; Other changes from Torstein as well
+;; https://gitlab.com/skybert/my-little-friends/-/blob/master/emacs/.emacs.d/tkj-java.el
+(use-package lsp-java
+  :init
+  (defun kb/java-mode ()
+    "Configure java mode settings."
+    (subword-mode)
+    (setq-local tab-width 4)
+    (setq-local c-basic-offset 4)
+    (lsp-java-boot-lens-mode t)
+    (lsp-deferred))
+  :config
+
+  ;; Enable dap-java
+  (require 'dap-java)
+  (setq lsp-java-server-install-dir (concat user-emacs-directory "lsp/eclipse.jdt.ls/server/"))
+  (setq lsp-java-workspace-dir (expand-file-name (concat user-emacs-directory "eclipse.jdt.ls/workspace/")))
+  (setq lsp-java-workspace-cache-dir (expand-file-name (concat user-emacs-directory "eclipse.jdt.ls/workspace/.cache/")))
+  (setq lsp-java-java-path (expand-file-name "~/.guix-home/profile/bin/java"))
+  (setq lsp-java-vmargs
+        (list "-noverify"
+              "-Xms100m"
+              "-Xmx2G"
+              "-XX:+UnlockExperimentalVMOptions"
+              "-XX:+UseZGC"
+              "-XX:+UseStringDeduplication"
+              "-XX:AdaptiveSizePolicyWeight=90"
+              "-Dsun.zip.disableMemoryMapping=true"))
+  (setq lsp-file-watch-ignored '(".idea" ".ensime_cache" ".eunit" "node_modules"
+                                 ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr"
+                                 "_darcs" ".tox" ".svn" ".stack-work" "build"))
+
+  (setq lsp-java-save-action-organize-imports nil)
+  (setq lsp-java-completion-max-results 20)
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-enable-indentation t)
+  (setq lsp-java-import-maven-enabled t)
+  (setq lsp-java-import-gradle-enabled t)
+  (setq lsp-java-maven-download-sources t)
+  (setq lsp-java-format-settings-url (expand-file-name (concat user-emacs-directory "/lsp-java/GoogleStyles.xml")))
+  (setq lsp-java-format-settings-profile "GoogleStyle")
+
+  :hook (java-mode . kb/java-mode)
+  :after (lsp-mode dap-mode))
+
+(use-package dap-java
+  :ensure nil
+  :after (lsp-java)
+  :config
+  (dap-register-debug-template
+   "debug..."
+   (list :type "java"
+         :request "attach"
+         :hostName "localhost"
+         :port 5005)))
+#+end_src
+
+**** JavaScript
+:PROPERTIES:
+:ID:       92ec9790-21a5-4b8b-b5c4-00b3f659e239
+:END:
+
+#+begin_src elisp
+(use-package json-mode)
+(use-package js2-mode
+  :init
+  (defun kb/js2-mode ()
+    (eglot-ensure))
+  :hook (js2-mode . kb/js2-mode)
+  :config
+  (setq-default js2-basic-offset 4)
+  (setq-default js2-bounce-indent-p nil))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package coffee-mode)
+#+end_src
+
+#+begin_src elisp
+(use-package typescript-mode
+  :init
+  (defun kb/typescript-mode ()
+    (eglot-ensure))
+  :hook (typescript-mode . kb/typescript--mode))
+
+(defconst preferred-javascript-indent-level 4)
+
+(add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
+#+end_src
+
+#+begin_src elisp :tangle no
+;; js-2 mode
+;; change some defaults
+
+(with-eval-after-load 'js2-mode
+  ;; Disable js2-mode's syntax error highlighting by default ...
+  (setq-default js2-mode-show-parse-errors nil
+                js2-mode-show-strict-warnings nil)
+  ;; ... but enable it if flycheck can't handle javascript
+  (autoload 'flycheck-get-checker-for-buffer "flycheck")
+  (defun sanityinc/disable-js2-checks-if-flycheck-active ()
+    (unless (flycheck-get-checker-for-buffer)
+      (set (make-local-variable 'js2-mode-show-parse-errors) t)
+      (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
+  (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
+
+  (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
+
+  (with-eval-after-load 'js2-mode
+    (js2-imenu-extras-setup)))
+#+end_src
+
+#+begin_src elisp
+;; js-mode
+(setq-default js-indent-level preferred-javascript-indent-level)
+
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+(use-package xref-js2
+  :after js2-mode
+  :config
+  (add-to-list 'xref-backend-functions #'xref-js2-xref-backend))
+
+(when (fboundp 'coffee-mode)
+  (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode)))
+
+;; Run and interact with an inferior JS via js-comint.el
+
+(use-package js-comint
+  :init
+  (setq inferior-js-program-command "node")
+
+  (defvar inferior-js-minor-mode-map (make-sparse-keymap))
+  (define-key inferior-js-minor-mode-map (kbd "C-x C-e") 'js-send-last-sexp)
+  (define-key inferior-js-minor-mode-map (kbd "C-M-x") 'js-send-last-sexp-and-go)
+  (define-key inferior-js-minor-mode-map (kbd "C-c b") 'js-send-buffer)
+  (define-key inferior-js-minor-mode-map (kbd "C-c C-b") 'js-send-buffer-and-go)
+  (define-key inferior-js-minor-mode-map (kbd "C-c l") 'js-load-file-and-go)
+
+  (define-minor-mode inferior-js-keys-mode
+    "Bindings for communicating with inferior js interpreter."
+    :init-value nil
+    :lighter "InfJS"
+    :keymap inferior-js-minor-mode-map)
+
+  (dolist (hook '(js2-mode-hook js-mode-hook))
+    (add-hook hook 'inferior-js-keys-mode)))
+
+;;; Alternatively, use skewer mode
+(use-package skewer-mode
+  :init
+  (add-hook 'skewer-mode-hook
+            (lambda () (inferior-js-keys-mode -1))))
+
+(use-package add-node-modules-path
+  :after (typescript-mode js2-mode)
+  :hook ((typescript-mode . add-node-modules-path)
+         (js2-mode . add-node-modules-path)))
+#+end_src
+
+**** Ledger
+:PROPERTIES:
+:ID:       f41ce24b-4fc8-47ac-81a9-675b6dd0d854
+:END:
+
+#+begin_src elisp
+(use-package ledger-mode)
+#+end_src
+
+**** Lua
+:PROPERTIES:
+:ID:       ae884fcc-b5fd-4dd1-ba9d-cf468c599eec
+:END:
+
+#+begin_src elisp
+(use-package lua-mode)
+#+end_src
+
+**** Markdown
+:PROPERTIES:
+:ID:       18e54165-4fe4-4ed8-ba70-c45f2cbaf7c6
+:END:
+
+#+begin_src elisp
+(use-package markdown-mode
+  :mode "\\.md\\.html\\'")
+#+end_src
+
+**** nginx
+:PROPERTIES:
+:ID:       0f011145-9b4b-4f97-acb2-6686fdf30017
+:END:
+
+#+begin_src elisp
+(use-package nginx-mode
+  :mode ("/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode))
+#+end_src
+
+**** Nix
+:PROPERTIES:
+:ID:       66d5872f-7ef5-4480-8864-8054c02396c7
+:END:
+
+#+begin_src elisp
+(use-package nix-mode)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package nix-buffer)
+(use-package nix-update)
+#+end_src
+
+**** XML
+:PROPERTIES:
+:ID:       2f63ad13-7e07-443e-9032-1af398ccfd23
+:END:
+
+#+begin_src elisp
+(dolist (mode (list '("\\.xml\\'" . nxml-mode)
+                    '("\\.xsd\\'" . nxml-mode)
+                    '("\\.sch\\'" . nxml-mode)
+                    '("\\.rng\\'" . nxml-mode)
+                    '("\\.xlst\\'" . nxml-mode)
+                    '("\\.svg\\'" . nxml-mode)
+                    '("\\.rss\\'" . nxml-mode)
+                    '("\\.gpx\\'" . nxml-mode)
+                    '("\\.tcx\\'" . nxml-mode)
+                    '("\\.plist\\'" . nxml-mode)))
+  (add-to-list 'auto-mode-alist mode))
+
+(add-to-list 'magic-mode-alist '("<\\?xml " . nxml-mode))
+(fset 'xml-mode 'nxml-mode)
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (set (make-local-variable 'ido-use-filename-at-point) nil)))
+(setq nxml-slash-auto-complete-flag t)
+
+;; See: http://sinewalker.wordpress.com/2008/06/26/pretty-printing-xml-with-emacs-nxml-mode/
+(defun sanityinc/pp-xml-region (beg end)
+  "Pretty format XML markup region. The function inserts
+linebreaks to separate tags that have nothing but whitespace
+between them. It then indents the markup by using nxml's
+indentation rules."
+  (interactive "r")
+  (unless (use-region-p)
+    (setq beg (point-min)
+          end (point-max)))
+  ;; Use markers because our changes will move END
+  (setq beg (set-marker (make-marker) begin)
+        end (set-marker (make-marker) end))
+  (save-excursion
+    (goto-char beg)
+    (while (search-forward-regexp "\>[ \\t]*\<" end t)
+      (backward-char) (insert "\n"))
+    (nxml-mode)
+    (indent-region begin end)))
+#+end_src
+
+**** PHP
+:PROPERTIES:
+:ID:       e9260043-3239-415d-95a8-727eb9a87615
+:END:
+
+#+begin_src elisp
+(use-package php-mode)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package geben)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package geben-helm-projectile
+  :after (helm projectile geben))
+#+end_src
+
+**** Python
+:PROPERTIES:
+:ID:       7c301063-a3df-47a4-9201-05ed34c74107
+:END:
+
+#+begin_src elisp
+(use-package python
+  :init
+  (defun kb/python-mode ()
+    (eglot-ensure))
+  :hook ((python-mode . kb/python-mode)
+         (python-ts-mode . kb/python-mode)))
+#+end_src
+
+#+begin_src elisp
+(use-package pip-requirements
+  :after (python))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package virtualenvwrapper
+  :after (python)
+  :init
+  (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
+  (setq venv-location (expand-file-name "~/.cache/venvs")))
+#+end_src
+
+#+begin_src elisp
+(use-package ein
+  :after (python))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package lsp-python-ms
+  :init
+  (setq lsp-python-ms-executable (executable-find "python-language-server")))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package lsp-jedi
+  :after lsp-mode
+  :config
+  (setq lsp-jedi-executable-command (expand-file-name "~/.nix-profile/bin/jedi-language-server")))
+#+end_src
+
+**** Ruby
+:PROPERTIES:
+:ID:       bd6d4185-b917-4666-a9ce-438052e0d602
+:END:
+
+#+begin_src elisp :tangle no
+(use-package ruby-hash-syntax)
+(use-package rspec-mode)
+(use-package inf-ruby)
+(use-package ruby-compilation
+  :config
+  (defalias 'rake 'ruby-compilation-rake))
+(use-package yari
+  :config
+  (defalias 'ri 'yari))
+(use-package robe)
+(use-package bundler)
+
+(use-package ruby-mode
+  :after (rspec-mode inf-ruby ruby-compilation)
+  :mode (("Rakefile\\'" . ruby-mode)
+         ("\\.rake\\'" . ruby-mode)
+         ("\\.rxml\\'" . ruby-mode)
+         ("\\.rjs\\'" . ruby-mode)
+         ("\\.librc\\'" . ruby-mode)
+         ("\\.pryrc\\'" . ruby-mode)
+         ("\\.builder\\'" . ruby-mode)
+         ("\\.ru\\'" . ruby-mode)
+         ("\\.gemspec\\'" . ruby-mode)
+         ("Gemfile\\'" . ruby-mode)
+         ("Kirkfile\\'" . ruby-mode))
+  :init
+  (setq-default ruby-use-encoding-map nil)
+  (setq-default ruby-insert-encoding-magic-comment nil)
+  (defun kb/ruby-mode ()
+    (unless derived-mode-p #'prog-mode
+            (run-hook 'prog-mode-hook))
+    (subword-mode)
+    (eglot-ensure))
+  :hook (ruby-mode . kb/ruby-mode))
+
+;;; ERB
+(require 'mmm-mode)
+(defun sanityinc/ensure-mmm-erb-loaded ()
+  "Load mmm-erb mode."
+  (require 'mmm-erb))
+
+(require 'derived)
+
+(defun sanityinc/set-up-mode-for-erb (mode)
+  (add-hook (derived-mode-hook-name mode) 'sanityinc/ensure-mmm-erb-loaded)
+  (mmm-add-mode-ext-class mode "\\.erb\\'" 'erb))
+
+(let ((html-erb-modes '(html-mode html-erb-mode nxml-mode)))
+  (dolist (mode html-erb-modes)
+    (sanityinc/set-up-mode-for-erb mode)
+    (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-js)
+    (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
+
+(mapc 'sanityinc/set-up-mode-for-erb
+      '(coffee-mode js-mode js2-mode js3-mode markdown-mode textile-mode))
+
+(mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
+
+(dolist (regxmode (list '("\\.rhtml\\'" . 'html-erb-mode)
+                        '("\\.html\\.erb\\'". 'html-erb-mode)
+                        '("\\.jst\\.ejs\\'" . html-erb-mode)))
+  (add-to-list 'auto-mode-alist regxmode))
+
+(mmm-add-mode-ext-class 'yaml-mode "\\.yaml\\(\\.erb\\)?\\'" 'erb)
+(sanityinc/set-up-mode-for-erb 'yaml-mode)
+
+(dolist (mode (list 'js-mode 'js2-mode 'js3-mode))
+  (mmm-add-mode-ext-class mode "\\.js\\.erb\\'" 'erb))
+#+end_src
+
+**** Rust
+:PROPERTIES:
+:ID:       084ae377-9c75-4b07-831d-284cb1f56889
+:END:
+
+#+begin_src elisp
+(use-package racer
+  :hook ((racer-mode-hook . eldoc-mode)))
+
+(use-package rust-mode
+  :after racer
+  :init
+  (defun kb/rust-mode ()
+    (racer-mode)
+    (eglot-ensure))
+  :hook (rust-mode-hook . kb/rust-mode))
+#+end_src
+
+**** Scala
+:PROPERTIES:
+:ID:       e1ebb5d1-695d-40d0-bac1-e30fd277431f
+:END:
+
+#+begin_src elisp
+#+end_src
+
+**** Scheme
+:PROPERTIES:
+:ID:       068c32e6-47ac-486c-84ed-a1f407e647b2
+:END:
+
+#+begin_src elisp
+(use-package geiser
+  :custom
+  (geiser-active-implementations '(guile racket))
+  (geiser-default-implementation 'guile))
+#+end_src
+
+**** Slurm
+:PROPERTIES:
+:ID:       ac5233d9-3a78-43f8-9409-896774a03efb
+:END:
+
+#+begin_src elisp
+(use-package slurm-mode)
+(use-package slurm-script-mode
+  :after slurm-mode
+  :straight nil
+  :ensure nil
+  :diminish)
+#+end_src
+
+**** SystemD
+:PROPERTIES:
+:ID:       e6d12b90-e0f9-4035-8989-25aa8f890f89
+:END:
+
+#+begin_src elisp :tangle no
+(use-package systemd-mode)
+#+end_src
+
+**** SQL
+:PROPERTIES:
+:ID:       bb191ba6-5c08-4fb8-aca5-72573d0e57d1
+:END:
+
+#+begin_src elisp
+(require 'sql)
+
+(with-eval-after-load 'sql
+  ;; sql-mode basically requires an uncustomized environment
+  (push "--no-psqlrc" sql-postgres-options)
+  (sql-set-product-feature 'mysql
+                           :prompt-regexp
+                           "^\\(MariaDB\\|MySQL\\) \\[[_a-zA-Z]*\\]> "))
+
+(defun sanityinc/pop-to-sqli-buffer ()
+  "Switch to the corresponding sqli buffer."
+  (interactive)
+  (if sql-buffer
+      (progn
+        (pop-to-buffer sql-buffer)
+        (goto-char (point-max)))
+    (sql-set-sqli-buffer)
+    (when sql-buffer
+      (sanityinc/pop-to-sqli-buffer))))
+
+(setq-default sql-input-ring-file-name
+              (expand-file-name ".sqli_history" user-emacs-directory))
+
+;;  https://emacs.stackexchange.com/questions/657/why-do-sql-mode-and-sql-interactive-mode-not-highlight-strings-the-same-way/673
+(defun sanityinc/font-lock-everything-in-sql-interactive-mode ()
+  "Font lock all the things."
+  (unless (eq 'oracle sql-product)
+    (sql-product-font-lock nil nil)))
+
+(add-hook 'sql-interactive-mode-hook
+          (lambda ()
+            (sanityinc/font-lock-everything-in-sql-interactive-mode)
+            (toggle-truncate-lines t)
+            ))
+
+(setq sql-postgres-login-params
+      '((user :default "postgres")
+        (database :default "postgres")
+        (server :default "postgres")
+        (port :default 5432)))
+
+(setq-default sql-connection-alist '())
+
+;; https://truongtx.me/2014/08/23/setup-emacs-as-an-sql-database-client
+(defun open-sql-connection (product connection)
+  "Open SQL prompt for PRODUCT using CONNECTION."
+  ;; remember to set the sql-product, otherwise, it will fail for the
+  ;; first time you call the function
+  (setq sql-product product)
+  (sql-connect connection))
+#+end_src
+
+**** TeX
+:PROPERTIES:
+:ID:       6923b5dc-353f-403e-85c1-2d5e8e061305
+:END:
+
+#+begin_src elisp
+(use-package reftex
+  :commands turn-on-reftex
+  :custom
+  (reftex-enable-partial-scans t)
+  (reftex-save-parse-info t)
+  (reftex-use-multiple-selection-buffers t)
+  (bibtex-entry-format '(opts-or-alts required-fields numerical-fields realign braces))
+  (bibtex-align-at-equal-sign t)
+  :config
+  (setq reftex-plugin-into-AUCTeX t))
+#+end_src
+
+#+begin_src elisp
+(defun kb/tex-mode ()
+  "Configure TeX/LaTeX mode settings."
+  (turn-on-reftex)
+  (LaTeX-math-mode t)
+  (reftex-isearch-minor-mode t)
+  (flycheck-select-checker 'tex-chktex))
+#+end_src
+
+#+begin_src elisp
+(use-package auctex
+  :if (eq system-type 'gnu/linux)
+  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
+  :straight nil)
+#+end_src
+
+#+begin_src elisp
+(use-package latex
+  :if (eq system-type 'gnu/linux)
+  :straight nil
+  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
+  :custom
+  (TeX-PDF-mode t)
+  (TeX-source-correlate-start-server t)
+  (TeX-parse-self t)
+  (TeX-auto-save t)
+  (TeX-save-query nil)
+  (LaTeX-eqnarray-label "eq")
+  (LaTeX-equation-label "eq")
+  (LaTeX-figure-label "fig")
+  (LaTeX-table-label "tab")
+  (LaTeX-myChapter-label "chap")
+  (TeX-newline-function #'reindent-then-newline-and-indent)
+  (LaTeX-section-hook '(LaTeX-section-heading
+                        LaTeX-section-title
+                        LaTeX-section-toc
+                        LaTeX-section-section
+                        LaTeX-section-label))
+  (TeX-view-program-selection '(((output-dvi has-no-display-manager)
+                                 "dvi2tty")
+                                ((output-dvi style-pstricks)
+                                 "dvips and gv")
+                                (output-dvi "xdvi")
+                                (output-pdf "evince" "pdf-tools")
+                                (output-html "xdg-open")))
+  (TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
+  (TeX-source-correlate-method '((dvi . source-specials)
+                                 (pdf . synctex)))
+  (TeX-source-correlate-start-server t)
+  (TeX-master nil)
+  (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  (bibtex-dialect 'biblatex)
+  :hook ((LaTeX-mode . kb/tex-mode)
+         (TeX-mode . kb/tex-mode)))
+#+end_src
+
+After some digging, I discovered =bibtex-autokey= and friends.  Instead of
+agonizing over a "scheme" for organizing keys, we can simply use a program
+written specifically for this to perform the key generation for us!
+
+Some references used for this:
+
+- https://www.reddit.com/r/emacs/comments/a9n9el/setup_pdf_tools_in_emacs/
+
+- https://jblevins.org/log/bibtex
+
+#+begin_src elisp
+(use-package bibtex
+  :custom
+  (bibtex-field-delimiters 'braces)
+  (bibtex-autokey-name-separator "-")
+  (bibtex-autokey-year-length 4)
+  (bibtex-autokey-year-title-separator "-")
+  (bibtex-autokey-titleword-separator "-")
+  (bibtex-autokey-titleword-ignore '("A" "An" "On" "The" "Eine?" "Der" "Die" "Das" "[^[:upper:]].*" ".*[^[:upper:][:lower:]0-9].*"))
+
+  ;; These values are set in `init-local.el'
+  ;; (setq bibtex-completion-bibliography nil)
+  ;; (setq bibtex-completion-notes-path nil)
+  ;; (setq bibtex-completion-library-path nil)
+  (bibtex-files (list (expand-file-name "~/.org/data/25/057265-31e9-485c-bed5-315b97840ba1/references.bib")))
+  (bibtex-completion-bibliography (expand-file-name "~/.org/data/25/057265-31e9-485c-bed5-315b97840ba1/references.bib"))
+  (bibtex-completion-library-path (expand-file-name "~/.org/data/"))
+  (bibtex-completion-additional-search-fields '(journal booktitle))
+  (bibtex-completion-display-formats
+   '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
+     (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+     (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+     (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+     (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
+  (bibtex-completion-pdf-symbol "⌘")
+  (bibtex-completion-notes-symbol "✎")
+  (bibtex-completion-pdf-field nil)
+  (bibtex-completion-pdf-extension '(".pdf" ".djvu"))
+  (bibtex-completion-format-citation-functions
+   '((org-mode      . bibtex-completion-format-org-link-to-PDF)
+     (latex-mode    . bibtex-completion-format-citation-cite)
+     (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+     (default       . bibtex-completion-format-citation-default)))
+  (bibtex-autokey-year-length 4)
+  (bibtex-autokey-name-year-separator "-")
+  (bibtex-autokey-year-title-separator "-")
+  (bibtex-autokey-titleword-separator "-")
+  (bibtex-autokey-titleword-ignore (list "A" "An" "On" "The"
+                                         "Eine?" "Der" "Die" "Das" "[^[:upper:]].*"
+                                         ".*[^[:upper:][:lower:]0-9].*"))
+  (bibtex-autokey-titlewords 2)
+  (bibtex-autokey-titlewords-stretch 2)
+  (bibtex-autokey-titleword-length 5))
+#+end_src
+
+#+begin_src elisp
+(use-package helm-bibtex
+  :after (helm bibtex))
+#+end_src
+
+Functionality to generate plain text references to the current bibliographic
+entry.
+
+#+begin_src elisp
+(use-package bibtex-to-plain-text
+  :straight (bibtex-to-plain-text
+             :type git
+             :host github
+             :repo "kennyballou/bibtex-to-plain-text.el"))
+#+end_src
+
+#+begin_src elisp
+(use-package auctex-latexmk
+  :commands auctex-latexmk-setup
+  :after tex
+  :custom
+  (auctex-latexmk-inherit-TeX-PDF-mode t)
+  :config
+  (auctex-latexmk-setup))
+#+end_src
+
+Some common Bib/reftex/org-ref actions that are useful to have around.
+
+#+begin_src elisp
+(bind-key "C-c o i" #'org-ref-cite-insert-helm)
+(bind-key "C-c o o" #'org-ref-open-bibtex-pdf)
+(bind-key "C-c o n" #'org-ref-open-bibtex-notes)
+(bind-key "C-c o t" #'bibtex-create-plain-text-reference)
+(bind-key "C-c o d" #'doi-insert-bibtex)
+(bind-key "C-c o p" #'doi-utils-get-bibtex-entry-pdf)
+#+end_src
+
+Add =languagetool= to =tex-chktex= checker chain.
+
+#+begin_src elisp
+(eval-after-load 'flycheck-languagetool
+  (lambda () (flycheck-add-next-checker 'tex-chktex '(warning . languagetool))))
+#+end_src
+
+**** TOML
+:PROPERTIES:
+:ID:       3841af44-134f-48f6-a323-fc5eacfa5957
+:END:
+
+#+begin_src elisp
+(use-package toml-mode
+  :hook ((toml-mode-hook . goto-address-prog-mode)))
+#+end_src
+
+**** OCaml
+:PROPERTIES:
+:ID:       240bb299-dc24-443f-a65d-aca36db62512
+:END:
+
+#+begin_src elisp
+(use-package tuareg
+  :init
+  (defun kb/ocaml-mode ()
+    (eglot-ensure))
+  :hook (tuareg-mode-hook . kb/ocaml-mode))
+#+end_src
+
+**** Z3/SMTLIB
+:PROPERTIES:
+:ID:       f1d205f2-df81-4891-8fd1-be10a6ea3276
+:END:
+
+#+begin_src elisp
+(use-package z3-mode
+  :mode (("\\.smt2\\'" . z3-mode)
+         ("\\.z3\\'" . z3-mode))
+  :custom
+  (z3-solver-cmd "z3"))
+#+end_src
+
+**** Restclient
+:PROPERTIES:
+:ID:       70b06475-b91f-4c4e-a0a9-a3202991fdda
+:END:
+
+#+begin_src elisp
+(use-package restclient)
+#+end_src
+
+#+begin_src elisp
+(use-package ob-restclient)
+  ;; :straight (ob-resetclient :type git :host github :repo "alf/ob-restclient.el"))
+#+end_src
+
+*** Citar
+:PROPERTIES:
+:ID:       52d5f4a2-8c77-499a-bb76-79181eb274e2
+:END:
+
+#+begin_src elisp
+(use-package citar
+  :custom
+  (org-cite-global-bibliography bibtex-files)
+  (citar-bibliography bibtex-files)
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  :bind (("C-c d o" . citar-open)
+         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))))
+#+end_src
+
+#+begin_src elisp
+(use-package citar-org-roam
+  :after citar org-roam
+  :diminish
+  :config (citar-org-roam-mode))
+#+end_src
+
+*** deft
+:PROPERTIES:
+:ID:       b8449e52-6410-4692-a723-1d3301ce14c6
+:END:
+
+#+begin_src elisp
+(use-package deft
+  :commands (deft deft-find-file)
+  :bind (("C-c d d" . deft)
+         ("C-c d f" . deft-find-file))
+  :custom
+  (deft-use-filename-as-title t)
+  (deft-extensions '("org" "text" "tex" "txt" "md" "markdwon"))
+  (deft-recursive t)
+  (deft-strip-summary-regexp "\\([\n	]\\|^#\\+.+:.*$\\|^:[[:upper:]_]+:.*$\\)")
+  (deft-directory org-directory))
+#+end_src
+
+*** recoll
+:PROPERTIES:
+:ID:       a01ffd72-b7ae-409e-848d-7f9d89753e66
+:END:
+
+#+begin_src elisp :tangle no
+(use-package helm-recoll
+  :commands helm-recoll
+  :custom
+  (helm-recoll-directories nil))
+#+end_src
+
+*** elgantt
+:PROPERTIES:
+:ID:       270cff5d-0d98-4bad-819c-629a6fe9d37c
+:END:
+
+#+begin_src elisp :tangle no
+(setq elgantt-header-type 'outline)
+(setq elgantt-insert-blank-line-between-top-level-header t)
+(setq elgantt-startup-folded nil)
+(setq elgantt-show-header-depth t)
+(setq elgantt-draw-overarching-headers t)
+#+end_src
+
+*** Communications and Such
+:PROPERTIES:
+:ID:       6e80a7ca-bd5e-4b64-8241-1f06f0fbbeb5
+:END:
+
+**** Auth Sources
+:PROPERTIES:
+:ID:       31130462-3eff-40c4-8bdb-d4c2864c5c8a
+:END:
+
+#+begin_src elisp
+(use-package pass)
+#+end_src
+
+#+begin_src elisp
+(use-package helm-pass
+  :after helm)
+#+end_src
+
+#+begin_src elisp
+(use-package auth-source-pass
+  :config
+  (auth-source-pass-enable))
+#+end_src
+
+Remove unencrypted files from the list of [[help:auth-sources][auth-sources]]:
+
+#+begin_src elisp
+(dolist (file '("~/.authinfo" "~/.netrc"))
+  (delete file auth-sources))
+#+end_src
+
+**** Org-Contacts
+:PROPERTIES:
+:ID:       49e301c9-cdaa-4890-a3be-34b17d050b05
+:END:
+
+#+begin_src elisp :tangle no
+(use-package org-contacts
+  :after org
+  :config
+  (setq org-contacts-files (list kb/org-contacts)))
+#+end_src
+
+**** Email
+:PROPERTIES:
+:ID:       9e5814f8-b058-4f64-a6c1-3d2358cab29a
+:END:
+
+Configuration borrowed from the tutorial found here:
+- https://protesilaos.com/dotemacs/#h:14cf6fea-54eb-4faa-bb16-3739485c929a
+- https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/gnus-guide-en.org
+
+#+begin_src elisp
+(require 'mm-encode)
+(setq mm-encrypt-option 'guided)
+(setq mm-sign-option 'guided)
+
+(require 'mml-sec)
+(setq mml-secure-openpgp-encrypt-to-self t)
+(setq mml-secure-openpgp-sign-with-sender nil)
+(setq mml-secure-smime-encrypt-to-self t)
+(setq mml-secure-smime-sign-with-sender nil)
+
+(require 'message)
+(setq mail-user-agent 'message-user-agent)
+;; (setq mail-header-separator (purecopy "* * *"))
+(setq compose-mail-user-agent-warnings nil)
+(setq message-mail-user-agent nil)
+(setq mail-signature-file "~/.signature")
+(setq message-cite-function #'message-cite-original-without-signature)
+(setq message-citation-line-format "On %Y-%m-%d, %R %z, %N wrote:\n")
+(setq message-citation-line-function
+      #'message-insert-formatted-citation-line)
+(setq message-yank-cited-prefix ">")
+(setq sendmail-program "msmtp")
+(setq mail-specify-envelope-from t)
+(setq message-sendmail-f-is-evil nil)
+(setq message-sendmail-envelope-from 'header)
+(setq message-confirm-send t)
+(setq message-kill-buffer-on-exit t)
+(setq message-wide-reply-confirm-recipients t)
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(add-to-list 'mm-body-charset-encoding-alist '(utf-8 . base64))
+#+end_src
+
+***** supercite
+:PROPERTIES:
+:ID:       23adc7c7-1dba-493e-afb6-56f86c7b60a7
+:END:
+
+#+begin_src elisp
+(use-package supercite
+  :config
+  (setq sc-preferred-attribution-list '("x-attribution" "firstname" "initials" "emailname"))
+  (setq sc-citation-leader "")
+  (setq sc-confirm-always-p nil)
+  (setq sc-preferred-header-style 0)
+  (setq sc-auto-fill-region-p nil))
+#+end_src
+
+**** mu4e
+:PROPERTIES:
+:ID:       5a1f2181-6b0f-4b78-a648-54ced20d028b
+:END:
+
+Configuration taken from the tutorial found here:
+- https://vxlabs.com/2014/06/06/configuring-emacs-mu4e-with-nullmailer-offlineimap-and-multiple-identities/
+- https://vxlabs.com/2017/02/07/mu4e-0-9-18-e-mailing-with-emacs-now-even-better/
+- http://www.cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/
+
+#+begin_src elisp
+(use-package mu4e
+  :if (eq system-type 'gnu/linux)
+  :straight (:type nil
+             :local-repo "~/.guix-home/profile/share/emacs/site-lisp/mu4e/"
+             :pre-build ()))
+(use-package mu4e-vars
+  :straight nil)
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package helm-mu
+  :after (mu4e helm)
+  :bind (:map mu4e-main-mode-map
+              ("s" . #'helm-mu)
+              :map mu4e-headers-mode-map
+              ("s" . #'helm-mu)
+              :map mu4e-view-mode-map
+              ("s" . #'helm-mu)))
+#+end_src
+
+#+begin_src elisp
+(setq mu4e-compose-format-flowed nil)
+(setq mu4e-use-fancy-chars t)
+(setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
+(setq message-citation-line-format "On %Y-%m-%d %H:%M %Z, %N wrote:")
+(setq message-citation-line-function #'message-insert-formatted-citation-line)
+(setq mu4e-view-show-addresses t)
+(setq mu4e-get-mail-command "mbsync -a")
+(setq mu4e-headers-sort-field :date)
+(setq mu4e-headers-sort-direction 'ascending)
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq sendmail-program "msmtp")
+(setq mail-specifiy-envelope-from t)
+(setq message-sendmail-f-is-evil nil)
+(setq message-sendmail-envelope-from 'header)
+(setq mu4e-change-filenames-when-moving t)
+(setq message-kill-buffer-on-exit t)
+(setq mu4e-context-policy 'pick-first)
+(setq mu4e-confirm-quit nil)
+(setq mu4e-sent-messages-behavior 'sent)
+(setq mu4e-completing-read-function 'completing-read)
+(setq mu4e-view-use-old nil)
+(setq mu4e-headers-include-releated t)
+(setq mu4e-headers-skip-duplicates t)
+;; without this, "symbol's value as variable is void: mml2014-use" when signing
+;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
+;; so set to epg and all was good!
+;; to sign a mail: M-x mml-secure-sign-pgpmime
+(setq mml2014-use 'epg)
+(add-hook 'dired-mode-hook #'turn-on-gnus-dired-mode)
+#+end_src
+
+#+begin_src elisp
+(defun kb/msg-to-devnulllabs-p (msg)
+  "Is MSG addressed to personal."
+  (when msg
+    (or (mu4e-message-contact-field-matches
+         msg '(:from :to :cc :bcc) (list (rx (seq (* nonl) "@devnulllabs.io"))
+                                         (rx (seq "kennyballou" (* nonl) "@duck.com"))
+                                         (rx (seq "kennethmgballou" (* nonl) "@gmail.com"))))
+        (string-match-p "^/devnulllabs.io" (mu4e-message-field msg :maildir)))))
+
+(defun kb/devnulllabs-maildir ()
+  "Return base maildir for devnulllabs."
+  (expand-file-name "~/.mail/devnulllabs.io/"))
+
+(defun kb/msg-to-boisestate-p (msg)
+  "Is MSG addressed to BSU account."
+  (when msg
+    (or (mu4e-message-contact-field-matches
+         msg '(:from :to :cc :bcc) (rx (seq "kennyballou"
+                                            (* nonl)
+                                            "@"
+                                            (32 (submatch "u."))
+                                            "boisestate.edu")))
+        (string-match-p "^/u.boisestate.edu" (mu4e-message-field msg :maildir)))))
+
+(defun kb/boisestate-maildir ()
+  "Return base maildir for uboisestate."
+  (expand-file-name "~/.mail/u.boisestate.edu/"))
+
+(defun kb/smart-folders-fn (folder)
+  "Return a function that maps a message into the account appropriate FOLDER."
+  (let (folder folder)
+    (lambda (msg)
+      (cond ((kb/msg-to-devnulllabs-p msg) (concat (kb/devnulllabs-maildir) folder))
+            ((kb/msg-to-boisestate-p msg) (concat (kb/boisestate-maildir) folder))
+            (t (concat (kb/devnulllabs-maildir) folder))))))
+
+(setq mu4e-refile-folder (kb/smart-folders-fn "archive")
+      mu4e-drafts-folder (kb/smart-folders-fn "drafts")
+      mu4e-sent-folder (kb/smart-folders-fn "sent")
+      mu4e-trash-folder (kb/smart-folders-fn "trash"))
+
+(setq mu4e-user-mail-address-list '("kb@devnulllabs.io"
+                                    "kballou@devnulllabs.io"
+                                    "kenny@devnulllabs.io"
+                                    "kennethmgballou@gmail.com"
+                                    "kennyballou@u.boisestate.edu"
+                                    "kennyballou@boisestate.edu"))
+
+(setq mu4e-contexts
+      `(,(make-mu4e-context
+          :name "devnulllabs"
+          :match-func #'kb/msg-to-devnulllabs-p
+          :vars `((mu4e-root-maildir . ,(kb/devnulllabs-maildir))
+                  (user-mail-address . "kb@devnulllabs.io")
+                  (user-full-name . "Kenny Ballou")
+                  (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
+                  (mu4e-compose-signature . ,(string-join '("(:person"
+                                                            "  (:name Kenny Ballou)"
+                                                            "  (:email kb@devnulllabs.io)"
+                                                            "  (:pgp 0xB0CAA28A02958308))")
+                                                          "\n"))
+                  (mu4e-maildir-shortcuts . ((:maildir "/devnulllabs.io/INBOX" :key ?i)
+                                             (:maildir "/devnulllabs.io/archive" :key ?a)
+                                             (:maildir "/devnulllabs.io/trash" :key ?t)
+                                             (:maildir "/devnulllabs.io/sent" :key ?s)))
+                  (mu4e-trash-folder . "/devnulllabs.io/trash")
+                  (mu4e-refile-folder . "/devnulllabs.io/archive")
+                  (mu4e-sent-folder . "/devnulllabs.io/sent")
+                  (mu4e-drafts-folder . "/devnulllabs.io/drafts")
+                  (mu4e-sent-messages-behavior . delete)))
+        ,(make-mu4e-context
+          :name "bsu"
+          :match-func #'kb/msg-to-boisestate-p
+          :vars `((mu4e-root-maildir . ,(kb/boisestate-maildir))
+                  (user-mail-address . "kennyballou@u.boisestate.edu")
+                  (user-full-name . "Kenny Ballou")
+                  (my-xpgp-key-uri . "https://kennyballou.com/932F3E8E1C0F4A9895D7B8B8B0CAA28A02958308.txt")
+                  (mu4e-compose-signature . ,(string-join '("(:person"
+                                                            "  (:name Kenny Ballou)"
+                                                            "  (:email kennyballou@(u.)?boisestate.edu)"
+                                                            "  (:pgp 0xB0CAA28A02958308))")
+                                                          "\n"))
+                  (mu4e-maildir-shortcuts . ((:maildir "/u.boisestate.edu/INBOX" :key ?i)
+                                             (:maildir "/u.boisestate.edu/archive" :key ?a)
+                                             (:maildir "/u.boisestate.edu/trash" :key ?t)
+                                             (:maildir "/u.boisestate.edu/sent" :key ?s)))
+                  (mu4e-trash-folder . "/u.boisestate.edu/trash")
+                  (mu4e-refile-folder . "/u.boisestate.edu/archive")
+                  (mu4e-sent-folder . "/u.boisestate.edu/sent")
+                  (mu4e-drafts-folder . "/u.boisestate.edu/drafts")
+                  (mu4e-sent-messages-behavior . delete)))
+        ))
+
+(setq mu4e-bookmarks
+      '((:name "All Inboxes"
+               :query "maildir:/devnulllabs.io/INBOX OR maildir:/u.boisestate.edu/INBOX"
+               :key ?i)
+        (:name "Unread Messages"
+               :query "flag:unread AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :key ?u)
+        (:name "Today's Messages"
+               :query "date:today..now AND NOT flag:trashed and NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :key ?t)
+        (:name "Last 7 Days"
+               :query "date:7d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :hide-unread t
+               :key ?w)
+        (:name "Last Month"
+               :query "date:30d..now AND NOT flag:trashed AND NOT (maildir:/devnulllabs.io/spam OR maildir:/u.boisestate.edu/spam)"
+               :hide-unread t
+               :key ?m)))
+
+(add-hook 'mu4e-compose-mode-hook
+          (lambda ()
+            (set-fill-column 72)
+            (flyspell-mode)
+            (save-excursion
+              (message-add-header (format "X-PGP-Key: %s\n"
+                                          my-xpgp-key-uri)))))
+
+;; Replace default compose with mu4e
+(global-set-key (kbd "C-x m") 'mu4e-compose-new)
+;; Add shortcut for _only_ updating the index
+(define-key mu4e-main-mode-map (kbd "u") #'mu4e-update-index)
+;; http://pragmaticemacs.com/emacs/some-useful-mu4e-shortcuts/
+;; Add CC line
+(define-key mu4e-compose-mode-map (kbd "C-1 c") #'message-goto-cc)
+#+end_src
+
+**** gnus -- Disabled
+:PROPERTIES:
+:ID:       8c291c1d-a6db-41ff-8bb8-860be0afccc0
+:END:
+
+Configuration borrowed from the tutorial found here:
+- https://protesilaos.com/dotemacs/#h:14cf6fea-54eb-4faa-bb16-3739485c929a
+- https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/gnus-guide-en.org
+
+#+begin_src elisp :tangle no
+(require 'gnus)
+(require 'gnus-sum)
+(require 'gnus-dired)
+(require 'gnus-topic)
+(require 'nnir)
+
+;; Override the default GNUS directories
+(setq gnus-agent-directory (expand-file-name "~/.mail/gnus/agent"))
+(setq gnus-article-save-directory (expand-file-name "~/.mail/gnus/"))
+(setq gnus-cache-directory (expand-file-name "~/.cache/gnus/"))
+(setq gnus-directory (expand-file-name "~/.mail/gnus/"))
+(setq gnus-dribble-directory (expand-file-name "~/.mail/gnus/dribble"))
+(setq message-directory (expand-file-name "~/.mail/gnus/mail"))
+(setq mail-default-directory (expand-file-name "~/.mail/gnus/"))
+(setq nndraft-directory (expand-file-name "~/.mail/gnus/drafts"))
+(setq nnfolder-directory (expand-file-name "~/.mail/gnus/archive"))
+
+
+(setq gnus-select-method '(nnnil ""))
+(setq gnus-secondary-select-methods
+      '((nnmaildir "devnulllabs" (directory "~/.mail/devnulllabs.io/"))
+        ;; (gnus-search-engine gnus-search-notmuch
+        ;;                     (remove-prefix "~/.mail/devnulllabs.io")))
+        (nnmaildir "uboisestate" (directory "~/.mail/u.boisestate.edu/"))
+        ;; (gnus-search-engine gnus-search-notmuch
+        ;;                     (remove-prefix "~/.mail/u.boisestate.edu")))
+
+        ))
+
+(setq gnus-fetch-old-headers 'some)
+(setq gnus-search-use-parsed-queries t)
+(setq gnus-permanently-visible-groups ".*")
+(setq gnus-search-use-parsed-queries t)
+(setq gnus-gcc-mark-as-read t)
+(setq gnus-agent t)
+(setq gnus-novice-user nil)
+(setq gnus-check-new-newsgroups 'ask-server)
+(setq gnus-read-active-file 'some)
+(setq gnus-use-dribble-file t)
+(setq gnus-always-read-dribble-file t)
+(setq gnus-agent-article-alist-save-format 1) ; uncompressed
+(setq gnus-agent-cache t)
+(setq gnus-agent-confirmation-function 'y-or-n-p)
+(setq gnus-agent-consider-all-articles nil)
+(setq gnus-agent-directory "~/.mail/gnus/agent/")
+(setq gnus-agent-expire-all nil)
+(setq gnus-agent-expire-days 30)
+(setq gnus-agent-mark-unread-after-downloaded t)
+(setq gnus-agent-queue-mail t) ; queue if unplugged
+(setq gnus-agent-synchronize-flags nil)
+(setq gnus-article-browse-delete-temp 'ask)
+(setq gnus-article-over-scroll nil)
+(setq gnus-article-show-cursor t)
+(setq gnus-article-sort-functions
+      '((not gnus-article-sort-by-number)
+        (not gnus-article-sort-by-date)))
+(setq gnus-article-truncate-lines nil)
+(setq gnus-html-frame-width 80)
+(setq gnus-html-image-automatic-caching t)
+(setq gnus-inhibit-images t)
+(setq gnus-max-image-proportion 0.7)
+(setq gnus-treat-display-smileys nil)
+(setq gnus-article-mode-line-format "%G %S %m")
+(setq gnus-visible-headers
+      '("^From:"
+        "^To"
+        "^Cc:"
+        "^Subject:"
+        "^Newsgroups":
+        "^Date:"
+        "Followup-To:"
+        "Reply-To:"
+        "^Organization:"
+        "^X-Newsreader:"
+        "^X-Mailer:"))
+(setq gnus-sorted-header-list gnus-visible-headers)
+(setq gnus-asynchronous t)
+(setq gnus-use-article-prefetch 15)
+(setq gnus-level-subscribed 6)
+(setq gnus-level-unsubscribed 7)
+(setq gnus-level-zombie 8)
+(setq gnus-activate-level 1)
+(setq gnus-list-groups-with-ticked-articles nil)
+(setq gnus-group-sort-function
+      '((gnus-group-sort-by-unread)
+        (gnus-group-sort-by-alphabet)
+        (gnus-group-sort-by-rank)))
+(setq gnus-group-line-format "%M%p%P%5y:%B%(%g%)\n")
+(setq gnus-group-mode-line-format "%%b")
+(setq gnus-topic-display-empty-topics nil)
+(setq gnus-auto-select-first nil)
+(setq gnus-summary-ignore-duplicates t)
+(setq gnus-suppress-duplicates t)
+(setq gnus-save-duplicate-list t)
+(setq gnus-summary-goto-unread nil)
+(setq gnus-summary-make-false-root 'adopt)
+(setq gnus-summary-thread-gathering-function
+      'gnus-gather-threads-by-subject)
+(setq gnus-summary-gather-subject-limit 'fuzzy)
+(setq gnus-thread-sort-functions
+      '((not gnus-thread-sort-by-date)
+        (not gnus-thread-sort-by-number)))
+(setq gnus-thread-hide-subtree nil)
+(setq gnus-thread-ignore-subject nil)
+(setq gnus-user-date-format-alist
+      '(((gnus-second-today) . "Today at %R")
+        ((+ (* 60 60 24) (gnus-seconds-today)) . "Yesterday, %R")
+        (t . "%Y-%m-%d %R")))
+(setq gnus-ignored-from-addresses "Kenny Ballou")
+(setq gnus-summary-to-prefix "To: ")
+(setq gnus-summary-line-format "%U%R %-18,18&user-date; %4L:%-25,25f %B%s\n")
+(setq gnus-summary-mode-line-format "[%U] %p")
+(setq gnus-sum-thread-tree-false-root "")
+(setq gnus-sum-thread-tree-indent " ")
+(setq gnus-sum-thread-tree-single-indent "")
+(setq gnus-sum-thread-tree-leaf-with-other "+->")
+(setq gnus-sum-thread-tree-root "")
+(setq gnus-sum-thread-tree-single-leaf "\\->")
+(setq gnus-sum-thread-tree-vertical "|")
+
+(add-hook 'dired-mode-hook #'gnus-dired-mode)
+;; (add-hook 'gnus-group-mode-hook #'hl-line-mode)
+(add-hook 'gnus-group-mode-hook #'gnus-topic-mode)
+;; (add-hook 'gnus-summary-mode-hook #'hl-line-mode)
+;; (add-hook 'gnus-browse-mode-hook #'hl-line-mode)
+;; (add-hook 'gnus-server-mode-hook #'hl-line-mode)
+(add-hook 'gnus-select-group-hook #'gnus-group-set-timestamp)
+(let ((map gnus-article-mode-map))
+  (define-key map (kbd "i") #'gnus-article-show-images)
+  (define-key map (kbd "s") #'gnus-mime-save-part)
+  (define-key map (kbd "o") #'gnus-mime-copy-part))
+(let ((map gnus-group-mode-map))
+  (define-key map (kbd "n") #'gnus-group-next-group)
+  (define-key map (kbd "p") #'gnus-group-prev-group)
+  (define-key map (kbd "M-n") #'gnus-topic-goto-next-topic)
+  (define-key map (kbd "M-p") #'gnus-topic-goto-previous-topic))
+(let ((map gnus-summary-mode-map))
+  (define-key map (kbd "<delete>") #'gnus-summary-delete-article)
+  (define-key map (kbd "n") #'gnus-summary-next-article)
+  (define-key map (kbd "p") #'gnus-summary-prev-article)
+  (define-key map (kbd "N") #'gnus-summary-next-unread-article)
+  (define-key map (kbd "P") #'gnus-summary-prev-unread-article)
+  (define-key map (kbd "M-n") #'gnus-summary-next-thread)
+  (define-key map (kbd "M-p") #'gnus-summary-prev-thread)
+  (define-key map (kbd "C-M-n") #'gnus-summary-next-group)
+  (define-key map (kbd "C-M-p") #'gnus-summary-prev-group)
+  (define-key map (kbd "C-M-^") #'gnus-summary-refer-thread))
+
+(defun getmail ()
+  "Execute getmail in asynchronous buffer."
+  (interactive)
+  (let ((out-buffer (get-buffer-create "*getmail*"))
+        (err-buffer (get-buffer-create "*getmail error*")))
+    (async-shell-command "getmail --rcfile ~/.getmail/getmailrc --rcfile ~/.getmail/getmailuboisestate"
+                         out-buffer
+                         err-buffer)))
+
+;; (setq nnmail-expiry-wait 30)
+(setq nnmail-expiry-wait-function
+      (lambda (group)
+        (cond ((string-match-p "spam" group) 1)
+              ((string-match-p "archive" group) 'never)
+              (t 30))))
+#+end_src
+**** ERC
+:PROPERTIES:
+:ID:       1d2bc479-8dac-46c7-ba69-9a726968ed43
+:END:
+
+#+begin_src elisp
+(setq erc-server "irc.libera.chat")
+(setq erc-nick "kennyballou")
+(setq erc-user-full-name "Kenny Ballou")
+(setq erc-track-shorten-start 8)
+(setq erc-autojoin-channels-alist '(("irc.libera.chat" "#emacs" "#guix")))
+(setq erc-kill-buffer-on-part t)
+(setq erc-auto-query 'bury)
+#+end_src
+
+#+begin_src elisp
+(require 'erc-match)
+(setq erc-echo-notices-in-minibuffer-flag t)
+(setq erc-keywords '("kennyballou"))
+#+end_src
+**** E(BBDB)
+:PROPERTIES:
+:ID:       2c9fbc3f-9a6d-478b-b70e-3b21f0084d59
+:END:
+
+https://emacs-fu.blogspot.com/2009/08/managing-e-mail-addresses-with-bbdb.html
+
+#+begin_src elisp :tangle no
+(use-package bbdb
+  :init
+  (setq bbdb-file "~/.org/bbdb")
+  (setq bbdb-offer-save 1)
+  (setq bbdb-use-pop-up t)
+  (setq bbdb-electric-p t)
+  (setq bbdb-popup-target-lines 1)
+  (setq bbdb-dwim-net-address-allow-redundancy t)
+  (setq bbdb-quiet-about-name-mismatches t)
+  (setq bbdb-always-add-address t)
+  (setq bbdb-canonicalize-redundent-nets-p t)
+  (setq bbdb-use-alternate-names t)
+  (setq bbdb-completion-type nil)
+  (setq bbdb-elided-display t)
+  (setq bbdb/mail-auto-create-p #'bbdb-ignore-some-messages-hook)
+  (setq bbdb-ignore-some-messages-alist
+        (quote (("From" . "no.?reply\\|DAEMON\\|daemon\\|")))))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb
+  :custom
+  (ebdb-sources "~/.org/ebdb"))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb-mu4e
+  :straight nil
+  :after (ebdb mu4e))
+#+end_src
+
+#+begin_src elisp
+(use-package ebdb-message
+  :straight nil
+  :after (ebdb-mu4e))
+#+end_src
+
+**** elfeed
+:PROPERTIES:
+:ID:       5f76c0d2-17a2-4752-b158-74695b1e0f04
+:END:
+
+#+begin_src elisp
+(use-package elfeed
+  :config
+  (run-at-time t (* 8 3600) #'elfeed-update))
+#+end_src
+
+#+begin_src elisp
+(use-package elfeed-org
+  :after elfeed
+  :config
+  (setq rmh-elfeed-org-files (list "~/.org/elfeed.org"))
+  (setq elfeed-search-filter "@12-hours-ago +unread")
+  (elfeed-org))
+#+end_src
+
+#+begin_src elisp
+(use-package elfeed-score
+  :commands elfeed-score-enable
+  :after elfeed
+  :bind (:map elfeed-search-mode-map
+              ("=" . elfeed-score-map))
+  :config
+  (elfeed-score-enable))
+#+end_src
+**** World-Clock
+:PROPERTIES:
+:ID:       8e06ba9b-0911-4691-8ebe-8759197c0ca1
+:END:
+
+#+begin_src elisp
+(setq zoneinfo-style-world-list
+      '(("Etc/UTC" "UTC")
+        ("Etc/GMT+12" "AoE")))
+#+end_src
+
+*** MultiMedia
+:PROPERTIES:
+:ID:       ce2d7cd7-a27a-4123-b832-8598bf24cc0a
+:END:
+
+**** MPD
+:PROPERTIES:
+:ID:       0757fb65-c41f-45d9-baf6-a097c5279cd5
+:END:
+
+#+begin_src elisp
+(use-package mpdel
+  :diminish mpdel-mode
+  :init
+  (setq libmpdel-hostname (format "/run/user/%d/mpd/socket" (user-uid)))
+  :config
+  (mpdel-mode))
+
+(defhydra kb/hydra/mpdel (:hint nil :exit t)
+  "
+_SPC_:  Play/Pause                 _n_: next song      _U_: Update Database
+_s_:    Stop Playback              _p_: previous song
+_r_:    Randomize playback
+_dr_:   Disable random playback
+_R_:    Repeat placback
+_dR_:   Disable repeat
+"
+  ("q" nil "cancel")
+  ("SPC" libmpdel-playback-play-pause)
+  ("s" libmpdel-stop)
+  ("r" libmpdel-playback-set-random)
+  ("dr" libmpdel-playback-unset-random)
+  ("R" libmpdel-playback-set-repeat)
+  ("dR" libmpdel-playback-unset-repeat)
+  ("n" libmpdel-playback-next)
+  ("p" libmpdel-playback-previous)
+  ("U" libmpdel-database-update))
+
+(define-key global-map (kbd "C-x Z h") #'kb/hydra/mpdel/body)
+#+end_src
+
+**** PDF-Tools -- disabled
+:PROPERTIES:
+:ID:       c61a72a2-01a7-4fae-b6ef-2a723f93aaf8
+:END:
+
+#+begin_src elisp :tangle no
+(use-package pdf-tools
+  :magic ("%PDF" . pdf-view-mdoe))
+#+end_src
+
+**** Ebooks!
+:PROPERTIES:
+:ID:       53283320-9016-4c08-a76f-663abbf84caf
+:END:
+
+#+begin_src elisp
+(use-package nov)
+#+end_src
+
+#+begin_src elisp
+(use-package calibredb)
+#+end_src
+
+*** Async
+:PROPERTIES:
+:ID:       b46b0f43-ef4d-49fc-9818-6b5fd34d72af
+:END:
+
+#+begin_src elisp
+(use-package async
+  :diminish)
+#+end_src
+
+#+begin_src elisp
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode t)
+#+end_src
+
+#+begin_src elisp
+(autoload 'async-bytecomp-package-mode "async-bytecomp.el" nil t)
+(async-bytecomp-package-mode t)
+#+end_src
+
+#+begin_src elisp
+(use-package async-status
+  :after async
+  :diminish)
+#+end_src
+
+*** Init Local
+:PROPERTIES:
+:ID:       3bb4b7cf-7889-4add-bb21-e47ab9ad6df2
+:END:
+
+#+begin_src elisp
+(require 'init-local nil t)
+#+end_src
+
+*** Locales
+:PROPERTIES:
+:ID:       f1c6d760-19c1-493e-8034-980aadb2aed9
+:END:
+
+#+begin_src elisp
+;;; https://masteringemacs.org/article/working-coding-systems-unicode-emacs
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+;; backwards compatibility as default-buffer-file-coding-system
+;; is deprecated in 23.2.
+(if (boundp 'buffer-file-coding-system)
+    (setq-default buffer-file-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8))
+
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+#+end_src
+
+#+begin_src elisp :tangle no
+(use-package unicode-fonts
+  :init
+  (unicode-fonts-setup))
+#+end_src
+
+*** Provide Init
+:PROPERTIES:
+:ID:       0508985f-3cb2-4394-bc53-489b897012f8
+:END:
+
+#+begin_src elisp
+(provide 'init)
+;;; init.el ends here
+
+;;; Local Variables:
+;;; coding: utf-8
+;;; no-byte-compile: t
+;;; End:
+
+#+end_src
+
+
+* Local Variables
+:PROPERTIES:
+:ID:       d02c9b30-8c22-4840-a50c-18cf7bb5506b
+:END:
+
+# Local Variables:
+# mode: org
+# coding: utf-8
+# flycheck-disabled-checkers: '(languagetool vale)
+# enable-local-eval: t
+# eval: (flycheck-disable-checker 'languagetool)
+# eval: (flycheck-disable-checker 'vale)
+# End:

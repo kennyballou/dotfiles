@@ -20,7 +20,7 @@
    (start #~(make-forkexec-constructor
              (list #$(file-append openjdk "/bin/java")
                    "-classpath"
-                   #$(file-append languagetool "/languagetool-server.jar")
+                   #$(file-append languagetool "share/languagetool-server.jar")
                    "org.languagetool.server.HTTPServer"
                    "--port"
                    "9090"

@@ -11,13 +11,13 @@
   (list (simple-service 'git-config
                         home-files-service-type
                         `((,(git-file "config")
-                           ,(local-file (string-append %dotfiles-root "config/git/git/config")))
+                           ,(local-file (string-append %dotfiles-root "config/git/dot-config/git/config")))
                           (,(git-file "global-ignore")
-                           ,(local-file (string-append %dotfiles-root "config/git/git/global-ignore")))
+                           ,(local-file (string-append %dotfiles-root "config/git/dot-config/git/global-ignore")))
                           (,(git-file "gitk")
-                           ,(local-file (string-append %dotfiles-root "config/git/git/gitk")))
+                           ,(local-file (string-append %dotfiles-root "config/git/dot-config/git/gitk")))
                           (,(git-file "attributes")
-                           ,(local-file (string-append %dotfiles-root "config/git/git/attributes")))
+                           ,(local-file (string-append %dotfiles-root "config/git/dot-config/git/attributes")))
                           (,(git-file "template.d")
-                           ,(local-file (string-append %dotfiles-root "config/git/git/template.d")
+                           ,(local-file (string-append %dotfiles-root "config/git/dot-config/git/template.d")
                                         #:recursive? #t))))))
