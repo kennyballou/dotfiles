@@ -3820,10 +3820,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package detached
-  :autoload detached-init
-  :commands (detached-shell-command
-             detached-compile
-             detached-compile-recompile)
   :init
   (detached-init)
   :bind (([remap async-shell-command] . detached-shell-command)
