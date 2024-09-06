@@ -893,9 +893,13 @@ http://doc.norang.ca/org-mode.htm
 #+end_src
 
 #+begin_src elisp
-(setq org-latex-pdf-process
-      '("latexmk -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
-
+(use-package ox-latex
+  :ensure nil
+  :straight nil
+  :custom
+  (org-latex-src-block-backend 'listings)
+  (org-latex-pdf-process
+   '("latexmk -f -lualatex -interaction=nonstopmode -shell-escape -output-directory=%o %f")))
 #+end_src
 
 **** Incoming Notes: Capture/Refile
