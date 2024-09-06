@@ -793,7 +793,7 @@ http://doc.norang.ca/org-mode.htm
 (setq org-ellipsis nil)
 (setq org-special-ctrl-a/e t)
 (setq org-edit-timestamp-down-means-later t)
-(setq org-archive-location "%s_archive::datetree/")
+(setq org-archive-location (concat org-directory "archive/%s::datetree/"))
 (setq org-archive-mark-done nil)
 (setq org-hide-emphasis-markers t)
 (setq org-catch-invisible-edits 'show-and-error)
