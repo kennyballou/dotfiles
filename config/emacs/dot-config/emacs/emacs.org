@@ -1601,13 +1601,42 @@ not strictly necessary.
 :ID:       f1266b5f-ec8c-4e00-9b3f-0f8f608fd892
 :END:
 
+Add some accessibility tagging stuff to each of the exported document classes.
+This information *MUST* be provided before the ~\documentclass~ to be effective.
+
 #+begin_src elisp
-(add-to-list 'org-latex-classes
-             '("moderncv" "\\documentclass[11pt]{moderncv}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph{%s}")))
+(setq org-latex-metadata "\\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}")
+#+end_src
+
+#+begin_src elisp
+(setq org-latex-classes
+      `(("beamer" ,(concat org-latex-metadata "\n" "\\documentclass[11pt]{beamer}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+        ("moderncv" ,(concat org-latex-metadata "\n" "\\documentclass[11pt]{moderncv}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph{%s}"))
+        ("article" ,(concat org-latex-metadata "\n" "\\documentclass[11pt]{article}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}")
+         ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+        ("report" ,(concat org-latex-metadata "\n" "\\documentclass[11pt]{report}")
+         ("\\part{%s}" . "\\part*{%s}")
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+        ("book" ,(concat org-latex-metadata "\n" "\\documentclass[11pt]{book}")
+         ("\\part{%s}" . "\\part*{%s}")
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
 #+end_src
 
 **** Org Teach
