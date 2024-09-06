@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+# . "~/.nix-profile/etc/profile.d/hm-session-vars.sh"
+HOME_ENVIRONMENT=$HOME/.guix-home
+. ${HOME_ENVIRONMENT}/setup-environment
+${HOME_ENVIRONMENT}/on-first-login
+
+for i in "${HOME}/.profile.d/"*.sh; do
+    if [ -r "${i}" ]; then
+        . "${i}" >/dev/null 2>&1
+    fi
+done
+unset i
