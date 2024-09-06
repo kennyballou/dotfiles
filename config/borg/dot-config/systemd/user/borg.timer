@@ -1,0 +1,10 @@
+[Unit]
+Description=Hourly Borg Backup
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=1minute
+Presistent=true
+
+[Install]
+WantedBy=timers.target

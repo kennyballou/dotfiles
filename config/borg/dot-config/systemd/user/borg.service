@@ -1,0 +1,31 @@
+[Unit]
+Description=Borg Backup Service
+After=borg-vars.service
+
+[Service]
+Type=oneshot
+TimeoutStartSec=600
+EnvironmentFile=/run/user/%U/borg/environment
+ExecStart=guix shell borg -- borg create \
+               --verbose \
+               --stats \
+               --progress \
+               --show-rc \
+               --compression lz4 \
+               --exclude-caches \
+               --exclude 'node_modules' \
+               --exclude '/home/*/.cache/*' \
+               --exclude '/home/*/tmp/*' \
+               --exclude '/home/*/guixtest/*' \
+               --exclude '/home/*/.var/*' \
+               --exclude '/home/*/.config/Element/*' \
+               --exclude '/home/*/.config/flatpak/*' \
+               --exclude '/home/*/.config/Signal/*' \
+               --exclude '/home/*/.config/Slack/*' \
+               --exclude '/home/*/.local/share/guix-sandbox-home/*' \
+               --exclude '/home/*/.local/share/Zeal/*' \
+               --exclude '/home/*/.local/share/dolphin-emu/*' \
+               --exclude '/home/*/.recoll/xapiandb/*' \
+               --upload-ratelimit 2048 \
+               "${REPOSITORY}::${ARCHIVE}" \
+               /home/kb/

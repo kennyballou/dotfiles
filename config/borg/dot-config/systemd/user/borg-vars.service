@@ -1,0 +1,10 @@
+[Unit]
+Description=Create variables for borg backup
+
+[Service]
+Type=oneshot
+ExecStartPre=mkdir -p /run/user/%U/borg
+ExecStart=guix shell bash util-linux -- bash -c "echo \"REPOSITORY=de2478.rsync.net:backup/kb/borg\nARCHIVE=$(hostname)-$(uuidgen --time)\" > /run/user/%U/borg/environment"
+
+[Install]
+WantedBy=default.target
