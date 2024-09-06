@@ -1,4 +1,7 @@
 * <%<%Y-%m-%d %a %H:%M:%S>>: Shell Output
+:PROPERTIES:
+:CATEGORY: eshell
+:END:
 
 #+begin_example
 %i

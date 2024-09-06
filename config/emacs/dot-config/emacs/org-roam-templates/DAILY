@@ -1,6 +1,7 @@
 * <%<%Y-%m-%d %a %H:%M:%S>>: %?
 :PROPERTIES:
 :ID:   %(org-id-uuid)
+:CATEGORY: logbook
 :TASK: %K
 :FILE: [[file:%F][%f]]
 :END:
