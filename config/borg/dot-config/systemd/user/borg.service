@@ -4,8 +4,8 @@ After=borg-vars.service
 
 [Service]
 Type=oneshot
-TimeoutStartSec=600
 EnvironmentFile=/run/user/%U/borg/environment
+ExecStartPre=guix shell bash util-linux -- bash -c "mkdir -p /run/user/%U/borg && echo \"REPOSITORY=de2478.rsync.net:backup/kb/borg\nARCHIVE=$(hostname)-$(uuidgen --time)\" > /run/user/%U/borg/environment"
 ExecStart=guix shell borg -- borg create \
                --verbose \
                --stats \
