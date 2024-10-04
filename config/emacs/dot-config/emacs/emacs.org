@@ -4112,10 +4112,10 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (list "guix"
         "shell"
         "--pure"
+        "jdt-language-server"
         "openjdk@21:jdk"
         "--"
-        (expand-file-name (concat user-emacs-directory
-                                  "share/eclipse.jdt.ls/bin/jdtls"))
+        "jdtls"
         "--jvm-arg=-noverify"
         "--jvm-arg=-Xmx2G"
         "--jvm-arg=-XX:+UnlockExperimentalVMOptions"
