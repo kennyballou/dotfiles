@@ -1644,6 +1644,8 @@ This information *MUST* be provided before the ~\documentclass~ to be effective.
          ("\\section{%s}" . "\\section*{%s}")
          ("\\subsection{%s}" . "\\subsection*{%s}")
          ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+        ("standalone" ,(concat org-latex-metadata "\n" "\\documentclass[]{standalone}")
+         ())
         ("moderncv" ,(concat org-latex-metadata "\n" "\\documentclass[11pt]{moderncv}")
          ("\\section{%s}" . "\\section*{%s}")
          ("\\subsection{%s}" . "\\subsection*{%s}")
