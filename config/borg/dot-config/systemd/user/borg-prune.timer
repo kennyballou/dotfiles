@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Borg Backup Pruning
+
+[Timer]
+OnCalendar=daily
+AccuracySec=30minute
+Persistent=true
+
+[Install]
+WantedBy=timers.target

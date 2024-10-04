@@ -1,0 +1,17 @@
+[Unit]
+Description=Borg Prune Backup Service
+After=borg-vars.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/run/user/%U/borg/environment
+ExecStartPre=guix shell bash util-linux -- bash -c "mkdir -p /run/user/%U/borg && echo \"REPOSITORY=de2478.rsync.net:backup/kb/borg\nARCHIVE=$(hostname)-$(uuidgen --time)\" > /run/user/%U/borg/environment"
+ExecStart=guix shell borg -- borg prune \
+               --stats \
+               --list \
+               --keep-hourly=24 \
+               --keep-daily=7 \
+               --keep-weekly=4 \
+               --keep-monthly=6 \
+               --keep-yearly=2 \
+               "${REPOSITORY}"
