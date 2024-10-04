@@ -2919,7 +2919,8 @@ https://matthewbauer.us/blog/bauer.html
 #+begin_src elisp
 (use-package git-timemachine
   :diminish)
-(use-package git-auto-commit-mode)
+(use-package git-auto-commit-mode
+  :diminish)
 #+end_src
 
 #+begin_src elisp :tangle no
