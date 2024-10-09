@@ -1617,6 +1617,20 @@ not strictly necessary.
   (org-roam-bibtex-mode t))
 #+end_src
 
+**** Org Roam QL
+:PROPERTIES:
+:ID:       3335ec1f-4ee7-4d19-b8ce-4fd13c2fe6fc
+:END:
+
+#+begin_src elisp
+(use-package org-roam-ql
+  :after (org-roam)
+  :straight (org-roam-ql :type git :host github :repo "ahmed-shariff/org-roam-ql"
+                         :files (:defaults (:exclude "org-roam-ql-ql.el")))
+  :bind ((:map org-roam-mode-map
+               ("v" . org-roam-ql-buffer-dispatch))))
+#+end_src
+
 **** Org Transclusion
 :PROPERTIES:
 :ID:       99301a23-6d1a-4ed2-bca6-e8444d57dbb6
