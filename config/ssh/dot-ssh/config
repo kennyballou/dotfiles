@@ -1,3 +1,5 @@
+Include config.d/*.conf
+
 Host *
     PreferredAuthentications publickey,password
     VisualHostKey yes
