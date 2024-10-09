@@ -1352,6 +1352,20 @@ Except where they probably shouldn't be added.
              :repo "kennyballou/org-dblock-gantt"))
 #+end_src
 
+**** Org QL
+:PROPERTIES:
+:ID:       844f5075-f88c-4d0d-8bc0-3b6d95e7dbda
+:END:
+
+#+begin_src elisp
+(use-package org-ql)
+#+end_src
+
+#+begin_src elisp
+(use-package helm-org-ql
+  :after org-ql)
+#+end_src
+
 **** Org Mime
 :PROPERTIES:
 :ID:       44e6e5a4-d7e7-4089-8406-3472e11820e5
