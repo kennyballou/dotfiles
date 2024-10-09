@@ -1682,6 +1682,31 @@ This information *MUST* be provided before the ~\documentclass~ to be effective.
                        :fork (:host sourcehut :repo "kennyballou/org-teach")))
 #+end_src
 
+***** Slide Authoring Help
+:PROPERTIES:
+:ID:       da46e939-74f4-4388-a3f2-227edf258b05
+:END:
+
+#+begin_src elisp
+(defvar kb/slides-directory "/home/kb/workspace/src/edu/csusm/teaching-materials/slides")
+(defun kb/include-slide-file ()
+  "Include a slide file into the current org document."
+  (interactive)
+  (let ((slide (f-relative (completing-read
+                            "Slide: "
+                            (directory-files-recursively
+                             kb/slides-directory
+                             (rx ".org")
+                             nil
+                             nil
+                             t)))))
+    (insert "#+INCLUDE: " slide " :minlevel 3")))
+#+end_src
+
+#+begin_src elisp
+(bind-key "C-c o s i" #'kb/include-slide-file)
+#+end_src
+
 *** GC Statistics
 :PROPERTIES:
 :ID:       a65cc73e-bffc-4f7b-a6b8-4829ec71608b
