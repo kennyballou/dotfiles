@@ -51,7 +51,11 @@ https://git.sr.ht/~ashton314/emacs-bedrock/tree/main/item/early-init.el
 
 #+begin_src elisp
 (setq frame-resize-pixelwise t)
-(tool-bar-mode -1)
+#+end_src
+
+#+begin_src elisp
+(if (display-graphic-p)
+    (tool-bar-mode -1))
 #+end_src
 
 Font Config
