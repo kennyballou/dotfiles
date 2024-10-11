@@ -5228,14 +5228,16 @@ indentation rules."
 
 #+begin_src elisp
 (use-package auctex
-  :if (eq system-type 'gnu/linux)
+  :if (and (eq system-type 'gnu/linux)
+           (kb/gnu-configuration?))
   :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
   :straight nil)
 #+end_src
 
 #+begin_src elisp
 (use-package latex
-  :if (eq system-type 'gnu/linux)
+  :if (and (eq system-type 'gnu/linux)
+           (kb/gnu-configuration?))
   :straight nil
   :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
   :custom
@@ -5602,7 +5604,8 @@ Configuration taken from the tutorial found here:
 
 #+begin_src elisp
 (use-package mu4e
-  :if (eq system-type 'gnu/linux)
+  :if (and (eq system-type 'gnu/linux)
+           (kb/gnu-configuration?))
   :straight (:type nil
              :local-repo "~/.guix-home/profile/share/emacs/site-lisp/mu4e/"
              :pre-build ()))
