@@ -2102,8 +2102,9 @@ Disable mouse open files.
 (define-key dired-mode-map [mouse-2] nil)
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package dired-x
+  :straight nil
   :custom
   (dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
                                   ("\\.doc\\'" "libreoffice")
