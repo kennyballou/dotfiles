@@ -971,12 +971,6 @@ http://doc.norang.ca/org-mode.htm
          (file "~/.config/emacs/org-captures/PROJECT")
          :clock-in t
          :clock-resume t)
-        ("W" "Weekly Review" entry (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
-         :immediate-finish t)
-        ("D" "Daily Review" entry (file+olp+datetree kb/org-logbook-file)
-         (file "~/.config/emacs/org-captures/DAILY_REVIEW")
-         :immediate-finish t)
         ))
 
 (setq org-capture-templates-contexts
@@ -1562,7 +1556,16 @@ not strictly necessary.
       (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
       :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
                          "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
-      :immediate-finish t :empty-lines 1)))
+      :immediate-finish t :empty-lines 1)
+     ("W" "Weekly Review" entry (file "~/.config/emacs/org-captures/WEEKLY_REVIEW")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :immediate-finish t)
+     ("D" "Daily Review" entry (file "~/.config/emacs/org-captures/DAILY_REVIEW")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
+      :immediate-finish t)
+     ))
   )
 #+end_src
 
