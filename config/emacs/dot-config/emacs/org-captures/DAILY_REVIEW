@@ -1,4 +1,4 @@
-* TODO Daily Review
+* TODO %t Daily Review
 SCHEDULED: %T
 :PROPERTIES:
 :header-args:elisp: :results none
