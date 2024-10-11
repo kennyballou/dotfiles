@@ -5608,8 +5608,34 @@ Configuration taken from the tutorial found here:
            (kb/gnu-configuration?))
   :straight (:type nil
              :local-repo "~/.guix-home/profile/share/emacs/site-lisp/mu4e/"
-             :pre-build ()))
+             :pre-build ())
+  :custom
+  (mu4e-compose-format-flowed nil)
+  (mu4e-use-fancy-chars t)
+  (mu4e-headers-date-format "%Y-%m-%d %H:%M")
+  (message-citation-line-format "On %Y-%m-%d %H:%M %Z, %N wrote:")
+  (message-citation-line-function #'message-insert-formatted-citation-line)
+  (mu4e-view-show-addresses t)
+  (mu4e-get-mail-command "mbsync -a")
+  (mu4e-headers-sort-field :date)
+  (mu4e-headers-sort-direction 'ascending)
+  (message-send-mail-function 'message-send-mail-with-sendmail)
+  (sendmail-program "msmtp")
+  (mail-specifiy-envelope-from t)
+  (message-sendmail-f-is-evil nil)
+  (message-sendmail-envelope-from 'header)
+  (mu4e-change-filenames-when-moving t)
+  (message-kill-buffer-on-exit t)
+  (mu4e-context-policy 'pick-first)
+  (mu4e-confirm-quit nil)
+  (mu4e-sent-messages-behavior 'sent)
+  (mu4e-completing-read-function 'completing-read)
+  (mu4e-view-use-old nil)
+  (mu4e-headers-include-releated t)
+  (mu4e-headers-skip-duplicates t))
+
 (use-package mu4e-vars
+  :after (mu4e)
   :straight nil)
 #+end_src
 
@@ -5625,29 +5651,6 @@ Configuration taken from the tutorial found here:
 #+end_src
 
 #+begin_src elisp
-(setq mu4e-compose-format-flowed nil)
-(setq mu4e-use-fancy-chars t)
-(setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
-(setq message-citation-line-format "On %Y-%m-%d %H:%M %Z, %N wrote:")
-(setq message-citation-line-function #'message-insert-formatted-citation-line)
-(setq mu4e-view-show-addresses t)
-(setq mu4e-get-mail-command "mbsync -a")
-(setq mu4e-headers-sort-field :date)
-(setq mu4e-headers-sort-direction 'ascending)
-(setq message-send-mail-function 'message-send-mail-with-sendmail)
-(setq sendmail-program "msmtp")
-(setq mail-specifiy-envelope-from t)
-(setq message-sendmail-f-is-evil nil)
-(setq message-sendmail-envelope-from 'header)
-(setq mu4e-change-filenames-when-moving t)
-(setq message-kill-buffer-on-exit t)
-(setq mu4e-context-policy 'pick-first)
-(setq mu4e-confirm-quit nil)
-(setq mu4e-sent-messages-behavior 'sent)
-(setq mu4e-completing-read-function 'completing-read)
-(setq mu4e-view-use-old nil)
-(setq mu4e-headers-include-releated t)
-(setq mu4e-headers-skip-duplicates t)
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
 ;; so set to epg and all was good!
