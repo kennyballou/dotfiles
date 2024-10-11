@@ -174,6 +174,13 @@ Font Config
             (garbage-collect)) t)
 #+end_src
 
+Add some functions for testing the configuration type
+
+#+begin_src elisp
+(defun kb/gnu-configuration? ()
+  (string-search "gnu" system-configuration))
+#+end_src
+
 #+begin_src elisp
 (provide 'early-init)
 ;;; early-init.el ends here
@@ -251,7 +258,7 @@ $ emacsclient -c"
 #+begin_src elisp
 (use-package dbus
   :ensure nil
-  :if (string-search "gnu" system-configuration)
+  :if (kb/gnu-configuration?)
   :config
   (defun kb/dbus-handle-gnome-session-manager-exit ()
     "Perform some cleanup than shutdown Emacs server."
