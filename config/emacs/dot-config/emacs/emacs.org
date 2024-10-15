@@ -5119,7 +5119,9 @@ indentation rules."
 (use-package geiser
   :custom
   (geiser-active-implementations '(guile racket))
-  (geiser-default-implementation 'guile))
+  (geiser-default-implementation 'guile)
+  :config
+  (setq geiser-guile-binary (executable-find "guile")))
 #+end_src
 
 **** Slurm
