@@ -1719,7 +1719,22 @@ This information *MUST* be provided before the ~\documentclass~ to be effective.
 #+begin_src elisp
 (use-package org-teach
   :straight '(:package org-teach :type git :host sourcehut :repo "jamesendreshowell/org-teach"
-                       :fork (:host sourcehut :repo "kennyballou/org-teach")))
+                       :fork (:host sourcehut :repo "kennyballou/org-teach"))
+  :config
+  (defun org-teach-export-slides-and-handout ()
+    "From an Org buffer, export and compile
+both as LaTeX to `[buffer-file-name]_handout.tex
+and as Beamer to [buffer-file-name]_slides.tex
+then open both resulting PDFs externally with evince."
+    (interactive)
+    (let ((tags (org-get-tags))
+          (filename (file-name-sans-extension buffer-file-name)))
+      (org-export-to-file 'latex (concat filename "_handout.tex"))
+      (org-latex-compile (concat filename "_handout.tex"))
+      (if (equal nil (member "handoutonly" tags))
+        (progn
+          (org-export-to-file 'beamer (concat filename "_slides.tex"))
+          (org-latex-compile (concat filename "_slides.tex")))))))
 #+end_src
 
 ***** Slide Authoring Help
