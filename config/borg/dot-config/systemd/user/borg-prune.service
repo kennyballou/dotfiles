@@ -1,6 +1,7 @@
 [Unit]
 Description=Borg Prune Backup Service
-After=borg-vars.service
+After=borg-vars.service borg.service
+Conflicts=borg.service
 
 [Service]
 Type=oneshot
