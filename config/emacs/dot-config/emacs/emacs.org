@@ -5445,6 +5445,42 @@ Add =languagetool= to =tex-chktex= checker chain.
   ;; :straight (ob-resetclient :type git :host github :repo "alf/ob-restclient.el"))
 #+end_src
 
+**** Prose?
+:PROPERTIES:
+:ID:       3c79bd2a-e21c-45fe-a26c-c8392e8fc35d
+:END:
+
+A small function that captures the necessary regex-replace for converting one
+space sentence terminals to two.
+
+#+begin_src elisp
+(defun one->two (&optional)
+  "Convert sentence endings from one to two."
+  (interactive)
+  (let ((regex (rx (seq ". "  (group (any upper)))))
+        (replc ".  \\1"))
+    (save-excursion
+      (if (region-active-p)
+          (let ((region-start (caar (region-bounds)))
+                (region-end (cadr (region-bounds))))
+            (query-replace-regexp regex
+                                  replc
+                                  nil
+                                  region-start
+                                  region-end
+                                  nil
+                                  nil))
+        (query-replace-regexp regex
+                              replc
+                              nil
+                              (point-min)
+                              (point-max)
+                              nil
+                              nil)))))
+
+(bind-key "C-c h w s" #'one->two)
+#+end_src
+
 *** Citar
 :PROPERTIES:
 :ID:       52d5f4a2-8c77-499a-bb76-79181eb274e2
