@@ -4175,12 +4175,13 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (defun kb/c*-eglot-server (interactive?)
   "Return the eglot server for C/C++."
-  (list "guix"
-        "shell"
-        "--pure"
-        "ccls"
-        "--"
-        "ccls"))
+  (cond ((executable-find "guix")
+         (list "guix"
+               "shell"
+               "--pure"
+               "ccls"
+               "--"
+               "ccls"))))
 #+end_src
 
 ******* Java
@@ -4191,37 +4192,38 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (defun kb/java-eglot-server (interactive?)
   "Return the eglot server for Java."
-  (list "guix"
-        "shell"
-        "--pure"
-        "jdt-language-server"
-        "openjdk@21:jdk"
-        "--"
-        "jdtls"
-        "--jvm-arg=-noverify"
-        "--jvm-arg=-Xmx2G"
-        "--jvm-arg=-XX:+UnlockExperimentalVMOptions"
-        "--jvm-arg=-XX:+UseZGC"
-        "--jvm-arg=-XX:+ZGenerational"
-        "--jvm-arg=-XX:+UseStringDeduplication"
-        "--jvm-arg=-XX:AdaptiveSizePolicyWeight=90"
-        "--jvm-arg=-Dsun.zip.disableMemoryMapping=true"
-        "-data"
-        (expand-file-name (sha1 (project-root (project-current t)))
-                          (concat user-emacs-directory
-                                  ".cache/lsp/jdtls/"))
-        :initializationOptions
-        '(:settings
-          (:java
-           (:format
-            (:enabled "true"
-                      :settings
-                      (:url (concat "file:/" user-emacs-directory "/lsp-java/GoogleStyles.xml")
-                            :profile "GoogleStyle"))
-            :completion (:guessMethodArguments t)
-            :autobuild (:enabled "false")))
-          :extendClientCapabilities (:classFileContentSupport t))
-        ))
+  (cond ((executable-find "guix")
+         (list "guix"
+               "shell"
+               "--pure"
+               "jdt-language-server"
+               "openjdk@21:jdk"
+               "--"
+               "jdtls"
+               "--jvm-arg=-noverify"
+               "--jvm-arg=-Xmx2G"
+               "--jvm-arg=-XX:+UnlockExperimentalVMOptions"
+               "--jvm-arg=-XX:+UseZGC"
+               "--jvm-arg=-XX:+ZGenerational"
+               "--jvm-arg=-XX:+UseStringDeduplication"
+               "--jvm-arg=-XX:AdaptiveSizePolicyWeight=90"
+               "--jvm-arg=-Dsun.zip.disableMemoryMapping=true"
+               "-data"
+               (expand-file-name (sha1 (project-root (project-current t)))
+                                 (concat user-emacs-directory
+                                         ".cache/lsp/jdtls/"))
+               :initializationOptions
+               '(:settings
+                 (:java
+                  (:format
+                   (:enabled "true"
+                             :settings
+                             (:url (concat "file:/" user-emacs-directory "/lsp-java/GoogleStyles.xml")
+                                   :profile "GoogleStyle"))
+                   :completion (:guessMethodArguments t)
+                   :autobuild (:enabled "false")))
+                 :extendClientCapabilities (:classFileContentSupport t))
+               ))))
 #+end_src
 
 ******* Python
@@ -4232,12 +4234,13 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (defun kb/python-eglot-server (interactive?)
   "Return the eglot server for Python."
-  (list "guix"
-        "shell"
-        "--pure"
-        "python-lsp-server"
-        "--"
-        "pylsp"))
+  (cond ((executable-find "guix")
+         (list "guix"
+               "shell"
+               "--pure"
+               "python-lsp-server"
+               "--"
+               "pylsp"))))
 #+end_src
 
 ******* LaTeX/BibTex
@@ -4248,18 +4251,19 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (defun kb/latex-eglot-server (interactive?)
   "Return the eglot server for LaTeX."
-  (list "guix"
-        "time-machine"
-        (string-join `("--channels=" ,(getenv "HOME") "/.config/guix/channels.scm"))
-        "--"
-        "shell"
-        "--pure"
-        "rust-texlab"
-        "texlive"
-        "texlive-biber"
-        "python-pygments"
-        "--"
-        "texlab"))
+  (cond ((executable-find "guix")
+         (list "guix"
+               "time-machine"
+               (string-join `("--channels=" ,(getenv "HOME") "/.config/guix/channels.scm"))
+               "--"
+               "shell"
+               "--pure"
+               "rust-texlab"
+               "texlive"
+               "texlive-biber"
+               "python-pygments"
+               "--"
+               "texlab"))))
 #+end_src
 
 ****** Eglot Configuration
