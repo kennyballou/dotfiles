@@ -5271,7 +5271,7 @@ indentation rules."
 (use-package auctex
   :if (and (eq system-type 'gnu/linux)
            (kb/gnu-configuration?))
-  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
+  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.7/"
   :straight nil)
 #+end_src
 
@@ -5280,7 +5280,7 @@ indentation rules."
   :if (and (eq system-type 'gnu/linux)
            (kb/gnu-configuration?))
   :straight nil
-  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.5/"
+  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.7/"
   :custom
   (TeX-PDF-mode t)
   (TeX-source-correlate-start-server t)
