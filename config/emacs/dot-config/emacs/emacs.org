@@ -1355,6 +1355,22 @@ Except where they probably shouldn't be added.
              :repo "kennyballou/org-dblock-gantt"))
 #+end_src
 
+**** Org Attach
+:PROPERTIES:
+:ID:       30929ef2-88d8-4866-8522-011db7fa25f4
+:END:
+
+#+begin_src elisp
+(defun org-file-from-attach ()
+  "Visit the file associated with the current data directory (DEFAULT-DIRECTORY)."
+  (interactive)
+  (let* ((uuid (string-join (last (file-name-split default-directory) 3) ""))
+         (org-file (gethash uuid org-id-locations)))
+    (if org-file
+        (find-file org-file)
+      (message "not an org attach directory or no such ID."))))
+#+end_src
+
 **** Org QL
 :PROPERTIES:
 :ID:       844f5075-f88c-4d0d-8bc0-3b6d95e7dbda
