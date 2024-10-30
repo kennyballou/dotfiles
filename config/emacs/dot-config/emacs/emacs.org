@@ -5498,6 +5498,30 @@ space sentence terminals to two.
                               nil
                               nil)))))
 
+(defun two->one (&optional)
+  "Convert sentence endings from two to one."
+  (interactive)
+  (let ((regex (rx (seq ".  " (group (any upper)))))
+        (replc ". \\1"))
+    (save-excursion
+      (if (region-active-p)
+          (let ((region-start (caar (region-bounds)))
+                (region-end (cdar (region-bounds))))
+            (query-replace-regexp regex
+                                  replc
+                                  nil
+                                  region-start
+                                  region-end
+                                  nil
+                                  nil))
+        (query-replace-regexp regex
+                              replc
+                              nil
+                              (point-min)
+                              (point-max)
+                              nil
+                              nil)))))
+
 (bind-key "C-c h w s" #'one->two)
 #+end_src
 
