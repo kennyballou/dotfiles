@@ -5482,7 +5482,7 @@ space sentence terminals to two.
     (save-excursion
       (if (region-active-p)
           (let ((region-start (caar (region-bounds)))
-                (region-end (cadr (region-bounds))))
+                (region-end (cdar (region-bounds))))
             (query-replace-regexp regex
                                   replc
                                   nil
