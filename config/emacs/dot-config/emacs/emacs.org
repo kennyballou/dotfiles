@@ -4242,6 +4242,24 @@ Most shell applications accept Perl Compatible Regular Expressions."
                ))))
 #+end_src
 
+******* Golang
+:PROPERTIES:
+:ID:       445ef190-ec4d-494e-836d-f1e797f5c886
+:END:
+
+#+begin_src elisp
+(defun kb/golang-eglot-server (interactive?)
+  "Return the eglot server for Golang."
+  (cond ((executable-find "guix")
+         (list "guix"
+               "shell"
+               "--pure"
+               "gopls"
+               "--"
+               "gopls"))))
+#+end_src
+
+
 ******* Python
 :PROPERTIES:
 :ID:       bcacda85-83d9-45ae-96d3-ca79c7fd18e4
@@ -4310,6 +4328,8 @@ Most shell applications accept Perl Compatible Regular Expressions."
                                           #'kb/c*-eglot-server)
                                     (cons '(java-mode java-ts-mode)
                                           #'kb/java-eglot-server)
+                                    (cons '(go-mode go-ts-mode)
+                                          #'kb/golang-eglot-server)
                                     (cons '(python-mode python-ts-mode)
                                           #'kb/python-eglot-server)
                                     (cons '(latex-mode bibtex-mode)
