@@ -40,6 +40,7 @@
    dos2unix
    dot2tex
    git
+   `(,git "credential-netrc")
    `(,git "gui")
    `(,git "send-email")
    `(,git "svn")
