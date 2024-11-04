@@ -58,3 +58,5 @@
 	textconv = "echo .dump | sqlite3"
 [diff "gpg"]
 	textconv = "gpg --no-tty --quiet --decrypt"
+[credential]
+	helper = git-credential-netrc
