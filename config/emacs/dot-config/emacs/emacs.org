@@ -1553,6 +1553,9 @@ not strictly necessary.
       :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-logbook-${slug}.org" "")
       :unnarrowed t)))
   :config
+  (cl-defun org-roam-node-created (node)
+    "Return the CREATED property for NODE."
+    (cdr (assoc-string "CREATED" (org-roam-node-properties node))))
   (org-roam-setup))
 #+end_src
 
@@ -1656,7 +1659,21 @@ not strictly necessary.
   :straight (org-roam-ql :type git :host github :repo "ahmed-shariff/org-roam-ql"
                          :files (:defaults (:exclude "org-roam-ql-ql.el")))
   :bind ((:map org-roam-mode-map
-               ("v" . org-roam-ql-buffer-dispatch))))
+               ("v" . org-roam-ql-buffer-dispatch)))
+  :config
+  (defun kb/org-created-within (time-value begin end)
+    (defun org-parse-date (date-string)
+      (cond ((null date-string) nil)
+            (t (seconds-to-time (org-matcher-time date-string)))))
+    (let ((b (time-to-seconds (org-parse-date begin)))
+          (e (time-to-seconds (org-parse-date end)))
+          (v (time-to-seconds (org-parse-date time-value))))
+      (and (>= v b) (<= v e))))
+  (org-roam-ql-defpred
+    'created-within
+    "Is node CREATED within provided B/E"
+    #'org-roam-node-created
+    #'kb/org-created-within))
 #+end_src
 
 **** Org Transclusion
