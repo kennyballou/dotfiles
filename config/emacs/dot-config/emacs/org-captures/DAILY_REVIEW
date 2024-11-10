@@ -3,6 +3,7 @@ SCHEDULED: %T
 :PROPERTIES:
 :header-args:elisp: :results none
 :Effort:   0h 30min
+:CREATED:  %U
 :END:
 
 ** Get Clear [0/2]
@@ -38,12 +39,6 @@ SCHEDULED: %T
 - [ ] Review upcoming calendar entries
 
   - [ ] Add entries for upcoming meetings
-
-- [ ] Review Weekly Notes
-
-  #+begin_src elisp
-  (kb/org-weekly-notes)
-  #+end_src
 
 - [ ] Review Yesterdays's Daily Notes
 

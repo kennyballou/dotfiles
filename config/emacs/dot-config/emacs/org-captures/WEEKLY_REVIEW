@@ -3,6 +3,7 @@ SCHEDULED: %T
 :PROPERTIES:
 :header-args:elisp: :results none
 :Effort:   1h
+:CREATED:  %U
 :END:
 
 ** Get Clear [0/4]
@@ -61,15 +62,8 @@ SCHEDULED: %T
 
 - [ ] Review Previous Weekly Notes
 
-  #+begin_src elisp
-  (kb/org-prev-weekly-notes)
-  #+end_src
-
-- [ ] Create New Weekly Notes
-
-  #+begin_src elisp
-  (kb/org-weekly-notes)
-  #+end_src
+  #+BEGIN: org-roam-ql :query (created-within "<-1w>" "<now>") :columns (title)
+  #+END:
 
 - [ ] Review Action List:
 
