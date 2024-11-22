@@ -1661,6 +1661,12 @@ not strictly necessary.
   :bind ((:map org-roam-mode-map
                ("v" . org-roam-ql-buffer-dispatch)))
   :config
+  (defun kb/org-roam-nodes-without-links ()
+    "Return a set of org-roam-nodes that do not link to other nodes nor are linked by other nodes."
+    (mapcar #'org-roam-node-from-id (-flatten (org-roam-db-query
+                                               [:select id :from nodes
+                                                :where (not (in id [:select source :from links]))
+                                                :and (not (in id [:select dest :from links]))]))))
   (defun kb/org-created-within (time-value begin end)
     (defun org-parse-date (date-string)
       (cond ((null date-string) nil)
