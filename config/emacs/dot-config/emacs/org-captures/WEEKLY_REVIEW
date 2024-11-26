@@ -54,7 +54,7 @@ SCHEDULED: %T
 
 - [ ] [[file:~/.org/refile.org][Refile]]
 
-** Get Current [0/10]
+** Get Current [0/11]
 :PROPERTIES:
 :END:
 
@@ -63,6 +63,11 @@ SCHEDULED: %T
 - [ ] Review Previous Weekly Notes
 
   #+BEGIN: org-roam-ql :query (created-within "<-1w>" "<now>") :columns (title)
+  #+END:
+
+- [ ] Review Disconnected Notes
+
+  #+BEGIN: org-roam-ql :query #'kb/org-roam-nodes-without-links :columns (title)
   #+END:
 
 - [ ] Review Action List:
