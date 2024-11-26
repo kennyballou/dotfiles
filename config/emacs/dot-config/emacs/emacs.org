@@ -1812,6 +1812,20 @@ then open both resulting PDFs externally with evince."
   (emacs-gc-stats-mode +1))
 #+end_src
 
+*** Casual
+:PROPERTIES:
+:ID:       206d5d86-cee3-4475-9b29-12fe134da970
+:END:
+
+#+begin_src elisp
+(use-package casual
+  :after (calc)
+  :commands (casual-dired-tmenu
+             casual-calc-main-menu)
+  :bind (:map dired-mode-map ("C-o" . #'casual-dired-tmenu)
+         :map calc-mode-map ("C-o" . casual-calc-main-menu)))
+#+end_src
+
 *** helpful
 :PROPERTIES:
 :ID:       de78bcf2-912a-4c25-adb1-db4f197b3bd2
@@ -2184,8 +2198,9 @@ Asynchronous rsync from [[help:dired][dired]].
               ("C-c C-r" . dired-rsync)))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package casual-dired
+  :ensure nil
   :commands casual-dired-tmenu
   :bind (:map dired-mode-map ("C-o" . #'casual-dired-tmenu)))
 #+end_src
@@ -3006,6 +3021,11 @@ https://matthewbauer.us/blog/bauer.html
 :END:
 
 #+begin_src elisp
+(use-package calc
+  :ensure nil)
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package casual-calc
   :bind (:map calc-mode-map
               ("C-o" . casual-main-menu)))
