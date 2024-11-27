@@ -4945,6 +4945,15 @@ Add some extra symbols to prettify for Coq.
          (js2-mode . add-node-modules-path)))
 #+end_src
 
+**** Jsonnet
+:PROPERTIES:
+:ID:       ff177bdc-8a28-4b20-9cc3-5f2850df973c
+:END:
+
+#+begin_src elisp
+(use-package jsonnet-mode)
+#+end_src
+
 **** Ledger
 :PROPERTIES:
 :ID:       f41ce24b-4fc8-47ac-81a9-675b6dd0d854
