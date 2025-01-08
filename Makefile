@@ -19,11 +19,11 @@ list:
 
 .PHONY: pull
 pull:
-	guix time-machine -C $(CHANNEL_FILE) -- pull
+	guix pull --channels=$(CHANNEL_FILE)
 
 .PHONY: news
 news:
-	guix time-machine -C $(CHANNEL_FILE) -- pull --news
+	guix pull --channels=$(CHANNEL_FILE) --news
 
 .PHONY: update-channels
 update-channels:
