@@ -48,8 +48,7 @@
         emacs-buffer-move
         ;; emacs-bundler
         emacs-calibredb
-        emacs-casual-calc
-        emacs-casual-dired
+        emacs-casual
         emacs-cider
         emacs-circadian
         emacs-citar
@@ -78,7 +77,7 @@
         emacs-deft
         emacs-xyz:emacs-delight
         emacs-xyz:emacs-detached
-        emacs-devdocs
+        emacs-xyz:emacs-devdocs
         emacs-diff-hl
         emacs-diminish
         emacs-dired-rsync
@@ -142,7 +141,6 @@
         emacs-geiser-racket
         emacs-ggtags
         emacs-git-auto-commit-mode
-        emacs-git-commit
         emacs-git-link
         emacs-git-modes
         emacs-git-timemachine
@@ -317,8 +315,7 @@
         emacs-unfill
         emacs-unicode-fonts
         emacs-unicode-whitespace
-        emacs-use-package
-        emacs-use-package
+        emacs-xyz:emacs-use-package
         ;; emacs-virtualenvwrapper
         emacs-vterm
         emacs-xyz:emacs-vundo
