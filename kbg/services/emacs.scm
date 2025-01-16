@@ -336,6 +336,9 @@
 (define (emacs-file fname)
   (string-append ".config/emacs/" fname))
 
+(define (config-file fname)
+  (string-append %dotfiles-root "config/emacs/dot-config/emacs/" fname))
+
 (define tree-sitter-langs
   (directory-union "tree-sitter-union"
                    (list tree-sitter
@@ -372,36 +375,36 @@
   (list (simple-service 'emacs-config
                         home-files-service-type
                         `((,(emacs-file "early-init.el")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/early-init.el")))
+                           ,(local-file (config-file "early-init.el")))
                           (,(emacs-file "init.el")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/init.el")))
+                           ,(local-file (config-file "init.el")))
                           (".gnus.el"
-                           ,(if (file-exists? (string-append %dotfiles-root "config/emacs/emacs.d/gnus.el"))
-                                (local-file (string-append %dotfiles-root "config/emacs/emacs.d/gnus.el"))
+                           ,(if (file-exists? (config-file "gnus.el"))
+                                (local-file (config-file "gnus.el"))
                                 (plain-file "gnus.el" "")))
                           (,(emacs-file "org-captures")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/org-captures")
+                           ,(local-file (config-file "org-captures")
                                         #:recursive? #t))
                           (,(emacs-file "org-roam-templates")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/org-roam-templates")
+                           ,(local-file (config-file "org-roam-templates")
                                         #:recursive? #t))
                           (,(emacs-file "site-lisp")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/site-lisp")
+                           ,(local-file (config-file "site-lisp")
                                         #:recursive? #t))
                           (,(emacs-file "lsp-java")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/lsp-java")
+                           ,(local-file (config-file "lsp-java")
                                         #:recursive? #t))
                           (,(emacs-file "language-tool") ,languagetool)
                           (,(emacs-file "share/eclipse.jdt.ls") ,jdtls)
                           (,(emacs-file "share/junit-platform-console-standalone.jar")
                            ,(file-append java-junit-platform-console-standalone "/junit-platform-console-standalone-1.10.0.jar"))
                           (,(emacs-file "snippets")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/snippets")
+                           ,(local-file (config-file "snippets")
                                         #:recursive? #t))
                           (,(emacs-file "transient/levels.el")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/transient/levels.el")))
+                           ,(local-file (config-file "transient/levels.el")))
                           (,(emacs-file "schemas.xml")
-                           ,(local-file (string-append %dotfiles-root "config/emacs/emacs.d/schemas.xml")))
+                           ,(local-file (config-file "schemas.xml")))
                           (,(emacs-file "tree-sitter") ,(file-append tree-sitter-langs "/lib/tree-sitter/"))))
         (service home-emacs-service-type
                  (home-emacs-configuration
