@@ -1571,6 +1571,9 @@ not strictly necessary.
       :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
                          "#+title: %<%Y%m%d>\n#+filetags: logbook\n")
       :empty-lines 1)
+     ("s" "Daily Summary" entry (file "~/.config/emacs/org-roam-templates/SUMMARY")
+      :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
+                         "#+title: %<%Y%m%d>\n#+filetags: logbook\n"))
      ("e" "Contents to Notebook" entry
       (file "~/.config/emacs/org-captures/ESHELL_CAPTURE")
       :target (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d>.org"
