@@ -1773,10 +1773,8 @@ then open both resulting PDFs externally with evince."
           (filename (file-name-sans-extension buffer-file-name)))
       (org-export-to-file 'latex (concat filename "_handout.tex"))
       (org-latex-compile (concat filename "_handout.tex"))
-      (if (equal nil (member "handoutonly" tags))
-        (progn
-          (org-export-to-file 'beamer (concat filename "_slides.tex"))
-          (org-latex-compile (concat filename "_slides.tex")))))))
+      (org-export-to-file 'beamer (concat filename "_slides.tex"))
+      (org-latex-compile (concat filename "_slides.tex")))))
 #+end_src
 
 ***** Slide Authoring Help
