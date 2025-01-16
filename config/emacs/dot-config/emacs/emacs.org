@@ -3661,6 +3661,18 @@ buffers.
 #+end_src
 
 #+begin_src elisp
+(let* ((config-files (append '("~/.ssh/config")
+                             (file-expand-wildcards (concat "~/.ssh/config.d/*.conf"))))
+       (parse-fn (lambda (conf) `(tramp-parse-sconfig ,conf)))
+       (configs (mapcar parse-fn config-files)))
+  (tramp-set-completion-function "ssh" configs)
+  (tramp-set-completion-function "sshx" configs)
+  (tramp-set-completion-function "scp" configs)
+  (tramp-set-completion-function "sshfs" configs)
+  (tramp-set-completion-function "sftp" configs))
+#+end_src
+
+#+begin_src elisp
 (use-package helm-tramp
   :after (helm tramp)
   :bind (("C-c s". helm-tramp)))
