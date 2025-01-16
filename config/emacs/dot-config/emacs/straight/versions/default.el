@@ -1,5 +1,6 @@
 (("ESS" . "d60c13a6a347ea7a91ea3408bb464cff0ab4fef6")
  ("Emacs-wgrep" . "208b9d01cfffa71037527e3a324684b3ce45ddc4")
+ ("PG" . "b30d65de803148bcd3408ac334b5eab01c98a0ae")
  ("add-node-modules-path" . "841e93dfed50448da66c89a977c9182bb18796a1")
  ("adoc-mode" . "2c2eb8043623aa99d35aacbad2ee39188bf1bad3")
  ("ag.el" . "ed7e32064f92f1315cecbfc43f120bbc7508672c")

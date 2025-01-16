@@ -4477,6 +4477,10 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       ada554a8-84e6-4a45-bd97-39350d901315
 :END:
 
+#+begin_src elisp
+(use-package proof-general)
+#+end_src
+
 https://emacs.stackexchange.com/a/36156/17096
 
 Add some extra symbols to prettify for Coq.
