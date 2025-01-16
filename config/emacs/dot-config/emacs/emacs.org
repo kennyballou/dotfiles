@@ -908,7 +908,7 @@ http://doc.norang.ca/org-mode.htm
   :custom
   (org-latex-src-block-backend 'listings)
   (org-latex-pdf-process
-   '("latexmk -f -lualatex -interaction=nonstopmode -shell-escape -output-directory=%o %f")))
+   '("latexmk -f -pdflatex=%latex -interaction=nonstopmode -shell-escape -output-directory=%o %f")))
 #+end_src
 
 **** Incoming Notes: Capture/Refile
