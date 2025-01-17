@@ -662,14 +662,14 @@ Do not make me type ~C-q SPC~ to insert spaces!
   (package-refresh-contents))
 #+end_src
 
-**** =straight.el=
+**** =straight.el= (disabled)
 :PROPERTIES:
 :ID:       ee258d19-165a-442b-9a9b-d69c1cc4fc47
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (setq straight-vc-git-default-protocol 'https)
-(setq straight-use-package-by-default t)
+(setq straight-use-package-by-default nil)
 (defvar boostrap-version)
 (let ((bootstrap-file
       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -693,6 +693,7 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (eval-when-compile
   (require 'use-package))
 
+(setq use-package-always-ensure nil)
 (setq use-package-always-demand t)
 
 (use-package bind-key)
@@ -723,15 +724,11 @@ http://doc.norang.ca/org-mode.htm
 (use-package org)
 (use-package org-contrib)
 (use-package org-id
-  :straight nil)
-(use-package holidays
-  :straight nil)
-(use-package ox-md
-  :straight nil)
-(use-package org-attach
-  :straight nil)
+  :ensure nil)
+(use-package holidays)
+(use-package ox-md)
+(use-package org-attach)
 #+end_src
-
 **** Graphics and Export
 :PROPERTIES:
 :ID:       6356ad16-3099-443d-8073-043bc9a84c1b
@@ -904,7 +901,6 @@ http://doc.norang.ca/org-mode.htm
 #+begin_src elisp
 (use-package ox-latex
   :ensure nil
-  :straight nil
   :custom
   (org-latex-src-block-backend 'listings)
   (org-latex-pdf-process
@@ -1146,10 +1142,6 @@ https://orgmode.org/worg/org-hacks.html#orgf1fe951
 
 #+begin_src elisp
 (use-package awqat
-  :straight (awqat
-             :type git
-             :host github
-             :repo "zkry/awqat")
   :custom
   (awqat-asr-hanafi nil)
   :config
@@ -1338,8 +1330,7 @@ Except where they probably shouldn't be added.
 :END:
 
 #+begin_src elisp
-(use-package org-depend
-  :straight nil)
+(use-package org-depend)
 #+end_src
 
 **** Gantt Charts
@@ -1348,11 +1339,7 @@ Except where they probably shouldn't be added.
 :END:
 
 #+begin_src elisp
-(use-package org-dblock-gantt
-  :straight (org-dblock-gantt
-             :type git
-             :host github
-             :repo "kennyballou/org-dblock-gantt"))
+(use-package org-dblock-gantt)
 #+end_src
 
 **** Org Attach
@@ -1561,7 +1548,6 @@ not strictly necessary.
 
 #+begin_src elisp
 (use-package org-roam-dailies
-  :straight nil
   :after org-roam
   :bind-keymap ("C-c n d" . org-roam-dailies-map)
   :custom
@@ -1659,8 +1645,6 @@ not strictly necessary.
 #+begin_src elisp
 (use-package org-roam-ql
   :after (org-roam)
-  :straight (org-roam-ql :type git :host github :repo "ahmed-shariff/org-roam-ql"
-                         :files (:defaults (:exclude "org-roam-ql-ql.el")))
   :bind ((:map org-roam-mode-map
                ("v" . org-roam-ql-buffer-dispatch)))
   :config
@@ -1760,8 +1744,6 @@ This information *MUST* be provided before the ~\documentclass~ to be effective.
 
 #+begin_src elisp
 (use-package org-teach
-  :straight '(:package org-teach :type git :host sourcehut :repo "jamesendreshowell/org-teach"
-                       :fork (:host sourcehut :repo "kennyballou/org-teach"))
   :config
   (defun org-teach-export-slides-and-handout ()
     "From an Org buffer, export and compile
@@ -2150,7 +2132,6 @@ https://matthewbauer.us/blog/bauer.html
 
 #+begin_src elisp
   (use-package dired
-    :straight nil
     :init (require 'dired)
     :bind (:map dired-mode-map
         ("C-c C-c" . compile)
@@ -2173,7 +2154,6 @@ Disable mouse open files.
 
 #+begin_src elisp
 (use-package dired-x
-  :straight nil
   :custom
   (dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
                                   ("\\.doc\\'" "libreoffice")
@@ -3096,7 +3076,6 @@ https://matthewbauer.us/blog/bauer.html
   )
 
 (use-package magit-extras
-  :straight nil
   :after magit
   :init
   (setq magit-pop-revision-stack-format '("%h (\"%s\", %ad)")))
@@ -4363,7 +4342,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package eglot
-  :straight nil
   :commands (eglot eglot-ensure)
   :demand t
   :bind (("C-c e w r" . #'eglot-reconnect)
@@ -4592,7 +4570,6 @@ Add some extra symbols to prettify for Coq.
 
 #+begin_src elisp
 (use-package tramp-container
-  :straight nil
   :ensure nil)
 #+end_src
 
@@ -5257,7 +5234,6 @@ indentation rules."
 (use-package slurm-mode)
 (use-package slurm-script-mode
   :after slurm-mode
-  :straight nil
   :ensure nil
   :diminish)
 #+end_src
@@ -5357,19 +5333,11 @@ indentation rules."
 #+end_src
 
 #+begin_src elisp
-(use-package auctex
-  :if (and (eq system-type 'gnu/linux)
-           (kb/gnu-configuration?))
-  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.7/"
-  :straight nil)
+(use-package auctex)
 #+end_src
 
 #+begin_src elisp
 (use-package latex
-  :if (and (eq system-type 'gnu/linux)
-           (kb/gnu-configuration?))
-  :straight nil
-  :load-path "/home/kb/.guix-home/profile/share/emacs/site-lisp/auctex-14.0.7/"
   :custom
   (TeX-PDF-mode t)
   (TeX-source-correlate-start-server t)
@@ -5469,11 +5437,7 @@ Functionality to generate plain text references to the current bibliographic
 entry.
 
 #+begin_src elisp
-(use-package bibtex-to-plain-text
-  :straight (bibtex-to-plain-text
-             :type git
-             :host github
-             :repo "kennyballou/bibtex-to-plain-text.el"))
+(use-package bibtex-to-plain-text)
 #+end_src
 
 #+begin_src elisp
@@ -5551,7 +5515,6 @@ Add =languagetool= to =tex-chktex= checker chain.
 
 #+begin_src elisp
 (use-package ob-restclient)
-  ;; :straight (ob-resetclient :type git :host github :repo "alf/ob-restclient.el"))
 #+end_src
 
 **** Prose?
@@ -5794,11 +5757,6 @@ Configuration taken from the tutorial found here:
 
 #+begin_src elisp
 (use-package mu4e
-  :if (and (eq system-type 'gnu/linux)
-           (kb/gnu-configuration?))
-  :straight (:type nil
-             :local-repo "~/.guix-home/profile/share/emacs/site-lisp/mu4e/"
-             :pre-build ())
   :custom
   (mu4e-compose-format-flowed nil)
   (mu4e-use-fancy-chars t)
@@ -5825,8 +5783,7 @@ Configuration taken from the tutorial found here:
   (mu4e-headers-skip-duplicates t))
 
 (use-package mu4e-vars
-  :after (mu4e)
-  :straight nil)
+  :after (mu4e))
 #+end_src
 
 #+begin_src elisp :tangle no
@@ -6208,13 +6165,11 @@ https://emacs-fu.blogspot.com/2009/08/managing-e-mail-addresses-with-bbdb.html
 
 #+begin_src elisp
 (use-package ebdb-mu4e
-  :straight nil
   :after (ebdb mu4e))
 #+end_src
 
 #+begin_src elisp
 (use-package ebdb-message
-  :straight nil
   :after (ebdb-mu4e))
 #+end_src
 
