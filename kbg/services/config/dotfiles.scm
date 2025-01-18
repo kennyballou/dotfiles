@@ -6,6 +6,7 @@
   #:use-module (kbg services config aspell)
   #:use-module (kbg services config chktex)
   #:use-module (kbg services config direnv)
+  #:use-module (kbg services config emacs)
   #:use-module (kbg services config email)
   #:use-module (kbg services config fontconfig)
   #:use-module (kbg services config git)
@@ -37,6 +38,7 @@
           chktex-config-service
           direnv-config-service
           email-config-service
+          emacs-config-service
           font-config-service
           git-config-service
           global-config-service

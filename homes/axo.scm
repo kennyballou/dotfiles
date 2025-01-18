@@ -16,6 +16,7 @@
   #:use-module (kbg packages profiles base)
   #:use-module (kbg packages profiles development)
   #:use-module (kbg packages profiles desktop)
+  #:use-module (kbg packages profiles emacs)
   #:use-module (kbg packages profiles laptop)
   #:use-module (kbg packages profiles fonts)
   #:use-module (kbg packages profiles games)
@@ -34,6 +35,7 @@
   (append %kbg-base-development-packages
           %kbg-laptop-packages
           (filter-packages (list) %kbg-desktop-packages)
+          %kbg-emacs-packages
           %kbg-science-packages
           %kbg-statistics-packages
           %kbg-fonts))
@@ -41,10 +43,10 @@
  (services
   (append bash-service
           (configs-for-host 'axo)
-          emacs-service
           (list (service home-mcron-service-type)
                 (service recoll-mcron-service-type
                          (recoll-mcron-configuration)))
           (list (service home-dbus-service-type)
                 (service home-pipewire-service-type))
           (services-for-host 'axo))))
+  ;;         emacs-service
