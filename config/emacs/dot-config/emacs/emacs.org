@@ -2291,7 +2291,8 @@ https://tuhdo.github.io/helm-intro.html
              (require 'helm-core)
              (require 'helm)
              (require 'helm-command)
-             (require 'helm-imenu))
+             (require 'helm-imenu)
+             (require 'helm-man))
   :commands (helm-show-kill-ring helm-all-mark-rings)
   :after async
   :diminish
