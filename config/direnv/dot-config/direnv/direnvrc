@@ -2,7 +2,11 @@
 
 function use_guix() {
     GIT_ROOT="$(git rev-parse --show-toplevel)"
-    GUIX_CHANNELS="${GIT_ROOT}/channels.scm"
+    if [[ -f "./channels.scm" ]]; then
+        GUIX_CHANNELS="./channels.scm"
+    else
+        GUIX_CHANNELS="${GIT_ROOT}/channels.scm"
+    fi
     if [[ -f ${GUIX_CHANNELS} ]]; then
         echo "Using Guix version from ${GUIX_CHANNELS}"
         GUIX_ENVIRONMENT=$(guix time-machine --channels=${GUIX_CHANNELS} -- shell -- bash -c 'echo ${GUIX_ENVIRONMENT}')
