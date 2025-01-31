@@ -256,7 +256,7 @@ connect to it.")
 @code{home-emacs-service-type} for more information.")
   (early-init-el
    (elisp-config '())
-   "List of expressions to add to @code{ealy-init-el}.  See
+   "List of expressions to add to @code{early-init-el}.  See
 @code{home-emacs-service-type} for more information."))
 
 (define (home-emacs-extensions original-config extension-configs)
