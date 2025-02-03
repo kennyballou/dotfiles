@@ -710,6 +710,15 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (use-package bind-key)
 (use-package diminish)
 #+end_src
+*** Hydra?
+:PROPERTIES:
+:ID:       64416139-eb00-40ce-b924-ad99d748f7c8
+:END:
+
+#+begin_src elisp
+(use-package hydra)
+#+end_src
+
 *** Org Mode
 :PROPERTIES:
 :ID:       4f622896-6d42-4913-bb17-297a038f9c94
