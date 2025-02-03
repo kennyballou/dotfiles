@@ -255,6 +255,7 @@
         emacs-xyz:emacs-org-transclusion
         emacs-org-web-tools
         emacs-ox-gfm
+        emacs-ox-reveal
         emacs-page-break-lines
         emacs-pass
         emacs-password-store

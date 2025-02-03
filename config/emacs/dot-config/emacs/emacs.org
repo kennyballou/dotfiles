@@ -1517,6 +1517,15 @@ not strictly necessary.
   (setq org-brain-file-entries-use-title nil))
 #+end_src
 
+**** Org Reveal
+:PROPERTIES:
+:ID:       e06bc08b-8af9-4957-81dd-12ac5bc4ac31
+:END:
+
+#+begin_src elisp
+(use-package ox-reveal)
+#+end_src
+
 **** Org Roam
 :PROPERTIES:
 :ID:       65c42d7e-8d9c-42d9-b810-d93fc5c7f4cb
