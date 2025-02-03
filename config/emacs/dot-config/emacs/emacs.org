@@ -1766,12 +1766,24 @@ This information *MUST* be provided before the ~\documentclass~ to be effective.
          ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
 #+end_src
 
+https://emacs.stackexchange.com/questions/76450/in-org-mode-how-to-exclude-a-heading-from-export-only-for-some-back-ends
+https://kitchingroup.cheme.cmu.edu/blog/2013/12/08/Selectively-exporting-headlines-in-org-mode/
+
+#+begin_src elisp
+(defun exclude-from-reveal-export-hook (backend)
+  (setq org-export-exlude-tags (remove "noslide" org-export-exclude-tags))
+  (if (string= backend "reveal")
+      (push "noslide" org-export-exclude-tags)))
+
+(add-hook 'org-export-before-parsing-functions #'exclude-from-reveal-export-hook)
+#+end_src
+
 **** Org Teach
 :PROPERTIES:
 :ID:       ac4157fe-6003-4ce3-822b-cdbeb829909e
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package org-teach
   :config
   (defun org-teach-export-slides-and-handout ()
