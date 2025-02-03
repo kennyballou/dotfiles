@@ -684,6 +684,17 @@ Do not make me type ~C-q SPC~ to insert spaces!
   (load bootstrap-file nil 'nomessage))
 #+end_src
 
+**** Guix Emacs
+:PROPERTIES:
+:ID:       c10a4a30-3b4e-4436-976d-d54a5ae94dd4
+:END:
+
+#+begin_src elisp
+(eval-when-compile
+  (require 'guix-emacs)
+  (guix-emacs-autoload-packages))
+#+end_src
+
 **** =use-package=
 :PROPERTIES:
 :ID:       06e19deb-b0e4-46d1-a322-202e3f303bad
