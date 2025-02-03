@@ -4260,7 +4260,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (cond ((executable-find "guix")
          (list "guix"
                "shell"
-               "--pure"
                "ccls"
                "--"
                "ccls"))))
