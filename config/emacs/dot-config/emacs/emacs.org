@@ -4138,6 +4138,15 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (semantic-mode t)
 #+end_src
 
+**** BNF-Mode
+:PROPERTIES:
+:ID:       06516d09-55cd-4a34-a784-984c6c56fcf6
+:END:
+
+#+begin_src elisp
+(use-package bnf-mode)
+#+end_src
+
 **** ElDoc
 :PROPERTIES:
 :ID:       e83e8cbe-4f96-4b92-a4d1-3801f32ba1b3
