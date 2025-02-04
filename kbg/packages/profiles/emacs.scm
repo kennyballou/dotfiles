@@ -144,7 +144,7 @@
         emacs-git-link
         emacs-git-modes
         emacs-git-timemachine
-        emacs-gnuplot
+        emacs-gnuplot-mode
         emacs-gnus-alias
         emacs-golden-ratio
         emacs-go-autocomplete
