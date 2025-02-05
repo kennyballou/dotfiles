@@ -179,7 +179,6 @@
         emacs-helm-tree-sitter
         emacs-helm-unicode
         emacs-helm-wordnet
-        emacs-xyz:emacs-helm-wordnut
         emacs-helm-xref
         emacs-helpful
         emacs-hg-histedit
