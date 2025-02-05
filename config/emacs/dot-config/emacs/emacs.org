@@ -2026,9 +2026,10 @@ Snippet taken from https://stackoverflow.com/a/18330742/7492588
 :END:
 
 #+begin_src elisp
-(use-package fullframe)
-
-(fullframe list-packages quit-window)
+(use-package fullframe
+  :commands fullframe
+  :config
+  (fullframe list-packages quit-window))
 #+end_src
 
 *** Icons
