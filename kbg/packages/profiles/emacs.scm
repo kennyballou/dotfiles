@@ -78,6 +78,7 @@
         emacs-xyz:emacs-delight
         emacs-xyz:emacs-detached
         emacs-xyz:emacs-devdocs
+        emacs-xyz:emacs-ef-themes
         emacs-diff-hl
         emacs-diminish
         emacs-dired-rsync
