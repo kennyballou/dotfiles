@@ -4696,7 +4696,9 @@ Add some extra symbols to prettify for Coq.
 :END:
 
 #+begin_src elisp
-(use-package gnuplot-mode)
+(use-package gnuplot-mode
+  :config
+  (unbind-key "C-x p" gnuplot-mode-map))
 #+end_src
 
 #+begin_src elisp
