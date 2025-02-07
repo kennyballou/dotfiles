@@ -1825,6 +1825,15 @@ then open both resulting PDFs externally with evince."
 (bind-key "C-c o s i" #'kb/include-slide-file)
 #+end_src
 
+**** Org-Mairix?
+:PROPERTIES:
+:ID:       2581c900-29c2-4b6e-b53e-5e33cdef8ca2
+:END:
+
+#+begin_src elisp
+(use-package org-mairix)
+#+end_src
+
 *** GC Statistics
 :PROPERTIES:
 :ID:       a65cc73e-bffc-4f7b-a6b8-4829ec71608b
