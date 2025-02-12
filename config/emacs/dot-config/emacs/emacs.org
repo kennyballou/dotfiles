@@ -881,8 +881,7 @@ http://doc.norang.ca/org-mode.htm
 :ID:       02d24593-c78c-4edb-a9d4-caa6ce6f12c7
 :END:
 
-#+begin_src elisp
-(setq org-latex-listings t)
+#+begin_src elisp :tangle no
 (setq org-latex-listings-options
       '(("breaklines" "true")
         ("firstnumber" "auto")
@@ -901,7 +900,7 @@ http://doc.norang.ca/org-mode.htm
 
 #+begin_src elisp
 (setq org-latex-default-packages-alist
-      '(("" "listings" t nil)
+      '(("" "minted" t nil)
         ("AUTO" "inputenc" t
          ("pdflatex"))
         ("T1" "fontenc" t
@@ -921,8 +920,8 @@ http://doc.norang.ca/org-mode.htm
 (use-package ox-latex
   :ensure nil
   :custom
-  (org-latex-src-block-backend 'listings)
   (org-latex-prefer-user-labels t)
+  (org-latex-src-block-backend 'minted)
   (org-latex-pdf-process
    '("latexmk -f -pdf -%latex -interaction=nonstopmode -shell-escape -output-directory=%o %f")))
 #+end_src
