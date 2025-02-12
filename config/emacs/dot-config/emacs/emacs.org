@@ -882,7 +882,6 @@ http://doc.norang.ca/org-mode.htm
 :END:
 
 #+begin_src elisp
-(setq org-latex-prefer-user-labels t)
 (setq org-latex-listings t)
 (setq org-latex-listings-options
       '(("breaklines" "true")
@@ -923,6 +922,7 @@ http://doc.norang.ca/org-mode.htm
   :ensure nil
   :custom
   (org-latex-src-block-backend 'listings)
+  (org-latex-prefer-user-labels t)
   (org-latex-pdf-process
    '("latexmk -f -pdf -%latex -interaction=nonstopmode -shell-escape -output-directory=%o %f")))
 #+end_src
