@@ -904,6 +904,11 @@ http://doc.norang.ca/org-mode.htm
   :custom
   (org-latex-prefer-user-labels t)
   (org-latex-src-block-backend 'minted)
+  (org-latex-minted-options
+   '(("numbersep" . "5pt")
+     ("breaklines" . "true")
+     ("fontsize" . "\\scriptsize")
+     ("linenos" . "true")))
   (org-latex-default-packages-alist
    '(("" "minted" t nil)
      ("AUTO" "inputenc" t
