@@ -899,29 +899,26 @@ http://doc.norang.ca/org-mode.htm
 #+end_src
 
 #+begin_src elisp
-(setq org-latex-default-packages-alist
-      '(("" "minted" t nil)
-        ("AUTO" "inputenc" t
-         ("pdflatex"))
-        ("T1" "fontenc" t
-         ("pdflatex"))
-        ("" "graphicx" t nil)
-        ("" "longtable" nil nil)
-        ("" "wrapfig" nil nil)
-        ("" "rotating" nil nil)
-        ("normalem" "ulem" t nil)
-        ("" "amsmath" t nil)
-        ("" "amssymb" t nil)
-        ("" "capt-of" nil nil)
-        ("hidelinks" "hyperref" nil nil)))
-#+end_src
-
-#+begin_src elisp
 (use-package ox-latex
   :ensure nil
   :custom
   (org-latex-prefer-user-labels t)
   (org-latex-src-block-backend 'minted)
+  (org-latex-default-packages-alist
+   '(("" "minted" t nil)
+     ("AUTO" "inputenc" t
+      ("pdflatex"))
+     ("T1" "fontenc" t
+      ("pdflatex"))
+     ("" "graphicx" t nil)
+     ("" "longtable" nil nil)
+     ("" "wrapfig" nil nil)
+     ("" "rotating" nil nil)
+     ("normalem" "ulem" t nil)
+     ("" "amsmath" t nil)
+     ("" "amssymb" t nil)
+     ("" "capt-of" nil nil)
+     ("hidelinks" "hyperref" nil nil)))
   (org-latex-pdf-process
    '("latexmk -f -pdf -%latex -interaction=nonstopmode -shell-escape -output-directory=%o %f")))
 #+end_src
