@@ -21,6 +21,7 @@
 (define tree-sitter-langs
   (directory-union "tree-sitter-union"
                    (list tree-sitter
+                         tree-sitter-awk
                          tree-sitter-bash
                          tree-sitter-bibtex
                          tree-sitter-c
@@ -31,6 +32,7 @@
                          tree-sitter-dockerfile
                          tree-sitter-elixir
                          tree-sitter-elm
+                         tree-sitter-erlang
                          tree-sitter-go
                          tree-sitter-gomod
                          tree-sitter-haskell
@@ -38,8 +40,10 @@
                          tree-sitter-java
                          tree-sitter-javascript
                          tree-sitter-json
+                         tree-sitter-latex
                          tree-sitter-markdown
                          tree-sitter-markdown-gfm
+                         tree-sitter-nix
                          tree-sitter-ocaml
                          tree-sitter-org
                          tree-sitter-python
@@ -48,6 +52,7 @@
                          tree-sitter-ruby
                          tree-sitter-rust
                          tree-sitter-scheme
+                         tree-sitter-tlaplus
                          tree-sitter-typescript)))
 
 (define-public emacs-config-service
