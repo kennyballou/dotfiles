@@ -1842,7 +1842,7 @@ then open both resulting PDFs externally with evince."
 
 #+begin_src elisp
 (use-package emacs-gc-stats
-  :init
+  :config
   (emacs-gc-stats-mode +1))
 #+end_src
 
