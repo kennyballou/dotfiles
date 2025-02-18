@@ -2764,6 +2764,15 @@ Cut/copy the current line if no region is active.
 (diminish 'abbrev-mode)
 #+end_src
 
+https://www.emacswiki.org/emacs/DosToUnix
+
+#+begin_src elisp
+(defun dos2unix ()
+  "Not exactly, but it's easier to remember."
+  (interactive)
+  (set-buffer-file-coding-system 'unix 't))
+#+end_src
+
 **** Dictionary
 :PROPERTIES:
 :ID:       c17c3bc7-0d74-43c3-92d2-82f8e853783f
