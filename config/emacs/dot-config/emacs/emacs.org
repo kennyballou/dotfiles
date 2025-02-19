@@ -4476,6 +4476,10 @@ Most shell applications accept Perl Compatible Regular Expressions."
   :after dap-mode)
 #+end_src
 
+#+begin_src elisp
+(use-package dape)
+#+end_src
+
 **** Ascii Doc
 :PROPERTIES:
 :ID:       dfacb21e-e11b-4c4a-b6b9-a653a510fc44

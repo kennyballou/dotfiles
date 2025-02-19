@@ -70,6 +70,7 @@
         emacs-cwl-mode
         emacs-d-mode
         emacs-daemons
+        emacs-xyz:emacs-dape
         emacs-dap-mode
         emacs-dash
         emacs-xyz:emacs-debbugs
