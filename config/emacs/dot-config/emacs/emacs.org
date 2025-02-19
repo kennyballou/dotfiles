@@ -2183,19 +2183,19 @@ Golden Ratio frame resizing
 https://matthewbauer.us/blog/bauer.html
 
 #+begin_src elisp
-  (use-package dired
-    :init (require 'dired)
-    :bind (:map dired-mode-map
-        ("C-c C-c" . compile)
-        ("r" . browse-url-of-dired-file))
-    :config
-    (setq dired-listing-switches "-lh"))
+(use-package dired
+  :init (require 'dired)
+  :bind (:map dired-mode-map
+              ("C-c C-c" . compile)
+      ("r" . browse-url-of-dired-file))
+  :config
+  (setq dired-listing-switches "-lh"))
 
-  ;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
-  ;; preview files in dired
-  (use-package peep-dired
-    :bind (:map dired-mode-map
-        ("P" . peep-dired)))
+;; http://pragmaticemacs.com/emacs/quickly-preview-images-and-other-files-with-peep-dired/
+;; preview files in dired
+(use-package peep-dired
+  :bind (:map dired-mode-map
+      ("P" . peep-dired)))
 #+end_src
 
 Disable mouse open files.
