@@ -3405,6 +3405,16 @@ https://blog.jmthornton.net/p/emacs-project-override"
 :END:
 
 #+begin_src elisp
+(use-package jinx
+  :diminish
+  :hook ((text-mode-hook . jinx-mode)
+         (prog-mode-hook . jinx-mode))
+  :bind (("C-c ." . jinx-correct)
+         ("M-$" . jinx-correct)
+         ("C-M-$" . jinx-languages)))
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package ispell
   :config
   (setq ispell-silently-savep t)

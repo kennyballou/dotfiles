@@ -196,6 +196,7 @@
         emacs-ivy
         emacs-xyz:emacs-jarchive
         emacs-jedi
+        emacs-xyz:emacs-jinx
         emacs-js-comint
         emacs-js2-mode
         emacs-json-mode
