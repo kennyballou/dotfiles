@@ -5,7 +5,7 @@ export HISTFILESIZE=200000
 export HISTSIZE=200000
 shopt -s histappend
 
-if [[ "${TERM}" == "dumb" ]]; then
+if [[ "${TERM}" == "dumb" || -n "${INSIDE_EMACS}" || -n "${GUIX_ENVIRONMENT}" ]]; then
     alias m='cat'
     alias less='cat'
     alias more='cat'
