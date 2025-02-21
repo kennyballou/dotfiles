@@ -710,7 +710,7 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (use-package bind-key)
 (use-package diminish)
 #+end_src
-*** Hydra?
+*** Hydra
 :PROPERTIES:
 :ID:       64416139-eb00-40ce-b924-ad99d748f7c8
 :END:
