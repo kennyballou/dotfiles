@@ -2172,7 +2172,7 @@ Golden Ratio frame resizing
   (golden-ratio-wide-adjust-factor 0.8)
   (golden-ratio-exclude-modes '(helm-mode))
   :config
-  (golden-ratio-mode nil))
+  (golden-ratio-mode -1))
 #+end_src
 
 *** dired
