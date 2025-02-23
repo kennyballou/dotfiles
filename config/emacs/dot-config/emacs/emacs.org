@@ -3419,6 +3419,7 @@ https://blog.jmthornton.net/p/emacs-project-override"
 
 #+begin_src elisp
 (use-package flyspell
+  :disabled
   :after ispell
   :diminish
   :if (executable-find ispell-program-name)
@@ -3432,14 +3433,16 @@ https://blog.jmthornton.net/p/emacs-project-override"
   (add-hook 'prog-mode-hook #'flyspell-prog-mode))
 
 (use-package flyspell-correct
+  :disabled
   :commands flyspell-correct-wrapper
   :after flyspell
   :bind (:map flyspell-mode-map
               ("C-c ." . flyspell-correct-wrapper)))
 #+end_src
 
-#+begin_src elisp :tangle no
+#+begin_src elisp
 (use-package flycheck-aspell
+  :disabled
   :after flycheck
   :config
   (add-to-list 'flycheck-checkers 'tex-aspell-dynamic)
