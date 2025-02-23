@@ -110,6 +110,7 @@ packages with proper GNU Emacs version."
         emacs-diminish
         emacs-dired-rsync
         emacs-direnv
+        emacs-dirvish
         emacs-disable-mouse
         ;; emacs-djvu
         ;; emacs-djvu3

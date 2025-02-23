@@ -2338,6 +2338,25 @@ Asynchronous rsync from [[help:dired][dired]].
               ("C-c C-r" . dired-rsync)))
 #+end_src
 
+**** Dirvish
+:PROPERTIES:
+:ID:       72445e7b-222e-4841-b76e-7f11421e37f0
+:END:
+
+Many customizations added from https://www.karsdorp.io/posts/dotemacs/.
+
+#+begin_src elisp
+(use-package dirvish
+  :config (dirvish-override-dired-mode)
+  :custom
+  (dirvish-mode-line-format
+   '(:left (sort file-time " " file-size symlink) :right (omit yank index)))
+  (dirvish-attributes '(collapse subtree-state vc-state))
+  :config
+  (setq dired-listing-switches
+        "-l --human-readable --time-style=long-iso --group-directories-first --no-group"))
+#+end_src
+
 *** isearch
 :PROPERTIES:
 :ID:       85846a98-5932-49de-8f88-abbc558dfecb
