@@ -711,6 +711,18 @@ Do not make me type ~C-q SPC~ to insert spaces!
 (use-package bind-key)
 (use-package diminish)
 #+end_src
+*** FullFrame
+:PROPERTIES:
+:ID:       a002f934-38fc-4d0b-a9a6-d741d05adaff
+:END:
+
+#+begin_src elisp
+(use-package fullframe
+  :commands fullframe
+  :config
+  (fullframe list-packages quit-window))
+#+end_src
+
 *** Version Control
 :PROPERTIES:
 :ID:       3fc70c47-fb7a-4b4f-94e7-d59b1a87d89d
@@ -2135,18 +2147,6 @@ Snippet taken from https://stackoverflow.com/a/18330742/7492588
 
 #+begin_src elisp
 (use-package wgrep)
-#+end_src
-
-*** FullFrame
-:PROPERTIES:
-:ID:       a002f934-38fc-4d0b-a9a6-d741d05adaff
-:END:
-
-#+begin_src elisp
-(use-package fullframe
-  :commands fullframe
-  :config
-  (fullframe list-packages quit-window))
 #+end_src
 
 *** Icons
