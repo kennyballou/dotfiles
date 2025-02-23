@@ -4442,6 +4442,27 @@ Most shell applications accept Perl Compatible Regular Expressions."
                "texlab"))))
 #+end_src
 
+******* YAML
+:PROPERTIES:
+:ID:       135601c0-0c91-447e-91ba-a2ffceff02e1
+:END:
+
+#+begin_src elisp
+(defun kb/yaml-eglot-server (interactive?)
+  (cond ((executable-find "guix")
+         (list "guix"
+               "time-machine"
+               (string-join `("--channels=" ,(getenv "HOME") "/.config/guix/channels.scm"))
+               "--"
+               "shell"
+               "--pure"
+               "coreutils"
+               "grep"
+               "yaml-language-server"
+               "--"
+               "yaml-language-server"))))
+#+end_src
+
 ****** Eglot Configuration
 :PROPERTIES:
 :ID:       a184b310-86c8-4950-8b10-8b65bb0e7c8b
@@ -4474,7 +4495,9 @@ Most shell applications accept Perl Compatible Regular Expressions."
                                     (cons '(python-mode python-ts-mode)
                                           #'kb/python-eglot-server)
                                     (cons '(latex-mode bibtex-mode)
-                                          #'kb/latex-eglot-server)))
+                                          #'kb/latex-eglot-server)
+                                    (cons '(yaml-mode yaml-ts-mode)
+                                          #'kb/yaml-eglot-server)))
   :custom
   (eglot-report-progress t)
   (eglot-confirm-server-initiated-edits 'confirm)
@@ -5616,6 +5639,7 @@ Add =languagetool= to =tex-chktex= checker chain.
 #+begin_src elisp
 (use-package yaml-mode)
 #+end_src
+
 **** Z3/SMTLIB
 :PROPERTIES:
 :ID:       f1d205f2-df81-4891-8fd1-be10a6ea3276
