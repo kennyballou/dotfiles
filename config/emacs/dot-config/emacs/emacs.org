@@ -2295,6 +2295,8 @@ https://matthewbauer.us/blog/bauer.html
   :bind (:map dired-mode-map
               ("C-c C-c" . compile)
       ("r" . browse-url-of-dired-file))
+  :custom
+  (dired-mouse-drag-files t)
   :config
   (setq dired-listing-switches "-lh"))
 
