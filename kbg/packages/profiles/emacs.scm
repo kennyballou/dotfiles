@@ -358,6 +358,7 @@ packages with proper GNU Emacs version."
         emacs-xyz:emacs-x509-mode
         emacs-xyz:emacs-xr
         emacs-xref-js2
+        emacs-yaml-mode
         emacs-yasnippet
         emacs-z3-mode
         emacs-zeal-at-point

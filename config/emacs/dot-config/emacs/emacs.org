@@ -5606,6 +5606,14 @@ Add =languagetool= to =tex-chktex= checker chain.
   :hook (tuareg-mode-hook . kb/ocaml-mode))
 #+end_src
 
+**** YAML
+:PROPERTIES:
+:ID:       7c54209e-ff9e-456c-93de-b03ed46fa3d2
+:END:
+
+#+begin_src elisp
+(use-package yaml-mode)
+#+end_src
 **** Z3/SMTLIB
 :PROPERTIES:
 :ID:       f1d205f2-df81-4891-8fd1-be10a6ea3276
