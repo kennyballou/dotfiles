@@ -7,10 +7,32 @@
   #:use-module (gnu home-services emacs)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages tree-sitter)
+  #:use-module (guix packages)
+  #:use-module (guix build-system emacs)
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
   #:use-module (emacs packages melpa)
   #:use-module (kbg packages emacs-xyz)
+  #:use-module (ice-9 curried-definitions)
   #:export (%kbg-emacs-packages))
+
+(define ((update-emacs-argument-for-package target-emacs) p)
+  "Set @code{#:emacs} to EMACS-PACKAGE for package P.  To build elisp
+packages with proper GNU Emacs version."
+  (if (equal?
+       (package-build-system p)
+       emacs-build-system)
+      (package
+       (inherit p)
+       (arguments
+        (susbstitute-keyword-arguments (package-arguments p)
+                                       ((#:emacs e #f) target-emacs))))
+      p))
+
+(define (recompl target-emacs)
+  "Recursively updates @code{#:emacs} argument for package and all the
+ inputs."
+  (package-mapping (update-emacs-argument-for-package target-emacs)
+                   (lambda (p) #f)))
 
 (define rewrite
   (package-input-rewriting
@@ -23,7 +45,11 @@
      (,emacs-xyz:emacs-magit . ,emacs-magit)
      (,emacs-xyz:emacs-tablist . ,emacs-tablist))))
 
-(define %kbg-emacs-packages
+(define (emacs-packages target-emacs)
+  "Return list of Emacs Packages recompiled with TARGET-EMACS."
+  (map (recompl target-emacs) %kbg-emacs-packages))
+
+(define packages
   (map rewrite
        (list
         emacs-add-node-modules-path
@@ -335,3 +361,6 @@
         emacs-z3-mode
         emacs-zeal-at-point
         emacs-zenburn-theme)))
+
+(define %kbg-emacs-packages
+  (map (recompl emacs-next-pgtk) packages))
