@@ -206,6 +206,7 @@ Add some functions for testing the configuration type
 (setq byte-complile-warnings '(not cl-functions))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (concat (getenv "GUIX_PROFILE") "/share/emacs/site-lisp"))
 
 (defconst *spell-check-support-enabled* t)
 
