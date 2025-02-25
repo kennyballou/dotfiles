@@ -1676,6 +1676,7 @@ not strictly necessary.
          ("C-c n c a" . org-roam-alias-add)
          ("C-c n c r" . org-roam-ref-add))
   :custom
+  (org-roam-link-auto-replace nil)
   (org-roam-capture-templates
    '(("d" "default" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
       :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org" "")
@@ -6101,6 +6102,7 @@ Configuration borrowed from the tutorial found here:
 (require 'gnus-dired)
 (require 'gnus-topic)
 (require 'nnir)
+(require 'mairix)
 
 ;; Override the default GNUS directories
 (setq gnus-agent-directory (expand-file-name "~/.mail/gnus/agent"))
@@ -6451,6 +6453,18 @@ _dR_:   Disable repeat
 (use-package async-status
   :after async
   :diminish)
+#+end_src
+
+*** KeyCast
+:PROPERTIES:
+:ID:       8a80ff96-3329-4f16-ab83-1423bb49bb50
+:END:
+
+Sometimes, when presenting, it would be nice to have a way to log and display
+the keys:
+
+#+begin_src elisp
+(use-package keycast)
 #+end_src
 
 *** Init Local

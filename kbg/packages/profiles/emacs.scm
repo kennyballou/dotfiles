@@ -228,6 +228,7 @@ packages with proper GNU Emacs version."
         emacs-js2-mode
         emacs-json-mode
         ;; emacs-language-detection
+        emacs-keycast
         emacs-ledger-mode
         ;; emacs-less-css-mode
         emacs-link-hint
