@@ -1537,7 +1537,8 @@ Except where they probably shouldn't be added.
 (with-eval-after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
-   `((clojure . t)
+   `((C . t)
+     (clojure . t)
      (dot . t)
      (emacs-lisp . t)
      (gnuplot . t)
