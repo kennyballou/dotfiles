@@ -5206,6 +5206,22 @@ indentation rules."
   :after (helm projectile geben))
 #+end_src
 
+**** PlantUML
+:PROPERTIES:
+:ID:       4739f730-16d5-477d-80a0-e0636982ff3a
+:END:
+
+#+begin_src elisp
+(use-package plantuml-mode
+  :mode "\\.plantuml\\'"
+  :custom
+  (plantuml-default-exec-mode 'executable)
+  :config
+  (add-to-list
+   'org-src-lang-modes '("plantuml" . plantuml))
+  )
+#+end_src
+
 **** Python
 :PROPERTIES:
 :ID:       7c301063-a3df-47a4-9201-05ed34c74107

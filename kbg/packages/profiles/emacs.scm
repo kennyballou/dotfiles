@@ -300,6 +300,7 @@ packages with proper GNU Emacs version."
         emacs-perspective
         emacs-php-mode
         emacs-pip-requirements
+        emacs-plantuml-mode
         emacs-polymode
         emacs-powerline
         ;; emacs-projectile
