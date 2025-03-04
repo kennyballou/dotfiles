@@ -2320,6 +2320,7 @@ Disable mouse open files.
 (use-package dired-x
   :custom
   (dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
+                                  ("\\.eps\\'" "evince")
                                   ("\\.doc\\'" "libreoffice")
                                   ("\\.docx\\'" "libreoffice")
                                   ("\\.ppt\\'" "libreoffice")
