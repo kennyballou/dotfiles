@@ -5,7 +5,7 @@
        (url "https://git.savannah.gnu.org/git/guix.git")
        (branch "master")
        (commit
-        "cd704d29ce9755a4ec5b9baf72ba7428ae3500a6")
+        "e77a676f21fd1fcd38717a8a02ffcf0005e0552d")
        (introduction
         (make-channel-introduction
          "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -38,7 +38,7 @@
        (url "https://github.com/garrgravarr/guix-emacs.git")
        (branch "master")
        (commit
-        "60a7cf1d17ee10131cb4d025297654ea16ad3d30")
+        "c54fccafe29c06378b5c71f51708bf29816fc93b")
        (introduction
         (make-channel-introduction
          "d676ef5f94d2c1bd32f11f084d47dcb1a180fdd4"
