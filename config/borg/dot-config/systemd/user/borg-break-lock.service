@@ -1,0 +1,12 @@
+[Unit]
+Description=Borg Break Lock
+Requires=borg-vars.service
+Before=borg-prune.service
+Conflicts=borg-prune.service borg.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/run/user/%U/borg/environment
+ExecStart=guix shell borg -- borg break-lock \
+               --verbose \
+               "${REPOSITORY}"
