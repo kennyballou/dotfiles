@@ -173,6 +173,7 @@ packages with proper GNU Emacs version."
         emacs-git-link
         emacs-git-modes
         emacs-git-timemachine
+        emacs-glsl-mode
         emacs-gnuplot-mode
         emacs-gnus-alias
         emacs-golden-ratio

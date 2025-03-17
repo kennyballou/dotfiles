@@ -4775,6 +4775,15 @@ Add some extra symbols to prettify for Coq.
   (diminish 'elm-indent-mode))
 #+end_src
 
+**** GLSL Mode
+:PROPERTIES:
+:ID:       6bcbe333-8162-4020-bb7b-5d7594acd902
+:END:
+
+#+begin_src elisp
+(use-package glsl-mode)
+#+end_src
+
 **** Gnuplot
 :PROPERTIES:
 :ID:       648f8ece-c160-478c-8903-fca52b0a5b88
