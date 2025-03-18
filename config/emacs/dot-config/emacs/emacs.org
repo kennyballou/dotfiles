@@ -2363,6 +2363,22 @@ Many customizations added from https://www.karsdorp.io/posts/dotemacs/.
         "-l --human-readable --time-style=long-iso --group-directories-first --no-group"))
 #+end_src
 
+**** Utilities
+:PROPERTIES:
+:ID:       332a733a-95eb-4f05-bb18-0e6a28ff8915
+:END:
+
+A simple function to open the file browser under the currenct directory.  This
+runs in the context of the current buffer and therefore whatever the current
+`default-directory' is.  Obviously, this assumes ~xdg-open~.
+
+#+begin_src elisp
+(defun visit-here ()
+  "Open the `default-directory' using the system file browser."
+  (interactive)
+  (shell-command "xdg-open ."))
+#+end_src
+
 *** isearch
 :PROPERTIES:
 :ID:       85846a98-5932-49de-8f88-abbc558dfecb
