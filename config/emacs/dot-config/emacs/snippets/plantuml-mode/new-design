@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: new UML design
+# key: <new-uml>
+# --
+@startuml
+skinparam linetype ortho
+@enduml
