@@ -2650,8 +2650,8 @@ https://tuhdo.github.io/helm-intro.html
 #+begin_src elisp
 (use-package vundo
   :commands (vundo)
-  :config
-  (setq vundo-compact-display t))
+  :custom
+  (vundo-compact-display t))
 #+end_src
 
 *** Move where I mean
