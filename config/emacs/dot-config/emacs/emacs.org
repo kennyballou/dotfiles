@@ -2651,7 +2651,8 @@ https://tuhdo.github.io/helm-intro.html
 (use-package vundo
   :commands (vundo)
   :custom
-  (vundo-compact-display t))
+  (vundo-compact-display t)
+  (vundo-glyph-alist vundo-unicode-symbols))
 #+end_src
 
 *** Move where I mean
