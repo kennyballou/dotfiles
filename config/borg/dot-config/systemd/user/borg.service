@@ -29,5 +29,6 @@ ExecStart=guix shell borg -- borg create \
                --exclude '/home/*/.local/share/dolphin-emu/*' \
                --exclude '/home/*/.recoll/xapiandb/*' \
                --upload-ratelimit 2048 \
+               --remote-path=borg14 \
                "${REPOSITORY}::${ARCHIVE}" \
                /home/kb/
