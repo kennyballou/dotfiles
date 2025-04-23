@@ -24,6 +24,7 @@ ExecStart=guix shell borg -- borg create \
                --exclude '/home/*/.config/flatpak/*' \
                --exclude '/home/*/.config/Signal/*' \
                --exclude '/home/*/.config/Slack/*' \
+               --exclude '/home/*/.local/share/containers/*' \
                --exclude '/home/*/.local/share/guix-sandbox-home/*' \
                --exclude '/home/*/.local/share/Zeal/*' \
                --exclude '/home/*/.local/share/dolphin-emu/*' \
