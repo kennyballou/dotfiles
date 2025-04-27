@@ -2,6 +2,7 @@ NIX_FILES = $(shell find . name -name '*.nix' -type f)
 MAX_AGE=14d
 CHANNEL_FILE=./config/guix/channels.scm
 HOSTS=axo owl baal yak koi bard
+TARGET?=x86_64-linux-gnu
 SYSTEMS=$(patsubst %,systems/%,$(HOSTS))
 HOMES=$(patsubst %,homes/%,$(HOSTS))
 HOSTNAME=$(shell hostname)
@@ -80,7 +81,7 @@ $(SYSTEMS):
 
 .PHONY: iso
 iso: iso/installer.scm
-	guix time-machine -C $(CHANNEL_FILE) -- system image --cores=$(CORES) --image-type=iso9660 $^
+	guix time-machine -C $(CHANNEL_FILE) -- system image --target=$(TARGET) --cores=$(CORES) --image-type=iso9660 $^
 
 ## Private targets
 config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el: config/emacs/emacs.d/emacs.org
