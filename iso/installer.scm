@@ -60,7 +60,7 @@
 
     ;; Add some extra packages useful for the installation process
     (packages
-     (append (list git curl emacs-no-x-toolkit lvm2 gptfdisk)
+     (append (list git curl emacs-no-x-toolkit lvm2 gptfdisk xfsprogs)
              (operating-system-packages installation-os)))))
 
 installation-os-nonfree
