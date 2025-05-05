@@ -5,7 +5,7 @@
        (url "https://codeberg.org/guix/guix-mirror")
        (branch "master")
        (commit
-        "b8e2d556d9b9673a4520222ebe8719ddecee9a81")
+        "3993d1961ac96b8738f68b3f7aec9d147d43372f")
        (introduction
         (make-channel-introduction
          "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -16,7 +16,7 @@
        (url "https://gitlab.com/nonguix/nonguix")
        (branch "master")
        (commit
-        "e899121adbaa13cfcaeae7a5c24921bffa645771")
+        "b9d3169772b45a2457def49318173f8353bb34f9")
        (introduction
         (make-channel-introduction
          "ca0837cc70d5b4d3fce83b34c31b3378f60f4498"
@@ -38,7 +38,7 @@
        (url "https://github.com/garrgravarr/guix-emacs.git")
        (branch "master")
        (commit
-        "2768a2bb0dd431e722d6eefdee5c064b0b99935d")
+        "9d687fe6fae0a43654795a63fd5bc7e96695c80a")
        (introduction
         (make-channel-introduction
          "d676ef5f94d2c1bd32f11f084d47dcb1a180fdd4"
