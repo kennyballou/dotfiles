@@ -60,6 +60,9 @@ SCHEDULED: %T
 
 - [ ] Review Previous and Upcoming Calendar Data:
 
+  #+BEGIN: clocktable :scope agenda :block lastweek :compact t
+  #+END:
+
 - [ ] Review Previous Weekly Notes
 
   #+BEGIN: org-roam-ql :query (created-within "<-1w>" "<now>") :columns (title)
