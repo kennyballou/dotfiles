@@ -53,6 +53,7 @@
    global
    groff
    guile-3.0
+   guile-readline
    highlight
    ltrace
    iperf
