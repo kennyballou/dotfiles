@@ -15,6 +15,7 @@
   #:use-module (gnu packages java)
   #:use-module (gnu packages maths)
   #:use-module (gnu packages networking)
+  #:use-module (gnu packages parallel)
   #:use-module (gnu packages patchutils)
   #:use-module (gnu packages pretty-print)
   #:use-module (gnu packages python)
@@ -58,6 +59,7 @@
    gnu-make
    mercurial
    mg
+   parallel
    patch
    patchutils
    ;; perf
