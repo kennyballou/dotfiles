@@ -6,6 +6,7 @@
   #:use-module (gnu packages base)
   #:use-module (gnu packages code)
   #:use-module (gnu packages containers)
+  #:use-module (gnu packages entr)
   #:use-module (gnu packages graphviz)
   #:use-module (gnu packages groff)
   #:use-module (gnu packages guile)
@@ -39,6 +40,7 @@
    docx2txt
    dos2unix
    dot2tex
+   entr
    git
    `(,git "credential-netrc")
    `(,git "gui")
