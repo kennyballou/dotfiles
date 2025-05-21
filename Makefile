@@ -7,7 +7,7 @@ SYSTEMS=$(patsubst %,systems/%,$(HOSTS))
 HOMES=$(patsubst %,homes/%,$(HOSTS))
 HOSTNAME=$(shell hostname)
 NPROC=$(shell nproc)
-CORES=$(guile (max 1 (floor (/ $(NPROC) 4))))
+CORES?=$(guile (max 1 (floor (/ $(NPROC) 4))))
 LOAD_PATH=--load-path=./
 
 
