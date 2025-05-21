@@ -84,7 +84,7 @@ iso: iso/installer.scm
 	guix time-machine -C $(CHANNEL_FILE) -- system image --target=$(TARGET) --cores=$(CORES) --image-type=iso9660 $^
 
 installer.iso: iso/installer.scm
-	guix time-machine -C $(CHANNEL_FILE) -- system image --target=$(TARGET) --cores=$(CORES) --image-type=iso9660 --root=$@ $^
+	guix time-machine -C $(CHANNEL_FILE) -- system image $(LOAD_PATH) --target=$(TARGET) --cores=$(CORES) --image-type=iso9660 --root=$@ $^
 
 ## Private targets
 config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el: config/emacs/emacs.d/emacs.org
