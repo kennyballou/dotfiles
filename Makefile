@@ -83,6 +83,9 @@ $(SYSTEMS):
 iso: iso/installer.scm
 	guix time-machine -C $(CHANNEL_FILE) -- system image --target=$(TARGET) --cores=$(CORES) --image-type=iso9660 $^
 
+installer.iso: iso/installer.scm
+	guix time-machine -C $(CHANNEL_FILE) -- system image --target=$(TARGET) --cores=$(CORES) --image-type=iso9660 --root=$@ $^
+
 ## Private targets
 config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el: config/emacs/emacs.d/emacs.org
 	emacs -Q --batch --eval "(progn (require 'ob-tangle) (dolist (file command-line-args-left) (with-current-buffer (find-file-noselect file) (org-babel-tangle))))" "$<"
