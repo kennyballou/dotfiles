@@ -25,9 +25,9 @@
       (channel
        (name 'kbg)
        (url "https://git.sr.ht/~kennyballou/guix-channel.git")
-       (branch "master")
+       (branch "trunk")
        (commit
-        "80ba6d9e9bbc4d7b06ae35ada3e0adcfe14dd4c6")
+        "6274b1629e7b07040ec0c5ad5002dc6951837963")
        (introduction
         (make-channel-introduction
          "b9d0b8041d28ebd9f85cb041aa3f2235c8b39417"
