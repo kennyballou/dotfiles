@@ -59,8 +59,8 @@
 
     (mapped-devices
      (list (mapped-device
-            (source (uuid "f1e8d842-1c63-4311-803d-938f31d48d49"))
-            (target "luks-f1e8d842-1c63-4311-803d-938f31d48d49")
+            (source (uuid "d1bcf4fd-8fe8-41b6-88dc-c83851b1f071"))
+            (target "luks-d1bcf4fd-8fe8-41b6-88dc-c83851b1f071")
             (type luks-device-mapping))
            (mapped-device
             (source "vg0")
@@ -68,6 +68,7 @@
                            "vg0-home"
                            "vg0-nix"
                            "vg0-root"
+                           "vg0-opt"
                            "vg0-swap"
                            "vg0-tmp"
                            "vg0-var"))
@@ -117,7 +118,7 @@
                     (needed-for-boot? #t)
                     (dependencies mapped-devices)))
             (efi (file-system
-                   (device (uuid "5A5D-20AF" 'fat))
+                   (device (uuid "0601-7942" 'fat))
                    (mount-point "/boot/efi")
                    (type "vfat")
                    (dependencies mapped-devices))))
