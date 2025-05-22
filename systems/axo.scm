@@ -45,7 +45,7 @@
     (firmware (list linux-firmware))
     (initrd microcode-initrd)
     (host-name "axo")
-    (timezone "America/Boise")
+    (timezone "America/Los_Angeles")
     (locale "en_US.utf8")
 
     (initrd-modules (append (list "dm-crypt") %base-initrd-modules))
