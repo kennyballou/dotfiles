@@ -21,5 +21,6 @@
                           ("MPD_HOST" . "/run/user/1000/mpd/socket")
                           ("NAUTILUS_EXTENSION_PATH" . "/run/current-system/profile/lib/nautilus/site-extensions")
                           ("PARALLEL_HOME" . "${XDG_CACHE_HOME}/parallel")
-                          ("XDG_DATA_DIRS" . ,(string-append "${XDG_DATA_DIRS}:/var/lib/flatpak/exports/share:"
-                                                             "${XDG_DATA_HOME}/flatpak/exports/share"))))))
+                          ("XDG_DATA_DIRS" . ,(string-join '("${XDG_DATA_DIRS}"
+                                                             "/var/lib/flatpak/exports/share"
+                                                             "${XDG_DATA_HOME}/flatpak/exports/share/") ":"))))))
