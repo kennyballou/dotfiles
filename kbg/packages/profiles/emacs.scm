@@ -288,7 +288,6 @@ packages with proper GNU Emacs version."
         emacs-xyz:emacs-org-web-tools
         emacs-xyz:emacs-orgalist
         emacs-xyz:emacs-ox-gfm
-        emacs-xyz:emacs-ox-reveal
         emacs-xyz:emacs-page-break-lines
         emacs-xyz:emacs-pass
         emacs-xyz:emacs-password-store
