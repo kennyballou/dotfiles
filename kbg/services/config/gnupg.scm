@@ -8,7 +8,7 @@
 (define gpg-agent-config
   (mixed-text-file "gpg-agent.conf"
                    "enable-ssh-support\n"
-                   "pinentry-program pinentry-gnome3\n"
+                   "pinentry-program /run/current-system/profile/bin/pinentry-gnome3\n"
                    "default-cache-ttl 28800\n"
                    "max-cache-ttl 43200\n"
                    "allow-emacs-pinentry\n"
