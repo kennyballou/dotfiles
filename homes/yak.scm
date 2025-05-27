@@ -20,7 +20,6 @@
   #:use-module (kbg packages profiles science)
   #:use-module (kbg packages profiles statistics)
   #:use-module (kbg services config dotfiles)
-  #:use-module (kbg services emacs)
   #:use-module (kbg services shell)
   #:use-module (kbg services dbus)
   #:use-module (kbg services pipewire)

@@ -18,7 +18,6 @@
   #:use-module (kbg packages profiles fonts)
   #:use-module (kbg packages profiles statistics)
   #:use-module (kbg services config dotfiles)
-  #:use-module (kbg services emacs)
   #:use-module (kbg services shell)
   #:use-module (kbg services shepherd))
 
