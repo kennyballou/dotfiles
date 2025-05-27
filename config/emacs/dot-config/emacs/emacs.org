@@ -1738,7 +1738,7 @@ not strictly necessary.
   )
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package org-roam-ui
   :commands org-roam-ui-mode
   :diminish
@@ -1803,7 +1803,7 @@ not strictly necessary.
 :ID:       3335ec1f-4ee7-4d19-b8ce-4fd13c2fe6fc
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package org-roam-ql
   :after (org-roam)
   :bind ((:map org-roam-mode-map
@@ -1982,7 +1982,7 @@ then open both resulting PDFs externally with evince."
 :ID:       206d5d86-cee3-4475-9b29-12fe134da970
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package casual
   :after (calc)
   :commands (casual-dired-tmenu
@@ -2263,7 +2263,9 @@ Snippet taken from https://stackoverflow.com/a/18330742/7492588
 (defvar disable-mouse)
 (use-package disable-mouse
   :diminish)
+#+end_src
 
+#+begin_src elisp :tangle no
 ;;scroll margin
 (defvar smooth-scrolling)
 (defvar smooth-scrolling-margin)
@@ -2736,8 +2738,13 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 
 #+begin_src elisp
 (use-package unfill)
+#+end_src
 
+#+begin_src elisp :tangle no
 (use-package list-unicode-display)
+#+end_src
+
+#+begin_src elisp
 
 (use-package autorevert
   :diminish auto-revert-mode
@@ -2788,7 +2795,6 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 ;; Zap *up* to char is a handy pair for zap-to-char
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
-
 #+end_src
 
 #+begin_src elisp
@@ -3181,7 +3187,9 @@ https://matthewbauer.us/blog/bauer.html
   :diminish
   :config
   (global-whitespace-cleanup-mode t))
+#+end_src
 
+#+begin_src elisp :tangle no
 (use-package unicode-whitespace
   :diminish
   :after (whitespace))
@@ -3197,10 +3205,12 @@ https://matthewbauer.us/blog/bauer.html
   (add-hook hook #'sanityinc/show-trailing-whitespace))
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
+#+end_src
 
+#+begin_src elisp
 (defun kb/text-mode-setup ()
   "text-mode setup hook."
-  (whitespace-mode t)
+  ;; (whitespace-mode t)
   (set-fill-column 79)
   (turn-on-auto-fill))
 
@@ -3630,7 +3640,7 @@ buffers.
 :ID:       6ebf6e4c-f2f2-4d07-ba45-7875afd72eb4
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package gxref
   :config
   (add-to-list 'xref-backend-functions 'gxref-xref-backend))
@@ -4092,8 +4102,18 @@ https://github.com/szermatt/emacs-bash-completion
 
 #+begin_src elisp
 (use-package pcmpl-args)
+#+end_src
+
+#+begin_src elisp
+
 (use-package pcmpl-git)
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package pcmpl-pip)
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package pcomplete-extension)
 #+end_src
 
@@ -4597,7 +4617,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 :ID:       f7801ab7-23ee-43e0-80c8-3f917fc60c67
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package cljsbuild-mode)
 #+end_src
 
@@ -4607,7 +4627,6 @@ Most shell applications accept Perl Compatible Regular Expressions."
 
 #+begin_src elisp
 (use-package clojure-mode
-  :after (cljsbuild-mode elein)
   :hook ((clojure-mode-hook . subword-mode)))
 #+end_src
 
@@ -4818,9 +4837,7 @@ Add some extra symbols to prettify for Coq.
 :END:
 
 #+begin_src elisp
-(use-package gnuplot-mode
-  :config
-  (unbind-key "C-x p" gnuplot-mode-map))
+(use-package gnuplot)
 #+end_src
 
 #+begin_src elisp
