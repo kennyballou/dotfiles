@@ -2505,7 +2505,7 @@ https://tuhdo.github.io/helm-intro.html
          ("C-x b" . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("C-h SPC" . helm-all-mark-rings)
-         ;; ("C-c h o" . helm-occur)
+         ("C-s" . helm-occur)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action)
          ("C-i" . helm-execute-persistent-action)
@@ -2575,7 +2575,7 @@ https://tuhdo.github.io/helm-intro.html
   (helm-descbinds-mode))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package swiper-helm
   :after (helm)
   :bind (("C-s" . swiper-helm)))
