@@ -17,7 +17,7 @@
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with GNU Guix.  If not, see <http://www.gnu.org/licenses/>.
 
-(define-module (gnu home-services-utils)
+(define-module (gnu home services-utils)
   #:use-module (gnu services configuration)
   #:use-module (gnu home services utils)
   #:use-module (guix ui)

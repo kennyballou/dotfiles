@@ -4,7 +4,7 @@
   #:use-module (guix)
   #:use-module (guix git-download)
   #:use-module (gnu home services)
-  #:use-module (gnu home-services emacs)
+  #:use-module (gnu home services emacs)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages tree-sitter)
   #:use-module (guix packages)
