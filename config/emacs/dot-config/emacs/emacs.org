@@ -769,7 +769,8 @@ Do not make me type ~C-q SPC~ to insert spaces!
   (defun magit-dired-other-window ()
     (interactive)
     (dired-other-window (magit-toplevel)))
-  :commands (magit-clone
+  :commands (magit-status
+             magit-clone
              magit-toplevel
              magit-read-string-ns
              magit-remote-arguments
@@ -789,7 +790,9 @@ Do not make me type ~C-q SPC~ to insert spaces!
   (magit-openpgp-default-signing-key "B74CC4B41148C3DB364BC21182D94B35744E1B34")
   (magit-log-margin '(t age magit-log-margin-width t 18))
   )
+#+end_src
 
+#+begin_src elisp
 (use-package magit-extras
   :after magit
   :init
