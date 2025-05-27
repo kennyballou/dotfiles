@@ -21,7 +21,8 @@
                                        (inherit config)
                                        (substitute-urls
                                         (append %default-substitute-urls
-                                                (list "https://substitutes.nonguix.org")))
+                                                (list "https://nonguix-proxy.ditigal.xyz/")))
+                                                      ;;"https://substitutes.nonguix.org")))
                                        (authorized-keys
                                         (append %default-authorized-guix-keys
                                                 (list (local-file (string-append %dotfiles-root
