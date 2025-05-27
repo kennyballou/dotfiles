@@ -1688,7 +1688,7 @@ not strictly necessary.
      ("c" "crypt" plain (file "~/.config/emacs/org-roam-templates/DEFAULT")
       :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-${slug}.org.gpg" "")
       :unnarrowed t)
-     ("l" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
+     ("n" "(lab) notebook" plain (file "~/.config/emacs/org-roam-templates/LOGBOOK")
       :if-new (file+head "%<%Y>/%<%Y%m>/%<%Y%m%d%H%M%S>-logbook-${slug}.org" "")
       :unnarrowed t)))
   :config
