@@ -368,4 +368,4 @@ packages with proper GNU Emacs version."
         emacs-zenburn-theme)))
 
 (define %kbg-emacs-packages
-  (map (recompl emacs-next-pgtk) packages))
+  packages)
