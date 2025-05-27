@@ -12,8 +12,8 @@
   (call-with-input-file file get-string-all))
 
 (define ssh-config-files
-  (map (lambda (f) (string-append %dotfiles-root "config/ssh/ssh/config.d/" f))
-       (scandir (string-append %dotfiles-root "config/ssh/ssh/config.d")
+  (map (lambda (f) (string-append %dotfiles-root "config/ssh/dot-ssh/config.d/" f))
+       (scandir (string-append %dotfiles-root "config/ssh/dot-ssh/config.d")
                 (lambda (f) (string-contains f ".conf")))))
 
 (define ssh-config-service
@@ -26,7 +26,7 @@
                                         (string-join (append (map read-to-string ssh-config-files)
                                                              (list (read-to-string (string-append
                                                                                     %dotfiles-root
-                                                                                    "config/ssh/ssh/config"))))
+                                                                                    "config/ssh/dot-ssh/config"))))
                                                              "\n")))
                           (".ssh/authorized_keys"
-                           ,(local-file (string-append %dotfiles-root "config/ssh/ssh/authorized_keys")))))))
+                           ,(local-file (string-append %dotfiles-root "config/ssh/dot-ssh/authorized_keys")))))))
