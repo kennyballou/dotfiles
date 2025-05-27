@@ -98,7 +98,7 @@
         gnome-tweaks
         gnupg
         gnutls
-        go-github-com-errata-ai-vale
+        vale
         inkscape
         isync
         icecat
