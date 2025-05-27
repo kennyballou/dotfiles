@@ -10,7 +10,7 @@
   (list (simple-service 'maven-config
                         home-files-service-type
                         `((".m2/settings.xml"
-                          ,(local-file (string-append %dotfiles-root "config/maven/settings.xml")))
+                          ,(local-file (string-append %dotfiles-root "config/maven/dot-m2/settings.xml")))
                           (".m2/toolchains.xml"
                            ,(mixed-text-file "toolchains.xml"
                                              #~(string-append "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
