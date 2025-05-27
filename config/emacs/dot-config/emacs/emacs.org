@@ -883,7 +883,13 @@ http://doc.norang.ca/org-mode.htm
 #+begin_src elisp
 (use-package graphviz-dot-mode)
 ;; (use-package org-cliplink)
+#+end_src
+
+#+begin_src elisp :tangle no
 (use-package ess)
+#+end_src
+
+#+begin_src elisp
 (use-package ox-gfm)
 ;; (use-package org-babel-eval-in-repl)
 (use-package org-ref
@@ -3015,7 +3021,7 @@ Simple function which returns buffer contents untexified.
 :ID:       c084445a-9d5c-4a05-8273-f1d6d6cc772d
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package flycheck-languagetool
   :after (flycheck flycheck-vale)
   :hook (text-mode . flycheck-languagetool-setup)
@@ -3706,14 +3712,14 @@ buffers.
   (setq flycheck-pos-tip-timeout 30))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package flycheck-popup-tip
   :after flycheck
   ;;:if (display-graphic-p)
   :hook (flycheck-mode . flycheck-popup-tip-mode))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package flycheck-vale
   :after flycheck
   :commands flycheck-vale-setup
@@ -3725,7 +3731,9 @@ buffers.
                   message-mode
                   tex-mode))
     (flycheck-add-mode 'vale mode)))
+#+end_src
 
+#+begin_src elisp :tangle no
 (use-package flycheck-color-mode-line
   :commands flycheck-color-mode-line-mode
   :after flycheck
@@ -4833,7 +4841,9 @@ Add some extra symbols to prettify for Coq.
   :config
   (add-hook 'before-save-hook #'gofmt-before-save)
   :hook (go-mode . kb/golang-mode))
+#+end_src
 
+#+begin_src elisp :tangle no
 (use-package go-stacktracer)
 #+end_src
 
@@ -5065,17 +5075,23 @@ Add some extra symbols to prettify for Coq.
 (setq-default js-indent-level preferred-javascript-indent-level)
 
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+#+end_src
 
+#+begin_src elisp :tangle no
 (use-package xref-js2
   :after js2-mode
   :config
   (add-to-list 'xref-backend-functions #'xref-js2-xref-backend))
+#+end_src
 
+#+begin_src elisp :tangle no
 (when (fboundp 'coffee-mode)
   (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode)))
 
 ;; Run and interact with an inferior JS via js-comint.el
+#+end_src
 
+#+begin_src elisp
 (use-package js-comint
   :init
   (setq inferior-js-program-command "node")
@@ -5263,7 +5279,7 @@ indentation rules."
          (python-ts-mode . kb/python-mode)))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package pip-requirements
   :after (python))
 #+end_src
@@ -5276,7 +5292,7 @@ indentation rules."
   (setq venv-location (expand-file-name "~/.cache/venvs")))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package ein
   :after (python))
 #+end_src
@@ -5625,7 +5641,7 @@ entry.
 (use-package bibtex-to-plain-text)
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package auctex-latexmk
   :commands auctex-latexmk-setup
   :after tex
@@ -6492,7 +6508,7 @@ _dR_:   Disable repeat
 (async-bytecomp-package-mode t)
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package async-status
   :after async
   :diminish)
