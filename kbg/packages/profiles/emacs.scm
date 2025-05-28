@@ -322,7 +322,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-synosaurus
    emacs-xyz:emacs-tagedit
    emacs-xyz:emacs-toml-mode
-   emacs-xyz:emacs-transmission
    emacs-xyz:emacs-treemacs
    emacs-xyz:emacs-typescript-mode
    emacs-xyz:emacs-unfill
