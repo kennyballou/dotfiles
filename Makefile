@@ -12,7 +12,7 @@ LOAD_PATH=--load-path=./
 
 
 .PHONY: current-system
-current-system: config/emacs/emacs.d/init.el homes/$(HOSTNAME) systems/$(HOSTNAME)
+current-system: config/emacs/dot-config/emacs/init.el homes/$(HOSTNAME) systems/$(HOSTNAME)
 
 .PHONY: list
 list:
@@ -70,7 +70,7 @@ all-systems: $(SYSTEMS)
 all-homes: $(HOMES)
 
 .PHONY: emacs-init
-emacs-init: config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el
+emacs-init: config/emacs/dot-config/emacs/init.el config/emacs/emacs.d/early-init.el
 
 $(HOMES):
 	guix time-machine -C $(CHANNEL_FILE) -- home build $(LOAD_PATH) --cores=$(CORES) $@.scm
@@ -87,5 +87,5 @@ installer.iso: iso/installer.scm
 	guix time-machine -C $(CHANNEL_FILE) -- system image $(LOAD_PATH) --cores=$(CORES) --image-type=iso9660 --root=$@ $^
 
 ## Private targets
-config/emacs/emacs.d/init.el config/emacs/emacs.d/early-init.el: config/emacs/emacs.d/emacs.org
+config/emacs/dot-config/emacs/init.el config/emacs/dot-config/emacs/early-init.el: config/emacs/dot-config/emacs/emacs.org
 	emacs -Q --batch --eval "(progn (require 'ob-tangle) (dolist (file command-line-args-left) (with-current-buffer (find-file-noselect file) (org-babel-tangle))))" "$<"
