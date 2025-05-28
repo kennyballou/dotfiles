@@ -2190,7 +2190,7 @@ Snippet taken from https://stackoverflow.com/a/18330742/7492588
 :ID:       b0f7d023-6c9e-42e1-bfd1-ce4113782673
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package powerline
   :commands powerline-default-theme
   :config
