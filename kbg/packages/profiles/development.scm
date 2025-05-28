@@ -42,7 +42,6 @@
    docx2txt
    dos2unix
    dot2tex
-   emacs-next-pgtk
    entr
    git
    `(,git "credential-netrc")

@@ -1,6 +1,7 @@
 (define-module (homes axo)
   #:use-module (gnu home)
   #:use-module (gnu packages)
+  #:use-module (gnu packages emacs)
   #:use-module (gnu services)
   #:use-module (guix gexp)
   #:use-module (gnu services audio)
@@ -34,7 +35,7 @@
   (append %kbg-base-development-packages
           %kbg-laptop-packages
           (filter-packages (list) %kbg-desktop-packages)
-          %kbg-emacs-packages
+          (kbg-emacs-packages emacs-next-pgtk)
           %kbg-science-packages
           %kbg-statistics-packages
           %kbg-fonts))
@@ -48,4 +49,3 @@
           (list (service home-dbus-service-type)
                 (service home-pipewire-service-type))
           (services-for-host 'axo))))
-  ;;         emacs-service
