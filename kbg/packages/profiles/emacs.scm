@@ -168,7 +168,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-cwl-mode
    emacs-xyz:emacs-d-mode
    emacs-xyz:emacs-daemons
-   emacs-xyz:emacs-dap-mode
    emacs-xyz:emacs-dape
    emacs-xyz:emacs-dash
    emacs-xyz:emacs-debbugs
