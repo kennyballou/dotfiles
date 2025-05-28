@@ -6,6 +6,7 @@
   #:use-module (gnu packages)
   #:use-module (gnu services avahi)
   #:use-module (gnu services base)
+  #:use-module (gnu services containers)
   #:use-module (gnu services cups)
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
@@ -18,6 +19,7 @@
   #:use-module (gnu services security-token)
   #:use-module (gnu services virtualization)
   #:use-module (gnu services xorg)
+  #:use-module (gnu system accounts)
   #:use-module (gnu system nss)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages linux)
@@ -132,6 +134,7 @@
                   (name "kb")
                   (group "users")
                   (supplementary-groups '("audio"
+                                          "cgroup"
                                           "input"
                                           "kvm"
                                           "libvirt"
@@ -203,14 +206,12 @@
                                       (min-workers 1)))
                             (service tor-service-type
                                      (tor-configuration))
-                            (simple-service 'subordinate-ids
-                                            special-files-service-type
-                                            `(("/etc/subuid" ,(mixed-text-file "subuid"
-                                                                               "kb:100000:65536"
-                                                                               "\n"))
-                                              ("/etc/subgid" ,(mixed-text-file "subgid"
-                                                                               "kb:100000:65536"
-                                                                               "\n"))))
+                            (service rootless-podman-service-type
+                                     (rootless-podman-configuration
+                                      (subgids
+                                       (list (subid-range (name "kb"))))
+                                      (subuids
+                                       (list (subid-range (name "kb"))))))
                             )
                       %kbg-desktop-services))
 
