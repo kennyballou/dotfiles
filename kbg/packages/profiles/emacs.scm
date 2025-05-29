@@ -311,7 +311,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-skewer-mode
    emacs-xyz:emacs-smartparens
    emacs-xyz:emacs-smex
-   emacs-xyz:emacs-spaceline
    emacs-xyz:emacs-spinner
    emacs-xyz:emacs-switch-window
    emacs-xyz:emacs-synosaurus
