@@ -16,20 +16,19 @@
   #:export (services-for-host))
 
 (define axo-shepherd-services
-  (list (service home-shepherd-service-type
-                 (home-shepherd-configuration
-                  (services (append gnupg-service
-                                    languagetool-service
-                                    mpd-service
-                                    parallel-mk-temp-dir-service
-                                    syncthing-service))))))
+  (append (list gnupg-service)
+          (list (service home-shepherd-service-type
+                         (home-shepherd-configuration
+                          (services (append languagetool-service
+                                            mpd-service
+                                            parallel-mk-temp-dir-service
+                                            syncthing-service)))))))
 
 
 (define yak-shepherd-services
   (list (service home-shepherd-service-type
                  (home-shepherd-configuration
-                  (services (append gnupg-service
-                                    languagetool-service
+                  (services (append languagetool-service
                                     mpd-service
                                     parallel-mk-temp-dir-service
                                     syncthing-service))))))
@@ -37,8 +36,7 @@
 (define koi-shepherd-services
   (list (service home-shepherd-service-type
                  (home-shepherd-configuration
-                  (services (append gnupg-service
-                                    languagetool-service
+                  (services (append languagetool-service
                                     mpd-service
                                     syncthing-service))))))
 
