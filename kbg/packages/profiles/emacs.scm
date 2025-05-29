@@ -181,7 +181,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-direnv
    emacs-xyz:emacs-dirvish
    emacs-xyz:emacs-disable-mouse
-   emacs-xyz:emacs-docker
    emacs-xyz:emacs-docker-compose-mode
    emacs-xyz:emacs-dockerfile-mode
    emacs-xyz:emacs-ebdb
