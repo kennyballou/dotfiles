@@ -247,7 +247,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-info-plus
    emacs-xyz:emacs-ivy
    emacs-xyz:emacs-jarchive
-   emacs-xyz:emacs-jedi
    emacs-xyz:emacs-jinx
    emacs-xyz:emacs-js-comint
    emacs-xyz:emacs-js2-mode
