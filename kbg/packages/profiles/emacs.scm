@@ -333,7 +333,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-x509-mode
    emacs-xyz:emacs-xr
    emacs-xyz:emacs-yaml-mode
-   emacs-xyz:emacs-yasnippet
    finance:emacs-ledger-mode
    kbg-emacs:emacs-awqat
    kbg-emacs:emacs-bibtex-to-plain-text
@@ -357,6 +356,7 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    melpa:emacs-regex-tool
    melpa:emacs-slurm-mode
    melpa:emacs-whole-line-or-region
+   melpa:emacs-yasnippet
    melpa:emacs-z3-mode
    melpa:emacs-zeal-at-point
    ocaml:emacs-tuareg
