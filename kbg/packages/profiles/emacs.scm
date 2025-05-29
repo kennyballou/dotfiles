@@ -254,7 +254,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-keycast
    emacs-xyz:emacs-link-hint
    emacs-xyz:emacs-literate-calc-mode
-   emacs-xyz:emacs-lua-mode
    emacs-xyz:emacs-magit
    emacs-xyz:emacs-magit-annex
    emacs-xyz:emacs-markdown-mode

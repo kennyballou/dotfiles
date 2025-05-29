@@ -41,6 +41,7 @@
                          tree-sitter-javascript
                          tree-sitter-json
                          tree-sitter-latex
+                         tree-sitter-lua
                          tree-sitter-markdown
                          tree-sitter-markdown-gfm
                          tree-sitter-nix

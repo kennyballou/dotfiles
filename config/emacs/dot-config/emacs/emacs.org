@@ -5161,7 +5161,7 @@ Add some extra symbols to prettify for Coq.
 :ID:       ae884fcc-b5fd-4dd1-ba9d-cf468c599eec
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package lua-mode)
 #+end_src
 
