@@ -235,7 +235,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-helm-pass
    emacs-xyz:emacs-helm-shell-history
    emacs-xyz:emacs-helm-xref
-   emacs-xyz:emacs-helpful
    emacs-xyz:emacs-hg-histedit
    emacs-xyz:emacs-hgignore-mode
    emacs-xyz:emacs-highlight-escape-sequences
@@ -347,6 +346,7 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    melpa:emacs-helm-tramp
    melpa:emacs-helm-unicode
    melpa:emacs-helm-wordnet
+   melpa:emacs-helpful
    melpa:emacs-mu4e-marker-icons
    melpa:emacs-mu4e-overview
    melpa:emacs-mu4e-query-fragments
