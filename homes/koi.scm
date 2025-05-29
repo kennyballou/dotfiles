@@ -21,8 +21,6 @@
   #:use-module (kbg services config dotfiles)
   #:use-module (kbg services mcron)
   #:use-module (kbg services shell)
-  #:use-module (kbg services dbus)
-  #:use-module (kbg services pipewire)
   #:use-module (kbg services shepherd))
 
 (home-environment
@@ -38,7 +36,5 @@
           (configs-for-host 'koi)
           emacs-service
           (list (service home-mcron-service-type))
-          (list (service home-dbus-service-type)
-                (service home-pipewire-service-type))
           (services-for-host 'koi))))
           ;; shepherd-user-services

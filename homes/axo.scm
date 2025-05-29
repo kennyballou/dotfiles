@@ -25,7 +25,6 @@
   #:use-module (kbg packages profiles statistics)
   #:use-module (kbg services config dotfiles)
   #:use-module (kbg services mcron recoll)
-  #:use-module (kbg services pipewire)
   #:use-module (kbg services shell)
   #:use-module (kbg services shepherd)
   #:use-module (nongnu packages mozilla))
@@ -46,6 +45,4 @@
           (list (service home-mcron-service-type)
                 (service recoll-mcron-service-type
                          (recoll-mcron-configuration)))
-          (list (service home-dbus-service-type)
-                (service home-pipewire-service-type))
           (services-for-host 'axo))))

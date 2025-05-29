@@ -5,7 +5,9 @@
   #:use-module (gnu services)
   #:use-module (gnu services shepherd)
   #:use-module (gnu home services)
+  #:use-module (gnu home services desktop)
   #:use-module (gnu home services shepherd)
+  #:use-module (gnu home services sound)
   #:use-module (gnu services audio)
   #:use-module (system repl server)
   #:use-module (kbg services gnupg)
@@ -16,7 +18,11 @@
   #:export (services-for-host))
 
 (define axo-shepherd-services
-  (append (list gnupg-service)
+  (append (list gnupg-service
+                (service home-dbus-service-type)
+                (service home-pipewire-service-type
+                         (home-pipewire-configuration
+                          (enable-pulseaudio? #t))))
           (list (service home-shepherd-service-type
                          (home-shepherd-configuration
                           (services (append languagetool-service

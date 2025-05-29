@@ -21,8 +21,6 @@
   #:use-module (kbg packages profiles statistics)
   #:use-module (kbg services config dotfiles)
   #:use-module (kbg services shell)
-  #:use-module (kbg services dbus)
-  #:use-module (kbg services pipewire)
   #:use-module (kbg services shepherd)
   #:use-module (nongnu packages mozilla))
 
