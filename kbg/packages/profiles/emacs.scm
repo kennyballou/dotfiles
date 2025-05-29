@@ -297,7 +297,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    emacs-xyz:emacs-php-mode
    emacs-xyz:emacs-plantuml-mode
    emacs-xyz:emacs-polymode
-   emacs-xyz:emacs-powerline
    emacs-xyz:emacs-pulsar
    emacs-xyz:emacs-racer
    emacs-xyz:emacs-rainbow-delimiters
@@ -348,6 +347,7 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    melpa:emacs-mu4e-marker-icons
    melpa:emacs-mu4e-overview
    melpa:emacs-mu4e-query-fragments
+   melpa:emacs-powerline
    melpa:emacs-proof-general
    melpa:emacs-regex-tool
    melpa:emacs-slurm-mode
