@@ -1,0 +1,20 @@
+(define-module (kbg services timers nix-gc)
+  #:use-module (ice-9 match)
+  #:use-module (srfi srfi-1)
+  #:use-module (kbg)
+  #:use-module (guix)
+  #:use-module (guix gexp)
+  #:use-module (guix records)
+  #:use-module (gnu)
+  #:use-module (gnu services)
+  #:use-module (gnu services configuration)
+  #:use-module (gnu services shepherd)
+  #:export (nix-gc-timer))
+
+(define nix-gc-timer
+  (shepherd-timer '(nix-gc)
+                  #~(calendar-event #:hours '(12)
+                                    #:minutes '(3))
+                  #~("/run/current-system/profile/bin/nix-collect-garbage"
+                     "--delete-older-than" "14d")
+                  #:requirement '(nix-daemon)))

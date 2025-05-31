@@ -12,10 +12,10 @@
   #:use-module (gnu services desktop)
   #:use-module (gnu services docker)
   #:use-module (gnu services linux)
-  #:use-module (gnu services mcron)
   #:use-module (gnu services networking)
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
+  #:use-module (gnu services shepherd)
   #:use-module (gnu services security-token)
   #:use-module (gnu services virtualization)
   #:use-module (gnu services xorg)
@@ -35,7 +35,8 @@
   #:use-module (kbg services dict)
   #:use-module (kbg services nftables)
   #:use-module (kbg services boltd)
-  #:use-module ((kbg system mcron) :prefix mcron:)
+  #:use-module (kbg services timers guix-gc)
+  #:use-module (kbg services timers nix-gc)
   #:use-module (kbg system xorg))
 
 (define axo-system
@@ -192,9 +193,11 @@
                                       (stop-charge-thresh-bat0 95)
                                       (stop-charge-thresh-bat1 95)))
                             (nftables-service "axo")
-                            (simple-service 'my-cron-jobs
-                                            mcron-service-type
-                                            (list mcron:guix-gc-repair-job))
+                            (simple-service 'axo-timers
+                                            shepherd-root-service-type
+                                            (list guix-gc-timer
+                                                  guix-gc-repair-timer
+                                                  nix-gc-timer))
                             (service singularity-service-type)
                             (service virtlog-service-type
                                      (virtlog-configuration))
