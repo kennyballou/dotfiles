@@ -15,6 +15,7 @@
   #:use-module (kbg services mpd)
   #:use-module (kbg services parallel)
   #:use-module (kbg services syncthing)
+  #:use-module (kbg services timers borg)
   #:use-module (kbg services timers recoll)
   #:export (services-for-host))
 
@@ -24,6 +25,8 @@
                 (service home-pipewire-service-type
                          (home-pipewire-configuration
                           (enable-pulseaudio? #t)))
+                borg-backup-timer
+                borg-prune-timer
                 recoll-timer-service)
           (list (service home-shepherd-service-type
                          (home-shepherd-configuration
