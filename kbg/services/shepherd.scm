@@ -15,6 +15,7 @@
   #:use-module (kbg services mpd)
   #:use-module (kbg services parallel)
   #:use-module (kbg services syncthing)
+  #:use-module (kbg services timers recoll)
   #:export (services-for-host))
 
 (define axo-shepherd-services
@@ -22,7 +23,8 @@
                 (service home-dbus-service-type)
                 (service home-pipewire-service-type
                          (home-pipewire-configuration
-                          (enable-pulseaudio? #t))))
+                          (enable-pulseaudio? #t)))
+                recoll-timer-service)
           (list (service home-shepherd-service-type
                          (home-shepherd-configuration
                           (services (append languagetool-service

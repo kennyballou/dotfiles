@@ -42,7 +42,4 @@
  (services
   (append bash-service
           (configs-for-host 'axo)
-          (list (service home-mcron-service-type)
-                (service recoll-mcron-service-type
-                         (recoll-mcron-configuration)))
           (services-for-host 'axo))))
