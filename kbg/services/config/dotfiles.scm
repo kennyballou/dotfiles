@@ -4,6 +4,7 @@
   #:use-module (guix)
   #:use-module (gnu home services)
   #:use-module (kbg services config aspell)
+  #:use-module (kbg services config borg)
   #:use-module (kbg services config chktex)
   #:use-module (kbg services config direnv)
   #:use-module (kbg services config emacs)
@@ -35,6 +36,7 @@
 
 (define axo-configs
   (append aspell-config-service
+          borg-config-service
           chktex-config-service
           direnv-config-service
           email-config-service

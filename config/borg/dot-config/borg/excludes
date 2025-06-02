@@ -1,0 +1,17 @@
+sh:node_modules
+sh:/home/*/.cache
+sh:/home/*/tmp
+sh:/home/*/guixtest
+sh:/home/*/.var
+sh:/home/*/.config/Element
+sh:/home/*/.config/flatpak
+sh:/home/*/.config/Signal
+sh:/home/*/.config/Slack
+sh:/home/*/.local/state
+sh:/home/*/.local/share/containers
+sh:/home/*/.local/share/guix-sandbox-home
+sh:/home/*/.local/share/Zeal
+sh:/home/*/.local/share/dolphin-emu
+sh:/home/*/.recoll/xapiandb
+sh:/home/*/.zoom
+sh:/home/*/workspace/pkg
