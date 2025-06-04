@@ -7,3 +7,6 @@
 
 tags :: [[id:77fb9295-74f5-4d64-81f4-2fafc7c5ab0a][daily]]
      :: [[id:035f3f4f-f0bf-473e-8676-3dc837415acf][chronology]]
+
+#+BEGIN: clocktable :scope agenda :block today :compact t :link t :emphasize nil :maxlevel 4 :fileskip0 t
+#+END
