@@ -60,7 +60,7 @@ SCHEDULED: %T
 
 - [ ] Review Previous and Upcoming Calendar Data:
 
-  #+BEGIN: clocktable :scope agenda :block lastweek :compact t
+  #+BEGIN: clocktable :scope agenda :block lastweek :link t :emphasize nil :maxlevel 4 :fileskip0 t
   #+END:
 
 - [ ] Review Previous Weekly Notes
