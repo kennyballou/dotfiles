@@ -36,6 +36,7 @@
                    (gdm-service-type config =>
                                      (gdm-configuration
                                       (inherit config)
+                                      (auto-suspend? #f)
                                       (wayland? #t)))
                    (dbus-root-service-type config =>
                                            (dbus-configuration
