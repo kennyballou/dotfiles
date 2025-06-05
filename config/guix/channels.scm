@@ -2,7 +2,7 @@
 
 (list (channel
        (name 'guix)
-       (url "https://codeberg.org/guix/guix-mirror")
+       (url "https://codeberg.org/guix/guix")
        (branch "master")
        (commit
         "583e0688e33c4f3d7e3f1e2f30dd78690eb58fd4")
