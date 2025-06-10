@@ -14,7 +14,8 @@
 
 (define guix-gc-timer
   (shepherd-timer '(guix-gc)
-                  #~(calendar-event #:hours '(12)
+                  #~(calendar-event #:days '(1 15)
+                                    #:hours '(12)
                                     #:minutes '(3))
                   #~("/run/current-system/profile/bin/guix"
                      "gc" "--delete-generations=14d")
@@ -22,7 +23,8 @@
 
 (define guix-gc-repair-timer
   (shepherd-timer '(guix-gc-repair)
-                  #~(calendar-event #:hours '(8)
+                  #~(calendar-event #:days '(1 15)
+                                    #:hours '(8)
                                     #:minutes '(30))
                   #~("/run/current-system/profile/bin/guix"
                      "gc" "--verify=contents,repair")
