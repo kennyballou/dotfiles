@@ -1930,22 +1930,41 @@ then open both resulting PDFs externally with evince."
 
 #+begin_src elisp
 (defvar kb/slides-directory "/home/kb/workspace/src/edu/csusm/teaching-materials/slides")
-(defun kb/include-slide-file ()
+#+end_src
+
+#+begin_src elisp
+(defun kb/include-slide-file (dir extrx format-string)
   "Include a slide file into the current org document."
   (interactive)
   (let ((slide (f-relative (completing-read
                             "Slide: "
                             (directory-files-recursively
-                             kb/slides-directory
-                             (rx ".org")
+                             dir
+                             extrx
                              nil
                              nil
                              t)))))
-    (insert "#+INCLUDE: " slide " :minlevel 3")))
+    (insert (format format-string slide))))
 #+end_src
 
 #+begin_src elisp
-(bind-key "C-c o s i" #'kb/include-slide-file)
+(defun kb/include-org-slide-file ()
+  (interactive)
+  (kb/include-slide-file kb/slides-directory
+                         (rx ".org")
+                         "#+INCLUDE: %s :minlevel 3"))
+#+end_src
+
+#+begin_src elisp
+(defun kb/include-tex-slide-file ()
+  (interactive)
+  (kb/include-slide-file "./slides"
+                         (rx ".tex")
+                         "\\input{%s}"))
+#+end_src
+
+#+begin_src elisp
+(bind-key "C-c o s i" #'kb/include-org-slide-file org-mode-map)
 #+end_src
 
 **** Org-Mairix?
@@ -5584,6 +5603,8 @@ indentation rules."
   (TeX-master nil)
   (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (bibtex-dialect 'biblatex)
+  :bind (:map LaTeX-mode-map
+              ("C-c o s i" . kb/include-tex-slide-file))
   :hook ((LaTeX-mode . kb/tex-mode)
          (TeX-mode . kb/tex-mode)))
 #+end_src
