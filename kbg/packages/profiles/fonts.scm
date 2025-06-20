@@ -8,6 +8,7 @@
   (list font-adobe-source-code-pro
         font-awesome
         font-bitstream-vera
+        font-comic-neue
         font-dejavu
         font-dejavu-nerd
         font-google-noto
