@@ -2989,27 +2989,6 @@ https://www.emacswiki.org/emacs/DosToUnix
   (setq synosaurus-choose-method 'ido))
 #+end_src
 
-**** LTEX Language Server
-:PROPERTIES:
-:ID:       b170b85a-3d40-4bb6-973c-a9f6a5862719
-:END:
-
-#+begin_src elisp :tangle no
-(add-to-list 'eglot-server-programs '(text-mode "localhost" 9091))
-#+end_src
-#+begin_src elisp :tangle no
-(use-package lsp-ltex
-  :after lsp
-  :hook (text-mode . kb/enable-ltex)
-  :init
-  (defun kb/enable-ltex ()
-    (require 'lsp-ltex)
-    (lsp-deferred))
-  :config
-  (setq lsp-ltex-ls-path (string-join (list user-emacs-directory "/lsp-ltex/")))
-  (setq lsp-ltex-version "15.2.0"))
-#+end_src
-
 **** detex
 :PROPERTIES:
 :ID:       e9352fe8-02e4-4082-9f90-34460f51c9e7
