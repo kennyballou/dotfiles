@@ -87,7 +87,7 @@
             (guix (file-system
                     (device "/dev/mapper/vg0-guix")
                     (mount-point "/gnu")
-                    (type "xfs")
+                    (type "ext4")
                     (needed-for-boot? #t)
                     (dependencies mapped-devices)))
             (nix (file-system
