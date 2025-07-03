@@ -13,7 +13,7 @@
 
 (define guix-gc-timer
   (shepherd-timer '(guix-gc)
-                  #~(calendar-event #:days '(1 15)
+                  #~(calendar-event #:days-of-month '(1 15)
                                     #:hours '(12)
                                     #:minutes '(3))
                   #~("/run/current-system/profile/bin/guix"
