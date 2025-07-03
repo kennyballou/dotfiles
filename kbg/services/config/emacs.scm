@@ -7,7 +7,6 @@
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages tree-sitter)
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
-  #:use-module (emacs packages melpa)
   #:use-module (kbg packages emacs-xyz)
   #:use-module (kbg packages jdtls)
   #:use-module (kbg packages languagetool))

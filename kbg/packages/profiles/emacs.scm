@@ -13,7 +13,6 @@
   #:use-module (guix transformations)
   #:use-module (guix build-system emacs)
   #:use-module ((gnu packages emacs-xyz) #:prefix emacs-xyz:)
-  #:use-module ((emacs packages melpa) #:prefix melpa:)
   #:use-module ((kbg packages emacs-xyz) #:prefix kbg-emacs:)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-26)

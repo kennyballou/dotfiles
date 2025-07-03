@@ -35,17 +35,6 @@
           (make-channel-introduction
            "b9d0b8041d28ebd9f85cb041aa3f2235c8b39417"
            (openpgp-fingerprint
-            "10F4 14AB D526 0D0E 2372  8C08 FE55 890B 57AE DCE5"))))
-        (channel
-         (name 'emacs)
-         (url "https://github.com/garrgravarr/guix-emacs.git")
-         (branch "master")
-         (commit
-          "4544795ad12cbfadb899e4eeb1648e224298169f")
-         (introduction
-          (make-channel-introduction
-           "d676ef5f94d2c1bd32f11f084d47dcb1a180fdd4"
-           (openpgp-fingerprint
-            "2DDF 9601 2828 6172 F10C  51A4 E80D 3600 684C 71BA"))))))
+            "10F4 14AB D526 0D0E 2372  8C08 FE55 890B 57AE DCE5"))))))
 
 %kbg-channels
