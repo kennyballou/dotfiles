@@ -17,5 +17,5 @@
                                     #:hours '(12)
                                     #:minutes '(3))
                   #~("/run/current-system/profile/bin/guix"
-                     "gc" "--delete-generations=14d")
+                     "gc" "--free-space=50G")
                   #:requirement '(guix-daemon)))
