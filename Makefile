@@ -1,6 +1,6 @@
 NIX_FILES = $(shell find . name -name '*.nix' -type f)
 MAX_AGE=14d
-CHANNEL_FILE=./config/guix/channels.scm
+CHANNEL_FILE=./kbg/channels.scm
 HOSTS=axo owl baal yak koi bard
 TARGET?=x86_64-linux-gnu
 SYSTEMS=$(patsubst %,systems/%,$(HOSTS))

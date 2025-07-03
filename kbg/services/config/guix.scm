@@ -11,7 +11,7 @@
     (list (simple-service 'guix-config
                           home-files-service-type
                           `((".config/guix/channels.scm"
-                             ,(local-file (string-append %dotfiles-root "config/guix/channels.scm")))
+                             ,(local-file (string-append %dotfiles-root "kbg/channels.scm")))
                             (".config/guix/shell-authorized-directories"
                              ,(plain-file "kb-shell-authorized-directories"
                                           (string-join (list (call-with-input-file shell-auth-dirs-template get-string-all)
