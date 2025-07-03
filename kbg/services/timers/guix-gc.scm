@@ -9,8 +9,7 @@
   #:use-module (gnu services)
   #:use-module (gnu services configuration)
   #:use-module (gnu services shepherd)
-  #:export (guix-gc-timer
-            guix-gc-repair-timer))
+  #:export (guix-gc-timer))
 
 (define guix-gc-timer
   (shepherd-timer '(guix-gc)
@@ -20,13 +19,3 @@
                   #~("/run/current-system/profile/bin/guix"
                      "gc" "--delete-generations=14d")
                   #:requirement '(guix-daemon)))
-
-(define guix-gc-repair-timer
-  (shepherd-timer '(guix-gc-repair)
-                  #~(calendar-event #:days '(1 15)
-                                    #:hours '(8)
-                                    #:minutes '(30))
-                  #~("/run/current-system/profile/bin/guix"
-                     "gc" "--verify=contents,repair")
-                  #:requirement '(guix-daemon)))
-

@@ -196,7 +196,6 @@
                             (simple-service 'axo-timers
                                             shepherd-root-service-type
                                             (list guix-gc-timer
-                                                  guix-gc-repair-timer
                                                   nix-gc-timer))
                             (service singularity-service-type)
                             (service virtlog-service-type
