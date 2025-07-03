@@ -8,10 +8,12 @@
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages networking)
+  #:use-module (gnu packages package-management)
   #:use-module (gnu services networking)
   #:use-module (gnu services sound)
   #:use-module (gnu services xorg)
   #:use-module (gnu packages vpn)
+  #:use-module (kbg channels)
   #:export (%kbg-desktop-services))
 
 (define %kbg-desktop-services
@@ -19,6 +21,7 @@
                    (guix-service-type config =>
                                       (guix-configuration
                                        (inherit config)
+				       (channels %kbg-channels)
                                        (substitute-urls
                                         (append %default-substitute-urls
                                                 (list "https://nonguix-proxy.ditigal.xyz/")))
@@ -26,7 +29,8 @@
                                        (authorized-keys
                                         (append %default-authorized-guix-keys
                                                 (list (local-file (string-append %dotfiles-root
-                                                                                 "keys/guix/substitutes.nonguix.org.pub")))))))
+                                                                                 "keys/guix/substitutes.nonguix.org.pub")))))
+				       (guix (guix-for-channels %kbg-channels))))
                    (network-manager-service-type config =>
                                                  (network-manager-configuration
                                                   (inherit config)
