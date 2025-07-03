@@ -449,7 +449,7 @@ https://matthewbauer.us/blog/bauer.html
 (setq-default eshell-cp-interactive-query t)
 (setq-default eshell-cp-overwrite-files nil)
 (setq-default eshell-default-target-is-dot t)
-(setq-default eshell-destroy-buffer-when-process-dies t)
+(setq-default eshell-destroy-buffer-when-process-dies nil)
 (setq-default eshell-highlight-prompt t)
 (setq-default eshell-hist-ignoredups t)
 (setq-default eshell-history-size 10000)
