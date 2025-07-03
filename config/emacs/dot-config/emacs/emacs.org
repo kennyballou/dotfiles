@@ -2968,7 +2968,7 @@ https://www.emacswiki.org/emacs/DosToUnix
 #+end_src
 
 #+begin_src elisp
-(use-package helm-wordnet
+(use-package helm-wordnut
   :after (helm wordnut))
 #+end_src
 
