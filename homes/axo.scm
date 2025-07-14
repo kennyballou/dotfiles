@@ -34,7 +34,7 @@
   (append %kbg-base-development-packages
           %kbg-laptop-packages
           (filter-packages (list) %kbg-desktop-packages)
-          (kbg-emacs-packages emacs-next-pgtk)
+          (kbg-emacs-packages emacs)
           %kbg-science-packages
           %kbg-statistics-packages
           %kbg-fonts))
