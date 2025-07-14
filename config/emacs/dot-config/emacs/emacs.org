@@ -1558,7 +1558,6 @@ Except where they probably shouldn't be added.
      (octave . t)
      (perl . t)
      (python . t)
-     (R . t)
      (restclient . nil)
      (scheme . t)
      (screen . nil)
