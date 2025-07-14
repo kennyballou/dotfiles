@@ -21,12 +21,7 @@
             kbg-emacs-packages))
 
 (define emacs-rewrite-pkgs
-  `(("emacs-async" . ,(const emacs-xyz:emacs-async))
-    ("emacs-dash" . ,(const emacs-xyz:emacs-dash))
-    ("emacs-f" . ,(const emacs-xyz:emacs-f))
-    ("emacs-flycheck" . ,(const emacs-xyz:emacs-flycheck))
-    ("emacs-helm" . ,(const emacs-xyz:emacs-helm))
-    ("emacs-s" . ,(const emacs-xyz:emacs-s))))
+  `())
 
 (define (update-emacs-packages pkgs rewrites target-emacs)
   "Recursively rewrite and recompile `pkgs' using `rewrites' and `target-emacs', respectively.
@@ -264,4 +259,4 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    ))
 
 (define (kbg-emacs-packages target-emacs)
-  (append (list target-emacs) (update-emacs-packages %kbg-emacs-packages emacs-rewrite-pkgs target-emacs)))
+  (append (list target-emacs) %kbg-emacs-packages))
