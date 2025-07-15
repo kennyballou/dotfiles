@@ -66,5 +66,6 @@ table inet filter {
         tcp dport 1714-1764 accept comment "KDEConnect"
         udp dport 1714-1764 accept comment "KDEConnect"
         udp dport 51820 accept comment "WireGuard"
+        udp dport 3478-3481 accept comment "M$ Teams Meet Ports"
     }
 }
