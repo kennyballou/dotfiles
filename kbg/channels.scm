@@ -30,7 +30,7 @@
          (url "https://git.sr.ht/~kennyballou/guix-channel.git")
          (branch "trunk")
          (commit
-          "f2f98997e186e638612fde0bb1771c19cebecd77")
+          "bf79f2cfb940ab90a1ba1259170a96f962347734")
          (introduction
           (make-channel-introduction
            "b9d0b8041d28ebd9f85cb041aa3f2235c8b39417"
