@@ -3670,12 +3670,12 @@ buffers.
               ("C-c >" . helm-gtags-next-history)))
 #+end_src
 
-*** Flycheck
+*** Flycheck (disabled)
 :PROPERTIES:
 :ID:       a670c02f-5b74-4584-ac02-b3a0c43fb1cc
 :END:
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package flycheck
   :defer 2
   :diminish
@@ -3741,7 +3741,7 @@ buffers.
   :config (flycheck-color-mode-line-mode))
 #+end_src
 
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package helm-flycheck
   :after (helm flycheck))
 #+end_src
