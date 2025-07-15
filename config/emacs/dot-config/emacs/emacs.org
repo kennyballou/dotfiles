@@ -67,7 +67,7 @@ Font Config
                             ("-*-*-*-*-*-*-*-*-*-*-*-*-fontset-default" . "fontset-default")))
 #+end_src
 
-#+begin_src elisp  :tangle no
+#+begin_src elisp :tangle no
 (set-face-attribute 'default nil
                     :family "DejaVuSansMono"
                     :height 110
