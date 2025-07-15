@@ -3174,7 +3174,9 @@ https://matthewbauer.us/blog/bauer.html
   :after (whitespace))
 
 ;;; Whitespace
+#+end_src
 
+#+begin_src elisp
 (defun sanityinc/show-trailing-whitespace ()
   "Enable display of trailing whiteSpace in this buffer."
   (setq-local show-trailing-whitespace t))
@@ -3182,7 +3184,9 @@ https://matthewbauer.us/blog/bauer.html
 ;; Explicitly show trailing whiteSpace in these modes
 (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
   (add-hook hook #'sanityinc/show-trailing-whitespace))
+#+end_src
 
+#+begin_src elisp :tangle no
 (global-set-key [remap just-one-space] 'cycle-spacing)
 #+end_src
 
