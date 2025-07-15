@@ -3746,6 +3746,15 @@ buffers.
   :after (helm flycheck))
 #+end_src
 
+*** Flymake
+:PROPERTIES:
+:ID:       29db2138-a1aa-4f15-81d0-0fac0ed5e402
+:END:
+
+#+begin_src elisp
+(use-package flymake)
+#+end_src
+
 *** Tramp
 :PROPERTIES:
 :ID:       6b79c1d2-ab14-4bee-a9e5-b676c98c695e
@@ -4542,7 +4551,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
   (eglot-confirm-server-initiated-edits 'confirm)
   (eglot-autoshutdown t)
   (eglot-extend-to-xref t)
-  (eglot-stay-out-of '(flymake)))
+  (eglot-stay-out-of '()))
 #+end_src
 
 **** Debug Adapter Protocol
