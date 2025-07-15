@@ -66,8 +66,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-citar-org-roam
    gnu-emacs:emacs-clojure-mode
    gnu-emacs:emacs-company
-   gnu-emacs:emacs-counsel
-   gnu-emacs:emacs-counsel-tramp
    gnu-emacs:emacs-cov
    gnu-emacs:emacs-csv-mode
    gnu-emacs:emacs-cwl-mode
@@ -82,7 +80,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-devdocs
    gnu-emacs:emacs-diff-hl
    gnu-emacs:emacs-diminish
-   gnu-emacs:emacs-dired-rsync
    gnu-emacs:emacs-direnv
    gnu-emacs:emacs-dirvish
    gnu-emacs:emacs-disable-mouse
@@ -91,7 +88,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-ebdb
    gnu-emacs:emacs-editorconfig
    gnu-emacs:emacs-ef-themes
-   gnu-emacs:emacs-eglot
    gnu-emacs:emacs-elfeed
    gnu-emacs:emacs-elfeed-org
    gnu-emacs:emacs-elfeed-score
@@ -132,7 +128,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-helm
    gnu-emacs:emacs-helm-bibtex
    gnu-emacs:emacs-helm-descbinds
-   gnu-emacs:emacs-helm-flycheck
    gnu-emacs:emacs-helm-gtags
    gnu-emacs:emacs-helm-make
    gnu-emacs:emacs-helm-org
@@ -150,7 +145,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-iedit
    gnu-emacs:emacs-inf-ruby
    gnu-emacs:emacs-info-plus
-   gnu-emacs:emacs-ivy
    gnu-emacs:emacs-jarchive
    gnu-emacs:emacs-jinx
    gnu-emacs:emacs-js-comint
@@ -198,7 +192,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-password-store-otp
    gnu-emacs:emacs-pcmpl-args
    gnu-emacs:emacs-pcre2el
-   gnu-emacs:emacs-pdf-tools
    gnu-emacs:emacs-peep-dired
    gnu-emacs:emacs-php-mode
    gnu-emacs:emacs-plantuml-mode
@@ -216,7 +209,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-simple-httpd
    gnu-emacs:emacs-skewer-mode
    gnu-emacs:emacs-smartparens
-   gnu-emacs:emacs-smex
    gnu-emacs:emacs-spinner
    gnu-emacs:emacs-switch-window
    gnu-emacs:emacs-synosaurus
