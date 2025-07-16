@@ -4627,8 +4627,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
   :config
   (setq nrepl-popup-stacktraces nil)
   :hook ((cider-mode-hook . eldoc-mode)
-         (cider-repl-mode-hook . subword-mode)
-         (cider-repl-mode-hook . paredit-mode)))
+         (cider-repl-mode-hook . subword-mode)))
 
 (use-package flycheck-clojure
   :after (clojure flycheck)
