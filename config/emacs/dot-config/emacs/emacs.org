@@ -4211,8 +4211,7 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (use-package envrc
   :commands envrc-global-mode
   :diminish
-  :config
-  (envrc-global-mode))
+  :hook (after-init . envrc-global-mode))
 #+end_src
 
 **** Subword Mode
