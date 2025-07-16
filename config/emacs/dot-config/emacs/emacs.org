@@ -3821,9 +3821,7 @@ buffers.
 :END:
 
 #+begin_src elisp
-(use-package zeal-at-point
-  :commands zeal-at-point
-  :bind ("C-c h d" . #'zeal-at-point))
+(use-package zeal-at-point)
 #+end_src
 
 *** DevDocs
