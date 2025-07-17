@@ -4833,11 +4833,8 @@ Add some extra symbols to prettify for Coq.
 :END:
 
 #+begin_src elisp
-(use-package gnuplot)
-#+end_src
-
-#+begin_src elisp
-(add-to-list 'auto-mode-alist '("\\.plt\\'" . gnuplot-mode))
+(use-package gnuplot
+  :mode ("\\.plt\\'" . gnuplot-mode))
 #+end_src
 
 **** Go Lang
