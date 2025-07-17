@@ -3828,6 +3828,33 @@ buffers.
   (devdocs-data-dir (string-join (list (xdg-cache-home) "/devdocs"))))
 #+end_src
 
+An initial set of DevDocs to install:
+
+#+begin_src elisp :tangle no :eval query
+(dolist (doc '(bash
+               c
+               clojure~1.11
+               cpp
+               elisp
+               git
+               gnu_make
+               gnuplot
+               go
+               jq
+               latex
+               markdown
+               matplotlib
+               nix
+               ocaml
+               openjdk~11
+               openjdk~17
+               openjdk~21
+               python~3.12
+               python~3.13
+               python~3.9))
+  (devdocs-install doc))
+#+end_src
+
 *** Help ((wo)man/info) -- disabled
 :PROPERTIES:
 :ID:       3c59a4db-1f1b-4681-b488-5c2d89e5276f
