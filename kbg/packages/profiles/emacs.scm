@@ -246,7 +246,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    kbg-emacs:emacs-slurm-mode
    kbg-emacs:emacs-whole-line-or-region
    kbg-emacs:emacs-z3-mode
-   kbg-emacs:emacs-zeal-at-point
    ocaml:emacs-tuareg
    ))
 

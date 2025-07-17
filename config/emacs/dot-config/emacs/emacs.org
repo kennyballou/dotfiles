@@ -3815,15 +3815,6 @@ buffers.
   (yas-reload-all))
 #+end_src
 
-*** Zeal
-:PROPERTIES:
-:ID:       6ec32762-7757-4f5b-a74e-25dadbe095ba
-:END:
-
-#+begin_src elisp
-(use-package zeal-at-point)
-#+end_src
-
 *** DevDocs
 :PROPERTIES:
 :ID:       3dd1b8ee-0e4d-4f9c-9770-8fcff44c63b1
