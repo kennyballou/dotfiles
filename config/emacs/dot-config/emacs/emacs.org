@@ -4253,6 +4253,17 @@ Most shell applications accept Perl Compatible Regular Expressions."
 (semantic-mode t)
 #+end_src
 
+**** Antlr Mode
+:PROPERTIES:
+:ID:       d1a781f1-4ba0-4243-859a-2b1e986cc3f6
+:END:
+
+#+begin_src elisp
+(use-package antlr-mode
+  :ensure nil
+  :mode ("\\.g4\\'" . antlr-mode))
+#+end_src
+
 **** BNF-Mode
 :PROPERTIES:
 :ID:       06516d09-55cd-4a34-a784-984c6c56fcf6
