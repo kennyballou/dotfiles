@@ -55,6 +55,7 @@
   #:use-module (gnu packages xorg)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
+  #:use-module (nongnu packages chrome)
   #:use-module (nongnu packages printers)
   #:export (%kbg-desktop-packages
             %kbg-bare-desktop-packages))
@@ -98,6 +99,7 @@
         gnome-tweaks
         gnupg
         gnutls
+        google-chrome-stable
         vale
         inkscape
         isync
@@ -130,8 +132,6 @@
         qpdf
         qrencode
         sane-backends
-        ublock-origin/chromium
-        ungoogled-chromium
         vlc
         units
         wavemon
