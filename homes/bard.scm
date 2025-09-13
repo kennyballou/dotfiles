@@ -6,7 +6,6 @@
   #:use-module (gnu services audio)
   #:use-module (gnu home services)
   #:use-module (gnu home services fontutils)
-  #:use-module (gnu home services mcron)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services shepherd)
   #:use-module (gnu home services symlink-manager)

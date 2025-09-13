@@ -53,7 +53,6 @@
   #:use-module (gnu packages wordnet)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu packages xorg)
-  #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
   #:use-module (nongnu packages chrome)
   #:use-module (nongnu packages printers)

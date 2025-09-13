@@ -56,7 +56,6 @@
   #:use-module (gnu packages web)
   #:use-module (gnu packages wget)
   #:use-module (gnu system nss)
-  #:use-module (nongnu packages linux)
   #:export (%kbg-base-packages))
 
 (define %kbg-base-packages
