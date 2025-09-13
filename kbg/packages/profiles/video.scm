@@ -68,7 +68,6 @@
         libxext
         libxi
         libxinerama
-        libxml2
         libxpm
         livemedia-utils
         lua-5.2
