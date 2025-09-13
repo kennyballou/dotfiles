@@ -55,6 +55,7 @@
   #:use-module (gnu packages w3m)
   #:use-module (gnu packages web)
   #:use-module (gnu packages wget)
+  #:use-module (gnu packages xml)
   #:use-module (gnu system nss)
   #:export (%kbg-base-packages))
 
@@ -85,6 +86,7 @@
         iperf
         jq
         less
+        libxml2
         lsof
         ltrace
         mc
