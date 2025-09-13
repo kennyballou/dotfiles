@@ -33,18 +33,18 @@ update-channels:
 
 .PHONY: reconfigure-home
 reconfigure-home:
-	guix time-machine -C $(CHANNEL_FILE) -- home $(LOAD_PATH) reconfigure $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
+	guix time-machine -C $(CHANNEL_FILE) -- home reconfigure $(LOAD_PATH) $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
 
 .PHONY: rollback-home
-	guix time-machine -C $(CHANNEL_FILE) -- home $(LOAD_PATH) roll-back homes/$(HOSTNAME).scm
+	guix time-machine -C $(CHANNEL_FILE) -- home roll-back $(LOAD_PATH) homes/$(HOSTNAME).scm
 
 .PHONY: reconfigure-system
 reconfigure-system:
-	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system $(LOAD_PATH) reconfigure $(RECONFIGURE_FLAGS) systems/$(HOSTNAME).scm
+	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system reconfigure $(LOAD_PATH) $(RECONFIGURE_FLAGS) systems/$(HOSTNAME).scm
 
 .PHONY: rollback-system
 rollback-system:
-	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system $(LOAD_PATH) roll-back systems/$(HOSTNAME).scm
+	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system roll-back $(LOAD_PATH) systems/$(HOSTNAME).scm
 
 .PHONY: lint
 lint:
@@ -77,7 +77,7 @@ $(HOMES):
 
 .PHONY: $(SYSTEMS)
 $(SYSTEMS):
-	guix time-machine -C $(CHANNEL_FILE) -- system $(LOAD_PATH) build --cores=$(CORES) $@.scm
+	guix time-machine -C $(CHANNEL_FILE) -- system build $(LOAD_PATH) --cores=$(CORES) $@.scm
 
 .PHONY: iso
 iso: iso/installer.scm
