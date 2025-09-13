@@ -16,7 +16,7 @@
    coq-stdpp
    gnuplot
    graphviz
-   gwl
+   ;; gwl
    octave
    parallel
    z3))

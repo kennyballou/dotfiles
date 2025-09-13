@@ -16,7 +16,7 @@
                           ("CALIBRE_USE_DARK_PALETTE" . "1")
                           ("EDITOR" . "emacsclient")
                           ("GOPATH" . "${XDG_CACHE_HOME}/go")
-                          ("GUILE_DRMAA_LIBRARY" . ,(file-append slurm-drmaa "/lib/libdrmaa.so"))
+                          ;; ("GUILE_DRMAA_LIBRARY" . ,(file-append slurm-drmaa "/lib/libdrmaa.so"))
                           ("GUIX_EXTENSIONS_PATH" . "${GUIX_PROFILE}/share/guix/extensions")
                           ("GUIX_PROFILE" . "${HOME}/.guix-home/profile")
                           ("MPD_HOST" . "/run/user/1000/mpd/socket")
