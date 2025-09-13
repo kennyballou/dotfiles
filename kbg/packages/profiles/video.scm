@@ -4,7 +4,6 @@
   #:use-module (gnu packages backup)
   #:use-module (gnu packages cdrom)
   #:use-module (gnu packages compression)
-  #:use-module (gnu packages crates-graphics)
   #:use-module (gnu packages dns)
   #:use-module (gnu packages fribidi)
   #:use-module (gnu packages gl)
