@@ -2,6 +2,5 @@
 # name: insert image
 # key: <ins-image>
 # --
-#+ATTR_HTML: :width 90% :alt
 #+ATTR_LATEX: :placment [H] :center t :alt
 $0
