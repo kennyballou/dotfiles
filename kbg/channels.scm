@@ -16,7 +16,7 @@
             "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
         (channel
          (name 'nonguix)
-         (url "https://gitlab.com/nonguix/nonguix")
+         (url "https://gitlab.com/nonguix/nonguix.git")
          (branch "master")
          (commit
           "477f283914ca771a8622e16b73d845b87c63335d")
