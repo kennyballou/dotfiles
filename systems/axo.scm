@@ -21,6 +21,7 @@
   #:use-module (gnu services xorg)
   #:use-module (gnu system accounts)
   #:use-module (gnu system nss)
+  #:use-module (gnu packages base)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages linux)
   #:use-module (nongnu packages linux)
@@ -50,6 +51,7 @@
     (host-name "axo")
     (timezone "America/Los_Angeles")
     (locale "en_US.utf8")
+    (locale-libcs (list glibc-2.29 (canonical-package glibc)))
 
     (initrd-modules (append (list "dm-crypt") %base-initrd-modules))
 
