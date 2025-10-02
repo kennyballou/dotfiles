@@ -2830,10 +2830,6 @@ https://masteringemacs.org/article/polymode-multiple-major-modes-how-to-use-sql-
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
-(use-package avy
-  :commands avy-goto-char-timer
-  :bind ("C-;" . #'avy-goto-char-timer))
-
 (use-package multiple-cursors
   :commands (mc/edit-lines mc/edit-ends-of-lines mc/edit-beginnings-of-lines)
   :bind (("C-c m c" . #'mc/edit-lines)

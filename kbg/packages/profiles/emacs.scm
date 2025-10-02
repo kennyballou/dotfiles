@@ -53,7 +53,6 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-anzu
    gnu-emacs:emacs-async
    gnu-emacs:emacs-auctex
-   gnu-emacs:emacs-avy
    gnu-emacs:emacs-bash-completion
    gnu-emacs:emacs-browse-kill-ring
    gnu-emacs:emacs-buffer-move
