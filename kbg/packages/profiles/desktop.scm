@@ -140,5 +140,4 @@
         xbindkeys
         xorriso
         xournal
-        xsensors
-        zeal))
+        xsensors))
