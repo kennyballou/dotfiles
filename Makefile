@@ -27,24 +27,23 @@ news:
 	guix pull --channels=$(CHANNEL_FILE) --news
 
 .PHONY: update-channels
-update-channels:
+update-channels: $(CHANNEL_FILE)
 	guix pull --channels=$(CHANNEL_FILE)
-	guix describe --format=channels > $(CHANNEL_FILE)
 
 .PHONY: reconfigure-home
 reconfigure-home:
-	guix time-machine -C $(CHANNEL_FILE) -- home reconfigure $(LOAD_PATH) $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
+	guix home reconfigure $(LOAD_PATH) $(RECONFIGURE_FLAGS) homes/$(HOSTNAME).scm
 
 .PHONY: rollback-home
-	guix time-machine -C $(CHANNEL_FILE) -- home roll-back $(LOAD_PATH) homes/$(HOSTNAME).scm
+	guix home roll-back $(LOAD_PATH) homes/$(HOSTNAME).scm
 
 .PHONY: reconfigure-system
 reconfigure-system:
-	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system reconfigure $(LOAD_PATH) $(RECONFIGURE_FLAGS) systems/$(HOSTNAME).scm
+	sudo -E guix system reconfigure $(LOAD_PATH) $(RECONFIGURE_FLAGS) systems/$(HOSTNAME).scm
 
 .PHONY: rollback-system
 rollback-system:
-	sudo -E guix time-machine -C $(CHANNEL_FILE) -- system roll-back $(LOAD_PATH) systems/$(HOSTNAME).scm
+	sudo -E guix system roll-back $(LOAD_PATH) systems/$(HOSTNAME).scm
 
 .PHONY: lint
 lint:
@@ -61,7 +60,7 @@ clean:
 
 .PHONY: repl
 repl:
-	guix time-machine -C $(CHANNEL_FILE) -- repl $(LOAD_PATH)
+	guix repl $(LOAD_PATH)
 
 .PHONY: all-systems
 all-systems: $(SYSTEMS)
@@ -73,18 +72,18 @@ all-homes: $(HOMES)
 emacs-init: config/emacs/dot-config/emacs/init.el config/emacs/emacs.d/early-init.el
 
 $(HOMES):
-	guix time-machine -C $(CHANNEL_FILE) -- home build $(LOAD_PATH) --cores=$(CORES) $@.scm
+	guix home build $(LOAD_PATH) --cores=$(CORES) $@.scm
 
 .PHONY: $(SYSTEMS)
 $(SYSTEMS):
-	guix time-machine -C $(CHANNEL_FILE) -- system build $(LOAD_PATH) --cores=$(CORES) $@.scm
+	guix system build $(LOAD_PATH) --cores=$(CORES) $@.scm
 
 .PHONY: iso
 iso: iso/installer.scm
 	guix time-machine -C $(CHANNEL_FILE) -- system image $(LOAD_PATH) --cores=$(CORES) --image-type=iso9660 $^
 
 installer.iso: iso/installer.scm
-	guix time-machine -C $(CHANNEL_FILE) -- system image $(LOAD_PATH) --cores=$(CORES) --image-type=iso9660 --root=$@ $^
+	guix system image $(LOAD_PATH) --cores=$(CORES) --image-type=iso9660 --root=$@ $^
 
 ## Private targets
 config/emacs/dot-config/emacs/init.el config/emacs/dot-config/emacs/early-init.el: config/emacs/dot-config/emacs/emacs.org
