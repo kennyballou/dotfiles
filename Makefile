@@ -85,6 +85,10 @@ iso: iso/installer.scm
 installer.iso: iso/installer.scm
 	guix system image $(LOAD_PATH) --cores=$(CORES) --image-type=iso9660 --root=$@ $^
 
+.PHONY: test
+test:
+	guix repl $(LOAD_PATH) tests/tests.scm
+
 ## Private targets
 config/emacs/dot-config/emacs/init.el config/emacs/dot-config/emacs/early-init.el: config/emacs/dot-config/emacs/emacs.org
 	emacs -Q --batch --eval "(progn (require 'ob-tangle) (dolist (file command-line-args-left) (with-current-buffer (find-file-noselect file) (org-babel-tangle))))" "$<"
