@@ -235,6 +235,7 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    kbg-emacs:emacs-define-word
    kbg-emacs:emacs-eshell-fringe-status
    kbg-emacs:emacs-flycheck-aspell
+   kbg-emacs:emacs-helm-flymake
    kbg-emacs:emacs-helm-recoll
    kbg-emacs:emacs-helm-sql-connect
    kbg-emacs:emacs-helm-tramp

@@ -3746,6 +3746,11 @@ buffers.
 (use-package flymake)
 #+end_src
 
+#+begin_src elisp
+(use-package helm-flymake
+  :after (helm flymake))
+#+end_src
+
 *** Tramp
 :PROPERTIES:
 :ID:       6b79c1d2-ab14-4bee-a9e5-b676c98c695e
