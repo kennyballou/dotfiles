@@ -1592,6 +1592,31 @@ Except where they probably shouldn't be added.
 #+end_src
 
 #+begin_src elisp
+(defun org-babel-execute:plantuml (body params)
+  "Execute PlantUML on body.
+
+Shamelessly copied from `org-babel-execute:dot'."
+  (let* ((out-file (cdr (or (assq :file params)
+			                (error "You need to specify a :file parameter"))))
+	     (cmdline (or (cdr (assq :cmdline params))
+		              (format "-t%s" (file-name-extension out-file))))
+	     (cmd (or (cdr (assq :cmd params)) "plantuml"))
+	     (coding-system-for-read 'utf-8) ;use utf-8 with sub-processes
+	     (coding-system-for-write 'utf-8)
+	     (in-file (expand-file-name
+                    (concat (file-name-base out-file) ".plantuml")
+                    (org-babel-temp-directory))))
+    (with-temp-file in-file
+      (insert (org-babel-expand-body:generic body params)))
+    (org-babel-eval
+     (concat cmd
+	         " " (org-babel-process-file-name in-file)
+	         " " cmdline
+             " -o " (file-name-parent-directory (expand-file-name out-file))) "")
+    nil))
+#+end_src
+
+#+begin_src elisp
 (use-package ob-async)
 #+end_src
 
