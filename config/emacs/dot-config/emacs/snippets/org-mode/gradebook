@@ -1,0 +1,67 @@
+# -*- mode: snippet -*-
+# name: Insert Gradebook Template
+# key: <gradebook>
+# --
+#+OPTIONS: title:nil author:nil toc:nil
+#+TODO: [_] [✓] [x] [NA]
+#+ODT_STYLES_FILE: "/home/kb/workspace/src/edu/csusm/teaching-materials/common/odt/grade-sheet.ott"
+
+* Assignment: $0
+:PROPERTIES:
+:header-args: :cache yes :exports results :results output
+:END:
+
+** [_] Rubric and Grade
+
+** [_] Prepare Files                                                       :noexport:
+:PROPERTIES:
+:ORDERED:  t
+:END:
+
+#+begin_src bash :file sources.org :results none :eval query
+echo "#+TODO: [_] [✓] [x] [NA]" > sources.org
+echo "#+PROPERTY: header-args :eval no" >> sources.org
+echo "* [_] Directory Listing" >> sources.org
+echo "#+begin_example" >> sources.org
+tree -a | grep -v grade.org | grep -v sources.org >> sources.org
+echo "#+end_example" >> sources.org
+for f in $(ls *.java *.cpp *.h *.md *.txt); do
+    echo "* [_] $f" >> sources.org
+    echo "#+begin_src" >> sources.org
+    cat $f >> sources.org
+    echo "#+end_src" >> sources.org
+    echo "" >> sources.org
+done
+#+end_src
+
+*** [_] Ensure all files are included in ~sources.org~
+
+*** [_] Disable execution of the above source block
+
+** [_] Compile the Code
+
+#+begin_src bash
+guix shell --container
+#+end_src
+
+** [_] Test the Program
+
+** [_] Sources
+:PROPERTIES:
+:header-args: :exports code :eval never
+:END:
+
+#+INCLUDE: sources.org :minlevel 3
+
+** Export                                                                  :noexport:
+:PROPERTIES:
+:ID:       89a58cf7-a55f-4928-a17c-f58fbe40ee03
+:END:
+
+#+begin_src elisp :eval query
+(org-export-to-file 'odt "grade.odt")
+#+end_src
+
+#+begin_src bash :results output
+soffice --headless --convert-to pdf --outdir ./ grade.odt
+#+end_src
