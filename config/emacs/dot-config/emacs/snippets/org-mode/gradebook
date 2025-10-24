@@ -13,6 +13,14 @@
 
 ** [_] Rubric and Grade
 
+|              | Unsatisfactory | Developing | Satisfactory | Excellent |
+|--------------+----------------+------------+--------------+-----------|
+| Code Quality |                |            |              |           |
+| Comments     |                |            |              |           |
+| Correctness  |                |            |              |           |
+| Reflection   |                |            |              |           |
+|--------------+----------------+------------+--------------+-----------|
+
 ** [_] Prepare Files                                                       :noexport:
 :PROPERTIES:
 :ORDERED:  t
