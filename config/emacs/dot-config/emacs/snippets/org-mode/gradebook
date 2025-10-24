@@ -18,20 +18,124 @@
 :ORDERED:  t
 :END:
 
-#+begin_src bash :file sources.org :results none :eval query
-echo "#+TODO: [_] [✓] [x] [NA]" > sources.org
-echo "#+PROPERTY: header-args :eval no" >> sources.org
-echo "* [_] Directory Listing" >> sources.org
-echo "#+begin_example" >> sources.org
-tree -a | grep -v grade.org | grep -v sources.org >> sources.org
-echo "#+end_example" >> sources.org
-for f in $(ls *.java *.cpp *.h *.md *.txt); do
-    echo "* [_] $f" >> sources.org
-    echo "#+begin_src" >> sources.org
-    cat $f >> sources.org
-    echo "#+end_src" >> sources.org
-    echo "" >> sources.org
-done
+#+begin_src scheme :file sources.org :results none :eval query
+(use-modules (srfi srfi-1))
+(use-modules (srfi srfi-13))
+(use-modules (ice-9 ftw))
+(use-modules (ice-9 match))
+(use-modules (ice-9 regex))
+(use-modules (ice-9 rdelim))
+(use-modules (ice-9 textual-ports))
+(use-modules (ice-9 pretty-print))
+
+(define %SOURCE-HEADERS
+  (string-join (list "#+TODO: [_] [✓] [x] [NA]"
+                     "#+PROPERTY: header-args :eval no")
+               "\n"))
+
+(define %IGNORED-FOLDERS (list ".git" ".ccls-cache" ".idea"))
+
+(define %SOURCE-EXTS '("h" "cpp" "java" "txt" "md"))
+
+(define (path-join . lst)
+  (string-join
+   (map (lambda (p) (string-trim-both p #\/)) lst)
+   file-name-separator-string))
+
+(define (ext filename)
+  (last (string-split filename #\.)))
+
+(define (source-type filename)
+  (let* ((mapping '(("java" . "java")
+                    ("cpp" . "c++")
+                    ("h" . "c++")
+                    ("txt" . "text")
+                    ("md" . "markdown")
+                    ("markdown" . "markdown")))
+         (type (assoc (ext filename) mapping)))
+    (if type (cdr type) "text")))
+
+(define (is-grade-file? filename)
+  (or (string-match ".*grade.org" filename)
+      (string-match ".*sources.org" filename)))
+
+(define (flat-folder-tree directory)
+  (define remove-stat
+    (match-lambda
+      ((name stat)
+       name)
+      ((name stat children ...)
+       (list name (map remove-stat children)))))
+  (define (flatten xs)
+    (cond ((null? xs) '())
+          ((pair? xs) (append (flatten (car xs)) (flatten (cdr xs))))
+          (else (list xs))))
+  (define (combine root children)
+    (match children
+      ((files ...)
+       (map (lambda (c) (combine root c)) files))
+      (filename
+       (path-join root filename))))
+  (define (visit tree)
+    (match tree
+      ((root (children ...))
+       (map (lambda (c) (combine root c)) (map visit children)))
+      ((files ...)
+       #f)
+      (filename
+       filename)))
+  (let* ((file-tree (remove-stat (file-system-tree directory)))
+         (files (flatten (visit file-tree))))
+    (filter (lambda (f) (not (is-grade-file? f)))
+            (filter (lambda (f) (not (reduce (lambda (a b) (or a b))
+                                        #f
+                                        (map (lambda (ign) (string-contains f ign))
+                                             %IGNORED-FOLDERS))))
+                    files))))
+
+(define (source-files files)
+  (filter (lambda (f) (member (ext f) %SOURCE-EXTS))
+          files))
+
+(define (readlines filename)
+  (define (iter fh acc)
+    (let ((line (read-line fh)))
+      (if (eof-object? line)
+          acc
+          (iter fh (cons (string-trim-right line) acc)))))
+  (let ((fh (open-input-file filename)))
+    (reverse (iter fh '()))))
+
+(define (put-directory-listing port files)
+  (put-string port "* [_] Directory Listing\n\n")
+  (put-string port "#+begin_example\n")
+  (put-string port (string-join files "\n"))
+  (put-string port "\n#+end_example\n\n"))
+
+(define (put-source-block port filename)
+  (let ((type (source-type filename))
+        (lines (readlines filename)))
+    (put-string port "* [_] ")
+    (put-string port filename)
+    (put-string port "\n\n")
+    (put-string port "#+begin_src ")
+    (put-string port type)
+    (put-string port "\n")
+    (put-string port (string-join lines "\n"))
+    (put-string port "\n#+end_src\n\n")))
+
+(define (create-sources-file directory)
+  (let* ((files (flat-folder-tree directory))
+         (src-files (source-files files))
+         (output-file (open-file "sources.org" "w")))
+    (put-string output-file %SOURCE-HEADERS)
+    (put-string output-file "\n")
+    (put-directory-listing output-file files)
+    (for-each (lambda (f) (put-source-block output-file f))
+              src-files)
+    (close-port output-file)))
+
+(create-sources-file "./")
 #+end_src
 
 *** [_] Ensure all files are included in ~sources.org~
