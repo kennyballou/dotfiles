@@ -57,8 +57,7 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    gnu-emacs:emacs-browse-kill-ring
    gnu-emacs:emacs-buffer-move
    gnu-emacs:emacs-calibredb
-   gnu-emacs:emacs-casual-dired
-   gnu-emacs:emacs-casual-info
+   gnu-emacs:emacs-casual
    gnu-emacs:emacs-cider
    gnu-emacs:emacs-circadian
    gnu-emacs:emacs-citar

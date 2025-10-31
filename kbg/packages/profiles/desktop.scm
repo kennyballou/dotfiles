@@ -91,7 +91,7 @@
         freecad
         fzf
         gawk
-        getmail
+        getmail6
         gimp
         gnome-boxes
         gnome-shell-extension-gsconnect
