@@ -4496,7 +4496,21 @@ Most shell applications accept Perl Compatible Regular Expressions."
                "gopls"))))
 #+end_src
 
+******* OCaml
+:PROPERTIES:
+:ID:       d095e8e6-6c26-4209-aca0-9e511260a17e
+:END:
 
+#+begin_src elisp
+(defun kb/ocaml-eglot-server (interactive?)
+  "Return the eglot server for OCaml"
+  (cond ((executable-find "guix")
+         (list "guix"
+               "shell"
+               "ocaml5.0-lsp-server"
+               "--"
+               "ocamllsp"))))
+#+end_src
 ******* Python
 :PROPERTIES:
 :ID:       bcacda85-83d9-45ae-96d3-ca79c7fd18e4
@@ -4587,6 +4601,8 @@ Most shell applications accept Perl Compatible Regular Expressions."
                                           #'kb/java-eglot-server)
                                     (cons '(go-mode go-ts-mode)
                                           #'kb/golang-eglot-server)
+                                    (cons '(tuareg-mode)
+                                          #'kb/ocaml-eglot-server)
                                     (cons '(python-mode python-ts-mode)
                                           #'kb/python-eglot-server)
                                     (cons '(latex-mode bibtex-mode)
@@ -5756,6 +5772,7 @@ Add =languagetool= to =tex-chktex= checker chain.
 
 #+begin_src elisp
 (use-package tuareg
+  :mode ("\\.ml\\'". tuareg-mode)
   :init
   (defun kb/ocaml-mode ()
     (eglot-ensure))
