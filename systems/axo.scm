@@ -51,7 +51,7 @@
     (host-name "axo")
     (timezone "America/Los_Angeles")
     (locale "en_US.utf8")
-    (locale-libcs (list glibc-2.29 (canonical-package glibc)))
+    (locale-libcs (list (canonical-package glibc)))
 
     (initrd-modules (append (list "dm-crypt") %base-initrd-modules))
 
