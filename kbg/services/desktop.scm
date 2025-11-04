@@ -21,7 +21,7 @@
                    (guix-service-type config =>
                                       (guix-configuration
                                        (inherit config)
-				       (channels %kbg-channels)
+                                       (channels %kbg-channels)
                                        (substitute-urls
                                         (append %default-substitute-urls
                                                 (list "https://nonguix-proxy.ditigal.xyz/")))
@@ -30,7 +30,7 @@
                                         (append %default-authorized-guix-keys
                                                 (list (local-file (string-append %dotfiles-root
                                                                                  "keys/guix/substitutes.nonguix.org.pub")))))
-				       (guix (guix-for-channels %kbg-channels))))
+                                       (guix (guix-for-channels %kbg-channels))))
                    (network-manager-service-type config =>
                                                  (network-manager-configuration
                                                   (inherit config)
