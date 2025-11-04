@@ -86,7 +86,6 @@
         iperf
         jq
         less
-        libxml2
         lsof
         ltrace
         mc
