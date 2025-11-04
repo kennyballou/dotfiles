@@ -31,7 +31,6 @@
   #:use-module (gnu packages haskell-xyz)
   #:use-module (gnu packages image)
   #:use-module (gnu packages inkscape)
-  #:use-module (gnu packages kde)
   #:use-module (gnu packages libreoffice)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages mail)
@@ -117,7 +116,6 @@
         ncmpcpp
         nyxt
         obs
-        okular
         p7zip
         pandoc
         paperkey
