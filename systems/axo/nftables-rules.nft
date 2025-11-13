@@ -6,8 +6,8 @@ table inet filter {
         iif lo accept
         iif != lo ip daddr 127.0.0.1/8 drop
         iif != lo ip6 daddr ::1/128 drop
-        ip protocol icmp accept
-        ip6 nexthdr ipv6-icmp accept
+        ip protocol icmp icmp type { destination-unreachable, echo-reply, echo-request, source-quench, time-exceeded } accept
+        icmpv6 type { destination-unreachable, echo-reply, echo-request, nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert, nd-redirect, packet-too-big, parameter-problem, time-exceeded } accept
         udp dport domain ip saddr 172.16.0.0/12 accept
         tcp dport 3000 ip saddr 127.0.0.1/8 accept
         tcp dport 8000 ip saddr 127.0.0.1/8 accept
@@ -27,6 +27,7 @@ table inet filter {
         ct state established,related accept
         icmp type echo-request accept
         icmp type echo-reply accept
+        icmpv6 type { destination-unreachable, echo-reply, echo-request, nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert, nd-redirect, packet-too-big, parameter-problem, time-exceeded } accept
         ip daddr 127.0.0.0/8 accept
         ip6 daddr ::1 accept
         udp dport domain accept
