@@ -4,6 +4,8 @@ table inet filter {
         ct state invalid drop comment "drop invalid packets"
         tcp flags & (fin|syn|rst|psh|ack|urg) == fin|syn|rst|psh|ack|urg drop comment "drop XMAS"
         tcp flags & (fin|syn|rst|ack) != syn ct state new drop comment "drop forced SYN"
+        ip protocol icmp icmp type echo-request limit rate over 1/second burst 5 packets drop comment "drop excessive pings"
+        ip6 nexthdr icmpv6 icmpv6 type echo-request limit rate over 1/second burst 5 packets drop comment "drop excessive pings"
         ct state established,related accept comment "accept related connections"
         iif lo accept
         iif != lo ip daddr 127.0.0.1/8 drop
