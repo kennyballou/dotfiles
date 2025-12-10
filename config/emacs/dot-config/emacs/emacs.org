@@ -864,7 +864,10 @@ http://doc.norang.ca/org-mode.htm
 :END:
 
 #+begin_src elisp
-(use-package org)
+(use-package org
+  :custom
+  (org-preview-latex-default-process 'dvisvgm))
+
 (use-package org-contrib)
 (use-package org-id
   :ensure nil)
