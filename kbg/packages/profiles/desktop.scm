@@ -99,6 +99,7 @@
         gnutls
         google-chrome-stable
         vale
+        icedove
         inkscape
         isync
         icecat
