@@ -26,33 +26,50 @@
                          tree-sitter-c
                          tree-sitter-clojure
                          tree-sitter-cmake
+                         tree-sitter-comment
                          tree-sitter-cpp
+                         tree-sitter-csv
                          tree-sitter-css
                          tree-sitter-dockerfile
+                         tree-sitter-dot
                          tree-sitter-elixir
+                         tree-sitter-elisp
                          tree-sitter-elm
                          tree-sitter-erlang
+                         tree-sitter-gitattributes
+                         tree-sitter-gitcommit
                          tree-sitter-go
                          tree-sitter-gomod
+                         tree-sitter-gosum
                          tree-sitter-haskell
                          tree-sitter-html
+                         tree-sitter-ini
+                         tree-sitter-java-properties
                          tree-sitter-java
                          tree-sitter-javascript
+                         tree-sitter-jsonnet
                          tree-sitter-json
+                         tree-sitter-kconfig
                          tree-sitter-latex
                          tree-sitter-lua
                          tree-sitter-markdown
                          tree-sitter-nix
                          tree-sitter-ocaml
                          tree-sitter-org
+                         tree-sitter-pem
+                         tree-sitter-po
                          tree-sitter-python
+                         tree-sitter-python-requirements
                          tree-sitter-r
                          tree-sitter-racket
+                         tree-sitter-rst
                          tree-sitter-ruby
                          tree-sitter-rust
                          tree-sitter-scheme
                          tree-sitter-tlaplus
-                         tree-sitter-typescript)))
+                         tree-sitter-typescript
+                         tree-sitter-xml
+                         tree-sitter-yaml)))
 
 (define-public emacs-config-service
   (list (simple-service 'emacs-config
