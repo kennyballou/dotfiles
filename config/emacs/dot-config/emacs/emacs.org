@@ -5599,7 +5599,12 @@ indentation rules."
 :END:
 
 #+begin_src elisp
+(use-package auctex)
+#+end_src
+
+#+begin_src elisp
 (use-package reftex
+  :after auctex
   :commands turn-on-reftex
   :custom
   (reftex-enable-partial-scans t)
@@ -5617,32 +5622,19 @@ indentation rules."
   (turn-on-reftex)
   (LaTeX-math-mode t)
   (reftex-isearch-minor-mode t)
-  (flycheck-select-checker 'tex-chktex))
-#+end_src
-
-#+begin_src elisp
-(use-package auctex)
+  (flymake-mode t))
 #+end_src
 
 #+begin_src elisp
 (use-package latex
   :custom
   (TeX-PDF-mode t)
-  (TeX-source-correlate-start-server t)
+  (TeX-source-correlate-start-server 'ask)
   (TeX-parse-self t)
   (TeX-auto-save t)
   (TeX-save-query nil)
   (LaTeX-eqnarray-label "eq")
-  (LaTeX-equation-label "eq")
-  (LaTeX-figure-label "fig")
-  (LaTeX-table-label "tab")
-  (LaTeX-myChapter-label "chap")
-  (TeX-newline-function #'reindent-then-newline-and-indent)
-  (LaTeX-section-hook '(LaTeX-section-heading
-                        LaTeX-section-title
-                        LaTeX-section-toc
-                        LaTeX-section-section
-                        LaTeX-section-label))
+  (TeX-newline-function #'newline)
   (TeX-view-program-selection '(((output-dvi has-no-display-manager)
                                  "dvi2tty")
                                 ((output-dvi style-pstricks)
@@ -5650,9 +5642,6 @@ indentation rules."
                                 (output-dvi "xdvi")
                                 (output-pdf "evince" "pdf-tools")
                                 (output-html "xdg-open")))
-  (TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
-  (TeX-source-correlate-method '((dvi . source-specials)
-                                 (pdf . synctex)))
   (TeX-source-correlate-start-server t)
   (TeX-master nil)
   (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
@@ -5681,7 +5670,9 @@ Some references used for this:
   (bibtex-autokey-year-length 4)
   (bibtex-autokey-year-title-separator "-")
   (bibtex-autokey-titleword-separator "-")
-  (bibtex-autokey-titleword-ignore '("A" "An" "On" "The" "Eine?" "Der" "Die" "Das" "[^[:upper:]].*" ".*[^[:upper:][:lower:]0-9].*"))
+  (bibtex-autokey-titleword-ignore '("A" "An" "On" "The" "Eine?" "Der" "Die"
+                                     "Das" "[^[:upper:]].*"
+                                     ".*[^[:upper:][:lower:]0-9].*"))
 
   ;; These values are set in `init-local.el'
   ;; (setq bibtex-completion-bibliography nil)
@@ -5710,9 +5701,6 @@ Some references used for this:
   (bibtex-autokey-name-year-separator "-")
   (bibtex-autokey-year-title-separator "-")
   (bibtex-autokey-titleword-separator "-")
-  (bibtex-autokey-titleword-ignore (list "A" "An" "On" "The"
-                                         "Eine?" "Der" "Die" "Das" "[^[:upper:]].*"
-                                         ".*[^[:upper:][:lower:]0-9].*"))
   (bibtex-autokey-titlewords 2)
   (bibtex-autokey-titlewords-stretch 2)
   (bibtex-autokey-titleword-length 5))
