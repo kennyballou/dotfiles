@@ -4539,18 +4539,11 @@ Most shell applications accept Perl Compatible Regular Expressions."
 #+begin_src elisp
 (defun kb/latex-eglot-server (interactive?)
   "Return the eglot server for LaTeX."
-  (cond ((executable-find "guix")
-         (list "guix"
-               "time-machine"
-               (string-join `("--channels=" ,(getenv "HOME") "/.config/guix/channels.scm"))
-               "--"
+  (cond ((executable-find "nix")
+         (list "nix"
                "shell"
-               "--pure"
-               "rust-texlab"
-               "texlive"
-               "texlive-biber"
-               "python-pygments"
-               "--"
+               "nixpkgs#texlab"
+               "--command"
                "texlab"))))
 #+end_src
 
