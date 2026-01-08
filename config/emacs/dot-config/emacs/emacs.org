@@ -5241,6 +5241,15 @@ Add some extra symbols to prettify for Coq.
   :mode "\\.md\\.html\\'")
 #+end_src
 
+**** nftables
+:PROPERTIES:
+:ID:       859cab99-489d-430c-a4b4-037e06503bf8
+:END:
+
+#+begin_src elisp
+(use-package nftables-mode)
+#+end_src
+
 **** nginx
 :PROPERTIES:
 :ID:       0f011145-9b4b-4f97-acb2-6686fdf30017

@@ -239,6 +239,7 @@ https://git.sr.ht/~abcdw/rde/tree/master/item/src/rde/home/services/emacs.scm"
    kbg-emacs:emacs-helm-sql-connect
    kbg-emacs:emacs-helm-tramp
    kbg-emacs:emacs-helm-unicode
+   kbg-emacs:emacs-nftables-mode
    gnu-emacs:emacs-helm-wordnut
    rocq:proof-general
    kbg-emacs:emacs-regex-tool
