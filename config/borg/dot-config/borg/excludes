@@ -9,6 +9,7 @@ sh:/home/*/.config/Signal
 sh:/home/*/.config/Slack
 sh:/home/*/.local/state
 sh:/home/*/.local/share/containers
+sh:/home/*/.local/share/flatpak
 sh:/home/*/.local/share/guix-sandbox-home
 sh:/home/*/.local/share/Trash
 sh:/home/*/.local/share/Zeal
