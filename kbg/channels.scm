@@ -8,7 +8,7 @@
          (url "https://codeberg.org/guix/guix")
          (branch "master")
          (commit
-          "1502f231ffe07634c119ba3f11e6add0c7d48db6")
+          "c9f41f72023bc7f98e6abd23eb2167051cccef73")
          (introduction
           (make-channel-introduction
            "9edb3f66fd807b096b48283debdcddccfea34bad"
