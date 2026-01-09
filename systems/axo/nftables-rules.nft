@@ -27,8 +27,7 @@ table inet filter {
     chain output {
         type filter hook output priority 0; policy drop;
         ct state established,related accept
-        icmp type echo-request accept
-        icmp type echo-reply accept
+        icmp type { echo-request, echo-reply } accept
         icmpv6 type { destination-unreachable, echo-reply, echo-request, nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert, nd-redirect, packet-too-big, parameter-problem, time-exceeded } accept
         ip daddr 127.0.0.0/8 accept
         ip6 daddr ::1 accept
